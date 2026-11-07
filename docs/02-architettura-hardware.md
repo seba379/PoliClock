@@ -92,27 +92,32 @@ Bus I²C condiviso: SHT40 `0x44`, DS3231 `0x68`, touch CST816S `0x15` (indirizzo
 
 ![Schema a blocchi di PoliClock](../assets/concept/policlock-schema-blocchi.svg)
 
-### 3.2 Primo posizionamento della scheda principale (rev 0.1, 2026-11-07)
+### 3.2 PCB della scheda principale: posizionamento e sbroglio (rev 0.1, 2026-11-07)
 
-File: `hardware/policlock-main/policlock-main.kicad_pcb` (immagini, PDF e STEP nella stessa cartella). **Solo posizionamento**: lo sbroglio non è fatto (`OPEN-027`).
+File: `hardware/policlock-main/policlock-main.kicad_pcb` (immagini, PDF e STEP nella stessa cartella). **Bozza completa**: posizionamento e sbroglio automatico con Freerouting, da rivedere a vista prima dell'ordine.
 
 | Parametro | Valore | Motivazione |
 |---|---|---|
-| Dimensioni scheda | **35 × 26 mm** (910 mm²), angoli raggio 1 mm | La più piccola trovata con tutti i componenti su un lato e i passivi vicino ai pin collegati, dopo aver tolto il tasto USER (`DEC-032`); 33–34 mm di lato non bastavano |
-| Ingombro totale | **circa 40,3 × 26 mm** | L'antenna del modulo sporge di circa 5,3 mm oltre il bordo destro (`DEC-031`) |
-| Strati / spessore | 2 strati, 1,6 mm (`DEC-030`) | Circuito semplice, nessuna radio attiva; piano GND su entrambi i lati |
+| Dimensioni scheda | **40 × 30 mm** (1200 mm²), angoli raggio 1 mm | Il proprietario ha accettato una scheda più grande per uno sbroglio completo e affidabile (`DEC-033`). Prove: 35 × 26 mm (la più piccola posizionabile) lasciava 10 connessioni aperte; 38 × 28 mm non bastava per i passivi con spaziatura extra; **40 × 30** e 42 × 32 mm si sbrogliano completamente: scelta la più piccola |
+| Ingombro totale | **circa 45,3 × 30 mm** | L'antenna del modulo sporge di circa 5,3 mm oltre il bordo destro (`DEC-031`) |
+| Strati / spessore | 2 strati, 1,6 mm (`DEC-030`) | Circuito semplice, nessuna radio attiva; piani GND su entrambi i lati |
 | Montaggio | Solo lato superiore (`DEC-030`) | Assemblaggio JLC più economico; sul retro solo pad di test nudi e legenda |
-| Regole | Distanza 0,15 mm (minimo 0,10 mm per le piazzole USB-C a passo 0,5 mm), pista ≥ 0,15 mm, via 0,6/0,3 mm, rame-bordo 0,3 mm | Entro le capacità JLCPCB 2 strati, con margine |
+| Spaziatura | 0,6 mm in più fra i courtyard dei componenti piazzati automaticamente | Spazio per piste e vie |
+| Piste | Alimentazioni (VBUS, +5 V, 5V_LDO, +3V3, GND, 3V3_DISP, 3V3_EXT, LEDK) **0,4 mm**, segnali **0,2 mm**; restringimenti a 0,15 mm solo sulle piazzole fini | Classe di rete "Power"; correnti di qualche centinaio di mA al massimo |
+| Vie | 59, 0,6/0,3 mm (0,7/0,35 mm sulle alimentazioni) | Entro le capacità JLCPCB |
+| Regole | Distanza 0,15 mm (0,10 mm fra le piazzole USB-C a passo 0,5 mm), rame-bordo 0,3 mm più una fascia di 0,45 mm vietata a piste e vie lungo il contorno | Entro le capacità JLCPCB 2 strati, con margine |
 
 Disposizione (vista dall'alto, origine nell'angolo in alto a sinistra):
 
 - **Bordo destro**: modulo ESP32-C3-MINI-1 ruotato di 270°; il bordo scheda coincide con l'inizio dell'antenna, che resta fuori dal PCB (disposizione raccomandata da Espressif). I pin del display escono verso sinistra, quelli USB verso il basso.
-- **Bordo inferiore** (verso il sedere, opzione A): USB-C J1 con l'apertura a filo del bordo (centro a x = 25,1 mm), affiancata da **due fori M2** (Ø 2,2 mm, pad a GND) a (17,7; 23,4) e (32,5; 23,4) mm, che scaricano sulla scocca lo sforzo d'inserimento del cavo. In basso a sinistra: LDO U2.
+- **Bordo inferiore** (verso il sedere, opzione A): USB-C J1 con l'apertura a filo del bordo (centro a x = 30,1 mm), affiancata da **due fori M2** (Ø 2,2 mm, pad a GND) a (22,7; 27,4) e (37,5; 27,4) mm, che scaricano sulla scocca lo sforzo d'inserimento del cavo. In basso a sinistra: LDO U2.
 - **Bordo superiore**: connettore FFC J2 del cavo display (ingresso cavo verso l'alto, verso il collo).
 - **Bordo sinistro**: JST-SH J3 (SHT40), J4 (RTC), J5 (pulsante) con l'apertura verso l'esterno.
 - **Retro**: punti di test TP1–TP8 (VBUS, 5 V, 3,3 V, GND, UART_TX, EN, SDA, SCL) come pad nudi con legenda: raggiungibili a scheda smontata o con sportellino, non assemblati.
 
-DRC con `kicad-cli` (tutte le severità): **nessun errore** oltre alle 81 connessioni ancora da sbrogliare; restano avvisi di serigrafia (footprint EasyEDA al bordo, scritte della legenda sul retro vicine), accettabili. Il posizionamento è generato da `hardware/scripts/genera_pcb_main.py`: posizioni fisse in `posizioni_main.py`, passivi piazzati automaticamente vicino ai pin collegati.
+**Verifiche:** DRC con `kicad-cli` (tutte le severità): **0 errori, 0 connessioni aperte**; restano 10 avvisi di serigrafia (footprint EasyEDA al bordo, legenda del retro vicina a vie), accettabili. USB D+/D- senza vie sul lato connettore, lunghezze circa 17 e 21 mm: adeguate alla USB full-speed (12 Mbit/s). Restano da rivedere a vista (`OPEN-027`): percorso delle piste, continuità dei piani GND sotto il modulo e la USB, posizione delle vie vicino alle piazzole.
+
+**Come si rigenera:** `hardware/scripts/genera_pcb_main.py` (posizionamento; posizioni fisse in `posizioni_main.py`), poi `hardware/scripts/sbroglia_main.py` (Freerouting 2.5.0 con Java 25 portatile in `%LOCALAPPDATA%\Programs\freerouting-2.5.0`; la build nativa `freerouting-cli` 2.5.0 per Windows si blocca). KiCad non ha un autorouter, né in `kicad-cli` né nell'API Python.
 
 ## 4. Collegamento display su cavo
 

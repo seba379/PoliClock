@@ -8,7 +8,7 @@ Disposizione (vista dall'alto):
 I componenti non elencati sono piazzati automaticamente vicino ai pin collegati.
 """
 import os
-W, H = (float(v) for v in os.environ.get("PCB_WH", "35,26").split(","))
+W, H = (float(v) for v in os.environ.get("PCB_WH", "40,30").split(","))
 
 XM = W - 5.7          # centro modulo: il bordo destro coincide con l'inizio dell'antenna
 YM = 8.4

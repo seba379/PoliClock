@@ -42,6 +42,7 @@ Fonti consultate durante la revisione v0.2, mantenute come riferimento storico e
 25. [easyeda2kicad](https://github.com/uPesy/easyeda2kicad.py) — importazione di simboli e footprint LCSC nella libreria di progetto.
 26. [XUNPU — TS-1088-AR02016 tact switch 4×3 mm](https://www.lcsc.com/datasheet/C720477.pdf) — 2 pin, contatto tra 1 e 2, piazzole 5,5 × 2,0 mm (`DEC-029`).
 27. [Espressif — ESP32-C3 Hardware Design Guidelines](https://docs.espressif.com/projects/esp-hardware-design-guidelines/en/latest/esp32c3/pcb-layout-design.html) — sezione layout: "antenna outside the base board", feed point vicino al bordo; posizionamento del modulo con l'antenna oltre il bordo della scheda (`DEC-031`).
+28. [Freerouting 2.5.0](https://github.com/freerouting/freerouting/releases/tag/v2.5.0) (jar, SHA-256 verificato) con [Eclipse Temurin 25 JRE](https://adoptium.net/) — autorouter usato per la bozza di sbroglio (`DEC-033`).
 
 Da aggiungere al momento della scelta: datasheet del pannello GC9A01 acquistato.
 

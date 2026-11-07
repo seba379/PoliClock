@@ -30,6 +30,7 @@ W, H = 34.0, 26.0              # dimensioni della scheda (mm) - aggiornate dal p
 from posizioni_main import PLACE, W, H, HOLES, AUTO_ORDER, BOTTOM  # noqa: E402
 
 POWER = {"GND", "+3V3", "+5V", "VBUS"}
+GAP = float(os.environ.get("PCB_GAP", "0.6"))   # spazio extra fra i courtyard per lo sbroglio (mm)
 
 
 def local_bbox(fp):
@@ -199,7 +200,7 @@ def build(info=False):
                     r = (cx + b[0], cx + b[1], cy + b[2], cy + b[3])
                     if r[0] < OX + 0.1 or r[1] > OX + W - 0.1 or r[2] < OY + 0.1 or r[3] > OY + H - 0.1:
                         continue
-                    if any(overlap(r, o) for _, o in occ[side]):
+                    if any(overlap(r, o, GAP) for _, o in occ[side]):
                         continue
                     best = (cx, cy, rot, r)
                     break

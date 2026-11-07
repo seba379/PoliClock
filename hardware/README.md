@@ -24,12 +24,12 @@ Ogni simbolo montato ha il campo **`LCSC`** (codice JLCPCB/LCSC). I componenti D
 
 Sensore SHT40 e RTC non hanno un PCB proprio: sono moduli commerciali collegati ai connettori J3 e J4 della scheda principale (`DEC-028`, `DEC-024`).
 
-## PCB della scheda principale (primo posizionamento)
+## PCB della scheda principale (bozza sbrogliata)
 
-- `policlock-main/policlock-main.kicad_pcb`: **35 × 26 mm, 2 strati, componenti solo sopra**, antenna del modulo oltre il bordo destro (`DEC-029`…`DEC-031`). **Solo posizionamento**: piani GND su entrambi gli strati, nessuna pista (`OPEN-027`).
-- `policlock-main-top.png` / `-bottom.png`: render 3D; `policlock-main-layout.pdf`: assemblaggio (F.Fab), rame e legenda del retro; `drc.rpt`: DRC (nessun errore oltre alle connessioni da sbrogliare, solo avvisi di serigrafia).
+- `policlock-main/policlock-main.kicad_pcb`: **40 × 30 mm, 2 strati, componenti solo sopra**, antenna del modulo oltre il bordo destro (`DEC-029`…`DEC-033`). Posizionato e **sbrogliato con Freerouting**: DRC 0 errori e 0 connessioni aperte, da rivedere a vista (`OPEN-027`).
+- `policlock-main-top.png` / `-bottom.png`: render 3D; `policlock-main-layout.pdf`: assemblaggio (F.Fab), rame e legenda del retro; `drc.rpt`: DRC (nessun errore, solo avvisi di serigrafia).
 - `policlock-main-scheda.step`: sagoma della scheda con fori, per il CAD. Lo STEP completo con i componenti (`policlock-main.step`) usa i modelli 3D EasyEDA e resta **solo locale** (ignorato da git): si rigenera con `esporta.py` dopo aver scaricato i modelli (vedi sotto).
-- Generato da `scripts/genera_pcb_main.py` (Python di KiCad: `"C:/Program Files/KiCad/10.0/bin/python.exe"`), posizioni fisse in `scripts/posizioni_main.py`, dimensioni con la variabile `PCB_WH` (default `35,26`). Dopo la prima modifica manuale il `.kicad_pcb` diventa la fonte.
+- Generato da `scripts/genera_pcb_main.py` (Python di KiCad: `"C:/Program Files/KiCad/10.0/bin/python.exe"`), posizioni fisse in `scripts/posizioni_main.py`, dimensioni con la variabile `PCB_WH` (default `40,30`) e spaziatura extra con `PCB_GAP` (default `0.6`). Sbroglio con `scripts/sbroglia_main.py` (Freerouting 2.5.0 jar + Java 25 portatile in `%LOCALAPPDATA%\Programs\freerouting-2.5.0`, non nel repository). Dopo la prima modifica manuale il `.kicad_pcb` diventa la fonte: non rieseguire gli script.
 
 ## Rigenerare / verificare
 
