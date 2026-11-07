@@ -39,7 +39,7 @@
 
 ### VT-PWR-003 — Autonomia batteria
 
-**Precondizioni:** batteria identificata e caricata secondo procedura del produttore, firmware release con medesima configurazione del regalo, scocca rappresentativa, profilo d'uso `CAND-010` confermato. **Procedura:** avviare a ora nota, USB scollegata; applicare il profilo (16 h `DIM`, 8 h `NIGHT`, 30 attivazioni `BRIGHT`/giorno da 20 s, SHT40 ogni 60 s, radio spenta), registrando gli eventi effettivi; registrare corrente e tensione batteria. **Accettazione:** autonomia reale riportata in ore, confronto esplicito con target **48 h**. Nessun `PASS` senza misura fino al cutoff definito e verifica di sicurezza.
+**Precondizioni:** batteria identificata e caricata secondo procedura del produttore, firmware release con medesima configurazione del regalo, scocca rappresentativa, profilo d'uso `DEC-014`. **Procedura:** avviare a ora nota, USB scollegata; applicare il profilo (16 h `DIM`, 8 h `NIGHT`, 30 attivazioni `BRIGHT`/giorno da 20 s, SHT40 ogni 60 s, radio spenta), registrando gli eventi effettivi; registrare corrente e tensione batteria. **Accettazione:** autonomia reale riportata in ore, confronto esplicito con target **48 h**. Nessun `PASS` senza misura fino al cutoff definito e verifica di sicurezza.
 
 ### VT-PWR-002 — Ricarica durante funzionamento
 

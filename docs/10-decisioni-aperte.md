@@ -14,10 +14,12 @@
 | `DEC-006` | 2026-11-07 | Porta ricarica **USB sul retro**, formato **USB-C** (confermato in `DEC-011`) | Connettore nascosto/fruibile; necessaria staffa meccanica |
 | `DEC-007` | 2026-11-07 | Modalità ibrida: **display attenuato**, luminosità aumentata dopo interazione | Requisito guida firmware/energia/UI |
 | `DEC-008` | 2026-11-07 | Ricarica circa **ogni 2 giorni** accettabile; accettabile anche l'uso frequente con USB collegata sulla scrivania | Conferma il target 48 h come soglia d'uso; rende obbligatoria la verifica di funzionamento durante ricarica (`VT-PWR-002`) |
-| `DEC-009` | 2026-11-07 | **Di notte il display può essere spento** (modalità notte) | Funzione aggiunta su richiesta del proprietario: riduce consumi e burn-in. Orari e comportamento al tocco sono `CAND-009` |
+| `DEC-009` | 2026-11-07 | **Di notte il display può essere spento** (modalità notte) | Funzione aggiunta su richiesta del proprietario: riduce consumi e burn-in. Orari in `DEC-013`; comportamento al tocco in `CAND-009` |
 | `DEC-010` | 2026-11-07 | Aspetto: **uniforme blu e cappello** | Vincolo estetico CAD/colori (`PR-UI-002`) |
 | `DEC-011` | 2026-11-07 | Connettore di ricarica posteriore **USB-C** (non solo preferito) | Vincola `BOM-004` e staffa posteriore |
 | `DEC-012` | 2026-11-07 | **Wi-Fi e sincronizzazione NTP esclusi dalla V1** | Ora impostata offline (touch o USB); meno consumi, configurazione e superficie d'errore. Rivalutabile in V2 |
+| `DEC-013` | 2026-11-07 | Fascia notte di default **23:00–07:00**, configurabile | Chiude la parte orari di `CAND-009`; base di `VT-UI-003` |
+| `DEC-014` | 2026-11-07 | Profilo d'uso di riferimento per l'autonomia: 16 h giorno in DIM + 8 h notte spento, **30 attivazioni BRIGHT/giorno** da 20 s, SHT40 ogni 60 s, radio spenta | Rende verificabile il target 48 h (`VT-PWR-003`) |
 
 Le date sopra sono la data della formalizzazione nel documento delle scelte emerse nella conversazione, non un registro notarile degli eventi.
 
@@ -33,8 +35,8 @@ Le date sopra sono la data della formalizzazione nel documento delle scelte emer
 | `CAND-006` | 20 s di luminosità BRIGHT dopo touch | Proposto | Test usabilità/consumi |
 | `CAND-007` | Target 48 h autonomia | Obiettivo, NON prestazione | Misure complete su batteria reale |
 | `CAND-008` | Altezza 130–160 mm | Indicativo | CAD basato su dimensioni reali |
-| `CAND-009` | Modalità notte: fascia oraria configurabile, default proposto **23:00–07:00**; display spento; un tocco mostra il quadrante attenuato per un timeout breve (proposto 10 s), poi torna spento | Proposto | Test usabilità, consumo e `VT-UI-003` |
-| `CAND-010` | Profilo d'uso di riferimento per autonomia: 16 h giorno in DIM + 8 h notte spento, **30 attivazioni BRIGHT/giorno** da 20 s, SHT40 ogni 60 s, radio spenta | Proposto | Da confermare prima di `VT-PWR-003` |
+| `CAND-009` | Modalità notte: un tocco mostra il quadrante attenuato per un timeout breve (proposto 10 s), poi torna spento (orari confermati in `DEC-013`) | Proposto | Test usabilità, consumo e `VT-UI-003` |
+| `CAND-010` | Profilo d'uso di riferimento per autonomia | Confermato → `DEC-014` | — |
 | `CAND-011` | SHT40 sul bus I²C principale (GPIO14/15, pad riservati) oppure su secondo bus via header H2 (GPIO17/18) | Proposto | Schematico verificato; da confermare su scheda reale |
 
 ## 3. Questioni aperte con priorità

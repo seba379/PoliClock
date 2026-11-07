@@ -40,7 +40,7 @@ I primi quattro sono **modi di luminosità** (`display_mode` nel [firmware](04-s
 |---|---|---|
 | `DIM` | Fondo nero, testo ridotto di luminanza, ora ben leggibile | Default di giorno quando non si interagisce |
 | `BRIGHT` | Stessi dati, luminosità aumentata e accenti più evidenti | Tocco; ritorno a DIM dopo timeout, es. 20 s proposti |
-| `NIGHT` | Display spento | Fascia notte, default proposto 23:00–07:00 (`CAND-009`) |
+| `NIGHT` | Display spento | Fascia notte, default 23:00–07:00 (`DEC-013`) |
 | `NIGHT_PEEK` | Quadrante attenuato, nessun accento luminoso | Tocco di notte; ritorno a NIGHT dopo il timeout |
 | `CHARGING` | Icona batteria/fulmine discreta | USB presente e ricarica confermata |
 | `LOW_BATT` | Icona con evidenza adeguata; niente animazioni energivore | Soglia da validare con PMU |
@@ -63,7 +63,7 @@ Se il touch non può risvegliare in modo affidabile un assetto a basso consumo, 
 | Luminosità DIM | 10–15% del comando software disponibile | Percentuale *non* equivale a cd/m² o potenza |
 | Luminosità BRIGHT | 60–70% del comando software disponibile | Calibrare in ambiente reale |
 | Timeout BRIGHT | 20 s | Ritriggerabile da touch |
-| Fascia notte | 23:00–07:00 | Display spento; configurabile (`CAND-009`) |
+| Fascia notte | 23:00–07:00 | Display spento; configurabile (`DEC-013`) |
 | Timeout NIGHT_PEEK | 10 s | Quadrante attenuato dopo tocco notturno |
 | Aggiornamento ora | Al cambio minuto | Non eseguire full redraw continuo |
 | Aggiornamento clima | 60 s | Da accordare a energia/reattività |

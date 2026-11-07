@@ -9,7 +9,7 @@
 - **CONF:** interfaccia sempre visibile in modalità **attenuata**, con breve incremento della luminosità dopo un'interazione.
 - **CONF:** di notte il display può essere spento (`DEC-009`).
 - **CONF:** ricarica circa ogni 2 giorni accettabile; uso frequente con USB collegata accettabile (`DEC-008`).
-- **TGT:** valutare un'autonomia di **almeno 48 ore** al profilo `CAND-010`; non confermata finché non viene misurata sul dispositivo completo.
+- **TGT:** valutare un'autonomia di **almeno 48 ore** al profilo `DEC-014`; non confermata finché non viene misurata sul dispositivo completo.
 
 ## 2. Architettura candidata
 
@@ -71,7 +71,7 @@ Per definire un ordine di grandezza, con capacità nominale **3.000 mAh** e una 
 
 **Nessuno di questi valori è una misura del dispositivo.** Per arrivare a 48 h nell'ipotesi sopra, la corrente media **deve essere ≤ 50 mA**. Non si può usare il solo consumo in deep-sleep dell'ESP32: in modalità normale il display rimane acceso, con contribuzione dell'AMOLED, del PMU e dell'elettronica della scheda.
 
-La modalità notte (`DEC-009`) aiuta: con il profilo `CAND-010` la media è circa `(16 × I_giorno + 8 × I_notte) / 24`. Esempio **illustrativo**: se `I_notte` fosse ≤ 10 mA, `I_giorno` potrebbe arrivare a circa 70 mA restando entro 50 mA medi. Il driver CO5300 mantiene l'immagine nella propria memoria, quindi tra un aggiornamento e l'altro l'ESP32 può in linea di principio sospendersi (light-sleep): è l'ipotesi principale da verificare per il target.
+La modalità notte (`DEC-009`) aiuta: con il profilo `DEC-014` la media è circa `(16 × I_giorno + 8 × I_notte) / 24`. Esempio **illustrativo**: se `I_notte` fosse ≤ 10 mA, `I_giorno` potrebbe arrivare a circa 70 mA restando entro 50 mA medi. Il driver CO5300 mantiene l'immagine nella propria memoria, quindi tra un aggiornamento e l'altro l'ESP32 può in linea di principio sospendersi (light-sleep): è l'ipotesi principale da verificare per il target.
 
 ### Profili di misura richiesti
 

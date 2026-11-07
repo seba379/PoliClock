@@ -69,7 +69,7 @@ stateDiagram-v2
 
 - `DIM`: pagina principale in nero/blu scuro, luminosità bassa; **display acceso**.
 - `BRIGHT`: stessa pagina con maggior luminosità per tempo configurabile (default sperimentale circa 20 s).
-- `NIGHT`: display spento nella fascia notte (`PR-FUN-013`, default proposto 23:00–07:00); ESP32 sospeso con risveglio da timer/RTC e touch.
+- `NIGHT`: display spento nella fascia notte (`PR-FUN-013`, default 23:00–07:00, `DEC-013`); ESP32 sospeso con risveglio da timer/RTC e touch.
 - `NIGHT_PEEK`: quadrante attenuato mostrato dopo un tocco notturno per il timeout, poi ritorno a `NIGHT` (`CAND-009`).
 - `SHUTDOWN`: avviso breve e spegnimento controllato per batteria critica o comando power, lasciando alimentato l'RTC se l'hardware lo consente.
 

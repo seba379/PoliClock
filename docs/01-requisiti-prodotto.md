@@ -25,7 +25,7 @@
 | `PR-FUN-010` | — | ESCLUSO | ~~Sincronizzazione NTP via Wi-Fi~~: esclusa dalla V1 (`DEC-012`). ID mantenuto per tracciabilità. |
 | `PR-FUN-011` | MUST | CAND | Esporre uno stato chiaro di batteria bassa e avvertire prima dello spegnimento. |
 | `PR-FUN-012` | MUST | CAND | In caso di errore sensore, indicare dato non disponibile senza mostrare valori vecchi come attuali. |
-| `PR-FUN-013` | MUST | CONF | Modalità notte: in una fascia oraria configurabile il display è spento. Default e comportamento al tocco in `CAND-009`. |
+| `PR-FUN-013` | MUST | CONF | Modalità notte: in una fascia oraria configurabile il display è spento. Default 23:00–07:00 (`DEC-013`); comportamento al tocco in `CAND-009`. |
 
 ## 3. Interfaccia e presentazione
 
@@ -48,7 +48,7 @@
 | `PR-PWR-003` | MUST | CAND | Ricarica gestita da circuito idoneo alla chimica/cella selezionata, con limiti di corrente, tensione e temperatura verificati. |
 | `PR-PWR-004` | MUST | CAND | Batteria con adeguata protezione e polarità verificata; cablaggi isolati e protetti da schiacciamento/strappo. |
 | `PR-PWR-005` | MUST | CAND | Funzionamento prolungato con USB collegata (uso previsto, `DEC-008`) consentito solo dopo verifica del circuito reale e test termici. |
-| `PR-PWR-006` | TGT | CAND | Obiettivo autonomia: **≥48 ore** (ricarica ogni 2 giorni accettata, `DEC-008`) al profilo d'uso `CAND-010`; non ancora dimostrato. |
+| `PR-PWR-006` | TGT | CAND | Obiettivo autonomia: **≥48 ore** (ricarica ogni 2 giorni accettata, `DEC-008`) al profilo d'uso `DEC-014`; non ancora dimostrato. |
 | `PR-PWR-007` | SHOULD | CAND | Misura/rappresentazione dello stato batteria evitando di inventare percentuali da tensione grezza non calibrata. |
 | `PR-PWR-008` | MUST | CAND | Condizione di scarica critica gestita in modo da evitare ripetuti cicli di riavvio e danni alla cella. |
 
