@@ -4,21 +4,22 @@ Queste istruzioni valgono per l'intero repository. Leggere `README.md` e i docum
 
 ## Prodotto e perimetro
 
-PoliClock V1 e' un orologio da scrivania a batteria, in una statuetta 3D di una poliziotta chibi. Il display rotondo coincide con il volto. Requisiti confermati: ora, data, temperatura, umidita', quadrante normalmente attenuato con luminosita' temporaneamente aumentata dopo interazione, display spento di notte, ricarica USB-C sulla parte posteriore bassa con prolunga, uniforme blu e cappello, PCB custom (KiCad + JLCPCB) con scheda principale separata dal display e collegata via cavo, display IPS rotondo 1,28" e un pulsante. La V1 e' interamente offline: niente Wi-Fi/NTP. Non aggiungere domotica, CO2, meteo da Internet, audio o altre funzionalita' non richieste.
+PoliClock V1 e' un orologio da scrivania alimentato in continuo da USB (nessuna batteria), in una statuetta 3D di una poliziotta chibi. Il display rotondo coincide con il volto. Requisiti confermati: ora, data, temperatura, umidita', quadrante normalmente attenuato con luminosita' temporaneamente aumentata dopo interazione, display spento di notte, cavo USB-C sempre collegato sulla parte posteriore bassa, uniforme blu e cappello, PCB custom (KiCad + JLCPCB) con scheda principale separata dal display e collegata via cavo, display IPS rotondo 1,28" e un pulsante. La V1 e' interamente offline: niente Wi-Fi/NTP. Non aggiungere domotica, CO2, meteo da Internet, audio o altre funzionalita' non richieste.
 
 ## Autorita' delle specifiche
 
 - `CONF`: decisione del proprietario, da preservare.
 - `CAND`: componente/proposta da verificare, NON scelta vincolante.
-- `TGT`: obiettivo progettuale non ancora misurato (in particolare 48 ore di autonomia).
+- `TGT`: obiettivo progettuale non ancora misurato.
 - `TBD`: informazione mancante, da verificare e documentare.
 - La grafica in `assets/concept/` e' illustrativa: non e' una fonte per cablaggi, pinout, BOM, quote o funzionalita'.
 - Registrare nuove decisioni in `docs/10-decisioni-aperte.md` e mantenere coerenti requisiti, verifiche, BOM e roadmap.
 
 ## Qualita' e sicurezza
 
-- Preferire documentazione ufficiale del produttore, datasheet corretti per SKU/revisione e misure di banco; non inventare pinout, autonomia, soglie PMU o dimensioni.
-- Batteria LiPo: non dare per scontata la compatibilita' con caricatore, connettore, polarita' e protezioni. Le verifiche di sicurezza precedono l'assemblaggio definitivo.
+- Preferire documentazione ufficiale del produttore, datasheet corretti per SKU/revisione e misure di banco; non inventare pinout, consumi o dimensioni.
+- La V1 non ha batteria (`DEC-023`): non reintrodurla senza una nuova decisione del proprietario. Se in futuro verra' aggiunta, non dare per scontata la compatibilita' con caricatore, connettore, polarita' e protezioni.
+- Alimentazione USB: protezione dell'ingresso e verifiche termiche in funzionamento continuo precedono l'assemblaggio definitivo.
 - Strumenti: KiCad 10 (`kicad-cli` per ERC/DRC ed esportazioni), ESP-IDF con VS Code, Blender per la chibi, build123d per le parti tecniche.
 - Firmware futuro in ESP-IDF, architettura modulare, codice testabile, nessuna modifica al firmware senza richiesta esplicita.
 - Schema e PCB possono essere preparati dall'agente, ma l'ordine a JLC richiede ERC/DRC puliti e la revisione visiva del proprietario in KiCad.

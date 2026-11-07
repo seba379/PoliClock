@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="540" viewBox="0 0 680 540" role="img">
+<title>Concept di PoliClock finito (v0.5)</title>
+<desc>Statuetta chibi di poliziotta con uniforme blu e cappello: il volto e' un display rotondo IPS che mostra ora, data, temperatura e umidita'. A destra la vista posteriore con il cavo USB-C sempre collegato sul sedere e lo sportello di servizio. Nessuna batteria nella V1. Illustrazione indicativa, non disegno tecnico.</desc>
+<style>
+text { font-family: "Segoe UI", Helvetica, Arial, sans-serif; }
+.lbl { font-size: 12px; fill: #5F5E5A; }
+.head { font-size: 14px; font-weight: 500; fill: #2C2C2A; }
+.lead { stroke: #888780; stroke-width: 0.8; stroke-dasharray: 3 3; fill: none; }
+</style>
+<rect width="680" height="540" fill="#FFFFFF"/>
+<ellipse cx="220" cy="470" rx="112" ry="18" fill="#2E3440"/>
+<rect x="180" y="428" width="36" height="40" rx="9" fill="#1B1B1F"/>
+<rect x="224" y="428" width="36" height="40" rx="9" fill="#1B1B1F"/>
+<rect x="187" y="392" width="24" height="42" fill="#152A50"/>
+<rect x="229" y="392" width="24" height="42" fill="#152A50"/>
+<rect x="140" y="322" width="26" height="64" rx="13" fill="#1F3A6B"/>
+<rect x="274" y="322" width="26" height="64" rx="13" fill="#1F3A6B"/>
+<circle cx="153" cy="390" r="11" fill="#F3CDB0"/>
+<circle cx="287" cy="390" r="11" fill="#F3CDB0"/>
+<rect x="208" y="296" width="24" height="24" fill="#F3CDB0"/>
+<rect x="164" y="314" width="112" height="92" rx="22" fill="#1F3A6B"/>
+<polygon points="203,314 237,314 220,342" fill="#9CC4E8"/>
+<polygon points="216,322 224,322 222,354 218,354" fill="#0F1E3A"/>
+<rect x="164" y="374" width="112" height="10" fill="#111318"/>
+<rect x="213" y="373" width="14" height="12" rx="2" fill="#D4A72C"/>
+<polygon points="252,334 255,341 262,341 256,345 258,352 252,348 246,352 248,345 242,341 249,341" fill="#D4A72C"/>
+<ellipse cx="112" cy="250" rx="26" ry="52" fill="#5A3A28"/>
+<ellipse cx="328" cy="250" rx="26" ry="52" fill="#5A3A28"/>
+<ellipse cx="220" cy="205" rx="110" ry="105" fill="#F3CDB0"/>
+<path d="M112 190 Q128 112 220 106 Q312 112 328 190 Q300 150 220 148 Q140 150 112 190 Z" fill="#5A3A28"/>
+<path d="M118 108 Q128 28 220 26 Q312 28 322 108 Z" fill="#1A2F57"/>
+<rect x="112" y="98" width="216" height="22" rx="8" fill="#0F1E3A"/>
+<path d="M118 118 Q220 144 322 118 L328 126 Q220 160 112 126 Z" fill="#111827"/>
+<polygon points="220,52 225,63 237,63 228,70 231,82 220,75 209,82 212,70 203,63 215,63" fill="#D4A72C"/>
+<circle cx="220" cy="226" r="74" fill="#2A2F3A"/>
+<circle cx="220" cy="226" r="66" fill="#0A1024"/>
+<text x="220" y="222" text-anchor="middle" style="font-size:30px;font-weight:500;fill:#FFFFFF">17:42</text>
+<text x="220" y="246" text-anchor="middle" style="font-size:12px;fill:#9FB7D9">Sab 7 nov</text>
+<text x="220" y="268" text-anchor="middle" style="font-size:12px;fill:#7FD1FF">22,4°C · 48%</text>
+<g transform="translate(383.6 120) scale(0.62)">
+<ellipse cx="220" cy="470" rx="112" ry="18" fill="#2E3440"/>
+<rect x="180" y="428" width="36" height="40" rx="9" fill="#1B1B1F"/>
+<rect x="224" y="428" width="36" height="40" rx="9" fill="#1B1B1F"/>
+<rect x="187" y="392" width="24" height="42" fill="#152A50"/>
+<rect x="229" y="392" width="24" height="42" fill="#152A50"/>
+<rect x="140" y="322" width="26" height="64" rx="13" fill="#1F3A6B"/>
+<rect x="274" y="322" width="26" height="64" rx="13" fill="#1F3A6B"/>
+<circle cx="153" cy="390" r="11" fill="#F3CDB0"/>
+<circle cx="287" cy="390" r="11" fill="#F3CDB0"/>
+<rect x="164" y="314" width="112" height="92" rx="22" fill="#1F3A6B"/>
+<rect x="190" y="326" width="60" height="40" rx="6" fill="none" stroke="#6E8CC4" stroke-width="2" stroke-dasharray="5 4"/>
+<rect x="164" y="374" width="112" height="10" fill="#111318"/>
+<ellipse cx="200" cy="398" rx="22" ry="12" fill="#1A3360"/>
+<ellipse cx="240" cy="398" rx="22" ry="12" fill="#1A3360"/>
+<path d="M220 404 C222 440 250 470 330 486 L420 492" fill="none" stroke="#3A3A40" stroke-width="7" stroke-linecap="round"/>
+<rect x="208" y="390" width="24" height="16" rx="5" fill="#4A4A52"/>
+<ellipse cx="220" cy="205" rx="110" ry="105" fill="#5A3A28"/>
+<ellipse cx="220" cy="290" rx="44" ry="26" fill="#5A3A28"/>
+<path d="M118 108 Q128 28 220 26 Q312 28 322 108 Z" fill="#1A2F57"/>
+<rect x="112" y="98" width="216" height="22" rx="8" fill="#0F1E3A"/>
+</g>
+<line class="lead" x1="520" y1="367" x2="590" y2="360"/>
+<circle cx="520" cy="367" r="2" fill="#888780"/>
+<text class="lbl" x="596" y="352">Cavo USB-C</text>
+<text class="lbl" x="596" y="366">sempre</text>
+<text class="lbl" x="596" y="380">collegato</text>
+<line class="lead" x1="520" y1="345" x2="590" y2="320"/>
+<circle cx="520" cy="345" r="2" fill="#888780"/>
+<text class="lbl" x="596" y="324">Sportello</text>
+<text class="head" x="220" y="514" text-anchor="middle">Fronte</text>
+<text class="head" x="520" y="450" text-anchor="middle">Retro</text>
+<text class="lbl" x="340" y="534" text-anchor="middle">Concept illustrativo v0.5 · nessuna batteria, alimentazione USB continua</text>
+</svg>

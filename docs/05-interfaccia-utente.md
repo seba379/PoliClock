@@ -1,6 +1,6 @@
 # 05 — Specifiche interfaccia utente (UI/UX)
 
-**Versione:** 0.4 · **Stato:** wireframe testuale, non design grafico finale · **Data:** 2026-11-07
+**Versione:** 0.5 · **Stato:** wireframe testuale, non design grafico finale · **Data:** 2026-11-07
 
 ## 1. Obiettivo
 
@@ -11,7 +11,7 @@ L'interfaccia occupa il **volto circolare** della poliziotta: display IPS rotond
 1. **Ora** (`HH:MM`) è il contenuto prioritario, il più grande.
 2. **Data** in italiano sotto l'ora (`Sab 7 nov` o `Sabato 7 novembre` secondo spazio).
 3. **Temperatura** (`22,4 °C`) e **umidità** (`48 %`) su riga secondaria con icone.
-4. Piccoli indicatori opzionali **batteria/ricarica** e **segnalazioni** in area marginale.
+4. Piccoli indicatori di **segnalazione** (ora da impostare, sensore) in area marginale. Nessun indicatore di batteria: la V1 è alimentata da USB (`DEC-023`).
 
 Non mostrare meteo Internet: temperatura e umidità sono **misure ambientali locali**. Evitare di usare icone sole/pioggia che possano far intendere previsioni non presenti.
 
@@ -19,7 +19,7 @@ Non mostrare meteo Internet: temperatura e umidità sono **misure ambientali loc
 
 ```text
           .----------------------.
-       .-'    [batteria]           '-.
+       .-'                         '-.
       /                                \
      |            17:42               |
      |        Sabato 7 novembre        |
@@ -42,8 +42,6 @@ I primi quattro sono **modi di luminosità** (`display_mode` nel [firmware](04-s
 | `BRIGHT` | Stessi dati, luminosità aumentata e accenti più evidenti | Pressione breve del pulsante; ritorno a DIM dopo timeout, es. 20 s proposti |
 | `NIGHT` | Display e retroilluminazione spenti | Fascia notte, default 23:00–07:00 (`DEC-013`) |
 | `NIGHT_PEEK` | Quadrante attenuato, nessun accento luminoso | Pressione breve di notte; ritorno a NIGHT dopo il timeout |
-| `CHARGING` | Icona batteria/fulmine discreta | USB presente e ricarica confermata |
-| `LOW_BATT` | Icona con evidenza adeguata; niente animazioni energivore | Soglia da validare sulla misura batteria scelta |
 | `TIME_NOT_SET` | Messaggio chiaro e accesso a impostazione | RTC invalido/mai impostato |
 | `SENSOR_ERROR` | `--` per T/RH e simbolo sensore | Timeout o misura non valida |
 
@@ -58,7 +56,7 @@ Un solo **pulsante** fisico (`DEC-017`), posizione nella statuetta da definire (
 - **Touch (predisposto, `DEC-019`)**: se montato, il tocco sul display equivale alla pressione breve; il pulsante resta comunque attivo.
 - Nessun menu richiesto per visualizzare i quattro dati quotidiani.
 
-Il risveglio dal light-sleep tramite pulsante va provato sul prototipo M1 prima di fissare il PCB.
+Antirimbalzo e riconoscimento di pressione breve/lunga vanno provati sul prototipo M1.
 
 ## 6. Parametri iniziali di prototipo (TBD)
 
@@ -84,7 +82,6 @@ Il risveglio dal light-sleep tramite pulsante va provato sul prototipo M1 prima 
 ## 8. Indicatori d'errore e significato
 
 - `-- °C` / `-- %`: dato ambientale momentaneamente non valido.
-- Batteria bassa: icona leggibile, senza percentuale fittizia; allerta prima del cutoff.
 - Ora da impostare: evidenziare chiaramente che il valore non è affidabile.
 - Nessun indicatore di rete: la V1 è interamente offline (`DEC-012`).
 
@@ -92,5 +89,5 @@ Il risveglio dal light-sleep tramite pulsante va provato sul prototipo M1 prima 
 
 - UI screen mockup **240×240 px** coerente con il display selezionato, con area sicura circolare.
 - Palette e font con licenze documentate; asset originali.
-- Schermate DIM/BRIGHT/NIGHT_PEEK/CHARGING/LOW_BATT/TIME_NOT_SET/SENSOR_ERROR e flusso di impostazione ora/fascia notte.
+- Schermate DIM/BRIGHT/NIGHT_PEEK/TIME_NOT_SET/SENSOR_ERROR e flusso di impostazione ora/fascia notte.
 - Screenshot dal display fisico verificati, non soltanto render di marketing.

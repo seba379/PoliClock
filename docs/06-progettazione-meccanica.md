@@ -1,6 +1,6 @@
 # 06 — Specifiche meccaniche e stampa 3D
 
-**Versione:** 0.4 · **Stato:** geometria concettuale, CAD non ancora disponibile · **Data:** 2026-11-07
+**Versione:** 0.5 · **Stato:** geometria concettuale, CAD non ancora disponibile · **Data:** 2026-11-07
 
 ## 1. Intento estetico (CONF)
 
@@ -32,28 +32,27 @@ I render del concept sono **riferimenti estetici**, non modelli 3D quotati, né 
                         |
                   BASE / GAMBE
               +-------------------+
-              | batteria LiPo 1S  | <-- sede isolata, baricentro basso
-              | presa USB-C       | <-- sul sedere, staffa avvitata
+              | zavorra           | <-- baricentro basso, stabilità col cavo
+              | presa USB-C       | <-- sul sedere, cavo sempre collegato
               +-------------------+
 
    SHT40: piccolo vano ventilato verso aria ambiente, lontano da display,
-   PCB e dal punto in cui si concentra il calore della ricarica.
+   regolatore e retroilluminazione.
 ```
 
 Nella testa c'è solo il display sulla schedina portadisplay. La scheda principale è separata (`DEC-021`) e la sua posizione si decide con la bozza Blender (`OPEN-020`):
 
-- **Opzione A (preferita)**: scheda nel busto/base, vicino alla batteria, con la USB-C saldata sul bordo e affacciata al foro sul sedere; dalla testa scende solo il cavo display.
-- **Opzione B**: scheda nella testa dietro il portadisplay; scendono prolunga USB-C, cavo batteria e cavo SHT40.
+- **Opzione A (preferita)**: scheda nel busto/base con la USB-C saldata sul bordo e affacciata al foro sul sedere; dalla testa scende solo il cavo display.
+- **Opzione B**: scheda nella testa dietro il portadisplay; scendono prolunga USB-C e cavo SHT40.
 
-In una chibi la cavità più grande è la testa, mentre il busto è stretto: la bozza deve verificare che scheda principale e cella entrino nel busto/base. Il collo deve lasciare passare il cavo display con i connettori e un raggio di curvatura adeguato.
+In una chibi la cavità più grande è la testa, mentre il busto è stretto: la bozza deve verificare che la scheda principale entri nel busto/base. Senza batteria (`DEC-023`) la base è libera: serve una **zavorra** (es. pesi metallici o pallini in un vano chiuso) per tenere la statuetta stabile con il cavo sempre collegato. Il collo deve lasciare passare il cavo display con i connettori e un raggio di curvatura adeguato.
 
 ## 3. Dimensionamento e congelamento quote
 
 - **Altezza statuetta indicativa**: 130–160 mm (CAND, non misura definitiva).
 - Display: IPS rotondo **1,28"** (`DEC-016`), area attiva circa 32 mm di diametro (da verificare sul datasheet del pannello); vetro, cornice, FPC e PCB dietro sono più grandi.
 - Schedina portadisplay e scheda principale si disegnano in KiCad **insieme** al CAD: sagome, fori di fissaggio, posizione di USB-C e connettori sono quote condivise (STEP esportato da KiCad).
-- Determinare ingombro reale di: pannello con FPC, portadisplay, scheda principale con componenti, cavo display e connettori, eventuale prolunga USB-C e staffa, viti, batteria con connettore, mini-PCB SHT40, pulsante.
-- Quote della batteria soltanto dopo selezione di una **specifica cella acquistabile**; evitare generici volumi '3000 mAh' privi di geometria.
+- Determinare ingombro reale di: pannello con FPC, portadisplay, scheda principale con componenti, cavo display e connettori, eventuale prolunga USB-C e staffa, viti, zavorra, mini-PCB SHT40, pulsante, spina del cavo USB-C.
 - Definire tolleranze fit e gioco dei cablaggi su stampa test, non da aspettative teoriche della stampante.
 
 Fonti quote: datasheet meccanico del pannello acquistato, file KiCad del PCB (esportazione STEP) e misure con calibro.
@@ -63,7 +62,7 @@ Fonti quote: datasheet meccanico del pannello acquistato, file KiCad del PCB (es
 1. `head_front`: frontale/testa con anello display e cappello, eventuale volume capelli.
 2. `head_rear`: guscio posteriore testa con supporto del portadisplay, passaggio cavo, accesso viti.
 3. `body_shell`: busto cavo, braccia/gambe e passaggi cablaggio.
-4. `base_insert`: vano batteria isolato, ferma-cavo e appoggio antiscivolo.
+4. `base_insert`: vano zavorra, guida di uscita del cavo USB, appoggio antiscivolo.
 5. `usb_bracket` / `main_board_mount`: supporto avvitato della scheda principale con la USB-C allineata al foro sul sedere (opzione A) o staffa della prolunga (opzione B).
 6. `button_mount`: sede del pulsante, posizione da definire.
 7. `sensor_carrier`: supporto SHT40 con finestre di aerazione, lontano da sorgenti calde.
@@ -76,7 +75,7 @@ La scomposizione è una proposta; può cambiare a seconda di vincoli di stampa, 
 - Appoggio rigido e ripetibile per il PCB, senza carichi sulla parte attiva del display.
 - Cornice che **non** copra le cifre: verificare l'area visibile sul pannello reale.
 - Niente colla permanente sul display/PCB che impedisca la manutenzione.
-- Nessuna vite a contatto con il vetro; se si usano inserti filettati termici, montarli prima di introdurre elettronica e cella.
+- Nessuna vite a contatto con il vetro; se si usano inserti filettati termici, montarli prima di introdurre l'elettronica.
 - Punti di test e pad BOOT/RESET del PCB accessibili con sportellino aperto; il flashing normale avviene dalla USB-C posteriore.
 - Definire protezione dei flessibili e del bordo del display da sfregamento con la stampa.
 
@@ -91,9 +90,9 @@ La scomposizione è una proposta; può cambiare a seconda di vincoli di stampa, 
 ## 7. Gestione termica e aerazione sensore
 
 - Sensore ambiente in sede raggiunta da ricambio d'aria, senza soffiare aria calda dal circuito principale.
-- Non alloggiare SHT40 immediatamente dietro il display o contro PCB/batteria.
+- Non alloggiare SHT40 immediatamente dietro il display o contro la scheda principale.
 - Introdurre piccoli fori o feritoie discreti; evitare cavità totalmente chiusa se si richiede una misura rappresentativa della stanza.
-- Valutare materiale della scocca e temperatura durante ricarica; **non** mettere una LiPo vicina a inserti filettati installati a caldo o superfici che la comprimano.
+- Valutare materiale della scocca e temperatura interna in funzionamento continuo (alimentazione 24/7).
 - Validare l'errore dovuto ad autosurriscaldamento con confronto su banco, prima e dopo chiusura scocca.
 
 ## 8. Stampa e finitura (proposta)
@@ -103,7 +102,7 @@ La scomposizione è una proposta; può cambiare a seconda di vincoli di stampa, 
 | Materiale | PLA per primi mockup dimensionali; PETG da valutare dopo le prove termiche |
 | Colori | Blu scuro corpo/cappello, nero stivali, capelli a scelta, dettagli dorati/azzurri |
 | Metodo | Parti separate per favorire finitura e montaggio |
-| Fissaggi | Viti e sedi filettate/inserti compatibili, mai direttamente sulla batteria |
+| Fissaggi | Viti e sedi filettate/inserti compatibili |
 | Base | Fondo più pesante/stabile, feltrini o gommini antiscivolo |
 | Display | Lasciare libera l'area attiva; eventuale vetrino/protezione da validare |
 | Pulsante | Corsa e sensazione provate su stampa test |
@@ -114,10 +113,10 @@ L'adozione di PETG o PLA non elimina la necessità di un test termico: le temper
 
 - Assemblaggio e disassemblaggio ripetuti senza deformazione o danno ai cavi.
 - Nessuna pressione del frontale sul vetro o sul flessibile del display.
-- Accesso a USB, BOOT/RESET e batteria secondo la strategia di service.
+- Accesso a USB e BOOT/RESET secondo la strategia di service.
 - Stabilità su piano, senza cavo e con cavo, anche premendo il pulsante.
 - SHT40 esterno rileva condizioni della stanza con errore aggiuntivo dovuto al case valutato e documentato.
-- Assenza di surriscaldamenti/contatti pericolosi nel vano batteria durante ricarica.
+- Assenza di surriscaldamenti nella scocca in funzionamento continuo.
 
 ## 10. Strumenti CAD (`DEC-022`)
 

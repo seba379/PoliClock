@@ -1,6 +1,6 @@
 # 11 — Fonti, datasheet e riferimenti
 
-**Versione:** 0.4 · **Aggiornato:** 2026-11-07
+**Versione:** 0.5 · **Aggiornato:** 2026-11-07
 
 ## Scheda Waveshare (scartata, `DEC-015`)
 
@@ -26,12 +26,12 @@ Fonti consultate durante la revisione v0.2, mantenute come riferimento storico e
 12. [Blender — manuale](https://docs.blender.org/manual/en/latest/) — scultura e modellazione della chibi.
 13. [build123d — documentazione](https://build123d.readthedocs.io/) — CAD parametrico in Python per le parti tecniche.
 
-Da aggiungere al momento della scelta: datasheet di caricatore, regolatore, RTC, misura batteria, pannello GC9A01 acquistato e cella LiPo.
+Da aggiungere al momento della scelta: datasheet di regolatore, RTC e tampone, modulo ESP32, pannello GC9A01 acquistato.
 
 ## Gerarchia delle evidenze
 
-1. **Scheda tecnica del lotto acquistato** / schematico board e datasheet batteria.
-2. **Misure strumentali del nostro prototipo** (corrente, autonomia, temperatura, dimensioni).
+1. **Scheda tecnica del lotto acquistato** / datasheet dei componenti scelti.
+2. **Misure strumentali del nostro prototipo** (corrente, temperatura, dimensioni).
 3. Documentazione ufficiale del produttore.
 4. Codice demo ed esempi terzi (utili per il bring-up, **non** equivalenti a validazione hardware o sicurezza).
 5. Render e immagini concettuali (ispirazione estetica, non specifiche dimensionali).

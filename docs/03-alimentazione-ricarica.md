@@ -1,127 +1,82 @@
-# 03 — Alimentazione, ricarica e budget energetico
+# 03 — Alimentazione
 
-**Versione:** 0.4 · **Stato:** progettazione preliminare PCB custom / safety gate aperto · **Data:** 2026-11-07
+**Versione:** 0.5 · **Stato:** progettazione preliminare PCB custom · **Data:** 2026-11-07
 
-## 1. Requisiti confermati e obiettivo
+> Il nome del file è rimasto `03-alimentazione-ricarica.md` per non rompere i collegamenti: dalla v0.5 la V1 **non ha batteria né ricarica** (`DEC-023`).
 
-- **CONF:** PoliClock opera senza cavo, alimentato da batteria ricaricabile interna.
+## 1. Requisiti confermati
+
+- **CONF:** alimentazione **continua da USB 5 V**, nessuna batteria nella V1 (`DEC-023`). Senza cavo l'orologio è spento.
 - **CONF:** presa **USB-C** nella **parte posteriore bassa** della statuetta (sul sedere) (`DEC-011`, `DEC-018`): connettore saldato sulla scheda principale se questa sta nel busto/base, prolunga se sta nella testa (`DEC-021`, `OPEN-020`).
-- **CONF:** interfaccia sempre visibile in modalità **attenuata**, con breve incremento della luminosità dopo la pressione del pulsante.
-- **CONF:** di notte il display è spento (`DEC-009`, `DEC-013`).
-- **CONF:** ricarica circa ogni 2 giorni accettabile; uso frequente con USB collegata accettabile (`DEC-008`).
-- **CONF:** elettronica su **PCB custom** (`DEC-015`): caricatore, regolatore e protezioni sono progettati da noi e vanno verificati con più cura.
-- **TGT:** autonomia di **almeno 48 ore** al profilo `DEC-014`; non confermata finché non viene misurata sul dispositivo completo.
+- **CONF:** schermo attenuato normalmente, luminoso dopo il pulsante, spento di notte (`DEC-007`, `DEC-009`).
+- **CONF:** l'ora resta salva a cavo scollegato grazie all'**RTC con tampone**.
 
-## 2. Architettura candidata
+Le decisioni sull'autonomia (`DEC-008`, `DEC-014`) e i requisiti di batteria sono superati per la V1; un'eventuale batteria verrà rivalutata in versioni successive.
+
+## 2. Architettura
 
 ```mermaid
 flowchart LR
-    USB["Foro USB-C sul sedere"] -->|"diretto (A) o prolunga (B)"| IN["USB-C sulla scheda principale"]
-    IN --> PROT["Fusibile/PTC + ESD"]
-    PROT --> CHG["Caricatore power-path + NTC"]
-    CELL["LiPo 1S protetta + NTC"] <-->|"carica / scarica"| CHG
-    NTC["NTC della cella"] --> CHG
-    CHG -->|"SYS"| REG["Regolatore 3,3 V"]
-    REG --> LOADS["MCU, display, RTC, SHT40"]
-    CELL --> MON["Misura batteria (ADC o fuel gauge)"]
+    USB["Presa USB-C sul sedere"] -->|"diretto (A) o prolunga (B)"| IN["USB-C sulla scheda principale"]
+    IN --> PROT["Fusibile/PTC + ESD + CC 5,1 kΩ"]
+    PROT -->|"5 V"| REG["Regolatore 3,3 V"]
+    PROT -->|"5 V (opzionale)"| BL["Retroilluminazione"]
+    REG --> LOADS["MCU, display, SHT40, touch"]
+    REG --> RTC["RTC"]
+    CAP["Tampone RTC<br/>supercondensatore o pila"] --> RTC
 ```
 
-- **Power-path obbligatorio**: con la USB collegata il sistema è alimentato dall'ingresso e la cella viene caricata in parallelo; senza USB il sistema passa alla cella senza interruzioni.
-- **Un solo caricatore**: niente moduli di carica aggiuntivi in parallelo.
-- La topologia esatta dipende dal caricatore scelto: definirla sul suo datasheet e verificarla su banco (M1) prima del layout.
+- **Regolatore 3,3 V** da 5 V: un LDO è sufficiente. Dissipazione indicativa: (5 − 3,3) V × corrente; con 100 mA circa 0,17 W, da verificare con le misure reali e la superficie di rame.
+- **Retroilluminazione** alimentata da 3,3 V o da 5 V secondo il datasheet del pannello.
+- **Tampone dell'RTC**: supercondensatore (ricaricato dal 3,3 V tramite resistenza/diodo o dal circuito interno dell'RTC, se previsto) o pila a bottone. Dimensionare per mantenere l'ora almeno per **alcuni giorni** a cavo scollegato (`OPEN-014`).
+- Nessun caricatore, nessuna misura batteria, nessun power-path.
 
-## 3. Batteria candidata
+## 3. USB-C
 
-- Cella singola **LiPo 1S**, tensione nominale tipica **3,7 V**, carica a 4,2 V.
-- Capacità iniziale: **2.500–3.000 mAh**, da rivedere dopo le misure di consumo. Con l'IPS spento di notte potrebbe bastare meno: decidere su dati.
-- **Protetta** (circuito di protezione integrato) e con **NTC** se disponibile, di provenienza verificabile, con datasheet e limiti di carica/scarica.
-- Connettore polarizzato scelto **insieme** al PCB: la polarità sul PCB va disegnata sulla polarità reale della cella acquistata, non su una convenzione presunta.
-- Collocata nella **base**: cavo verso la scheda principale corto se questa sta nel busto/base; fermacavi e protezione dallo sfregamento.
-- La cella non deve essere compressa da viti, supporti o superfici stampate; nessun spigolo vivo nella sua sede.
-
-Con il PCB custom la temperatura della cella è sorvegliata dal caricatore tramite l'NTC (`OPEN-013` risolvibile in progetto). Se la cella non ha NTC, prevedere un termistore fissato alla cella o una corrente di carica molto prudente, e documentare la scelta.
-
-## 4. USB-C e ricarica in uso
-
-- **Opzione A (preferita)**: scheda principale nel busto/base con il ricettacolo USB-C saldato sul bordo, affacciato al foro sul sedere. Nessuna prolunga; la scheda va fissata saldamente perché assorbe gli sforzi di inserimento.
-- **Opzione B**: scheda nella testa e **prolunga USB-C maschio→femmina da pannello** con linee dati USB 2.0 fino al sedere (indicativamente 15–25 cm).
+- **Opzione A (preferita)**: scheda principale nel busto/base con il ricettacolo USB-C saldato sul bordo, affacciato al foro sul sedere. La scheda va avvitata alla scocca perché assorbe gli sforzi di inserimento.
+- **Opzione B**: scheda nella testa e **prolunga USB-C** maschio→femmina da pannello con linee dati USB 2.0.
 
 Criteri di verifica:
 
-1. Inserimento/rimozione del cavo con lo sforzo scaricato sulla scocca (scheda avvitata o staffa della prolunga), non sulle saldature del connettore.
-2. Ricarica da alimentatore USB 5 V affidabile; nessuna dipendenza da USB-PD (resistenze CC 5,1 kΩ sul PCB).
-3. Enumerazione USB, flash firmware e configuratore funzionanti dalla presa posteriore (attraverso la prolunga, se presente).
-4. Funzionamento con USB collegata anche per giorni (`DEC-008`), **solo dopo verifica elettrica/termica**.
-5. Nessun surriscaldamento anomalo di cella, caricatore, regolatore, connettori e cablaggi.
-6. Con prolunga: caduta di tensione compatibile con la corrente di carica scelta.
+1. Inserimento/rimozione del cavo con lo sforzo scaricato sulla scocca, non sulle saldature del connettore.
+2. Funzionamento con alimentatori USB 5 V comuni e con la porta USB di un PC; nessuna dipendenza da USB-PD (resistenze CC 5,1 kΩ).
+3. Enumerazione USB, flash firmware e configuratore funzionanti dalla presa posteriore.
+4. Funzionamento continuo 24/7 senza surriscaldamenti di regolatore, connettori e cavi.
+5. Stabilità della statuetta con il cavo sempre inserito (uscita guidata nella base).
 
-## 5. Calcolo preliminare autonomia
+## 4. Consumi e calore
 
-Con capacità nominale **3.000 mAh** e una quota utilizzabile *ipotetica* dell'**80%**:
+L'autonomia non è più un vincolo, ma il consumo resta importante perché **ogni milliwatt diventa calore dentro la statuetta** e può falsare la misura del SHT40.
 
-`C_utilizzabile = 3.000 × 0,80 = 2.400 mAh`
-
-`Autonomia stimata [h] = C_utilizzabile [mAh] / I_media_batteria [mA]`
-
-| I media misurata **alla batteria** | Autonomia teorica illustrativa |
-|---:|---:|
-| 30 mA | 80 h |
-| 40 mA | 60 h |
-| 50 mA | 48 h |
-| 60 mA | 40 h |
-| 100 mA | 24 h |
-
-**Nessuno di questi valori è una misura del dispositivo.** Per 48 h la corrente media **deve essere ≤ 50 mA**.
-
-Con il profilo `DEC-014` la media è circa `(16 × I_giorno + 8 × I_notte) / 24`. Esempio **illustrativo**: con `I_notte` ≤ 10 mA, `I_giorno` può arrivare a circa 70 mA. Con display IPS:
-
-- di giorno consumano **retroilluminazione** (anche in DIM), pannello e MCU; il GC9A01 conserva l'immagine nella propria memoria, quindi l'MCU può sospendersi (light-sleep) tra un aggiornamento e l'altro;
-- di notte retroilluminazione spenta e pannello in sleep: il consumo dovrebbe scendere molto, da misurare;
-- conta anche la corrente di riposo di regolatore, caricatore e partitore di misura: sceglierli a bassa Iq.
-
-### Profili di misura richiesti
-
-- `P0 USB`: dispositivo acceso, alimentatore USB collegato, batteria in carica.
-- `P1 DIM`: funzionamento principale con ora e dati visibili, retroilluminazione bassa, radio spenta.
-- `P2 BRIGHT`: retroilluminazione alta dopo pressione del pulsante.
-- `P3 NIGHT`: display e retroilluminazione spenti, RTC e pulsante attivi.
-- `P4 LOW_BATT`: avviso batteria bassa, display ridotto/spegnimento gestito.
-- `P5 OFF`: assorbimento residuo a sistema spento.
-
-Misurare corrente batteria con strumento idoneo, distinguere media e picchi, e annotare tensione batteria, luminosità, firmware, configurazione e temperature.
-
-## 6. Politica energetica software proposta
-
-- Schermata DIM **normalmente sempre visibile** di giorno.
+- Retroilluminazione bassa in DIM e spenta di notte.
 - Aggiornamento dell'ora solo al cambio minuto; redraw parziali.
-- Campionamento SHT40 ogni **30–60 s**, da tarare.
-- Radio Wi-Fi/BLE **mai attivata** in V1 (`DEC-012`).
-- Pulsante → `BRIGHT` per **circa 20 s** → ritorno a `DIM`.
-- Fascia notte → `NIGHT`: retroilluminazione spenta, pannello in sleep, MCU in sospensione con risveglio da timer e pulsante.
+- Radio Wi-Fi/BLE mai attivata (`DEC-012`).
+- Light-sleep **facoltativo**: da adottare solo se le misure mostrano che riduce in modo utile il riscaldamento interno (senza light-sleep la USB del configuratore resta sempre attiva).
 
-I valori di luminosità in percentuale sono **parametri PWM**, non valori di potenza o luminanza garantiti; saranno calibrati a vista e a banco.
+### Profili di misura
 
-## 7. Gestione batteria e guasti
+- `P1 DIM`: funzionamento principale con ora e dati visibili, retroilluminazione bassa.
+- `P2 BRIGHT`: retroilluminazione alta dopo pressione del pulsante.
+- `P3 NIGHT`: display e retroilluminazione spenti.
+- `P5 OFF`: cavo scollegato, assorbimento dal tampone dell'RTC.
 
-- Stato di carica dai pin di stato del caricatore e dalla misura batteria scelta; **niente percentuali precise** calcolate dalla sola tensione sotto carico: indicatore a livelli o modello calibrato.
-- Soglie di avviso, critica e isteresi definite dopo prove su batteria reale; **nessuna soglia numerica ancora fissata**.
-- In tensione critica: segnalazione breve, salvataggio impostazioni, spegnimento controllato; la protezione estrema resta all'hardware (protezione cella e cutoff del caricatore).
-- L'RTC con alimentazione tampone mantiene l'ora anche a cella scarica (`OPEN-014`); se il tampone è esaurito, al riavvio mostrare `TIME_NOT_SET`.
-- A USB scollegata e batteria scarica: evitare boot-loop.
+Misurare corrente in ingresso USB (media e picchi) e temperature interne a scocca chiusa.
+
+## 5. Gestione di scollegamento e guasti
+
+- Scollegare il cavo in qualunque momento non deve corrompere NVS: scritture di configurazione rare e atomiche; brown-out detector abilitato.
+- Al ricollegamento: avvio pulito, ora dall'RTC; se il tampone è esaurito, `TIME_NOT_SET`.
 - Qualsiasi anomalia termica o del connettore blocca la validazione e richiede indagine.
 
-## 8. Gate di sicurezza prechiusura scocca
+## 6. Gate di sicurezza prechiusura scocca
 
-- [ ] Schema del caricatore rivisto sul datasheet: corrente di carica, tensione finale, NTC, power-path.
-- [ ] Corrente di carica effettiva misurata e compatibile con la cella.
-- [ ] Cutoff per temperatura (NTC) provato su banco.
-- [ ] Polarità del connettore batteria verificata elettricamente prima dell'inserimento.
-- [ ] Prolunga, connettori e cablaggi protetti da sollecitazioni.
-- [ ] Prove di carica con USB collegata e funzionamento simultaneo completate senza anomalie.
-- [ ] Misure termiche documentate nelle condizioni peggiori ragionevolmente previste.
-- [ ] Batteria fisicamente isolata da spigoli, viti, parti calde e pressioni della scocca.
-- [ ] Stato batteria bassa, cutoff e riavvio con USB verificati.
+- [ ] Fusibile/PTC, ESD e resistenze CC verificati a schema e su banco.
+- [ ] Assorbimento massimo e medio misurati.
+- [ ] Temperature di regolatore, MCU e retroilluminazione misurate a scocca chiusa dopo almeno 24 h di funzionamento.
+- [ ] Connettore USB-C, eventuale prolunga e cablaggi protetti da sollecitazioni.
+- [ ] Tampone RTC verificato: ora mantenuta a cavo scollegato per la durata dichiarata.
+- [ ] Cicli ripetuti di scollegamento/ricollegamento senza errori.
 
-## 9. Questioni aperte
+## 7. Questioni aperte
 
-Capacità e dimensioni della cella (condizionano base e gambe: sceglierla prima del CAD); cella con o senza NTC; caricatore e corrente di carica; regolatore (LDO o buck-boost); tipo di misura batteria; consumi reali IPS in DIM e NIGHT; lunghezza e qualità della prolunga. Vedi [decision log](10-decisioni-aperte.md).
+Tipo e capacità del tampone dell'RTC (`OPEN-014`); LDO scelto e sua dissipazione; alimentazione della retroilluminazione da 3,3 V o 5 V; consumi reali in DIM/BRIGHT/NIGHT; posizione della scheda e quindi della USB-C (`OPEN-020`). Vedi [decision log](10-decisioni-aperte.md).
