@@ -20,7 +20,7 @@
 | `PR-FUN-005` | MUST | CONF | Permettere il funzionamento senza cavo USB collegato. |
 | `PR-FUN-006` | MUST | CONF | Consentire la ricarica tramite porta USB-C posteriore. |
 | `PR-FUN-007` | MUST | CONF | In condizione normale mantenere l'orologio attenuato ma leggibile; dopo la pressione del pulsante aumentare la luminosità e poi ripristinarla. |
-| `PR-FUN-008` | MUST | CONF | Consentire l'impostazione iniziale/correzione di ora e data senza connessione di rete (pulsante o USB); è l'unico percorso in V1. |
+| `PR-FUN-008` | MUST | CONF | Consentire l'impostazione iniziale/correzione di ora e data senza connessione di rete: **configuratore da PC via USB** come metodo principale, menu con il pulsante come riserva (`DEC-020`). |
 | `PR-FUN-009` | MUST | CAND | Conservare l'ora tramite RTC durante il funzionamento a batteria e, grazie all'alimentazione tampone, anche dopo una scarica completa della cella. |
 | `PR-FUN-010` | — | ESCLUSO | ~~Sincronizzazione NTP via Wi-Fi~~: esclusa dalla V1 (`DEC-012`). ID mantenuto per tracciabilità. |
 | `PR-FUN-011` | MUST | CAND | Esporre uno stato chiaro di batteria bassa e avvertire prima dello spegnimento. |
@@ -38,6 +38,7 @@
 | `PR-UI-005` | — | ESCLUSO | ~~Mitigazione burn-in AMOLED~~: non necessaria con display IPS (`DEC-016`). ID mantenuto per tracciabilità. |
 | `PR-UI-006` | MUST | CAND | La visualizzazione deve rimanere coerente durante perdita temporanea del sensore e ricarica. |
 | `PR-UI-007` | MUST | CONF | Un **pulsante** fisico attiva la modalità luminosa e, di notte, mostra brevemente l'ora (`DEC-017`); posizione da definire (`OPEN-017`). |
+| `PR-UI-008` | MUST | CONF | Il PCB è **predisposto per il touch** del display (connettore/footprint, GPIO INT e RST con risveglio, componenti non montati) e il firmware gestisce l'input come eventi astratti, così il touch si attiva senza rifare il PCB (`DEC-019`). |
 
 ## 4. Elettrico, batteria e sicurezza
 
@@ -70,6 +71,7 @@
 | `PR-REL-001` | MUST | CAND | Dopo power cycle la schermata torna operativa senza procedure manuali non documentate. |
 | `PR-REL-002` | MUST | CONF | Il firmware V1 non dipende da alcuna rete; la radio Wi-Fi/BLE resta disattivata (`DEC-012`). |
 | `PR-REL-003` | MUST | CAND | Firmware aggiornabile via la USB-C posteriore, attraverso la prolunga, senza aprire l'involucro. |
+| `PR-REL-007` | MUST | CONF | Dalla USB-C posteriore un **configuratore da PC** legge stato e versione e imposta ora/data (dall'orologio del PC), fascia notte e luminosità tramite un protocollo documentato e versionato (`DEC-020`). |
 | `PR-REL-004` | MUST | CAND | La misura ambientale non deve essere confusa con la temperatura interna di ESP32 o caricatore. |
 | `PR-REL-005` | SHOULD | CAND | I log seriali non devono mostrare segreti o dati personali. |
 | `PR-REL-006` | MUST | CONF | Elettronica su **PCB custom** (KiCad, JLCPCB) con il minimo indispensabile (`DEC-015`); punti di test per il bring-up. |

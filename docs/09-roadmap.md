@@ -21,9 +21,10 @@ Attività:
 1. Scegliere MCU (ESP32-C3 o S3), caricatore, RTC, regolatore e misura batteria sui datasheet.
 2. Montare su breadboard dev board, display GC9A01, caricatore, RTC, SHT40 e pulsante.
 3. Verificare flash e log USB **attraverso la prolunga**.
-4. Firmware di bring-up: display, pulsante, RTC, SHT40, light-sleep.
-5. Misurare i consumi in DIM/BRIGHT/NIGHT e in ricarica; registrare picchi e medie.
-6. Provare carica, power-path e cutoff NTC del caricatore con la cella scelta.
+4. Firmware di bring-up: display, pulsante, touch del modulo, RTC, SHT40, light-sleep.
+5. Primo protocollo del configuratore e prova di sincronizzazione dell'ora dal PC attraverso la prolunga.
+6. Misurare i consumi in DIM/BRIGHT/NIGHT e in ricarica (con e senza controller touch attivo); registrare picchi e medie.
+7. Provare carica, power-path e cutoff NTC del caricatore con la cella scelta.
 
 **Exit gate:** architettura confermata con misure; componenti del PCB scelti con motivazione; cella approvata o scartata.
 
@@ -41,9 +42,9 @@ Attività:
 
 ## M4 — Firmware minimo affidabile
 
-**Output:** progetto ESP-IDF versionato, BSP del PCB, RTC/impostazione ora offline, SHT40, UI principale, FSM DIM/BRIGHT/NIGHT, test unitari.
+**Output:** progetto ESP-IDF versionato, BSP del PCB, RTC, SHT40, UI principale, FSM DIM/BRIGHT/NIGHT, protocollo del configuratore, **configuratore da PC** (`tools/configurator/`), menu pulsante di riserva, test unitari.
 
-**Exit gate:** `VT-FUN-001`, `VT-FUN-002`, `VT-FW-001`, `VT-FW-002`, `VT-FW-003`, `VT-UI-001`, `VT-UI-003` superati su hardware reale. Nessuna radio inizializzata (`DEC-012`).
+**Exit gate:** `VT-FUN-001`, `VT-FUN-002`, `VT-FW-001`, `VT-FW-002`, `VT-FW-003`, `VT-FW-006`, `VT-FW-007`, `VT-UI-001`, `VT-UI-003` superati su hardware reale. Nessuna radio inizializzata (`DEC-012`).
 
 ## M5 — Energia e ricarica
 

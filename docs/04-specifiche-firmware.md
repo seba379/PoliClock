@@ -23,8 +23,9 @@ firmware/                      # struttura futura, non ancora generata
 │   ├── power_service/         # stato caricatore, misura batteria, USB, policy
 │   ├── display_service/       # GC9A01, retroilluminazione PWM, refresh
 │   ├── ui/                    # layout, widget, schermate
-│   ├── input_service/         # pulsante: antirimbalzo, pressione breve/lunga
+│   ├── input_service/         # pulsante (e touch se montato) -> eventi astratti
 │   ├── settings_service/      # NVS con schema/versione
+│   ├── config_protocol/       # comandi del configuratore sulla seriale USB
 │   └── diagnostics/           # logging e test di integrazione
 └── test/                      # test unitari e banchi
 ```
@@ -95,11 +96,37 @@ Errore su modulo non essenziale (es. sensore) non deve impedire il quadrante. Er
 - Riferimento interno in **UTC**.
 - Presentazione configurata per **Europe/Rome**, con ora legale gestita correttamente; formato `HH:MM` 24h.
 - Dopo cold boot, rilevare RTC mai inizializzato o dato palesemente invalido (flag di perdita alimentazione/oscillatore dell'RTC scelto, da verificare sul datasheet); **non mostrare un'ora inventata come corretta**.
-- Unico percorso di impostazione in V1 (`DEC-012`, nessun NTP): menu con il pulsante (pressione lunga) e comando USB seriale di provisioning come riserva.
+- Impostazione in V1 senza rete (`DEC-012`): **configuratore da PC via USB** come metodo principale (§6.1, `DEC-020`), menu con il pulsante come riserva.
 - Fascia notte (`PR-FUN-013`) salvata in NVS e modificabile con lo stesso percorso.
 - Precisione di lungo periodo affidata al solo RTC: misurare la deriva in giorni/settimane e documentare se serve una correzione (registro di offset/aging dell'RTC scelto).
 - Aggiornare la cifra dei minuti al cambio minuto; rilevare cambi di data, DST e riavvio.
 - Validare il mantenimento dell'ora con cella scollegata grazie al tampone; a tampone esaurito segnalare `TIME_NOT_SET`.
+
+### 6.1 Protocollo del configuratore (proposta, `CAND-017`)
+
+- Trasporto: porta seriale della USB nativa (USB Serial/JTAG), nessun driver aggiuntivo sul PC.
+- Formato: comandi testuali a righe, risposte `OK ...` / `ERR <codice> <messaggio>`; utilizzabile anche da un terminale seriale.
+- Il configuratore invia l'ora del PC in **UTC** (epoch); il firmware applica Europe/Rome e l'ora legale.
+- Comandi iniziali proposti (nomi definitivi in M1):
+
+| Comando | Effetto |
+|---|---|
+| `HELLO` | Versione protocollo, versione firmware, ID dispositivo |
+| `GET STATUS` | Ora attuale, validità RTC, batteria, USB, ultima misura T/RH |
+| `SET TIME <epoch_utc>` | Imposta l'RTC |
+| `GET CONFIG` / `SET NIGHT <HH:MM> <HH:MM>` | Legge la configurazione / imposta la fascia notte |
+| `SET BRIGHT <dim%> <bright%>` / `SET TIMEOUT <s>` | Parametri di luminosità e timeout, entro limiti validati |
+| `RESET CONFIG` | Ripristino delle impostazioni di default |
+
+- Il protocollo ha un numero di versione: il configuratore rifiuta versioni incompatibili invece di inviare comandi sbagliati.
+- Validazione rigorosa degli argomenti; nessun comando può alterare la configurazione di ricarica o i limiti di sicurezza.
+- I log diagnostici non devono mescolarsi alle risposte del protocollo (prefisso o modalità dedicata).
+
+### 6.2 Configuratore da PC (proposta, `CAND-018`)
+
+- **Pagina web statica** che usa Web Serial (Chrome/Edge desktop): "Connetti", "Sincronizza ora con questo PC", campi per fascia notte e luminosità, stato del dispositivo.
+- Nessuna installazione; il codice vivrà nel repository in `tools/configurator/`.
+- Alternativa: script Python con `pyserial` per uso da riga di comando e test automatici.
 
 ## 7. Misurazioni ambientali
 
@@ -123,8 +150,8 @@ Errore su modulo non essenziale (es. sensore) non deve impedire il quadrante. Er
 - Stato osservabile con log seriali; severità distinta INFO/WARN/ERROR e messaggi non eccessivi.
 - Watchdog configurato per task potenzialmente bloccanti; timeout I²C; niente blocchi infiniti su init non critica.
 - Configurazioni NVS versionate con default sicuri; test di first-boot/reset preferenze.
-- Niente segreti nei log; il provisioning USB accetta solo comandi documentati (ora, data, fascia notte).
-- Separare business logic dai driver: test unitari host per parsing/formatting tempo, DST, fascia notte (anche a cavallo della mezzanotte), scadenza sensore, FSM display, gestione pulsante (breve/lunga, antirimbalzo) e low-battery.
+- Niente segreti nei log; il configuratore accetta solo i comandi documentati del protocollo (§6.1).
+- Separare business logic dai driver: test unitari host per parsing/formatting tempo, DST, fascia notte (anche a cavallo della mezzanotte), scadenza sensore, FSM display, gestione pulsante (breve/lunga, antirimbalzo), parser del protocollo del configuratore e low-battery.
 - Tenere uno strato di diagnostica minimale nel firmware release per indagini sul dispositivo assemblato.
 
 ## 10. Gate di completamento firmware

@@ -16,7 +16,7 @@ Moduli commerciali economici per validare architettura, consumi e firmware **pri
 | ID | Q.tà | Candidato / specifica | Stato | Scopo |
 |---|---:|---|---|---|
 | `PRO-001` | 1 | Dev board con lo stesso MCU scelto (ESP32-C3 o S3) e USB nativa | CAND | Firmware, light-sleep, USB attraverso prolunga |
-| `PRO-002` | 1 | Modulo display rotondo 1,28" GC9A01 240×240 | CAND | Driver, leggibilità, consumo retroilluminazione |
+| `PRO-002` | 1 | Modulo display rotondo 1,28" GC9A01 240×240 **con touch** | CAND | Driver, leggibilità, consumo retroilluminazione, prova touch (`DEC-019`) |
 | `PRO-003` | 1 | Breakout del caricatore candidato (power-path + NTC) | CAND | Carica, power-path, cutoff termico |
 | `PRO-004` | 1 | Breakout SHT40 senza LED (o con LED rimosso) | CAND | Lettura e posizionamento |
 | `PRO-005` | 1 | Breakout RTC candidato con tampone | CAND | Mantenimento ora a cella scollegata |
@@ -30,7 +30,7 @@ Moduli commerciali economici per validare architettura, consumi e firmware **pri
 | `BOM-002` | 1 | **SHT40** su mini-PCB nello stesso pannello JLC, senza LED | CAND | Indirizzo, meccanica, errore termico |
 | `BOM-003` | 1 | **LiPo 1S protetta**, preferibilmente con NTC, 2.500–3.000 mAh (da rivedere sui consumi) | CAND | Datasheet, limite carica, polarità, ingombro, protezioni |
 | `BOM-004` | 1 | **Prolunga USB-C maschio-femmina da pannello**, 15–25 cm, dati USB 2.0 (`DEC-011`, `DEC-018`) | CAND | Ingombro, fissaggio, flash via prolunga |
-| `BOM-005` | 1 | **Display IPS rotondo 1,28" GC9A01**, pannello con FPC e datasheet disponibile (`DEC-016`) | CAND | Pinout FPC, retroilluminazione, quote |
+| `BOM-005` | 1 | **Display IPS rotondo 1,28" GC9A01**, pannello con FPC e datasheet disponibile, **disponibile con e senza touch** a parità di ingombro (`DEC-016`, `DEC-019`) | CAND | Pinout FPC display e touch, retroilluminazione, quote |
 | `BOM-006` | 1 | **Pulsante** (tattile su PCB o remoto con cavo, `DEC-017`) | TBD | Posizione nella statuetta, corsa, sensazione |
 | `BOM-007` | 1 set | Cavi e connettori batteria/SHT40/pulsante, fermacavi | TBD | Polarità, lunghezze, ritenuta |
 | `BOM-008` | 1 set | Gusci/statuetta 3D (PLA prototipo, PETG da valutare) | CAND | CAD e quote reali; prove di stampa |

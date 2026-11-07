@@ -44,6 +44,8 @@ Tutti i codici sono **CAND**: da verificare su datasheet, disponibilità e prezz
 | Display | Volto | Rotondo, IPS, **1,28"**, **240×240**, driver **GC9A01**, SPI 4 fili (`DEC-016`) | Pannello nudo con FPC su connettore del PCB; pinout, alimentazione e retroilluminazione dal datasheet del pannello acquistato |
 | Retroilluminazione | DIM/BRIGHT/NIGHT | Regolabile via PWM, spegnibile del tutto di notte | MOSFET/transistor + resistenza, valori dal datasheet del pannello |
 | Interazione | Accendere/impostare | **Pulsante** fisico (`DEC-017`), posizione da definire | Pulsante tattile su PCB o remoto via cavo; pull-up e antirimbalzo; GPIO capace di risvegliare il chip |
+| Touch (predisposto) | Opzione futura (`DEC-019`) | Controller touch del pannello su I²C condiviso + **INT** (GPIO con risveglio) + **RST**; connettore FPC/footprint previsto, componenti non montati se non serve | Controller tipico dei pannelli 1,28" (es. famiglia CST816), da confermare sul datasheet del pannello |
+| USB dati | Flash, log e **configuratore** (`DEC-020`) | D+/D- dalla USB-C alla USB nativa dell'MCU secondo le design guideline Espressif; ESD; nessun convertitore esterno | La USB Serial/JTAG dell'ESP32-C3/S3 compare al PC come porta seriale |
 | USB | Ricarica e programmazione | USB-C ricettacolo 2.0, resistenze CC 5,1 kΩ, protezione ESD, fusibile/PTC su VBUS | Ricettacolo USB-C 16 pin; ESD tipo USBLC6-2 |
 | Caricatore | Ricarica sicura | **Power-path** (funzionamento con USB collegata, `DEC-008`), ingresso **NTC cella**, corrente di carica impostabile in modo prudente, 4,2 V | BQ24074 (TI) o equivalente con power-path e TS; da confermare |
 | Regolatore 3,3 V | Alimentare MCU, display, sensori | Bassa corrente di riposo; picchi MCU gestiti; comportamento con batteria a 3,0–3,4 V | LDO a basso dropout e bassa Iq, oppure buck-boost (es. TPS63802) se serve sfruttare la cella fino in fondo |
@@ -65,7 +67,7 @@ Tutti i codici sono **CAND**: da verificare su datasheet, disponibilità e prezz
 
 ## 5. Scelte intenzionalmente escluse
 
-Non servono per V1: audio, microSD, IMU, GPS, touch (`DEC-017`), sensore CO₂, sensore luce, Wi-Fi/BLE (`DEC-012`), convertitore USB-seriale esterno (la USB nativa dell'ESP32 basta), secondo caricabatterie in parallelo.
+Non servono per V1: audio, microSD, IMU, GPS, touch montato (solo predisposto, `DEC-019`), sensore CO₂, sensore luce, Wi-Fi/BLE (`DEC-012`), convertitore USB-seriale esterno (la USB nativa dell'ESP32 basta), secondo caricabatterie in parallelo.
 
 ## 6. Interfacce e verifiche prima dell'ordine PCB
 
@@ -76,6 +78,8 @@ Non servono per V1: audio, microSD, IMU, GPS, touch (`DEC-017`), sensore CO₂, 
 | Display | GC9A01 via SPI | Pinout FPC, tensioni, corrente retroilluminazione dal datasheet del pannello **acquistato** |
 | I²C | RTC, SHT40, eventuale fuel gauge | Indirizzi, pull-up unici, lunghezza cavo SHT40 |
 | Pulsante | Risveglio/illuminazione UI | Risveglio da light-sleep provato sulla dev board |
+| Touch (predisposto) | Opzione futura | Pinout FPC del pannello scelto; GPIO INT/RST liberi e con risveglio (`OPEN-019`); prova con modulo touch in M1 |
+| USB dati / configuratore | Impostazioni da PC | Porta seriale visibile e comandi funzionanti **attraverso la prolunga**, anche dopo light-sleep (verificare il comportamento della USB nativa durante la sospensione) |
 | RTC | Unica fonte di tempo in V1 | Mantenimento con LiPo scollegata grazie al tampone |
 
 ## 7. Alternative e rischi

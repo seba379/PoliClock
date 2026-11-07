@@ -25,7 +25,9 @@
 | `VT-FW-003` | PR-FUN-012, PR-REL-004, PR-UI-006 | Firmware | Distacco SHT40/CRC errato → dato invalidato e segnalazione, niente valore stale |
 | `VT-FW-004` | PR-REL-001 | Sistema | Riavvio ripristina servizio e configurazione, senza fault persistenti |
 | `VT-FW-005` | PR-REL-003, PR-REL-005 | Firmware | Flash e log via USB-C posteriore attraverso la prolunga, log privi di segreti |
-| `VT-FW-006` | PR-FUN-008, PR-UI-007 | Sistema | Impostazione di ora, data e fascia notte con il solo pulsante e via provisioning USB |
+| `VT-FW-006` | PR-FUN-008, PR-UI-007 | Sistema | Impostazione di ora, data e fascia notte con il solo pulsante (riserva) |
+| `VT-FW-007` | PR-FUN-008, PR-REL-007 | Sistema | Configuratore da PC attraverso la prolunga: connessione, `HELLO`, sincronizzazione dell'ora dal PC (scarto < 2 s), fascia notte e luminosità salvate e mantenute dopo riavvio; comandi invalidi rifiutati |
+| `VT-UI-004` | PR-UI-008 | Progetto + sistema | Footprint/connettore touch e GPIO INT/RST presenti sul PCB; prova del modulo touch sul prototipo M1 (evento -> BRIGHT, consumo in sleep misurato) |
 | `VT-PWR-001` | PR-PWR-003, PR-PWR-004 | Elettrico | Protezioni, polarità, cella/caricatore compatibili e verificati a schema e banco; corrente di carica misurata; **cutoff NTC** provato scaldando/raffreddando la sonda |
 | `VT-PWR-002` | PR-PWR-005 | Elettrico/termico | Uso durante ricarica senza anomalie di tensione, corrente e temperatura |
 | `VT-PWR-003` | PR-PWR-006 | Elettrico | Ciclo completo a profilo V1, autonomia reale confrontata con target 48 h |
@@ -51,7 +53,7 @@
 ### VT-FW-001 — Ora offline
 
 1. Avviare senza rete e con RTC inizialmente non valido; deve essere indicato `TIME_NOT_SET`.
-2. Impostare manualmente l'ora tramite flusso approvato (pulsante o provisioning USB).
+2. Impostare l'ora con il configuratore da PC (metodo principale) e, in una seconda prova, con il menu del pulsante.
 3. Rimuovere USB con batteria collegata; verificare ora e cambio minuto/giorno.
 4. Provare transizioni ora legale/solare Europa/Roma con clock simulato nei test unitari.
 5. Scollegare la cella e la USB: l'ora deve sopravvivere grazie al tampone dell'RTC per il tempo dichiarato dal suo dimensionamento; a tampone esaurito atteso `TIME_NOT_SET` (`OPEN-014`).
@@ -76,7 +78,7 @@ Confrontare SHT40 montato nello chassis e sensore di riferimento **co-locato** n
 - Lettura SHT40: CRC, retry e stale data.
 - Conversione misura batteria in livelli: limiti, incognite, nessuna percentuale fittizia.
 - Gestione pulsante: antirimbalzo, pressione breve/lunga, menu di impostazione.
-- Parser comandi di provisioning USB (ora, data, fascia notte) con input invalidi.
+- Parser del protocollo del configuratore (§6.1 firmware) con input invalidi, versioni incompatibili e limiti dei parametri.
 - Reset NVS, migrazione schema configurazione e ora mai impostata.
 
 ## 5. Strumentazione minima

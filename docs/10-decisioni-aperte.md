@@ -22,8 +22,10 @@
 | `DEC-014` | 2026-11-07 | Profilo d'uso di riferimento per l'autonomia: 16 h giorno in DIM + 8 h notte spento, **30 attivazioni BRIGHT/giorno** da 20 s, SHT40 ogni 60 s, radio spenta | Rende verificabile il target 48 h (`VT-PWR-003`) |
 | `DEC-015` | 2026-11-07 | **PCB custom** progettato in KiCad e prodotto/assemblato da JLCPCB, con il minimo indispensabile; scartata la scheda Waveshare (ex `CAND-001`) | Costo della scheda pronta giudicato eccessivo dal proprietario, consapevole che per un solo esemplare il custom non costa necessariamente meno. Aggiunge le milestone di prototipo su banco, progettazione e bring-up PCB. Decisione "per ora": rivedibile con il piano B |
 | `DEC-016` | 2026-11-07 | Display **IPS rotondo 1,28"**, 240×240, driver GC9A01 | Economico e documentato; nessun burn-in; retroilluminazione da gestire per i consumi |
-| `DEC-017` | 2026-11-07 | Interazione con **pulsante** fisico, niente touch; posizione da definire | Più semplice ed economico; posizione in `OPEN-017` |
+| `DEC-017` | 2026-11-07 | Interazione principale con **pulsante** fisico; posizione da definire | Più semplice ed economico; posizione in `OPEN-017`. Touch predisposto in `DEC-019` |
 | `DEC-018` | 2026-11-07 | Presa USB-C collegata con **prolunga**, nella **parte posteriore bassa** della statuetta (sul sedere, per ironia) | Vincola percorso prolunga dalla testa alla base, staffa e stabilità con cavo inserito |
+| `DEC-019` | 2026-11-07 | **Predisposizione touch** sul PCB (connettore/footprint, GPIO INT e RST riservati, componenti non montati); pulsante sempre presente; pannello scelto tra modelli disponibili con e senza touch a parità di ingombro | Il touch si potrà attivare senza rifare il PCB; decisione di montarlo dopo la prova sul prototipo M1 con modulo touch (`OPEN-018`) |
+| `DEC-020` | 2026-11-07 | **Configuratore da PC via USB** come metodo principale per impostare ora, data e fascia notte; menu con il pulsante come riserva | La USB nativa dell'MCU espone una porta seriale; protocollo di comandi documentato (`CAND-017`); configuratore web con Web Serial (`CAND-018`) |
 
 Le date sopra sono la data della formalizzazione nel documento delle scelte emerse nella conversazione, non un registro notarile degli eventi.
 
@@ -47,6 +49,8 @@ Le date sopra sono la data della formalizzazione nel documento delle scelte emer
 | `CAND-014` | RTC esterno a bassissimo consumo con tampone (es. RV-3028-C7 o PCF85063A + supercondensatore/pila) | Proposto | Datasheet, consumo, mantenimento ora a cella scollegata |
 | `CAND-015` | Regolatore 3,3 V: LDO a bassa Iq oppure buck-boost | Proposto | Consumo a riposo, picchi MCU, sfruttamento cella |
 | `CAND-016` | Misura batteria: partitore commutato su ADC oppure fuel gauge I²C | Proposto | Precisione richiesta vs costo/consumo |
+| `CAND-017` | Protocollo di configurazione testuale a righe sulla porta seriale USB, versionato (vedi [firmware](04-specifiche-firmware.md) §6.1) | Proposto | Prototipo M1 e test `VT-FW-007` |
+| `CAND-018` | Configuratore come **pagina web statica** con Web Serial (Chrome/Edge desktop), nessuna installazione; alternativa script Python | Proposto | Prova su Windows con la dev board; compatibilità browser |
 
 ## 3. Questioni aperte con priorità
 
@@ -58,7 +62,7 @@ Le date sopra sono la data della formalizzazione nel documento delle scelte emer
 | `OPEN-004` | P0 | Quanta corrente consuma la modalità DIM con retroilluminazione bassa? | Misura su banco (M1) |
 | `OPEN-005` | P0 | Quale caricatore e quale corrente di carica? | `CAND-013`, datasheet cella, prova su banco |
 | `OPEN-006` | P0 | Il target 48 h è realistico a estetica accettabile? | Profilo reale + misura autonomia |
-| `OPEN-007` | P0 | Come impostare inizialmente ora/data offline? | Unico percorso in V1 (`DEC-012`); vedi `OPEN-015` |
+| `OPEN-007` | P0 | Come impostare inizialmente ora/data offline? | Risolto in progetto: configuratore da PC via USB (`DEC-020`), menu pulsante come riserva; da verificare in `VT-FW-007` |
 | `OPEN-008` | P1 | Posizione e tipo di sportello manutenzione? | CAD e prove assemblaggio |
 | `OPEN-009` | P1 | Il pulsante risveglia l'MCU dal light-sleep in modo affidabile? | Prova su dev board |
 | `OPEN-010` | P1 | Soglie low/critical batteria e rappresentazione carica? | Misura batteria scelta, scarica controllata |
@@ -66,9 +70,11 @@ Le date sopra sono la data della formalizzazione nel documento delle scelte emer
 | `OPEN-012` | P2 | Colori capelli, posa braccia e finitura cappello? | Approvazione concept/campione stampa |
 | `OPEN-013` | P0 | La temperatura della cella è sorvegliata durante la ricarica? | Risolvibile con PCB custom: caricatore con ingresso NTC collegato alla cella (`CAND-013`); da provare su banco |
 | `OPEN-014` | P1 | L'ora sopravvive a una scarica completa? | RTC con tampone dedicato (`CAND-014`); prova di banco |
-| `OPEN-015` | P1 | Impostare ora/data/fascia notte con **un solo pulsante** è accettabile? | Prototipo dell'interazione (pressione breve/lunga); provisioning USB come metodo di riserva |
+| `OPEN-015` | P2 | Il menu con **un solo pulsante** è sufficientemente usabile come riserva? | Prototipo dell'interazione (pressione breve/lunga); il metodo principale è il configuratore (`DEC-020`) |
 | `OPEN-016` | P0 | Quale pannello GC9A01 acquistare, con datasheet e pinout FPC affidabili? | Ricerca fornitori, datasheet |
 | `OPEN-017` | P1 | Dove posizionare il pulsante nella statuetta? | Proposte estetiche/ergonomiche e CAD |
+| `OPEN-018` | P1 | Montare il touch nella V1? | Prova sul prototipo M1: usabilità, consumo del controller in sleep, interazione con la cornice stampata |
+| `OPEN-019` | P1 | Quali GPIO e quale connettore per il touch? | Datasheet del pannello scelto (pinout FPC display e touch) e pin liberi dell'MCU |
 
 ## 4. Come si chiude una decisione
 

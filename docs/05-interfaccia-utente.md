@@ -53,8 +53,9 @@ Un solo **pulsante** fisico (`DEC-017`), posizione nella statuetta da definire (
 
 - **Pressione breve**: di giorno aumenta la luminosità e ripristina il timer; di notte mostra l'ora attenuata (`NIGHT_PEEK`).
 - **Pressione lunga** (es. 3 s, da tarare): entra nel menu di impostazione.
-- **Menu di impostazione con un pulsante** (proposta, `OPEN-015`): il campo selezionato lampeggia; pressione breve = incrementa il valore, pressione lunga = conferma e passa al campo successivo (ora → minuti → giorno → mese → anno → inizio notte → fine notte). Uscita automatica senza salvare dopo un tempo di inattività.
-- **Provisioning USB** di riserva per ora, data e fascia notte: garantito prima della consegna anche se il menu risultasse scomodo.
+- **Configuratore da PC via USB** (metodo principale, `DEC-020`): si collega PoliClock al computer, si apre la pagina del configuratore e con un clic si sincronizza l'ora con quella del PC; dallo stesso strumento si impostano fascia notte e luminosità.
+- **Menu di impostazione con un pulsante** (riserva, `OPEN-015`): il campo selezionato lampeggia; pressione breve = incrementa il valore, pressione lunga = conferma e passa al campo successivo (ora → minuti → giorno → mese → anno → inizio notte → fine notte). Uscita automatica senza salvare dopo un tempo di inattività.
+- **Touch (predisposto, `DEC-019`)**: se montato, il tocco sul display equivale alla pressione breve; il pulsante resta comunque attivo.
 - Nessun menu richiesto per visualizzare i quattro dati quotidiani.
 
 Il risveglio dal light-sleep tramite pulsante va provato sul prototipo M1 prima di fissare il PCB.

@@ -23,7 +23,8 @@ La modalità scelta è **ibrida**: quadrante normalmente attenuato ma leggibile;
 - Ricarica circa **ogni 2 giorni** accettabile, così come l'uso frequente con USB collegata.
 - **Nessun Wi-Fi/NTP nella V1**: l'ora si imposta offline.
 - Elettronica su **PCB custom** (KiCad, prodotto e assemblato da JLCPCB).
-- Display **IPS rotondo 1,28"** (240×240, GC9A01) e interazione con un **pulsante** fisico.
+- Display **IPS rotondo 1,28"** (240×240, GC9A01) e interazione con un **pulsante** fisico; **touch predisposto** sul PCB, da attivare eventualmente.
+- Impostazioni (ora, fascia notte) da un **configuratore su PC** collegato via USB.
 
 ## Architettura candidata, NON ancora congelata
 
@@ -61,10 +62,11 @@ PoliClock/
 ├── assets/                # concept, render, modelli di riferimento futuri
 ├── firmware/              # progetto ESP-IDF da avviare in M1/M4
 ├── hardware/              # progetto KiCad del PCB, BOM e file JLCPCB (M2)
+├── tools/                 # configuratore da PC via USB (M4)
 └── mechanical/            # CAD, STL/3MF e tavole tecniche
 ```
 
-Le ultime tre directory sono **previste**, non ancora presenti: non si pubblicano file placeholder che possano essere scambiati per firmware o modelli funzionanti.
+Le ultime quattro directory sono **previste**, non ancora presenti: non si pubblicano file placeholder che possano essere scambiati per firmware o modelli funzionanti.
 
 ## Convenzioni
 
