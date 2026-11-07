@@ -30,7 +30,7 @@ Questo documento motiva i componenti usati nello schema KiCad in [`hardware/`](.
 | R16, R17, R18 | Gate, pull-down, limitazione LED | 100 Ω / 100 kΩ / 10 Ω 0603 | Uni-Royal | C22775 / C25803 / C22859 | **Basic** | — | — | R18 = 10 Ω come nello schema di riferimento Waveshare: **TBD** dal datasheet del pannello acquistato (`OPEN-024`) |
 | R8, R9 | Smorzamento SCLK/MOSI | 22 Ω 0603 | Uni-Royal | C23345 | **Basic** | 6 M | — | Valore da confermare con la prova sul cavo reale (`OPEN-021`) |
 | J2 | Cavo display | **AFC01-S16FCA-00** FFC 16P 0,5 mm, ZIF a sportello, contatti in basso, H 2,0 mm | JUSHUO | C262665 | Extended | 59 810 | 0,10 $ | `DEC-026`. Footprint EasyEDA da confrontare col disegno JUSHUO nel layout |
-| J3, J4 | SHT40, RTC | **SM04B-SRSS-TB** JST-SH 4P 1,0 mm | JST | C160404 | Extended | 45 700 | 0,21 $ | Pinout Qwiic/STEMMA QT: 1 GND, 2 3V3, 3 SDA, 4 SCL |
+| J3, J4 | Modulo SHT40, modulo RTC | **SM04B-SRSS-TB** JST-SH 4P 1,0 mm | JST | C160404 | Extended | 45 700 | 0,21 $ | Pinout Qwiic/STEMMA QT: 1 GND, 2 3V3, 3 SDA, 4 SCL |
 | J5 | Pulsante remoto | **SM02B-SRSS-TB** JST-SH 2P | JST | C160402 | Extended | 67 085 | 0,13 $ | `DEC-027` |
 | R6, R7, R15, R22 | Pull-up EN, IO9, LCD_RST, pulsante | 10 kΩ 0603 | Uni-Royal | C25804 | **Basic** | 43 M | — | |
 | R19, R20 | Pull-up I²C | 4,7 kΩ 0603 | Uni-Royal | C23162 | **Basic** | 16 M | — | Tengono alti anche gli strapping IO2 e IO8 |
@@ -74,13 +74,15 @@ Il modulo espone 15 GPIO (IO0–IO10, IO18–IO21). La V1 ne usa 14 per le funzi
 
 Pinout del pannello usato nello schema (fonte: schema del modulo Waveshare *1.28inch Touch LCD*, GC9A01 + CST816S): 1 GND, 2 TP_INT, 3 TP_SCL, 4 TP_SDA, 5 TP_RST, 6 TP_VDD, 7 GND, 8 LCD_VDD, 9 D/C, 10 SDA (MOSI), 11 SDO (non collegato), 12 SCL (SCLK), 13 CS, 14 RST, 15 GND, 16 LEDK, 17 LEDA, 18 GND. È un **riferimento**, non il datasheet del pannello: il layout della portadisplay non va ordinato prima di averlo confermato.
 
-## 4. Mini-PCB SHT40 (`hardware/policlock-sht40`)
+## 4. Sensore SHT40 su modulo commerciale
 
-| Rif. | Componente | LCSC | Libreria | Stock* | Note |
-|---|---|---|---|---:|---|
-| U1 | **SHT40-AD1B-R2** (0x44) | C2909890 | Extended | 16 004 | Pin 1 SDA, 2 SCL, 3 VDD, 4 VSS (datasheet V7.3 §5.4). **Die pad non saldato e niente rame sotto** (§5.3): pad centrale rimosso dal footprint EasyEDA |
-| C1 | 100 nF 0603 | C14663 | Basic | — | |
-| J1 | SM04B-SRSS-TB (Qwiic) | C160404 | Extended | 45 700 | Cavo JST-SH 4 poli verso J3 della scheda principale |
+Il mini-PCB SHT40 previsto inizialmente è stato **eliminato** (`DEC-028`): il proprietario ha scelto un modulo breakout commerciale (es. "SHT40 modulo sensore di umidità e temperatura I²C, 3V 5V, nero, con pin"), collegato a J3 della scheda principale.
+
+- **Alimentazione a 3,3 V** dal pin 2 di J3 (`3V3_EXT`). I moduli "3V 5V" di solito hanno regolatore e adattatori di livello; a 3,3 V funzionano comunque perché l'SHT40 accetta 1,08–3,6 V (datasheet V7.3). Verificare sul modulo acquistato.
+- **Cavo**: JST-SH 4 poli lato scheda (1 GND, 2 3V3, 3 SDA, 4 SCL) → jumper femmina 2,54 mm sui pin del modulo, oppure fili saldati direttamente. L'**ordine dei pin del modulo va letto sulla sua serigrafia** (`OPEN-002`): non è standard.
+- **LED**: se il modulo ha un LED di accensione, rimuoverlo o tagliarne il ponticello: scalderebbe il sensore.
+- **Pull-up**: quelli del modulo restano in parallelo a R19/R20 (4,7 kΩ); se anche il modulo SHT40 monta 10 kΩ, con quelli del DS3231 si arriva a circa 2,4 kΩ, ancora entro i limiti I²C a 3,3 V.
+- Posizione: vano ventilato lontano da scheda principale, regolatore e retroilluminazione (`OPEN-011`).
 
 ## 5. Elementi fuori dal montaggio JLC
 
@@ -89,7 +91,8 @@ Pinout del pannello usato nello schema (fonte: schema del modulo Waveshare *1.28
 | RTC con tampone | **Adafruit DS3231 Precision RTC – STEMMA QT** (prodotto 5188) + pila **CR1220** | CONF (`DEC-024`) | DS3231 con oscillatore compensato in temperatura; I²C 0x68; pull-up 10 kΩ verso Vin sul modulo; LED "ON" disattivabile tagliando il ponticello (consigliato: meno calore). Collegato a J4 con cavo JST-SH 4 poli |
 | Pannello display | GC9A01 1,28" 240×240 **con touch** CST816S, FPC 18 poli | CAND (`DEC-025`, `OPEN-016`) | Acquistare solo con datasheet/pinout FPC |
 | Cavo display | FFC 16 poli passo 0,5 mm, lunghezza dal CAD | CAND | Tipo (contatti stesso lato/opposti) da fissare col layout (`OPEN-023`) |
-| Cavetti | JST-SH 4 poli (Qwiic) ×2, JST-SH 2 poli per il pulsante | CAND | Lunghezze dal CAD |
+| Sensore T/RH | Modulo breakout SHT40 commerciale con header 2,54 mm | CAND (`DEC-028`) | Vedi §4 |
+| Cavetti | JST-SH 4 poli Qwiic (RTC), JST-SH 4 poli → jumper femmina (SHT40), JST-SH 2 poli (pulsante) | CAND | Lunghezze dal CAD |
 
 ### 5.1 Perché l'RTC non è sulla scheda
 

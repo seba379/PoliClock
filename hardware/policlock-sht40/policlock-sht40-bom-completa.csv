@@ -1,4 +1,0 @@
-"Riferimenti","Valore","Footprint","LCSC","Qta","DNP","Note"
-"C1","100nF","Capacitor_SMD:C_0603_1608Metric","C14663","1","","Unpolarized capacitor"
-"J1","SM04B-SRSS-TB","PoliClock:CONN-SMD_4P-P1.00_SM04B-SRSS-TB-LF-SN","C160404","1","","Qwiic verso scheda principale J3"
-"U1","SHT40-AD1B-R2","PoliClock:SHT4x_DFN-4_1.5x1.5mm_P0.8mm_NoDiePad","C2909890","1","",""

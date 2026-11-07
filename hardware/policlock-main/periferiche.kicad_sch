@@ -2235,7 +2235,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Qwiic/STEMMA QT: SHT40"
+		(property "Description" "Qwiic/STEMMA QT: modulo SHT40"
 			(at 250.19 69.85 0)
 			(effects
 				(font
@@ -2492,7 +2492,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Qwiic/STEMMA QT: RTC DS3231"
+		(property "Description" "Qwiic/STEMMA QT: modulo RTC DS3231"
 			(at 330.2 69.85 0)
 			(effects
 				(font
@@ -2706,7 +2706,7 @@
 		(at 321.31 66.04)
 		(uuid "c8193d33-2bae-503a-8630-8e6173baadb4")
 	)
-	(text "J3: mini-PCB SHT40 (cavo 4 fili).  J4: modulo Adafruit DS3231 Precision RTC\nSTEMMA QT (prodotto 5188) con pila CR1220, cavo JST-SH 4 poli (DEC-024)."
+	(text "J3: modulo breakout SHT40 commerciale (header 2,54 mm), cavo JST-SH 4 poli -> jumper\nfemmina; ordine dei pin dalla serigrafia del modulo (DEC-028).\nJ4: modulo Adafruit DS3231 Precision RTC STEMMA QT (5188) con pila CR1220 (DEC-024)."
 		(exclude_from_sim no)
 		(at 219.71 90.17 0)
 		(effects

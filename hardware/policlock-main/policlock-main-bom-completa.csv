@@ -6,7 +6,7 @@
 "F1","BSMD0805-050-12V","Fuse:Fuse_0805_2012Metric","C2977522","1","","PTC BSMD0805-050-12V: hold 0,5 A / trip 1 A"
 "J1","TYPE-C-31-M-12","PoliClock:USB-C_SMD-TYPE-C-31-M-12_1","C165948","1","","Ricettacolo USB-C 16P, solo USB 2.0"
 "J2","AFC01-S16FCA-00","PoliClock:FPC-SMD_P0.50-16P_FGS-XJ-H2.0","C262665","1","","FFC/FPC ZIF 16P 0,5 mm, H 2,0 mm"
-"J3,J4","SM04B-SRSS-TB","PoliClock:CONN-SMD_4P-P1.00_SM04B-SRSS-TB-LF-SN","C160404","2","","Qwiic/STEMMA QT: RTC DS3231,Qwiic/STEMMA QT: SHT40"
+"J3,J4","SM04B-SRSS-TB","PoliClock:CONN-SMD_4P-P1.00_SM04B-SRSS-TB-LF-SN","C160404","2","","Qwiic/STEMMA QT: modulo RTC DS3231,Qwiic/STEMMA QT: modulo SHT40"
 "J5","SM02B-SRSS-TB","PoliClock:CONN-SMD_2P-P1.00_SM02B-SRSS-TB-LF-SN","C160402","1","","Pulsante utente remoto"
 "Q1","AO3400A","Package_TO_SOT_SMD:SOT-23","C20917","1","","30V Vds, 5.7A Id, N-Channel MOSFET, SOT-23"
 "R1,R2","5.1k","Resistor_SMD:R_0603_1608Metric","C23186","2","","CC1 pull-down Rd 5,1 k (sink USB-C),CC2 pull-down Rd 5,1 k (sink USB-C)"

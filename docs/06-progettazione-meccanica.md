@@ -1,6 +1,6 @@
 # 06 — Specifiche meccaniche e stampa 3D
 
-**Versione:** 0.5 · **Stato:** geometria concettuale, CAD non ancora disponibile · **Data:** 2026-11-07
+**Versione:** 0.6 · **Stato:** geometria concettuale, CAD non ancora disponibile · **Data:** 2026-11-07
 
 ## 1. Intento estetico (CONF)
 
@@ -52,7 +52,7 @@ In una chibi la cavità più grande è la testa, mentre il busto è stretto: la 
 - **Altezza statuetta indicativa**: 130–160 mm (CAND, non misura definitiva).
 - Display: IPS rotondo **1,28"** (`DEC-016`), area attiva circa 32 mm di diametro (da verificare sul datasheet del pannello); vetro, cornice, FPC e PCB dietro sono più grandi.
 - Schedina portadisplay e scheda principale si disegnano in KiCad **insieme** al CAD: sagome, fori di fissaggio, posizione di USB-C e connettori sono quote condivise (STEP esportato da KiCad).
-- Determinare ingombro reale di: pannello con FPC, portadisplay, scheda principale con componenti, cavo display e connettori, eventuale prolunga USB-C e staffa, viti, zavorra, mini-PCB SHT40, pulsante, spina del cavo USB-C.
+- Determinare ingombro reale di: pannello con FPC, portadisplay, scheda principale con componenti, cavo display e connettori, eventuale prolunga USB-C e staffa, viti, zavorra, modulo SHT40 (`DEC-028`), modulo RTC DS3231 (`DEC-024`), pulsante, spina del cavo USB-C.
 - Definire tolleranze fit e gioco dei cablaggi su stampa test, non da aspettative teoriche della stampante.
 
 Fonti quote: datasheet meccanico del pannello acquistato, file KiCad del PCB (esportazione STEP) e misure con calibro.

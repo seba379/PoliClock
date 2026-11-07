@@ -31,7 +31,7 @@ La modalità scelta è **ibrida**: quadrante normalmente attenuato ma leggibile;
 - **Scheda principale** rettangolare (busto/base preferito, posizione da confermare con il CAD): modulo **ESP32-C3-MINI-1**, protezioni USB, regolatore 3,3 V, USB-C, connettori.
 - **RTC esterno** su modulo Adafruit DS3231 STEMMA QT con pila CR1220, collegato via cavo: l'ora resta salva a cavo scollegato.
 - **Schedina portadisplay** nella testa, collegata con cavo FFC 16 poli attraverso il collo.
-- Sensore T/RH: **Sensirion SHT40** su mini-PCB, in vano ventilato, collegato con 4 fili.
+- Sensore T/RH: **Sensirion SHT40** su modulo breakout commerciale, in vano ventilato, collegato con 4 fili.
 - Prima del PCB: **prototipo su banco** con moduli commerciali per validare display su cavo, consumi e firmware.
 - Firmware **ESP-IDF**.
 

@@ -1,4 +1,4 @@
-"""Generate the PoliClock KiCad 10 schematics (main board, display carrier, SHT40 board)."""
+"""Generate the PoliClock KiCad 10 schematics (main board, display carrier)."""
 import json
 import os
 import sys
@@ -23,7 +23,6 @@ DS_USBLC6 = "https://www.st.com/resource/en/datasheet/usblc6-2.pdf"
 DS_AMS = "http://www.advanced-monolithic.com/pdf/ds1117.pdf"
 DS_AO3400 = "https://www.aosmd.com/res/datasheets/AO3400A.pdf"
 DS_PTC = "https://www.lcsc.com/datasheet/C2977522.pdf"
-DS_SHT = "https://sensirion.com/media/documents/33FD6951/6A7C10A0/HT_DS_Datasheet_SHT4x_V7.3.pdf"
 
 
 def R(sh, ref, val, x, y, n1, n2, rot=0, dnp=False, kind1=None, kind2=None, note=""):
@@ -279,7 +278,7 @@ TP(s, "TP8", 120, 50, "I2C_SCL", "global")
 s.text("Il modulo Adafruit DS3231 ha gia' pull-up 10 k verso Vin:\nin parallelo a R19/R20 -> ~3,2 k, accettabile.", 80, 75)
 
 s.box(210, 20, 400, 110, "Connettori Qwiic / STEMMA QT (JST-SH 4 poli: 1 GND, 2 3V3, 3 SDA, 4 SCL)")
-for ref, x, nm in (("J3", 250, "SHT40"), ("J4", 330, "RTC DS3231")):
+for ref, x, nm in (("J3", 250, "modulo SHT40"), ("J4", 330, "modulo RTC DS3231")):
     j = s.add(L, "PoliClock:SM04B-SRSS-TB", ref, "SM04B-SRSS-TB", x, 70, lcsc="C160404", desc=f"Qwiic/STEMMA QT: {nm}",
               ds="https://www.lcsc.com/datasheet/C160404.pdf")
     s.conn(L, j, "1", "GND", length=5.08)
@@ -288,8 +287,9 @@ for ref, x, nm in (("J3", 250, "SHT40"), ("J4", 330, "RTC DS3231")):
     s.conn(L, j, "4", "I2C_SCL", "global", length=12.7)
     s.nc(j, "5")
     s.nc(j, "6")
-s.text("J3: mini-PCB SHT40 (cavo 4 fili).  J4: modulo Adafruit DS3231 Precision RTC\n"
-       "STEMMA QT (prodotto 5188) con pila CR1220, cavo JST-SH 4 poli (DEC-024).", 220, 90)
+s.text("J3: modulo breakout SHT40 commerciale (header 2,54 mm), cavo JST-SH 4 poli -> jumper\n"
+       "femmina; ordine dei pin dalla serigrafia del modulo (DEC-028).\n"
+       "J4: modulo Adafruit DS3231 Precision RTC STEMMA QT (5188) con pila CR1220 (DEC-024).", 220, 90)
 
 s.box(15, 120, 200, 200, "Pulsante utente")
 j5 = s.add(L, "PoliClock:SM02B-SRSS-TB", "J5", "SM02B-SRSS-TB", 60, 165, lcsc="C160402", desc="Pulsante utente remoto",
@@ -354,33 +354,4 @@ os.makedirs(D, exist_ok=True)
 s.write(f"{D}/{P}.kicad_sch", True)
 project_files(D, P, [[ROOT, "Root"]])
 
-# =====================================================================================
-# SHT40 MINI-PCB
-# =====================================================================================
-P = "policlock-sht40"
-D = f"{HW}/{P}"
-ROOT = U(P + "/root")
-s = Sheet(P, "root", f"{P}.kicad_sch", ROOT, "/" + ROOT, paper="A4", title="PoliClock - mini-PCB SHT40",
-          comment="SHT40-AD1B (0x44), pull-up I2C sulla scheda principale.\n"
-                  "Die pad non saldato, niente rame sotto (SHT4x V7.3 par. 5.3).")
-u1 = s.add(L, "PoliClock:SHT40-AD1B-R2", "U1", "SHT40-AD1B-R2", 110, 80, lcsc="C2909890", ds=DS_SHT)
-s.conn(L, u1, "1", "SDA")
-s.conn(L, u1, "2", "SCL")
-s.conn(L, u1, "3", "+3V3")
-s.conn(L, u1, "4", "GND")
-C(s, "C1", "100nF", 140, 80, "+3V3", "GND")
-j1 = s.add(L, "PoliClock:SM04B-SRSS-TB", "J1", "SM04B-SRSS-TB", 60, 110, lcsc="C160404", desc="Qwiic verso scheda principale J3",
-           ds="https://www.lcsc.com/datasheet/C160404.pdf")
-s.conn(L, j1, "1", "GND", length=5.08)
-s.conn(L, j1, "2", "+3V3", length=7.62)
-s.conn(L, j1, "3", "SDA", length=10.16)
-s.conn(L, j1, "4", "SCL", length=12.7)
-s.nc(j1, "5")
-s.nc(j1, "6")
-s.flag(L, "+3V3", 30, 150)
-s.flag(L, "GND", 45, 150)
-s.text("Connettore JST-SH 4 poli compatibile Qwiic: 1 GND, 2 3V3, 3 SDA, 4 SCL.", 40, 130)
-os.makedirs(D, exist_ok=True)
-s.write(f"{D}/{P}.kicad_sch", True)
-project_files(D, P, [[ROOT, "Root"]])
 print("generated")

@@ -1,6 +1,6 @@
 # 01 — Requisiti di prodotto (PRD)
 
-**Versione:** 0.5 · **Stato:** baseline per prototipo, da approvare · **Data:** 2026-11-07
+**Versione:** 0.6 · **Stato:** baseline per prototipo, da approvare · **Data:** 2026-11-07
 
 ## 1. Convenzioni
 
@@ -74,7 +74,7 @@
 | `PR-REL-003` | MUST | CAND | Firmware aggiornabile dalla USB-C posteriore senza aprire l'involucro. |
 | `PR-REL-004` | MUST | CAND | La misura ambientale non deve essere confusa con la temperatura interna di ESP32 o regolatore. |
 | `PR-REL-005` | SHOULD | CAND | I log seriali non devono mostrare segreti o dati personali. |
-| `PR-REL-006` | MUST | CONF | Elettronica su **PCB custom** (KiCad, JLCPCB) con il minimo indispensabile (`DEC-015`): scheda principale separata dal display, schedina portadisplay collegata via cavo, mini-PCB SHT40 (`DEC-021`); punti di test per il bring-up. |
+| `PR-REL-006` | MUST | CONF | Elettronica su **PCB custom** (KiCad, JLCPCB) con il minimo indispensabile (`DEC-015`): scheda principale separata dal display, schedina portadisplay collegata via cavo (`DEC-021`); SHT40 su modulo breakout commerciale (`DEC-028`); punti di test per il bring-up. |
 | `PR-REL-007` | MUST | CONF | Dalla USB-C posteriore un **configuratore da PC** legge stato e versione e imposta ora/data (dall'orologio del PC), fascia notte e luminosità tramite un protocollo documentato e versionato (`DEC-020`). |
 
 ## 7. Criteri di rilascio

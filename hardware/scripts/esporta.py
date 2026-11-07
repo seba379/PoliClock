@@ -1,4 +1,4 @@
-"""ERC, PDF e BOM (formato JLCPCB) per i tre progetti KiCad di PoliClock.
+"""ERC, PDF e BOM (formato JLCPCB) per i progetti KiCad di PoliClock.
 
 Uso:  python hardware/scripts/esporta.py   (richiede kicad-cli di KiCad 10)
 """
@@ -8,7 +8,7 @@ import sys
 
 HW = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 KICAD_CLI = os.environ.get("KICAD_CLI", r"C:\Program Files\KiCad\10.0\bin\kicad-cli.exe")
-PROJECTS = ["policlock-main", "policlock-display", "policlock-sht40"]
+PROJECTS = ["policlock-main", "policlock-display"]
 
 
 def run(args):

@@ -10,7 +10,7 @@ L'elettronica è divisa in **schede separate** (`DEC-021`):
 
 1. **Scheda principale** rettangolare, **separata dal display**: MCU, protezioni USB, regolatore 3,3 V, USB-C, connettori (incluso quello del modulo RTC esterno, `DEC-024`). **Nessuna batteria** nella V1 (`DEC-023`). Posizione nella statuetta da decidere con la bozza CAD (busto/base o testa, `OPEN-020`).
 2. **Schedina portadisplay** rotonda nella testa: solo il connettore del pannello, i condensatori di disaccoppiamento e il connettore del cavo verso la scheda principale.
-3. **Mini-PCB SHT40** nel vano ventilato.
+3. **Modulo breakout SHT40** commerciale nel vano ventilato, collegato via cavo (`DEC-028`): non è un PCB custom.
 4. **Modulo RTC esterno** Adafruit DS3231 STEMMA QT con pila CR1220, collegato via cavo JST-SH 4 poli (`DEC-024`): non è un PCB custom.
 
 Scheda principale e portadisplay sono collegate da un **cavo piatto FFC 16 poli passo 0,5 mm** che attraversa il collo (`DEC-026`). Tutte le schede si ordinano nello **stesso pannello JLC**.
@@ -41,7 +41,7 @@ flowchart LR
     RTC["Modulo RTC DS3231<br/>+ pila CR1220"] <-->|"I2C, JST-SH 4 poli"| MCU
     USB["Cavo USB-C sempre collegato<br/>(sul sedere)"] -.->|"connettore diretto (A) o prolunga (B)"| CONN
     CARR <-->|"cavo FFC nel collo"| MCU
-    SHT["SHT40 su mini-PCB<br/>vano ventilato"] <-->|"I2C, 4 fili"| MCU
+    SHT["Modulo SHT40<br/>vano ventilato"] <-->|"I2C, 4 fili"| MCU
     BTN["Pulsante"] --> MCU
 ```
 
@@ -63,8 +63,8 @@ Tutti i codici sono **CAND**: da verificare su datasheet, disponibilità e prezz
 | USB | **Alimentazione**, flash, configuratore (`DEC-020`, `DEC-023`) | USB-C 2.0, CC 5,1 kΩ, ESD, fusibile/PTC; D+/D- alla USB nativa dell'MCU secondo le design guideline Espressif | Ricettacolo USB-C sulla scheda principale; ESD tipo USBLC6-2 |
 | Regolatore 3,3 V | Alimentare MCU, display, sensori da 5 V USB | Corrente massima con margine sui picchi MCU (il modulo richiede una sorgente ≥ 0,5 A); dissipazione accettabile | LDO **AMS1117-3.3** (Basic) (`CAND-015`, `OPEN-025`) |
 | RTC | Ora anche a cavo scollegato | Tampone che copra almeno alcuni giorni, I²C, buona precisione (nessun NTP) | **Modulo esterno Adafruit DS3231 STEMMA QT** + pila CR1220 su connettore JST-SH 4 poli (`DEC-024`) |
-| Sensore T/RH | Misure ambiente | **SHT40** su mini-PCB senza LED, 4 fili | Mini-PCB nello stesso pannello JLC |
-| Connettori | SHT40, RTC, pulsante | Polarizzati, con ritenuta, polarità serigrafata | **JST-SH 1,0 mm**: 4 poli con pinout Qwiic/STEMMA QT per SHT40 e RTC, 2 poli per il pulsante |
+| Sensore T/RH | Misure ambiente | **SHT40**, 4 fili, lontano dalle sorgenti di calore | **Modulo breakout SHT40** commerciale con header 2,54 mm, alimentato a 3,3 V da J3 (`DEC-028`) |
+| Connettori | SHT40, RTC, pulsante | Polarizzati, con ritenuta, polarità serigrafata | **JST-SH 1,0 mm**: 4 poli con pinout Qwiic/STEMMA QT per SHT40 (cavo JST-SH → jumper femmina) e RTC, 2 poli per il pulsante |
 | Debug | Bring-up | Punti di test VBUS, 5 V protetto, 3,3 V, GND, EN, UART TX, I²C; tasti BOOT/RESET; resistenze 0 Ω per isolare LDO, display e moduli esterni | — |
 
 **Budget dei pin (ESP32-C3):** SPI display 5, retroilluminazione 1, I²C 2, touch INT/RST 2, pulsante 1, USB 2, BOOT 1: 14 GPIO sui 15 del modulo; IO21 (TXD0) resta su un punto di test. Verificato sul datasheet ESP32-C3-MINI-1 v2.2, strapping inclusi (`CAND-023`).
@@ -103,7 +103,8 @@ Bus I²C condiviso: SHT40 `0x44`, DS3231 `0x68`, touch CST816S `0x15` (indirizzo
 
 **Sensirion SHT40** è la scelta candidata. Specifica tipica: ±1,8 %RH; la temperatura ha accuratezza tipica dichiarata dal costruttore in condizioni specificate dal datasheet. Vedere [pagina prodotto](https://sensirion.com/products/catalog/SHT40).
 
-- Montato su un **mini-PCB** prodotto insieme alle altre schede: niente LED, niente regolatore, pull-up I²C sulla scheda principale.
+- Montato su un **modulo breakout commerciale** (`DEC-028`), alimentato a **3,3 V** dal connettore J3 della scheda principale. Questi moduli hanno spesso regolatore, pull-up e a volte un LED: se c'è un LED, va rimosso o disattivato per non scaldare il sensore. I pull-up del modulo sono in parallelo a quelli da 4,7 kΩ della scheda principale.
+- Collegamento: cavo JST-SH 4 poli (lato scheda) → jumper femmina 2,54 mm (lato modulo), oppure fili saldati sul modulo; l'ordine dei pin va letto sulla **serigrafia del modulo acquistato** (`OPEN-002`).
 - Posizionamento **separato fisicamente** dalle sorgenti di calore (scheda principale, regolatore, retroilluminazione), con feritoie verso l'aria ambiente.
 - Cavo a 4 fili con connettore polarizzato e fermacavo.
 - Indirizzo `0x44` (SHT40-AD1B): nessun conflitto con RTC DS3231 (`0x68`) e touch (`0x15`).

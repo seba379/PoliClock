@@ -18,7 +18,7 @@ Moduli commerciali economici per validare architettura, consumi e firmware **pri
 |---|---:|---|---|---|
 | `PRO-001` | 1 | Dev board con lo stesso MCU scelto (ESP32-C3 o S3) e USB nativa | CAND | Firmware, USB, configuratore |
 | `PRO-002` | 1 | Modulo display rotondo 1,28" GC9A01 240×240 **con touch** | CAND | Driver, leggibilità, consumo retroilluminazione, prova touch (`DEC-019`) |
-| `PRO-004` | 1 | Breakout SHT40 senza LED (o con LED rimosso) | CAND | Lettura e posizionamento |
+| `PRO-004` | 1 | **Modulo breakout SHT40** (es. "SHT40 modulo I²C 3V 5V, nero, con pin"): lo stesso del prodotto (`DEC-028`) | CAND | Lettura, posizionamento, presenza di LED/regolatore |
 | `PRO-005` | 1 | **Adafruit DS3231 Precision RTC – STEMMA QT** (5188) + pila CR1220: lo stesso modulo del prodotto (`DEC-024`) | CONF | Mantenimento ora a cavo scollegato, deriva |
 | `PRO-006` | 1 | Pulsante tattile, breadboard, cavetti | TBD | Interazione |
 | `PRO-007` | 1 | Cavo FFC **16 poli** 0,5 mm + due adattatori FFC→pin, lunghezza simile a quella prevista nel collo | CAND | Prova SPI su cavo reale (`OPEN-021`) |
@@ -30,12 +30,12 @@ Moduli commerciali economici per validare architettura, consumi e firmware **pri
 
 | ID | Q.tà | Candidato / specifica | Stato | Gate di approvazione |
 |---|---:|---|---|---|
-| `BOM-001` | 1 (min. ordine JLC) | **PCB custom** KiCad, assemblato JLCPCB: scheda principale (MCU, protezioni USB, regolatore 3,3 V, USB-C, connettori), schedina portadisplay, mini-PCB SHT40. Componenti e codici LCSC in [12](12-selezione-componenti.md); BOM di assemblaggio esportate in `hardware/*/*-bom-jlcpcb.csv` | CAND | Prototipo M1 superato, ERC/DRC, revisione schema, disponibilità LCSC, costo delle parti Extended nel preventivo |
-| `BOM-002` | 1 | **SHT40-AD1B-R2** (LCSC C2909890) su mini-PCB, senza LED, die pad non saldato | CAND | Indirizzo, meccanica, errore termico |
+| `BOM-001` | 1 (min. ordine JLC) | **PCB custom** KiCad, assemblato JLCPCB: scheda principale (MCU, protezioni USB, regolatore 3,3 V, USB-C, connettori), schedina portadisplay. Componenti e codici LCSC in [12](12-selezione-componenti.md); BOM di assemblaggio esportate in `hardware/*/*-bom-jlcpcb.csv` | CAND | Prototipo M1 superato, ERC/DRC, revisione schema, disponibilità LCSC, costo delle parti Extended nel preventivo |
+| `BOM-002` | 1 | **Modulo breakout SHT40** commerciale con header 2,54 mm (es. "SHT40 modulo I²C 3V 5V, nero, con pin"), alimentato a 3,3 V; LED rimosso se presente (`DEC-028`) | CAND | Pinout sulla serigrafia, indirizzo 0x44, meccanica, errore termico |
 | `BOM-004` | 0–1 | **Prolunga USB-C maschio-femmina da pannello**, dati USB 2.0: **solo per l'opzione B** (scheda nella testa, `DEC-021`) | CAND | Ingombro, fissaggio, flash via prolunga |
 | `BOM-005` | 1 | **Display IPS rotondo 1,28" GC9A01 con touch** (CST816S), FPC **18 poli**, datasheet disponibile (`DEC-016`, `DEC-019`, `DEC-025`) | CAND | Pinout FPC (passo, lato contatti), retroilluminazione, quote (`OPEN-016`) |
 | `BOM-006` | 1 | **Pulsante**: tasto tattile sulla scheda (TS-1187A, C318884) e connettore JST-SH 2 poli per un pulsante remoto (`DEC-017`, `DEC-027`) | CAND | Posizione nella statuetta, corsa, sensazione |
-| `BOM-007` | 1 set | Cavetti JST-SH 4 poli tipo Qwiic (SHT40, RTC) e 2 poli (pulsante), fermacavi | TBD | Polarità, lunghezze, ritenuta |
+| `BOM-007` | 1 set | Cavetto JST-SH 4 poli Qwiic (RTC), cavetto JST-SH 4 poli → jumper femmina 2,54 mm (SHT40), JST-SH 2 poli (pulsante), fermacavi | TBD | Polarità, lunghezze, ritenuta |
 | `BOM-008` | 1 set | Gusci/statuetta 3D (PLA prototipo, PETG da valutare) | CAND | CAD e quote reali; prove di stampa |
 | `BOM-009` | 1 set | Viti, inserti, gommini antiscivolo, **zavorra** per la base | TBD | Stabilità con cavo collegato |
 | `BOM-010` | 1 | **Alimentatore USB 5 V** di qualità (obbligatorio: l'orologio funziona solo collegato) | TBD | Corrente adeguata all'assorbimento misurato |
@@ -77,6 +77,7 @@ Moduli commerciali economici per validare architettura, consumi e firmware **pri
 | BOM-010 | TBD | TBD alimentatore | TBD | TBD | no | no | no |
 | BOM-012 | TBD | TBD cavo USB-C | TBD | TBD | no | no | no |
 | BOM-013 | Adafruit o distributore | 5188 + CR1220 | TBD | TBD | no | no | no |
+| BOM-002 | TBD (es. Amazon/AliExpress) | modulo SHT40 | TBD | TBD | no | no | no |
 
 ## 8. Piano B
 
