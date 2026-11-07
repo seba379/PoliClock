@@ -7,7 +7,7 @@
 
 ## Il prodotto
 
-PoliClock è un regalo personalizzato: una statuetta simpatica e stilizzata di una poliziotta, con un display **circolare integrato al posto del volto**. Il quadrante visualizza sempre **ora, data, temperatura ambiente e umidità relativa**. È alimentato da **batteria ricaricabile**, con **USB-C accessibile sul retro** della statuetta.
+PoliClock è un regalo personalizzato: una statuetta simpatica e stilizzata di una poliziotta, con un display **circolare integrato al posto del volto**. Durante il giorno il quadrante visualizza **ora, data, temperatura ambiente e umidità relativa**; di notte può spegnersi. È alimentato da **batteria ricaricabile**, con **USB-C accessibile sul retro** della statuetta.
 
 La modalità scelta è **ibrida**: quadrante normalmente attenuato ma leggibile; un'interazione attiva temporaneamente la luminosità elevata. La priorità è la qualità estetica senza sacrificare sicurezza, autonomia e manutenzione.
 
@@ -18,6 +18,10 @@ La modalità scelta è **ibrida**: quadrante normalmente attenuato ma leggibile;
 - Schermata V1: **ora, data, temperatura e umidità**; niente funzioni domotiche o statistiche richieste.
 - Funzionamento **a batteria**, con ricarica **USB-C sul retro**.
 - Schermo **attenuato in condizioni normali**, più luminoso dopo un'interazione.
+- **Di notte il display può essere spento** (modalità notte; orari da definire).
+- Aspetto con **uniforme blu e cappello**.
+- Ricarica circa **ogni 2 giorni** accettabile, così come l'uso frequente con USB collegata.
+- **Nessun Wi-Fi/NTP nella V1**: l'ora si imposta offline.
 
 ## Architettura candidata, NON ancora congelata
 

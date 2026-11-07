@@ -18,13 +18,14 @@
 | `VT-FUN-003` | PR-FUN-005, PR-PWR-001 | Sistema | USB rimossa, dispositivo continua a funzionare con batteria |
 | `VT-FUN-004` | PR-FUN-006, PR-PWR-002 | Sistema | Cavo USB-C inserito nel retro, ricarica rilevata e connettore accessibile |
 | `VT-UI-001` | PR-FUN-007, PR-UI-003, PR-UI-007 | Sistema | DIM leggibile, tocco→BRIGHT, timeout→DIM, prova a 50–80 cm |
-| `VT-UI-002` | PR-UI-004, PR-UI-005 | Ispezione | Contrasto/aree statiche/luminanza e mitigazione burn-in previsti |
+| `VT-UI-002` | PR-UI-004, PR-UI-005 | Ispezione + firmware | Contrasto/aree statiche/luminanza; pixel shift attivo e verificato su più ore |
+| `VT-UI-003` | PR-FUN-013 | Sistema | Ingresso/uscita fascia notte (anche a cavallo della mezzanotte), display spento, tocco → NIGHT_PEEK → NIGHT, consumo `P3 NIGHT` misurato |
 | `VT-FW-001` | PR-FUN-008, PR-FUN-009 | Firmware + sistema | Impostazione ora offline e mantenimento senza Wi-Fi |
-| `VT-FW-002` | PR-FUN-010, PR-REL-002 | Firmware | NTP opzionale e timeout: perdita Wi-Fi non blocca l'orologio |
+| `VT-FW-002` | PR-REL-002 | Firmware | Build release senza inizializzazione radio; nessuna dipendenza di rete al boot o a regime (PR-FUN-010 escluso, `DEC-012`) |
 | `VT-FW-003` | PR-FUN-012, PR-REL-004, PR-UI-006 | Firmware | Distacco SHT40/CRC errato → dato invalidato e segnalazione, niente valore stale |
 | `VT-FW-004` | PR-REL-001 | Sistema | Riavvio ripristina servizio e configurazione, senza fault persistenti |
 | `VT-FW-005` | PR-REL-003, PR-REL-005 | Firmware | Flash via USB posteriore, log privi di credenziali |
-| `VT-PWR-001` | PR-PWR-003, PR-PWR-004 | Elettrico | Protezioni, polarità, cella/PMU compatibili e verificati a schema e banco |
+| `VT-PWR-001` | PR-PWR-003, PR-PWR-004 | Elettrico | Protezioni, polarità, cella/PMU compatibili e verificati a schema e banco; corrente di carica impostata e temperatura cella in carica misurata (TS non sulla cella, `OPEN-013`) |
 | `VT-PWR-002` | PR-PWR-005 | Elettrico/termico | Uso durante ricarica senza anomalie di tensione, corrente e temperatura |
 | `VT-PWR-003` | PR-PWR-006 | Elettrico | Ciclo completo a profilo V1, autonomia reale confrontata con target 48 h |
 | `VT-PWR-004` | PR-PWR-007, PR-PWR-008, PR-FUN-011 | Elettrico | Avviso low-battery, cutoff, no boot-loop, recovery USB |
@@ -38,11 +39,11 @@
 
 ### VT-PWR-003 — Autonomia batteria
 
-**Precondizioni:** batteria identificata e caricata secondo procedura del produttore, firmware release con medesima configurazione del regalo, scocca rappresentativa. **Procedura:** avviare a ora nota, USB scollegata, UI per la maggior parte in `DIM`; registrare quantitativamente gli eventi `BRIGHT`, misura clima e NTP; registrare corrente e tensione batteria. **Accettazione:** autonomia reale riportata in ore, confronto esplicito con target **48 h**. Nessun `PASS` senza misura fino al cutoff definito e verifica di sicurezza.
+**Precondizioni:** batteria identificata e caricata secondo procedura del produttore, firmware release con medesima configurazione del regalo, scocca rappresentativa, profilo d'uso `CAND-010` confermato. **Procedura:** avviare a ora nota, USB scollegata; applicare il profilo (16 h `DIM`, 8 h `NIGHT`, 30 attivazioni `BRIGHT`/giorno da 20 s, SHT40 ogni 60 s, radio spenta), registrando gli eventi effettivi; registrare corrente e tensione batteria. **Accettazione:** autonomia reale riportata in ore, confronto esplicito con target **48 h**. Nessun `PASS` senza misura fino al cutoff definito e verifica di sicurezza.
 
 ### VT-PWR-002 — Ricarica durante funzionamento
 
-**Precondizioni:** conferma di carica, polarità e corrente compatibile. **Procedura:** misurare alimentazione USB/batteria e temperature con DIM, BRIGHT, varie fasi della carica, portellino aperto e scocca chiusa secondo sicurezza. **Accettazione:** nessuna anomalia elettrica/termica; temperatura entro i limiti dei **datasheet** di cella, PMU, display e materiale. Soglie numeriche da definire sui componenti effettivi, non inventate in anticipo.
+**Precondizioni:** conferma di carica, polarità e corrente compatibile. **Procedura:** misurare alimentazione USB/batteria e temperature con DIM, BRIGHT, varie fasi della carica, portellino aperto e scocca chiusa secondo sicurezza; includere una prova prolungata (almeno 24 h) con USB sempre collegata e batteria carica, perché è un uso previsto (`DEC-008`). **Accettazione:** nessuna anomalia elettrica/termica; temperatura entro i limiti dei **datasheet** di cella, PMU, display e materiale. Soglie numeriche da definire sui componenti effettivi, non inventate in anticipo.
 
 ### VT-FW-001 — Ora offline
 
@@ -50,7 +51,8 @@
 2. Impostare manualmente l'ora tramite flusso approvato (touch o provisioning USB).
 3. Rimuovere USB con batteria collegata; verificare ora e cambio minuto/giorno.
 4. Provare transizioni ora legale/solare Europa/Roma con clock simulato nei test unitari.
-5. Verificare comportamento dopo rimozione di **tutte** le fonti di energia.
+5. Verificare comportamento dopo rimozione di **tutte** le fonti di energia e dopo scarica fino a intervento della protezione: atteso `TIME_NOT_SET` se l'ora è persa (`OPEN-014`).
+6. Misurare la deriva dell'RTC su almeno 7 giorni senza correzioni (nessun NTP in V1).
 
 ### VT-FW-003 — Guasto sensore
 
@@ -67,10 +69,10 @@ Confrontare SHT40 montato nello chassis e sensore di riferimento **co-locato** n
 
 - Formatting ora, date e locale.
 - DST Italia: 02:00 e 03:00 nei cambi previsti, gap/ora ripetuta.
-- FSM DIM/BRIGHT con timeout e tocchi ripetuti.
+- FSM DIM/BRIGHT/NIGHT/NIGHT_PEEK con timeout, tocchi ripetuti e fascia notte a cavallo della mezzanotte.
 - Lettura SHT40: CRC, retry e stale data.
 - Estrazione valore batteria PMU: limiti, incognite, nessuna percentuale fittizia.
-- Fallback Wi-Fi down e timeout NTP.
+- Parser comandi di provisioning USB (ora, data, fascia notte) con input invalidi.
 - Reset NVS, migrazione schema configurazione e ora mai impostata.
 
 ## 5. Strumentazione minima

@@ -19,7 +19,9 @@ Realizzare un orologio da scrivania originale, affettivo e quotidianamente utile
 - Su scrivania, comodino o mensola, in ambiente interno.
 - Funzionamento statico su superficie piana, senza connessione USB permanente.
 - Dopo il tocco/interazione, il quadrante si illumina, poi torna allo stato attenuato.
-- In assenza di rete, l'orologio continua a mostrare ora e misure ambientali tramite RTC e sensore locale.
+- Di notte il display è spento (modalità notte); un tocco permette di leggere l'ora.
+- Ricarica circa ogni 2 giorni, oppure uso con USB collegata sulla scrivania.
+- L'orologio funziona interamente offline (nessun Wi-Fi in V1): ora da RTC, misure ambientali dal sensore locale.
 - Quando la batteria è quasi scarica, si riceve un'indicazione chiara prima dell'eventuale spegnimento controllato.
 
 ## 4. Perimetro funzionale V1 (CONF)
@@ -30,10 +32,12 @@ Realizzare un orologio da scrivania originale, affettivo e quotidianamente utile
 - Umidità relativa in %RH rilevata localmente.
 - Ricarica via USB-C nella parte posteriore.
 - Gestione batteria e schermata a luminosità ibrida.
+- Modalità notte con display spento.
+- Impostazione dell'ora offline (touch o USB).
 
 ## 5. Fuori perimetro V1
 
-- Meteo via Internet, previsioni e servizi cloud.
+- Wi-Fi, sincronizzazione NTP, meteo via Internet, previsioni e servizi cloud.
 - Domotica, notifiche smartphone, contapassi, audio e assistenti vocali.
 - GPS e geolocalizzazione.
 - App companion Bluetooth, OTA, dashboard statistiche e sensore CO₂.
@@ -49,7 +53,7 @@ Queste funzioni **non sono requisiti mascherati**: possono essere considerate in
 | `SC-001` | Il display dev'essere circolare e sostituire il volto della statuetta | CONF |
 | `SC-002` | Lo stile estetico dev'essere poliziotta chibi/stilizzata | CONF |
 | `SC-003` | Funzionamento autonomo a batteria, ricarica USB-C posteriore | CONF |
-| `SC-004` | Display attenuato in standby e temporaneamente più luminoso dopo interazione | CONF |
+| `SC-004` | Display attenuato in standby e temporaneamente più luminoso dopo interazione; spento di notte | CONF |
 | `SC-005` | Scheda elettronica, batteria, connettori e sensore devono essere accessibili senza danneggiare la statuetta | CAND |
 | `SC-006` | Altezza complessiva indicativa 130–160 mm; da rivedere in CAD | CAND |
 | `SC-007` | Utilizzo per interni e non per ambienti bagnati o esposti al sole diretto | CAND |

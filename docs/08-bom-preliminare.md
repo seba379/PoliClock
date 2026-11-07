@@ -13,9 +13,9 @@
 | ID | Q.tà | Candidato / specifica | Stato | Gate di approvazione |
 |---|---:|---|---|---|
 | `BOM-001` | 1 | **Waveshare ESP32-S3-Touch-AMOLED-1.75**, SKU standard **31261** | CAND | Pinout, dimensioni, bring-up, consumi, carica |
-| `BOM-002` | 1 | **SHT40**, breakout I²C, alimentazione/logica compatibili | CAND | 3,3 V, indirizzo, meccanica, errore termico |
+| `BOM-002` | 1 | **SHT40**, breakout I²C 3,3 V, **senza LED di alimentazione** (o rimovibile) | CAND | 3,3 V, indirizzo, meccanica, errore termico |
 | `BOM-003` | 1 | **LiPo 1S protetta**, capacità esplorativa 2.500–3.000 mAh | CAND | Datasheet, limite carica, polarità MX1.25, ingombro, protezioni |
-| `BOM-004` | 1 | **USB-C maschio-femmina da pannello**, corta, con dati USB 2.0 | CAND | Ingombro, trazione, dati flash, compatibilità con porta scheda |
+| `BOM-004` | 1 | **USB-C maschio-femmina da pannello**, corta, con dati USB 2.0 (USB-C confermato, `DEC-011`) | CAND | Ingombro, trazione, dati flash, compatibilità con porta scheda |
 | `BOM-005` | 1 | Cablaggio e connettore SHT40 con fermacavo e isolamento | TBD | Schema, pinout, lunghezza, interferenza |
 | `BOM-006` | 1 set | Gusci/statuetta 3D (PLA prototipo, PETG da valutare) | CAND | CAD e quote reali; prove di stampa |
 | `BOM-007` | 1 set | Viti, supporti, inserti, gommini antiscivolo | TBD | Vano manutenzione, resistenza e sicurezza cella |
@@ -26,7 +26,7 @@
 - SCD41/altro sensore CO₂: più costoso e non richiesto.
 - DS3231 aggiuntivo: il modulo candidato integra già PCF85063.
 - TP4056: non aggiungere un secondo caricabatteria in presenza di AXP2101 senza un progetto elettrico diverso e motivato.
-- Speaker, microfono, GPS, microSD: fuori perimetro.
+- Speaker, microfono, GPS, microSD: fuori perimetro. L'altoparlante 8 Ω incluso con la scheda non va montato.
 - PCB custom: rimandato dopo il primo prototipo riuscito.
 
 ## 4. Fonti prodotto
@@ -39,7 +39,7 @@
 
 - [ ] Confermare la variante **senza GPS e senza custodia**, SKU 31261.
 - [ ] Scaricare schematico e drawing delle dimensioni della revisione corretta.
-- [ ] Localizzare pad I²C disponibili per SHT40 e controllare tensione e pull-up.
+- [ ] Localizzare pad I²C disponibili per SHT40 e controllare tensione e pull-up (schematico 2025-07-28: GPIO14/15, pull-up 2,2 kΩ già presenti; confermare sulla revisione acquistata).
 - [ ] Consultare le caratteristiche di **AXP2101** e lo schema board: ricarica con USB e carico attivo.
 - [ ] Scegliere la LiPo **sul datasheet**, controllando connettore e polarità prima di qualsiasi collegamento.
 - [ ] Valutare dimensioni dell'insieme modulo+batteria e geometria preliminare testa/corpo.

@@ -22,15 +22,16 @@ Attività:
 2. Selezionare LiPo protetta, misurarne ingombri e verificare connettore/polarità.
 3. Collegare e leggere SHT40 senza conflitti sul bus.
 4. Verificare display, touch, RTC e stato batteria PMU.
-5. Misurare i consumi preliminari in DIM/BRIGHT e ricarica USB; registrare picchi e medie.
+5. Misurare i consumi preliminari in DIM/BRIGHT/NIGHT (display spento) e ricarica USB, con periferiche audio/SD disattivate; registrare picchi e medie.
+6. Misurare la temperatura della cella durante la ricarica (TS dell'AXP2101 non collegato alla cella, `OPEN-013`).
 
 **Exit gate:** evidenza di bring-up, letture sensore valide, alimentazione e ricarica sicure; scheda e batteria **approvate o scartate** con motivazione.
 
 ## M2 — Firmware minimo affidabile
 
-**Output:** progetto ESP-IDF versionato, BSP, RTC/setting ora offline, SHT40, UI principale, FSM DIM/BRIGHT, test unitari.
+**Output:** progetto ESP-IDF versionato, BSP, RTC/setting ora offline, SHT40, UI principale, FSM DIM/BRIGHT/NIGHT, pixel shift, test unitari.
 
-**Exit gate:** test `VT-FUN-001`, `VT-FUN-002`, `VT-FW-001`, `VT-FW-003`, `VT-UI-001` superati su hardware reale. Niente dipendenza di boot dal Wi-Fi.
+**Exit gate:** test `VT-FUN-001`, `VT-FUN-002`, `VT-FW-001`, `VT-FW-002`, `VT-FW-003`, `VT-UI-001`, `VT-UI-003` superati su hardware reale. Nessuna radio inizializzata (`DEC-012`).
 
 ## M3 — Ottimizzazione energetica e ricarica
 
@@ -77,7 +78,9 @@ Attività:
 | Batteria incompatibile o carica non sicura | Critico | Datasheet, controllo polarità/limiti e gate safety prima di alimentare |
 | USB-C posteriore scomoda o fragile | Medio | Staffa, strain relief e prova con diversi cavi |
 | RTC non impostabile offline | Medio | Menu touch o provisioning USB nella V1 |
-| Burn-in AMOLED per quadrante statico | Medio | Fondo nero, bassa luminanza, minimo spostamento periodico elementi |
+| Burn-in AMOLED per quadrante statico | Medio | Fondo nero, bassa luminanza, pixel shift obbligatorio, display spento di notte |
+| Ora persa dopo scarica completa (RTC senza tampone) | Medio | `TIME_NOT_SET` chiaro e reimpostazione offline semplice |
+| Temperatura cella non sorvegliata in carica | Alto | Corrente di carica prudente, test termici, cella protetta (`OPEN-013`) |
 
 ## Politica di milestone
 
