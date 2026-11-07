@@ -1,6 +1,6 @@
 # 04 — Specifiche firmware
 
-**Versione:** 0.3 · **Stato:** architettura proposta, codice non ancora implementato · **Data:** 2026-11-07
+**Versione:** 0.4 · **Stato:** architettura proposta, codice non ancora implementato · **Data:** 2026-11-07
 
 ## 1. Tecnologia
 

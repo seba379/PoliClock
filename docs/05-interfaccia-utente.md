@@ -1,6 +1,6 @@
 # 05 — Specifiche interfaccia utente (UI/UX)
 
-**Versione:** 0.3 · **Stato:** wireframe testuale, non design grafico finale · **Data:** 2026-11-07
+**Versione:** 0.4 · **Stato:** wireframe testuale, non design grafico finale · **Data:** 2026-11-07
 
 ## 1. Obiettivo
 

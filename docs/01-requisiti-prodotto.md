@@ -1,6 +1,6 @@
 # 01 — Requisiti di prodotto (PRD)
 
-**Versione:** 0.3 · **Stato:** baseline per prototipo, da approvare · **Data:** 2026-11-07
+**Versione:** 0.4 · **Stato:** baseline per prototipo, da approvare · **Data:** 2026-11-07
 
 ## 1. Convenzioni
 
@@ -45,7 +45,7 @@
 | ID | Priorità | Stato | Requisito / criterio |
 |---|---|---|---|
 | `PR-PWR-001` | MUST | CONF | Alimentazione tramite batteria ricaricabile integrata. |
-| `PR-PWR-002` | MUST | CONF | Presa di ricarica USB-C nella parte posteriore bassa della statuetta, collegata al PCB con prolunga, senza disassemblare (`DEC-011`, `DEC-018`). |
+| `PR-PWR-002` | MUST | CONF | Presa di ricarica USB-C nella parte posteriore bassa della statuetta (sul sedere), utilizzabile senza disassemblare (`DEC-011`, `DEC-018`); connettore sulla scheda o prolunga secondo `DEC-021`. |
 | `PR-PWR-003` | MUST | CAND | Ricarica gestita sul PCB custom da un caricatore idoneo alla cella, con power-path, limiti di corrente e tensione e **cutoff termico tramite NTC della cella** verificati. |
 | `PR-PWR-004` | MUST | CAND | Batteria con adeguata protezione e polarità verificata; cablaggi isolati e protetti da schiacciamento/strappo. |
 | `PR-PWR-005` | MUST | CAND | Funzionamento prolungato con USB collegata (uso previsto, `DEC-008`) consentito solo dopo verifica del circuito reale e test termici. |
@@ -70,11 +70,11 @@
 |---|---|---|---|
 | `PR-REL-001` | MUST | CAND | Dopo power cycle la schermata torna operativa senza procedure manuali non documentate. |
 | `PR-REL-002` | MUST | CONF | Il firmware V1 non dipende da alcuna rete; la radio Wi-Fi/BLE resta disattivata (`DEC-012`). |
-| `PR-REL-003` | MUST | CAND | Firmware aggiornabile via la USB-C posteriore, attraverso la prolunga, senza aprire l'involucro. |
+| `PR-REL-003` | MUST | CAND | Firmware aggiornabile dalla USB-C posteriore senza aprire l'involucro. |
 | `PR-REL-007` | MUST | CONF | Dalla USB-C posteriore un **configuratore da PC** legge stato e versione e imposta ora/data (dall'orologio del PC), fascia notte e luminosità tramite un protocollo documentato e versionato (`DEC-020`). |
 | `PR-REL-004` | MUST | CAND | La misura ambientale non deve essere confusa con la temperatura interna di ESP32 o caricatore. |
 | `PR-REL-005` | SHOULD | CAND | I log seriali non devono mostrare segreti o dati personali. |
-| `PR-REL-006` | MUST | CONF | Elettronica su **PCB custom** (KiCad, JLCPCB) con il minimo indispensabile (`DEC-015`); punti di test per il bring-up. |
+| `PR-REL-006` | MUST | CONF | Elettronica su **PCB custom** (KiCad, JLCPCB) con il minimo indispensabile (`DEC-015`): scheda principale separata dal display, schedina portadisplay collegata via cavo, mini-PCB SHT40 (`DEC-021`); punti di test per il bring-up. |
 
 ## 7. Criteri di rilascio
 

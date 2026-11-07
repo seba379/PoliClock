@@ -1,11 +1,11 @@
 # 03 — Alimentazione, ricarica e budget energetico
 
-**Versione:** 0.3 · **Stato:** progettazione preliminare PCB custom / safety gate aperto · **Data:** 2026-11-07
+**Versione:** 0.4 · **Stato:** progettazione preliminare PCB custom / safety gate aperto · **Data:** 2026-11-07
 
 ## 1. Requisiti confermati e obiettivo
 
 - **CONF:** PoliClock opera senza cavo, alimentato da batteria ricaricabile interna.
-- **CONF:** presa **USB-C** nella **parte posteriore bassa** della statuetta (sul sedere), collegata al PCB con una **prolunga** (`DEC-011`, `DEC-018`).
+- **CONF:** presa **USB-C** nella **parte posteriore bassa** della statuetta (sul sedere) (`DEC-011`, `DEC-018`): connettore saldato sulla scheda principale se questa sta nel busto/base, prolunga se sta nella testa (`DEC-021`, `OPEN-020`).
 - **CONF:** interfaccia sempre visibile in modalità **attenuata**, con breve incremento della luminosità dopo la pressione del pulsante.
 - **CONF:** di notte il display è spento (`DEC-009`, `DEC-013`).
 - **CONF:** ricarica circa ogni 2 giorni accettabile; uso frequente con USB collegata accettabile (`DEC-008`).
@@ -16,7 +16,7 @@
 
 ```mermaid
 flowchart LR
-    USB["Presa USB-C posteriore bassa"] -->|"prolunga dati/power"| IN["USB-C sul PCB"]
+    USB["Foro USB-C sul sedere"] -->|"diretto (A) o prolunga (B)"| IN["USB-C sulla scheda principale"]
     IN --> PROT["Fusibile/PTC + ESD"]
     PROT --> CHG["Caricatore power-path + NTC"]
     CELL["LiPo 1S protetta + NTC"] <-->|"carica / scarica"| CHG
@@ -36,23 +36,24 @@ flowchart LR
 - Capacità iniziale: **2.500–3.000 mAh**, da rivedere dopo le misure di consumo. Con l'IPS spento di notte potrebbe bastare meno: decidere su dati.
 - **Protetta** (circuito di protezione integrato) e con **NTC** se disponibile, di provenienza verificabile, con datasheet e limiti di carica/scarica.
 - Connettore polarizzato scelto **insieme** al PCB: la polarità sul PCB va disegnata sulla polarità reale della cella acquistata, non su una convenzione presunta.
-- Collocata nella **base**: cavi verso la testa attraverso il corpo, con fermacavi e protezione dallo sfregamento.
+- Collocata nella **base**: cavo verso la scheda principale corto se questa sta nel busto/base; fermacavi e protezione dallo sfregamento.
 - La cella non deve essere compressa da viti, supporti o superfici stampate; nessun spigolo vivo nella sua sede.
 
 Con il PCB custom la temperatura della cella è sorvegliata dal caricatore tramite l'NTC (`OPEN-013` risolvibile in progetto). Se la cella non ha NTC, prevedere un termistore fissato alla cella o una corrente di carica molto prudente, e documentare la scelta.
 
-## 4. USB-C, prolunga e ricarica in uso
+## 4. USB-C e ricarica in uso
 
-Una **prolunga USB-C maschio→femmina da pannello**, con linee dati USB 2.0, collega la presa posteriore bassa al connettore USB-C del PCB nella testa. Lunghezza indicativa 15–25 cm, da misurare sul CAD.
+- **Opzione A (preferita)**: scheda principale nel busto/base con il ricettacolo USB-C saldato sul bordo, affacciato al foro sul sedere. Nessuna prolunga; la scheda va fissata saldamente perché assorbe gli sforzi di inserimento.
+- **Opzione B**: scheda nella testa e **prolunga USB-C maschio→femmina da pannello** con linee dati USB 2.0 fino al sedere (indicativamente 15–25 cm).
 
 Criteri di verifica:
 
-1. Inserimento/rimozione del cavo senza trasferire carico meccanico al connettore del PCB.
+1. Inserimento/rimozione del cavo con lo sforzo scaricato sulla scocca (scheda avvitata o staffa della prolunga), non sulle saldature del connettore.
 2. Ricarica da alimentatore USB 5 V affidabile; nessuna dipendenza da USB-PD (resistenze CC 5,1 kΩ sul PCB).
-3. Enumerazione USB e flash firmware funzionanti **attraverso la prolunga**.
+3. Enumerazione USB, flash firmware e configuratore funzionanti dalla presa posteriore (attraverso la prolunga, se presente).
 4. Funzionamento con USB collegata anche per giorni (`DEC-008`), **solo dopo verifica elettrica/termica**.
 5. Nessun surriscaldamento anomalo di cella, caricatore, regolatore, connettori e cablaggi.
-6. Caduta di tensione sulla prolunga compatibile con la corrente di carica scelta.
+6. Con prolunga: caduta di tensione compatibile con la corrente di carica scelta.
 
 ## 5. Calcolo preliminare autonomia
 

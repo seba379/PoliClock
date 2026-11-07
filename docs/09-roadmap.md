@@ -1,10 +1,10 @@
 # 09 — Roadmap di realizzazione
 
-**Versione:** 0.3 · **Stato:** pianificazione per milestone, nessuna data promessa · **Data:** 2026-11-07
+**Versione:** 0.4 · **Stato:** pianificazione per milestone, nessuna data promessa · **Data:** 2026-11-07
 
 ## Premessa
 
-Le milestone sono **gate tecnici**, non stime temporali. Il percorso è: specifiche → prototipo su banco con moduli → PCB custom → firmware → energia → CAD → regalo finito. Un'eventuale richiesta estetica che modifica il vano testa o batteria deve essere valutata prima di stampare i componenti definitivi.
+Le milestone sono **gate tecnici**, non stime temporali. Il percorso è: specifiche → prototipo su banco con moduli e bozza CAD a volumi → PCB custom → firmware → energia → CAD definitivo → regalo finito. Un'eventuale richiesta estetica che modifica il vano testa o batteria deve essere valutata prima di stampare i componenti definitivi.
 
 ## M0 — Baseline documentale
 
@@ -14,23 +14,24 @@ Le milestone sono **gate tecnici**, non stime temporali. Il percorso è: specifi
 
 ## M1 — Prototipo su banco con moduli
 
-**Input:** `PRO-001`…`PRO-006` ([BOM](08-bom-preliminare.md)), LiPo candidata, prolunga USB-C.
+**Input:** `PRO-001`…`PRO-007` ([BOM](08-bom-preliminare.md)), LiPo candidata.
 
 Attività:
 
 1. Scegliere MCU (ESP32-C3 o S3), caricatore, RTC, regolatore e misura batteria sui datasheet.
 2. Montare su breadboard dev board, display GC9A01, caricatore, RTC, SHT40 e pulsante.
-3. Verificare flash e log USB **attraverso la prolunga**.
+3. Verificare flash e log USB; collegare il display con un **cavo di lunghezza reale** e trovare la frequenza SPI stabile (`OPEN-021`).
 4. Firmware di bring-up: display, pulsante, touch del modulo, RTC, SHT40, light-sleep.
-5. Primo protocollo del configuratore e prova di sincronizzazione dell'ora dal PC attraverso la prolunga.
+5. Primo protocollo del configuratore e prova di sincronizzazione dell'ora dal PC.
 6. Misurare i consumi in DIM/BRIGHT/NIGHT e in ricarica (con e senza controller touch attivo); registrare picchi e medie.
 7. Provare carica, power-path e cutoff NTC del caricatore con la cella scelta.
+8. **Bozza a volumi in Blender** con le misure reali di cella, display e ingombro stimato della scheda: decidere la posizione della scheda principale e se serve la prolunga (`OPEN-020`).
 
-**Exit gate:** architettura confermata con misure; componenti del PCB scelti con motivazione; cella approvata o scartata.
+**Exit gate:** architettura confermata con misure; componenti del PCB scelti con motivazione; cella approvata o scartata; posizione della scheda principale decisa.
 
 ## M2 — Progettazione PCB (KiCad)
 
-**Output:** progetto KiCad versionato in `hardware/`: schema, layout del PCB rotondo, mini-PCB SHT40, BOM e file di posizionamento per JLC, checklist di revisione compilata.
+**Output:** progetto KiCad 10 versionato in `hardware/`: schema e layout di scheda principale, schedina portadisplay e mini-PCB SHT40 in un pannello unico, BOM e file di posizionamento per JLC, STEP per il CAD, checklist di revisione compilata. Schema e layout preparati da Claude, rivisti a vista dal proprietario in KiCad.
 
 **Exit gate:** `VT-PCB-001` superato (ERC/DRC puliti, revisione schema, disponibilità LCSC, quote compatibili con la testa); preventivo JLC accettato.
 
@@ -38,7 +39,7 @@ Attività:
 
 **Output:** PCB assemblati, report di bring-up.
 
-**Exit gate:** `VT-PCB-002` superato (alimentazioni, USB, flash, display, pulsante, I²C). Errori bloccanti → revisione PCB documentata prima di proseguire.
+**Exit gate:** `VT-PCB-002` e `VT-PCB-003` superati (alimentazioni, USB, flash, display sul cavo reale, pulsante, I²C). Errori bloccanti → revisione PCB documentata prima di proseguire.
 
 ## M4 — Firmware minimo affidabile
 
@@ -78,7 +79,8 @@ Attività:
 | P0 | Posizionare SHT40 lontano dal calore | Misure termiche |
 | P1 | Posizione del pulsante nella statuetta | Concept CAD |
 | P1 | Stabilire parametri luminosità e timeout | Test leggibilità/consumo |
-| P1 | Staffa USB-C posteriore bassa e percorso prolunga | Quote CAD |
+| P0 | Bozza Blender a volumi e posizione della scheda principale | Misure cella, display, scheda |
+| P1 | Fissaggio scheda/USB-C sul sedere (o staffa prolunga) | Quote CAD |
 | P1 | Test 48 h e valutazione capacità batteria | Firmware energia stabile |
 | P2 | Animazioni/transizioni UI | Dopo autonomia convalidata |
 | P2 | Alternative estetiche (capelli, posa, colori) | Dopo CAD funzionale |
@@ -92,7 +94,8 @@ Attività:
 | Ricarica non sicura (progetto nostro) | Critico | Caricatore con NTC e power-path, prove su banco, gate di sicurezza |
 | Autonomia insufficiente per retroilluminazione | Alto | Misurare DIM su banco in M1; regolare PWM, notte, capacità cella |
 | Pannello display senza documentazione affidabile | Alto | Acquistare solo pannelli con datasheet e pinout FPC |
-| Ingombro PCB+display superiore alla testa desiderata | Alto | Quote reali prima della stampa definitiva |
+| Scheda principale e cella non entrano nel busto | Alto | Bozza CAD in M1; opzione B con scheda nella testa e prolunga |
+| Display instabile sul cavo nel collo | Medio | Frequenza SPI ridotta, masse alternate, prova `VT-PCB-003` |
 | SHT40 riscaldato internamente | Medio/alto | Vano ventilato e test comparativi a ricarica attiva |
 | USB-C posteriore scomoda o fragile | Medio | Staffa, fermacavo e prova con diversi cavi |
 | Impostazione ora scomoda con un solo pulsante | Medio | Provisioning USB come metodo di riserva (`OPEN-015`) |

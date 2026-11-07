@@ -2,7 +2,7 @@
 
 **Orologio da scrivania ricaricabile, integrato nel volto di una poliziotta chibi stampata in 3D.**
 
-> Stato: **concept / specifiche preliminari (v0.3)** · Aggiornamento: 2026-11-07\
+> Stato: **concept / specifiche preliminari (v0.4)** · Aggiornamento: 2026-11-07\
 > Lingua progetto: italiano · Documentazione in Markdown · Hardware non ancora acquistato né validato.
 
 ## Il prodotto
@@ -16,19 +16,21 @@ La modalità scelta è **ibrida**: quadrante normalmente attenuato ma leggibile;
 - Statuetta **poliziotta chibi**, volutamente sproporzionata, da stampare in 3D.
 - Display **rotondo**, montato a filo/in incasso al posto del viso; non esterno o incollato.
 - Schermata V1: **ora, data, temperatura e umidità**; niente funzioni domotiche o statistiche richieste.
-- Funzionamento **a batteria**, con ricarica **USB-C** sulla parte posteriore bassa, collegata al PCB con prolunga.
+- Funzionamento **a batteria**, con ricarica **USB-C** sulla parte posteriore bassa (sul sedere).
 - Schermo **attenuato in condizioni normali**, più luminoso dopo un'interazione.
 - **Di notte il display è spento** (default 23:00–07:00, configurabile).
 - Aspetto con **uniforme blu e cappello**.
 - Ricarica circa **ogni 2 giorni** accettabile, così come l'uso frequente con USB collegata.
 - **Nessun Wi-Fi/NTP nella V1**: l'ora si imposta offline.
-- Elettronica su **PCB custom** (KiCad, prodotto e assemblato da JLCPCB).
+- Elettronica su **PCB custom** (KiCad, prodotto e assemblato da JLCPCB): scheda principale separata dal display, collegata via cavo.
+- Strumenti: **KiCad 10**, **VS Code + ESP-IDF**, **Blender** e CAD a codice (build123d).
 - Display **IPS rotondo 1,28"** (240×240, GC9A01) e interazione con un **pulsante** fisico; **touch predisposto** sul PCB, da attivare eventualmente.
 - Impostazioni (ora, fascia notte) da un **configuratore su PC** collegato via USB.
 
 ## Architettura candidata, NON ancora congelata
 
-- PCB custom rotondo nella testa: modulo **ESP32-C3** (o S3), caricatore con power-path e NTC, regolatore 3,3 V, **RTC esterno con tampone**, USB-C, connettori.
+- **Scheda principale** rettangolare (busto/base preferito, posizione da confermare con il CAD): modulo **ESP32-C3** (o S3), caricatore con power-path e NTC, regolatore 3,3 V, **RTC esterno con tampone**, USB-C, connettori.
+- **Schedina portadisplay** nella testa, collegata con cavo FFC attraverso il collo.
 - Sensore T/RH: **Sensirion SHT40** su mini-PCB, in vano ventilato, collegato con 4 fili.
 - Batteria: **LiPo 1S protetta**, preferibilmente con NTC, 2.500–3.000 mAh da rivedere sui consumi misurati.
 - Prima del PCB: **prototipo su banco** con moduli commerciali per validare consumi, ricarica e firmware.
@@ -63,7 +65,7 @@ PoliClock/
 ├── firmware/              # progetto ESP-IDF da avviare in M1/M4
 ├── hardware/              # progetto KiCad del PCB, BOM e file JLCPCB (M2)
 ├── tools/                 # configuratore da PC via USB (M4)
-└── mechanical/            # CAD, STL/3MF e tavole tecniche
+└── mechanical/            # Blender (chibi), build123d (parti tecniche), STL/3MF
 ```
 
 Le ultime quattro directory sono **previste**, non ancora presenti: non si pubblicano file placeholder che possano essere scambiati per firmware o modelli funzionanti.

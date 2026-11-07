@@ -1,6 +1,6 @@
 # 11 — Fonti, datasheet e riferimenti
 
-**Versione:** 0.3 · **Aggiornato:** 2026-11-07
+**Versione:** 0.4 · **Aggiornato:** 2026-11-07
 
 ## Scheda Waveshare (scartata, `DEC-015`)
 
@@ -21,8 +21,10 @@ Fonti consultate durante la revisione v0.2, mantenute come riferimento storico e
 
 8. [Espressif — ESP-IDF Programming Guide](https://docs.espressif.com/projects/esp-idf/en/stable/esp32c3/) — infrastruttura firmware, driver, NVS, power management (scegliere la variante del chip definitivo).
 9. [Espressif — ESP32-C3](https://www.espressif.com/en/products/socs/esp32-c3) e [ESP32-S3](https://www.espressif.com/en/products/socs/esp32-s3) — datasheet, design guidelines hardware e moduli.
-10. [KiCad — documentazione](https://docs.kicad.org/) — progettazione schema e PCB.
+10. [KiCad — documentazione](https://docs.kicad.org/) — progettazione schema e PCB; `kicad-cli` per ERC/DRC ed esportazioni.
 11. [JLCPCB](https://jlcpcb.com/) — capacità di produzione, regole di assemblaggio e libreria componenti LCSC (verificare al momento dell'ordine).
+12. [Blender — manuale](https://docs.blender.org/manual/en/latest/) — scultura e modellazione della chibi.
+13. [build123d — documentazione](https://build123d.readthedocs.io/) — CAD parametrico in Python per le parti tecniche.
 
 Da aggiungere al momento della scelta: datasheet di caricatore, regolatore, RTC, misura batteria, pannello GC9A01 acquistato e cella LiPo.
 

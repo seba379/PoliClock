@@ -1,6 +1,6 @@
 # 10 — Decision log e questioni aperte
 
-**Versione:** 0.3 · **Data:** 2026-11-07
+**Versione:** 0.4 · **Data:** 2026-11-07
 
 ## 1. Decisioni confermate (CONF)
 
@@ -23,8 +23,10 @@
 | `DEC-015` | 2026-11-07 | **PCB custom** progettato in KiCad e prodotto/assemblato da JLCPCB, con il minimo indispensabile; scartata la scheda Waveshare (ex `CAND-001`) | Costo della scheda pronta giudicato eccessivo dal proprietario, consapevole che per un solo esemplare il custom non costa necessariamente meno. Aggiunge le milestone di prototipo su banco, progettazione e bring-up PCB. Decisione "per ora": rivedibile con il piano B |
 | `DEC-016` | 2026-11-07 | Display **IPS rotondo 1,28"**, 240×240, driver GC9A01 | Economico e documentato; nessun burn-in; retroilluminazione da gestire per i consumi |
 | `DEC-017` | 2026-11-07 | Interazione principale con **pulsante** fisico; posizione da definire | Più semplice ed economico; posizione in `OPEN-017`. Touch predisposto in `DEC-019` |
-| `DEC-018` | 2026-11-07 | Presa USB-C collegata con **prolunga**, nella **parte posteriore bassa** della statuetta (sul sedere, per ironia) | Vincola percorso prolunga dalla testa alla base, staffa e stabilità con cavo inserito |
+| `DEC-018` | 2026-11-07 | Presa USB-C nella **parte posteriore bassa** della statuetta (sul sedere, per ironia); collegamento al PCB aggiornato in `DEC-021` | Vincola foro, fissaggio e stabilità con cavo inserito |
 | `DEC-019` | 2026-11-07 | **Predisposizione touch** sul PCB (connettore/footprint, GPIO INT e RST riservati, componenti non montati); pulsante sempre presente; pannello scelto tra modelli disponibili con e senza touch a parità di ingombro | Il touch si potrà attivare senza rifare il PCB; decisione di montarlo dopo la prova sul prototipo M1 con modulo touch (`OPEN-018`) |
+| `DEC-021` | 2026-11-07 | **Scheda principale rettangolare separata dal display**, collegata a una **schedina portadisplay** nella testa con cavo (FFC o JST-SH) attraverso il collo; SHT40 su mini-PCB; tutte nello stesso pannello JLC. Posizione della scheda principale decisa con la bozza CAD (`OPEN-020`): preferita nel busto/base con **USB-C saldata sulla scheda** affacciata al sedere (niente prolunga); prolunga solo se la scheda va nella testa | Layout più semplice e sicuro, schema e PCB realizzabili da Claude con revisione visiva del proprietario; testa libera dai vincoli del PCB; revisioni più economiche |
+| `DEC-022` | 2026-11-07 | Strumenti: **KiCad 10** (schema, PCB, Gerber; automazione con `kicad-cli`), **VS Code + ESP-IDF** (v6.x installate, versione da fissare al bring-up), **Blender** per la forma della chibi, **CAD a codice** (build123d) per le parti tecniche interne | Strumenti gratuiti e automatizzabili da riga di comando; scultura artistica a mano in Blender |
 | `DEC-020` | 2026-11-07 | **Configuratore da PC via USB** come metodo principale per impostare ora, data e fascia notte; menu con il pulsante come riserva | La USB nativa dell'MCU espone una porta seriale; protocollo di comandi documentato (`CAND-017`); configuratore web con Web Serial (`CAND-018`) |
 
 Le date sopra sono la data della formalizzazione nel documento delle scelte emerse nella conversazione, non un registro notarile degli eventi.
@@ -36,7 +38,7 @@ Le date sopra sono la data della formalizzazione nel documento delle scelte emer
 | `CAND-001` | Waveshare ESP32-S3-Touch-AMOLED-1.75 | **Scartata** (`DEC-015`) | — |
 | `CAND-002` | SHT40 su mini-PCB dedicato senza LED, nello stesso pannello JLC | Da validare | Bus, posizione e precisione in scocca |
 | `CAND-003` | LiPo protetta 1S da 2.500–3.000 mAh, preferibilmente con NTC | Da validare | Limiti di carica, connettore, ingombro, consumi misurati |
-| `CAND-004` | Prolunga USB-C da pannello con dati USB 2.0 | Confermata come soluzione (`DEC-018`); modello da scegliere | Lunghezza, fissaggio, flash attraverso la prolunga |
+| `CAND-004` | Prolunga USB-C da pannello con dati USB 2.0 | Solo se la scheda principale va nella testa (opzione B, `DEC-021`) | Lunghezza, fissaggio, flash attraverso la prolunga |
 | `CAND-005` | ESP-IDF con moduli BSP/servizi/UI separati | Proposto | Bring-up ed ergonomia del codice |
 | `CAND-006` | 20 s di luminosità BRIGHT dopo pressione del pulsante | Proposto | Test usabilità/consumi |
 | `CAND-007` | Target 48 h autonomia | Obiettivo, NON prestazione | Misure complete su batteria reale |
@@ -50,13 +52,16 @@ Le date sopra sono la data della formalizzazione nel documento delle scelte emer
 | `CAND-015` | Regolatore 3,3 V: LDO a bassa Iq oppure buck-boost | Proposto | Consumo a riposo, picchi MCU, sfruttamento cella |
 | `CAND-016` | Misura batteria: partitore commutato su ADC oppure fuel gauge I²C | Proposto | Precisione richiesta vs costo/consumo |
 | `CAND-017` | Protocollo di configurazione testuale a righe sulla porta seriale USB, versionato (vedi [firmware](04-specifiche-firmware.md) §6.1) | Proposto | Prototipo M1 e test `VT-FW-007` |
+| `CAND-019` | Posizione scheda principale: **A** busto/base con USB-C sulla scheda (preferita) o **B** testa con prolunga | Proposto | Bozza Blender con volumi reali di cella, scheda, display (`OPEN-020`) |
+| `CAND-020` | Cavo display: **FFC passo 0,5 mm** con connettori ZIF (preferito) o cavetto JST-SH; SPI 10–20 MHz | Proposto | Prova su banco con cavo di lunghezza reale (M1) |
+| `CAND-021` | CAD a codice con **build123d** (alternativa CadQuery) | Proposto | Prima parte tecnica modellata ed esportata in STEP/STL |
 | `CAND-018` | Configuratore come **pagina web statica** con Web Serial (Chrome/Edge desktop), nessuna installazione; alternativa script Python | Proposto | Prova su Windows con la dev board; compatibilità browser |
 
 ## 3. Questioni aperte con priorità
 
 | ID | Priorità | Questione | Evidenza/decisione necessaria |
 |---|---|---|---|
-| `OPEN-001` | P0 | PCB rotondo + display entrano nella testa desiderata? | Quote del pannello e del PCB, CAD |
+| `OPEN-001` | P0 | Display + portadisplay entrano nella testa desiderata? | Quote del pannello e della schedina, CAD |
 | `OPEN-002` | P1 | Connettore e cavo per SHT40 remoto? | Scelta connettore, lunghezza, percorso nel corpo |
 | `OPEN-003` | P0 | Quale LiPo specifica, con quale connettore/polarità e NTC? | Datasheet, misure, test di sicurezza |
 | `OPEN-004` | P0 | Quanta corrente consuma la modalità DIM con retroilluminazione bassa? | Misura su banco (M1) |
@@ -75,6 +80,8 @@ Le date sopra sono la data della formalizzazione nel documento delle scelte emer
 | `OPEN-017` | P1 | Dove posizionare il pulsante nella statuetta? | Proposte estetiche/ergonomiche e CAD |
 | `OPEN-018` | P1 | Montare il touch nella V1? | Prova sul prototipo M1: usabilità, consumo del controller in sleep, interazione con la cornice stampata |
 | `OPEN-019` | P1 | Quali GPIO e quale connettore per il touch? | Datasheet del pannello scelto (pinout FPC display e touch) e pin liberi dell'MCU |
+| `OPEN-020` | P0 | Dove va la scheda principale (busto/base o testa)? | Bozza a volumi in Blender con cella, scheda, display e passaggio cavi; decide anche se serve la prolunga USB |
+| `OPEN-021` | P1 | Il SPI del display è stabile sul cavo reale? | Prova M1 con cavo di lunghezza reale e frequenza scelta |
 
 ## 4. Come si chiude una decisione
 

@@ -1,6 +1,6 @@
 # 07 — Piano di verifica e validazione (V&V)
 
-**Versione:** 0.3 · **Stato:** pianificato, nessun test eseguito · **Data:** 2026-11-07
+**Versione:** 0.4 · **Stato:** pianificato, nessun test eseguito · **Data:** 2026-11-07
 
 ## 1. Principi
 
@@ -24,9 +24,9 @@
 | `VT-FW-002` | PR-REL-002 | Firmware | Build release senza inizializzazione radio; nessuna dipendenza di rete al boot o a regime (PR-FUN-010 escluso, `DEC-012`) |
 | `VT-FW-003` | PR-FUN-012, PR-REL-004, PR-UI-006 | Firmware | Distacco SHT40/CRC errato → dato invalidato e segnalazione, niente valore stale |
 | `VT-FW-004` | PR-REL-001 | Sistema | Riavvio ripristina servizio e configurazione, senza fault persistenti |
-| `VT-FW-005` | PR-REL-003, PR-REL-005 | Firmware | Flash e log via USB-C posteriore attraverso la prolunga, log privi di segreti |
+| `VT-FW-005` | PR-REL-003, PR-REL-005 | Firmware | Flash e log dalla USB-C posteriore (anche attraverso la prolunga, se presente), log privi di segreti |
 | `VT-FW-006` | PR-FUN-008, PR-UI-007 | Sistema | Impostazione di ora, data e fascia notte con il solo pulsante (riserva) |
-| `VT-FW-007` | PR-FUN-008, PR-REL-007 | Sistema | Configuratore da PC attraverso la prolunga: connessione, `HELLO`, sincronizzazione dell'ora dal PC (scarto < 2 s), fascia notte e luminosità salvate e mantenute dopo riavvio; comandi invalidi rifiutati |
+| `VT-FW-007` | PR-FUN-008, PR-REL-007 | Sistema | Configuratore da PC dalla USB-C posteriore: connessione, `HELLO`, sincronizzazione dell'ora dal PC (scarto < 2 s), fascia notte e luminosità salvate e mantenute dopo riavvio; comandi invalidi rifiutati |
 | `VT-UI-004` | PR-UI-008 | Progetto + sistema | Footprint/connettore touch e GPIO INT/RST presenti sul PCB; prova del modulo touch sul prototipo M1 (evento -> BRIGHT, consumo in sleep misurato) |
 | `VT-PWR-001` | PR-PWR-003, PR-PWR-004 | Elettrico | Protezioni, polarità, cella/caricatore compatibili e verificati a schema e banco; corrente di carica misurata; **cutoff NTC** provato scaldando/raffreddando la sonda |
 | `VT-PWR-002` | PR-PWR-005 | Elettrico/termico | Uso durante ricarica senza anomalie di tensione, corrente e temperatura |
@@ -36,7 +36,8 @@
 | `VT-MEC-002` | PR-MEC-002, PR-MEC-006 | Meccanico | Apertura sportello/estrazione componenti senza danno |
 | `VT-MEC-003` | PR-MEC-003 | Meccanico | Stabilità su piano, pressione del pulsante e cavo USB inserito sul sedere |
 | `VT-MEC-004` | PR-MEC-004, PR-MEC-005 | Meccanico/termico | SHT40 ventilato, batteria fissata e isolata, nessuna interferenza termica anomala |
-| `VT-PCB-001` | PR-REL-006 | Progetto | ERC/DRC puliti, checklist di revisione schema/layout, disponibilità LCSC, quote PCB compatibili con la testa |
+| `VT-PCB-001` | PR-REL-006 | Progetto | ERC/DRC puliti, checklist di revisione schema/layout, revisione visiva del proprietario in KiCad, disponibilità LCSC, sagome e connettori compatibili con il CAD |
+| `VT-PCB-003` | PR-REL-006, PR-UI-001 | Elettrico | Display stabile sul cavo reale nel collo: nessun artefatto per almeno 24 h di funzionamento alla frequenza SPI scelta, anche con ricarica attiva |
 | `VT-PCB-002` | PR-REL-006, PR-PWR-003 | Elettrico | Bring-up: alimentazioni con limitazione di corrente, assenza di cortocircuiti, 3,3 V corretta, enumerazione USB, flash, display, pulsante, scan I²C |
 | `VT-VAL-001` | Visione prodotto, PR-UI-002 | Utente | Aspetto chibi coerente, leggibilità percepita e comodità d'uso approvate |
 
