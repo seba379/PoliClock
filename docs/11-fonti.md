@@ -33,7 +33,7 @@ Fonti consultate durante la revisione v0.2, mantenute come riferimento storico e
 16. [STMicroelectronics — USBLC6-2 datasheet](https://www.st.com/resource/en/datasheet/usblc6-2.pdf) — pinout SOT23-6 (I/O1 pin 1/6, I/O2 pin 3/4, GND 2, VBUS 5) e layout consigliato.
 17. [Advanced Monolithic Systems — AMS1117 datasheet](http://www.advanced-monolithic.com/pdf/ds1117.pdf) — pinout SOT-223 (1 GND, 2 VOUT, 3 VIN), dropout, caratterizzazione con 22 µF al tantalio.
 18. [AOS — AO3400A datasheet](https://www.aosmd.com/res/datasheets/AO3400A.pdf) — VGS(th) 0,65–1,45 V.
-19. [XKB — TS-1187A tact switch](https://www.lcsc.com/datasheet/C318884.pdf) — contatti A–B e C–D collegati.
+19. [XKB — TS-1187A tact switch](https://www.lcsc.com/datasheet/C318884.pdf) — contatti A–B e C–D collegati (non più usato dopo `DEC-029` e `DEC-032`).
 20. Pagine datasheet LCSC: [Korean Hroparts — TYPE-C-31-M-12](https://www.lcsc.com/datasheet/C165948.pdf), [JUSHUO — AFC01-S16FCA-00](https://www.lcsc.com/datasheet/C262665.pdf) / [AFC01-S18FCA-00](https://www.lcsc.com/datasheet/C262666.pdf), [JST — serie SH (SM04B/SM02B-SRSS-TB)](https://www.lcsc.com/datasheet/C160404.pdf), [BHFUSE — BSMD0805-050-12V](https://www.lcsc.com/datasheet/C2977522.pdf) — disegni meccanici da confrontare con i footprint nel layout.
 21. [Adafruit — DS3231 Precision RTC Breakout (guida PDF)](https://cdn-learn.adafruit.com/downloads/pdf/adafruit-ds3231-precision-rtc-breakout.pdf) — versione STEMMA QT (prodotto 5188): Vin 2,3–5,5 V, pull-up 10 kΩ su SDA/SCL, pila CR1220, LED ON disattivabile con ponticello, indirizzo 0x68.
 22. [SparkFun — Qwiic Connect System](https://www.sparkfun.com/qwiic) — connettore JST-SH 4 poli: 1 GND, 2 3,3 V, 3 SDA, 4 SCL (compatibile STEMMA QT).

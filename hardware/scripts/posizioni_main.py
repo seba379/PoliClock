@@ -8,7 +8,7 @@ Disposizione (vista dall'alto):
 I componenti non elencati sono piazzati automaticamente vicino ai pin collegati.
 """
 import os
-W, H = (float(v) for v in os.environ.get("PCB_WH", "35,27").split(","))
+W, H = (float(v) for v in os.environ.get("PCB_WH", "35,26").split(","))
 
 XM = W - 5.7          # centro modulo: il bordo destro coincide con l'inizio dell'antenna
 YM = 8.4
@@ -21,8 +21,7 @@ PLACE = {
     "J3": (3.15, 4.3, 270, "F"),        # JST-SH 4P SHT40, apertura a sinistra
     "J4": (3.15, 11.3, 270, "F"),       # JST-SH 4P RTC
     "J5": (3.15, 17.6, 270, "F"),       # JST-SH 2P pulsante
-    "SW3": (3.9, H - 3.0, 0, "F"),      # tasto USER su scheda, sotto il connettore del pulsante
-    "U2": (11.55, H - 4.55, 90, "F"),     # LDO SOT-223 vicino all'ingresso 5 V
+    "U2": (float(os.environ.get("LDO_X", "11.55")), H - 4.55, 90, "F"),     # LDO SOT-223 vicino all'ingresso 5 V
 }
 
 HOLES = [(XM - 11.6, H - 2.6), (W - 2.5, H - 2.6)]    # M2, ai lati della USB-C per scaricare lo sforzo del cavo

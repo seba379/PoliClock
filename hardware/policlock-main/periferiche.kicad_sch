@@ -952,272 +952,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "PoliClock:TS-1187A-B-A-B"
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "SW"
-				(at 0 7.62 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "TS-1187A-B-A-B"
-				(at 0 -10.16 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" "PoliClock:SW-SMD_4P-L5.1-W5.1-P3.70-LS6.5-TL_H1.5"
-				(at 0 -12.7 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" "https://lcsc.com/product-detail/Tactile-Switches_XKB-Enterprise-TS-1187-B-A-A_C318884.html"
-				(at 0 -15.24 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Manufacturer" "XKB Connection(中国星坤)"
-				(at 0 -17.78 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "MPN" "TS-1187A-B-A-B"
-				(at 0 -20.32 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "LCSC" "C318884"
-				(at 0 -22.86 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "Tactile Switches"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "TS-1187A-B-A-B_0_1"
-				(polyline
-					(pts
-						(xy -2.54 2.54)
-						(xy 2.54 2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -2.54 -5.08)
-						(xy 2.54 -5.08)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -0.51 0.76)
-						(xy -1.27 -2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 0.76)
-						(xy 0 2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 0 0.51)
-					(radius 0.32)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 0 -2.79)
-					(radius 0.32)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 -3.3)
-						(xy 0 -5.08)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(pin passive line
-					(at -5.08 2.54 0)
-					(length 2.54)
-					(name "A"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 5.08 2.54 180)
-					(length 2.54)
-					(name "B"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -5.08 -5.08 0)
-					(length 2.54)
-					(name "C"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 5.08 -5.08 180)
-					(length 2.54)
-					(name "D"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "Device:C"
 			(pin_numbers
 				(hide yes)
@@ -2940,304 +2674,6 @@
 		(uuid "13aa55d2-6012-5c56-bd8a-9b0a639dd9fd")
 	)
 	(symbol
-		(lib_id "PoliClock:TS-1187A-B-A-B")
-		(at 119.38 160.02 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "ea75e877-b3de-5d20-97e1-f0cbd91fb5e3")
-		(property "Reference" "SW3"
-			(at 119.38 152.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "USER"
-			(at 119.38 170.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "PoliClock:SW-SMD_4P-L5.1-W5.1-P3.70-LS6.5-TL_H1.5"
-			(at 119.38 172.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C318884.pdf"
-			(at 119.38 175.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 119.38 160.02 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C318884"
-			(at 119.38 182.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "dfbc9ceb-0df5-56ef-bd9c-5d205c87d088")
-		)
-		(pin "2"
-			(uuid "91b9324c-3b93-5e28-84c1-cc81444dee3d")
-		)
-		(pin "3"
-			(uuid "2c888fcb-a6f4-5838-af84-06ab8996f0a9")
-		)
-		(pin "4"
-			(uuid "53a56458-4334-5cec-8734-f9e421665197")
-		)
-		(instances
-			(project "policlock-main"
-				(path "/8f25dc1f-4709-513e-82c3-d067157683da/30c4f62e-a999-52bd-abab-f36f61d332ff"
-					(reference "SW3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 114.3 157.48)
-			(xy 106.68 157.48)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5071e5d9-f7c6-5812-ac32-664a32b1779d")
-	)
-	(global_label "BTN_USER"
-		(shape bidirectional)
-		(at 106.68 157.48 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "9ea5f2b1-c3a7-5d3f-bf3a-797d3d2d089e")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 106.68 157.48 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 124.46 157.48)
-			(xy 132.08 157.48)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8a62bc38-2e92-5404-85a6-bc54edda51ee")
-	)
-	(global_label "BTN_USER"
-		(shape bidirectional)
-		(at 132.08 157.48 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "625716a2-6679-5594-8dcf-ac66ce2847be")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 132.08 157.48 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 114.3 165.1)
-			(xy 106.68 165.1)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d4da1bcc-6d84-548d-8e46-4fa77790b674")
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 106.68 165.1 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "ff1b4fbc-ffbd-5574-add4-acb1551ae299")
-		(property "Reference" "#PWR069"
-			(at 100.33 165.1 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 102.87 165.1 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 106.68 165.1 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 106.68 165.1 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 106.68 165.1 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "86e14193-28ae-5899-ace0-51136ff05a6b")
-		)
-		(instances
-			(project "policlock-main"
-				(path "/8f25dc1f-4709-513e-82c3-d067157683da/30c4f62e-a999-52bd-abab-f36f61d332ff"
-					(reference "#PWR069")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 124.46 165.1)
-			(xy 132.08 165.1)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b53c2f04-f27b-57f3-ba0f-4fe3f29232a1")
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 132.08 165.1 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "a11fe3bd-1c4c-5651-9a75-f18ac344aeae")
-		(property "Reference" "#PWR070"
-			(at 138.43 165.1 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 135.89 165.1 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 132.08 165.1 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 132.08 165.1 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 132.08 165.1 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "94acd5d9-4285-5ac2-9bcf-cdfc88b3492d")
-		)
-		(instances
-			(project "policlock-main"
-				(path "/8f25dc1f-4709-513e-82c3-d067157683da/30c4f62e-a999-52bd-abab-f36f61d332ff"
-					(reference "#PWR070")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:R")
 		(at 160.02 149.86 0)
 		(unit 1)
@@ -3245,7 +2681,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "6c9e2eae-9db0-5d8f-a2be-4e11b5160a33")
+		(uuid "845f6607-b53c-5898-8246-aac1682ed788")
 		(property "Reference" "R22"
 			(at 162.56 148.59 0)
 			(effects
@@ -3301,10 +2737,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "c672c335-7968-526e-b078-b08837ea3d9f")
+			(uuid "dfbc9ceb-0df5-56ef-bd9c-5d205c87d088")
 		)
 		(pin "2"
-			(uuid "d6c12d11-fecb-52fe-a376-bdffb77e3c01")
+			(uuid "91b9324c-3b93-5e28-84c1-cc81444dee3d")
 		)
 		(instances
 			(project "policlock-main"
@@ -3324,7 +2760,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "958e75cd-7d23-50ed-bdca-4b68ae6238bb")
+		(uuid "e66ed778-41a1-5945-9e94-39a6274ec1e8")
 	)
 	(symbol
 		(lib_id "power:+3V3")
@@ -3334,8 +2770,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "68c7e9df-6fad-59fb-a4a2-7820f5c37abc")
-		(property "Reference" "#PWR071"
+		(uuid "18a54f22-30e1-5a0e-941d-74f8ebad23dd")
+		(property "Reference" "#PWR069"
 			(at 160.02 147.32 0)
 			(effects
 				(font
@@ -3380,12 +2816,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "d85914d7-6bf7-5171-9c7c-c57c3a99e6f0")
+			(uuid "3f8c6929-6d89-5fce-a347-a063cae974de")
 		)
 		(instances
 			(project "policlock-main"
 				(path "/8f25dc1f-4709-513e-82c3-d067157683da/30c4f62e-a999-52bd-abab-f36f61d332ff"
-					(reference "#PWR071")
+					(reference "#PWR069")
 					(unit 1)
 				)
 			)
@@ -3400,7 +2836,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "4529b485-d2d7-53ae-907e-1c7f745825b3")
+		(uuid "2601dd21-e8bf-5d0c-81a1-a853a59a9f3f")
 	)
 	(global_label "BTN_USER"
 		(shape bidirectional)
@@ -3412,7 +2848,7 @@
 			)
 			(justify right)
 		)
-		(uuid "d9292d94-a077-52d5-adf5-5effac4eec3d")
+		(uuid "e3445786-1047-5e32-ab5a-f4e0409aa6ac")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 160.02 156.21 0)
 			(effects
@@ -3431,7 +2867,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "07634461-d8f8-51a4-8d26-7a828fdda05c")
+		(uuid "7c117718-ee4f-5fdc-9740-6486191b8016")
 		(property "Reference" "C8"
 			(at 177.8 173.99 0)
 			(effects
@@ -3487,10 +2923,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "bb89e1e9-8606-552f-8d50-da4b6d0f5a52")
+			(uuid "6d62f4df-cdf2-5cdf-824a-913a910e9ed2")
 		)
 		(pin "2"
-			(uuid "50365e7b-75eb-56ef-b89f-991b57ffa774")
+			(uuid "42ab5ccf-026e-59ce-b3aa-3c527a96d947")
 		)
 		(instances
 			(project "policlock-main"
@@ -3510,7 +2946,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "41726b97-567a-5006-ab59-8580ae2e6c12")
+		(uuid "d940a811-19b0-52d7-b399-074f9e1a247e")
 	)
 	(global_label "BTN_USER"
 		(shape bidirectional)
@@ -3522,7 +2958,7 @@
 			)
 			(justify left)
 		)
-		(uuid "b0a41231-5dda-5682-a844-109abf359f39")
+		(uuid "01225d44-5820-5c38-ab86-6ad0a3983c38")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 175.26 168.91 0)
 			(effects
@@ -3542,7 +2978,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "8e5b0533-f2f4-5718-8e2a-dcf840c9bdb6")
+		(uuid "755f1313-1014-526e-a093-84ba0fff646d")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -3552,8 +2988,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "9f28d77d-edcd-5cf2-a786-5b205f316ddb")
-		(property "Reference" "#PWR072"
+		(uuid "efdbaca2-476f-5b79-836f-f49bb0b6f5c4")
+		(property "Reference" "#PWR070"
 			(at 175.26 187.96 0)
 			(effects
 				(font
@@ -3598,18 +3034,18 @@
 			)
 		)
 		(pin "1"
-			(uuid "8605d535-2e6c-5f29-87af-90960847d63b")
+			(uuid "15079a92-0d08-53ec-8f94-8b72f660886c")
 		)
 		(instances
 			(project "policlock-main"
 				(path "/8f25dc1f-4709-513e-82c3-d067157683da/30c4f62e-a999-52bd-abab-f36f61d332ff"
-					(reference "#PWR072")
+					(reference "#PWR070")
 					(unit 1)
 				)
 			)
 		)
 	)
-	(text "IO3: risveglio da deep-sleep possibile (GPIO0-5).\nSW3 su scheda in parallelo al connettore J5."
+	(text "IO3: risveglio da deep-sleep possibile (GPIO0-5).\nSolo pulsante remoto su J5 (DEC-032): nessun tasto USER su scheda."
 		(exclude_from_sim no)
 		(at 25.4 185.42 0)
 		(effects
@@ -3618,7 +3054,7 @@
 			)
 			(justify left top)
 		)
-		(uuid "5f4247ae-9cbe-57ee-af1a-8584bc6845d7")
+		(uuid "a87ae5ce-c709-5637-84bb-6a2c2c43639e")
 	)
 	(embedded_fonts no)
 )

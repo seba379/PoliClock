@@ -97,7 +97,7 @@ root.text("""Blocchi (vedi docs/02-architettura-hardware.md e docs/12-selezione-
  - Display: connettore FFC 16 poli 0,5 mm verso la schedina portadisplay, driver retroilluminazione PWM,
    predisposizione touch con resistenze 0 ohm NON montate (DEC-019).
  - Periferiche: pull-up I2C, connettori JST-SH 4 poli tipo Qwiic per SHT40 (J3) e modulo RTC DS3231 (J4),
-   pulsante utente su connettore (J5) e tasto su scheda (SW3).
+   pulsante utente remoto su connettore (J5).
 
 Assegnazione GPIO (ESP32-C3-MINI-1):
  IO0 TP_INT | IO1 TP_RST | IO2 I2C_SDA | IO3 BTN_USER | IO4 LCD_DC | IO5 LCD_RST | IO6 LCD_SCLK
@@ -294,15 +294,9 @@ s.conn(L, j5, "1", "BTN_USER", "global", length=5.08)
 s.conn(L, j5, "2", "GND", length=7.62)
 s.nc(j5, "3")
 s.nc(j5, "4")
-sw3 = s.add(L, "PoliClock:TS-1187A-B-A-B", "SW3", "USER", 120, 160, lcsc="C318884",
-            ds="https://www.lcsc.com/datasheet/C318884.pdf")
-s.conn(L, sw3, "1", "BTN_USER", "global")
-s.conn(L, sw3, "2", "BTN_USER", "global")
-s.conn(L, sw3, "3", "GND")
-s.conn(L, sw3, "4", "GND")
 R(s, "R22", "10k", 160, 150, "+3V3", "BTN_USER", kind2="global", note="Pull-up pulsante (attivo basso)")
 C(s, "C8", "100nF", 175, 175, "BTN_USER", "GND", kind1="global")
-s.text("IO3: risveglio da deep-sleep possibile (GPIO0-5).\nSW3 su scheda in parallelo al connettore J5.", 25, 185)
+s.text("IO3: risveglio da deep-sleep possibile (GPIO0-5).\nSolo pulsante remoto su J5 (DEC-032): nessun tasto USER su scheda.", 25, 185)
 
 # ----------------------------------------------------------------- write main
 os.makedirs(D, exist_ok=True)

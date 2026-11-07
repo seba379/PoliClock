@@ -2,7 +2,7 @@
 	(version "E")
 	(design
 		(source "C:\\Users\\Utente\\Desktop\\Progetti\\PoliClock\\PoliClock\\.claude\\worktrees\\hardware-schematic-4ff868\\hardware\\policlock-main\\policlock-main.kicad_sch")
-		(date "2026-11-07T16:57:37")
+		(date "2026-11-07T19:30:33")
 		(tool "Eeschema 10.0.6")
 		(sheet
 			(number "1")
@@ -2950,7 +2950,7 @@
 				(names "/Periferiche I2C e pulsante/")
 				(tstamps "/30c4f62e-a999-52bd-abab-f36f61d332ff/")
 			)
-			(tstamps "07634461-d8f8-51a4-8d26-7a828fdda05c")
+			(tstamps "7c117718-ee4f-5fdc-9740-6486191b8016")
 			(units
 				(unit
 					(name "A")
@@ -3388,7 +3388,7 @@
 				(names "/Periferiche I2C e pulsante/")
 				(tstamps "/30c4f62e-a999-52bd-abab-f36f61d332ff/")
 			)
-			(tstamps "6c9e2eae-9db0-5d8f-a2be-4e11b5160a33")
+			(tstamps "845f6607-b53c-5898-8246-aac1682ed788")
 			(units
 				(unit
 					(name "A")
@@ -3398,68 +3398,6 @@
 						)
 						(pin
 							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "SW3")
-			(value "USER")
-			(footprint "PoliClock:SW-SMD_4P-L5.1-W5.1-P3.70-LS6.5-TL_H1.5")
-			(datasheet "https://www.lcsc.com/datasheet/C318884.pdf")
-			(fields
-				(field
-					(name "LCSC") "C318884")
-				(field
-					(name "Footprint") "PoliClock:SW-SMD_4P-L5.1-W5.1-P3.70-LS6.5-TL_H1.5")
-				(field
-					(name "Datasheet") "https://www.lcsc.com/datasheet/C318884.pdf")
-				(field
-					(name "Description")
-				)
-			)
-			(libsource
-				(lib "PoliClock")
-				(part "TS-1187A-B-A-B")
-				(description "")
-			)
-			(property
-				(name "LCSC")
-				(value "C318884")
-			)
-			(property
-				(name "Sheetname")
-				(value "Periferiche I2C e pulsante")
-			)
-			(property
-				(name "Sheetfile")
-				(value "periferiche.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "Tactile Switches")
-			)
-			(sheetpath
-				(names "/Periferiche I2C e pulsante/")
-				(tstamps "/30c4f62e-a999-52bd-abab-f36f61d332ff/")
-			)
-			(tstamps "ea75e877-b3de-5d20-97e1-f0cbd91fb5e3")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "3")
-						)
-						(pin
-							(num "2")
-						)
-						(pin
-							(num "4")
 						)
 					)
 				)
@@ -4271,52 +4209,6 @@
 		)
 		(libpart
 			(lib "PoliClock")
-			(part "TS-1187A-B-A-B")
-			(docs "https://lcsc.com/product-detail/Tactile-Switches_XKB-Enterprise-TS-1187-B-A-A_C318884.html")
-			(fields
-				(field
-					(name "Reference") "SW")
-				(field
-					(name "Value") "TS-1187A-B-A-B")
-				(field
-					(name "Footprint") "PoliClock:SW-SMD_4P-L5.1-W5.1-P3.70-LS6.5-TL_H1.5")
-				(field
-					(name "Datasheet") "https://lcsc.com/product-detail/Tactile-Switches_XKB-Enterprise-TS-1187-B-A-A_C318884.html")
-				(field
-					(name "Description")
-				)
-				(field
-					(name "Manufacturer") "XKB Connection(中国星坤)")
-				(field
-					(name "MPN") "TS-1187A-B-A-B")
-				(field
-					(name "LCSC") "C318884")
-			)
-			(pins
-				(pin
-					(num "1")
-					(name "A")
-					(type "passive")
-				)
-				(pin
-					(num "2")
-					(name "B")
-					(type "passive")
-				)
-				(pin
-					(num "3")
-					(name "C")
-					(type "passive")
-				)
-				(pin
-					(num "4")
-					(name "D")
-					(type "passive")
-				)
-			)
-		)
-		(libpart
-			(lib "PoliClock")
 			(part "TYPE-C-31-M-12")
 			(docs "https://lcsc.com/product-detail/USB-Type-C_Korean-Hroparts-Elec-TYPE-C-31-M-12_C165948.html")
 			(fields
@@ -5078,18 +4970,6 @@
 				(pintype "passive")
 			)
 			(node
-				(ref "SW3")
-				(pin "1")
-				(pinfunction "A_1")
-				(pintype "passive")
-			)
-			(node
-				(ref "SW3")
-				(pin "2")
-				(pinfunction "B_2")
-				(pintype "passive")
-			)
-			(node
 				(ref "U3")
 				(pin "6")
 				(pinfunction "IO3_6")
@@ -5261,18 +5141,6 @@
 				(ref "SW2")
 				(pin "2")
 				(pinfunction "2_2")
-				(pintype "passive")
-			)
-			(node
-				(ref "SW3")
-				(pin "3")
-				(pinfunction "C_3")
-				(pintype "passive")
-			)
-			(node
-				(ref "SW3")
-				(pin "4")
-				(pinfunction "D_4")
 				(pintype "passive")
 			)
 			(node

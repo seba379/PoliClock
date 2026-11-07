@@ -301,7 +301,7 @@ def build(info=False):
         board.Add(t)
     btext("PoliClock main rev 0.1", OX + 8.0, OY + H - 1.3, 0.8)
     for ref, label in (("J3", "SHT40"), ("J4", "RTC"), ("J5", "BTN"), ("J2", "DISPLAY"), ("J1", "USB"),
-                       ("SW1", "RST"), ("SW2", "BOOT"), ("SW3", "USER")):
+                       ("SW1", "RST"), ("SW2", "BOOT")):
         p = fps[ref].GetPosition()
         btext(label, pcbnew.ToMM(p.x), pcbnew.ToMM(p.y))
     for f in fps.values():

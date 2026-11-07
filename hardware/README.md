@@ -26,10 +26,10 @@ Sensore SHT40 e RTC non hanno un PCB proprio: sono moduli commerciali collegati 
 
 ## PCB della scheda principale (primo posizionamento)
 
-- `policlock-main/policlock-main.kicad_pcb`: **35 × 27 mm, 2 strati, componenti solo sopra**, antenna del modulo oltre il bordo destro (`DEC-029`…`DEC-031`). **Solo posizionamento**: piani GND su entrambi gli strati, nessuna pista (`OPEN-027`).
-- `policlock-main-top.png` / `-bottom.png`: render 3D; `policlock-main-layout.pdf`: assemblaggio (F.Fab), rame e legenda del retro; `drc.rpt`: DRC (nessun errore oltre alle connessioni da sbrogliare, 8 avvisi di serigrafia).
+- `policlock-main/policlock-main.kicad_pcb`: **35 × 26 mm, 2 strati, componenti solo sopra**, antenna del modulo oltre il bordo destro (`DEC-029`…`DEC-031`). **Solo posizionamento**: piani GND su entrambi gli strati, nessuna pista (`OPEN-027`).
+- `policlock-main-top.png` / `-bottom.png`: render 3D; `policlock-main-layout.pdf`: assemblaggio (F.Fab), rame e legenda del retro; `drc.rpt`: DRC (nessun errore oltre alle connessioni da sbrogliare, solo avvisi di serigrafia).
 - `policlock-main-scheda.step`: sagoma della scheda con fori, per il CAD. Lo STEP completo con i componenti (`policlock-main.step`) usa i modelli 3D EasyEDA e resta **solo locale** (ignorato da git): si rigenera con `esporta.py` dopo aver scaricato i modelli (vedi sotto).
-- Generato da `scripts/genera_pcb_main.py` (Python di KiCad: `"C:/Program Files/KiCad/10.0/bin/python.exe"`), posizioni fisse in `scripts/posizioni_main.py`, dimensioni con la variabile `PCB_WH` (default `35,27`). Dopo la prima modifica manuale il `.kicad_pcb` diventa la fonte.
+- Generato da `scripts/genera_pcb_main.py` (Python di KiCad: `"C:/Program Files/KiCad/10.0/bin/python.exe"`), posizioni fisse in `scripts/posizioni_main.py`, dimensioni con la variabile `PCB_WH` (default `35,26`). Dopo la prima modifica manuale il `.kicad_pcb` diventa la fonte.
 
 ## Rigenerare / verificare
 
@@ -49,7 +49,7 @@ Importata da LCSC con [easyeda2kicad](https://github.com/uPesy/easyeda2kicad.py)
 easyeda2kicad --full --lcsc_id=C2838502 --output hardware/lib/PoliClock
 ```
 
-(codici: C2838502, C165948, C262665, C262666, C160404, C160402, C318884, C720477), poi corretta con `scripts/correggi_libreria.py` e aggiornata al formato KiCad 10 con `kicad-cli fp upgrade` / `kicad-cli sym upgrade`. Correzioni applicate:
+(codici: C2838502, C165948, C262665, C262666, C160404, C160402, C720477), poi corretta con `scripts/correggi_libreria.py` e aggiornata al formato KiCad 10 con `kicad-cli fp upgrade` / `kicad-cli sym upgrade`. Correzioni applicate:
 
 - tipi elettrici dei pin (alimentazione, NC, bidirezionali) per un ERC significativo;
 - campo `LCSC Part` rinominato `LCSC`, riferimenti `J`/`U`/`SW`;

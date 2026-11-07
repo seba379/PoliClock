@@ -26,13 +26,12 @@ Questo documento motiva i componenti usati nello schema KiCad in [`hardware/`](.
 | C4, C6, C8 | Disaccoppiamento / antirimbalzo | 100 nF 0603 X7R | Yageo | C14663 | **Basic** | 34 M | — | |
 | C7 | RC su EN | 1 µF 0603 | Samsung | C15849 | **Basic** | 13 M | — | Espressif: R 10 kΩ + C 1 µF |
 | SW1, SW2 | RESET, BOOT | **TS-1088-AR02016** 4×3 mm, 2 pin | XUNPU | C720477 | **Basic** | 509 240 | — | `DEC-029`: scelto per ridurre l'ingombro; datasheet XUNPU: contatto tra pin 1 e 2 |
-| SW3 | USER | **TS-1187A-B-A-B** 5,1×5,1 mm | XKB | C318884 | **Basic** | 873 151 | 0,02 $ | Datasheet XKB: A–B e C–D collegati, contatto tra le coppie |
 | Q1 | Retroilluminazione | **AO3400A** N-MOS SOT-23 | AOS | C20917 | **Basic** | 1 M | 0,09 $ | VGS(th) max 1,45 V: pilotabile a 3,3 V |
 | R16, R17, R18 | Gate, pull-down, limitazione LED | 100 Ω / 100 kΩ / 10 Ω 0603 | Uni-Royal | C22775 / C25803 / C22859 | **Basic** | — | — | R18 = 10 Ω come nello schema di riferimento Waveshare: **TBD** dal datasheet del pannello acquistato (`OPEN-024`) |
 | R8, R9 | Smorzamento SCLK/MOSI | 22 Ω 0603 | Uni-Royal | C23345 | **Basic** | 6 M | — | Valore da confermare con la prova sul cavo reale (`OPEN-021`) |
 | J2 | Cavo display | **AFC01-S16FCA-00** FFC 16P 0,5 mm, ZIF a sportello, contatti in basso, H 2,0 mm | JUSHUO | C262665 | Extended | 59 810 | 0,10 $ | `DEC-026`. Footprint EasyEDA da confrontare col disegno JUSHUO nel layout |
 | J3, J4 | Modulo SHT40, modulo RTC | **SM04B-SRSS-TB** JST-SH 4P 1,0 mm | JST | C160404 | Extended | 45 700 | 0,21 $ | Pinout Qwiic/STEMMA QT: 1 GND, 2 3V3, 3 SDA, 4 SCL |
-| J5 | Pulsante remoto | **SM02B-SRSS-TB** JST-SH 2P | JST | C160402 | Extended | 67 085 | 0,13 $ | `DEC-027` |
+| J5 | Pulsante remoto | **SM02B-SRSS-TB** JST-SH 2P | JST | C160402 | Extended | 67 085 | 0,13 $ | `DEC-027`, `DEC-032`: unico ingresso del pulsante |
 | R6, R7, R15, R22 | Pull-up EN, IO9, LCD_RST, pulsante | 10 kΩ 0603 | Uni-Royal | C25804 | **Basic** | 43 M | — | |
 | R19, R20 | Pull-up I²C | 4,7 kΩ 0603 | Uni-Royal | C23162 | **Basic** | 16 M | — | Tengono alti anche gli strapping IO2 e IO8 |
 | R5, R10, R21 | Isolamento blocchi | 0 Ω 0603 | Uni-Royal | C21189 | **Basic** | 19 M | — | 5 V → LDO, 3,3 V → display, 3,3 V → moduli esterni |

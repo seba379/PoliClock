@@ -12,7 +12,7 @@ root = parse(open(LIB, encoding="utf-8").read())[0]
 
 REF = {"TYPE-C-31-M-12": "J", "AFC01-S16FCA-00": "J", "AFC01-S18FCA-00": "J",
        "SM04B-SRSS-TB": "J", "SM02B-SRSS-TB": "J",
-       "ESP32-C3-MINI-1-N4": "U", "TS-1187A-B-A-B": "SW"}
+       "ESP32-C3-MINI-1-N4": "U", "TS-1088-AR02016": "SW"}
 DS = {
     "ESP32-C3-MINI-1-N4": "https://www.espressif.com/sites/default/files/documentation/esp32-c3-mini-1_datasheet_en.pdf",
 }
