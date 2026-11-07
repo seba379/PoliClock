@@ -1,10 +1,12 @@
 # 04 — Specifiche firmware
 
-**Versione:** 0.1 · **Stato:** architettura proposta, codice non ancora implementato · **Data:** 2026-11-07
+**Versione:** 0.3 · **Stato:** architettura proposta, codice non ancora implementato · **Data:** 2026-11-07
 
 ## 1. Tecnologia
 
-Proposta: **ESP-IDF** per ESP32-S3, con versione SDK **pinnata dopo il bring-up** e dipendenze deterministiche. In sviluppo si possono riutilizzare BSP/esempi Waveshare; evitare dipendenze non documentate o copiate senza licenza.
+Proposta: **ESP-IDF** per il modulo ESP32 del PCB custom (ESP32-C3 o S3, `CAND-012`), con versione SDK **pinnata dopo il bring-up** e dipendenze deterministiche. Il display GC9A01 può usare il driver `esp_lcd` della Component Registry di Espressif (verificare licenza e versione); evitare dipendenze non documentate o copiate senza licenza.
+
+Il firmware nasce sul prototipo da banco (M1) e passa al PCB cambiando solo il board-support.
 
 Il firmware V1 ha una funzione: mantenere il quadrante aggiornato e leggibile, minimizzando il consumo senza compromettere l'orologio. Wi-Fi/NTP (`DEC-012`), Bluetooth, servizi cloud, domotica, audio, GPS, SD e OTA non sono requisiti V1: la radio non viene inizializzata.
 
@@ -15,19 +17,19 @@ firmware/                      # struttura futura, non ancora generata
 ├── main/
 │   └── app_main.c             # inizializzazione e supervisione
 ├── components/
-│   ├── board_support/         # BSP Waveshare, periferiche e pin reali
-│   ├── time_service/          # RTC, UTC, timezone, impostazione offline
+│   ├── board_support/         # pin e periferiche: prototipo da banco e PCB custom
+│   ├── time_service/          # RTC esterno, UTC, timezone, impostazione offline
 │   ├── climate_service/       # SHT40, validità dati e filtri
-│   ├── power_service/         # AXP2101, USB, batteria, policy
-│   ├── display_service/       # driver, backlight equivalente, refresh
+│   ├── power_service/         # stato caricatore, misura batteria, USB, policy
+│   ├── display_service/       # GC9A01, retroilluminazione PWM, refresh
 │   ├── ui/                    # layout, widget, schermate
-│   ├── input_service/         # touch ed eventi
+│   ├── input_service/         # pulsante: antirimbalzo, pressione breve/lunga
 │   ├── settings_service/      # NVS con schema/versione
 │   └── diagnostics/           # logging e test di integrazione
 └── test/                      # test unitari e banchi
 ```
 
-**Separare il board support dalla logica prodotto**: il modulo Waveshare è candidato, e un eventuale cambio di scheda non deve imporre una riscrittura della UI o degli algoritmi di tempo/clima.
+**Separare il board support dalla logica prodotto**: prototipo da banco, revisioni del PCB ed eventuale piano B (scheda pronta) non devono imporre una riscrittura della UI o degli algoritmi di tempo/clima.
 
 ## 3. Contratti dati proposti
 
@@ -39,12 +41,12 @@ firmware/                      # struttura futura, non ancora generata
 | `temp_c` | float/decimo °C | SHT40 | Marcato invalido se misura/CRC errore |
 | `rh_pct` | float/%RH | SHT40 | Valido nell'intervallo fisico e dentro freschezza ammessa |
 | `climate_timestamp` | monotonic timestamp | climate_service | Indica ultima misura valida |
-| `usb_present` | boolean | PMU | Stato aggiornato su evento/poll calibrato |
-| `battery_state` | enum | PMU + logica | Normal / Low / Critical / Charging / Unknown |
+| `usb_present` | boolean | caricatore (pin di stato) | Stato aggiornato su evento/poll calibrato |
+| `battery_state` | enum | caricatore + misura batteria | Normal / Low / Critical / Charging / Unknown |
 | `display_mode` | enum | power/UI FSM | DIM / BRIGHT / NIGHT / NIGHT_PEEK / SHUTDOWN |
 | `ui_flags` | set | servizi | CHARGING, LOW_BATT, TIME_NOT_SET, SENSOR_ERROR (indicatori sovrapposti, indipendenti dalla luminosità) |
 
-Evitare accesso diretto ai registri della PMU dalla UI. La UI deve ricevere un modello immutabile coerente e un evento di aggiornamento.
+Evitare accesso diretto all'hardware di alimentazione dalla UI. La UI deve ricevere un modello immutabile coerente e un evento di aggiornamento.
 
 ## 4. Macchina a stati del display
 
@@ -54,12 +56,12 @@ La **luminosità** (`display_mode`) e gli **indicatori** (`ui_flags`) sono model
 stateDiagram-v2
     [*] --> DIM: startup completato (giorno)
     [*] --> NIGHT: startup completato (fascia notte)
-    DIM --> BRIGHT: tocco valido
-    BRIGHT --> BRIGHT: nuovo tocco / reset timer
+    DIM --> BRIGHT: pressione breve
+    BRIGHT --> BRIGHT: nuova pressione / reset timer
     BRIGHT --> DIM: timeout interazione
     DIM --> NIGHT: inizio fascia notte
     BRIGHT --> NIGHT: inizio fascia notte e timeout
-    NIGHT --> NIGHT_PEEK: tocco valido
+    NIGHT --> NIGHT_PEEK: pressione breve
     NIGHT_PEEK --> NIGHT: timeout
     NIGHT --> DIM: fine fascia notte
     DIM --> SHUTDOWN: batteria critica
@@ -67,23 +69,24 @@ stateDiagram-v2
     SHUTDOWN --> DIM: nuovo avvio valido
 ```
 
-- `DIM`: pagina principale in nero/blu scuro, luminosità bassa; **display acceso**.
-- `BRIGHT`: stessa pagina con maggior luminosità per tempo configurabile (default sperimentale circa 20 s).
-- `NIGHT`: display spento nella fascia notte (`PR-FUN-013`, default 23:00–07:00, `DEC-013`); ESP32 sospeso con risveglio da timer/RTC e touch.
-- `NIGHT_PEEK`: quadrante attenuato mostrato dopo un tocco notturno per il timeout, poi ritorno a `NIGHT` (`CAND-009`).
-- `SHUTDOWN`: avviso breve e spegnimento controllato per batteria critica o comando power, lasciando alimentato l'RTC se l'hardware lo consente.
+- `DIM`: pagina principale in nero/blu scuro, retroilluminazione bassa (PWM); **display acceso**.
+- `BRIGHT`: stessa pagina con retroilluminazione alta per tempo configurabile (default sperimentale circa 20 s).
+- `NIGHT`: retroilluminazione spenta e pannello in sleep nella fascia notte (`PR-FUN-013`, default 23:00–07:00, `DEC-013`); ESP32 sospeso con risveglio da timer e pulsante.
+- `NIGHT_PEEK`: quadrante attenuato mostrato dopo una pressione notturna per il timeout, poi ritorno a `NIGHT` (`CAND-009`).
+- `SHUTDOWN`: avviso breve e spegnimento controllato per batteria critica; l'RTC resta alimentato dal tampone.
 
-Lo stato `DIM` **non equivale** a deep sleep permanente: il display è attivo. Eventuali light-sleep/event wakeup dipendono da driver e interrupt verificati (touch `TP_INT` su GPIO11 secondo schematico).
+La **pressione lunga** apre il menu di impostazione (ora, data, fascia notte), vedi [UI](05-interfaccia-utente.md) e `OPEN-015`.
+
+Lo stato `DIM` **non equivale** a deep sleep permanente: il display è attivo. Il light-sleep con risveglio da pulsante (GPIO) e timer va verificato sul prototipo M1; la retroilluminazione PWM deve restare stabile durante il light-sleep (verificare la sorgente di clock del PWM).
 
 ## 5. Inizializzazione raccomandata
 
 1. Inizializzazione minima logging, watchdog e NVS.
-2. Board-support, bus I²C e PMU; conferma di tensioni e alimentazioni.
+2. Board-support, bus I²C, stato caricatore e misura batteria.
 3. RTC, validazione data/ora e preferenze utente.
-4. Display e touch; presentazione schermata di boot breve, senza attendere rete.
+4. Display, retroilluminazione e pulsante; presentazione schermata di boot breve.
 5. Sensore SHT40 e primo campionamento valido.
-6. Disattivazione periferiche non usate (codec, amplificatore, microfoni, microSD, IMU).
-7. Avvio servizi UI/tempo/alimentazione; ingresso in `DIM` o `NIGHT` secondo l'ora.
+6. Avvio servizi UI/tempo/alimentazione; ingresso in `DIM` o `NIGHT` secondo l'ora.
 
 Errore su modulo non essenziale (es. sensore) non deve impedire il quadrante. Errore su RTC, batteria o display deve produrre stato diagnostico esplicito in log.
 
@@ -91,12 +94,12 @@ Errore su modulo non essenziale (es. sensore) non deve impedire il quadrante. Er
 
 - Riferimento interno in **UTC**.
 - Presentazione configurata per **Europe/Rome**, con ora legale gestita correttamente; formato `HH:MM` 24h.
-- Dopo cold boot, rilevare RTC mai inizializzato o dato palesemente invalido (incluso flag di perdita oscillatore del PCF85063, da verificare sul datasheet); **non mostrare un'ora inventata come corretta**.
-- Unico percorso di impostazione in V1 (`DEC-012`, nessun NTP): menu touch o comando USB seriale di provisioning; almeno uno deve essere disponibile nella V1.
+- Dopo cold boot, rilevare RTC mai inizializzato o dato palesemente invalido (flag di perdita alimentazione/oscillatore dell'RTC scelto, da verificare sul datasheet); **non mostrare un'ora inventata come corretta**.
+- Unico percorso di impostazione in V1 (`DEC-012`, nessun NTP): menu con il pulsante (pressione lunga) e comando USB seriale di provisioning come riserva.
 - Fascia notte (`PR-FUN-013`) salvata in NVS e modificabile con lo stesso percorso.
-- Precisione di lungo periodo affidata al solo RTC: misurare la deriva in giorni/settimane e documentare se serve una correzione periodica (eventuale offset del PCF85063).
+- Precisione di lungo periodo affidata al solo RTC: misurare la deriva in giorni/settimane e documentare se serve una correzione (registro di offset/aging dell'RTC scelto).
 - Aggiornare la cifra dei minuti al cambio minuto; rilevare cambi di data, DST e riavvio.
-- Validare comportamento RTC con USB staccata e batteria presente; con batteria rimossa o scarica segnalare `TIME_NOT_SET`.
+- Validare il mantenimento dell'ora con cella scollegata grazie al tampone; a tampone esaurito segnalare `TIME_NOT_SET`.
 
 ## 7. Misurazioni ambientali
 
@@ -109,7 +112,7 @@ Errore su modulo non essenziale (es. sensore) non deve impedire il quadrante. Er
 
 ## 8. Power manager
 
-- Centralizzare la lettura PMU e i comandi display/power in un solo servizio.
+- Centralizzare stato caricatore, misura batteria e comandi display/retroilluminazione in un solo servizio.
 - Esportare **eventi** su presenza USB, battery low/critical, timer bright, inizio/fine notte, campionamento.
 - Ridurre i wakeup non necessari: niente busy loop, timer periodici coerenti con le necessità della UI.
 - Tracciare il profilo di consumo nello stesso firmware, distinguendo build di test e release.
@@ -118,11 +121,10 @@ Errore su modulo non essenziale (es. sensore) non deve impedire il quadrante. Er
 ## 9. Affidabilità, sicurezza e qualità
 
 - Stato osservabile con log seriali; severità distinta INFO/WARN/ERROR e messaggi non eccessivi.
-- Watchdog configurato per task potenzialmente bloccanti; timeout I²C/rete; niente blocchi infiniti su init non critica.
+- Watchdog configurato per task potenzialmente bloccanti; timeout I²C; niente blocchi infiniti su init non critica.
 - Configurazioni NVS versionate con default sicuri; test di first-boot/reset preferenze.
 - Niente segreti nei log; il provisioning USB accetta solo comandi documentati (ora, data, fascia notte).
-- Separare business logic dai driver: test unitari host per parsing/formatting tempo, DST, fascia notte (anche a cavallo della mezzanotte), scadenza sensore, FSM display e low-battery.
-- Pixel shift periodico obbligatorio (`PR-UI-005`).
+- Separare business logic dai driver: test unitari host per parsing/formatting tempo, DST, fascia notte (anche a cavallo della mezzanotte), scadenza sensore, FSM display, gestione pulsante (breve/lunga, antirimbalzo) e low-battery.
 - Tenere uno strato di diagnostica minimale nel firmware release per indagini sul dispositivo assemblato.
 
 ## 10. Gate di completamento firmware

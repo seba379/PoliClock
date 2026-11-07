@@ -4,7 +4,7 @@ Queste istruzioni valgono per l'intero repository. Leggere `README.md` e i docum
 
 ## Prodotto e perimetro
 
-PoliClock V1 e' un orologio da scrivania a batteria, in una statuetta 3D di una poliziotta chibi. Il display rotondo coincide con il volto. Requisiti confermati: ora, data, temperatura, umidita', quadrante normalmente attenuato con luminosita' temporaneamente aumentata dopo interazione, display spento di notte, ricarica USB-C sul retro, uniforme blu e cappello. La V1 e' interamente offline: niente Wi-Fi/NTP. Non aggiungere domotica, CO2, meteo da Internet, audio o altre funzionalita' non richieste.
+PoliClock V1 e' un orologio da scrivania a batteria, in una statuetta 3D di una poliziotta chibi. Il display rotondo coincide con il volto. Requisiti confermati: ora, data, temperatura, umidita', quadrante normalmente attenuato con luminosita' temporaneamente aumentata dopo interazione, display spento di notte, ricarica USB-C sulla parte posteriore bassa con prolunga, uniforme blu e cappello, PCB custom (KiCad + JLCPCB), display IPS rotondo 1,28" e un pulsante. La V1 e' interamente offline: niente Wi-Fi/NTP. Non aggiungere domotica, CO2, meteo da Internet, audio o altre funzionalita' non richieste.
 
 ## Autorita' delle specifiche
 

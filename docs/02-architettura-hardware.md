@@ -1,102 +1,91 @@
 # 02 — Architettura hardware
 
-**Versione:** 0.1 · **Stato:** soluzione candidata, non validata · **Data:** 2026-11-07
+**Versione:** 0.3 · **Stato:** architettura PCB custom candidata, non validata · **Data:** 2026-11-07
 
 ## 1. Strategia
 
-Per il primo prototipo **non** progettare immediatamente un PCB nuovo. Utilizzare un modulo ESP32/display integrato per ridurre cablaggi, rischi di integrazione e tempi di avvio. Non confondere la disponibilità di una funzione nella documentazione del produttore con il suo corretto funzionamento nel nostro montaggio.
+La V1 usa un **PCB custom progettato in KiCad e prodotto/assemblato da JLCPCB** (`DEC-015`), con il minimo indispensabile per le funzioni richieste. La scheda integrata Waveshare ESP32-S3-Touch-AMOLED-1.75 (ex `CAND-001`) è stata scartata per costo e per i componenti superflui (audio, microSD, IMU).
 
-## 2. Scheda candidata principale
+Il PCB custom **non** è più economico per un solo esemplare (costi fissi di assemblaggio, spedizione, possibile seconda revisione): la scelta è motivata da forma su misura, controllo dei consumi e sicurezza della ricarica.
 
-**Waveshare ESP32-S3-Touch-AMOLED-1.75**, variante standard **SKU 31261** (non le versioni B con custodia o G con GPS, salvo cambi motivati).
+Per ridurre il rischio di una revisione PCB sbagliata, prima del disegno si valida l'architettura **su banco con moduli commerciali economici** (dev board ESP32, modulo display GC9A01, breakout di carica e SHT40): vedi [roadmap](09-roadmap.md), M1.
 
-Caratteristiche **documentate dal produttore**:
+Non confondere la disponibilità di una funzione nel datasheet con il suo corretto funzionamento nel nostro montaggio.
 
-| Blocco | Specifica dichiarata |
-|---|---|
-| MCU | ESP32-S3R8, dual core, fino a 240 MHz; Wi-Fi 2,4 GHz / BLE |
-| Memoria | 8 MB PSRAM, 16 MB flash esterna |
-| Display | AMOLED touch **1,75 pollici**, **466×466**, driver **CO5300**, bus QSPI |
-| Touch | Capacitivo **CST9217** tramite I²C |
-| RTC | **PCF85063** |
-| PMU/carica | **AXP2101** |
-| Movimento | IMU **QMI8658** (accelerometro + giroscopio) |
-| Batteria | Presa 2 pin **MX1.25**, batteria nominale **3,7 V** |
-| Audio | Codec **ES8311**, ADC/eco **ES7210** con doppio microfono, amplificatore **NS4150B**, presa altoparlante MX1.25 (altoparlante 8 Ω 2 W incluso) |
-| Altro | Espansore I/O **TCA9554**, slot **microSD**, tasti PWR e BOOT |
-| Interfacce | USB-C nativa; intestazione 8 pin passo 2,54 mm (3 GPIO + 1 UART) e pad riservati I²C/IO |
-
-Fonti: [manuale Waveshare](https://docs.waveshare.com/ESP32-S3-Touch-AMOLED-1.75), [pagina prodotto](https://www.waveshare.com/product/esp32-s3-touch-amoled-1.75.htm) e [risorse hardware ufficiali](https://docs.waveshare.com/ESP32-S3-Touch-AMOLED-1.75/Resources-And-Documents).
-
-Audio, microfoni, microSD e IMU non servono alla V1: il firmware deve mantenerli **disattivati/non alimentati** dove possibile e la loro corrente residua va misurata.
-
-### 2.1 Rilievi dallo schematico ufficiale (PDF datato 2025-07-28, da riconfermare sulla revisione acquistata)
-
-| Punto | Rilievo | Conseguenza |
-|---|---|---|
-| Bus I²C principale | `ESP32_SDA` = GPIO15, `ESP32_SCL` = GPIO14, pull-up 2,2 kΩ verso 3,3 V già presenti | SHT40 collegabile sul bus esistente senza pull-up aggiuntivi (`CAND-011`) |
-| Indirizzi leggibili sullo schema | QMI8658 `0x6B`, ES7210 `0x40` | Nessun conflitto con l'indirizzo tipico SHT40 `0x44`; gli altri dispositivi vanno confermati con scan I²C |
-| Header H2 (8 pin) | VBUS, GND, 3,3 V, U0RXD, U0TXD, GPIO16, GPIO17, GPIO18 | Alternativa: secondo bus I²C su GPIO17/18 se i pad riservati sono scomodi |
-| Pin TS dell'AXP2101 | Collegato a un **termistore 10 kΩ montato sulla scheda** | La carica non sorveglia la temperatura **della cella** (`OPEN-013`) |
-| RTC PCF85063 | Alimentato da `VCC-RTC` dell'AXP2101, nessuna batteria tampone dedicata | Con cella scarica/protezione intervenuta l'ora può andare persa (`OPEN-014`) |
-| Touch | Interrupt `TP_INT` su GPIO11 | Possibile sorgente di risveglio da light-sleep, da provare |
-
-**Da verificare sulla scheda acquistata:** revisione dello schematico, accessibilità fisica dei pad, polarità reale del connettore batteria, capacità di risveglio touch, dimensioni PCB e supporto USB tramite prolunga.
-
-## 3. Schema a blocchi funzionale
+## 2. Schema a blocchi
 
 ```mermaid
 flowchart LR
-    USB["USB-C posteriore 5 V"] --> EXT["Prolunga USB-C dati + alimentazione"]
-    EXT --> BOARD["Waveshare ESP32-S3 AMOLED 1.75"]
-    BAT["LiPo 1S protetta"] --> PMU["AXP2101 PMU / caricabatteria"]
-    BOARD --- PMU
-    MCU["ESP32-S3"] --- PMU
-    MCU --> DISP["AMOLED CO5300"]
-    TOUCH["Touch CST9217"] --> MCU
-    RTC["RTC PCF85063"] --> MCU
-    IMU["IMU QMI8658"] --> MCU
-    SENSOR["SHT40 esterno in vano ventilato"] <-->|"I2C da validare"| MCU
+    USB["Presa USB-C da pannello<br/>retro basso (sedere)"] -->|"prolunga USB 2.0<br/>VBUS + D+/D-"| CONN["Connettore USB-C sul PCB"]
+    CONN --> ESD["ESD + fusibile/PTC"]
+    ESD --> CHG["Caricatore con power-path + NTC"]
+    BAT["LiPo 1S protetta con NTC<br/>(nella base)"] <--> CHG
+    CHG --> REG["Regolatore 3,3 V<br/>bassa Iq"]
+    REG --> MCU["Modulo ESP32"]
+    REG --> RTC["RTC esterno<br/>+ tampone"]
+    REG --> DISP["Display IPS rotondo 1,28''<br/>GC9A01, SPI"]
+    MCU -->|"PWM"| BL["Retroilluminazione"]
+    MCU <-->|"I2C"| RTC
+    MCU <-->|"I2C, cavo 4 fili"| SHT["SHT40 su mini-PCB<br/>vano ventilato"]
+    MCU -->|"ADC o I2C"| BMON["Misura batteria"]
+    BTN["Pulsante"] --> MCU
+    ESD -->|"D+/D-"| MCU
 ```
 
-Il diagramma descrive funzioni logiche: **non** sostituisce lo schema elettrico o la verifica del percorso di carica sulla scheda.
+Il diagramma descrive funzioni logiche: non sostituisce lo schema elettrico KiCad.
+
+## 3. Blocchi funzionali e candidati
+
+Tutti i codici sono **CAND**: da verificare su datasheet, disponibilità e prezzo LCSC/JLCPCB (preferire parti "basic" per ridurre i costi fissi di assemblaggio).
+
+| Blocco | Funzione | Requisiti | Candidati (CAND) |
+|---|---|---|---|
+| MCU | Logica, UI, gestione energia | Supporto ESP-IDF, USB nativa per flash/log via USB-C, light-sleep, SPI + I²C + ADC + PWM, GPIO di risveglio per il pulsante | Modulo **ESP32-C3-MINI-1** (consigliato: sufficiente per 240×240 e più economico) o ESP32-S3-MINI-1. Modulo certificato con antenna/flash integrate, non chip nudo |
+| Display | Volto | Rotondo, IPS, **1,28"**, **240×240**, driver **GC9A01**, SPI 4 fili (`DEC-016`) | Pannello nudo con FPC su connettore del PCB; pinout, alimentazione e retroilluminazione dal datasheet del pannello acquistato |
+| Retroilluminazione | DIM/BRIGHT/NIGHT | Regolabile via PWM, spegnibile del tutto di notte | MOSFET/transistor + resistenza, valori dal datasheet del pannello |
+| Interazione | Accendere/impostare | **Pulsante** fisico (`DEC-017`), posizione da definire | Pulsante tattile su PCB o remoto via cavo; pull-up e antirimbalzo; GPIO capace di risvegliare il chip |
+| USB | Ricarica e programmazione | USB-C ricettacolo 2.0, resistenze CC 5,1 kΩ, protezione ESD, fusibile/PTC su VBUS | Ricettacolo USB-C 16 pin; ESD tipo USBLC6-2 |
+| Caricatore | Ricarica sicura | **Power-path** (funzionamento con USB collegata, `DEC-008`), ingresso **NTC cella**, corrente di carica impostabile in modo prudente, 4,2 V | BQ24074 (TI) o equivalente con power-path e TS; da confermare |
+| Regolatore 3,3 V | Alimentare MCU, display, sensori | Bassa corrente di riposo; picchi MCU gestiti; comportamento con batteria a 3,0–3,4 V | LDO a basso dropout e bassa Iq, oppure buck-boost (es. TPS63802) se serve sfruttare la cella fino in fondo |
+| RTC | Ora anche con scarica completa | Bassissimo consumo, alimentazione tampone (supercondensatore o pila a bottone), I²C | RV-3028-C7 (Micro Crystal) o PCF85063A con tampone |
+| Misura batteria | Livelli batteria | Niente percentuali inventate | Partitore commutato su ADC (minimo) oppure fuel gauge I²C (es. MAX17048) |
+| Sensore T/RH | Misure ambiente | **SHT40** su mini-PCB dedicato, senza LED, collegato con 4 fili | Mini-PCB nello stesso pannello JLC del PCB principale |
+| Connettori | Batteria, SHT40, pulsante remoto | Polarizzati, con ritenuta, polarità serigrafata | JST-PH 2,0 o JST-SH 1,0 (da scegliere in base alla batteria) |
+| Debug | Bring-up | Punti di test su VBUS, VBAT, 3,3 V, GND; tasti BOOT/RESET o pad equivalenti | — |
 
 ## 4. Sensore temperatura/umidità
 
-**Sensirion SHT40** (modulo breakout I²C a basso consumo) è la scelta candidata. Specifica tipica: ±1,8 %RH; la temperatura ha accuratezza tipica dichiarata dal costruttore in condizioni specificate dal datasheet. Vedere [pagina prodotto](https://sensirion.com/products/catalog/SHT40).
+**Sensirion SHT40** è la scelta candidata. Specifica tipica: ±1,8 %RH; la temperatura ha accuratezza tipica dichiarata dal costruttore in condizioni specificate dal datasheet. Vedere [pagina prodotto](https://sensirion.com/products/catalog/SHT40).
 
-Scegliere un breakout **senza LED di alimentazione** (o con LED rimovibile) e senza regolatori non necessari: il LED consuma corrente e scalda proprio il sensore.
-
-Requisiti di integrazione:
-
-- Posizionamento **separato fisicamente** dai principali dissipatori di calore, preferibilmente con feritoie verso aria ambiente.
-- Alimentazione e pull-up I²C compatibili con la scheda; **non** collegare senza aver verificato i livelli di tensione.
-- Verifica degli indirizzi I²C di tutti i dispositivi e delle resistenze di pull-up equivalenti.
-- Connettore/cavo con fermacavo, non fili saldati lasciati liberi nella cavità.
-- Velocità di campionamento iniziale consigliata **30–60 s** (parametro firmware, non vincolo del sensore).
+- Montato su un **mini-PCB** prodotto insieme al PCB principale: niente LED, niente regolatore, pull-up I²C sul PCB principale.
+- Posizionamento **separato fisicamente** dalle sorgenti di calore (MCU, caricatore, retroilluminazione, batteria), con feritoie verso l'aria ambiente.
+- Cavo a 4 fili con connettore polarizzato e fermacavo.
+- Indirizzo tipico `0x44`: verificare assenza di conflitti con RTC e fuel gauge scelti.
+- Campionamento iniziale consigliato **30–60 s** (parametro firmware).
 
 ## 5. Scelte intenzionalmente escluse
 
-Non servono per V1: DFPlayer, altoparlanti, microfoni, GPS, SD card, modulo RTC DS3231, sensore CO₂, sensore luce, Wi-Fi/BLE (`DEC-012`) e convertitore USB-seriale esterno (salvo necessità di debug). L'altoparlante incluso nella confezione non va montato. I componenti già presenti sulla scheda ma non usati non devono diventare dipendenze software.
+Non servono per V1: audio, microSD, IMU, GPS, touch (`DEC-017`), sensore CO₂, sensore luce, Wi-Fi/BLE (`DEC-012`), convertitore USB-seriale esterno (la USB nativa dell'ESP32 basta), secondo caricabatterie in parallelo.
 
-## 6. Interfacce e verifiche preordine
+## 6. Interfacce e verifiche prima dell'ordine PCB
 
 | Interfaccia | Uso previsto | Verifica obbligatoria |
 |---|---|---|
-| USB-C | Alimentazione, ricarica, flashing/log | Prolunga compatibile USB 2.0 dati, orientamento, spazio e serraggio |
-| Batteria MX1.25 | LiPo 1S | **Polarità reale**, connettore, tensione, parametri carica, presenza protezioni |
-| I²C | SHT40 + periferiche integrate | Pad accessibili, indirizzi, 3,3 V, bus length/capacitance |
-| Touch | Risveglio/illuminazione UI | Evento realmente disponibile nello stato di risparmio energetico |
-| RTC | Timekeeping offline (unica fonte di tempo in V1) | Comportamento in spegnimento PMU, batteria bassa/rimossa e dopo intervento protezione cella |
-| IMU | Potenziale gesto di attivazione V2 | Non necessaria per V1; non abilitarla se aumenta i consumi |
+| USB-C + prolunga | Alimentazione, ricarica, flashing/log | Prolunga con linee dati USB 2.0; enumerazione USB attraverso la prolunga provata su banco |
+| Batteria | LiPo 1S protetta | **Polarità** del connettore scelto contro quella della cella; NTC della cella compatibile con il caricatore |
+| Display | GC9A01 via SPI | Pinout FPC, tensioni, corrente retroilluminazione dal datasheet del pannello **acquistato** |
+| I²C | RTC, SHT40, eventuale fuel gauge | Indirizzi, pull-up unici, lunghezza cavo SHT40 |
+| Pulsante | Risveglio/illuminazione UI | Risveglio da light-sleep provato sulla dev board |
+| RTC | Unica fonte di tempo in V1 | Mantenimento con LiPo scollegata grazie al tampone |
 
 ## 7. Alternative e rischi
 
-- **AMOLED integrato**: riduce cablaggio ma incorpora anche audio/SD non necessari e può rendere complessi i consumi minimi.
-- **Display TFT IPS + ESP32 separato**: piano B se AMOLED e dimensioni/power budget non sono adatti; richiede più cablaggio e backlight sempre alimentata.
-- **Dimensioni**: il diametro di 1,75" non equivale al diametro esterno del PCB; il CAD deve utilizzare la tavola tecnica e misure effettive.
-- **I²C condiviso**: possibili collisioni o mancanza di pin accessibili. Fermare gli acquisti se lo schema del produttore non consente un collegamento affidabile.
+- **Prima revisione PCB con errori**: probabile. Mitigazione: prototipo su banco con moduli (M1), revisione schema con checklist, punti di test, jumper/resistenze 0 Ω per isolare i blocchi.
+- **Pannello display senza datasheet affidabile**: acquistare un pannello di cui sia disponibile il datasheet con pinout FPC prima di disegnare il connettore.
+- **Componenti non disponibili a JLC**: verificare disponibilità LCSC prima del layout; prevedere alternative compatibili a pin.
+- **Alternativa economica pronta**: schede commerciali con ESP32 e display rotondo 1,28" integrato restano un piano B se il PCB custom fallisce o si blocca.
+- **Dimensioni**: diametro attivo del pannello 1,28" circa 32 mm (da verificare sul datasheet); il PCB rotondo dietro il display determina il diametro interno minimo della testa.
 
 ## 8. Gate di conferma hardware
 
-Il modulo diventa `APPROVATO` solo dopo: foto e misure del componente reale; bring-up di display e touch; acquisizione SHT40 senza conflitti; verifica del percorso USB-C; prova carica/scarica con cella selezionata; misura dell'assorbimento in almeno tre stati (dim, bright, power off).
+Il PCB diventa `APPROVATO` solo dopo: revisione schema e layout (ERC/DRC puliti, checklist), bring-up delle alimentazioni con limitazione di corrente, flash via USB attraverso la prolunga, display e pulsante funzionanti, lettura SHT40 e RTC, prova carica/scarica con la cella scelta e cutoff NTC verificato, misura dell'assorbimento in DIM, BRIGHT, NIGHT e spento.

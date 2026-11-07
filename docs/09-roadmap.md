@@ -1,70 +1,84 @@
 # 09 — Roadmap di realizzazione
 
-**Versione:** 0.1 · **Stato:** pianificazione per milestone, nessuna data promessa · **Data:** 2026-11-07
+**Versione:** 0.3 · **Stato:** pianificazione per milestone, nessuna data promessa · **Data:** 2026-11-07
 
 ## Premessa
 
-Le milestone sono **gate tecnici**, non stime temporali. Il prototipo deve evolvere da specifiche a prove di banco, poi a CAD, e solo infine a regalo finito. Un'eventuale richiesta estetica che modifica il vano testa o batteria deve essere valutata prima di stampare i componenti definitivi.
+Le milestone sono **gate tecnici**, non stime temporali. Il percorso è: specifiche → prototipo su banco con moduli → PCB custom → firmware → energia → CAD → regalo finito. Un'eventuale richiesta estetica che modifica il vano testa o batteria deve essere valutata prima di stampare i componenti definitivi.
 
 ## M0 — Baseline documentale
 
-**Output:** README, PRD, architettura candidata, specifica alimentazione, UI, meccanica, test plan, BOM, decision log.
+**Output:** README, PRD, architettura, alimentazione, UI, meccanica, test plan, BOM, decision log.
 
-**Criterio d'uscita:** tutte le decisioni confermate rappresentate; le incognite (`TBD`) identificate; nessuna BOM spacciata per acquistata. **Stato V0.1: documenti iniziali creati; approvazione del proprietario non ancora espressa.**
+**Criterio d'uscita:** tutte le decisioni confermate rappresentate; incognite (`TBD`) identificate; nessuna BOM spacciata per acquistata. **Stato: specifiche riviste e decisioni `DEC-001`…`DEC-018` registrate.**
 
-## M1 — Acquisto e validazione hardware da banco
+## M1 — Prototipo su banco con moduli
 
-**Input:** BOM-001…004 e documentazione ufficiale.
+**Input:** `PRO-001`…`PRO-006` ([BOM](08-bom-preliminare.md)), LiPo candidata, prolunga USB-C.
 
 Attività:
 
-1. Verificare schematico, tavola dimensionale e pinout effettivi del modulo Waveshare.
-2. Selezionare LiPo protetta, misurarne ingombri e verificare connettore/polarità.
-3. Collegare e leggere SHT40 senza conflitti sul bus.
-4. Verificare display, touch, RTC e stato batteria PMU.
-5. Misurare i consumi preliminari in DIM/BRIGHT/NIGHT (display spento) e ricarica USB, con periferiche audio/SD disattivate; registrare picchi e medie.
-6. Misurare la temperatura della cella durante la ricarica (TS dell'AXP2101 non collegato alla cella, `OPEN-013`).
+1. Scegliere MCU (ESP32-C3 o S3), caricatore, RTC, regolatore e misura batteria sui datasheet.
+2. Montare su breadboard dev board, display GC9A01, caricatore, RTC, SHT40 e pulsante.
+3. Verificare flash e log USB **attraverso la prolunga**.
+4. Firmware di bring-up: display, pulsante, RTC, SHT40, light-sleep.
+5. Misurare i consumi in DIM/BRIGHT/NIGHT e in ricarica; registrare picchi e medie.
+6. Provare carica, power-path e cutoff NTC del caricatore con la cella scelta.
 
-**Exit gate:** evidenza di bring-up, letture sensore valide, alimentazione e ricarica sicure; scheda e batteria **approvate o scartate** con motivazione.
+**Exit gate:** architettura confermata con misure; componenti del PCB scelti con motivazione; cella approvata o scartata.
 
-## M2 — Firmware minimo affidabile
+## M2 — Progettazione PCB (KiCad)
 
-**Output:** progetto ESP-IDF versionato, BSP, RTC/setting ora offline, SHT40, UI principale, FSM DIM/BRIGHT/NIGHT, pixel shift, test unitari.
+**Output:** progetto KiCad versionato in `hardware/`: schema, layout del PCB rotondo, mini-PCB SHT40, BOM e file di posizionamento per JLC, checklist di revisione compilata.
 
-**Exit gate:** test `VT-FUN-001`, `VT-FUN-002`, `VT-FW-001`, `VT-FW-002`, `VT-FW-003`, `VT-UI-001`, `VT-UI-003` superati su hardware reale. Nessuna radio inizializzata (`DEC-012`).
+**Exit gate:** `VT-PCB-001` superato (ERC/DRC puliti, revisione schema, disponibilità LCSC, quote compatibili con la testa); preventivo JLC accettato.
 
-## M3 — Ottimizzazione energetica e ricarica
+## M3 — Ordine e bring-up PCB
 
-**Output:** driver PMU, batteria low/critical, misurazione autonomia, profili energetici e rapporto termico su prototipo aperto.
+**Output:** PCB assemblati, report di bring-up.
 
-**Exit gate:** test `VT-PWR-001`…`VT-PWR-004` eseguiti, autonomia reale documentata, decisione esplicita su target 48 h; nessun problema di ricarica da ignorare.
+**Exit gate:** `VT-PCB-002` superato (alimentazioni, USB, flash, display, pulsante, I²C). Errori bloccanti → revisione PCB documentata prima di proseguire.
+
+## M4 — Firmware minimo affidabile
+
+**Output:** progetto ESP-IDF versionato, BSP del PCB, RTC/impostazione ora offline, SHT40, UI principale, FSM DIM/BRIGHT/NIGHT, test unitari.
+
+**Exit gate:** `VT-FUN-001`, `VT-FUN-002`, `VT-FW-001`, `VT-FW-002`, `VT-FW-003`, `VT-UI-001`, `VT-UI-003` superati su hardware reale. Nessuna radio inizializzata (`DEC-012`).
+
+## M5 — Energia e ricarica
+
+**Output:** gestione batteria low/critical, misurazione autonomia, rapporto termico su prototipo aperto.
+
+**Exit gate:** `VT-PWR-001`…`VT-PWR-004` eseguiti, autonomia reale documentata, decisione esplicita su target 48 h.
 
 > Non far precedere la chiusura definitiva della scocca alla validazione elettrica della batteria.
 
-## M4 — CAD e stampa 3D funzionale
+## M6 — CAD e stampa 3D funzionale
 
-**Output:** modello parametrico diviso in gusci, supporto display, vano batteria, supporto USB-C, alloggiamento sensore, sportello di servizio, prove di stampa.
+**Output:** modello parametrico diviso in gusci, supporto display/PCB, vano batteria, staffa USB-C posteriore bassa, alloggiamento sensore, pulsante, sportello di servizio, prove di stampa.
 
-**Exit gate:** test `VT-MEC-001`…`VT-MEC-004` superati su prototipo funzionale. La testa deve contenere realmente il display, senza pressioni sul vetro.
+**Exit gate:** `VT-MEC-001`…`VT-MEC-004` superati su prototipo funzionale.
 
-## M5 — Integrazione, finitura e regalo
+## M7 — Integrazione, finitura e regalo
 
 **Output:** statuetta colorata/verniciata, componenti montati, cablaggi ordinati, firmware release, guida operativa breve, registro prove finale.
 
-**Exit gate:** tutti i `MUST` approvati, prove di carica e calore completate con scocca chiusa, nessun test di sicurezza aperto, autonomia comunicata in modo corretto (misurata, non stimata).
+**Exit gate:** tutti i `MUST` approvati, prove di carica e calore completate con scocca chiusa, nessun test di sicurezza aperto, autonomia comunicata come misurata.
 
 ## Backlog prioritizzato
 
 | Priorità | Attività | Dipendenza |
 |---|---|---|
-| P0 | Verificare dimensioni e pinout modulo Waveshare reale | M1 acquisto |
-| P0 | Verificare compatibilità PMU/batteria e protezioni | Datasheet cella + schema board |
-| P0 | Misurare consumo AMOLED in DIM con ora visibile | Bring-up display |
+| P0 | Scegliere la cella LiPo (dimensioni, NTC, connettore) | Datasheet |
+| P0 | Scegliere caricatore power-path + NTC e provarlo su banco | M1 |
+| P0 | Trovare pannello GC9A01 con datasheet e pinout FPC | Fornitore |
+| P0 | Misurare consumo IPS in DIM e NIGHT | M1 |
 | P0 | Implementare ora e impostazione offline | RTC funzionante |
 | P0 | Posizionare SHT40 lontano dal calore | Misure termiche |
+| P1 | Posizione del pulsante nella statuetta | Concept CAD |
 | P1 | Stabilire parametri luminosità e timeout | Test leggibilità/consumo |
-| P1 | Realizzare head mount e vano USB-C | Dimensioni fisiche validate |
-| P1 | Test 48 h e valutazione capacità batteria | Power manager stabile |
+| P1 | Staffa USB-C posteriore bassa e percorso prolunga | Quote CAD |
+| P1 | Test 48 h e valutazione capacità batteria | Firmware energia stabile |
 | P2 | Animazioni/transizioni UI | Dopo autonomia convalidata |
 | P2 | Alternative estetiche (capelli, posa, colori) | Dopo CAD funzionale |
 
@@ -72,15 +86,15 @@ Attività:
 
 | Rischio | Impatto | Mitigazione |
 |---|---|---|
-| Autonomia insufficiente con AMOLED acceso | Alto | Misurare DIM prima del CAD; modificare luminanza, radio, batteria o display |
-| Ingombro modulo superiore alla testa desiderata | Alto | Disegno ufficiale + misure fisiche prima della stampa definitiva |
+| Errore nel PCB che richiede una seconda revisione | Alto | Prototipo M1, checklist di revisione, punti di test, 0 Ω per isolare blocchi |
+| Costo del PCB custom superiore alle attese | Medio | Preventivo completo prima dell'ordine; parti "basic"; piano B scheda pronta |
+| Ricarica non sicura (progetto nostro) | Critico | Caricatore con NTC e power-path, prove su banco, gate di sicurezza |
+| Autonomia insufficiente per retroilluminazione | Alto | Misurare DIM su banco in M1; regolare PWM, notte, capacità cella |
+| Pannello display senza documentazione affidabile | Alto | Acquistare solo pannelli con datasheet e pinout FPC |
+| Ingombro PCB+display superiore alla testa desiderata | Alto | Quote reali prima della stampa definitiva |
 | SHT40 riscaldato internamente | Medio/alto | Vano ventilato e test comparativi a ricarica attiva |
-| Batteria incompatibile o carica non sicura | Critico | Datasheet, controllo polarità/limiti e gate safety prima di alimentare |
-| USB-C posteriore scomoda o fragile | Medio | Staffa, strain relief e prova con diversi cavi |
-| RTC non impostabile offline | Medio | Menu touch o provisioning USB nella V1 |
-| Burn-in AMOLED per quadrante statico | Medio | Fondo nero, bassa luminanza, pixel shift obbligatorio, display spento di notte |
-| Ora persa dopo scarica completa (RTC senza tampone) | Medio | `TIME_NOT_SET` chiaro e reimpostazione offline semplice |
-| Temperatura cella non sorvegliata in carica | Alto | Corrente di carica prudente, test termici, cella protetta (`OPEN-013`) |
+| USB-C posteriore scomoda o fragile | Medio | Staffa, fermacavo e prova con diversi cavi |
+| Impostazione ora scomoda con un solo pulsante | Medio | Provisioning USB come metodo di riserva (`OPEN-015`) |
 
 ## Politica di milestone
 

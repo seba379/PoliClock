@@ -1,8 +1,10 @@
 # 11 — Fonti, datasheet e riferimenti
 
-**Versione:** 0.1 · **Aggiornato:** 2026-11-07
+**Versione:** 0.3 · **Aggiornato:** 2026-11-07
 
-## Documentazione ufficiale della scheda candidata
+## Scheda Waveshare (scartata, `DEC-015`)
+
+Fonti consultate durante la revisione v0.2, mantenute come riferimento storico e per il piano B.
 
 1. [Waveshare — ESP32-S3-Touch-AMOLED-1.75, overview e specifiche](https://docs.waveshare.com/ESP32-S3-Touch-AMOLED-1.75). Conferma MCU ESP32-S3, AMOLED 466×466, 1,75", CO5300, CST9217, RTC PCF85063, PMU AXP2101, QMI8658, header batteria MX1.25.
 2. [Waveshare — pagina prodotto standard/B/G](https://www.waveshare.com/product/esp32-s3-touch-amoled-1.75.htm). Descrizioni, varianti e interfaccia USB-C.
@@ -17,8 +19,12 @@
 
 ## Toolchain e progettazione
 
-8. [Espressif — ESP-IDF Programming Guide](https://docs.espressif.com/projects/esp-idf/en/stable/esp32s3/) — infrastruttura firmware, driver, NVS, networking e power management.
-9. [Espressif — ESP32-S3 hardware](https://www.espressif.com/en/products/socs/esp32-s3) — MCU e reference manual (la scheda Waveshare resta riferimento per pinout effettivo).
+8. [Espressif — ESP-IDF Programming Guide](https://docs.espressif.com/projects/esp-idf/en/stable/esp32c3/) — infrastruttura firmware, driver, NVS, power management (scegliere la variante del chip definitivo).
+9. [Espressif — ESP32-C3](https://www.espressif.com/en/products/socs/esp32-c3) e [ESP32-S3](https://www.espressif.com/en/products/socs/esp32-s3) — datasheet, design guidelines hardware e moduli.
+10. [KiCad — documentazione](https://docs.kicad.org/) — progettazione schema e PCB.
+11. [JLCPCB](https://jlcpcb.com/) — capacità di produzione, regole di assemblaggio e libreria componenti LCSC (verificare al momento dell'ordine).
+
+Da aggiungere al momento della scelta: datasheet di caricatore, regolatore, RTC, misura batteria, pannello GC9A01 acquistato e cella LiPo.
 
 ## Gerarchia delle evidenze
 

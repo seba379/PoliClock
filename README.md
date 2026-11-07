@@ -2,33 +2,36 @@
 
 **Orologio da scrivania ricaricabile, integrato nel volto di una poliziotta chibi stampata in 3D.**
 
-> Stato: **concept / specifiche preliminari (v0.1)** · Aggiornamento: 2026-11-07\
+> Stato: **concept / specifiche preliminari (v0.3)** · Aggiornamento: 2026-11-07\
 > Lingua progetto: italiano · Documentazione in Markdown · Hardware non ancora acquistato né validato.
 
 ## Il prodotto
 
-PoliClock è un regalo personalizzato: una statuetta simpatica e stilizzata di una poliziotta, con un display **circolare integrato al posto del volto**. Durante il giorno il quadrante visualizza **ora, data, temperatura ambiente e umidità relativa**; di notte può spegnersi. È alimentato da **batteria ricaricabile**, con **USB-C accessibile sul retro** della statuetta.
+PoliClock è un regalo personalizzato: una statuetta simpatica e stilizzata di una poliziotta, con un display **circolare integrato al posto del volto**. Durante il giorno il quadrante visualizza **ora, data, temperatura ambiente e umidità relativa**; di notte può spegnersi. È alimentato da **batteria ricaricabile**, con **USB-C sulla parte posteriore bassa** della statuetta (sul sedere, per ironia).
 
-La modalità scelta è **ibrida**: quadrante normalmente attenuato ma leggibile; un'interazione attiva temporaneamente la luminosità elevata. La priorità è la qualità estetica senza sacrificare sicurezza, autonomia e manutenzione.
+La modalità scelta è **ibrida**: quadrante normalmente attenuato ma leggibile; la pressione di un pulsante attiva temporaneamente la luminosità elevata. La priorità è la qualità estetica senza sacrificare sicurezza, autonomia e manutenzione.
 
 ## Decisioni già confermate
 
 - Statuetta **poliziotta chibi**, volutamente sproporzionata, da stampare in 3D.
 - Display **rotondo**, montato a filo/in incasso al posto del viso; non esterno o incollato.
 - Schermata V1: **ora, data, temperatura e umidità**; niente funzioni domotiche o statistiche richieste.
-- Funzionamento **a batteria**, con ricarica **USB-C sul retro**.
+- Funzionamento **a batteria**, con ricarica **USB-C** sulla parte posteriore bassa, collegata al PCB con prolunga.
 - Schermo **attenuato in condizioni normali**, più luminoso dopo un'interazione.
-- **Di notte il display può essere spento** (modalità notte; orari da definire).
+- **Di notte il display è spento** (default 23:00–07:00, configurabile).
 - Aspetto con **uniforme blu e cappello**.
 - Ricarica circa **ogni 2 giorni** accettabile, così come l'uso frequente con USB collegata.
 - **Nessun Wi-Fi/NTP nella V1**: l'ora si imposta offline.
+- Elettronica su **PCB custom** (KiCad, prodotto e assemblato da JLCPCB).
+- Display **IPS rotondo 1,28"** (240×240, GC9A01) e interazione con un **pulsante** fisico.
 
 ## Architettura candidata, NON ancora congelata
 
-- Scheda: Waveshare **ESP32-S3-Touch-AMOLED-1.75**, SKU standard 31261 (non GPS, senza custodia aggiuntiva).
-- Sensore T/RH: **Sensirion SHT40** esterno su I²C, in vano ventilato.
-- Batteria: **LiPo 1S protetta**, dimensionamento iniziale 2.500–3.000 mAh compatibilmente con vano, PMU e caricabatteria.
-- RTC, touch e gestione batteria della scheda; firmware **ESP-IDF**.
+- PCB custom rotondo nella testa: modulo **ESP32-C3** (o S3), caricatore con power-path e NTC, regolatore 3,3 V, **RTC esterno con tampone**, USB-C, connettori.
+- Sensore T/RH: **Sensirion SHT40** su mini-PCB, in vano ventilato, collegato con 4 fili.
+- Batteria: **LiPo 1S protetta**, preferibilmente con NTC, 2.500–3.000 mAh da rivedere sui consumi misurati.
+- Prima del PCB: **prototipo su banco** con moduli commerciali per validare consumi, ricarica e firmware.
+- Firmware **ESP-IDF**.
 
 **Importante:** il requisito di autonomia di **48 ore** è un *target di progettazione* non una prestazione dimostrata. La corrente media, la compatibilità della batteria, le impostazioni di ricarica e gli ingombri vanno misurati prima di consolidare la BOM.
 
@@ -56,12 +59,12 @@ PoliClock/
 ├── README.md
 ├── docs/                  # specifiche e verifiche
 ├── assets/                # concept, render, modelli di riferimento futuri
-├── firmware/              # progetto ESP-IDF da avviare in M2
-├── hardware/              # schemi/cablaggi validati e BOM definitive
+├── firmware/              # progetto ESP-IDF da avviare in M1/M4
+├── hardware/              # progetto KiCad del PCB, BOM e file JLCPCB (M2)
 └── mechanical/            # CAD, STL/3MF e tavole tecniche
 ```
 
-Le ultime tre directory sono **previste**, non ancora presenti nella V0.1: non si pubblicano file placeholder che possano essere scambiati per firmware o modelli funzionanti.
+Le ultime tre directory sono **previste**, non ancora presenti: non si pubblicano file placeholder che possano essere scambiati per firmware o modelli funzionanti.
 
 ## Convenzioni
 
@@ -74,7 +77,7 @@ Le ultime tre directory sono **previste**, non ancora presenti nella V0.1: non s
 
 ## Primo passo operativo
 
-Leggere il [piano di verifica](docs/07-piano-verifica.md), verificare le dimensioni ufficiali della scheda e misurare la corrente assorbita con quadrante attenuato e luminoso **prima** di definire definitivamente batteria e CAD.
+Milestone M1 della [roadmap](docs/09-roadmap.md): scegliere sui datasheet MCU, caricatore, RTC e cella, montare il **prototipo su banco** con moduli commerciali e misurare consumi e ricarica **prima** di disegnare il PCB e il CAD.
 
 ## Avvertenze
 
