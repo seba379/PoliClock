@@ -1,0 +1,23 @@
+# IDE / editor
+.vscode/*.log
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# ESP-IDF (when firmware is introduced)
+firmware/build/
+firmware/sdkconfig.old
+firmware/dependencies.lock.backup
+
+# Generated / temporary
+__pycache__/
+*.pyc
+*.tmp
+*.bak
+
+# Private material / credentials
+.env
+.env.*
+!.env.example
+secrets/

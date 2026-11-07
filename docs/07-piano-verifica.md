@@ -1,0 +1,99 @@
+# 07 — Piano di verifica e validazione (V&V)
+
+**Versione:** 0.1 · **Stato:** pianificato, nessun test eseguito · **Data:** 2026-11-07
+
+## 1. Principi
+
+- Distingue **verifica** (la realizzazione rispetta i requisiti) e **validazione** (è un regalo gradevole/utile).
+- Ogni test richiede: ID, revisione HW, SHA firmware, strumenti, precondizioni, passi, evidenze, risultato e data.
+- Risultato ammesso: `PASS`, `FAIL`, `BLOCKED`, `NOT_RUN`.
+- In questa V0.1 **tutti i test sono NOT_RUN**: non presentare numeri ipotetici come risultati.
+
+## 2. Tracciabilità requisito → test
+
+| ID test | Requisiti | Livello | Metodo / accettazione |
+|---|---|---|---|
+| `VT-FUN-001` | PR-FUN-001, PR-FUN-002 | Sistema | Ora 24h e data/giorno corretti dopo configurazione, trascorrere minuti e cambio giorno |
+| `VT-FUN-002` | PR-FUN-003, PR-FUN-004 | Sistema | Valori locali visualizzati, unità corrette e aggiornamento periodico |
+| `VT-FUN-003` | PR-FUN-005, PR-PWR-001 | Sistema | USB rimossa, dispositivo continua a funzionare con batteria |
+| `VT-FUN-004` | PR-FUN-006, PR-PWR-002 | Sistema | Cavo USB-C inserito nel retro, ricarica rilevata e connettore accessibile |
+| `VT-UI-001` | PR-FUN-007, PR-UI-003, PR-UI-007 | Sistema | DIM leggibile, tocco→BRIGHT, timeout→DIM, prova a 50–80 cm |
+| `VT-UI-002` | PR-UI-004, PR-UI-005 | Ispezione | Contrasto/aree statiche/luminanza e mitigazione burn-in previsti |
+| `VT-FW-001` | PR-FUN-008, PR-FUN-009 | Firmware + sistema | Impostazione ora offline e mantenimento senza Wi-Fi |
+| `VT-FW-002` | PR-FUN-010, PR-REL-002 | Firmware | NTP opzionale e timeout: perdita Wi-Fi non blocca l'orologio |
+| `VT-FW-003` | PR-FUN-012, PR-REL-004, PR-UI-006 | Firmware | Distacco SHT40/CRC errato → dato invalidato e segnalazione, niente valore stale |
+| `VT-FW-004` | PR-REL-001 | Sistema | Riavvio ripristina servizio e configurazione, senza fault persistenti |
+| `VT-FW-005` | PR-REL-003, PR-REL-005 | Firmware | Flash via USB posteriore, log privi di credenziali |
+| `VT-PWR-001` | PR-PWR-003, PR-PWR-004 | Elettrico | Protezioni, polarità, cella/PMU compatibili e verificati a schema e banco |
+| `VT-PWR-002` | PR-PWR-005 | Elettrico/termico | Uso durante ricarica senza anomalie di tensione, corrente e temperatura |
+| `VT-PWR-003` | PR-PWR-006 | Elettrico | Ciclo completo a profilo V1, autonomia reale confrontata con target 48 h |
+| `VT-PWR-004` | PR-PWR-007, PR-PWR-008, PR-FUN-011 | Elettrico | Avviso low-battery, cutoff, no boot-loop, recovery USB |
+| `VT-MEC-001` | PR-MEC-001, PR-UI-001 | Meccanico | Display realmente circolare incassato al posto del volto, senza interferenze |
+| `VT-MEC-002` | PR-MEC-002, PR-MEC-006 | Meccanico | Apertura sportello/estrazione componenti senza danno |
+| `VT-MEC-003` | PR-MEC-003 | Meccanico | Stabilità su piano, tocco e cavo USB in uso |
+| `VT-MEC-004` | PR-MEC-004, PR-MEC-005 | Meccanico/termico | SHT40 ventilato, batteria fissata e isolata, nessuna interferenza termica anomala |
+| `VT-VAL-001` | Visione prodotto, PR-UI-002 | Utente | Aspetto chibi coerente, leggibilità percepita e comodità d'uso approvate |
+
+## 3. Casi test dettagliati iniziali
+
+### VT-PWR-003 — Autonomia batteria
+
+**Precondizioni:** batteria identificata e caricata secondo procedura del produttore, firmware release con medesima configurazione del regalo, scocca rappresentativa. **Procedura:** avviare a ora nota, USB scollegata, UI per la maggior parte in `DIM`; registrare quantitativamente gli eventi `BRIGHT`, misura clima e NTP; registrare corrente e tensione batteria. **Accettazione:** autonomia reale riportata in ore, confronto esplicito con target **48 h**. Nessun `PASS` senza misura fino al cutoff definito e verifica di sicurezza.
+
+### VT-PWR-002 — Ricarica durante funzionamento
+
+**Precondizioni:** conferma di carica, polarità e corrente compatibile. **Procedura:** misurare alimentazione USB/batteria e temperature con DIM, BRIGHT, varie fasi della carica, portellino aperto e scocca chiusa secondo sicurezza. **Accettazione:** nessuna anomalia elettrica/termica; temperatura entro i limiti dei **datasheet** di cella, PMU, display e materiale. Soglie numeriche da definire sui componenti effettivi, non inventate in anticipo.
+
+### VT-FW-001 — Ora offline
+
+1. Avviare senza rete e con RTC inizialmente non valido; deve essere indicato `TIME_NOT_SET`.
+2. Impostare manualmente l'ora tramite flusso approvato (touch o provisioning USB).
+3. Rimuovere USB con batteria collegata; verificare ora e cambio minuto/giorno.
+4. Provare transizioni ora legale/solare Europa/Roma con clock simulato nei test unitari.
+5. Verificare comportamento dopo rimozione di **tutte** le fonti di energia.
+
+### VT-FW-003 — Guasto sensore
+
+1. Rilevare una lettura valida.
+2. Scollegare SHT40 in condizioni controllate; dopo la finestra di freschezza la UI deve mostrare `--`.
+3. Ripristinare il sensore; acquisizione corretta senza reboot necessario, se supportato.
+4. Iniettare CRC e timeout errati via test/mocks; nessun valore vecchio deve sembrare attuale.
+
+### VT-MEC-004 — Errore termico sensore
+
+Confrontare SHT40 montato nello chassis e sensore di riferimento **co-locato** nelle stesse condizioni in almeno tre scenari: USB scollegata a regime, ricarica attiva a regime, BRIGHT prolungato. Registrare tempi di assestamento e differenza di temperatura/RH; accettabilità dell'errore aggiuntivo da definire prima del test.
+
+## 4. Test unitari software consigliati
+
+- Formatting ora, date e locale.
+- DST Italia: 02:00 e 03:00 nei cambi previsti, gap/ora ripetuta.
+- FSM DIM/BRIGHT con timeout e tocchi ripetuti.
+- Lettura SHT40: CRC, retry e stale data.
+- Estrazione valore batteria PMU: limiti, incognite, nessuna percentuale fittizia.
+- Fallback Wi-Fi down e timeout NTP.
+- Reset NVS, migrazione schema configurazione e ora mai impostata.
+
+## 5. Strumentazione minima
+
+Multimetro affidabile, strumento per acquisizione corrente (anche dinamica), alimentatore USB 5 V affidabile, termometro/sonda per batteria e PMU, un riferimento T/RH per confronto, calibro, computer per log ESP-IDF e strumento di verifica continuità/polarità. Se possibile, termocamera per analisi a ricarica attiva.
+
+## 6. Registro risultati (modello)
+
+```text
+Test ID:
+Data / esecutore:
+HW revision / scheda SKU:
+Firmware SHA / configurazione:
+Batteria: marca/modello/capacità/età:
+Strumenti e riferimenti:
+Condizioni ambientali:
+Passi svolti:
+Misure (con unità):
+Evidenze (foto, log, csv):
+Risultato: NOT_RUN | PASS | FAIL | BLOCKED
+Difetto riscontrato / issue:
+```
+
+## 7. Gate di rilascio
+
+Non consegnare il dispositivo assemblato se i test batteria/ricarica/polarità/temperatura sono `FAIL`, `BLOCKED` o `NOT_RUN`. I test estetici e la durata nominale devono essere valutati esplicitamente, senza spacciare gli obiettivi per esiti sperimentali.
