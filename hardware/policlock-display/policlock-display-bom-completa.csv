@@ -1,0 +1,6 @@
+"Riferimenti","Valore","Footprint","LCSC","Qta","DNP","Note"
+"C1","10uF","Capacitor_SMD:C_0603_1608Metric","C19702","1","","Unpolarized capacitor"
+"C2,C3","100nF","Capacitor_SMD:C_0603_1608Metric","C14663","2","","Unpolarized capacitor"
+"J1","AFC01-S16FCA-00","PoliClock:FPC-SMD_P0.50-16P_FGS-XJ-H2.0","C262665","1","","Cavo FFC verso scheda principale"
+"J2","AFC01-S18FCA-00","PoliClock:FPC-SMD_18P-P0.50_JS_AFC01-S18FCA-00","C262666","1","","FPC 18P 0,5 mm: passo e lato contatti da confermare sul pannello acquistato"
+"R1","0Ω","Resistor_SMD:R_0603_1608Metric","C21189","1","","0 ohm: anodo retroilluminazione (resistenza se richiesta dal pannello)"

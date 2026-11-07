@@ -1,6 +1,6 @@
 # 10 — Decision log e questioni aperte
 
-**Versione:** 0.5 · **Data:** 2026-11-07
+**Versione:** 0.6 · **Data:** 2026-11-07
 
 ## 1. Decisioni confermate (CONF)
 
@@ -31,6 +31,10 @@ Le decisioni superate restano nel registro per tracciabilità, con lo stato indi
 | `DEC-021` | 2026-11-07 | **Scheda principale rettangolare separata dal display**, collegata a una **schedina portadisplay** nella testa con cavo (FFC o JST-SH) attraverso il collo; SHT40 su mini-PCB; tutte nello stesso pannello JLC. Posizione della scheda principale decisa con la bozza CAD (`OPEN-020`): preferita nel busto/base con **USB-C saldata sulla scheda** affacciata al sedere; prolunga solo se la scheda va nella testa | Layout più semplice e sicuro, schema e PCB realizzabili da Claude con revisione visiva del proprietario; testa libera dai vincoli del PCB |
 | `DEC-022` | 2026-11-07 | Strumenti: **KiCad 10** (`kicad-cli`), **VS Code + ESP-IDF** (v6.x, versione da fissare al bring-up), **Blender** per la chibi, **CAD a codice** (build123d) per le parti tecniche | Strumenti gratuiti e automatizzabili; scultura artistica a mano in Blender |
 | `DEC-023` | 2026-11-07 | **V1 senza batteria: alimentazione continua da cavo USB-C.** RTC esterno con tampone mantenuto. Batteria rimandata a eventuali versioni successive, da ridiscutere | Rimuove la parte più complessa e rischiosa (cella, caricatore, NTC, autonomia, gate di sicurezza della cella); semplifica PCB, firmware e CAD; accettato che l'orologio funzioni solo collegato. Supera `DEC-005`, `DEC-008`, `DEC-014` |
+| `DEC-024` | 2026-11-07 | **RTC su modulo esterno via cavo: Adafruit DS3231 Precision RTC – STEMMA QT** (prodotto 5188) con pila **CR1220**, collegato con cavo JST-SH 4 poli (Qwiic) al connettore J4 della scheda principale; nessun RTC sul PCB | RV-3028-C7 a stock 0 su LCSC/JLC; scelto dal proprietario fra RTC sul PCB (RV-3032-C7, PCF85063A, PCF8563T) e moduli esterni. DS3231 compensato in temperatura (±2 ppm), tampone di anni, modulo documentato. La pila serve solo all'RTC (compatibile con `DEC-023`). Supera `CAND-014` |
+| `DEC-025` | 2026-11-07 | Schedina portadisplay disegnata per il **pannello GC9A01 1,28" con touch** (CST816S, FPC **18 poli**); si acquista sempre la versione touch, il touch resta inattivo finché non viene abilitato | Un solo footprint rispetta la predisposizione `DEC-019`. Pinout preso dallo schema di riferimento Waveshare, da confermare sul pannello acquistato (`OPEN-016`) |
+| `DEC-026` | 2026-11-07 | Cavo display **FFC 16 poli passo 0,5 mm** con connettori ZIF SMD JUSHUO AFC01-S16FCA-00 su entrambe le schede | 10 segnali (con touch) + 2×3,3 V + 4×GND alternati; connettore molto disponibile a JLC. Supera `CAND-020` (resta da validare la stabilità SPI, `OPEN-021`) |
+| `DEC-027` | 2026-11-07 | Pulsante utente: **connettore JST-SH 2 poli** per un pulsante remoto **e** tasto tattile sulla scheda in parallelo | La posizione nella statuetta (`OPEN-017`) si decide col CAD senza rifare il PCB; il tasto su scheda serve al bring-up |
 
 Le date sopra sono la data della formalizzazione nel documento delle scelte emerse nella conversazione, non un registro notarile degli eventi.
 
@@ -51,14 +55,17 @@ Le date sopra sono la data della formalizzazione nel documento delle scelte emer
 | `CAND-011` | SHT40 sui pin I²C della Waveshare | **Superata** (`DEC-015`) | — |
 | `CAND-012` | MCU: modulo **ESP32-C3-MINI-1** (consigliato) o ESP32-S3-MINI-1 | Proposto | Pin necessari (budget migliorato senza batteria), prezzo/disponibilità LCSC, prototipo M1 |
 | `CAND-013` | Caricatore con power-path e NTC | **Ritirato** (`DEC-023`) | — |
-| `CAND-014` | RTC esterno a bassissimo consumo con tampone (es. RV-3028-C7 o PCF85063A + supercondensatore/pila) | Proposto | Datasheet, consumo, durata del tampone a cavo scollegato |
-| `CAND-015` | Regolatore 3,3 V da 5 V USB: LDO | Proposto | Corrente massima, dissipazione, disponibilità LCSC |
+| `CAND-014` | RTC esterno a bassissimo consumo con tampone (es. RV-3028-C7 o PCF85063A + supercondensatore/pila) | **Superata** da `DEC-024` (RV-3028-C7 non disponibile) | — |
+| `CAND-015` | Regolatore 3,3 V da 5 V USB: LDO **AMS1117-3.3** (LCSC C6186, Basic) con 22 µF in uscita | Proposto (schema rev 0.1) | Misura dissipazione in M1/M3; stabilità con MLCC (`OPEN-025`); alternativa ME6211C33/AP2112K |
 | `CAND-016` | Misura batteria | **Ritirata** (`DEC-023`) | — |
 | `CAND-017` | Protocollo di configurazione testuale a righe sulla porta seriale USB, versionato (vedi [firmware](04-specifiche-firmware.md) §6.1) | Proposto | Prototipo M1 e test `VT-FW-007` |
 | `CAND-018` | Configuratore come **pagina web statica** con Web Serial (Chrome/Edge desktop), nessuna installazione; alternativa script Python | Proposto | Prova su Windows con la dev board; compatibilità browser |
 | `CAND-019` | Posizione scheda principale: **A** busto/base con USB-C sulla scheda (preferita) o **B** testa con prolunga | Proposto | Bozza Blender (`OPEN-020`) |
-| `CAND-020` | Cavo display: **FFC passo 0,5 mm** con connettori ZIF (preferito) o cavetto JST-SH; SPI 10–20 MHz | Proposto | Prova su banco con cavo di lunghezza reale (M1) |
+| `CAND-020` | Cavo display: **FFC passo 0,5 mm** con connettori ZIF (preferito) o cavetto JST-SH; SPI 10–20 MHz | Confermato → `DEC-026` (16 poli); frequenza SPI ancora da provare | Prova su banco con cavo di lunghezza reale (M1) |
 | `CAND-021` | CAD a codice con **build123d** (alternativa CadQuery) | Proposto | Prima parte tecnica modellata ed esportata in STEP/STL |
+| `CAND-022` | Componenti dello schema rev 0.1 e codici LCSC come in [12](12-selezione-componenti.md) (ESP32-C3-MINI-1-N4, TYPE-C-31-M-12, USBLC6-2SC6, PTC BSMD0805-050-12V, AMS1117-3.3, AO3400A, JST-SH, JUSHUO AFC01, SHT40-AD1B-R2) | Proposto | Prototipo M1, revisione schema, stock al momento dell'ordine |
+| `CAND-023` | Assegnazione GPIO dell'ESP32-C3-MINI-1 (vedi [02](02-architettura-hardware.md) §3.1): ESP32-C3 sufficiente, S3 non necessario | Proposto | Prova sulla dev board M1 (strapping IO2/IO8/IO9, PWM su IO20) |
+| `CAND-024` | Tre progetti KiCad separati (principale, portadisplay, SHT40), pannellizzati per l'ordine JLC | Proposto | Preventivo JLC e strumenti di pannellizzazione al layout |
 
 ## 3. Questioni aperte con priorità
 
@@ -77,15 +84,19 @@ Le date sopra sono la data della formalizzazione nel documento delle scelte emer
 | `OPEN-011` | P1 | SHT40 legge realmente l'aria stanza o il calore interno (permanente con alimentazione continua)? | Test di confronto a regime con scocca chiusa |
 | `OPEN-012` | P2 | Colori capelli, posa braccia e finitura cappello? | Approvazione concept/campione stampa |
 | `OPEN-013` | — | ~~Temperatura della cella in carica~~ | Chiusa da `DEC-023` |
-| `OPEN-014` | P1 | Per quanto tempo l'ora sopravvive a cavo scollegato? | Scelta del tampone (supercondensatore o pila) e misura |
+| `OPEN-014` | P2 | Per quanto tempo l'ora sopravvive a cavo scollegato? | Tampone scelto: pila CR1220 del modulo DS3231 (`DEC-024`), durata attesa di anni secondo Adafruit; verificare con `VT-FW-001` passo 5 |
 | `OPEN-015` | P2 | Il menu con **un solo pulsante** è sufficientemente usabile come riserva? | Prototipo dell'interazione; il metodo principale è il configuratore (`DEC-020`) |
-| `OPEN-016` | P0 | Quale pannello GC9A01 acquistare, con datasheet e pinout FPC affidabili? | Ricerca fornitori, datasheet |
+| `OPEN-016` | P0 | Quale pannello GC9A01 **con touch, FPC 18 poli** (`DEC-025`) acquistare, con datasheet e pinout FPC affidabili? | Ricerca fornitori, datasheet; confermare passo, lato contatti e pinout di J2 della portadisplay prima del layout |
 | `OPEN-017` | P1 | Dove posizionare il pulsante nella statuetta? | Proposte estetiche/ergonomiche e CAD |
 | `OPEN-018` | P1 | Montare il touch nella V1? | Prova sul prototipo M1: usabilità e interazione con la cornice stampata |
-| `OPEN-019` | P1 | Quali GPIO e quale connettore per il touch? | Datasheet del pannello scelto e pin liberi dell'MCU |
+| `OPEN-019` | P2 | Quali GPIO e quale connettore per il touch? | Proposta nello schema rev 0.1: TP_INT su IO0, TP_RST su IO1, I²C condiviso tramite R11/R12 0 Ω DNP, segnali nel cavo FFC (`CAND-023`); da confermare con il datasheet del pannello |
 | `OPEN-020` | P0 | Dove va la scheda principale (busto/base o testa)? | Bozza a volumi in Blender con scheda, display e passaggio cavi; decide anche se serve la prolunga USB |
 | `OPEN-021` | P1 | Il SPI del display è stabile sul cavo reale? | Prova M1 con cavo di lunghezza reale e frequenza scelta |
 | `OPEN-022` | P1 | Come esce il cavo USB dal sedere senza far ribaltare la statuetta? | Bozza CAD con incavo/guida nella base e zavorra; prova `VT-MEC-003` |
+| `OPEN-023` | P1 | Orientamento del cavo FFC: contatti sullo stesso lato o opposti, in modo che il pin n della scheda principale arrivi al pin n della portadisplay? | Layout delle due schede e percorso nel collo; scegliere il tipo di cavo FFC di conseguenza |
+| `OPEN-024` | P1 | Corrente della retroilluminazione: LEDA a 3,3 V con R18 = 10 Ω (riferimento Waveshare) è adeguata? | Datasheet del pannello (Vf, corrente nominale); misura in M1 |
+| `OPEN-025` | P2 | L'AMS1117-3.3 è stabile con condensatori ceramici (il datasheet usa 22 µF al tantalio)? | Bring-up: oscilloscopio sull'uscita 3,3 V con carico variabile; in alternativa LDO stabile con MLCC prima del layout |
+| `OPEN-026` | P2 | Dove alloggiare il modulo DS3231 (quote dal disegno Adafruit, cavo JST-SH) nella statuetta, accessibile per cambiare la pila CR1220? | Bozza CAD (`OPEN-020`) |
 
 ## 4. Come si chiude una decisione
 

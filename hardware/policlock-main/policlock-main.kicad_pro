@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "filename": "policlock-main.kicad_pro",
+    "version": 3
+  },
+  "schematic": {
+    "legacy_lib_dir": "",
+    "legacy_lib_list": []
+  },
+  "sheets": [
+    [
+      "8f25dc1f-4709-513e-82c3-d067157683da",
+      "Root"
+    ],
+    [
+      "b41bf69b-2d9a-59eb-b9e8-768fd00dcd3d",
+      "USB e alimentazione"
+    ],
+    [
+      "e7cf3c2a-3bdb-5445-898a-db7fa374740a",
+      "MCU"
+    ],
+    [
+      "20ad8c36-b999-56cb-b9d3-b8060cbfc155",
+      "Display (cavo FFC)"
+    ],
+    [
+      "30c4f62e-a999-52bd-abab-f36f61d332ff",
+      "Periferiche I2C e pulsante"
+    ]
+  ],
+  "text_variables": {}
+}

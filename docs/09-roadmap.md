@@ -1,6 +1,6 @@
 # 09 — Roadmap di realizzazione
 
-**Versione:** 0.5 · **Stato:** pianificazione per milestone, nessuna data promessa · **Data:** 2026-11-07
+**Versione:** 0.6 · **Stato:** pianificazione per milestone, nessuna data promessa · **Data:** 2026-11-07
 
 ## Premessa
 
@@ -33,6 +33,8 @@ Attività:
 ## M2 — Progettazione PCB (KiCad)
 
 **Output:** progetto KiCad 10 versionato in `hardware/`: schema e layout di scheda principale, schedina portadisplay e mini-PCB SHT40 in un pannello unico, BOM e file di posizionamento per JLC, STEP per il CAD, checklist di revisione compilata. Schema e layout preparati da Claude, rivisti a vista dal proprietario in KiCad.
+
+**Stato (2026-11-07):** schema rev 0.1 delle tre schede disegnato in anticipo su richiesta del proprietario, con ERC pulito, PDF e BOM con codici LCSC ([hardware](../hardware/README.md), [12](12-selezione-componenti.md)). Il layout attende il prototipo M1, il pannello display acquistato (`OPEN-016`) e la revisione visiva dello schema.
 
 **Exit gate:** `VT-PCB-001` superato (ERC/DRC puliti, revisione schema, disponibilità LCSC, quote compatibili con il CAD); preventivo JLC accettato.
 

@@ -1,6 +1,6 @@
 # 02 — Architettura hardware
 
-**Versione:** 0.5 · **Stato:** architettura PCB custom candidata, non validata · **Data:** 2026-11-07
+**Versione:** 0.6 · **Stato:** architettura PCB custom candidata, schema rev 0.1 disegnato, non validato · **Data:** 2026-11-07
 
 ## 1. Strategia
 
@@ -8,11 +8,12 @@ La V1 usa un **PCB custom progettato in KiCad e prodotto/assemblato da JLCPCB** 
 
 L'elettronica è divisa in **schede separate** (`DEC-021`):
 
-1. **Scheda principale** rettangolare, **separata dal display**: MCU, protezioni USB, regolatore 3,3 V, RTC con tampone, USB-C, connettori. **Nessuna batteria** nella V1 (`DEC-023`). Posizione nella statuetta da decidere con la bozza CAD (busto/base o testa, `OPEN-020`).
+1. **Scheda principale** rettangolare, **separata dal display**: MCU, protezioni USB, regolatore 3,3 V, USB-C, connettori (incluso quello del modulo RTC esterno, `DEC-024`). **Nessuna batteria** nella V1 (`DEC-023`). Posizione nella statuetta da decidere con la bozza CAD (busto/base o testa, `OPEN-020`).
 2. **Schedina portadisplay** rotonda nella testa: solo il connettore del pannello, i condensatori di disaccoppiamento e il connettore del cavo verso la scheda principale.
 3. **Mini-PCB SHT40** nel vano ventilato.
+4. **Modulo RTC esterno** Adafruit DS3231 STEMMA QT con pila CR1220, collegato via cavo JST-SH 4 poli (`DEC-024`): non è un PCB custom.
 
-Scheda principale e portadisplay sono collegate da un **cavo piatto FFC** (o cavetto JST-SH) che attraversa il collo (`CAND-020`). Tutte le schede si ordinano nello **stesso pannello JLC**.
+Scheda principale e portadisplay sono collegate da un **cavo piatto FFC 16 poli passo 0,5 mm** che attraversa il collo (`DEC-026`). Tutte le schede si ordinano nello **stesso pannello JLC**.
 
 Il PCB custom **non** è più economico per un solo esemplare (costi fissi di assemblaggio, spedizione, possibile seconda revisione): la scelta è motivata da controllo del progetto, minimo indispensabile e integrazione nella statuetta.
 
@@ -34,12 +35,10 @@ flowchart LR
         ESD["ESD + fusibile/PTC"]
         REG["Regolatore 3,3 V (LDO)"]
         MCU["Modulo ESP32"]
-        RTC["RTC + tampone"]
         CONN --> ESD -->|"5 V"| REG --> MCU
-        REG --> RTC
         ESD -->|"D+/D-"| MCU
-        MCU <-->|"I2C"| RTC
     end
+    RTC["Modulo RTC DS3231<br/>+ pila CR1220"] <-->|"I2C, JST-SH 4 poli"| MCU
     USB["Cavo USB-C sempre collegato<br/>(sul sedere)"] -.->|"connettore diretto (A) o prolunga (B)"| CONN
     CARR <-->|"cavo FFC nel collo"| MCU
     SHT["SHT40 su mini-PCB<br/>vano ventilato"] <-->|"I2C, 4 fili"| MCU
@@ -57,18 +56,39 @@ Tutti i codici sono **CAND**: da verificare su datasheet, disponibilità e prezz
 | MCU | Logica, UI | Supporto ESP-IDF, USB nativa per flash/log/configuratore, SPI + I²C + PWM, GPIO per pulsante e touch | Modulo **ESP32-C3-MINI-1** (consigliato) o ESP32-S3-MINI-1; modulo certificato con antenna/flash integrate |
 | Display | Volto | Rotondo, IPS, **1,28"**, **240×240**, driver **GC9A01**, SPI 4 fili (`DEC-016`) | Pannello nudo con FPC, disponibile con e senza touch (`DEC-019`) |
 | Portadisplay | Interfaccia pannello ↔ cavo | Connettore FPC del pannello, condensatori vicino al pannello, connettore del cavo; sagoma e fori per il fissaggio nella testa | Schedina rotonda a 2 strati, nessun componente attivo |
-| Collegamento display | Testa ↔ scheda principale | Circa **12 conduttori**: 3,3 V, GND (più di uno, alternati ai segnali), SCLK, MOSI, CS, DC, RST, BL; touch: SDA, SCL, INT, RST. Lunghezza indicativa 5–15 cm | **FFC** passo 0,5 mm con connettori ZIF (consigliato) o cavetto JST-SH; SPI a **10–20 MHz** da validare in M1 (`CAND-020`) |
-| Retroilluminazione | DIM/BRIGHT/NIGHT | PWM, spegnibile del tutto di notte | MOSFET/transistor + resistenza; valori dal datasheet del pannello |
-| Interazione | Accendere/impostare | **Pulsante** fisico (`DEC-017`), posizione da definire | Pulsante su scheda o remoto via cavo; pull-up e antirimbalzo; GPIO con risveglio |
-| Touch (predisposto) | Opzione futura (`DEC-019`) | Controller del pannello su I²C + **INT** (GPIO con risveglio) + **RST** portati nel cavo; componenti non montati se non serve | Controller tipico dei pannelli 1,28" (es. famiglia CST816), da confermare sul datasheet |
+| Collegamento display | Testa ↔ scheda principale | **16 conduttori**: 2×3,3 V, 4×GND alternati ai segnali, SCLK, MOSI, CS, DC, RST, LEDK; touch: SDA, SCL, INT, RST. Lunghezza indicativa 5–15 cm | **FFC 16 poli passo 0,5 mm**, connettori ZIF JUSHUO AFC01-S16FCA-00 (`DEC-026`); SPI a **10–20 MHz** da validare in M1 (`OPEN-021`) |
+| Retroilluminazione | DIM/BRIGHT/NIGHT | PWM, spegnibile del tutto di notte | MOSFET AO3400A lato basso su LEDK + resistenza R18 (TBD dal datasheet del pannello, `OPEN-024`) |
+| Interazione | Accendere/impostare | **Pulsante** fisico (`DEC-017`), posizione da definire | Connettore JST-SH 2 poli per pulsante remoto + tasto su scheda in parallelo (`DEC-027`); pull-up 10 kΩ e 100 nF; IO3 con risveglio |
+| Touch (predisposto) | Opzione futura (`DEC-019`) | Controller del pannello su I²C + **INT** (GPIO con risveglio) + **RST** portati nel cavo; componenti non montati se non serve | CST816S del pannello touch 18 poli (`DEC-025`); I²C collegato solo montando R11/R12 0 Ω (DNP) |
 | USB | **Alimentazione**, flash, configuratore (`DEC-020`, `DEC-023`) | USB-C 2.0, CC 5,1 kΩ, ESD, fusibile/PTC; D+/D- alla USB nativa dell'MCU secondo le design guideline Espressif | Ricettacolo USB-C sulla scheda principale; ESD tipo USBLC6-2 |
-| Regolatore 3,3 V | Alimentare MCU, display, sensori da 5 V USB | Corrente massima con margine sui picchi MCU; dissipazione accettabile; bassa rumorosità | LDO 5 V → 3,3 V (`CAND-015`) |
-| RTC | Ora anche a cavo scollegato | Bassissimo consumo, tampone (supercondensatore o pila) dimensionato per alcuni giorni, I²C | RV-3028-C7 o PCF85063A + tampone (`CAND-014`) |
+| Regolatore 3,3 V | Alimentare MCU, display, sensori da 5 V USB | Corrente massima con margine sui picchi MCU (il modulo richiede una sorgente ≥ 0,5 A); dissipazione accettabile | LDO **AMS1117-3.3** (Basic) (`CAND-015`, `OPEN-025`) |
+| RTC | Ora anche a cavo scollegato | Tampone che copra almeno alcuni giorni, I²C, buona precisione (nessun NTP) | **Modulo esterno Adafruit DS3231 STEMMA QT** + pila CR1220 su connettore JST-SH 4 poli (`DEC-024`) |
 | Sensore T/RH | Misure ambiente | **SHT40** su mini-PCB senza LED, 4 fili | Mini-PCB nello stesso pannello JLC |
-| Connettori | SHT40, pulsante | Polarizzati, con ritenuta, polarità serigrafata | JST-PH 2,0 o JST-SH 1,0 |
-| Debug | Bring-up | Punti di test VBUS, 3,3 V, tampone RTC, GND; BOOT/RESET | — |
+| Connettori | SHT40, RTC, pulsante | Polarizzati, con ritenuta, polarità serigrafata | **JST-SH 1,0 mm**: 4 poli con pinout Qwiic/STEMMA QT per SHT40 e RTC, 2 poli per il pulsante |
+| Debug | Bring-up | Punti di test VBUS, 5 V protetto, 3,3 V, GND, EN, UART TX, I²C; tasti BOOT/RESET; resistenze 0 Ω per isolare LDO, display e moduli esterni | — |
 
-**Budget dei pin (ESP32-C3):** SPI display 5, retroilluminazione 1, I²C 2, touch INT/RST 2, pulsante 1, USB 2: circa 13 GPIO, compatibili con i GPIO liberi del modulo (da verificare sul datasheet, inclusi i pin di boot). Senza batteria non servono più ADC, abilitazione partitore e stato caricatore.
+**Budget dei pin (ESP32-C3):** SPI display 5, retroilluminazione 1, I²C 2, touch INT/RST 2, pulsante 1, USB 2, BOOT 1: 14 GPIO sui 15 del modulo; IO21 (TXD0) resta su un punto di test. Verificato sul datasheet ESP32-C3-MINI-1 v2.2, strapping inclusi (`CAND-023`).
+
+### 3.1 Assegnazione dei pin (schema rev 0.1)
+
+| GPIO | Pin modulo | Segnale | Note |
+|---|---:|---|---|
+| IO0 | 12 | TP_INT | Touch predisposto; risveglio da deep-sleep (GPIO0–5) |
+| IO1 | 13 | TP_RST | Touch predisposto |
+| IO2 | 5 | I2C_SDA | Strapping: pull-up 4,7 kΩ raccomandato da Espressif |
+| IO3 | 6 | BTN_USER | Attivo basso, pull-up 10 kΩ, risveglio da deep-sleep |
+| IO4 | 18 | LCD_DC | |
+| IO5 | 19 | LCD_RST | Pull-up 10 kΩ |
+| IO6 | 20 | LCD_SCLK | IO_MUX FSPICLK, 22 Ω in serie |
+| IO7 | 21 | LCD_MOSI | IO_MUX FSPID, 22 Ω in serie |
+| IO8 | 22 | I2C_SCL | Strapping: = 1 per il download, pull-up 4,7 kΩ |
+| IO9 | 23 | BOOT | Strapping: pull-up 10 kΩ + tasto BOOT |
+| IO10 | 16 | LCD_CS | IO_MUX FSPICS0 |
+| IO18 / IO19 | 26 / 27 | USB D- / D+ | USB Serial/JTAG nativa |
+| IO20 (RXD0) | 30 | LCD_BL | PWM retroilluminazione; gate con pull-down 100 kΩ |
+| IO21 (TXD0) | 31 | UART_TX | Punto di test |
+
+Bus I²C condiviso: SHT40 `0x44`, DS3231 `0x68`, touch CST816S `0x15` (indirizzo da confermare sul datasheet). Dettagli e codici LCSC in [12 — Selezione componenti](12-selezione-componenti.md).
 
 ![Schema a blocchi di PoliClock](../assets/concept/policlock-schema-blocchi.svg)
 
@@ -86,7 +106,7 @@ Tutti i codici sono **CAND**: da verificare su datasheet, disponibilità e prezz
 - Montato su un **mini-PCB** prodotto insieme alle altre schede: niente LED, niente regolatore, pull-up I²C sulla scheda principale.
 - Posizionamento **separato fisicamente** dalle sorgenti di calore (scheda principale, regolatore, retroilluminazione), con feritoie verso l'aria ambiente.
 - Cavo a 4 fili con connettore polarizzato e fermacavo.
-- Indirizzo tipico `0x44`: verificare assenza di conflitti con RTC, touch e fuel gauge.
+- Indirizzo `0x44` (SHT40-AD1B): nessun conflitto con RTC DS3231 (`0x68`) e touch (`0x15`).
 - Campionamento iniziale consigliato **30–60 s** (parametro firmware).
 
 ## 6. Scelte intenzionalmente escluse
@@ -99,18 +119,18 @@ Non servono per V1: audio, microSD, IMU, GPS, touch montato (solo predisposto, `
 |---|---|---|
 | USB-C | Alimentazione continua, flash, configuratore | Opzione A: connettore sul bordo della scheda allineato al foro sul sedere. Opzione B: enumerazione attraverso la prolunga provata su banco |
 | Display su cavo | GC9A01 via SPI | Pinout FPC dal datasheet del pannello **acquistato**; prova su banco con cavo di lunghezza reale e frequenza scelta |
-| I²C | RTC, SHT40, touch, eventuale fuel gauge | Indirizzi, pull-up unici, lunghezze cavo |
+| I²C | RTC (modulo esterno), SHT40, touch | Indirizzi; pull-up 4,7 kΩ sulla scheda in parallelo ai 10 kΩ del modulo DS3231; lunghezze dei cavi |
 | Pulsante | Illuminazione UI e menu | Antirimbalzo e pressione breve/lunga provati sulla dev board |
-| Touch (predisposto) | Opzione futura | Pinout touch del pannello; GPIO INT/RST con risveglio (`OPEN-019`) |
+| Touch (predisposto) | Opzione futura | Pinout touch del pannello acquistato; GPIO INT/RST proposti IO0/IO1 (`OPEN-019`) |
 | USB dati / configuratore | Impostazioni da PC | Porta seriale e comandi funzionanti in tutti i modi (DIM/BRIGHT/NIGHT) |
-| RTC | Unica fonte di tempo in V1 | Mantenimento a cavo scollegato grazie al tampone; durata misurata |
+| RTC | Unica fonte di tempo in V1 | Modulo DS3231 su J4; mantenimento a cavo scollegato con la pila CR1220; deriva misurata |
 
 ## 8. Alternative e rischi
 
 - **Prima revisione PCB con errori**: probabile. Mitigazione: prototipo M1, revisione schema con checklist, punti di test, 0 Ω/jumper per isolare i blocchi, revisione visiva del proprietario in KiCad.
 - **Disturbi sul cavo display**: frequenza SPI ridotta, masse alternate, prova su banco con cavo reale.
 - **Pannello senza datasheet affidabile**: acquistare solo pannelli con pinout FPC documentato.
-- **Componenti non disponibili a JLC**: verificare LCSC prima del layout; alternative compatibili a pin.
+- **Componenti non disponibili a JLC**: verificare LCSC prima del layout; alternative compatibili a pin (già successo con l'RV-3028-C7, `DEC-024`).
 - **Spazio nel busto insufficiente** per la scheda: decidere la posizione con la bozza Blender (`OPEN-020`).
 - **Piano B**: schede commerciali con ESP32 e display rotondo 1,28" integrato.
 

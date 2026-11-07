@@ -2,7 +2,7 @@
 
 **Orologio da scrivania alimentato via USB, integrato nel volto di una poliziotta chibi stampata in 3D.**
 
-> Stato: **concept / specifiche preliminari (v0.5)** · Aggiornamento: 2026-11-07\
+> Stato: **specifiche preliminari (v0.6), schema KiCad rev 0.1 non validato** · Aggiornamento: 2026-11-07\
 > Lingua progetto: italiano · Documentazione in Markdown · Hardware non ancora acquistato né validato.
 
 ## Il prodotto
@@ -28,8 +28,9 @@ La modalità scelta è **ibrida**: quadrante normalmente attenuato ma leggibile;
 
 ## Architettura candidata, NON ancora congelata
 
-- **Scheda principale** rettangolare (busto/base preferito, posizione da confermare con il CAD): modulo **ESP32-C3** (o S3), protezioni USB, regolatore 3,3 V, **RTC esterno con tampone** (l'ora resta salva a cavo scollegato), USB-C, connettori.
-- **Schedina portadisplay** nella testa, collegata con cavo FFC attraverso il collo.
+- **Scheda principale** rettangolare (busto/base preferito, posizione da confermare con il CAD): modulo **ESP32-C3-MINI-1**, protezioni USB, regolatore 3,3 V, USB-C, connettori.
+- **RTC esterno** su modulo Adafruit DS3231 STEMMA QT con pila CR1220, collegato via cavo: l'ora resta salva a cavo scollegato.
+- **Schedina portadisplay** nella testa, collegata con cavo FFC 16 poli attraverso il collo.
 - Sensore T/RH: **Sensirion SHT40** su mini-PCB, in vano ventilato, collegato con 4 fili.
 - Prima del PCB: **prototipo su banco** con moduli commerciali per validare display su cavo, consumi e firmware.
 - Firmware **ESP-IDF**.
@@ -58,6 +59,8 @@ Le immagini sono **illustrative** (vedi [assets](assets/README.md)).
 | [Roadmap](docs/09-roadmap.md) | Milestone, deliverable, gate |
 | [Decisioni e questioni aperte](docs/10-decisioni-aperte.md) | Decision log e dubbi tecnici |
 | [Fonti](docs/11-fonti.md) | Documenti ufficiali e risorse tecniche |
+| [Selezione componenti](docs/12-selezione-componenti.md) | Componenti dello schema, codici LCSC, assegnazione GPIO |
+| [Hardware KiCad](hardware/README.md) | Progetti KiCad, PDF, BOM JLCPCB, rigenerazione |
 
 ## Organizzazione di lavoro prevista
 
@@ -67,12 +70,12 @@ PoliClock/
 ├── docs/                  # specifiche e verifiche
 ├── assets/                # concept, render, modelli di riferimento futuri
 ├── firmware/              # progetto ESP-IDF da avviare in M1/M4
-├── hardware/              # progetto KiCad del PCB, BOM e file JLCPCB (M2)
+├── hardware/              # progetti KiCad (schema rev 0.1), BOM JLCPCB (M2)
 ├── tools/                 # configuratore da PC via USB (M4)
 └── mechanical/            # Blender (chibi), build123d (parti tecniche), STL/3MF
 ```
 
-Le ultime quattro directory sono **previste**, non ancora presenti: non si pubblicano file placeholder che possano essere scambiati per firmware o modelli funzionanti.
+Le directory `firmware/`, `tools/` e `mechanical/` sono **previste**, non ancora presenti: non si pubblicano file placeholder che possano essere scambiati per firmware o modelli funzionanti.
 
 ## Convenzioni
 

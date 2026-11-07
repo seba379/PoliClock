@@ -1,0 +1,232 @@
+(footprint "CONN-SMD_2P-P1.00_SM02B-SRSS-TB-LF-SN"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 -5.938 0)
+		(layer "F.SilkS")
+		(uuid "5f4a1feb-6354-4f9f-a303-62032458c3ce")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "CONN-SMD_2P-P1.00_SM02B-SRSS-TB-LF-SN"
+		(at 0 5.938 0)
+		(layer "F.Fab")
+		(uuid "b4f34619-6148-4782-b497-a5c43c3d4d1d")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "80a20e1b-8a90-4270-ac02-f62e9ff6029a")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "3358416a-6c70-417e-8b58-39f9acfab917")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(property "LCSC Part" "C160402"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "4758cfdc-5441-43be-9c02-f46fb2f98e64")
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+	)
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_line
+		(start -2 -1.65)
+		(end -1.03 -1.65)
+		(stroke
+			(width 0.25)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "4274a787-f933-4329-a120-a3edef167456")
+	)
+	(fp_line
+		(start -2 0.2)
+		(end -2 -1.65)
+		(stroke
+			(width 0.25)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "af38841d-8ad1-4cf7-b68e-499db1b3cef2")
+	)
+	(fp_line
+		(start -2 0.2)
+		(end -2 0.81)
+		(stroke
+			(width 0.25)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "79597779-6333-4184-bfbd-1c56504fe765")
+	)
+	(fp_line
+		(start -0.97 2.65)
+		(end 0.97 2.65)
+		(stroke
+			(width 0.25)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "72aa852f-82c1-4e9a-b821-9fe271e8902d")
+	)
+	(fp_line
+		(start 1.03 -1.65)
+		(end 2 -1.65)
+		(stroke
+			(width 0.25)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "e6ac8918-895b-46a1-8401-31d13495fcd2")
+	)
+	(fp_line
+		(start 2 -1.65)
+		(end 2 0.81)
+		(stroke
+			(width 0.25)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "264ac243-cc3f-4902-b7a1-2d0df62af9fe")
+	)
+	(fp_circle
+		(center -2 -2.34)
+		(end -1.97 -2.34)
+		(stroke
+			(width 0.06)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "16a3dd9d-0b43-48d0-b936-b907443e10c1")
+	)
+	(fp_circle
+		(center -0.55 -2.4)
+		(end -0.35 -2.4)
+		(stroke
+			(width 0.4)
+			(type solid)
+		)
+		(fill no)
+		(layer "Cmts.User")
+		(uuid "1fa9a506-445d-47e0-b378-e5f240e30652")
+	)
+	(fp_line
+		(start -2 -1.64)
+		(end 2 -1.64)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "c2045773-bf30-4bb7-a547-8bc87ea9634d")
+	)
+	(fp_line
+		(start -2 2.61)
+		(end -2 -1.64)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "653120b5-fd50-4659-baf7-129394221003")
+	)
+	(fp_line
+		(start 2 -1.64)
+		(end 2 2.61)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "adf0c6b4-3826-4e3c-86d2-96c99f07d3f7")
+	)
+	(fp_line
+		(start 2 2.61)
+		(end -2 2.61)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "8869a710-b88c-48e7-b52d-096c89f063c0")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "4b37ab86-1643-417a-8bd5-188fa745b6ac")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" smd rect
+		(at -0.5 -1.94)
+		(size 0.6 1.55)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "c0a518cb-67af-4042-862b-c74b2da90d4e")
+	)
+	(pad "2" smd rect
+		(at 0.5 -1.94)
+		(size 0.6 1.55)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "799732cd-5dac-47bb-9cf6-c7e830aab2cc")
+	)
+	(pad "3" smd rect
+		(at 1.8 1.94)
+		(size 1.2 1.8)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "99361ee8-0295-4394-b77e-2a52cecab2c6")
+	)
+	(pad "4" smd rect
+		(at -1.8 1.94)
+		(size 1.2 1.8)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "be57c028-b7d0-45d4-b3d4-c68bb05f542f")
+	)
+	(embedded_fonts no)
+	(model "${KIPRJMOD}/../lib/PoliClock.3dshapes/CONN-SMD_SR1.00-WS-2P.wrl"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)

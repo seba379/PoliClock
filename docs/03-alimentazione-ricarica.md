@@ -1,6 +1,6 @@
 # 03 — Alimentazione
 
-**Versione:** 0.5 · **Stato:** progettazione preliminare PCB custom · **Data:** 2026-11-07
+**Versione:** 0.6 · **Stato:** schema rev 0.1 disegnato, non validato · **Data:** 2026-11-07
 
 > Il nome del file è rimasto `03-alimentazione-ricarica.md` per non rompere i collegamenti: dalla v0.5 la V1 **non ha batteria né ricarica** (`DEC-023`).
 
@@ -9,7 +9,7 @@
 - **CONF:** alimentazione **continua da USB 5 V**, nessuna batteria nella V1 (`DEC-023`). Senza cavo l'orologio è spento.
 - **CONF:** presa **USB-C** nella **parte posteriore bassa** della statuetta (sul sedere) (`DEC-011`, `DEC-018`): connettore saldato sulla scheda principale se questa sta nel busto/base, prolunga se sta nella testa (`DEC-021`, `OPEN-020`).
 - **CONF:** schermo attenuato normalmente, luminoso dopo il pulsante, spento di notte (`DEC-007`, `DEC-009`).
-- **CONF:** l'ora resta salva a cavo scollegato grazie all'**RTC con tampone**.
+- **CONF:** l'ora resta salva a cavo scollegato grazie all'**RTC con tampone**: modulo esterno Adafruit DS3231 STEMMA QT con pila CR1220 (`DEC-024`).
 
 Le decisioni sull'autonomia (`DEC-008`, `DEC-014`) e i requisiti di batteria sono superati per la V1; un'eventuale batteria verrà rivalutata in versioni successive.
 
@@ -19,16 +19,17 @@ Le decisioni sull'autonomia (`DEC-008`, `DEC-014`) e i requisiti di batteria son
 flowchart LR
     USB["Presa USB-C sul sedere"] -->|"diretto (A) o prolunga (B)"| IN["USB-C sulla scheda principale"]
     IN --> PROT["Fusibile/PTC + ESD + CC 5,1 kΩ"]
-    PROT -->|"5 V"| REG["Regolatore 3,3 V"]
+    PROT -->|"5 V"| REG["LDO AMS1117-3.3"]
     PROT -->|"5 V (opzionale)"| BL["Retroilluminazione"]
     REG --> LOADS["MCU, display, SHT40, touch"]
-    REG --> RTC["RTC"]
-    CAP["Tampone RTC<br/>supercondensatore o pila"] --> RTC
+    REG -->|"3,3 V, JST-SH"| RTC["Modulo RTC DS3231"]
+    CAP["Pila CR1220<br/>(solo tampone RTC)"] --> RTC
 ```
 
-- **Regolatore 3,3 V** da 5 V: un LDO è sufficiente. Dissipazione indicativa: (5 − 3,3) V × corrente; con 100 mA circa 0,17 W, da verificare con le misure reali e la superficie di rame.
-- **Retroilluminazione** alimentata da 3,3 V o da 5 V secondo il datasheet del pannello.
-- **Tampone dell'RTC**: supercondensatore (ricaricato dal 3,3 V tramite resistenza/diodo o dal circuito interno dell'RTC, se previsto) o pila a bottone. Dimensionare per mantenere l'ora almeno per **alcuni giorni** a cavo scollegato (`OPEN-014`).
+- **Regolatore 3,3 V** da 5 V: LDO **AMS1117-3.3** (LCSC C6186, Basic, `CAND-015`), 22 µF in uscita. Dissipazione indicativa: (5 − 3,3) V × corrente; con 100 mA circa 0,17 W, da verificare con le misure reali e la superficie di rame. Stabilità con condensatori ceramici da verificare (`OPEN-025`).
+- **Protezione ingresso**: PTC 0805 hold 0,5 A (BSMD0805-050-12V), ESD USBLC6-2SC6 su D+/D- e VBUS, Rd 5,1 kΩ su CC1/CC2, resistenza 0 Ω per isolare il regolatore durante il bring-up.
+- **Retroilluminazione**: nello schema rev 0.1 LEDA è alimentato a 3,3 V sulla portadisplay e LEDK è commutato dal MOSFET sulla scheda principale (riferimento Waveshare); da confermare col datasheet del pannello (`OPEN-024`).
+- **Tampone dell'RTC**: pila CR1220 sul modulo DS3231 (`DEC-024`), che commuta da solo sulla pila quando manca il 3,3 V; durata attesa di anni secondo Adafruit, da verificare (`OPEN-014`). Il modulo è alimentato dal 3,3 V tramite il connettore J4 (resistenza 0 Ω R21). La pila serve solo a conservare l'ora: non alimenta l'orologio (`DEC-023`).
 - Nessun caricatore, nessuna misura batteria, nessun power-path.
 
 ## 3. USB-C
@@ -74,9 +75,9 @@ Misurare corrente in ingresso USB (media e picchi) e temperature interne a scocc
 - [ ] Assorbimento massimo e medio misurati.
 - [ ] Temperature di regolatore, MCU e retroilluminazione misurate a scocca chiusa dopo almeno 24 h di funzionamento.
 - [ ] Connettore USB-C, eventuale prolunga e cablaggi protetti da sollecitazioni.
-- [ ] Tampone RTC verificato: ora mantenuta a cavo scollegato per la durata dichiarata.
+- [ ] Tampone RTC verificato: ora mantenuta a cavo scollegato (pila CR1220 del modulo DS3231).
 - [ ] Cicli ripetuti di scollegamento/ricollegamento senza errori.
 
 ## 7. Questioni aperte
 
-Tipo e capacità del tampone dell'RTC (`OPEN-014`); LDO scelto e sua dissipazione; alimentazione della retroilluminazione da 3,3 V o 5 V; consumi reali in DIM/BRIGHT/NIGHT; posizione della scheda e quindi della USB-C (`OPEN-020`). Vedi [decision log](10-decisioni-aperte.md).
+Durata reale del tampone RTC (`OPEN-014`); dissipazione e stabilità dell'AMS1117 (`OPEN-025`); alimentazione e corrente della retroilluminazione (`OPEN-024`); consumi reali in DIM/BRIGHT/NIGHT; posizione della scheda e quindi della USB-C (`OPEN-020`). Vedi [decision log](10-decisioni-aperte.md).

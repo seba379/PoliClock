@@ -1,0 +1,17 @@
+{
+  "meta": {
+    "filename": "policlock-sht40.kicad_pro",
+    "version": 3
+  },
+  "schematic": {
+    "legacy_lib_dir": "",
+    "legacy_lib_list": []
+  },
+  "sheets": [
+    [
+      "24227601-a8fc-58d4-8681-ea422b2cd321",
+      "Root"
+    ]
+  ],
+  "text_variables": {}
+}

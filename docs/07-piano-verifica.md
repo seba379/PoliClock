@@ -54,7 +54,7 @@
 2. Impostare l'ora con il configuratore da PC (metodo principale) e, in una seconda prova, con il menu del pulsante.
 3. Verificare cambio minuto/giorno.
 4. Provare transizioni ora legale/solare Europa/Roma con clock simulato nei test unitari.
-5. Scollegare il cavo: l'ora deve sopravvivere grazie al tampone dell'RTC per la durata dimensionata; a tampone esaurito atteso `TIME_NOT_SET` (`OPEN-014`).
+5. Scollegare il cavo: l'ora deve sopravvivere grazie alla pila CR1220 del modulo RTC DS3231 (`DEC-024`); con pila assente o esaurita atteso `TIME_NOT_SET` (`OPEN-014`).
 6. Misurare la deriva dell'RTC su almeno 7 giorni senza correzioni (nessun NTP in V1).
 
 ### VT-FW-003 — Guasto sensore

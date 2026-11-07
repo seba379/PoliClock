@@ -1,0 +1,10 @@
+# KiCad
+*-backups/
+fp-info-cache
+*.kicad_prl
+*.lck
+~*
+# Modelli 3D EasyEDA rigenerabili con easyeda2kicad (licenza non verificata)
+lib/PoliClock.3dshapes/
+# Python
+__pycache__/
