@@ -40,6 +40,8 @@ Fonti consultate durante la revisione v0.2, mantenute come riferimento storico e
 23. [Waveshare — 1.28inch Touch LCD, schema](https://files.waveshare.com/upload/c/c8/1.28inch_Touch_LCD_Schematic.pdf) e [1.28inch LCD Module, schema](https://files.waveshare.com/upload/b/b4/1.28inch_LCD_Module_SchDoc.pdf) — **solo riferimento** per il pinout FPC dei pannelli GC9A01 1,28" con touch (18 poli) e senza (12 poli) e per il pilotaggio della retroilluminazione; non copiati nel repository.
 24. [JLCPCB — catalogo parti](https://jlcpcb.com/parts) e [LCSC](https://www.lcsc.com/) — stato Basic/Extended, stock e prezzi letti il 2026-11-07 (variabili).
 25. [easyeda2kicad](https://github.com/uPesy/easyeda2kicad.py) — importazione di simboli e footprint LCSC nella libreria di progetto.
+26. [XUNPU — TS-1088-AR02016 tact switch 4×3 mm](https://www.lcsc.com/datasheet/C720477.pdf) — 2 pin, contatto tra 1 e 2, piazzole 5,5 × 2,0 mm (`DEC-029`).
+27. [Espressif — ESP32-C3 Hardware Design Guidelines](https://docs.espressif.com/projects/esp-hardware-design-guidelines/en/latest/esp32c3/pcb-layout-design.html) — sezione layout: "antenna outside the base board", feed point vicino al bordo; posizionamento del modulo con l'antenna oltre il bordo della scheda (`DEC-031`).
 
 Da aggiungere al momento della scelta: datasheet del pannello GC9A01 acquistato.
 

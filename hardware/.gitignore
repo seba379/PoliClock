@@ -8,3 +8,5 @@ fp-info-cache
 lib/PoliClock.3dshapes/
 # Python
 __pycache__/
+# STEP completo con modelli 3D EasyEDA (licenza non verificata): solo locale
+policlock-main/policlock-main.step

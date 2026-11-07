@@ -37,4 +37,23 @@ for p in PROJECTS:
          "--fields", "Reference,Value,Footprint,LCSC,${QUANTITY},${DNP},Description",
          "--labels", "Riferimenti,Valore,Footprint,LCSC,Qta,DNP,Note",
          "--group-by", "Value,Footprint,LCSC,${DNP}", sch])
+
+
+# ---------------------------------------------------------------- PCB della scheda principale
+pcb = os.path.join(HW, "policlock-main", "policlock-main.kicad_pcb")
+if os.path.exists(pcb):
+    d = os.path.dirname(pcb)
+    r = subprocess.run([KICAD_CLI, "pcb", "drc", "--severity-all", "-o", os.path.join(d, "drc.rpt"), pcb],
+                       capture_output=True, text=True, encoding="utf-8", errors="replace")
+    print("policlock-main DRC:", " / ".join(r.stdout.strip().splitlines()[:2]))
+    run(["pcb", "export", "pdf", "--mode-multipage", "--scale", "5", "--layers", "F.Fab,F.Cu,B.Cu,B.SilkS",
+         "--common-layers", "Edge.Cuts", "--sketch-pads-on-fab-layers", "--crossout-DNP-footprints-on-fab-layers",
+         "-o", os.path.join(d, "policlock-main-layout.pdf"), pcb])
+    for side in ("top", "bottom"):
+        run(["pcb", "render", "--side", side, "-w", "1600", "-h", "1200", "--background", "opaque",
+             "-o", os.path.join(d, f"policlock-main-{side}.png"), pcb])
+    run(["pcb", "export", "step", "--board-only", "-f", "-o", os.path.join(d, "policlock-main-scheda.step"), pcb])
+    # STEP completo con i modelli EasyEDA locali (non versionato, vedi README)
+    run(["pcb", "export", "step", "--subst-models", "--no-dnp", "-f", "-o", os.path.join(d, "policlock-main.step"), pcb])
+
 sys.exit(0 if ok else 1)

@@ -1497,8 +1497,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "74402ba2-851e-55d2-acf2-7c73e98d3727")
-		(property "Reference" "#PWR065"
+		(uuid "4171b4ab-c9be-5867-97ed-c6c7f12bb9cd")
+		(property "Reference" "#PWR063"
 			(at 35.56 46.99 0)
 			(effects
 				(font
@@ -1548,7 +1548,7 @@
 		(instances
 			(project "policlock-main"
 				(path "/8f25dc1f-4709-513e-82c3-d067157683da/30c4f62e-a999-52bd-abab-f36f61d332ff"
-					(reference "#PWR065")
+					(reference "#PWR063")
 					(unit 1)
 				)
 			)
@@ -1683,8 +1683,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "b09df7c6-051d-56c0-bc51-862b71621fac")
-		(property "Reference" "#PWR066"
+		(uuid "f07d49ef-972a-5835-b801-118be9b1433e")
+		(property "Reference" "#PWR064"
 			(at 49.53 46.99 0)
 			(effects
 				(font
@@ -1734,7 +1734,7 @@
 		(instances
 			(project "policlock-main"
 				(path "/8f25dc1f-4709-513e-82c3-d067157683da/30c4f62e-a999-52bd-abab-f36f61d332ff"
-					(reference "#PWR066")
+					(reference "#PWR064")
 					(unit 1)
 				)
 			)
@@ -1869,8 +1869,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "fdc6abc1-c1e6-5442-b6c2-b1ff16bd167f")
-		(property "Reference" "#PWR067"
+		(uuid "04195815-35c1-5d1d-a8d2-19611aad5a36")
+		(property "Reference" "#PWR065"
 			(at 33.02 85.09 90)
 			(effects
 				(font
@@ -1920,7 +1920,7 @@
 		(instances
 			(project "policlock-main"
 				(path "/8f25dc1f-4709-513e-82c3-d067157683da/30c4f62e-a999-52bd-abab-f36f61d332ff"
-					(reference "#PWR067")
+					(reference "#PWR065")
 					(unit 1)
 				)
 			)
@@ -2299,8 +2299,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "3f6e71e4-277b-58b2-87b9-c707c064f69f")
-		(property "Reference" "#PWR068"
+		(uuid "50a5351d-3336-5295-af17-bfe171d98614")
+		(property "Reference" "#PWR066"
 			(at 246.38 54.61 0)
 			(effects
 				(font
@@ -2350,7 +2350,7 @@
 		(instances
 			(project "policlock-main"
 				(path "/8f25dc1f-4709-513e-82c3-d067157683da/30c4f62e-a999-52bd-abab-f36f61d332ff"
-					(reference "#PWR068")
+					(reference "#PWR066")
 					(unit 1)
 				)
 			)
@@ -2556,8 +2556,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "abfebb80-001e-5799-b3cb-9d51ae4a9108")
-		(property "Reference" "#PWR069"
+		(uuid "0dfe6706-0d3b-5ea5-83df-dc5c939a6c3f")
+		(property "Reference" "#PWR067"
 			(at 326.39 54.61 0)
 			(effects
 				(font
@@ -2607,7 +2607,7 @@
 		(instances
 			(project "policlock-main"
 				(path "/8f25dc1f-4709-513e-82c3-d067157683da/30c4f62e-a999-52bd-abab-f36f61d332ff"
-					(reference "#PWR069")
+					(reference "#PWR067")
 					(unit 1)
 				)
 			)
@@ -2874,8 +2874,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "d7bf8347-bc37-5c91-83fe-675719f6faa0")
-		(property "Reference" "#PWR070"
+		(uuid "73ee4266-6990-5daf-a655-1f6809abcf7a")
+		(property "Reference" "#PWR068"
 			(at 60.96 147.32 0)
 			(effects
 				(font
@@ -2925,7 +2925,7 @@
 		(instances
 			(project "policlock-main"
 				(path "/8f25dc1f-4709-513e-82c3-d067157683da/30c4f62e-a999-52bd-abab-f36f61d332ff"
-					(reference "#PWR070")
+					(reference "#PWR068")
 					(unit 1)
 				)
 			)
@@ -3104,8 +3104,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "2da4a50e-2050-540d-a8c8-1675a3047bd7")
-		(property "Reference" "#PWR071"
+		(uuid "ff1b4fbc-ffbd-5574-add4-acb1551ae299")
+		(property "Reference" "#PWR069"
 			(at 100.33 165.1 90)
 			(effects
 				(font
@@ -3155,7 +3155,7 @@
 		(instances
 			(project "policlock-main"
 				(path "/8f25dc1f-4709-513e-82c3-d067157683da/30c4f62e-a999-52bd-abab-f36f61d332ff"
-					(reference "#PWR071")
+					(reference "#PWR069")
 					(unit 1)
 				)
 			)
@@ -3180,8 +3180,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "bac1b272-319b-5080-b74d-a71e3a72aaef")
-		(property "Reference" "#PWR072"
+		(uuid "a11fe3bd-1c4c-5651-9a75-f18ac344aeae")
+		(property "Reference" "#PWR070"
 			(at 138.43 165.1 90)
 			(effects
 				(font
@@ -3231,7 +3231,7 @@
 		(instances
 			(project "policlock-main"
 				(path "/8f25dc1f-4709-513e-82c3-d067157683da/30c4f62e-a999-52bd-abab-f36f61d332ff"
-					(reference "#PWR072")
+					(reference "#PWR070")
 					(unit 1)
 				)
 			)
@@ -3334,8 +3334,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "b67a78e8-129e-5054-ae0e-af825040848e")
-		(property "Reference" "#PWR073"
+		(uuid "68c7e9df-6fad-59fb-a4a2-7820f5c37abc")
+		(property "Reference" "#PWR071"
 			(at 160.02 147.32 0)
 			(effects
 				(font
@@ -3385,7 +3385,7 @@
 		(instances
 			(project "policlock-main"
 				(path "/8f25dc1f-4709-513e-82c3-d067157683da/30c4f62e-a999-52bd-abab-f36f61d332ff"
-					(reference "#PWR073")
+					(reference "#PWR071")
 					(unit 1)
 				)
 			)
@@ -3552,8 +3552,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "e123479b-7019-5a50-a963-f402e87f6147")
-		(property "Reference" "#PWR074"
+		(uuid "9f28d77d-edcd-5cf2-a786-5b205f316ddb")
+		(property "Reference" "#PWR072"
 			(at 175.26 187.96 0)
 			(effects
 				(font
@@ -3603,7 +3603,7 @@
 		(instances
 			(project "policlock-main"
 				(path "/8f25dc1f-4709-513e-82c3-d067157683da/30c4f62e-a999-52bd-abab-f36f61d332ff"
-					(reference "#PWR074")
+					(reference "#PWR072")
 					(unit 1)
 				)
 			)

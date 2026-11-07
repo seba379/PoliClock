@@ -1653,14 +1653,14 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "PoliClock:TS-1187A-B-A-B"
+		(symbol "PoliClock:TS-1088-AR02016"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
 			(in_pos_files yes)
 			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "SW"
-				(at 0 7.62 0)
+				(at 0 3.81 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
@@ -1669,8 +1669,8 @@
 					)
 				)
 			)
-			(property "Value" "TS-1187A-B-A-B"
-				(at 0 -10.16 0)
+			(property "Value" "TS-1088-AR02016"
+				(at 0 -6.35 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
@@ -1679,8 +1679,8 @@
 					)
 				)
 			)
-			(property "Footprint" "PoliClock:SW-SMD_4P-L5.1-W5.1-P3.70-LS6.5-TL_H1.5"
-				(at 0 -12.7 0)
+			(property "Footprint" "PoliClock:SW-SMD_L3.9-W3.0-P4.45"
+				(at 0 -8.89 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(hide yes)
@@ -1690,8 +1690,8 @@
 					)
 				)
 			)
-			(property "Datasheet" "https://lcsc.com/product-detail/Tactile-Switches_XKB-Enterprise-TS-1187-B-A-A_C318884.html"
-				(at 0 -15.24 0)
+			(property "Datasheet" "https://lcsc.com/product-detail/Tactile-Switches_XUNPU-TS-1088-AR02016_C720477.html"
+				(at 0 -11.43 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(hide yes)
@@ -1712,8 +1712,8 @@
 					)
 				)
 			)
-			(property "Manufacturer" "XKB Connection(中国星坤)"
-				(at 0 -17.78 0)
+			(property "Manufacturer" "XUNPU(讯普)"
+				(at 0 -13.97 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(hide yes)
@@ -1723,8 +1723,8 @@
 					)
 				)
 			)
-			(property "MPN" "TS-1187A-B-A-B"
-				(at 0 -20.32 0)
+			(property "MPN" "TS-1088-AR02016"
+				(at 0 -16.51 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(hide yes)
@@ -1734,8 +1734,8 @@
 					)
 				)
 			)
-			(property "LCSC" "C318884"
-				(at 0 -22.86 0)
+			(property "LCSC" "C720477"
+				(at 0 -19.05 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(hide yes)
@@ -1756,11 +1756,11 @@
 					)
 				)
 			)
-			(symbol "TS-1187A-B-A-B_0_1"
+			(symbol "TS-1088-AR02016_0_1"
 				(polyline
 					(pts
-						(xy -2.54 2.54)
-						(xy 2.54 2.54)
+						(xy -5.08 -1.27)
+						(xy -2.54 -1.27)
 					)
 					(stroke
 						(width 0)
@@ -1772,34 +1772,8 @@
 				)
 				(polyline
 					(pts
-						(xy -2.54 -5.08)
-						(xy 2.54 -5.08)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -0.51 0.76)
-						(xy -1.27 -2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 0.76)
-						(xy 0 2.54)
+						(xy -2.29 -0.76)
+						(xy 2.03 0.51)
 					)
 					(stroke
 						(width 0)
@@ -1810,8 +1784,8 @@
 					)
 				)
 				(circle
-					(center 0 0.51)
-					(radius 0.32)
+					(center -2.03 -1.27)
+					(radius 0.51)
 					(stroke
 						(width 0)
 						(type default)
@@ -1821,8 +1795,8 @@
 					)
 				)
 				(circle
-					(center 0 -2.79)
-					(radius 0.32)
+					(center 2.03 -1.27)
+					(radius 0.51)
 					(stroke
 						(width 0)
 						(type default)
@@ -1833,8 +1807,8 @@
 				)
 				(polyline
 					(pts
-						(xy 0 -3.3)
-						(xy 0 -5.08)
+						(xy 5.08 -1.27)
+						(xy 2.54 -1.27)
 					)
 					(stroke
 						(width 0)
@@ -1845,9 +1819,9 @@
 					)
 				)
 				(pin passive line
-					(at -5.08 2.54 0)
+					(at -7.62 -1.27 0)
 					(length 2.54)
-					(name "A"
+					(name "1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1863,9 +1837,9 @@
 					)
 				)
 				(pin passive line
-					(at 5.08 2.54 180)
+					(at 7.62 -1.27 180)
 					(length 2.54)
-					(name "B"
+					(name "2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1873,42 +1847,6 @@
 						)
 					)
 					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -5.08 -5.08 0)
-					(length 2.54)
-					(name "C"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 5.08 -5.08 180)
-					(length 2.54)
-					(name "D"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4614,7 +4552,7 @@
 		)
 	)
 	(symbol
-		(lib_id "PoliClock:TS-1187A-B-A-B")
+		(lib_id "PoliClock:TS-1088-AR02016")
 		(at 340.36 44.45 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -4623,7 +4561,7 @@
 		(dnp no)
 		(uuid "a84e2773-450c-595d-9083-f7f88e344cd3")
 		(property "Reference" "SW1"
-			(at 340.36 36.83 0)
+			(at 340.36 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4631,24 +4569,15 @@
 			)
 		)
 		(property "Value" "RESET"
-			(at 340.36 54.61 0)
+			(at 340.36 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "PoliClock:SW-SMD_4P-L5.1-W5.1-P3.70-LS6.5-TL_H1.5"
-			(at 340.36 57.15 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C318884.pdf"
-			(at 340.36 59.69 0)
+		(property "Footprint" "PoliClock:SW-SMD_L3.9-W3.0-P4.45"
+			(at 340.36 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4656,7 +4585,16 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C720477.pdf"
+			(at 340.36 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Tasto 4x3 mm (DEC-029)"
 			(at 340.36 44.45 0)
 			(effects
 				(font
@@ -4665,8 +4603,8 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C318884"
-			(at 340.36 67.31 0)
+		(property "LCSC" "C720477"
+			(at 340.36 63.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4680,12 +4618,6 @@
 		(pin "2"
 			(uuid "bf8b4e47-3838-5ca6-91b1-a91a382ea2c3")
 		)
-		(pin "3"
-			(uuid "add255d8-2a87-508b-b12e-bd8d2bcd1f23")
-		)
-		(pin "4"
-			(uuid "1be3f5c1-039a-51a7-b908-20d816d5db9b")
-		)
 		(instances
 			(project "policlock-main"
 				(path "/8f25dc1f-4709-513e-82c3-d067157683da/e7cf3c2a-3bdb-5445-898a-db7fa374740a"
@@ -4697,8 +4629,29 @@
 	)
 	(wire
 		(pts
-			(xy 335.28 41.91)
-			(xy 327.66 41.91)
+			(xy 332.74 45.72)
+			(xy 325.12 45.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dec970ea-3a73-5a02-9c27-257849ba9d78")
+	)
+	(label "EN"
+		(at 325.12 45.72 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "1864a659-ba2d-5424-ba6a-3779f4248ab7")
+	)
+	(wire
+		(pts
+			(xy 347.98 45.72)
+			(xy 355.6 45.72)
 		)
 		(stroke
 			(width 0)
@@ -4706,59 +4659,17 @@
 		)
 		(uuid "57550055-11c2-5fdb-9bfc-1579ce13f040")
 	)
-	(label "EN"
-		(at 327.66 41.91 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "81c94de9-f950-50ad-a8a3-6cc26822aa88")
-	)
-	(wire
-		(pts
-			(xy 345.44 41.91)
-			(xy 353.06 41.91)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "00f0a18c-2ab3-50e5-808b-5560ec3aac2a")
-	)
-	(label "EN"
-		(at 353.06 41.91 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "af06e534-259e-565b-80ae-705c5664d6b5")
-	)
-	(wire
-		(pts
-			(xy 335.28 49.53)
-			(xy 327.66 49.53)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "985ef35e-e4dc-5155-8775-140d769d30a3")
-	)
 	(symbol
 		(lib_id "power:GND")
-		(at 327.66 49.53 270)
+		(at 355.6 45.72 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "d9dadf8a-5cd8-5e2f-a349-34591a025b74")
+		(uuid "18ba9bfa-e82e-5607-928b-9d8c810ee7cb")
 		(property "Reference" "#PWR048"
-			(at 321.31 49.53 90)
+			(at 361.95 45.72 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4767,7 +4678,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 323.85 49.53 90)
+			(at 359.41 45.72 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4775,7 +4686,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 327.66 49.53 90)
+			(at 355.6 45.72 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4784,7 +4695,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 327.66 49.53 90)
+			(at 355.6 45.72 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4793,7 +4704,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 327.66 49.53 90)
+			(at 355.6 45.72 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4802,88 +4713,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "c76b7f19-607b-57e0-85b4-9f81e9763816")
+			(uuid "3b2a95aa-3a02-51a2-a74b-b518dec01437")
 		)
 		(instances
 			(project "policlock-main"
 				(path "/8f25dc1f-4709-513e-82c3-d067157683da/e7cf3c2a-3bdb-5445-898a-db7fa374740a"
 					(reference "#PWR048")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 345.44 49.53)
-			(xy 353.06 49.53)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8b89baf5-5a86-5aae-9f62-0f29ff1a5a42")
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 353.06 49.53 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "5a6520b4-03c0-53a8-872d-efe78d7869eb")
-		(property "Reference" "#PWR049"
-			(at 359.41 49.53 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 356.87 49.53 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 353.06 49.53 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 353.06 49.53 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 353.06 49.53 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "174bacff-41dc-56ca-98ce-fc9ceae1b05a")
-		)
-		(instances
-			(project "policlock-main"
-				(path "/8f25dc1f-4709-513e-82c3-d067157683da/e7cf3c2a-3bdb-5445-898a-db7fa374740a"
-					(reference "#PWR049")
 					(unit 1)
 				)
 			)
@@ -4897,7 +4732,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "90396cab-3013-59a9-8048-a6687c52b36d")
+		(uuid "e3e921a7-806f-5aa3-93c0-76138e2eadd1")
 		(property "Reference" "R7"
 			(at 287.02 78.74 0)
 			(effects
@@ -4953,10 +4788,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "fed0e699-bccc-50e6-9225-6690269874b8")
+			(uuid "bd51cd8d-10dc-52b5-84bc-5d11d1b5750d")
 		)
 		(pin "2"
-			(uuid "5bf4677d-d4bb-5b7f-accc-09a445b5b090")
+			(uuid "44ec2acd-f009-5fdc-a682-4c9d183f0852")
 		)
 		(instances
 			(project "policlock-main"
@@ -4976,7 +4811,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "37e65ff0-24da-5bed-9597-43bc88dd47df")
+		(uuid "837e04ee-6116-5083-b756-5788adc83332")
 	)
 	(symbol
 		(lib_id "power:+3V3")
@@ -4986,8 +4821,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "5974e823-7423-5371-9a5c-20f1730db2bc")
-		(property "Reference" "#PWR050"
+		(uuid "ebdba1c3-aa57-55a4-8d53-516051a8295f")
+		(property "Reference" "#PWR049"
 			(at 284.48 77.47 0)
 			(effects
 				(font
@@ -5032,12 +4867,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "1e864651-4979-59f2-83f6-f26b4a940098")
+			(uuid "495eb9a1-ec76-5a01-b25e-d4e457195ed5")
 		)
 		(instances
 			(project "policlock-main"
 				(path "/8f25dc1f-4709-513e-82c3-d067157683da/e7cf3c2a-3bdb-5445-898a-db7fa374740a"
-					(reference "#PWR050")
+					(reference "#PWR049")
 					(unit 1)
 				)
 			)
@@ -5052,7 +4887,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "29e92dbe-98f7-5667-aaa1-bec1a4efa98e")
+		(uuid "dce9c910-c1c0-577b-a3c7-b309ece613ec")
 	)
 	(label "IO9_BOOT"
 		(at 284.48 86.36 270)
@@ -5062,19 +4897,19 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "e0e4ea0b-d96d-5d0e-bce9-a34554b3fc47")
+		(uuid "d2acb1cb-54b9-5d6d-9b6a-527f84c6cd64")
 	)
 	(symbol
-		(lib_id "PoliClock:TS-1187A-B-A-B")
+		(lib_id "PoliClock:TS-1088-AR02016")
 		(at 340.36 80.01 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "9b9f0336-f1a6-5fda-abbb-a89d091340d5")
+		(uuid "2e032702-7e74-5cb3-a30a-4a2bf9166f69")
 		(property "Reference" "SW2"
-			(at 340.36 72.39 0)
+			(at 340.36 76.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5082,24 +4917,15 @@
 			)
 		)
 		(property "Value" "BOOT"
-			(at 340.36 90.17 0)
+			(at 340.36 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "PoliClock:SW-SMD_4P-L5.1-W5.1-P3.70-LS6.5-TL_H1.5"
-			(at 340.36 92.71 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C318884.pdf"
-			(at 340.36 95.25 0)
+		(property "Footprint" "PoliClock:SW-SMD_L3.9-W3.0-P4.45"
+			(at 340.36 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5107,7 +4933,16 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C720477.pdf"
+			(at 340.36 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Tasto 4x3 mm (DEC-029)"
 			(at 340.36 80.01 0)
 			(effects
 				(font
@@ -5116,8 +4951,8 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C318884"
-			(at 340.36 102.87 0)
+		(property "LCSC" "C720477"
+			(at 340.36 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5126,16 +4961,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "656167e4-dbc5-5b14-8d7f-48debb1cc469")
+			(uuid "5bf4677d-d4bb-5b7f-accc-09a445b5b090")
 		)
 		(pin "2"
-			(uuid "35438c82-ca00-5be7-a6e0-540397c40125")
-		)
-		(pin "3"
-			(uuid "e8f05d46-749e-562a-b4b3-586f80eb31d0")
-		)
-		(pin "4"
-			(uuid "586d9ecf-bbe0-5323-b8e1-ead0823e9073")
+			(uuid "4f4f25f4-f20d-560e-99ea-2373e4b3a152")
 		)
 		(instances
 			(project "policlock-main"
@@ -5148,68 +4977,47 @@
 	)
 	(wire
 		(pts
-			(xy 335.28 77.47)
-			(xy 327.66 77.47)
+			(xy 332.74 81.28)
+			(xy 325.12 81.28)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "b1847dcf-62e4-5c2f-be82-e985d8222213")
+		(uuid "39c394e0-fc56-51c1-a2cf-cd92b98912f9")
 	)
 	(label "IO9_BOOT"
-		(at 327.66 77.47 180)
+		(at 325.12 81.28 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify right bottom)
 		)
-		(uuid "b173ba08-1a9b-5d66-85ec-a0467962491c")
+		(uuid "58a49114-0e62-537c-94a6-dcd1a980a9c2")
 	)
 	(wire
 		(pts
-			(xy 345.44 77.47)
-			(xy 353.06 77.47)
+			(xy 347.98 81.28)
+			(xy 355.6 81.28)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "1fde55d7-dfd1-551e-aed1-9db0bf2036ad")
-	)
-	(label "IO9_BOOT"
-		(at 353.06 77.47 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "f95e5250-92db-5ca2-acb1-8cef3810c2af")
-	)
-	(wire
-		(pts
-			(xy 335.28 85.09)
-			(xy 327.66 85.09)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "753d5085-5e15-59cd-9d1e-c4b811e75f82")
+		(uuid "29e92dbe-98f7-5667-aaa1-bec1a4efa98e")
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 327.66 85.09 270)
+		(at 355.6 81.28 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "ef65cd57-83f6-55e3-adfe-76d50657bb12")
-		(property "Reference" "#PWR051"
-			(at 321.31 85.09 90)
+		(uuid "8129bfde-efc9-57dc-bec9-10b840600885")
+		(property "Reference" "#PWR050"
+			(at 361.95 81.28 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5218,7 +5026,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 323.85 85.09 90)
+			(at 359.41 81.28 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5226,7 +5034,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 327.66 85.09 90)
+			(at 355.6 81.28 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5235,7 +5043,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 327.66 85.09 90)
+			(at 355.6 81.28 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5244,7 +5052,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 327.66 85.09 90)
+			(at 355.6 81.28 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5253,88 +5061,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "50bd394d-20a7-5cf4-a316-0556c4e9431f")
+			(uuid "97c1158e-df50-5108-9b6c-ae621c4babe6")
 		)
 		(instances
 			(project "policlock-main"
 				(path "/8f25dc1f-4709-513e-82c3-d067157683da/e7cf3c2a-3bdb-5445-898a-db7fa374740a"
-					(reference "#PWR051")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 345.44 85.09)
-			(xy 353.06 85.09)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a3bdf884-223e-5854-9348-88cf993191ea")
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 353.06 85.09 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "9ec4f950-731c-54b9-b242-dc52f274398b")
-		(property "Reference" "#PWR052"
-			(at 359.41 85.09 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 356.87 85.09 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 353.06 85.09 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 353.06 85.09 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 353.06 85.09 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "92566102-6d43-5f0e-9449-8d4ec4bff5c7")
-		)
-		(instances
-			(project "policlock-main"
-				(path "/8f25dc1f-4709-513e-82c3-d067157683da/e7cf3c2a-3bdb-5445-898a-db7fa374740a"
-					(reference "#PWR052")
+					(reference "#PWR050")
 					(unit 1)
 				)
 			)
@@ -5349,7 +5081,7 @@
 			)
 			(justify left top)
 		)
-		(uuid "21190efc-4478-559e-9b0e-fc08fa973235")
+		(uuid "fd1043eb-df47-5024-8566-a1918cddfc19")
 	)
 	(rectangle
 		(start 270 110)
@@ -5361,7 +5093,7 @@
 		(fill
 			(type none)
 		)
-		(uuid "f0a69085-edfe-5d13-8c86-2d6891c2f921")
+		(uuid "1310d969-ee93-558d-984d-b90594d15f87")
 	)
 	(text "Debug"
 		(exclude_from_sim no)
@@ -5373,7 +5105,7 @@
 			)
 			(justify left top)
 		)
-		(uuid "39476fcc-7559-50a1-a925-887a457d7278")
+		(uuid "0d655786-0726-5c93-931e-54bb4b58e719")
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
@@ -5383,7 +5115,7 @@
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(uuid "1e1774fe-0191-5a53-8c7a-e23efd906a56")
+		(uuid "722e8105-75c0-5e0b-a123-01b555cdf12e")
 		(property "Reference" "TP5"
 			(at 289.56 118.11 0)
 			(effects
@@ -5437,7 +5169,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "f81bef1d-c16a-5708-86bc-529cf0302318")
+			(uuid "e652c41e-e8d6-5d1e-a123-7897ab6fdac3")
 		)
 		(instances
 			(project "policlock-main"
@@ -5457,7 +5189,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "eaa82f7f-f902-54ef-93c9-bd85e05929c4")
+		(uuid "4e3ac617-eb22-5ba0-bce3-36ec45df3c89")
 	)
 	(label "UART_TX"
 		(at 289.56 127 270)
@@ -5467,7 +5199,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "19eab4e8-8ebe-5640-92af-7d53c0d91171")
+		(uuid "1950c38a-d753-5bcb-9fb0-ad5f6f41459d")
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
@@ -5477,7 +5209,7 @@
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(uuid "1c417b99-b838-5b25-807e-819719edfac6")
+		(uuid "81107240-a0eb-54bd-bbd2-e4f224cd5cb0")
 		(property "Reference" "TP6"
 			(at 320.04 118.11 0)
 			(effects
@@ -5531,7 +5263,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "39f00036-cd1e-573a-9a8c-e8fa6b097b23")
+			(uuid "2ada0ded-64cd-5cb1-ad06-02f08d034611")
 		)
 		(instances
 			(project "policlock-main"
@@ -5551,7 +5283,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "4869f6e3-dd33-5d1c-b77c-8892cd319a79")
+		(uuid "88fa136b-5942-5e89-b0db-61c7e3b1adfb")
 	)
 	(label "EN"
 		(at 320.04 127 270)
@@ -5561,7 +5293,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "559b2320-af76-5f87-9153-de4bf6e33757")
+		(uuid "c54c3249-ff2f-5d16-91a9-1c935e39b0be")
 	)
 	(text "Log e flash principali via USB nativa;\nTXD0 su punto di test per debug di riserva."
 		(exclude_from_sim no)
@@ -5572,7 +5304,7 @@
 			)
 			(justify left top)
 		)
-		(uuid "d0b58268-e8e3-5c51-9144-2523494a297a")
+		(uuid "fdddbe47-bceb-56e7-8f4c-c7c86d3c3ff8")
 	)
 	(embedded_fonts no)
 )

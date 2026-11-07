@@ -34,7 +34,7 @@ Attività:
 
 **Output:** progetto KiCad 10 versionato in `hardware/`: schema e layout di scheda principale e schedina portadisplay in un pannello unico, BOM e file di posizionamento per JLC, STEP per il CAD, checklist di revisione compilata. Schema e layout preparati da Claude, rivisti a vista dal proprietario in KiCad.
 
-**Stato (2026-11-07):** schema rev 0.1 delle due schede (principale e portadisplay) disegnato in anticipo su richiesta del proprietario, con ERC pulito, PDF e BOM con codici LCSC ([hardware](../hardware/README.md), [12](12-selezione-componenti.md)). Il layout attende il prototipo M1, il pannello display acquistato (`OPEN-016`) e la revisione visiva dello schema.
+**Stato (2026-11-07):** schema rev 0.1 delle due schede (principale e portadisplay) disegnato in anticipo su richiesta del proprietario, con ERC pulito, PDF e BOM con codici LCSC ([hardware](../hardware/README.md), [12](12-selezione-componenti.md)). Primo posizionamento della scheda principale fatto (35 × 27 mm, 2 strati, un lato, [02](02-architettura-hardware.md) §3.2); restano sbroglio (`OPEN-027`), layout della portadisplay (attende il pannello acquistato, `OPEN-016`), prototipo M1 e revisione visiva del proprietario.
 
 **Exit gate:** `VT-PCB-001` superato (ERC/DRC puliti, revisione schema, disponibilità LCSC, quote compatibili con il CAD); preventivo JLC accettato.
 

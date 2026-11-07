@@ -214,19 +214,15 @@ s.text("Disaccoppiamento vicino al pin 3V3 del modulo", 75, 52)
 s.box(270, 20, 400, 100, "EN (reset) e BOOT")
 R(s, "R6", "10k", 285, 45, "+3V3", "EN", note="RC su EN (Espressif: R 10 k, C 1 uF)")
 C(s, "C7", "1uF", 300, 60, "EN", "GND")
-sw1 = s.add(L, "PoliClock:TS-1187A-B-A-B", "SW1", "RESET", 340, 45, lcsc="C318884",
-            ds="https://www.lcsc.com/datasheet/C318884.pdf")
+sw1 = s.add(L, "PoliClock:TS-1088-AR02016", "SW1", "RESET", 340, 45, lcsc="C720477",
+            ds="https://www.lcsc.com/datasheet/C720477.pdf", desc="Tasto 4x3 mm (DEC-029)")
 s.conn(L, sw1, "1", "EN")
-s.conn(L, sw1, "2", "EN")
-s.conn(L, sw1, "3", "GND")
-s.conn(L, sw1, "4", "GND")
+s.conn(L, sw1, "2", "GND")
 R(s, "R7", "10k", 285, 80, "+3V3", "IO9_BOOT", note="Pull-up strapping IO9 (SPI boot)")
-sw2 = s.add(L, "PoliClock:TS-1187A-B-A-B", "SW2", "BOOT", 340, 80, lcsc="C318884",
-            ds="https://www.lcsc.com/datasheet/C318884.pdf")
+sw2 = s.add(L, "PoliClock:TS-1088-AR02016", "SW2", "BOOT", 340, 80, lcsc="C720477",
+            ds="https://www.lcsc.com/datasheet/C720477.pdf", desc="Tasto 4x3 mm (DEC-029)")
 s.conn(L, sw2, "1", "IO9_BOOT")
-s.conn(L, sw2, "2", "IO9_BOOT")
-s.conn(L, sw2, "3", "GND")
-s.conn(L, sw2, "4", "GND")
+s.conn(L, sw2, "2", "GND")
 s.text("Download: tenere BOOT e premere/rilasciare RESET (IO9=0, IO8=1).", 275, 92)
 
 s.box(270, 110, 400, 150, "Debug")

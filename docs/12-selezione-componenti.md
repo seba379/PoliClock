@@ -25,7 +25,8 @@ Questo documento motiva i componenti usati nello schema KiCad in [`hardware/`](.
 | C1, C2, C5 | Bulk | 10 µF 0603 X5R 10 V | Samsung | C19702 | **Basic** | 10 M | — | |
 | C4, C6, C8 | Disaccoppiamento / antirimbalzo | 100 nF 0603 X7R | Yageo | C14663 | **Basic** | 34 M | — | |
 | C7 | RC su EN | 1 µF 0603 | Samsung | C15849 | **Basic** | 13 M | — | Espressif: R 10 kΩ + C 1 µF |
-| SW1–SW3 | RESET, BOOT, USER | **TS-1187A-B-A-B** 5,1×5,1 mm | XKB | C318884 | **Basic** | 873 151 | 0,02 $ | Datasheet XKB: A–B e C–D collegati, contatto tra le coppie |
+| SW1, SW2 | RESET, BOOT | **TS-1088-AR02016** 4×3 mm, 2 pin | XUNPU | C720477 | **Basic** | 509 240 | — | `DEC-029`: scelto per ridurre l'ingombro; datasheet XUNPU: contatto tra pin 1 e 2 |
+| SW3 | USER | **TS-1187A-B-A-B** 5,1×5,1 mm | XKB | C318884 | **Basic** | 873 151 | 0,02 $ | Datasheet XKB: A–B e C–D collegati, contatto tra le coppie |
 | Q1 | Retroilluminazione | **AO3400A** N-MOS SOT-23 | AOS | C20917 | **Basic** | 1 M | 0,09 $ | VGS(th) max 1,45 V: pilotabile a 3,3 V |
 | R16, R17, R18 | Gate, pull-down, limitazione LED | 100 Ω / 100 kΩ / 10 Ω 0603 | Uni-Royal | C22775 / C25803 / C22859 | **Basic** | — | — | R18 = 10 Ω come nello schema di riferimento Waveshare: **TBD** dal datasheet del pannello acquistato (`OPEN-024`) |
 | R8, R9 | Smorzamento SCLK/MOSI | 22 Ω 0603 | Uni-Royal | C23345 | **Basic** | 6 M | — | Valore da confermare con la prova sul cavo reale (`OPEN-021`) |

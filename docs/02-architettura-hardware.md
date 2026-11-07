@@ -58,7 +58,7 @@ Tutti i codici sono **CAND**: da verificare su datasheet, disponibilità e prezz
 | Portadisplay | Interfaccia pannello ↔ cavo | Connettore FPC del pannello, condensatori vicino al pannello, connettore del cavo; sagoma e fori per il fissaggio nella testa | Schedina rotonda a 2 strati, nessun componente attivo |
 | Collegamento display | Testa ↔ scheda principale | **16 conduttori**: 2×3,3 V, 4×GND alternati ai segnali, SCLK, MOSI, CS, DC, RST, LEDK; touch: SDA, SCL, INT, RST. Lunghezza indicativa 5–15 cm | **FFC 16 poli passo 0,5 mm**, connettori ZIF JUSHUO AFC01-S16FCA-00 (`DEC-026`); SPI a **10–20 MHz** da validare in M1 (`OPEN-021`) |
 | Retroilluminazione | DIM/BRIGHT/NIGHT | PWM, spegnibile del tutto di notte | MOSFET AO3400A lato basso su LEDK + resistenza R18 (TBD dal datasheet del pannello, `OPEN-024`) |
-| Interazione | Accendere/impostare | **Pulsante** fisico (`DEC-017`), posizione da definire | Connettore JST-SH 2 poli per pulsante remoto + tasto su scheda in parallelo (`DEC-027`); pull-up 10 kΩ e 100 nF; IO3 con risveglio |
+| Interazione | Accendere/impostare | **Pulsante** fisico (`DEC-017`), posizione da definire | Connettore JST-SH 2 poli per pulsante remoto + tasto su scheda in parallelo (`DEC-027`); RESET/BOOT con tasti 4×3 mm (`DEC-029`); pull-up 10 kΩ e 100 nF; IO3 con risveglio |
 | Touch (predisposto) | Opzione futura (`DEC-019`) | Controller del pannello su I²C + **INT** (GPIO con risveglio) + **RST** portati nel cavo; componenti non montati se non serve | CST816S del pannello touch 18 poli (`DEC-025`); I²C collegato solo montando R11/R12 0 Ω (DNP) |
 | USB | **Alimentazione**, flash, configuratore (`DEC-020`, `DEC-023`) | USB-C 2.0, CC 5,1 kΩ, ESD, fusibile/PTC; D+/D- alla USB nativa dell'MCU secondo le design guideline Espressif | Ricettacolo USB-C sulla scheda principale; ESD tipo USBLC6-2 |
 | Regolatore 3,3 V | Alimentare MCU, display, sensori da 5 V USB | Corrente massima con margine sui picchi MCU (il modulo richiede una sorgente ≥ 0,5 A); dissipazione accettabile | LDO **AMS1117-3.3** (Basic) (`CAND-015`, `OPEN-025`) |
@@ -91,6 +91,28 @@ Tutti i codici sono **CAND**: da verificare su datasheet, disponibilità e prezz
 Bus I²C condiviso: SHT40 `0x44`, DS3231 `0x68`, touch CST816S `0x15` (indirizzo da confermare sul datasheet). Dettagli e codici LCSC in [12 — Selezione componenti](12-selezione-componenti.md).
 
 ![Schema a blocchi di PoliClock](../assets/concept/policlock-schema-blocchi.svg)
+
+### 3.2 Primo posizionamento della scheda principale (rev 0.1, 2026-11-07)
+
+File: `hardware/policlock-main/policlock-main.kicad_pcb` (immagini, PDF e STEP nella stessa cartella). **Solo posizionamento**: lo sbroglio non è fatto (`OPEN-027`).
+
+| Parametro | Valore | Motivazione |
+|---|---|---|
+| Dimensioni scheda | **35 × 27 mm** (945 mm²), angoli raggio 1 mm | La più piccola trovata con tutti i componenti su un lato e i passivi vicino ai pin collegati; 33–34 mm di lato non bastavano |
+| Ingombro totale | **circa 40,3 × 27 mm** | L'antenna del modulo sporge di circa 5,3 mm oltre il bordo destro (`DEC-031`) |
+| Strati / spessore | 2 strati, 1,6 mm (`DEC-030`) | Circuito semplice, nessuna radio attiva; piano GND su entrambi i lati |
+| Montaggio | Solo lato superiore (`DEC-030`) | Assemblaggio JLC più economico; sul retro solo pad di test nudi e legenda |
+| Regole | Distanza 0,15 mm (minimo 0,10 mm per le piazzole USB-C a passo 0,5 mm), pista ≥ 0,15 mm, via 0,6/0,3 mm, rame-bordo 0,3 mm | Entro le capacità JLCPCB 2 strati, con margine |
+
+Disposizione (vista dall'alto, origine nell'angolo in alto a sinistra):
+
+- **Bordo destro**: modulo ESP32-C3-MINI-1 ruotato di 270°; il bordo scheda coincide con l'inizio dell'antenna, che resta fuori dal PCB (disposizione raccomandata da Espressif). I pin del display escono verso sinistra, quelli USB verso il basso.
+- **Bordo inferiore** (verso il sedere, opzione A): USB-C J1 con l'apertura a filo del bordo (centro a x = 25,1 mm), affiancata da **due fori M2** (Ø 2,2 mm, pad a GND) a (17,7; 24,4) e (32,5; 24,4) mm, che scaricano sulla scocca lo sforzo d'inserimento del cavo. In basso a sinistra: tasto USER SW3 e LDO U2.
+- **Bordo superiore**: connettore FFC J2 del cavo display (ingresso cavo verso l'alto, verso il collo).
+- **Bordo sinistro**: JST-SH J3 (SHT40), J4 (RTC), J5 (pulsante) con l'apertura verso l'esterno.
+- **Retro**: punti di test TP1–TP8 (VBUS, 5 V, 3,3 V, GND, UART_TX, EN, SDA, SCL) come pad nudi con legenda: raggiungibili a scheda smontata o con sportellino, non assemblati.
+
+DRC con `kicad-cli` (tutte le severità): **nessun errore** oltre alle 83 connessioni ancora da sbrogliare; restano 8 avvisi di serigrafia dei footprint EasyEDA oltre il bordo (connettori a filo bordo), accettabili. Il posizionamento è generato da `hardware/scripts/genera_pcb_main.py`: posizioni fisse in `posizioni_main.py`, passivi piazzati automaticamente vicino ai pin collegati.
 
 ## 4. Collegamento display su cavo
 
