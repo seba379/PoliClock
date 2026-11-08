@@ -201,3 +201,7 @@ Modifica richiesta dal proprietario: J3, J4 e J5 diventano JST PH B4B-PH-K-S, J2
 - **Eccezioni DFM residue**: J1 a filo del bordo inferiore e U3 sopra l'intaglio. J2 non è più un'eccezione JLC.
 
 Restano aperti i gate già noti (`OPEN-016`, `OPEN-021`, `OPEN-028` con la luce sotto la scheda per i piedini a foro passante, DFM JLC). Nessun file Gerber e nessun ordine; serve una nuova revisione a vista del proprietario in KiCad.
+
+## 11. Revisione finale pre-Gerber
+
+- [Revisione finale pre-Gerber del 2026-11-08](revisioni/2026-11-08/revisione-finale/README.md): esito **NON PRONTO** per due rilievi P1 (FIN-001: modulo ESP32 "Standard Only" in conflitto con l'assemblaggio "Economic" di `DEC-040`; FIN-002: revisione a vista dopo `DEC-043` non registrata), più P2 e P3 da decidere prima dei Gerber.

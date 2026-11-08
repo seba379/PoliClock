@@ -1,0 +1,57 @@
+{
+    "$schema": "https://schemas.kicad.org/erc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-11-08T15:54:53",
+    "ignored_checks": [
+        {
+            "description": "Global label only appears once in the schematic",
+            "key": "single_global_label"
+        },
+        {
+            "description": "Four connection points are joined together",
+            "key": "four_way_junction"
+        },
+        {
+            "description": "SPICE model issue",
+            "key": "simulation_model_issue"
+        },
+        {
+            "description": "Assigned footprint doesn't match footprint filters",
+            "key": "footprint_filter"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning",
+        "exclusion"
+    ],
+    "kicad_version": "10.0.6",
+    "sheets": [
+        {
+            "path": "/",
+            "uuid_path": "/8f25dc1f-4709-513e-82c3-d067157683da",
+            "violations": []
+        },
+        {
+            "path": "/USB e alimentazione/",
+            "uuid_path": "/8f25dc1f-4709-513e-82c3-d067157683da/b41bf69b-2d9a-59eb-b9e8-768fd00dcd3d",
+            "violations": []
+        },
+        {
+            "path": "/MCU/",
+            "uuid_path": "/8f25dc1f-4709-513e-82c3-d067157683da/e7cf3c2a-3bdb-5445-898a-db7fa374740a",
+            "violations": []
+        },
+        {
+            "path": "/Display (modulo 7 pin)/",
+            "uuid_path": "/8f25dc1f-4709-513e-82c3-d067157683da/20ad8c36-b999-56cb-b9d3-b8060cbfc155",
+            "violations": []
+        },
+        {
+            "path": "/Periferiche I2C e pulsante/",
+            "uuid_path": "/8f25dc1f-4709-513e-82c3-d067157683da/30c4f62e-a999-52bd-abab-f36f61d332ff",
+            "violations": []
+        }
+    ],
+    "source": "policlock-main.kicad_sch"
+}

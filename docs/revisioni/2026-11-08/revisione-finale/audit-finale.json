@@ -1,0 +1,2601 @@
+{
+ "kicad": "10.0.6",
+ "pcb": "hardware\\policlock-main\\policlock-main.kicad_pcb",
+ "contorno_bbox_mm": [
+  99.975,
+  99.975,
+  150.025,
+  140.025
+ ],
+ "edge_cuts_rel_bl": [
+  [
+   "Line",
+   0.025,
+   40.025,
+   42.185,
+   40.025
+  ],
+  [
+   "Line",
+   0.025,
+   0.025,
+   0.025,
+   40.025
+  ],
+  [
+   "Line",
+   42.185,
+   40.025,
+   42.185,
+   19.845
+  ],
+  [
+   "Line",
+   42.185,
+   19.845,
+   50.025,
+   19.845
+  ],
+  [
+   "Line",
+   50.025,
+   19.845,
+   50.025,
+   0.025
+  ],
+  [
+   "Line",
+   50.025,
+   0.025,
+   0.025,
+   0.025
+  ]
+ ],
+ "aux_origin_mm": [
+  100.0,
+  140.0
+ ],
+ "footprint": {
+  "C9": {
+   "valore": "10uF",
+   "fpid": "Capacitor_SMD:C_0603_1608Metric",
+   "x_rel": 27.875,
+   "y_rel": 32.675,
+   "x_abs": 127.85,
+   "y_abs": 107.35,
+   "rot": 90.0,
+   "lato": "top",
+   "smd": true,
+   "tht": false,
+   "escluso_pos": false,
+   "escluso_bom": false,
+   "dnp": false,
+   "lcsc": "C19702",
+   "montaggio": ""
+  },
+  "C5": {
+   "valore": "10uF",
+   "fpid": "Capacitor_SMD:C_0603_1608Metric",
+   "x_rel": 35.875,
+   "y_rel": 36.275,
+   "x_abs": 135.85,
+   "y_abs": 103.75,
+   "rot": 90.0,
+   "lato": "top",
+   "smd": true,
+   "tht": false,
+   "escluso_pos": false,
+   "escluso_bom": false,
+   "dnp": false,
+   "lcsc": "C19702",
+   "montaggio": ""
+  },
+  "F1": {
+   "valore": "BSMD0805-050-12V",
+   "fpid": "Fuse:Fuse_0805_2012Metric",
+   "x_rel": 29.475,
+   "y_rel": 10.375,
+   "x_abs": 129.45,
+   "y_abs": 129.65,
+   "rot": 0.0,
+   "lato": "top",
+   "smd": true,
+   "tht": false,
+   "escluso_pos": false,
+   "escluso_bom": false,
+   "dnp": false,
+   "lcsc": "C2977522",
+   "montaggio": ""
+  },
+  "C1": {
+   "valore": "1uF",
+   "fpid": "Capacitor_SMD:C_0603_1608Metric",
+   "x_rel": 29.675,
+   "y_rel": 12.875,
+   "x_abs": 129.65,
+   "y_abs": 127.15,
+   "rot": 0.0,
+   "lato": "top",
+   "smd": true,
+   "tht": false,
+   "escluso_pos": false,
+   "escluso_bom": false,
+   "dnp": false,
+   "lcsc": "C15849",
+   "montaggio": ""
+  },
+  "R3": {
+   "valore": "0Ω",
+   "fpid": "Resistor_SMD:R_0603_1608Metric",
+   "x_rel": 34.635,
+   "y_rel": 17.47,
+   "x_abs": 134.61,
+   "y_abs": 122.555,
+   "rot": 90.0,
+   "lato": "top",
+   "smd": true,
+   "tht": false,
+   "escluso_pos": false,
+   "escluso_bom": false,
+   "dnp": false,
+   "lcsc": "C21189",
+   "montaggio": ""
+  },
+  "J1": {
+   "valore": "TYPE-C-31-M-12",
+   "fpid": "PoliClock:USB_C_Receptacle_HRO_TYPE-C-31-M-12",
+   "x_rel": 33.685,
+   "y_rel": 3.325,
+   "x_abs": 133.66,
+   "y_abs": 136.7,
+   "rot": 0.0,
+   "lato": "top",
+   "smd": true,
+   "tht": false,
+   "escluso_pos": false,
+   "escluso_bom": false,
+   "dnp": false,
+   "lcsc": "C165948",
+   "montaggio": ""
+  },
+  "R21": {
+   "valore": "0Ω",
+   "fpid": "Resistor_SMD:R_0603_1608Metric",
+   "x_rel": 13.025,
+   "y_rel": 31.625,
+   "x_abs": 113.0,
+   "y_abs": 108.4,
+   "rot": 90.0,
+   "lato": "top",
+   "smd": true,
+   "tht": false,
+   "escluso_pos": false,
+   "escluso_bom": false,
+   "dnp": false,
+   "lcsc": "C21189",
+   "montaggio": ""
+  },
+  "R16": {
+   "valore": "1k",
+   "fpid": "Resistor_SMD:R_0603_1608Metric",
+   "x_rel": 21.925,
+   "y_rel": 29.475,
+   "x_abs": 121.9,
+   "y_abs": 110.55,
+   "rot": 90.0,
+   "lato": "top",
+   "smd": true,
+   "tht": false,
+   "escluso_pos": false,
+   "escluso_bom": false,
+   "dnp": false,
+   "lcsc": "C21190",
+   "montaggio": ""
+  },
+  "H2": {
+   "valore": "M2",
+   "fpid": "MountingHole:MountingHole_2.2mm_M2_Pad",
+   "x_rel": 43.685,
+   "y_rel": 3.525,
+   "x_abs": 143.66,
+   "y_abs": 136.5,
+   "rot": 0.0,
+   "lato": "top",
+   "smd": false,
+   "tht": false,
+   "escluso_pos": true,
+   "escluso_bom": true,
+   "dnp": false,
+   "lcsc": "",
+   "montaggio": ""
+  },
+  "R19": {
+   "valore": "4.7k",
+   "fpid": "Resistor_SMD:R_0603_1608Metric",
+   "x_rel": 13.025,
+   "y_rel": 28.225,
+   "x_abs": 113.0,
+   "y_abs": 111.8,
+   "rot": 90.0,
+   "lato": "top",
+   "smd": true,
+   "tht": false,
+   "escluso_pos": false,
+   "escluso_bom": false,
+   "dnp": false,
+   "lcsc": "C23162",
+   "montaggio": ""
+  },
+  "FID1": {
+   "valore": "Fiducial",
+   "fpid": "Fiducial:Fiducial_1mm_Mask2mm",
+   "x_rel": 3.525,
+   "y_rel": 7.525,
+   "x_abs": 103.5,
+   "y_abs": 132.5,
+   "rot": 0.0,
+   "lato": "top",
+   "smd": true,
+   "tht": false,
+   "escluso_pos": true,
+   "escluso_bom": true,
+   "dnp": false,
+   "lcsc": "",
+   "montaggio": ""
+  },
+  "R4": {
+   "valore": "0Ω",
+   "fpid": "Resistor_SMD:R_0603_1608Metric",
+   "x_rel": 32.735,
+   "y_rel": 17.47,
+   "x_abs": 132.71,
+   "y_abs": 122.555,
+   "rot": 90.0,
+   "lato": "top",
+   "smd": true,
+   "tht": false,
+   "escluso_pos": false,
+   "escluso_bom": false,
+   "dnp": false,
+   "lcsc": "C21189",
+   "montaggio": ""
+  },
+  "R9": {
+   "valore": "22Ω",
+   "fpid": "Resistor_SMD:R_0603_1608Metric",
+   "x_rel": 27.075,
+   "y_rel": 24.975,
+   "x_abs": 127.05,
+   "y_abs": 115.05,
+   "rot": 90.0,
+   "lato": "top",
+   "smd": true,
+   "tht": false,
+   "escluso_pos": false,
+   "escluso_bom": false,
+   "dnp": false,
+   "lcsc": "C23345",
+   "montaggio": ""
+  },
+  "C8": {
+   "valore": "100nF",
+   "fpid": "Capacitor_SMD:C_0603_1608Metric",
+   "x_rel": 13.025,
+   "y_rel": 19.025,
+   "x_abs": 113.0,
+   "y_abs": 121.0,
+   "rot": 90.0,
+   "lato": "top",
+   "smd": true,
+   "tht": false,
+   "escluso_pos": false,
+   "escluso_bom": false,
+   "dnp": false,
+   "lcsc": "C14663",
+   "montaggio": ""
+  },
+  "R8": {
+   "valore": "22Ω",
+   "fpid": "Resistor_SMD:R_0603_1608Metric",
+   "x_rel": 29.325,
+   "y_rel": 27.025,
+   "x_abs": 129.3,
+   "y_abs": 113.0,
+   "rot": 90.0,
+   "lato": "top",
+   "smd": true,
+   "tht": false,
+   "escluso_pos": false,
+   "escluso_bom": false,
+   "dnp": false,
+   "lcsc": "C23345",
+   "montaggio": ""
+  },
+  "R6": {
+   "valore": "10k",
+   "fpid": "Resistor_SMD:R_0603_1608Metric",
+   "x_rel": 32.875,
+   "y_rel": 35.525,
+   "x_abs": 132.85,
+   "y_abs": 104.5,
+   "rot": 0.0,
+   "lato": "top",
+   "smd": true,
+   "tht": false,
+   "escluso_pos": false,
+   "escluso_bom": false,
+   "dnp": false,
+   "lcsc": "C25804",
+   "montaggio": ""
+  },
+  "C6": {
+   "valore": "100nF",
+   "fpid": "Capacitor_SMD:C_0603_1608Metric",
+   "x_rel": 38.875,
+   "y_rel": 35.525,
+   "x_abs": 138.85,
+   "y_abs": 104.5,
+   "rot": 0.0,
+   "lato": "top",
+   "smd": true,
+   "tht": false,
+   "escluso_pos": false,
+   "escluso_bom": false,
+   "dnp": false,
+   "lcsc": "C14663",
+   "montaggio": ""
+  },
+  "R20": {
+   "valore": "4.7k",
+   "fpid": "Resistor_SMD:R_0603_1608Metric",
+   "x_rel": 13.025,
+   "y_rel": 24.825,
+   "x_abs": 113.0,
+   "y_abs": 115.2,
+   "rot": 90.0,
+   "lato": "top",
+   "smd": true,
+   "tht": false,
+   "escluso_pos": false,
+   "escluso_bom": false,
+   "dnp": false,
+   "lcsc": "C23162",
+   "montaggio": ""
+  },
+  "R22": {
+   "valore": "10k",
+   "fpid": "Resistor_SMD:R_0603_1608Metric",
+   "x_rel": 10.725,
+   "y_rel": 13.025,
+   "x_abs": 110.7,
+   "y_abs": 127.0,
+   "rot": 90.0,
+   "lato": "top",
+   "smd": true,
+   "tht": false,
+   "escluso_pos": false,
+   "escluso_bom": false,
+   "dnp": false,
+   "lcsc": "C25804",
+   "montaggio": ""
+  },
+  "C2": {
+   "valore": "4.7uF",
+   "fpid": "Capacitor_SMD:C_0603_1608Metric",
+   "x_rel": 13.625,
+   "y_rel": 7.475,
+   "x_abs": 113.6,
+   "y_abs": 132.55,
+   "rot": 90.0,
+   "lato": "top",
+   "smd": true,
+   "tht": false,
+   "escluso_pos": false,
+   "escluso_bom": false,
+   "dnp": false,
+   "lcsc": "C19666",
+   "montaggio": ""
+  },
+  "H1": {
+   "valore": "M2",
+   "fpid": "MountingHole:MountingHole_2.2mm_M2_Pad",
+   "x_rel": 24.185,
+   "y_rel": 3.525,
+   "x_abs": 124.16,
+   "y_abs": 136.5,
+   "rot": 0.0,
+   "lato": "top",
+   "smd": false,
+   "tht": false,
+   "escluso_pos": true,
+   "escluso_bom": true,
+   "dnp": false,
+   "lcsc": "",
+   "montaggio": ""
+  },
+  "J4": {
+   "valore": "B4B-PH-K-S",
+   "fpid": "Connector_JST:JST_PH_B4B-PH-K_1x04_P2.00mm_Vertical",
+   "x_rel": 3.025,
+   "y_rel": 25.025,
+   "x_abs": 103.0,
+   "y_abs": 115.0,
+   "rot": 0.0,
+   "lato": "top",
+   "smd": false,
+   "tht": true,
+   "escluso_pos": true,
+   "escluso_bom": false,
+   "dnp": false,
+   "lcsc": "",
+   "montaggio": "a mano, parte del proprietario"
+  },
+  "R5": {
+   "valore": "0Ω",
+   "fpid": "Resistor_SMD:R_0603_1608Metric",
+   "x_rel": 14.375,
+   "y_rel": 10.475,
+   "x_abs": 114.35,
+   "y_abs": 129.55,
+   "rot": 0.0,
+   "lato": "top",
+   "smd": true,
+   "tht": false,
+   "escluso_pos": false,
+   "escluso_bom": false,
+   "dnp": false,
+   "lcsc": "C21189",
+   "montaggio": ""
+  },
+  "C7": {
+   "valore": "1uF",
+   "fpid": "Capacitor_SMD:C_0603_1608Metric",
+   "x_rel": 32.875,
+   "y_rel": 37.025,
+   "x_abs": 132.85,
+   "y_abs": 103.0,
+   "rot": 0.0,
+   "lato": "top",
+   "smd": true,
+   "tht": false,
+   "escluso_pos": false,
+   "escluso_bom": false,
+   "dnp": false,
+   "lcsc": "C15849",
+   "montaggio": ""
+  },
+  "R15": {
+   "valore": "10k",
+   "fpid": "Resistor_SMD:R_0603_1608Metric",
+   "x_rel": 24.325,
+   "y_rel": 32.725,
+   "x_abs": 124.3,
+   "y_abs": 107.3,
+   "rot": 0.0,
+   "lato": "top",
+   "smd": true,
+   "tht": false,
+   "escluso_pos": false,
+   "escluso_bom": false,
+   "dnp": false,
+   "lcsc": "C25804",
+   "montaggio": ""
+  },
+  "U1": {
+   "valore": "USBLC6-2SC6",
+   "fpid": "Package_TO_SOT_SMD:SOT-23-6",
+   "x_rel": 33.685,
+   "y_rel": 13.65,
+   "x_abs": 133.66,
+   "y_abs": 126.375,
+   "rot": 90.0,
+   "lato": "top",
+   "smd": true,
+   "tht": false,
+   "escluso_pos": false,
+   "escluso_bom": false,
+   "dnp": false,
+   "lcsc": "C7519",
+   "montaggio": ""
+  },
+  "U3": {
+   "valore": "ESP32-C3-MINI-1-H4X",
+   "fpid": "PoliClock:WIFIM-SMD_ESP32-C3-MINI-1",
+   "x_rel": 36.485,
+   "y_rel": 27.385,
+   "x_abs": 136.46,
+   "y_abs": 112.64,
+   "rot": -90.0,
+   "lato": "top",
+   "smd": true,
+   "tht": false,
+   "escluso_pos": false,
+   "escluso_bom": false,
+   "dnp": false,
+   "lcsc": "C41349510",
+   "montaggio": ""
+  },
+  "R17": {
+   "valore": "100k",
+   "fpid": "Resistor_SMD:R_0603_1608Metric",
+   "x_rel": 26.425,
+   "y_rel": 27.975,
+   "x_abs": 126.4,
+   "y_abs": 112.05,
+   "rot": 0.0,
+   "lato": "top",
+   "smd": true,
+   "tht": false,
+   "escluso_pos": false,
+   "escluso_bom": false,
+   "dnp": false,
+   "lcsc": "C25803",
+   "montaggio": ""
+  },
+  "FID3": {
+   "valore": "Fiducial",
+   "fpid": "Fiducial:Fiducial_1mm_Mask2mm",
+   "x_rel": 46.025,
+   "y_rel": 9.025,
+   "x_abs": 146.0,
+   "y_abs": 131.0,
+   "rot": 0.0,
+   "lato": "top",
+   "smd": true,
+   "tht": false,
+   "escluso_pos": true,
+   "escluso_bom": true,
+   "dnp": false,
+   "lcsc": "",
+   "montaggio": ""
+  },
+  "FID2": {
+   "valore": "Fiducial",
+   "fpid": "Fiducial:Fiducial_1mm_Mask2mm",
+   "x_rel": 16.025,
+   "y_rel": 28.025,
+   "x_abs": 116.0,
+   "y_abs": 112.0,
+   "rot": 0.0,
+   "lato": "top",
+   "smd": true,
+   "tht": false,
+   "escluso_pos": true,
+   "escluso_bom": true,
+   "dnp": false,
+   "lcsc": "",
+   "montaggio": ""
+  },
+  "C10": {
+   "valore": "100nF",
+   "fpid": "Capacitor_SMD:C_0603_1608Metric",
+   "x_rel": 24.875,
+   "y_rel": 30.175,
+   "x_abs": 124.85,
+   "y_abs": 109.85,
+   "rot": 0.0,
+   "lato": "top",
+   "smd": true,
+   "tht": false,
+   "escluso_pos": false,
+   "escluso_bom": false,
+   "dnp": false,
+   "lcsc": "C14663",
+   "montaggio": ""
+  },
+  "J5": {
+   "valore": "B4B-PH-K-S",
+   "fpid": "Connector_JST:JST_PH_B4B-PH-K_1x04_P2.00mm_Vertical",
+   "x_rel": 3.025,
+   "y_rel": 19.025,
+   "x_abs": 103.0,
+   "y_abs": 121.0,
+   "rot": 0.0,
+   "lato": "top",
+   "smd": false,
+   "tht": true,
+   "escluso_pos": true,
+   "escluso_bom": false,
+   "dnp": false,
+   "lcsc": "",
+   "montaggio": "a mano, parte del proprietario"
+  },
+  "J2": {
+   "valore": "Header 1x7 2,54 mm THT",
+   "fpid": "Connector_PinHeader_2.54mm:PinHeader_1x07_P2.54mm_Horizontal",
+   "x_rel": 9.905,
+   "y_rel": 35.625,
+   "x_abs": 109.88,
+   "y_abs": 104.4,
+   "rot": 90.0,
+   "lato": "top",
+   "smd": false,
+   "tht": true,
+   "escluso_pos": true,
+   "escluso_bom": false,
+   "dnp": false,
+   "lcsc": "",
+   "montaggio": "a mano, parte del proprietario"
+  },
+  "R2": {
+   "valore": "5.1k",
+   "fpid": "Resistor_SMD:R_0603_1608Metric",
+   "x_rel": 39.175,
+   "y_rel": 10.875,
+   "x_abs": 139.15,
+   "y_abs": 129.15,
+   "rot": 90.0,
+   "lato": "top",
+   "smd": true,
+   "tht": false,
+   "escluso_pos": false,
+   "escluso_bom": false,
+   "dnp": false,
+   "lcsc": "C23186",
+   "montaggio": ""
+  },
+  "Q1": {
+   "valore": "AO3401A",
+   "fpid": "Package_TO_SOT_SMD:SOT-23",
+   "x_rel": 28.875,
+   "y_rel": 36.675,
+   "x_abs": 128.85,
+   "y_abs": 103.35,
+   "rot": 90.0,
+   "lato": "top",
+   "smd": true,
+   "tht": false,
+   "escluso_pos": false,
+   "escluso_bom": false,
+   "dnp": false,
+   "lcsc": "C15127",
+   "montaggio": ""
+  },
+  "C3": {
+   "valore": "10uF",
+   "fpid": "Capacitor_SMD:C_0603_1608Metric",
+   "x_rel": 18.175,
+   "y_rel": 9.725,
+   "x_abs": 118.15,
+   "y_abs": 130.3,
+   "rot": 0.0,
+   "lato": "top",
+   "smd": true,
+   "tht": false,
+   "escluso_pos": false,
+   "escluso_bom": false,
+   "dnp": false,
+   "lcsc": "C19702",
+   "montaggio": ""
+  },
+  "R7": {
+   "valore": "10k",
+   "fpid": "Resistor_SMD:R_0603_1608Metric",
+   "x_rel": 29.325,
+   "y_rel": 23.375,
+   "x_abs": 129.3,
+   "y_abs": 116.65,
+   "rot": 90.0,
+   "lato": "top",
+   "smd": true,
+   "tht": false,
+   "escluso_pos": false,
+   "escluso_bom": false,
+   "dnp": false,
+   "lcsc": "C25804",
+   "montaggio": ""
+  },
+  "C4": {
+   "valore": "100nF",
+   "fpid": "Capacitor_SMD:C_0603_1608Metric",
+   "x_rel": 21.175,
+   "y_rel": 7.475,
+   "x_abs": 121.15,
+   "y_abs": 132.55,
+   "rot": 0.0,
+   "lato": "top",
+   "smd": true,
+   "tht": false,
+   "escluso_pos": false,
+   "escluso_bom": false,
+   "dnp": false,
+   "lcsc": "C14663",
+   "montaggio": ""
+  },
+  "U2": {
+   "valore": "TLV75533PDBVR",
+   "fpid": "Package_TO_SOT_SMD:SOT-23-5",
+   "x_rel": 17.025,
+   "y_rel": 6.525,
+   "x_abs": 117.0,
+   "y_abs": 133.5,
+   "rot": 0.0,
+   "lato": "top",
+   "smd": true,
+   "tht": false,
+   "escluso_pos": false,
+   "escluso_bom": false,
+   "dnp": false,
+   "lcsc": "C404027",
+   "montaggio": ""
+  },
+  "R1": {
+   "valore": "5.1k",
+   "fpid": "Resistor_SMD:R_0603_1608Metric",
+   "x_rel": 36.925,
+   "y_rel": 10.875,
+   "x_abs": 136.9,
+   "y_abs": 129.15,
+   "rot": 90.0,
+   "lato": "top",
+   "smd": true,
+   "tht": false,
+   "escluso_pos": false,
+   "escluso_bom": false,
+   "dnp": false,
+   "lcsc": "C23186",
+   "montaggio": ""
+  },
+  "J3": {
+   "valore": "B4B-PH-K-S",
+   "fpid": "Connector_JST:JST_PH_B4B-PH-K_1x04_P2.00mm_Vertical",
+   "x_rel": 3.025,
+   "y_rel": 31.025,
+   "x_abs": 103.0,
+   "y_abs": 109.0,
+   "rot": 0.0,
+   "lato": "top",
+   "smd": false,
+   "tht": true,
+   "escluso_pos": true,
+   "escluso_bom": false,
+   "dnp": false,
+   "lcsc": "",
+   "montaggio": "a mano, parte del proprietario"
+  },
+  "TP9": {
+   "valore": "IO0 (libero)",
+   "fpid": "TestPoint:TestPoint_Pad_D1.5mm",
+   "x_rel": 25.025,
+   "y_rel": 10.525,
+   "x_abs": 125.0,
+   "y_abs": 129.5,
+   "rot": 0.0,
+   "lato": "bottom",
+   "smd": false,
+   "tht": false,
+   "escluso_pos": true,
+   "escluso_bom": true,
+   "dnp": false,
+   "lcsc": "",
+   "montaggio": ""
+  },
+  "TP10": {
+   "valore": "IO1 (libero)",
+   "fpid": "TestPoint:TestPoint_Pad_D1.5mm",
+   "x_rel": 31.025,
+   "y_rel": 10.525,
+   "x_abs": 131.0,
+   "y_abs": 129.5,
+   "rot": 0.0,
+   "lato": "bottom",
+   "smd": false,
+   "tht": false,
+   "escluso_pos": true,
+   "escluso_bom": true,
+   "dnp": false,
+   "lcsc": "",
+   "montaggio": ""
+  },
+  "TP8": {
+   "valore": "I2C_SCL",
+   "fpid": "TestPoint:TestPoint_Pad_D1.5mm",
+   "x_rel": 19.025,
+   "y_rel": 10.525,
+   "x_abs": 119.0,
+   "y_abs": 129.5,
+   "rot": 0.0,
+   "lato": "bottom",
+   "smd": false,
+   "tht": false,
+   "escluso_pos": true,
+   "escluso_bom": true,
+   "dnp": false,
+   "lcsc": "",
+   "montaggio": ""
+  },
+  "TP5": {
+   "valore": "UART_TX (IO21)",
+   "fpid": "TestPoint:TestPoint_Pad_D1.5mm",
+   "x_rel": 37.025,
+   "y_rel": 16.025,
+   "x_abs": 137.0,
+   "y_abs": 124.0,
+   "rot": 0.0,
+   "lato": "bottom",
+   "smd": false,
+   "tht": false,
+   "escluso_pos": true,
+   "escluso_bom": true,
+   "dnp": false,
+   "lcsc": "",
+   "montaggio": ""
+  },
+  "TP1": {
+   "valore": "VBUS",
+   "fpid": "TestPoint:TestPoint_Pad_D1.5mm",
+   "x_rel": 13.025,
+   "y_rel": 16.025,
+   "x_abs": 113.0,
+   "y_abs": 124.0,
+   "rot": 0.0,
+   "lato": "bottom",
+   "smd": false,
+   "tht": false,
+   "escluso_pos": true,
+   "escluso_bom": true,
+   "dnp": false,
+   "lcsc": "",
+   "montaggio": ""
+  },
+  "TP6": {
+   "valore": "EN",
+   "fpid": "TestPoint:TestPoint_Pad_D1.5mm",
+   "x_rel": 31.985,
+   "y_rel": 33.585,
+   "x_abs": 131.96,
+   "y_abs": 106.44,
+   "rot": 0.0,
+   "lato": "bottom",
+   "smd": false,
+   "tht": false,
+   "escluso_pos": true,
+   "escluso_bom": true,
+   "dnp": false,
+   "lcsc": "",
+   "montaggio": ""
+  },
+  "TP2": {
+   "valore": "+5V",
+   "fpid": "TestPoint:TestPoint_Pad_D1.5mm",
+   "x_rel": 19.025,
+   "y_rel": 16.025,
+   "x_abs": 119.0,
+   "y_abs": 124.0,
+   "rot": 0.0,
+   "lato": "bottom",
+   "smd": false,
+   "tht": false,
+   "escluso_pos": true,
+   "escluso_bom": true,
+   "dnp": false,
+   "lcsc": "",
+   "montaggio": ""
+  },
+  "TP3": {
+   "valore": "+3V3",
+   "fpid": "TestPoint:TestPoint_Pad_D1.5mm",
+   "x_rel": 25.025,
+   "y_rel": 16.025,
+   "x_abs": 125.0,
+   "y_abs": 124.0,
+   "rot": 0.0,
+   "lato": "bottom",
+   "smd": false,
+   "tht": false,
+   "escluso_pos": true,
+   "escluso_bom": true,
+   "dnp": false,
+   "lcsc": "",
+   "montaggio": ""
+  },
+  "TP7": {
+   "valore": "I2C_SDA",
+   "fpid": "TestPoint:TestPoint_Pad_D1.5mm",
+   "x_rel": 13.025,
+   "y_rel": 10.525,
+   "x_abs": 113.0,
+   "y_abs": 129.5,
+   "rot": 0.0,
+   "lato": "bottom",
+   "smd": false,
+   "tht": false,
+   "escluso_pos": true,
+   "escluso_bom": true,
+   "dnp": false,
+   "lcsc": "",
+   "montaggio": ""
+  },
+  "TP11": {
+   "valore": "IO9 (BOOT)",
+   "fpid": "TestPoint:TestPoint_Pad_D1.5mm",
+   "x_rel": 28.485,
+   "y_rel": 23.385,
+   "x_abs": 128.46,
+   "y_abs": 116.64,
+   "rot": 0.0,
+   "lato": "bottom",
+   "smd": false,
+   "tht": false,
+   "escluso_pos": true,
+   "escluso_bom": true,
+   "dnp": false,
+   "lcsc": "",
+   "montaggio": ""
+  },
+  "TP4": {
+   "valore": "GND",
+   "fpid": "TestPoint:TestPoint_Pad_D1.5mm",
+   "x_rel": 31.025,
+   "y_rel": 16.025,
+   "x_abs": 131.0,
+   "y_abs": 124.0,
+   "rot": 0.0,
+   "lato": "bottom",
+   "smd": false,
+   "tht": false,
+   "escluso_pos": true,
+   "escluso_bom": true,
+   "dnp": false,
+   "lcsc": "",
+   "montaggio": ""
+  }
+ },
+ "piazzole_tht": [
+  {
+   "ref": "J1",
+   "pad": "",
+   "net": "",
+   "tipo": "NPTH",
+   "forma": "0",
+   "foro": [
+    0.65,
+    0.65
+   ],
+   "dim_pad": [
+    0.65,
+    0.65
+   ],
+   "anello_min": null,
+   "x_abs": 130.77,
+   "y_abs": 134.1,
+   "y_dal_bordo_sup": 34.125,
+   "x_dal_bordo_sx": 30.795
+  },
+  {
+   "ref": "J1",
+   "pad": "",
+   "net": "",
+   "tipo": "NPTH",
+   "forma": "0",
+   "foro": [
+    0.65,
+    0.65
+   ],
+   "dim_pad": [
+    0.65,
+    0.65
+   ],
+   "anello_min": null,
+   "x_abs": 136.55,
+   "y_abs": 134.1,
+   "y_dal_bordo_sup": 34.125,
+   "x_dal_bordo_sx": 36.575
+  },
+  {
+   "ref": "J1",
+   "pad": "SH",
+   "net": "GND",
+   "tipo": "PTH",
+   "forma": "2",
+   "foro": [
+    0.6,
+    1.7
+   ],
+   "dim_pad": [
+    1.0,
+    2.1
+   ],
+   "anello_min": 0.2,
+   "x_abs": 129.34,
+   "y_abs": 133.57,
+   "y_dal_bordo_sup": 33.595,
+   "x_dal_bordo_sx": 29.365
+  },
+  {
+   "ref": "J1",
+   "pad": "SH",
+   "net": "GND",
+   "tipo": "PTH",
+   "forma": "2",
+   "foro": [
+    0.6,
+    1.2
+   ],
+   "dim_pad": [
+    1.0,
+    1.6
+   ],
+   "anello_min": 0.2,
+   "x_abs": 129.34,
+   "y_abs": 137.75,
+   "y_dal_bordo_sup": 37.775,
+   "x_dal_bordo_sx": 29.365
+  },
+  {
+   "ref": "J1",
+   "pad": "SH",
+   "net": "GND",
+   "tipo": "PTH",
+   "forma": "2",
+   "foro": [
+    0.6,
+    1.7
+   ],
+   "dim_pad": [
+    1.0,
+    2.1
+   ],
+   "anello_min": 0.2,
+   "x_abs": 137.98,
+   "y_abs": 133.57,
+   "y_dal_bordo_sup": 33.595,
+   "x_dal_bordo_sx": 38.005
+  },
+  {
+   "ref": "J1",
+   "pad": "SH",
+   "net": "GND",
+   "tipo": "PTH",
+   "forma": "2",
+   "foro": [
+    0.6,
+    1.2
+   ],
+   "dim_pad": [
+    1.0,
+    1.6
+   ],
+   "anello_min": 0.2,
+   "x_abs": 137.98,
+   "y_abs": 137.75,
+   "y_dal_bordo_sup": 37.775,
+   "x_dal_bordo_sx": 38.005
+  },
+  {
+   "ref": "H2",
+   "pad": "1",
+   "net": "GND",
+   "tipo": "PTH",
+   "forma": "0",
+   "foro": [
+    2.2,
+    2.2
+   ],
+   "dim_pad": [
+    4.4,
+    4.4
+   ],
+   "anello_min": 1.1,
+   "x_abs": 143.66,
+   "y_abs": 136.5,
+   "y_dal_bordo_sup": 36.525,
+   "x_dal_bordo_sx": 43.685
+  },
+  {
+   "ref": "H1",
+   "pad": "1",
+   "net": "GND",
+   "tipo": "PTH",
+   "forma": "0",
+   "foro": [
+    2.2,
+    2.2
+   ],
+   "dim_pad": [
+    4.4,
+    4.4
+   ],
+   "anello_min": 1.1,
+   "x_abs": 124.16,
+   "y_abs": 136.5,
+   "y_dal_bordo_sup": 36.525,
+   "x_dal_bordo_sx": 24.185
+  },
+  {
+   "ref": "J4",
+   "pad": "1",
+   "net": "GND",
+   "tipo": "PTH",
+   "forma": "4",
+   "foro": [
+    0.75,
+    0.75
+   ],
+   "dim_pad": [
+    1.2,
+    1.75
+   ],
+   "anello_min": 0.225,
+   "x_abs": 103.0,
+   "y_abs": 115.0,
+   "y_dal_bordo_sup": 15.025,
+   "x_dal_bordo_sx": 3.025
+  },
+  {
+   "ref": "J4",
+   "pad": "2",
+   "net": "/Periferiche I2C e pulsante/3V3_EXT",
+   "tipo": "PTH",
+   "forma": "2",
+   "foro": [
+    0.75,
+    0.75
+   ],
+   "dim_pad": [
+    1.2,
+    1.75
+   ],
+   "anello_min": 0.225,
+   "x_abs": 105.0,
+   "y_abs": 115.0,
+   "y_dal_bordo_sup": 15.025,
+   "x_dal_bordo_sx": 5.025
+  },
+  {
+   "ref": "J4",
+   "pad": "3",
+   "net": "I2C_SDA",
+   "tipo": "PTH",
+   "forma": "2",
+   "foro": [
+    0.75,
+    0.75
+   ],
+   "dim_pad": [
+    1.2,
+    1.75
+   ],
+   "anello_min": 0.225,
+   "x_abs": 107.0,
+   "y_abs": 115.0,
+   "y_dal_bordo_sup": 15.025,
+   "x_dal_bordo_sx": 7.025
+  },
+  {
+   "ref": "J4",
+   "pad": "4",
+   "net": "I2C_SCL",
+   "tipo": "PTH",
+   "forma": "2",
+   "foro": [
+    0.75,
+    0.75
+   ],
+   "dim_pad": [
+    1.2,
+    1.75
+   ],
+   "anello_min": 0.225,
+   "x_abs": 109.0,
+   "y_abs": 115.0,
+   "y_dal_bordo_sup": 15.025,
+   "x_dal_bordo_sx": 9.025
+  },
+  {
+   "ref": "J5",
+   "pad": "1",
+   "net": "BTN_USER",
+   "tipo": "PTH",
+   "forma": "4",
+   "foro": [
+    0.75,
+    0.75
+   ],
+   "dim_pad": [
+    1.2,
+    1.75
+   ],
+   "anello_min": 0.225,
+   "x_abs": 103.0,
+   "y_abs": 121.0,
+   "y_dal_bordo_sup": 21.025,
+   "x_dal_bordo_sx": 3.025
+  },
+  {
+   "ref": "J5",
+   "pad": "2",
+   "net": "GND",
+   "tipo": "PTH",
+   "forma": "2",
+   "foro": [
+    0.75,
+    0.75
+   ],
+   "dim_pad": [
+    1.2,
+    1.75
+   ],
+   "anello_min": 0.225,
+   "x_abs": 105.0,
+   "y_abs": 121.0,
+   "y_dal_bordo_sup": 21.025,
+   "x_dal_bordo_sx": 5.025
+  },
+  {
+   "ref": "J5",
+   "pad": "3",
+   "net": "unconnected-(J5-Pad3)",
+   "tipo": "PTH",
+   "forma": "2",
+   "foro": [
+    0.75,
+    0.75
+   ],
+   "dim_pad": [
+    1.2,
+    1.75
+   ],
+   "anello_min": 0.225,
+   "x_abs": 107.0,
+   "y_abs": 121.0,
+   "y_dal_bordo_sup": 21.025,
+   "x_dal_bordo_sx": 7.025
+  },
+  {
+   "ref": "J5",
+   "pad": "4",
+   "net": "unconnected-(J5-Pad4)",
+   "tipo": "PTH",
+   "forma": "2",
+   "foro": [
+    0.75,
+    0.75
+   ],
+   "dim_pad": [
+    1.2,
+    1.75
+   ],
+   "anello_min": 0.225,
+   "x_abs": 109.0,
+   "y_abs": 121.0,
+   "y_dal_bordo_sup": 21.025,
+   "x_dal_bordo_sx": 9.025
+  },
+  {
+   "ref": "J2",
+   "pad": "1",
+   "net": "/Display (modulo 7 pin)/3V3_DISP",
+   "tipo": "PTH",
+   "forma": "1",
+   "foro": [
+    1.0,
+    1.0
+   ],
+   "dim_pad": [
+    1.7,
+    1.7
+   ],
+   "anello_min": 0.35,
+   "x_abs": 109.88,
+   "y_abs": 104.4,
+   "y_dal_bordo_sup": 4.425,
+   "x_dal_bordo_sx": 9.905
+  },
+  {
+   "ref": "J2",
+   "pad": "2",
+   "net": "GND",
+   "tipo": "PTH",
+   "forma": "0",
+   "foro": [
+    1.0,
+    1.0
+   ],
+   "dim_pad": [
+    1.7,
+    1.7
+   ],
+   "anello_min": 0.35,
+   "x_abs": 112.42,
+   "y_abs": 104.4,
+   "y_dal_bordo_sup": 4.425,
+   "x_dal_bordo_sx": 12.445
+  },
+  {
+   "ref": "J2",
+   "pad": "3",
+   "net": "/Display (modulo 7 pin)/LCD_SCLK_C",
+   "tipo": "PTH",
+   "forma": "0",
+   "foro": [
+    1.0,
+    1.0
+   ],
+   "dim_pad": [
+    1.7,
+    1.7
+   ],
+   "anello_min": 0.35,
+   "x_abs": 114.96,
+   "y_abs": 104.4,
+   "y_dal_bordo_sup": 4.425,
+   "x_dal_bordo_sx": 14.985
+  },
+  {
+   "ref": "J2",
+   "pad": "4",
+   "net": "/Display (modulo 7 pin)/LCD_MOSI_C",
+   "tipo": "PTH",
+   "forma": "0",
+   "foro": [
+    1.0,
+    1.0
+   ],
+   "dim_pad": [
+    1.7,
+    1.7
+   ],
+   "anello_min": 0.35,
+   "x_abs": 117.5,
+   "y_abs": 104.4,
+   "y_dal_bordo_sup": 4.425,
+   "x_dal_bordo_sx": 17.525
+  },
+  {
+   "ref": "J2",
+   "pad": "5",
+   "net": "LCD_DC",
+   "tipo": "PTH",
+   "forma": "0",
+   "foro": [
+    1.0,
+    1.0
+   ],
+   "dim_pad": [
+    1.7,
+    1.7
+   ],
+   "anello_min": 0.35,
+   "x_abs": 120.04,
+   "y_abs": 104.4,
+   "y_dal_bordo_sup": 4.425,
+   "x_dal_bordo_sx": 20.065
+  },
+  {
+   "ref": "J2",
+   "pad": "6",
+   "net": "LCD_CS",
+   "tipo": "PTH",
+   "forma": "0",
+   "foro": [
+    1.0,
+    1.0
+   ],
+   "dim_pad": [
+    1.7,
+    1.7
+   ],
+   "anello_min": 0.35,
+   "x_abs": 122.58,
+   "y_abs": 104.4,
+   "y_dal_bordo_sup": 4.425,
+   "x_dal_bordo_sx": 22.605
+  },
+  {
+   "ref": "J2",
+   "pad": "7",
+   "net": "LCD_RST",
+   "tipo": "PTH",
+   "forma": "0",
+   "foro": [
+    1.0,
+    1.0
+   ],
+   "dim_pad": [
+    1.7,
+    1.7
+   ],
+   "anello_min": 0.35,
+   "x_abs": 125.12,
+   "y_abs": 104.4,
+   "y_dal_bordo_sup": 4.425,
+   "x_dal_bordo_sx": 25.145
+  },
+  {
+   "ref": "J3",
+   "pad": "1",
+   "net": "GND",
+   "tipo": "PTH",
+   "forma": "4",
+   "foro": [
+    0.75,
+    0.75
+   ],
+   "dim_pad": [
+    1.2,
+    1.75
+   ],
+   "anello_min": 0.225,
+   "x_abs": 103.0,
+   "y_abs": 109.0,
+   "y_dal_bordo_sup": 9.025,
+   "x_dal_bordo_sx": 3.025
+  },
+  {
+   "ref": "J3",
+   "pad": "2",
+   "net": "/Periferiche I2C e pulsante/3V3_EXT",
+   "tipo": "PTH",
+   "forma": "2",
+   "foro": [
+    0.75,
+    0.75
+   ],
+   "dim_pad": [
+    1.2,
+    1.75
+   ],
+   "anello_min": 0.225,
+   "x_abs": 105.0,
+   "y_abs": 109.0,
+   "y_dal_bordo_sup": 9.025,
+   "x_dal_bordo_sx": 5.025
+  },
+  {
+   "ref": "J3",
+   "pad": "3",
+   "net": "I2C_SDA",
+   "tipo": "PTH",
+   "forma": "2",
+   "foro": [
+    0.75,
+    0.75
+   ],
+   "dim_pad": [
+    1.2,
+    1.75
+   ],
+   "anello_min": 0.225,
+   "x_abs": 107.0,
+   "y_abs": 109.0,
+   "y_dal_bordo_sup": 9.025,
+   "x_dal_bordo_sx": 7.025
+  },
+  {
+   "ref": "J3",
+   "pad": "4",
+   "net": "I2C_SCL",
+   "tipo": "PTH",
+   "forma": "2",
+   "foro": [
+    0.75,
+    0.75
+   ],
+   "dim_pad": [
+    1.2,
+    1.75
+   ],
+   "anello_min": 0.225,
+   "x_abs": 109.0,
+   "y_abs": 109.0,
+   "y_dal_bordo_sup": 9.025,
+   "x_dal_bordo_sx": 9.025
+  }
+ ],
+ "test_point_retro": [
+  {
+   "tp": "TP9",
+   "net": "/MCU/IO0",
+   "x_abs": 125.0,
+   "y_abs": 129.5,
+   "diam": 1.5,
+   "distanza_bordo_rame_da_THT_J2_J5": [
+    16.493,
+    "J5.4"
+   ]
+  },
+  {
+   "tp": "TP10",
+   "net": "/MCU/IO1",
+   "x_abs": 131.0,
+   "y_abs": 129.5,
+   "diam": 1.5,
+   "distanza_bordo_rame_da_THT_J2_J5": [
+    21.96,
+    "J5.4"
+   ]
+  },
+  {
+   "tp": "TP8",
+   "net": "I2C_SCL",
+   "x_abs": 119.0,
+   "y_abs": 129.5,
+   "diam": 1.5,
+   "distanza_bordo_rame_da_THT_J2_J5": [
+    11.499,
+    "J5.4"
+   ]
+  },
+  {
+   "tp": "TP5",
+   "net": "/MCU/UART_TX",
+   "x_abs": 137.0,
+   "y_abs": 124.0,
+   "diam": 1.5,
+   "distanza_bordo_rame_da_THT_J2_J5": [
+    21.319,
+    "J2.7"
+   ]
+  },
+  {
+   "tp": "TP1",
+   "net": "VBUS",
+   "x_abs": 113.0,
+   "y_abs": 124.0,
+   "diam": 1.5,
+   "distanza_bordo_rame_da_THT_J2_J5": [
+    3.375,
+    "J5.4"
+   ]
+  },
+  {
+   "tp": "TP6",
+   "net": "/MCU/EN",
+   "x_abs": 131.96,
+   "y_abs": 106.44,
+   "diam": 1.5,
+   "distanza_bordo_rame_da_THT_J2_J5": [
+    5.538,
+    "J2.7"
+   ]
+  },
+  {
+   "tp": "TP2",
+   "net": "+5V",
+   "x_abs": 119.0,
+   "y_abs": 124.0,
+   "diam": 1.5,
+   "distanza_bordo_rame_da_THT_J2_J5": [
+    8.815,
+    "J5.4"
+   ]
+  },
+  {
+   "tp": "TP3",
+   "net": "+3V3",
+   "x_abs": 125.0,
+   "y_abs": 124.0,
+   "diam": 1.5,
+   "distanza_bordo_rame_da_THT_J2_J5": [
+    14.654,
+    "J5.4"
+   ]
+  },
+  {
+   "tp": "TP7",
+   "net": "I2C_SDA",
+   "x_abs": 113.0,
+   "y_abs": 129.5,
+   "diam": 1.5,
+   "distanza_bordo_rame_da_THT_J2_J5": [
+    7.769,
+    "J5.4"
+   ]
+  },
+  {
+   "tp": "TP11",
+   "net": "/MCU/IO9_BOOT",
+   "x_abs": 128.46,
+   "y_abs": 116.64,
+   "diam": 1.5,
+   "distanza_bordo_rame_da_THT_J2_J5": [
+    11.088,
+    "J2.7"
+   ]
+  },
+  {
+   "tp": "TP4",
+   "net": "GND",
+   "x_abs": 131.0,
+   "y_abs": 124.0,
+   "diam": 1.5,
+   "distanza_bordo_rame_da_THT_J2_J5": [
+    18.863,
+    "J2.7"
+   ]
+  }
+ ],
+ "reti": {
+  "+3V3": {
+   "lunghezza_mm": 144.84,
+   "larghezze_mm": [
+    0.3,
+    0.4
+   ],
+   "segmenti": 93,
+   "vie": 3,
+   "strati": [
+    "B.Cu",
+    "F.Cu"
+   ]
+  },
+  "+5V": {
+   "lunghezza_mm": 33.94,
+   "larghezze_mm": [
+    0.3,
+    0.4
+   ],
+   "segmenti": 13,
+   "vie": 2,
+   "strati": [
+    "B.Cu",
+    "F.Cu"
+   ]
+  },
+  "/Display (modulo 7 pin)/3V3_DISP": {
+   "lunghezza_mm": 37.13,
+   "larghezze_mm": [
+    0.3,
+    0.4
+   ],
+   "segmenti": 24,
+   "vie": 2,
+   "strati": [
+    "B.Cu",
+    "F.Cu"
+   ]
+  },
+  "/Display (modulo 7 pin)/DISP_G": {
+   "lunghezza_mm": 15.06,
+   "larghezze_mm": [
+    0.2
+   ],
+   "segmenti": 8,
+   "vie": 2,
+   "strati": [
+    "B.Cu",
+    "F.Cu"
+   ]
+  },
+  "/Display (modulo 7 pin)/LCD_MOSI_C": {
+   "lunghezza_mm": 18.56,
+   "larghezze_mm": [
+    0.15,
+    0.2
+   ],
+   "segmenti": 11,
+   "vie": 1,
+   "strati": [
+    "B.Cu",
+    "F.Cu"
+   ]
+  },
+  "/Display (modulo 7 pin)/LCD_SCLK_C": {
+   "lunghezza_mm": 20.53,
+   "larghezze_mm": [
+    0.2
+   ],
+   "segmenti": 9,
+   "vie": 2,
+   "strati": [
+    "B.Cu",
+    "F.Cu"
+   ]
+  },
+  "/MCU/EN": {
+   "lunghezza_mm": 15.89,
+   "larghezze_mm": [
+    0.2
+   ],
+   "segmenti": 22,
+   "vie": 3,
+   "strati": [
+    "B.Cu",
+    "F.Cu"
+   ]
+  },
+  "/MCU/IO0": {
+   "lunghezza_mm": 25.37,
+   "larghezze_mm": [
+    0.15,
+    0.2
+   ],
+   "segmenti": 7,
+   "vie": 1,
+   "strati": [
+    "B.Cu",
+    "F.Cu"
+   ]
+  },
+  "/MCU/IO1": {
+   "lunghezza_mm": 23.34,
+   "larghezze_mm": [
+    0.15,
+    0.2
+   ],
+   "segmenti": 8,
+   "vie": 1,
+   "strati": [
+    "B.Cu",
+    "F.Cu"
+   ]
+  },
+  "/MCU/IO9_BOOT": {
+   "lunghezza_mm": 5.74,
+   "larghezze_mm": [
+    0.15,
+    0.2
+   ],
+   "segmenti": 12,
+   "vie": 1,
+   "strati": [
+    "B.Cu",
+    "F.Cu"
+   ]
+  },
+  "/MCU/UART_TX": {
+   "lunghezza_mm": 5.6,
+   "larghezze_mm": [
+    0.2
+   ],
+   "segmenti": 4,
+   "vie": 1,
+   "strati": [
+    "B.Cu",
+    "F.Cu"
+   ]
+  },
+  "/Periferiche I2C e pulsante/3V3_EXT": {
+   "lunghezza_mm": 16.51,
+   "larghezze_mm": [
+    0.4
+   ],
+   "segmenti": 5,
+   "vie": 1,
+   "strati": [
+    "B.Cu",
+    "F.Cu"
+   ]
+  },
+  "/USB e alimentazione/5V_LDO": {
+   "lunghezza_mm": 8.91,
+   "larghezze_mm": [
+    0.3,
+    0.4
+   ],
+   "segmenti": 10,
+   "vie": 0,
+   "strati": [
+    "F.Cu"
+   ]
+  },
+  "/USB e alimentazione/CC1": {
+   "lunghezza_mm": 8.52,
+   "larghezze_mm": [
+    0.15,
+    0.2
+   ],
+   "segmenti": 10,
+   "vie": 2,
+   "strati": [
+    "B.Cu",
+    "F.Cu"
+   ]
+  },
+  "/USB e alimentazione/CC2": {
+   "lunghezza_mm": 6.65,
+   "larghezze_mm": [
+    0.2
+   ],
+   "segmenti": 4,
+   "vie": 2,
+   "strati": [
+    "B.Cu",
+    "F.Cu"
+   ]
+  },
+  "/USB e alimentazione/USB_DN_C": {
+   "lunghezza_mm": 14.71,
+   "larghezze_mm": [
+    0.2
+   ],
+   "segmenti": 13,
+   "vie": 2,
+   "strati": [
+    "B.Cu",
+    "F.Cu"
+   ]
+  },
+  "/USB e alimentazione/USB_DP_C": {
+   "lunghezza_mm": 13.91,
+   "larghezze_mm": [
+    0.2
+   ],
+   "segmenti": 13,
+   "vie": 2,
+   "strati": [
+    "B.Cu",
+    "F.Cu"
+   ]
+  },
+  "BTN_USER": {
+   "lunghezza_mm": 71.57,
+   "larghezze_mm": [
+    0.15,
+    0.2
+   ],
+   "segmenti": 20,
+   "vie": 1,
+   "strati": [
+    "B.Cu",
+    "F.Cu"
+   ]
+  },
+  "DISP_EN_N": {
+   "lunghezza_mm": 32.0,
+   "larghezze_mm": [
+    0.2
+   ],
+   "segmenti": 13,
+   "vie": 2,
+   "strati": [
+    "B.Cu",
+    "F.Cu"
+   ]
+  },
+  "GND": {
+   "lunghezza_mm": 229.43,
+   "larghezze_mm": [
+    0.24,
+    0.3,
+    0.4
+   ],
+   "segmenti": 165,
+   "vie": 6,
+   "strati": [
+    "B.Cu",
+    "F.Cu"
+   ]
+  },
+  "I2C_SCL": {
+   "lunghezza_mm": 55.23,
+   "larghezze_mm": [
+    0.15,
+    0.2
+   ],
+   "segmenti": 27,
+   "vie": 1,
+   "strati": [
+    "B.Cu",
+    "F.Cu"
+   ]
+  },
+  "I2C_SDA": {
+   "lunghezza_mm": 69.38,
+   "larghezze_mm": [
+    0.2
+   ],
+   "segmenti": 25,
+   "vie": 1,
+   "strati": [
+    "B.Cu",
+    "F.Cu"
+   ]
+  },
+  "LCD_CS": {
+   "lunghezza_mm": 18.75,
+   "larghezze_mm": [
+    0.15,
+    0.2
+   ],
+   "segmenti": 9,
+   "vie": 1,
+   "strati": [
+    "B.Cu",
+    "F.Cu"
+   ]
+  },
+  "LCD_DC": {
+   "lunghezza_mm": 19.75,
+   "larghezze_mm": [
+    0.2
+   ],
+   "segmenti": 7,
+   "vie": 1,
+   "strati": [
+    "B.Cu",
+    "F.Cu"
+   ]
+  },
+  "LCD_MOSI": {
+   "lunghezza_mm": 4.86,
+   "larghezze_mm": [
+    0.2
+   ],
+   "segmenti": 2,
+   "vie": 0,
+   "strati": [
+    "F.Cu"
+   ]
+  },
+  "LCD_RST": {
+   "lunghezza_mm": 13.92,
+   "larghezze_mm": [
+    0.2
+   ],
+   "segmenti": 9,
+   "vie": 0,
+   "strati": [
+    "F.Cu"
+   ]
+  },
+  "LCD_SCLK": {
+   "lunghezza_mm": 2.47,
+   "larghezze_mm": [
+    0.15,
+    0.2
+   ],
+   "segmenti": 4,
+   "vie": 0,
+   "strati": [
+    "F.Cu"
+   ]
+  },
+  "USB_DN": {
+   "lunghezza_mm": 3.42,
+   "larghezze_mm": [
+    0.2
+   ],
+   "segmenti": 3,
+   "vie": 0,
+   "strati": [
+    "F.Cu"
+   ]
+  },
+  "USB_DP": {
+   "lunghezza_mm": 3.42,
+   "larghezze_mm": [
+    0.2
+   ],
+   "segmenti": 3,
+   "vie": 0,
+   "strati": [
+    "F.Cu"
+   ]
+  },
+  "VBUS": {
+   "lunghezza_mm": 32.94,
+   "larghezze_mm": [
+    0.3,
+    0.4
+   ],
+   "segmenti": 22,
+   "vie": 3,
+   "strati": [
+    "B.Cu",
+    "F.Cu"
+   ]
+  }
+ },
+ "vie_per_dimensione": {
+  "0.6/0.35": 2,
+  "0.7/0.35": 14,
+  "0.6/0.3": 28
+ },
+ "vie_totali": 44,
+ "netclass_per_rete": {
+  "+3V3": "Power",
+  "+5V": "Power",
+  "/Display (modulo 7 pin)/3V3_DISP": "Power",
+  "/Display (modulo 7 pin)/DISP_G": "Default",
+  "/Display (modulo 7 pin)/LCD_MOSI_C": "Default",
+  "/Display (modulo 7 pin)/LCD_SCLK_C": "Default",
+  "/MCU/EN": "Default",
+  "/MCU/IO0": "Default",
+  "/MCU/IO1": "Default",
+  "/MCU/IO9_BOOT": "Default",
+  "/MCU/UART_TX": "Default",
+  "/Periferiche I2C e pulsante/3V3_EXT": "Power",
+  "/USB e alimentazione/5V_LDO": "Power",
+  "/USB e alimentazione/CC1": "Default",
+  "/USB e alimentazione/CC2": "Default",
+  "/USB e alimentazione/USB_DN_C": "Default",
+  "/USB e alimentazione/USB_DP_C": "Default",
+  "BTN_USER": "Default",
+  "DISP_EN_N": "Default",
+  "GND": "Power",
+  "I2C_SCL": "Default",
+  "I2C_SDA": "Default",
+  "LCD_CS": "Default",
+  "LCD_DC": "Default",
+  "LCD_MOSI": "Default",
+  "LCD_RST": "Default",
+  "LCD_SCLK": "Default",
+  "USB_DN": "Default",
+  "USB_DP": "Default",
+  "VBUS": "Power",
+  "unconnected-(J1-SBU1-PadA8)": "Default",
+  "unconnected-(J1-SBU2-PadB8)": "Default",
+  "unconnected-(J5-Pad3)": "Default",
+  "unconnected-(J5-Pad4)": "Default",
+  "unconnected-(U2-NC-Pad4)": "Default",
+  "unconnected-(U3-NC-Pad10)": "Default",
+  "unconnected-(U3-NC-Pad15)": "Default",
+  "unconnected-(U3-NC-Pad17)": "Default",
+  "unconnected-(U3-NC-Pad24)": "Default",
+  "unconnected-(U3-NC-Pad25)": "Default",
+  "unconnected-(U3-NC-Pad28)": "Default",
+  "unconnected-(U3-NC-Pad29)": "Default",
+  "unconnected-(U3-NC-Pad32)": "Default",
+  "unconnected-(U3-NC-Pad33)": "Default",
+  "unconnected-(U3-NC-Pad34)": "Default",
+  "unconnected-(U3-NC-Pad35)": "Default",
+  "unconnected-(U3-NC-Pad4)": "Default",
+  "unconnected-(U3-NC-Pad7)": "Default",
+  "unconnected-(U3-NC-Pad9)": "Default"
+ },
+ "zone": [
+  {
+   "nome": "fiducial3",
+   "rete": "",
+   "strati": [
+    "F.Cu"
+   ],
+   "keepout": true,
+   "vieta": {
+    "piste": true,
+    "vie": true,
+    "zone": true,
+    "piazzole": false,
+    "footprint": false
+   },
+   "bbox_abs": [
+    144.5,
+    129.5,
+    147.5,
+    132.5
+   ],
+   "clearance": null,
+   "min_thickness": null,
+   "thermal_gap": null,
+   "spoke": null,
+   "pad_connection": null,
+   "riempita": false
+  },
+  {
+   "nome": "",
+   "rete": "GND",
+   "strati": [
+    "F.Cu"
+   ],
+   "keepout": false,
+   "vieta": null,
+   "bbox_abs": [
+    100.0,
+    100.0,
+    150.0,
+    140.0
+   ],
+   "clearance": 0.2,
+   "min_thickness": 0.2,
+   "thermal_gap": 0.25,
+   "spoke": 0.3,
+   "pad_connection": 3,
+   "riempita": true
+  },
+  {
+   "nome": "fiducial1",
+   "rete": "",
+   "strati": [
+    "F.Cu"
+   ],
+   "keepout": true,
+   "vieta": {
+    "piste": true,
+    "vie": true,
+    "zone": true,
+    "piazzole": false,
+    "footprint": false
+   },
+   "bbox_abs": [
+    102.0,
+    131.0,
+    105.0,
+    134.0
+   ],
+   "clearance": null,
+   "min_thickness": null,
+   "thermal_gap": null,
+   "spoke": null,
+   "pad_connection": null,
+   "riempita": false
+  },
+  {
+   "nome": "bordo",
+   "rete": "",
+   "strati": [
+    "F.Cu"
+   ],
+   "keepout": true,
+   "vieta": {
+    "piste": true,
+    "vie": true,
+    "zone": false,
+    "piazzole": false,
+    "footprint": false
+   },
+   "bbox_abs": [
+    141.71,
+    99.55,
+    142.61,
+    120.63
+   ],
+   "clearance": null,
+   "min_thickness": null,
+   "thermal_gap": null,
+   "spoke": null,
+   "pad_connection": null,
+   "riempita": false
+  },
+  {
+   "nome": "bordo",
+   "rete": "",
+   "strati": [
+    "F.Cu"
+   ],
+   "keepout": true,
+   "vieta": {
+    "piste": true,
+    "vie": true,
+    "zone": false,
+    "piazzole": false,
+    "footprint": false
+   },
+   "bbox_abs": [
+    99.55,
+    99.55,
+    142.61,
+    100.45
+   ],
+   "clearance": null,
+   "min_thickness": null,
+   "thermal_gap": null,
+   "spoke": null,
+   "pad_connection": null,
+   "riempita": false
+  },
+  {
+   "nome": "bordo",
+   "rete": "",
+   "strati": [
+    "F.Cu"
+   ],
+   "keepout": true,
+   "vieta": {
+    "piste": true,
+    "vie": true,
+    "zone": false,
+    "piazzole": false,
+    "footprint": false
+   },
+   "bbox_abs": [
+    149.55,
+    119.73,
+    150.45,
+    140.45
+   ],
+   "clearance": null,
+   "min_thickness": null,
+   "thermal_gap": null,
+   "spoke": null,
+   "pad_connection": null,
+   "riempita": false
+  },
+  {
+   "nome": "bordo",
+   "rete": "",
+   "strati": [
+    "F.Cu"
+   ],
+   "keepout": true,
+   "vieta": {
+    "piste": true,
+    "vie": true,
+    "zone": false,
+    "piazzole": false,
+    "footprint": false
+   },
+   "bbox_abs": [
+    99.55,
+    99.55,
+    100.45,
+    140.45
+   ],
+   "clearance": null,
+   "min_thickness": null,
+   "thermal_gap": null,
+   "spoke": null,
+   "pad_connection": null,
+   "riempita": false
+  },
+  {
+   "nome": "bordo",
+   "rete": "",
+   "strati": [
+    "F.Cu"
+   ],
+   "keepout": true,
+   "vieta": {
+    "piste": true,
+    "vie": true,
+    "zone": false,
+    "piazzole": false,
+    "footprint": false
+   },
+   "bbox_abs": [
+    141.71,
+    119.73,
+    150.45,
+    120.63
+   ],
+   "clearance": null,
+   "min_thickness": null,
+   "thermal_gap": null,
+   "spoke": null,
+   "pad_connection": null,
+   "riempita": false
+  },
+  {
+   "nome": "bordo",
+   "rete": "",
+   "strati": [
+    "F.Cu"
+   ],
+   "keepout": true,
+   "vieta": {
+    "piste": true,
+    "vie": true,
+    "zone": false,
+    "piazzole": false,
+    "footprint": false
+   },
+   "bbox_abs": [
+    99.55,
+    139.55,
+    150.45,
+    140.45
+   ],
+   "clearance": null,
+   "min_thickness": null,
+   "thermal_gap": null,
+   "spoke": null,
+   "pad_connection": null,
+   "riempita": false
+  },
+  {
+   "nome": "fiducial2",
+   "rete": "",
+   "strati": [
+    "F.Cu"
+   ],
+   "keepout": true,
+   "vieta": {
+    "piste": true,
+    "vie": true,
+    "zone": true,
+    "piazzole": false,
+    "footprint": false
+   },
+   "bbox_abs": [
+    114.5,
+    110.5,
+    117.5,
+    113.5
+   ],
+   "clearance": null,
+   "min_thickness": null,
+   "thermal_gap": null,
+   "spoke": null,
+   "pad_connection": null,
+   "riempita": false
+  },
+  {
+   "nome": "antenna",
+   "rete": "",
+   "strati": [
+    "F.Cu",
+    "B.Cu"
+   ],
+   "keepout": true,
+   "vieta": {
+    "piste": true,
+    "vie": true,
+    "zone": true,
+    "piazzole": true,
+    "footprint": true
+   },
+   "bbox_abs": [
+    141.66,
+    120.18,
+    150.0,
+    123.18
+   ],
+   "clearance": null,
+   "min_thickness": null,
+   "thermal_gap": null,
+   "spoke": null,
+   "pad_connection": null,
+   "riempita": false
+  },
+  {
+   "nome": "bordo",
+   "rete": "",
+   "strati": [
+    "B.Cu"
+   ],
+   "keepout": true,
+   "vieta": {
+    "piste": true,
+    "vie": true,
+    "zone": false,
+    "piazzole": false,
+    "footprint": false
+   },
+   "bbox_abs": [
+    99.55,
+    139.55,
+    150.45,
+    140.45
+   ],
+   "clearance": null,
+   "min_thickness": null,
+   "thermal_gap": null,
+   "spoke": null,
+   "pad_connection": null,
+   "riempita": false
+  },
+  {
+   "nome": "bordo",
+   "rete": "",
+   "strati": [
+    "B.Cu"
+   ],
+   "keepout": true,
+   "vieta": {
+    "piste": true,
+    "vie": true,
+    "zone": false,
+    "piazzole": false,
+    "footprint": false
+   },
+   "bbox_abs": [
+    141.71,
+    99.55,
+    142.61,
+    120.63
+   ],
+   "clearance": null,
+   "min_thickness": null,
+   "thermal_gap": null,
+   "spoke": null,
+   "pad_connection": null,
+   "riempita": false
+  },
+  {
+   "nome": "",
+   "rete": "GND",
+   "strati": [
+    "B.Cu"
+   ],
+   "keepout": false,
+   "vieta": null,
+   "bbox_abs": [
+    100.0,
+    100.0,
+    150.0,
+    140.0
+   ],
+   "clearance": 0.2,
+   "min_thickness": 0.2,
+   "thermal_gap": 0.25,
+   "spoke": 0.3,
+   "pad_connection": 3,
+   "riempita": true
+  },
+  {
+   "nome": "usb_coppia_retro",
+   "rete": "",
+   "strati": [
+    "B.Cu"
+   ],
+   "keepout": true,
+   "vieta": {
+    "piste": true,
+    "vie": true,
+    "zone": false,
+    "piazzole": false,
+    "footprint": false
+   },
+   "bbox_abs": [
+    131.96,
+    118.94,
+    135.36,
+    127.912
+   ],
+   "clearance": null,
+   "min_thickness": null,
+   "thermal_gap": null,
+   "spoke": null,
+   "pad_connection": null,
+   "riempita": false
+  },
+  {
+   "nome": "bordo",
+   "rete": "",
+   "strati": [
+    "B.Cu"
+   ],
+   "keepout": true,
+   "vieta": {
+    "piste": true,
+    "vie": true,
+    "zone": false,
+    "piazzole": false,
+    "footprint": false
+   },
+   "bbox_abs": [
+    99.55,
+    99.55,
+    100.45,
+    140.45
+   ],
+   "clearance": null,
+   "min_thickness": null,
+   "thermal_gap": null,
+   "spoke": null,
+   "pad_connection": null,
+   "riempita": false
+  },
+  {
+   "nome": "bordo",
+   "rete": "",
+   "strati": [
+    "B.Cu"
+   ],
+   "keepout": true,
+   "vieta": {
+    "piste": true,
+    "vie": true,
+    "zone": false,
+    "piazzole": false,
+    "footprint": false
+   },
+   "bbox_abs": [
+    149.55,
+    119.73,
+    150.45,
+    140.45
+   ],
+   "clearance": null,
+   "min_thickness": null,
+   "thermal_gap": null,
+   "spoke": null,
+   "pad_connection": null,
+   "riempita": false
+  },
+  {
+   "nome": "bordo",
+   "rete": "",
+   "strati": [
+    "B.Cu"
+   ],
+   "keepout": true,
+   "vieta": {
+    "piste": true,
+    "vie": true,
+    "zone": false,
+    "piazzole": false,
+    "footprint": false
+   },
+   "bbox_abs": [
+    99.55,
+    99.55,
+    142.61,
+    100.45
+   ],
+   "clearance": null,
+   "min_thickness": null,
+   "thermal_gap": null,
+   "spoke": null,
+   "pad_connection": null,
+   "riempita": false
+  },
+  {
+   "nome": "bordo",
+   "rete": "",
+   "strati": [
+    "B.Cu"
+   ],
+   "keepout": true,
+   "vieta": {
+    "piste": true,
+    "vie": true,
+    "zone": false,
+    "piazzole": false,
+    "footprint": false
+   },
+   "bbox_abs": [
+    141.71,
+    119.73,
+    150.45,
+    120.63
+   ],
+   "clearance": null,
+   "min_thickness": null,
+   "thermal_gap": null,
+   "spoke": null,
+   "pad_connection": null,
+   "riempita": false
+  }
+ ],
+ "U3_bbox_courtyard": [
+  130.815,
+  105.995,
+  147.505,
+  119.285
+ ],
+ "fiducial": {
+  "FID1": {
+   "valore": "Fiducial",
+   "fpid": "Fiducial:Fiducial_1mm_Mask2mm",
+   "x_rel": 3.525,
+   "y_rel": 7.525,
+   "x_abs": 103.5,
+   "y_abs": 132.5,
+   "rot": 0.0,
+   "lato": "top",
+   "smd": true,
+   "tht": false,
+   "escluso_pos": true,
+   "escluso_bom": true,
+   "dnp": false,
+   "lcsc": "",
+   "montaggio": ""
+  },
+  "FID3": {
+   "valore": "Fiducial",
+   "fpid": "Fiducial:Fiducial_1mm_Mask2mm",
+   "x_rel": 46.025,
+   "y_rel": 9.025,
+   "x_abs": 146.0,
+   "y_abs": 131.0,
+   "rot": 0.0,
+   "lato": "top",
+   "smd": true,
+   "tht": false,
+   "escluso_pos": true,
+   "escluso_bom": true,
+   "dnp": false,
+   "lcsc": "",
+   "montaggio": ""
+  },
+  "FID2": {
+   "valore": "Fiducial",
+   "fpid": "Fiducial:Fiducial_1mm_Mask2mm",
+   "x_rel": 16.025,
+   "y_rel": 28.025,
+   "x_abs": 116.0,
+   "y_abs": 112.0,
+   "rot": 0.0,
+   "lato": "top",
+   "smd": true,
+   "tht": false,
+   "escluso_pos": true,
+   "escluso_bom": true,
+   "dnp": false,
+   "lcsc": "",
+   "montaggio": ""
+  }
+ }
+}

@@ -1,0 +1,66 @@
+{
+  "kicad": "10.0.6",
+  "margine_minimo_mm": 2.5,
+  "eccezioni_dfm_aperte": {
+    "J1": "USB-C affacciata al bordo inferiore: accettazione DFM aperta",
+    "U3": "Modulo ESP32 sopra intaglio antenna: accettazione DFM aperta"
+  },
+  "margini_corpi_mm": {
+    "C9": 6.55,
+    "C5": 2.95,
+    "F1": 9.75,
+    "C1": 12.45,
+    "R3": 7.3092,
+    "R21": 7.6,
+    "R16": 9.75,
+    "R19": 11.0,
+    "R4": 9.1737,
+    "R9": 14.25,
+    "C8": 12.6,
+    "R8": 12.2,
+    "R6": 4.0875,
+    "C6": 2.51,
+    "R20": 12.5875,
+    "R22": 10.2875,
+    "C2": 6.65,
+    "R5": 10.0375,
+    "C7": 2.6,
+    "R15": 6.8875,
+    "U1": 8.8774,
+    "R17": 11.6375,
+    "C10": 9.45,
+    "R2": 8.573,
+    "Q1": 2.7,
+    "C3": 9.3,
+    "R7": 12.4475,
+    "C4": 7.05,
+    "U2": 5.05,
+    "R1": 9.4999
+  },
+  "montaggio_a_mano": [
+    "J4",
+    "J5",
+    "J2",
+    "J3"
+  ],
+  "copertura_courtyard": {
+    "J4": {
+      "ok": true,
+      "elementi_fuori": []
+    },
+    "J5": {
+      "ok": true,
+      "elementi_fuori": []
+    },
+    "J2": {
+      "ok": true,
+      "elementi_fuori": []
+    },
+    "J3": {
+      "ok": true,
+      "elementi_fuori": []
+    }
+  },
+  "errori": [],
+  "esito": "PASS"
+}
