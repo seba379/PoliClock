@@ -91,7 +91,7 @@ Bus I²C condiviso: SHT40 `0x44`, DS3231 `0x68`.
 
 ### 3.2 PCB della scheda principale rev 0.2 (2026-11-08)
 
-File: `hardware/policlock-main/policlock-main.kicad_pcb` (render, PDF, BOM, CPL e STEP nella stessa cartella). **Bozza completa**: posizionamento e sbroglio automatico con Freerouting, da rivedere a vista prima dell'ordine (`OPEN-027`).
+File: `hardware/policlock-main/policlock-main.kicad_pcb` (render, PDF, BOM, CPL e STEP nella stessa cartella). **Bozza completa**: posizionamento e sbroglio automatico con Freerouting, rivisto e approvato a vista dal proprietario il 2026-11-08 (`OPEN-027` chiusa).
 
 | Parametro | Valore | Motivazione |
 |---|---|---|

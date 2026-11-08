@@ -13,7 +13,7 @@
 
 - **Report salvati**: ERC e DRC rieseguiti con `kicad-cli` sulla rev 0.2 (`policlock-main/erc.rpt`, `drc.rpt`). Sono verifiche automatiche del progetto.
 - **Test eseguiti sull'hardware**: nessuno. Tutti i test del [piano di verifica](../docs/07-piano-verifica.md) sono NOT_RUN.
-- **Non ordinare**: prima servono studio volumetrico 1:1 (`OPEN-028`), verifica del modulo display ricevuto (`OPEN-016`), revisione visiva del proprietario in KiCad (`OPEN-027`) e prototipo M1.
+- **Non ordinare**: prima servono studio volumetrico 1:1 (`OPEN-028`), verifica del modulo display ricevuto (`OPEN-016`), prototipo M1 e DFM JLC. La revisione visiva del proprietario in KiCad è stata fatta il 2026-11-08 con esito positivo (`OPEN-027` chiusa).
 
 ## Struttura
 

@@ -80,7 +80,7 @@ Le date sopra sono la data della formalizzazione nel documento delle scelte emer
 | `CAND-021` | CAD a codice con **build123d** (alternativa CadQuery) | Proposto | Prima parte tecnica modellata ed esportata in STEP/STL |
 | `CAND-022` | Componenti dello schema rev 0.2 e codici LCSC come in [12](12-selezione-componenti.md) (ESP32-C3-MINI-1-H4X, TYPE-C-31-M-12, USBLC6-2SC6, PTC BSMD0805-050-12V, TLV75533, AO3401A, JST-SH, header 1×7 SMD) | Proposto | Prototipo M1, revisione schema, stock al momento dell'ordine |
 | `CAND-023` | Assegnazione GPIO dell'ESP32-C3-MINI-1 (vedi [02](02-architettura-hardware.md) §3.1): ESP32-C3 sufficiente, S3 non necessario | Proposto | Prova sulla dev board M1 (strapping IO2/IO8/IO9, `DISP_EN_N` su IO20 per Q1; niente PWM, `DEC-034`) |
-| `CAND-025` | Scheda principale rev 0.2 **50 × 40 mm** posizionata e sbrogliata in bozza (vedi [02](02-architettura-hardware.md) §3.2) | Proposto | Studio volumetrico 1:1 (`OPEN-028`), revisione dello sbroglio (`OPEN-027`) |
+| `CAND-025` | Scheda principale rev 0.2 **50 × 40 mm** posizionata e sbrogliata in bozza (vedi [02](02-architettura-hardware.md) §3.2) | Proposto | Studio volumetrico 1:1 (`OPEN-028`); sbroglio approvato a vista dal proprietario (`OPEN-027` chiusa) |
 | `CAND-024` | Un solo PCB custom (scheda principale); display, SHT40 e RTC su moduli commerciali | Proposto | Preventivo JLC |
 
 ## 3. Questioni aperte con priorità
@@ -112,7 +112,7 @@ Le date sopra sono la data della formalizzazione nel documento delle scelte emer
 | `OPEN-023` | — | ~~Orientamento del cavo FFC~~ | Chiusa da `DEC-034` (niente FFC); J2 ha pin 1 = VCC serigrafato sul retro |
 | `OPEN-024` | — | ~~Corrente della retroilluminazione LEDA/LEDK~~ | Chiusa da `DEC-034`: la retroilluminazione è gestita dal modulo; misura della corrente in `OPEN-016` |
 | `OPEN-025` | — | ~~Stabilità AMS1117 con MLCC~~ | Chiusa da `DEC-037` (TLV75533) |
-| `OPEN-027` | P1 | Lo sbroglio automatico (Freerouting) della rev 0.2 è adeguato? | Bozza completa con DRC pulito; revisione a vista in KiCad del proprietario: percorsi, piani GND, vie, zona antenna; ritocchi col router interattivo |
+| `OPEN-027` | — | ~~Lo sbroglio automatico (Freerouting) della rev 0.2 è adeguato?~~ | **Chiusa il 2026-11-08**: il proprietario ha rivisto il PCB a vista in KiCad e l'ha approvato (rev 0.2 con coppia USB simmetrica e correzioni del 2026-11-08), §9 |
 | `OPEN-028` | P0 | Studio volumetrico 1:1 (revisione P0-05): scheda 50 × 40 mm, modulo display, cavetti, USB-C e spina, RTC, SHT40 e zavorra entrano nella statuetta? | Bozza CAD quotata con lo STEP della scheda; gate aperto prima dell'ordine |
 | `OPEN-026` | P2 | Dove alloggiare il modulo DS3231 (quote dal disegno Adafruit, cavo JST-SH) nella statuetta, accessibile per cambiare la pila CR1220? | Bozza CAD (`OPEN-020`) |
 | `OPEN-029` | — | ~~La capacità d'ingresso a monte dell'LDO (C1 + C2 = 20 µF nominali su VBUS, senza limitazione dello spunto) è accettabile per le porte USB di PC e hub? | Rilievo REV-002 della [revisione del 2026-11-08](revisioni/2026-11-08/README.md). Scelta del proprietario: ridurre i condensatori d'ingresso fino a ≤ 10 µF effettivi, oppure misurare la corrente d'inserzione e VBUS (`VT-PWR-001/003`)~~ | Chiusa da `DEC-042`; la misura resta in `VT-PWR-001` |
@@ -178,4 +178,13 @@ Poi, su richiesta del proprietario, sono stati chiusi gli altri rilievi:
 | REV-006 schema | Cartigli rev 0.2, nota di recupero leggibile, niente tasti RESET/BOOT nel sommario, etichette IO9_BOOT e TP11 senza sovrapposizioni, riferimenti dei punti di test separati dai valori |
 | REV-007 residui storici | `CODEX_HANDOFF.md` marcato come storico; backlog e rischi della [roadmap](09-roadmap.md) aggiornati |
 
-Restano solo le verifiche fisiche e i gate già noti, cioè `OPEN-016`, `OPEN-021`, `OPEN-027`, `OPEN-028`, la DFM JLC e la revisione a vista. Restano anche alcune sovrapposizioni puramente estetiche di testi negli altri fogli dello schema (U1, U2, F1, J3–J5), senza effetti elettrici. Dettagli nella [verifica di Claude](revisioni/2026-11-08/verifica-claude.md).
+Restano solo le verifiche fisiche e i gate già noti, cioè `OPEN-016`, `OPEN-021`, `OPEN-028` e la DFM JLC (la revisione a vista è chiusa, §9). Restano anche alcune sovrapposizioni puramente estetiche di testi negli altri fogli dello schema (U1, U2, F1, J3–J5), senza effetti elettrici. Dettagli nella [verifica di Claude](revisioni/2026-11-08/verifica-claude.md).
+
+## 9. Revisione visiva del proprietario (2026-11-08)
+
+- **PCB approvato a vista** dal proprietario in KiCad: rev 0.2 con coppia USB simmetrica (`DEC-041`), correzioni del bordo e dei courtyard e condensatori d'ingresso di `DEC-042`. `OPEN-027` è chiusa.
+- **Sovrapposizioni estetiche dello schema** (U1, U2, F1, J3–J5 e altre) **corrette dal proprietario** in KiCad. Prima del commit, Claude ha verificato che sono solo grafiche: netlist esportata identica (53 reti, stessi componenti e valori), ERC 0, DRC 0/0/0 con parità e controllo meccanico PASS.
+- Il salvataggio da KiCad ha scritto nel `.kicad_pro` le impostazioni predefinite di ERC e schema, oltre alla revisione `0.2`, senza cambiare le regole DRC.
+- Il ramo `codex/pcb-edge-courtyard-fixes` è stato unito, su richiesta del proprietario, nel ramo `claude/hardware-schematic-4ff868`: le prossime modifiche hardware partono da lì. Nessun push e nessun merge in `main`.
+
+Restano prima dell'ordine: studio volumetrico 1:1 (`OPEN-028`), verifica del modulo display ricevuto (`OPEN-016`), prototipo M1 con SPI sul cavetto (`OPEN-021`), disponibilità LCSC e DFM JLC (eccezioni J1/J2/U3), poi Gerber e preventivo con approvazione esplicita del proprietario.
