@@ -109,7 +109,7 @@ Il candidato iniziale **RV-3028-C7** risulta a **stock 0** su LCSC/JLC (C3019759
 
 - **Modulo display senza datasheet**: pinout dalla foto dell'inserzione, corrente della retroilluminazione ignota: verifica su banco prima del montaggio finale.
 - **Termica dell'LDO**: SOT-23-5 a 231 °C/W (JEDEC); con ~80 mA stimati la dissipazione è ~0,14 W (+14…32 °C). Da misurare a scocca chiusa (`VT-PWR-002`).
-- **ESP32-C3-WROOM-02-N4** (`DEC-044`): chip v0.4 (circa 10 KB di RAM utente in meno del v1.1, irrilevante qui); fissare nel firmware `CONFIG_ESP32C3_REV_MIN` ≤ v0.4. Il pin 3V3 è sul lato del bordo superiore, vicino all'antenna: C5/C6 stanno a circa 16 mm, con pista diretta; il modulo ha 10 µF + 1 µF + 0,1 µF interni. Scorte da ricontrollare all'ordine.
+- **ESP32-C3-WROOM-02-N4** (`DEC-044`): chip v0.4 (circa 10 KB di RAM utente in meno del v1.1, irrilevante qui); fissare nel firmware `CONFIG_ESP32C3_REV_MIN` ≤ v0.4. Il pin 3V3 è sul lato del bordo superiore, vicino all'antenna: C5/C6 stanno a circa 16 mm in linea d'aria e la pista fino al pin 1 è di circa 21 mm (0,4 mm, in parte sotto il modulo); EN è di circa 27 mm con 2 vie; il modulo ha 10 µF + 1 µF + 0,1 µF interni. Scorte da ricontrollare all'ordine.
 - **Linee esterne senza ESD (FIN-010, rischio accettato)**: BTN_USER (J5, pulsante remoto) e I²C/3V3_EXT (J3/J4) escono dalla scheda protette solo da R22 10 kΩ / C8 100 nF e dai pull-up. Il proprietario non ha scelto la resistenza da 1 kΩ in serie proposta dalla revisione finale: rischio basso per un oggetto da scrivania al chiuso, accettato in modo esplicito.
 - **Impronta JST PH (FIN-011)**: non ancora confrontata con il disegno JST (PDF cifrato). Il proprietario ha già i B4B-PH-K-S: prima dei Gerber conviene stampare il layout 1:1 (`policlock-main-layout.pdf`, scala 1:1) e provare l'innesto di un connettore e dell'header, oppure provarli sulla prima scheda nuda.
 - **Connettori a foro passante (`DEC-043`)**: J2–J5 si saldano a mano dopo l'assemblaggio JLC; i piedini sporgono sotto la scheda (luce da prevedere, `OPEN-028`). Il rischio dell'header SMD Hanxia (piazzole 1,02 × 3,16 mm contro 3,20 mm del disegno) è superato.
@@ -120,9 +120,9 @@ La CPL (`policlock-main-cpl-jlcpcb.csv`) riporta posizioni e rotazioni native di
 
 | Rif. | Package | Rotazione CPL | Origine dell'impronta | Cosa controllare nell'anteprima JLC | Correzione applicata |
 |---|---|---:|---|---|---|
-| U1 | SOT-23-6 (USBLC6-2SC6) | 90° | centro del package | pin 1 (punto) verso il connettore J1 come nel PCB | da compilare all'ordine |
-| U2 | SOT-23-5 (TLV75533) | 0° | centro del package | pin 1 = IN in basso a sinistra come nel PCB | da compilare all'ordine |
-| Q1 | SOT-23 (AO3401A) | 90° | centro del package | gate (pin 1) verso R16/R17 | da compilare all'ordine |
-| U3 | ESP32-C3-WROOM-02-N4 | −90° (270°) | **centro delle file di piazzole**, non del corpo: il corpo con l'antenna è spostato di 3,07 mm verso l'antenna (+x) | antenna sulla scheda verso il bordo destro (`DEC-045`), pin 1 in alto vicino all'antenna; corpo tutto dentro il contorno | da compilare all'ordine |
+| U1 | SOT-23-6 (USBLC6-2SC6) | 90° | centro del package | vista dall'alto: pin 1 (USB_DN_C) **in basso a sinistra**, lato verso J1; pin 4–6 in alto (pin 5 = +5V al centro) | da compilare all'ordine |
+| U2 | SOT-23-5 (TLV75533) | 0° | centro del package | vista dall'alto: pin 1 = IN **in alto a sinistra** (pin 1-2-3 sulla colonna sinistra, dall'alto in basso); pin 5 = OUT in alto a destra, pin 4 = NC in basso a destra | da compilare all'ordine |
+| Q1 | SOT-23 (AO3401A) | 90° | centro del package | vista dall'alto: due pin in basso, pin 1 = G **a sinistra** e pin 2 = S (+3V3) **a destra**; pin 3 = D (3V3_DISP) da solo **in alto** | da compilare all'ordine |
+| U3 | ESP32-C3-WROOM-02-N4 | −90° (270°) | **centro delle file di piazzole**, non del corpo: il corpo con l'antenna è spostato di 3,07 mm verso l'antenna (+x) | antenna sulla scheda verso il bordo destro (`DEC-045`), pin 1 in alto vicino all'antenna; corpo tutto dentro il contorno; EPAD con 4 vie aperte: controllare la pasta nell'anteprima DFM (R2-006) | da compilare all'ordine |
 | J1 | USB-C TYPE-C-31-M-12 | 0° | centro del corpo F.Fab | apertura verso il bordo inferiore, guscio 0,4 mm oltre il bordo; pioli nei fori NPTH | da compilare all'ordine |
 | C, R, F1 | 0603 / 0805 | 0° / 90° | centro | nessuna polarità; solo posizione | — |

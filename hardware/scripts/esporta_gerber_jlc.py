@@ -18,8 +18,10 @@ I file vanno in hardware/policlock-main/gerber-jlc/ (non versionata) e in un arc
 
 Controlli da fare a mano DOPO (in un visualizzatore Gerber, es. GerbView di KiCad, e nell'anteprima JLC):
 1. asole di J1: 4 asole metallizzate 0,6 x 1,7 / 0,6 x 1,2 mm (non fori tondi) e 2 pioli NPTH 0,65 mm;
-2. contorno 50 x 40 mm con l'intaglio dell'antenna in alto a destra;
-3. 3 fiducial con apertura della maschera; nessuna serigrafia fuori dal bordo (J2, U3);
+2. contorno 50,5 x 41,5 mm rettangolare, senza intaglio (DEC-045); nessun rame, pista, via o riempimento nella zona
+   antenna di U3 su F.Cu e B.Cu (da x = 141,51 mm del foglio KiCad al bordo destro, y 98,5-124,5);
+3. 3 fiducial con apertura della maschera; nessuna serigrafia fuori dal bordo (J2); 4 vie termiche nella EPAD di U3;
+   17 testi del retro leggibili (1,0 mm);
 4. rotazioni e origini nella CPL (docs/12, tabella FIN-004).
 """
 import argparse
@@ -73,4 +75,5 @@ with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as z:
             z.write(os.path.join(OUT, f), f)
 print("Gerber e forature in", OUT)
 print("Archivio per JLCPCB:", zip_path)
-print("Ora controllare in un visualizzatore Gerber: asole di J1, intaglio, fiducial, serigrafia (vedi docstring).")
+print("Ora controllare in un visualizzatore Gerber: asole di J1, contorno rettangolare, zona antenna senza rame, "
+      "fiducial, vie della EPAD, serigrafia (vedi docstring).")

@@ -76,7 +76,7 @@ La retroilluminazione del modulo display a 7 pin **non è regolabile**: è sempr
 **Sequenze del modulo display (contratto per `display_service` / `power_service`):**
 
 1. *Spegnimento* (`→ NIGHT`): fermare le scritture SPI; portare a livello **basso** LCD_SCLK, LCD_MOSI, LCD_DC, LCD_CS e LCD_RST; poi `DISP_EN_N` alto (Q1 aperto). Ordine pensato per non alimentare il modulo attraverso i pin di segnale (alimentazione parassita).
-2. *Accensione* (`→ NIGHT_PEEK` o `→ DIM`): `DISP_EN_N` basso; attesa della stabilizzazione di 3V3_DISP (valore da misurare in M1, `VT-PCB-002`); impulso di reset su LCD_RST; inizializzazione completa del GC9A01; disegno del quadrante; solo allora la pagina è visibile.
+2. *Accensione* (`→ NIGHT_PEEK` o `→ DIM`): `DISP_EN_N` basso; attesa della stabilizzazione di 3V3_DISP, **almeno 2 ms** (la rampa di Q1 con R16 10 kΩ / C11 10 nF dura circa 0,25 ms più il ritardo iniziale; valore definitivo da misurare in M1, `VT-PCB-002`); impulso di reset su LCD_RST; inizializzazione completa del GC9A01; disegno del quadrante; solo allora la pagina è visibile.
 3. Durante reset, boot e download dalla ROM il firmware non controlla i pin: R17 tiene il modulo spento, ma i livelli dei segnali in quella fase (per esempio il pull-up di reset dei pin JTAG) vanno misurati per escludere un'alimentazione parassita (rilievo della revisione del 2026-11-08, `VT-PWR-003`).
 - Nessuno stato di spegnimento controllato: la V1 non ha batteria (`DEC-023`). Allo scollegamento del cavo il sistema si spegne; l'RTC resta alimentato dal tampone.
 

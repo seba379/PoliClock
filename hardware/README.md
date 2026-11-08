@@ -73,7 +73,7 @@ Modifiche successive sui file KiCad:
 
 Simboli `B4B-PH-K-S` e `PinHeader_1x07_P2.54_THT` (`DEC-043`): stessa geometria dei pin dei simboli JST-SH e Hanxia, con le impronte della libreria standard di KiCad. I simboli e le impronte JST-SH/Hanxia restano in libreria ma non sono più usati.
 
-Parti importate da LCSC con [easyeda2kicad](https://github.com/uPesy/easyeda2kicad.py) (codici C2838502 per il footprint del modulo ESP32-C3-MINI-1, C160404, C160402, C720477, C46061680), corrette con `scripts/correggi_libreria.py` (tipi elettrici dei pin, campo `LCSC`, riferimenti) e aggiornate al formato KiCad 10 con `kicad-cli fp upgrade` / `kicad-cli sym upgrade`. `scripts/prepara_footprint.py` toglie la serigrafia che finirebbe fuori dal bordo (USB-C, antenna del modulo, piedini dell'header).
+Parti importate da LCSC con [easyeda2kicad](https://github.com/uPesy/easyeda2kicad.py) (codici C2838502 per il footprint del modulo ESP32-C3-MINI-1, storico: sostituito dal WROOM-02 con `DEC-044`, C160404, C160402, C720477, C46061680), corrette con `scripts/correggi_libreria.py` (tipi elettrici dei pin, campo `LCSC`, riferimenti) e aggiornate al formato KiCad 10 con `kicad-cli fp upgrade` / `kicad-cli sym upgrade`. `scripts/prepara_footprint.py` toglie la serigrafia che finirebbe fuori dal bordo (USB-C, antenna del modulo, piedini dell'header).
 
 Confronto con i disegni ufficiali (revisione P1-08): piazzole JST-SH confrontate con la libreria KiCad; USB-C EasyEDA scartato a favore del footprint KiCad dal disegno HRO. Nelle correzioni del 2026-11-08 i courtyard/F.Fab JST sono stati completati usando la libreria KiCad e quelli dell'header usando il disegno Hanxia ora recuperato: dettagli e verifiche residue nella [nota](../docs/revisioni/2026-11-08/correzioni/README.md).
 
