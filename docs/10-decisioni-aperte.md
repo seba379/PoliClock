@@ -117,7 +117,7 @@ Le date sopra sono la data della formalizzazione nel documento delle scelte emer
 | `OPEN-025` | — | ~~Stabilità AMS1117 con MLCC~~ | Chiusa da `DEC-037` (TLV75533) |
 | `OPEN-027` | — | ~~Lo sbroglio automatico (Freerouting) della rev 0.2 è adeguato?~~ | **Chiusa il 2026-11-08**: il proprietario ha rivisto il PCB a vista in KiCad e l'ha approvato (rev 0.2 con coppia USB simmetrica e correzioni del 2026-11-08), §9 |
 | `OPEN-028` | P0 | Studio volumetrico 1:1 (revisione P0-05): scheda 50,5 × 41,5 mm (`DEC-045`), modulo display, cavetti, USB-C e spina, RTC, SHT40 e zavorra entrano nella statuetta? Con `DEC-043`: connettori JST PH alti circa 6 mm con ingresso dall'alto e piedini a foro passante di J2–J5 sotto la scheda (serve luce sotto) | Bozza CAD quotata con lo STEP della scheda; gate aperto prima dell'ordine |
-| `OPEN-030` | P1 | Il layout dopo `DEC-043`, `DEC-044` e `DEC-045` (modulo WROOM-02, scheda 50,5 × 41,5 senza intaglio con antenna sulla scheda, J2 spostato, coppia USB ridisegnata, passivi spostati, sbroglio rifatto, cucitura GND) è accettabile? (FIN-002) | Revisione a vista del proprietario in KiCad, da registrare qui prima dei Gerber; punti in §11 |
+| `OPEN-030` | — | ~~Il layout dopo `DEC-043`, `DEC-044` e `DEC-045` è accettabile? (FIN-002)~~ | **Chiusa il 2026-11-08**: il proprietario ha rivisto a vista in KiCad il commit `09200dc` e approva le modifiche (§12) |
 | `OPEN-026` | P2 | Dove alloggiare il modulo DS3231 (quote dal disegno Adafruit, cavo JST PH → JST-SH, `DEC-043`) nella statuetta, accessibile per cambiare la pila CR1220? | Bozza CAD (`OPEN-020`) |
 | `OPEN-029` | — | ~~La capacità d'ingresso a monte dell'LDO (C1 + C2 = 20 µF nominali su VBUS, senza limitazione dello spunto) è accettabile per le porte USB di PC e hub? | Rilievo REV-002 della [revisione del 2026-11-08](revisioni/2026-11-08/README.md). Scelta del proprietario: ridurre i condensatori d'ingresso fino a ≤ 10 µF effettivi, oppure misurare la corrente d'inserzione e VBUS (`VT-PWR-001/003`)~~ | Chiusa da `DEC-042`; la misura resta in `VT-PWR-001` |
 
@@ -233,4 +233,9 @@ La revisione finale pre-Gerber (`docs/revisioni/2026-11-08/revisione-finale/READ
 - **Antenna**: sulla scheda, verso il bordo destro; zona vietata dell'impronta di U3 da x = 141,51 al bordo destro e da y = 98,5 a 124,5 (foglio), su F.Cu e B.Cu.
 - **Spostati**: solo J2 (1,5 mm verso l'alto) e le piste delle sue reti; piani GND, fasce "bordo" e cucitura GND rifatti; una via GND vicino a J2 pin 2. Nessun componente montato da JLC si è mosso: CPL identica.
 - **Controlli**: ERC 0; DRC con zone ricalcolate, tutte le severità e parità 0/0/0; controllo meccanico PASS con J1 unica eccezione; margine minimo dei corpi 2,99 mm (U3), poi U2 5,05 mm; `esporta.py` completo con lo STEP del nuovo contorno.
-- **Resta aperta** la revisione a vista del proprietario (`OPEN-030`). Nessun file Gerber.
+- La revisione a vista del proprietario (`OPEN-030`) è stata fatta il 2026-11-08 con esito positivo (§12). Nessun file Gerber.
+
+## 12. Approvazione a vista del layout finale (2026-11-08)
+
+- Il proprietario ha rivisto in KiCad il commit `09200dc` (modulo ESP32-C3-WROOM-02-N4, scheda 50,5 × 41,5 mm senza intaglio con antenna sulla scheda, J2–J5 a foro passante, correzioni FIN della revisione finale) e **approva le modifiche**: `OPEN-030` / FIN-002 chiusi.
+- Su richiesta del proprietario segue una **nuova revisione completa pre-Gerber** del revisore indipendente su questo layout: vincoli circuitali ed elettrici, PCB, regole JLCPCB, coerenza con decisioni e documentazione. I Gerber restano da generare solo dopo il suo esito e un'approvazione esplicita del proprietario.
