@@ -1,6 +1,6 @@
 # 04 — Specifiche firmware
 
-**Versione:** 0.5 · **Stato:** architettura proposta, codice non ancora implementato · **Data:** 2026-11-07
+**Versione:** 0.6 · **Stato:** architettura proposta, codice non ancora implementato · **Data:** 2026-11-07
 
 ## 1. Tecnologia
 
@@ -23,7 +23,7 @@ firmware/                      # struttura futura, non ancora generata
 │   ├── power_service/         # presenza USB, brown-out, retroilluminazione, policy
 │   ├── display_service/       # GC9A01, retroilluminazione PWM, refresh
 │   ├── ui/                    # layout, widget, schermate
-│   ├── input_service/         # pulsante (e touch se montato) -> eventi astratti
+│   ├── input_service/         # pulsante -> eventi astratti (touch escluso, DEC-034)
 │   ├── settings_service/      # NVS con schema/versione
 │   ├── config_protocol/       # comandi del configuratore sulla seriale USB
 │   └── diagnostics/           # logging e test di integrazione

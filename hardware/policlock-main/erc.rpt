@@ -1,4 +1,4 @@
-ERC report (2026-11-07T20:10:16, Encoding UTF8)
+ERC report (2026-11-08T07:06:23, Encoding UTF8)
 Report includes: Errors, Warnings, Exclusions
 
 ***** Sheet /
@@ -7,7 +7,7 @@ Report includes: Errors, Warnings, Exclusions
 
 ***** Sheet /MCU/
 
-***** Sheet /Display (cavo FFC)/
+***** Sheet /Display (modulo 7 pin)/
 
 ***** Sheet /Periferiche I2C e pulsante/
 

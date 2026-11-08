@@ -1,58 +1,16 @@
 ** Drc report for policlock-main.kicad_pcb **
-** Created on 2026-11-07T20:10:35 **
+** Created on 2026-11-08T07:06:32 **
 ** Report includes: Errors, Warnings, Exclusions **
 
-** Found 10 DRC violations **
-[silk_edge_clearance]: Silkscreen clipped by board edge
-    Rule: vincoli impostazioni scheda serigrafia; warning
-    @(139.0000 mm, 130.0000 mm): Segment on Edge.Cuts
-    @(125.6300 mm, 129.9900 mm): Segment of J1 on F.Silkscreen
-[silk_edge_clearance]: Silkscreen clipped by board edge
-    Rule: vincoli impostazioni scheda serigrafia; warning
-    @(139.0000 mm, 130.0000 mm): Segment on Edge.Cuts
-    @(134.5700 mm, 129.9900 mm): Segment of J1 on F.Silkscreen
-[silk_edge_clearance]: Silkscreen clipped by board edge
-    Rule: vincoli impostazioni scheda serigrafia; warning
-    @(139.0000 mm, 130.0000 mm): Segment on Edge.Cuts
-    @(134.5700 mm, 129.9900 mm): Segment of J1 on F.Silkscreen
-[silk_edge_clearance]: Silkscreen clipped by board edge
-    Rule: vincoli impostazioni scheda serigrafia; warning
-    @(140.0000 mm, 101.0000 mm): Segment on Edge.Cuts
-    @(128.7000 mm, 101.8000 mm): Segment of U3 on F.Silkscreen
-[silk_edge_clearance]: Silkscreen clipped by board edge
-    Rule: vincoli impostazioni scheda serigrafia; warning
-    @(140.0000 mm, 101.0000 mm): Segment on Edge.Cuts
-    @(128.7000 mm, 115.0000 mm): Segment of U3 on F.Silkscreen
-[silk_edge_clearance]: Silkscreen clipped by board edge
-    Rule: vincoli impostazioni scheda serigrafia; warning
-    @(140.0000 mm, 101.0000 mm): Segment on Edge.Cuts
-    @(139.9000 mm, 115.0000 mm): Segment of U3 on F.Silkscreen
-[silk_edge_clearance]: Silkscreen clipped by board edge
-    Rule: vincoli impostazioni scheda serigrafia; warning
-    @(101.0000 mm, 100.0000 mm): Segment on Edge.Cuts
-    @(115.4000 mm, 102.2300 mm): Segment of J2 on F.Silkscreen
-[silk_edge_clearance]: Silkscreen clipped by board edge
-    Rule: vincoli impostazioni scheda serigrafia; warning
-    @(101.0000 mm, 100.0000 mm): Segment on Edge.Cuts
-    @(127.8000 mm, 102.2300 mm): Segment of J2 on F.Silkscreen
-[silk_overlap]: Silkscreen clearance
-    Rule: vincoli impostazioni scheda serigrafia; warning
-    @(118.8000 mm, 114.0000 mm): Circle of TP3 on B.Silkscreen
-    @(117.6000 mm, 114.2500 mm): PCB text 'RST' on B.Silkscreen
-[silk_over_copper]: Silkscreen clipped by solder mask
-    Local override; warning
-    @(117.6000 mm, 114.2500 mm): PCB text 'RST' on B.Silkscreen
-    @(118.8000 mm, 114.0000 mm): Pad 1 [+3V3] of TP3 on B.Cu
+** Found 0 DRC violations **
 
 ** Found 0 unconnected pads **
 
 ** Found 0 Footprint errors **
 
 ** Ignored checks **
-    - Footprint has no courtyard defined
     - Track endpoint not centered on via
     - Tuning profile track geometries
     - Footprint doesn't match symbol's footprint filters
-    - Footprint component type doesn't match footprint pads
 
 ** End of Report **

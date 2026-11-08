@@ -1,6 +1,6 @@
 # 09 — Roadmap di realizzazione
 
-**Versione:** 0.6 · **Stato:** pianificazione per milestone, nessuna data promessa · **Data:** 2026-11-07
+**Versione:** 0.7 · **Stato:** pianificazione per milestone, nessuna data promessa · **Data:** 2026-11-07
 
 ## Premessa
 
@@ -23,18 +23,18 @@ Attività:
 1. Scegliere MCU (ESP32-C3 o S3), RTC e tampone, regolatore 3,3 V sui datasheet.
 2. Montare su breadboard dev board, display GC9A01, RTC, SHT40 e pulsante.
 3. Verificare flash e log USB; collegare il display con un **cavo di lunghezza reale** e trovare la frequenza SPI stabile (`OPEN-021`).
-4. Firmware di bring-up: display, pulsante, touch del modulo, RTC, SHT40.
+4. Firmware di bring-up: display (modulo a 7 pin, `DEC-034`), pulsante, RTC, SHT40.
 5. Primo protocollo del configuratore e prova di sincronizzazione dell'ora dal PC.
-6. Misurare la corrente USB in DIM/BRIGHT/NIGHT (con e senza controller touch attivo) e la durata del tampone RTC a cavo scollegato.
+6. Misurare la corrente USB in DIM/BRIGHT/NIGHT (compresa la corrente del modulo display) e la durata del tampone RTC a cavo scollegato.
 7. **Bozza a volumi in Blender** con le misure reali di display e ingombro stimato della scheda: decidere la posizione della scheda principale, il percorso del cavo display e l'uscita del cavo USB (`OPEN-020`).
 
 **Exit gate:** architettura confermata con misure; componenti del PCB scelti con motivazione; posizione della scheda principale decisa.
 
 ## M2 — Progettazione PCB (KiCad)
 
-**Output:** progetto KiCad 10 versionato in `hardware/`: schema e layout di scheda principale e schedina portadisplay in un pannello unico, BOM e file di posizionamento per JLC, STEP per il CAD, checklist di revisione compilata. Schema e layout preparati da Claude, rivisti a vista dal proprietario in KiCad.
+**Output:** progetto KiCad 10 versionato in `hardware/`: schema e layout della scheda principale (unico PCB custom dopo `DEC-034`), BOM e file di posizionamento per JLC, STEP per il CAD, checklist di revisione compilata. Schema e layout preparati da Claude, rivisti a vista dal proprietario in KiCad.
 
-**Stato (2026-11-07):** schema rev 0.1 delle due schede (principale e portadisplay) disegnato in anticipo su richiesta del proprietario, con ERC pulito, PDF e BOM con codici LCSC ([hardware](../hardware/README.md), [12](12-selezione-componenti.md)). Scheda principale posizionata e sbrogliata in bozza (40 × 30 mm, 2 strati, un lato, DRC pulito, [02](02-architettura-hardware.md) §3.2); restano la revisione dello sbroglio (`OPEN-027`), layout della portadisplay (attende il pannello acquistato, `OPEN-016`), prototipo M1 e revisione visiva del proprietario.
+**Stato (2026-11-07):** schema e PCB rev 0.2 della scheda principale (50 × 40 mm, 2 strati, un lato) dopo la revisione tecnica indipendente, posizionati e sbrogliati in bozza con report ERC/DRC salvati ([hardware](../hardware/README.md), [02](02-architettura-hardware.md) §3.2, [12](12-selezione-componenti.md)). Restano: studio volumetrico 1:1 (`OPEN-028`), verifica del modulo display ricevuto (`OPEN-016`), revisione dello sbroglio (`OPEN-027`), prototipo M1 e revisione visiva del proprietario. Nessun test hardware eseguito.
 
 **Exit gate:** `VT-PCB-001` superato (ERC/DRC puliti, revisione schema, disponibilità LCSC, quote compatibili con il CAD); preventivo JLC accettato.
 
@@ -58,7 +58,7 @@ Attività:
 
 ## M6 — CAD e stampa 3D funzionale
 
-**Output:** modello parametrico diviso in gusci, supporto display/portadisplay, supporto scheda principale con USB-C sul sedere (o staffa prolunga), uscita guidata del cavo, zavorra nella base, alloggiamento sensore, pulsante, sportello di servizio, prove di stampa.
+**Output:** modello parametrico diviso in gusci, supporto del modulo display, supporto scheda principale con USB-C sul sedere (o staffa prolunga), uscita guidata del cavo, zavorra nella base, alloggiamento sensore, pulsante, sportello di servizio, prove di stampa.
 
 **Exit gate:** `VT-MEC-001`…`VT-MEC-004` superati su prototipo funzionale.
 

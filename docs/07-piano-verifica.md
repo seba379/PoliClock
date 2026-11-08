@@ -1,6 +1,6 @@
 # 07 — Piano di verifica e validazione (V&V)
 
-**Versione:** 0.5 · **Stato:** pianificato, nessun test eseguito · **Data:** 2026-11-07
+**Versione:** 0.6 · **Stato:** pianificato, nessun test eseguito · **Data:** 2026-11-07
 
 ## 1. Principi
 
@@ -8,6 +8,7 @@
 - Ogni test richiede: ID, revisione HW, SHA firmware, strumenti, precondizioni, passi, evidenze, risultato e data.
 - Risultato ammesso: `PASS`, `FAIL`, `BLOCKED`, `NOT_RUN`.
 - **Tutti i test sono NOT_RUN**: non presentare numeri ipotetici come risultati.
+- I **report ERC/DRC salvati** nel repository (`hardware/policlock-main/erc.rpt`, `drc.rpt`) sono verifiche automatiche del progetto, **non test eseguiti** sull'hardware: non cambiano lo stato NOT_RUN dei test qui sotto.
 - I test legati alla batteria sono stati rimossi con `DEC-023`; gli ID `VT-PWR-*` sono stati riassegnati all'alimentazione USB.
 
 ## 2. Tracciabilità requisito → test
@@ -18,10 +19,10 @@
 | `VT-FUN-002` | PR-FUN-003, PR-FUN-004 | Sistema | Valori locali visualizzati, unità corrette e aggiornamento periodico |
 | `VT-FUN-003` | PR-PWR-008, PR-UI-006, PR-REL-001 | Sistema | Almeno 50 cicli di scollegamento/ricollegamento del cavo in momenti diversi (anche durante scritture di configurazione): riavvio pulito, configurazione integra, ora corretta |
 | `VT-FUN-004` | PR-FUN-006, PR-PWR-001, PR-PWR-002 | Sistema | Alimentazione dalla USB-C sul sedere con alimentatore 5 V comune e con porta USB di un PC; connettore accessibile |
-| `VT-UI-001` | PR-FUN-007, PR-UI-003, PR-UI-007 | Sistema | DIM leggibile, pulsante→BRIGHT, timeout→DIM, prova a 50–80 cm |
+| `VT-UI-001` | PR-FUN-007, PR-UI-003, PR-UI-007 | Sistema | DIM leggibile, pulsante→BRIGHT, timeout→DIM, prova a 50–80 cm; prima di scolpire la testa, mockup 1:1 del display 1,28" (revisione P1-10, `DEC-038`) |
 | `VT-UI-002` | PR-UI-004 | Ispezione | Contrasto e leggibilità del fondo scuro su IPS |
 | `VT-UI-003` | PR-FUN-013 | Sistema | Ingresso/uscita fascia notte (anche a cavallo della mezzanotte), display e retroilluminazione spenti, pulsante → NIGHT_PEEK → NIGHT |
-| `VT-UI-004` | PR-UI-008 | Progetto + sistema | Footprint/connettore touch e GPIO INT/RST presenti sul PCB; prova del modulo touch sul prototipo M1 (evento → BRIGHT) |
+| `VT-UI-004` | PR-UI-008 | — | **Non applicabile**: touch escluso con `DEC-034` (ID mantenuto per tracciabilità) |
 | `VT-FW-001` | PR-FUN-008, PR-FUN-009 | Firmware + sistema | Impostazione ora offline e mantenimento a cavo scollegato |
 | `VT-FW-002` | PR-REL-002 | Firmware | Build release senza inizializzazione radio; nessuna dipendenza di rete |
 | `VT-FW-003` | PR-FUN-012, PR-REL-004, PR-UI-006 | Firmware | Distacco SHT40/CRC errato → dato invalidato e segnalazione, niente valore stale |
@@ -37,9 +38,11 @@
 | `VT-MEC-002` | PR-MEC-002, PR-MEC-006 | Meccanico | Apertura sportello/estrazione componenti senza danno |
 | `VT-MEC-003` | PR-MEC-003 | Meccanico | Stabilità su piano con cavo USB sempre inserito sul sedere, cavo tirato leggermente e pressione del pulsante |
 | `VT-MEC-004` | PR-MEC-004 | Meccanico/termico | SHT40 ventilato, errore termico dovuto alla scocca misurato |
-| `VT-PCB-001` | PR-REL-006 | Progetto | ERC/DRC puliti, checklist di revisione schema/layout, revisione visiva del proprietario in KiCad, disponibilità LCSC, sagome e connettori compatibili con il CAD |
+| `VT-PCB-001` | PR-REL-006, PR-REL-008 | Progetto | ERC/DRC puliti con le regole JLCPCB impostate nel progetto (`DEC-040`), checklist di revisione schema/layout, revisione visiva del proprietario in KiCad, disponibilità LCSC, regole di assemblaggio JLC (lato unico, distanze dal bordo, BOM/CPL) e revisione DFM di JLC all'ordine, sagome e connettori compatibili con il CAD |
 | `VT-PCB-002` | PR-REL-006, PR-PWR-004 | Elettrico | Bring-up: alimentazione con limitazione di corrente, assenza di cortocircuiti, 3,3 V corretta, enumerazione USB, flash, display, pulsante, scan I²C |
-| `VT-PCB-003` | PR-REL-006, PR-UI-001 | Elettrico | Display stabile sul cavo reale nel collo: nessun artefatto per almeno 24 h alla frequenza SPI scelta |
+| `VT-PCB-003` | PR-REL-006, PR-UI-001 | Elettrico | Display stabile sul cavetto reale (Dupont 7 fili, `DEC-034`): nessun artefatto per almeno 24 h alla frequenza SPI scelta |
+| `VT-PCB-004` | PR-REL-006 | Elettrico | Avvio affidabile con tutti i moduli I²C collegati (strapping GPIO2/GPIO8, revisione P1-06): vedi §3 |
+| `VT-PCB-005` | PR-REL-006 | Elettrico | Modulo display ricevuto: pinout conforme a J2 e corrente della retroilluminazione misurata prima del collegamento (`OPEN-016`) |
 | `VT-VAL-001` | Visione prodotto, PR-UI-002 | Utente | Aspetto chibi coerente, leggibilità percepita e comodità d'uso approvate |
 
 ## 3. Casi test dettagliati iniziali
@@ -47,6 +50,10 @@
 ### VT-PWR-002 — Funzionamento continuo e temperature
 
 **Precondizioni:** scocca rappresentativa chiusa, firmware release, alimentatore USB 5 V comune. **Procedura:** 24 h di funzionamento con il ciclo reale DIM/BRIGHT/NIGHT; misurare con sonde o termocamera regolatore, MCU, retroilluminazione, interno scocca e vano sensore. **Accettazione:** temperature entro i limiti dei **datasheet** dei componenti e del materiale di stampa; soglie numeriche definite sui componenti effettivi, non inventate in anticipo.
+
+### VT-PCB-004 — Avvio con i moduli I²C collegati (strapping)
+
+GPIO2 (SDA) e GPIO8 (SCL) sono pin di strapping tenuti alti da R19/R20 (4,7 kΩ) e collegati ai moduli esterni. **Precondizioni:** scheda montata, modulo DS3231 su J4, modulo SHT40 su J3, display su J2, alimentatore USB e porta USB di PC. **Procedura:** (1) 20 cicli di alimentazione con tutti i moduli collegati, misurando all'oscilloscopio GPIO2 e GPIO8 durante il reset (tempo di hold 3 ms, datasheet ESP32-C3-MINI-1 tab. 4-2); (2) ripetere con un modulo che tiene SDA basso (bus I²C bloccato, simulato con resistenza da 1 kΩ verso GND) e verificare che il modulo parta comunque da flash (GPIO9 = 1); (3) entrare in download (BOOT + RESET) con i moduli collegati e verificare il flash via USB. **Accettazione:** 20/20 avvii da flash, download sempre possibile, nessun valore anomalo sugli strapping.
 
 ### VT-FW-001 — Ora offline
 

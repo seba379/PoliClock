@@ -1,6 +1,0 @@
-"Comment","Designator","Footprint","LCSC Part #","Qty"
-"10uF","C1","Capacitor_SMD:C_0603_1608Metric","C19702","1"
-"100nF","C2,C3","Capacitor_SMD:C_0603_1608Metric","C14663","2"
-"AFC01-S16FCA-00","J1","PoliClock:FPC-SMD_P0.50-16P_FGS-XJ-H2.0","C262665","1"
-"AFC01-S18FCA-00","J2","PoliClock:FPC-SMD_18P-P0.50_JS_AFC01-S18FCA-00","C262666","1"
-"0Ω","R1","Resistor_SMD:R_0603_1608Metric","C21189","1"

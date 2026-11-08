@@ -11,7 +11,7 @@
 		(company "PoliClock")
 	)
 	(lib_symbols
-		(symbol "PoliClock:ESP32-C3-MINI-1-N4"
+		(symbol "PoliClock:ESP32-C3-MINI-1"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -27,7 +27,7 @@
 					)
 				)
 			)
-			(property "Value" "ESP32-C3-MINI-1-N4"
+			(property "Value" "ESP32-C3-MINI-1-H4X"
 				(at 0 -38.1 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -81,7 +81,7 @@
 					)
 				)
 			)
-			(property "MPN" "ESP32-C3-MINI-1-N4"
+			(property "MPN" "ESP32-C3-MINI-1-H4X"
 				(at 0 -48.26 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -92,7 +92,7 @@
 					)
 				)
 			)
-			(property "LCSC" "C2838502"
+			(property "LCSC" "C41349510"
 				(at 0 -50.8 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -114,7 +114,7 @@
 					)
 				)
 			)
-			(symbol "ESP32-C3-MINI-1-N4_0_1"
+			(symbol "ESP32-C3-MINI-1_0_1"
 				(rectangle
 					(start -8.89 35.56)
 					(end 8.89 -35.56)
@@ -1653,210 +1653,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "PoliClock:TS-1088-AR02016"
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "SW"
-				(at 0 3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "TS-1088-AR02016"
-				(at 0 -6.35 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" "PoliClock:SW-SMD_L3.9-W3.0-P4.45"
-				(at 0 -8.89 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" "https://lcsc.com/product-detail/Tactile-Switches_XUNPU-TS-1088-AR02016_C720477.html"
-				(at 0 -11.43 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Manufacturer" "XUNPU(讯普)"
-				(at 0 -13.97 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "MPN" "TS-1088-AR02016"
-				(at 0 -16.51 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "LCSC" "C720477"
-				(at 0 -19.05 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "Tactile Switches"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "TS-1088-AR02016_0_1"
-				(polyline
-					(pts
-						(xy -5.08 -1.27)
-						(xy -2.54 -1.27)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -2.29 -0.76)
-						(xy 2.03 0.51)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center -2.03 -1.27)
-					(radius 0.51)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 2.03 -1.27)
-					(radius 0.51)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 5.08 -1.27)
-						(xy 2.54 -1.27)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(pin passive line
-					(at -7.62 -1.27 0)
-					(length 2.54)
-					(name "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 7.62 -1.27 180)
-					(length 2.54)
-					(name "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "Connector:TestPoint"
 			(pin_numbers
 				(hide yes)
@@ -1993,7 +1789,7 @@
 		)
 		(uuid "ff5adc65-102e-5d61-80ed-ec6965a56b52")
 	)
-	(text "Modulo ESP32-C3-MINI-1-N4 (4 MB flash, antenna PCB: zona di esclusione)"
+	(text "Modulo ESP32-C3-MINI-1-H4X (chip v1.1, 4 MB flash, antenna PCB oltre il bordo)"
 		(exclude_from_sim no)
 		(at 60.96 21.59 0)
 		(effects
@@ -2006,7 +1802,7 @@
 		(uuid "577b4269-d380-5e33-9d93-e7215dab1ed4")
 	)
 	(symbol
-		(lib_id "PoliClock:ESP32-C3-MINI-1-N4")
+		(lib_id "PoliClock:ESP32-C3-MINI-1")
 		(at 160.02 105.41 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -2022,7 +1818,7 @@
 				)
 			)
 		)
-		(property "Value" "ESP32-C3-MINI-1-N4"
+		(property "Value" "ESP32-C3-MINI-1-H4X"
 			(at 160.02 143.51 0)
 			(effects
 				(font
@@ -2048,7 +1844,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Modulo Wi-Fi/BLE (radio non usata in V1, DEC-012)"
+		(property "Description" "Variante Recommended (DEC-035); radio non usata in V1 (DEC-012)"
 			(at 160.02 105.41 0)
 			(effects
 				(font
@@ -2057,7 +1853,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C2838502"
+		(property "LCSC" "C41349510"
 			(at 160.02 156.21 0)
 			(effects
 				(font
@@ -2253,8 +2049,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "a561b761-180e-5f86-9491-3d82a18fe286")
-		(property "Reference" "#PWR036"
+		(uuid "7e34f773-5a12-5152-8f05-f4e0f4346b03")
+		(property "Reference" "#PWR037"
 			(at 134.62 74.93 90)
 			(effects
 				(font
@@ -2304,7 +2100,7 @@
 		(instances
 			(project "policlock-main"
 				(path "/8f25dc1f-4709-513e-82c3-d067157683da/e7cf3c2a-3bdb-5445-898a-db7fa374740a"
-					(reference "#PWR036")
+					(reference "#PWR037")
 					(unit 1)
 				)
 			)
@@ -2329,8 +2125,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "701d145f-1143-56f6-bbaf-7ce9ecc510c0")
-		(property "Reference" "#PWR037"
+		(uuid "9c936954-98bd-5ce7-855d-5c208531d662")
+		(property "Reference" "#PWR038"
 			(at 134.62 77.47 90)
 			(effects
 				(font
@@ -2380,7 +2176,7 @@
 		(instances
 			(project "policlock-main"
 				(path "/8f25dc1f-4709-513e-82c3-d067157683da/e7cf3c2a-3bdb-5445-898a-db7fa374740a"
-					(reference "#PWR037")
+					(reference "#PWR038")
 					(unit 1)
 				)
 			)
@@ -2405,8 +2201,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "dcf3e86f-9aef-5061-83ca-bdcdc4d26360")
-		(property "Reference" "#PWR038"
+		(uuid "d62c6a96-580c-543a-ba7e-f297a40fbf28")
+		(property "Reference" "#PWR039"
 			(at 144.78 80.01 90)
 			(effects
 				(font
@@ -2456,7 +2252,7 @@
 		(instances
 			(project "policlock-main"
 				(path "/8f25dc1f-4709-513e-82c3-d067157683da/e7cf3c2a-3bdb-5445-898a-db7fa374740a"
-					(reference "#PWR038")
+					(reference "#PWR039")
 					(unit 1)
 				)
 			)
@@ -2582,8 +2378,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "5877e68a-53f2-5de6-b5e8-f95901165ecc")
-		(property "Reference" "#PWR039"
+		(uuid "60f31c3d-96db-578e-9a8f-aa07e61101dc")
+		(property "Reference" "#PWR040"
 			(at 134.62 100.33 90)
 			(effects
 				(font
@@ -2633,7 +2429,7 @@
 		(instances
 			(project "policlock-main"
 				(path "/8f25dc1f-4709-513e-82c3-d067157683da/e7cf3c2a-3bdb-5445-898a-db7fa374740a"
-					(reference "#PWR039")
+					(reference "#PWR040")
 					(unit 1)
 				)
 			)
@@ -2650,26 +2446,15 @@
 		)
 		(uuid "f48edd77-a3ab-5297-9a30-ebeb65024637")
 	)
-	(global_label "TP_INT"
-		(shape bidirectional)
+	(label "IO0"
 		(at 140.97 102.87 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right)
+			(justify right bottom)
 		)
-		(uuid "67d50cfd-d9ef-5c96-80d8-18647250ccc3")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 140.97 102.87 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
+		(uuid "4818fc3d-6d4a-5d0d-afc4-5f92063c1238")
 	)
 	(wire
 		(pts
@@ -2682,26 +2467,15 @@
 		)
 		(uuid "90883db8-1a92-525c-803d-cf64be031e3c")
 	)
-	(global_label "TP_RST"
-		(shape bidirectional)
+	(label "IO1"
 		(at 140.97 105.41 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right)
+			(justify right bottom)
 		)
-		(uuid "dfb47707-6277-5c08-b39c-1dabf81dfcd9")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 140.97 105.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
+		(uuid "cf7c1d29-78fd-53ae-8bd6-e05385ab2b16")
 	)
 	(wire
 		(pts
@@ -2722,8 +2496,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "e0660670-fc22-5989-9080-726fd24e795f")
-		(property "Reference" "#PWR040"
+		(uuid "9c964e00-3dc9-5b76-a0ce-c4b49995fd65")
+		(property "Reference" "#PWR041"
 			(at 134.62 107.95 90)
 			(effects
 				(font
@@ -2773,7 +2547,7 @@
 		(instances
 			(project "policlock-main"
 				(path "/8f25dc1f-4709-513e-82c3-d067157683da/e7cf3c2a-3bdb-5445-898a-db7fa374740a"
-					(reference "#PWR040")
+					(reference "#PWR041")
 					(unit 1)
 				)
 			)
@@ -3091,7 +2865,7 @@
 		)
 		(uuid "ee3d5eae-e7f9-5116-b661-85c88239bf9e")
 	)
-	(global_label "LCD_BL"
+	(global_label "DISP_EN_N"
 		(shape bidirectional)
 		(at 179.07 130.81 0)
 		(fields_autoplaced yes)
@@ -3649,8 +3423,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "d8baab4f-df34-5225-9e40-f11f21e482b8")
-		(property "Reference" "#PWR041"
+		(uuid "2a37062b-f0bc-5e38-ae19-0ef620f7df7b")
+		(property "Reference" "#PWR042"
 			(at 176.53 127 0)
 			(effects
 				(font
@@ -3700,7 +3474,7 @@
 		(instances
 			(project "policlock-main"
 				(path "/8f25dc1f-4709-513e-82c3-d067157683da/e7cf3c2a-3bdb-5445-898a-db7fa374740a"
-					(reference "#PWR041")
+					(reference "#PWR042")
 					(unit 1)
 				)
 			)
@@ -3803,8 +3577,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "84094dca-6819-5445-9b00-d57b37212a76")
-		(property "Reference" "#PWR042"
+		(uuid "0a6e7922-0f72-5a82-b8e2-47fc8dd6f8e5")
+		(property "Reference" "#PWR043"
 			(at 80.01 36.83 0)
 			(effects
 				(font
@@ -3854,7 +3628,7 @@
 		(instances
 			(project "policlock-main"
 				(path "/8f25dc1f-4709-513e-82c3-d067157683da/e7cf3c2a-3bdb-5445-898a-db7fa374740a"
-					(reference "#PWR042")
+					(reference "#PWR043")
 					(unit 1)
 				)
 			)
@@ -3879,8 +3653,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "81038c05-6c63-51f5-a0ca-30e3df54e064")
-		(property "Reference" "#PWR043"
+		(uuid "f0a14017-d713-5f08-a0b2-4663c59cb026")
+		(property "Reference" "#PWR044"
 			(at 80.01 52.07 0)
 			(effects
 				(font
@@ -3930,7 +3704,7 @@
 		(instances
 			(project "policlock-main"
 				(path "/8f25dc1f-4709-513e-82c3-d067157683da/e7cf3c2a-3bdb-5445-898a-db7fa374740a"
-					(reference "#PWR043")
+					(reference "#PWR044")
 					(unit 1)
 				)
 			)
@@ -4033,8 +3807,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "897707f0-8207-5a25-9a49-dc7b7e432f5c")
-		(property "Reference" "#PWR044"
+		(uuid "989bb5f3-ad49-5d9f-88c6-4c87b3d7567f")
+		(property "Reference" "#PWR045"
 			(at 91.44 36.83 0)
 			(effects
 				(font
@@ -4084,7 +3858,7 @@
 		(instances
 			(project "policlock-main"
 				(path "/8f25dc1f-4709-513e-82c3-d067157683da/e7cf3c2a-3bdb-5445-898a-db7fa374740a"
-					(reference "#PWR044")
+					(reference "#PWR045")
 					(unit 1)
 				)
 			)
@@ -4109,8 +3883,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "8f7e14eb-05d0-51ef-9cb0-dc042dc42d5c")
-		(property "Reference" "#PWR045"
+		(uuid "d8d566c9-1415-5fab-82ed-9a9897facde4")
+		(property "Reference" "#PWR046"
 			(at 91.44 52.07 0)
 			(effects
 				(font
@@ -4160,7 +3934,7 @@
 		(instances
 			(project "policlock-main"
 				(path "/8f25dc1f-4709-513e-82c3-d067157683da/e7cf3c2a-3bdb-5445-898a-db7fa374740a"
-					(reference "#PWR045")
+					(reference "#PWR046")
 					(unit 1)
 				)
 			)
@@ -4189,7 +3963,7 @@
 		)
 		(uuid "2c6c0987-f139-59c7-987a-8145922c9cb2")
 	)
-	(text "EN (reset) e BOOT"
+	(text "EN (reset) e IO9 (boot): senza tasti (DEC-039)"
 		(exclude_from_sim no)
 		(at 271.78 21.59 0)
 		(effects
@@ -4298,8 +4072,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "7f22f4ba-3358-5755-8aa8-d5d604500802")
-		(property "Reference" "#PWR046"
+		(uuid "92cbfbe5-ff16-5b89-8f26-016260905d0d")
+		(property "Reference" "#PWR047"
 			(at 284.48 41.91 0)
 			(effects
 				(font
@@ -4349,7 +4123,7 @@
 		(instances
 			(project "policlock-main"
 				(path "/8f25dc1f-4709-513e-82c3-d067157683da/e7cf3c2a-3bdb-5445-898a-db7fa374740a"
-					(reference "#PWR046")
+					(reference "#PWR047")
 					(unit 1)
 				)
 			)
@@ -4494,8 +4268,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "1afdcdb9-628d-5839-ae7d-c862a03f88b1")
-		(property "Reference" "#PWR047"
+		(uuid "2c4fc266-b61e-5649-b1f2-5fa70888f4cd")
+		(property "Reference" "#PWR048"
 			(at 299.72 72.39 0)
 			(effects
 				(font
@@ -4545,179 +4319,6 @@
 		(instances
 			(project "policlock-main"
 				(path "/8f25dc1f-4709-513e-82c3-d067157683da/e7cf3c2a-3bdb-5445-898a-db7fa374740a"
-					(reference "#PWR047")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "PoliClock:TS-1088-AR02016")
-		(at 340.36 44.45 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "a84e2773-450c-595d-9083-f7f88e344cd3")
-		(property "Reference" "SW1"
-			(at 340.36 40.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "RESET"
-			(at 340.36 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "PoliClock:SW-SMD_L3.9-W3.0-P4.45"
-			(at 340.36 53.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C720477.pdf"
-			(at 340.36 55.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Tasto 4x3 mm (DEC-029)"
-			(at 340.36 44.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C720477"
-			(at 340.36 63.5 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "00e96b41-0837-582c-bed4-ba7bf2f4fe87")
-		)
-		(pin "2"
-			(uuid "bf8b4e47-3838-5ca6-91b1-a91a382ea2c3")
-		)
-		(instances
-			(project "policlock-main"
-				(path "/8f25dc1f-4709-513e-82c3-d067157683da/e7cf3c2a-3bdb-5445-898a-db7fa374740a"
-					(reference "SW1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 332.74 45.72)
-			(xy 325.12 45.72)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "dec970ea-3a73-5a02-9c27-257849ba9d78")
-	)
-	(label "EN"
-		(at 325.12 45.72 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "1864a659-ba2d-5424-ba6a-3779f4248ab7")
-	)
-	(wire
-		(pts
-			(xy 347.98 45.72)
-			(xy 355.6 45.72)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "57550055-11c2-5fdb-9bfc-1579ce13f040")
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 355.6 45.72 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "18ba9bfa-e82e-5607-928b-9d8c810ee7cb")
-		(property "Reference" "#PWR048"
-			(at 361.95 45.72 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 359.41 45.72 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 355.6 45.72 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 355.6 45.72 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 355.6 45.72 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "3b2a95aa-3a02-51a2-a74b-b518dec01437")
-		)
-		(instances
-			(project "policlock-main"
-				(path "/8f25dc1f-4709-513e-82c3-d067157683da/e7cf3c2a-3bdb-5445-898a-db7fa374740a"
 					(reference "#PWR048")
 					(unit 1)
 				)
@@ -4732,7 +4333,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "e3e921a7-806f-5aa3-93c0-76138e2eadd1")
+		(uuid "dd93e958-71a0-5b93-8bbb-231152624a0b")
 		(property "Reference" "R7"
 			(at 287.02 78.74 0)
 			(effects
@@ -4788,10 +4389,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "bd51cd8d-10dc-52b5-84bc-5d11d1b5750d")
+			(uuid "00e96b41-0837-582c-bed4-ba7bf2f4fe87")
 		)
 		(pin "2"
-			(uuid "44ec2acd-f009-5fdc-a682-4c9d183f0852")
+			(uuid "bf8b4e47-3838-5ca6-91b1-a91a382ea2c3")
 		)
 		(instances
 			(project "policlock-main"
@@ -4811,7 +4412,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "837e04ee-6116-5083-b756-5788adc83332")
+		(uuid "dec970ea-3a73-5a02-9c27-257849ba9d78")
 	)
 	(symbol
 		(lib_id "power:+3V3")
@@ -4821,7 +4422,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "ebdba1c3-aa57-55a4-8d53-516051a8295f")
+		(uuid "fec2bd66-85e6-5d5e-8112-4b2a77805da6")
 		(property "Reference" "#PWR049"
 			(at 284.48 77.47 0)
 			(effects
@@ -4867,7 +4468,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "495eb9a1-ec76-5a01-b25e-d4e457195ed5")
+			(uuid "c662da6d-0ac4-5b0f-a862-4b427d80740a")
 		)
 		(instances
 			(project "policlock-main"
@@ -4887,7 +4488,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "dce9c910-c1c0-577b-a3c7-b309ece613ec")
+		(uuid "21f0be91-aeca-57b9-bf35-be70ad38f070")
 	)
 	(label "IO9_BOOT"
 		(at 284.48 86.36 270)
@@ -4897,191 +4498,18 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "d2acb1cb-54b9-5d6d-9b6a-527f84c6cd64")
+		(uuid "5d107061-fbd6-5a98-bbae-84b35a045f8e")
 	)
-	(symbol
-		(lib_id "PoliClock:TS-1088-AR02016")
-		(at 340.36 80.01 0)
-		(unit 1)
+	(text "Nessun tasto: flash e reset via USB nativa.\\nRecupero: collegare TP11 (IO9) a GND e dare\\nalimentazione o portare TP6 (EN) a GND e rilasciarlo -> download (IO9=0, IO8=1)."
 		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "2e032702-7e74-5cb3-a30a-4a2bf9166f69")
-		(property "Reference" "SW2"
-			(at 340.36 76.2 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "BOOT"
-			(at 340.36 86.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "PoliClock:SW-SMD_L3.9-W3.0-P4.45"
-			(at 340.36 88.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C720477.pdf"
-			(at 340.36 91.44 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Tasto 4x3 mm (DEC-029)"
-			(at 340.36 80.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C720477"
-			(at 340.36 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "5bf4677d-d4bb-5b7f-accc-09a445b5b090")
-		)
-		(pin "2"
-			(uuid "4f4f25f4-f20d-560e-99ea-2373e4b3a152")
-		)
-		(instances
-			(project "policlock-main"
-				(path "/8f25dc1f-4709-513e-82c3-d067157683da/e7cf3c2a-3bdb-5445-898a-db7fa374740a"
-					(reference "SW2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 332.74 81.28)
-			(xy 325.12 81.28)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "39c394e0-fc56-51c1-a2cf-cd92b98912f9")
-	)
-	(label "IO9_BOOT"
-		(at 325.12 81.28 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "58a49114-0e62-537c-94a6-dcd1a980a9c2")
-	)
-	(wire
-		(pts
-			(xy 347.98 81.28)
-			(xy 355.6 81.28)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "29e92dbe-98f7-5667-aaa1-bec1a4efa98e")
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 355.6 81.28 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "8129bfde-efc9-57dc-bec9-10b840600885")
-		(property "Reference" "#PWR050"
-			(at 361.95 81.28 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 359.41 81.28 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 355.6 81.28 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 355.6 81.28 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 355.6 81.28 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "97c1158e-df50-5108-9b6c-ae621c4babe6")
-		)
-		(instances
-			(project "policlock-main"
-				(path "/8f25dc1f-4709-513e-82c3-d067157683da/e7cf3c2a-3bdb-5445-898a-db7fa374740a"
-					(reference "#PWR050")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(text "Download: tenere BOOT e premere/rilasciare RESET (IO9=0, IO8=1)."
-		(exclude_from_sim no)
-		(at 275.59 91.44 0)
+		(at 309.88 39.37 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify left top)
 		)
-		(uuid "fd1043eb-df47-5024-8566-a1918cddfc19")
+		(uuid "65345695-3939-5d01-9738-33b689be24e7")
 	)
 	(rectangle
 		(start 270 110)
@@ -5093,7 +4521,7 @@
 		(fill
 			(type none)
 		)
-		(uuid "1310d969-ee93-558d-984d-b90594d15f87")
+		(uuid "30b96b23-c5e8-5cf1-b307-a6a8bd1fc094")
 	)
 	(text "Debug"
 		(exclude_from_sim no)
@@ -5105,7 +4533,7 @@
 			)
 			(justify left top)
 		)
-		(uuid "0d655786-0726-5c93-931e-54bb4b58e719")
+		(uuid "9ba08772-5770-5f26-a7e7-0f9e1b5a20cd")
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
@@ -5115,7 +4543,7 @@
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(uuid "722e8105-75c0-5e0b-a123-01b555cdf12e")
+		(uuid "4043d53f-08bf-5a80-a8fd-6000a078cb38")
 		(property "Reference" "TP5"
 			(at 289.56 118.11 0)
 			(effects
@@ -5169,7 +4597,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "e652c41e-e8d6-5d1e-a123-7897ab6fdac3")
+			(uuid "fdc4e7be-80d3-5009-bef8-29691648818c")
 		)
 		(instances
 			(project "policlock-main"
@@ -5189,7 +4617,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "4e3ac617-eb22-5ba0-bce3-36ec45df3c89")
+		(uuid "68128af3-d03e-50cf-9876-421ee920073d")
 	)
 	(label "UART_TX"
 		(at 289.56 127 270)
@@ -5199,7 +4627,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "1950c38a-d753-5bcb-9fb0-ad5f6f41459d")
+		(uuid "ba97599f-d3e9-514b-8690-7121a26f4495")
 	)
 	(symbol
 		(lib_id "Connector:TestPoint")
@@ -5209,7 +4637,7 @@
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(uuid "81107240-a0eb-54bd-bbd2-e4f224cd5cb0")
+		(uuid "d699a8b2-5706-5ce4-9711-4560c7e38373")
 		(property "Reference" "TP6"
 			(at 320.04 118.11 0)
 			(effects
@@ -5263,7 +4691,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "2ada0ded-64cd-5cb1-ad06-02f08d034611")
+			(uuid "fed0e699-bccc-50e6-9225-6690269874b8")
 		)
 		(instances
 			(project "policlock-main"
@@ -5283,7 +4711,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "88fa136b-5942-5e89-b0db-61c7e3b1adfb")
+		(uuid "66c58a80-f574-5d1a-8d61-35920b0fc168")
 	)
 	(label "EN"
 		(at 320.04 127 270)
@@ -5293,7 +4721,289 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "c54c3249-ff2f-5d16-91a9-1c935e39b0be")
+		(uuid "fed18981-ea71-5f1e-958b-86c4cf722692")
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 289.56 142.24 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(uuid "fd8363f9-b519-5206-878e-934e35a90486")
+		(property "Reference" "TP11"
+			(at 289.56 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "IO9 (BOOT)"
+			(at 289.56 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
+			(at 294.64 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 294.64 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 289.56 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" ""
+			(at 289.56 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "1e864651-4979-59f2-83f6-f26b4a940098")
+		)
+		(instances
+			(project "policlock-main"
+				(path "/8f25dc1f-4709-513e-82c3-d067157683da/e7cf3c2a-3bdb-5445-898a-db7fa374740a"
+					(reference "TP11")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 289.56 142.24)
+			(xy 289.56 144.78)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "29e92dbe-98f7-5667-aaa1-bec1a4efa98e")
+	)
+	(label "IO9_BOOT"
+		(at 289.56 144.78 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "e0e4ea0b-d96d-5d0e-bce9-a34554b3fc47")
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 350.52 124.46 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(uuid "ae833301-b6bb-5b58-891e-372c1fe2d519")
+		(property "Reference" "TP9"
+			(at 350.52 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "IO0 (libero)"
+			(at 350.52 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
+			(at 355.6 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 355.6 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 350.52 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" ""
+			(at 350.52 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "656167e4-dbc5-5b14-8d7f-48debb1cc469")
+		)
+		(instances
+			(project "policlock-main"
+				(path "/8f25dc1f-4709-513e-82c3-d067157683da/e7cf3c2a-3bdb-5445-898a-db7fa374740a"
+					(reference "TP9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 350.52 124.46)
+			(xy 350.52 127)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e4e544a6-2973-53b8-b8b9-3f821fc7dbc1")
+	)
+	(label "IO0"
+		(at 350.52 127 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "890f9288-2d10-5994-88f0-a0fa6b5bd25e")
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 379.73 124.46 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(uuid "c8267b82-2a4d-5e03-8054-df3a29eea0ef")
+		(property "Reference" "TP10"
+			(at 379.73 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "IO1 (libero)"
+			(at 379.73 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
+			(at 384.81 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 384.81 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 379.73 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" ""
+			(at 379.73 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e652c41e-e8d6-5d1e-a123-7897ab6fdac3")
+		)
+		(instances
+			(project "policlock-main"
+				(path "/8f25dc1f-4709-513e-82c3-d067157683da/e7cf3c2a-3bdb-5445-898a-db7fa374740a"
+					(reference "TP10")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 379.73 124.46)
+			(xy 379.73 127)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4e3ac617-eb22-5ba0-bce3-36ec45df3c89")
+	)
+	(label "IO1"
+		(at 379.73 127 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "1950c38a-d753-5bcb-9fb0-ad5f6f41459d")
 	)
 	(text "Log e flash principali via USB nativa;\nTXD0 su punto di test per debug di riserva."
 		(exclude_from_sim no)
@@ -5304,7 +5014,7 @@
 			)
 			(justify left top)
 		)
-		(uuid "fdddbe47-bceb-56e7-8f4c-c7c86d3c3ff8")
+		(uuid "c51b2a33-0c69-5382-a435-2251dca478ae")
 	)
 	(embedded_fonts no)
 )

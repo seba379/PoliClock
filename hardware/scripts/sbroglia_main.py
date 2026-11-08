@@ -41,8 +41,8 @@ for pat in POWER_NETS:
     ns.SetNetclassPatternAssignment(pat, "Power")
 board.SynchronizeNetsAndNetClasses(True)
 ds = board.GetDesignSettings()
-# minimi JLCPCB 2 strati (Freerouting restringe le piste vicino alle piazzole fini)
-ds.m_TrackMinWidth = MM(0.1)
+# pista minima 0,15 mm (JLC ammette 0,10 mm): margine di fabbricazione anche dove Freerouting restringe le piste
+ds.m_TrackMinWidth = MM(0.15)
 ds.m_ViasMinAnnularWidth = MM(0.1)
 for t in list(board.GetTracks()):
     board.Remove(t)
@@ -51,11 +51,14 @@ for t in list(board.GetTracks()):
 for z in list(board.Zones()):
     if z.GetIsRuleArea() and z.GetZoneName() == "bordo":
         board.Remove(z)
-bb = board.GetBoardEdgesBoundingBox()
-x0, y0, x1, y1 = bb.GetLeft(), bb.GetTop(), bb.GetRight(), bb.GetBottom()
 e = MM(0.45)
+strips = []
+for sh in board.GetDrawings():
+    if sh.GetLayer() == pcbnew.Edge_Cuts and sh.GetShape() == pcbnew.SHAPE_T_SEGMENT:
+        a, b = sh.GetStart(), sh.GetEnd()
+        strips.append((min(a.x, b.x) - e, min(a.y, b.y) - e, max(a.x, b.x) + e, max(a.y, b.y) + e))
 for layer in (pcbnew.F_Cu, pcbnew.B_Cu):
-    for (ax, ay, bx, by) in ((x0, y0, x1, y0 + e), (x0, y1 - e, x1, y1), (x0, y0, x0 + e, y1), (x1 - e, y0, x1, y1)):
+    for (ax, ay, bx, by) in strips:
         ra = pcbnew.ZONE(board)
         ra.SetIsRuleArea(True)
         ra.SetZoneName("bordo")
@@ -94,6 +97,23 @@ if not IMPORT_ONLY:
         sys.exit("Freerouting non ha prodotto la sessione")
 if not pcbnew.ImportSpecctraSES(board, SES):
     sys.exit("import SES fallito")
+# Freerouting restringe a volte una pista a 0,10 mm (minimo JLC) vicino alle piazzole fini: la riporta a
+# 0,15 mm solo se resta la distanza di 0,15 mm dal rame delle altre reti (verificata poi dal DRC di esporta.py)
+strette = [t for t in board.GetTracks() if t.GetClass() != "PCB_VIA" and t.GetWidth() < MM(0.15)]
+altri = list(board.GetTracks()) + list(board.GetPads())
+allargate = 0
+for t in strette:
+    w0 = t.GetWidth()
+    t.SetWidth(MM(0.15))
+    lay = t.GetLayer()
+    urto = any(o is not t and o.GetNetCode() != t.GetNetCode() and o.IsOnLayer(lay)
+               and t.GetEffectiveShape(lay).Collide(o.GetEffectiveShape(lay), MM(0.15))
+               for o in altri)
+    if urto:
+        t.SetWidth(w0)
+    else:
+        allargate += 1
+print("piste strette:", len(strette), "allargate a 0,15 mm:", allargate)
 for z in pours:
     board.Add(z)
 filler = pcbnew.ZONE_FILLER(board)

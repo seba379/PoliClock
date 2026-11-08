@@ -1,6 +1,6 @@
 # 05 — Specifiche interfaccia utente (UI/UX)
 
-**Versione:** 0.5 · **Stato:** wireframe testuale, non design grafico finale · **Data:** 2026-11-07
+**Versione:** 0.6 · **Stato:** wireframe testuale, non design grafico finale · **Data:** 2026-11-07
 
 ## 1. Obiettivo
 
@@ -39,8 +39,8 @@ I primi quattro sono **modi di luminosità** (`display_mode` nel [firmware](04-s
 | Stato | Aspetto desiderato | Trigger / uscita |
 |---|---|---|
 | `DIM` | Fondo nero, testo ridotto di luminanza, ora ben leggibile | Default di giorno quando non si interagisce |
-| `BRIGHT` | Stessi dati, luminosità aumentata e accenti più evidenti | Pressione breve del pulsante; ritorno a DIM dopo timeout, es. 20 s proposti |
-| `NIGHT` | Display e retroilluminazione spenti | Fascia notte, default 23:00–07:00 (`DEC-013`) |
+| `BRIGHT` | Stessi dati, grafica a piena luminosità e accenti più evidenti (retroilluminazione fissa del modulo, `DEC-034`) | Pressione breve del pulsante; ritorno a DIM dopo timeout, es. 20 s proposti |
+| `NIGHT` | Modulo display non alimentato (Q1 spento): display e retroilluminazione spenti | Fascia notte, default 23:00–07:00 (`DEC-013`) |
 | `NIGHT_PEEK` | Quadrante attenuato, nessun accento luminoso | Pressione breve di notte; ritorno a NIGHT dopo il timeout |
 | `TIME_NOT_SET` | Messaggio chiaro e accesso a impostazione | RTC invalido/mai impostato |
 | `SENSOR_ERROR` | `--` per T/RH e simbolo sensore | Timeout o misura non valida |
@@ -53,7 +53,7 @@ Un solo **pulsante** fisico (`DEC-017`), posizione nella statuetta da definire (
 - **Pressione lunga** (es. 3 s, da tarare): entra nel menu di impostazione.
 - **Configuratore da PC via USB** (metodo principale, `DEC-020`): si collega PoliClock al computer, si apre la pagina del configuratore e con un clic si sincronizza l'ora con quella del PC; dallo stesso strumento si impostano fascia notte e luminosità.
 - **Menu di impostazione con un pulsante** (riserva, `OPEN-015`): il campo selezionato lampeggia; pressione breve = incrementa il valore, pressione lunga = conferma e passa al campo successivo (ora → minuti → giorno → mese → anno → inizio notte → fine notte). Uscita automatica senza salvare dopo un tempo di inattività.
-- **Touch (predisposto, `DEC-019`)**: se montato, il tocco sul display equivale alla pressione breve; il pulsante resta comunque attivo.
+- **Touch**: escluso (`DEC-034`): il modulo display non ha il touch.
 - Nessun menu richiesto per visualizzare i quattro dati quotidiani.
 
 Antirimbalzo e riconoscimento di pressione breve/lunga vanno provati sul prototipo M1.

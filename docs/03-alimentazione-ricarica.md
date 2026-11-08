@@ -1,6 +1,6 @@
 # 03 — Alimentazione
 
-**Versione:** 0.6 · **Stato:** schema rev 0.1 disegnato, non validato · **Data:** 2026-11-07
+**Versione:** 0.7 · **Stato:** schema e PCB rev 0.2 (bozza), non validati · **Data:** 2026-11-07
 
 > Il nome del file è rimasto `03-alimentazione-ricarica.md` per non rompere i collegamenti: dalla v0.5 la V1 **non ha batteria né ricarica** (`DEC-023`).
 
@@ -19,16 +19,16 @@ Le decisioni sull'autonomia (`DEC-008`, `DEC-014`) e i requisiti di batteria son
 flowchart LR
     USB["Presa USB-C sul sedere"] -->|"diretto (A) o prolunga (B)"| IN["USB-C sulla scheda principale"]
     IN --> PROT["Fusibile/PTC + ESD + CC 5,1 kΩ"]
-    PROT -->|"5 V"| REG["LDO AMS1117-3.3"]
-    PROT -->|"5 V (opzionale)"| BL["Retroilluminazione"]
+    PROT -->|"5 V"| REG["LDO TLV75533"]
+    REG -->|"3,3 V, Q1 P-MOS"| BL["Modulo display<br/>(retroilluminazione inclusa)"]
     REG --> LOADS["MCU, display, SHT40, touch"]
     REG -->|"3,3 V, JST-SH"| RTC["Modulo RTC DS3231"]
     CAP["Pila CR1220<br/>(solo tampone RTC)"] --> RTC
 ```
 
-- **Regolatore 3,3 V** da 5 V: LDO **AMS1117-3.3** (LCSC C6186, Basic, `CAND-015`), 22 µF in uscita. Dissipazione indicativa: (5 − 3,3) V × corrente; con 100 mA circa 0,17 W, da verificare con le misure reali e la superficie di rame. Stabilità con condensatori ceramici da verificare (`OPEN-025`).
+- **Regolatore 3,3 V** da 5 V: LDO **TI TLV75533PDBVR** (C404027, `DEC-037`), 500 mA, **stabile con condensatori ceramici ≥ 1 µF** (datasheet SBVS320D). C2 10 µF in ingresso, C3 10 µF + C4 100 nF in uscita, a 2,4–2,8 mm dai pin. Dissipazione indicativa: (5 − 3,3) V × corrente; con ~80 mA stimati circa 0,14 W, cioè +14…32 °C sul chip con RθJA tra 100,8 °C/W (rame della scheda di valutazione TI) e 231 °C/W (JEDEC): da misurare a scocca chiusa (`VT-PWR-002`). La sorgente da 500 mA soddisfa la richiesta Espressif per il modulo.
 - **Protezione ingresso**: PTC 0805 hold 0,5 A (BSMD0805-050-12V), ESD USBLC6-2SC6 su D+/D- e VBUS, Rd 5,1 kΩ su CC1/CC2, resistenza 0 Ω per isolare il regolatore durante il bring-up.
-- **Retroilluminazione**: nello schema rev 0.1 LEDA è alimentato a 3,3 V sulla portadisplay e LEDK è commutato dal MOSFET sulla scheda principale (riferimento Waveshare); da confermare col datasheet del pannello (`OPEN-024`).
+- **Display e retroilluminazione**: il modulo GC9A01 a 7 pin (`DEC-034`) non ha un pin per la retroilluminazione, che resta accesa finché il modulo è alimentato. Il P-MOS **Q1 (AO3401A)**, comandato da IO20, alimenta il modulo dal 3,3 V e lo spegne del tutto di notte (`DEC-009`); R17 lo tiene spento durante reset e boot. Corrente della retroilluminazione da misurare sul modulo ricevuto (`OPEN-016`).
 - **Tampone dell'RTC**: pila CR1220 sul modulo DS3231 (`DEC-024`), che commuta da solo sulla pila quando manca il 3,3 V; durata attesa di anni secondo Adafruit, da verificare (`OPEN-014`). Il modulo è alimentato dal 3,3 V tramite il connettore J4 (resistenza 0 Ω R21). La pila serve solo a conservare l'ora: non alimenta l'orologio (`DEC-023`).
 - Nessun caricatore, nessuna misura batteria, nessun power-path.
 
@@ -49,16 +49,16 @@ Criteri di verifica:
 
 L'autonomia non è più un vincolo, ma il consumo resta importante perché **ogni milliwatt diventa calore dentro la statuetta** e può falsare la misura del SHT40.
 
-- Retroilluminazione bassa in DIM e spenta di notte.
+- Display spento di notte (modulo non alimentato); di giorno la luminosità della retroilluminazione è fissa: DIM e BRIGHT si distinguono solo per i colori della grafica (`DEC-034`).
 - Aggiornamento dell'ora solo al cambio minuto; redraw parziali.
 - Radio Wi-Fi/BLE mai attivata (`DEC-012`).
 - Light-sleep **facoltativo**: da adottare solo se le misure mostrano che riduce in modo utile il riscaldamento interno (senza light-sleep la USB del configuratore resta sempre attiva).
 
 ### Profili di misura
 
-- `P1 DIM`: funzionamento principale con ora e dati visibili, retroilluminazione bassa.
-- `P2 BRIGHT`: retroilluminazione alta dopo pressione del pulsante.
-- `P3 NIGHT`: display e retroilluminazione spenti.
+- `P1 DIM`: funzionamento principale con ora e dati visibili, grafica attenuata (retroilluminazione fissa).
+- `P2 BRIGHT`: grafica a piena luminosità dopo pressione del pulsante.
+- `P3 NIGHT`: modulo display non alimentato (Q1 spento).
 - `P5 OFF`: cavo scollegato, assorbimento dal tampone dell'RTC.
 
 Misurare corrente in ingresso USB (media e picchi) e temperature interne a scocca chiusa.
@@ -80,4 +80,4 @@ Misurare corrente in ingresso USB (media e picchi) e temperature interne a scocc
 
 ## 7. Questioni aperte
 
-Durata reale del tampone RTC (`OPEN-014`); dissipazione e stabilità dell'AMS1117 (`OPEN-025`); alimentazione e corrente della retroilluminazione (`OPEN-024`); consumi reali in DIM/BRIGHT/NIGHT; posizione della scheda e quindi della USB-C (`OPEN-020`). Vedi [decision log](10-decisioni-aperte.md).
+Durata reale del tampone RTC (`OPEN-014`); dissipazione del TLV75533 a scocca chiusa; corrente del modulo display (`OPEN-016`); consumi reali in DIM/BRIGHT/NIGHT; posizione della scheda e quindi della USB-C (`OPEN-020`, `OPEN-028`). Vedi [decision log](10-decisioni-aperte.md).

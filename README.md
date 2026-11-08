@@ -23,14 +23,14 @@ La modalità scelta è **ibrida**: quadrante normalmente attenuato ma leggibile;
 - **Nessun Wi-Fi/NTP nella V1**: l'ora si imposta offline.
 - Elettronica su **PCB custom** (KiCad, prodotto e assemblato da JLCPCB): scheda principale separata dal display, collegata via cavo.
 - Strumenti: **KiCad 10**, **VS Code + ESP-IDF**, **Blender** e CAD a codice (build123d).
-- Display **IPS rotondo 1,28"** (240×240, GC9A01) e interazione con un **pulsante** fisico; **touch predisposto** sul PCB, da attivare eventualmente.
+- Display **IPS rotondo 1,28"** (240×240, GC9A01) e interazione con un **pulsante** fisico; display su **modulo a 7 pin** provabile su breadboard, senza touch (`DEC-034`).
 - Impostazioni (ora, fascia notte) da un **configuratore su PC** collegato via USB.
 
 ## Architettura candidata, NON ancora congelata
 
 - **Scheda principale** rettangolare (busto/base preferito, posizione da confermare con il CAD): modulo **ESP32-C3-MINI-1**, protezioni USB, regolatore 3,3 V, USB-C, connettori.
 - **RTC esterno** su modulo Adafruit DS3231 STEMMA QT con pila CR1220, collegato via cavo: l'ora resta salva a cavo scollegato.
-- **Schedina portadisplay** nella testa, collegata con cavo FFC 16 poli attraverso il collo.
+- **Modulo display** GC9A01 nella testa, collegato alla scheda principale con un cavetto a 7 fili attraverso il collo.
 - Sensore T/RH: **Sensirion SHT40** su modulo breakout commerciale, in vano ventilato, collegato con 4 fili.
 - Prima del PCB: **prototipo su banco** con moduli commerciali per validare display su cavo, consumi e firmware.
 - Firmware **ESP-IDF**.

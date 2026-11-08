@@ -1122,7 +1122,7 @@
 		)
 		(uuid "050efca1-4cfb-5383-94f1-a824c6b2928e")
 	)
-	(text "Bus I2C (SHT40 0x44, RTC DS3231 0x68, touch 0x15)"
+	(text "Bus I2C (SHT40 0x44, RTC DS3231 0x68)"
 		(exclude_from_sim no)
 		(at 16.51 21.59 0)
 		(effects
@@ -1231,8 +1231,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "4171b4ab-c9be-5867-97ed-c6c7f12bb9cd")
-		(property "Reference" "#PWR063"
+		(uuid "236d6233-3a66-5f27-9752-d2b4cd3f39d5")
+		(property "Reference" "#PWR055"
 			(at 35.56 46.99 0)
 			(effects
 				(font
@@ -1282,7 +1282,7 @@
 		(instances
 			(project "policlock-main"
 				(path "/8f25dc1f-4709-513e-82c3-d067157683da/30c4f62e-a999-52bd-abab-f36f61d332ff"
-					(reference "#PWR063")
+					(reference "#PWR055")
 					(unit 1)
 				)
 			)
@@ -1417,8 +1417,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "f07d49ef-972a-5835-b801-118be9b1433e")
-		(property "Reference" "#PWR064"
+		(uuid "820cb875-942b-5dae-b65c-bd69580ec8af")
+		(property "Reference" "#PWR056"
 			(at 49.53 46.99 0)
 			(effects
 				(font
@@ -1468,7 +1468,7 @@
 		(instances
 			(project "policlock-main"
 				(path "/8f25dc1f-4709-513e-82c3-d067157683da/30c4f62e-a999-52bd-abab-f36f61d332ff"
-					(reference "#PWR064")
+					(reference "#PWR056")
 					(unit 1)
 				)
 			)
@@ -1603,8 +1603,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "04195815-35c1-5d1d-a8d2-19611aad5a36")
-		(property "Reference" "#PWR065"
+		(uuid "8f8c2ffa-1f2a-5d65-890c-5bbb8e59b830")
+		(property "Reference" "#PWR057"
 			(at 33.02 85.09 90)
 			(effects
 				(font
@@ -1654,7 +1654,7 @@
 		(instances
 			(project "policlock-main"
 				(path "/8f25dc1f-4709-513e-82c3-d067157683da/30c4f62e-a999-52bd-abab-f36f61d332ff"
-					(reference "#PWR065")
+					(reference "#PWR057")
 					(unit 1)
 				)
 			)
@@ -2033,8 +2033,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "50a5351d-3336-5295-af17-bfe171d98614")
-		(property "Reference" "#PWR066"
+		(uuid "f56e59c8-14ce-5d76-8e30-b2862beabd2b")
+		(property "Reference" "#PWR058"
 			(at 246.38 54.61 0)
 			(effects
 				(font
@@ -2084,7 +2084,7 @@
 		(instances
 			(project "policlock-main"
 				(path "/8f25dc1f-4709-513e-82c3-d067157683da/30c4f62e-a999-52bd-abab-f36f61d332ff"
-					(reference "#PWR066")
+					(reference "#PWR058")
 					(unit 1)
 				)
 			)
@@ -2290,8 +2290,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "0dfe6706-0d3b-5ea5-83df-dc5c939a6c3f")
-		(property "Reference" "#PWR067"
+		(uuid "4574f154-3787-560e-aedd-ed9ee581cba9")
+		(property "Reference" "#PWR059"
 			(at 326.39 54.61 0)
 			(effects
 				(font
@@ -2341,7 +2341,7 @@
 		(instances
 			(project "policlock-main"
 				(path "/8f25dc1f-4709-513e-82c3-d067157683da/30c4f62e-a999-52bd-abab-f36f61d332ff"
-					(reference "#PWR067")
+					(reference "#PWR059")
 					(unit 1)
 				)
 			)
@@ -2608,8 +2608,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "73ee4266-6990-5daf-a655-1f6809abcf7a")
-		(property "Reference" "#PWR068"
+		(uuid "e221d716-b43d-56cc-ade5-61fd64eedb57")
+		(property "Reference" "#PWR060"
 			(at 60.96 147.32 0)
 			(effects
 				(font
@@ -2659,7 +2659,7 @@
 		(instances
 			(project "policlock-main"
 				(path "/8f25dc1f-4709-513e-82c3-d067157683da/30c4f62e-a999-52bd-abab-f36f61d332ff"
-					(reference "#PWR068")
+					(reference "#PWR060")
 					(unit 1)
 				)
 			)
@@ -2770,8 +2770,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "18a54f22-30e1-5a0e-941d-74f8ebad23dd")
-		(property "Reference" "#PWR069"
+		(uuid "b360f0da-f349-59cc-819a-8e9a0a37448b")
+		(property "Reference" "#PWR061"
 			(at 160.02 147.32 0)
 			(effects
 				(font
@@ -2821,7 +2821,7 @@
 		(instances
 			(project "policlock-main"
 				(path "/8f25dc1f-4709-513e-82c3-d067157683da/30c4f62e-a999-52bd-abab-f36f61d332ff"
-					(reference "#PWR069")
+					(reference "#PWR061")
 					(unit 1)
 				)
 			)
@@ -2988,8 +2988,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "efdbaca2-476f-5b79-836f-f49bb0b6f5c4")
-		(property "Reference" "#PWR070"
+		(uuid "f904c696-619f-5796-940e-c8d7ae18e846")
+		(property "Reference" "#PWR062"
 			(at 175.26 187.96 0)
 			(effects
 				(font
@@ -3039,7 +3039,7 @@
 		(instances
 			(project "policlock-main"
 				(path "/8f25dc1f-4709-513e-82c3-d067157683da/30c4f62e-a999-52bd-abab-f36f61d332ff"
-					(reference "#PWR070")
+					(reference "#PWR062")
 					(unit 1)
 				)
 			)

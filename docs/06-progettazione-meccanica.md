@@ -1,6 +1,6 @@
 # 06 — Specifiche meccaniche e stampa 3D
 
-**Versione:** 0.6 · **Stato:** geometria concettuale, CAD non ancora disponibile · **Data:** 2026-11-07
+**Versione:** 0.7 · **Stato:** geometria concettuale, CAD non ancora disponibile · **Data:** 2026-11-07
 
 ## 1. Intento estetico (CONF)
 
@@ -19,13 +19,13 @@ I render del concept sono **riferimenti estetici**, non modelli 3D quotati, né 
                  CAPPELLO / TESTA
             +-----------------------+
             | display IPS 1,28"     | <-- apertura frontale
-            | schedina portadisplay |
-            | (solo connettori)     |
+            | modulo display 7 pin  |
+            | (DEC-034)             |
             +-----------+-----------+
                         |
                  BUSTO CAVO
               +---------+---------+
-              | cavo display (FFC)| <-- attraversa il collo
+              | cavetto 7 fili    | <-- attraversa il collo
               | scheda principale | <-- opzione A (o nella testa, B)
               | SHT40 ventilato   |
               +---------+---------+
@@ -40,20 +40,20 @@ I render del concept sono **riferimenti estetici**, non modelli 3D quotati, né 
    regolatore e retroilluminazione.
 ```
 
-Nella testa c'è solo il display sulla schedina portadisplay. La scheda principale è separata (`DEC-021`) e la sua posizione si decide con la bozza Blender (`OPEN-020`):
+Nella testa c'è solo il modulo display a 7 pin (`DEC-034`), con il cavetto che scende nel collo. La scheda principale è separata (`DEC-021`) e la sua posizione si decide con la bozza Blender (`OPEN-020`):
 
 - **Opzione A (preferita)**: scheda nel busto/base con la USB-C saldata sul bordo e affacciata al foro sul sedere; dalla testa scende solo il cavo display.
-- **Opzione B**: scheda nella testa dietro il portadisplay; scendono prolunga USB-C e cavo SHT40.
+- **Opzione B**: scheda nella testa dietro il modulo display; scendono prolunga USB-C e cavo SHT40.
 
-In una chibi la cavità più grande è la testa, mentre il busto è stretto: la bozza deve verificare che la scheda principale entri nel busto/base. Senza batteria (`DEC-023`) la base è libera: serve una **zavorra** (es. pesi metallici o pallini in un vano chiuso) per tenere la statuetta stabile con il cavo sempre collegato. Il collo deve lasciare passare il cavo display con i connettori e un raggio di curvatura adeguato.
+In una chibi la cavità più grande è la testa, mentre il busto è stretto: la bozza deve verificare che la scheda principale entri nel busto/base. Senza batteria (`DEC-023`) la base è libera: serve una **zavorra** (es. pesi metallici o pallini in un vano chiuso) per tenere la statuetta stabile con il cavo sempre collegato. Il collo deve lasciare passare il cavetto del display con il suo connettore Dupont a 7 vie (circa 18 × 2,5 mm) e un raggio di curvatura adeguato.
 
 ## 3. Dimensionamento e congelamento quote
 
 - **Altezza statuetta indicativa**: 130–160 mm (CAND, non misura definitiva).
-- Display: IPS rotondo **1,28"** (`DEC-016`), area attiva circa 32 mm di diametro (da verificare sul datasheet del pannello); vetro, cornice, FPC e PCB dietro sono più grandi.
-- Schedina portadisplay e scheda principale si disegnano in KiCad **insieme** al CAD: sagome, fori di fissaggio, posizione di USB-C e connettori sono quote condivise (STEP esportato da KiCad).
-- Determinare ingombro reale di: pannello con FPC, portadisplay, scheda principale con componenti, cavo display e connettori, eventuale prolunga USB-C e staffa, viti, zavorra, modulo SHT40 (`DEC-028`), modulo RTC DS3231 (`DEC-024`), pulsante, spina del cavo USB-C.
-- **Scheda principale (rev 0.1, sbrogliata)**: **40 × 30 × 1,6 mm**, ingombro totale circa **45,3 × 30 mm** con l'antenna del modulo che sporge di ~5,3 mm dal bordo destro (nessun materiale conduttivo né viti metalliche vicino all'antenna). USB-C a filo del bordo inferiore (centro a 30,1 mm dal bordo sinistro), due fori **M2** a (22,7; 27,4) e (37,5; 27,4) mm per avvitare la scheda e scaricare lo sforzo del cavo; FFC sul bordo superiore, JST-SH sul bordo sinistro; retro senza componenti (solo pad di test). Quote e altezze dei componenti: STEP in `hardware/policlock-main/` (dettagli in [02](02-architettura-hardware.md) §3.2).
+- Display: modulo IPS rotondo **1,28"** (`DEC-016`, `DEC-034`), area attiva circa 32 mm di diametro; la schedina del modulo con i 7 piedini è più grande del vetro: misurare il modulo ricevuto (`OPEN-016`).
+- La scheda principale si disegna in KiCad **insieme** al CAD: sagome, fori di fissaggio, posizione di USB-C e connettori sono quote condivise (STEP esportato da KiCad).
+- Determinare ingombro reale di: modulo display con cavetto, scheda principale con componenti, cavo display e connettori, eventuale prolunga USB-C e staffa, viti, zavorra, modulo SHT40 (`DEC-028`), modulo RTC DS3231 (`DEC-024`), pulsante, spina del cavo USB-C.
+- **Scheda principale (rev 0.2, `DEC-036`)**: **50 × 40 × 1,6 mm**, con un **intaglio** di circa 7,8 × 20,2 mm nell'angolo in alto a destra: l'antenna del modulo ESP32 sta dentro l'ingombro 50 × 40 ma sopra l'intaglio, con la punta a 2,5 mm dal bordo destro (nessun materiale conduttivo né viti metalliche vicino all'antenna). USB-C a filo del bordo inferiore (centro a 32,0 mm dal bordo sinistro, guscio sporgente 0,4 mm), due fori **M2** a (22,5; 36,5) e (42,0; 36,5) mm per avvitare la scheda e scaricare lo sforzo del cavo. Header display a 90° sul bordo superiore (centro a 17,5 mm): i **piedini sporgono di circa 5,6 mm oltre il bordo** e il connettore Dupont aggiunge altri ~14 mm, da prevedere nel CAD. JST-SH sul lato sinistro, con il corpo a 2,5 mm dal bordo (regola di assemblaggio JLC, `DEC-040`); retro senza componenti (solo pad di test). Studio volumetrico 1:1 ancora da fare (`OPEN-028`). Quote: STEP in `hardware/policlock-main/` (dettagli in [02](02-architettura-hardware.md) §3.2).
 - Definire tolleranze fit e gioco dei cablaggi su stampa test, non da aspettative teoriche della stampante.
 
 Fonti quote: datasheet meccanico del pannello acquistato, file KiCad del PCB (esportazione STEP) e misure con calibro.
@@ -61,7 +61,7 @@ Fonti quote: datasheet meccanico del pannello acquistato, file KiCad del PCB (es
 ## 4. Sottogruppi CAD consigliati
 
 1. `head_front`: frontale/testa con anello display e cappello, eventuale volume capelli.
-2. `head_rear`: guscio posteriore testa con supporto del portadisplay, passaggio cavo, accesso viti.
+2. `head_rear`: guscio posteriore testa con supporto del modulo display, passaggio cavo, accesso viti.
 3. `body_shell`: busto cavo, braccia/gambe e passaggi cablaggio.
 4. `base_insert`: vano zavorra, guida di uscita del cavo USB, appoggio antiscivolo.
 5. `usb_bracket` / `main_board_mount`: supporto avvitato della scheda principale con la USB-C allineata al foro sul sedere (opzione A) o staffa della prolunga (opzione B).

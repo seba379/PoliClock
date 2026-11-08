@@ -2,7 +2,7 @@
 	(version "E")
 	(design
 		(source "C:\\Users\\Utente\\Desktop\\Progetti\\PoliClock\\PoliClock\\.claude\\worktrees\\hardware-schematic-4ff868\\hardware\\policlock-main\\policlock-main.kicad_sch")
-		(date "2026-11-07T19:30:33")
+		(date "2026-11-08T06:43:35")
 		(tool "Eeschema 10.0.6")
 		(sheet
 			(number "1")
@@ -16,11 +16,11 @@
 				(source "policlock-main.kicad_sch")
 				(comment
 					(number "1")
-					(value "Schema gerarchico. Rev 0.1 NON validata: revisione visiva del proprietario richiesta.")
+					(value "Schema gerarchico. Rev 0.2 NON validata: revisione visiva del proprietario richiesta.")
 				)
 				(comment
 					(number "2")
-					(value "ESP32-C3-MINI-1-N4, USB-C, AMS1117-3.3, FFC 16 poli verso portadisplay.")
+					(value "ESP32-C3-MINI-1-H4X, USB-C, LDO TLV75533, display GC9A01 su modulo 7 pin (DEC-034).")
 				)
 				(comment
 					(number "3")
@@ -150,10 +150,10 @@
 		)
 		(sheet
 			(number "4")
-			(name "/Display (cavo FFC)/")
+			(name "/Display (modulo 7 pin)/")
 			(tstamps "/20ad8c36-b999-56cb-b9d3-b8060cbfc155/")
 			(title_block
-				(title "PoliClock main - Display (cavo FFC)")
+				(title "PoliClock main - Display (modulo 7 pin)")
 				(company "PoliClock")
 				(rev "0.1")
 				(date "2026-11-07")
@@ -291,7 +291,7 @@
 				(names "/USB e alimentazione/")
 				(tstamps "/b41bf69b-2d9a-59eb-b9e8-768fd00dcd3d/")
 			)
-			(tstamps "560c3c98-7cfa-56bb-a779-6e2889d57128")
+			(tstamps "26266916-1b0b-500b-93de-4702a4347787")
 			(units
 				(unit
 					(name "A")
@@ -351,7 +351,7 @@
 				(names "/USB e alimentazione/")
 				(tstamps "/b41bf69b-2d9a-59eb-b9e8-768fd00dcd3d/")
 			)
-			(tstamps "53ae4bf4-9cd9-5c95-ba16-ba51ad5aeebd")
+			(tstamps "699e01bd-d808-5029-8513-f0abab93f00c")
 			(units
 				(unit
 					(name "A")
@@ -368,14 +368,14 @@
 		)
 		(comp
 			(ref "C3")
-			(value "22uF")
-			(footprint "Capacitor_SMD:C_0805_2012Metric")
+			(value "10uF")
+			(footprint "Capacitor_SMD:C_0603_1608Metric")
 			(description "Unpolarized capacitor")
 			(fields
 				(field
-					(name "LCSC") "C45783")
+					(name "LCSC") "C19702")
 				(field
-					(name "Footprint") "Capacitor_SMD:C_0805_2012Metric")
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
 				(field
 					(name "Datasheet")
 				)
@@ -389,7 +389,7 @@
 			)
 			(property
 				(name "LCSC")
-				(value "C45783")
+				(value "C19702")
 			)
 			(property
 				(name "Sheetname")
@@ -411,7 +411,7 @@
 				(names "/USB e alimentazione/")
 				(tstamps "/b41bf69b-2d9a-59eb-b9e8-768fd00dcd3d/")
 			)
-			(tstamps "a10efb9c-2d20-584b-8a72-ecef39c7fdfb")
+			(tstamps "9bfb8595-233f-55d1-9c53-cb16e879dbd5")
 			(units
 				(unit
 					(name "A")
@@ -471,7 +471,7 @@
 				(names "/USB e alimentazione/")
 				(tstamps "/b41bf69b-2d9a-59eb-b9e8-768fd00dcd3d/")
 			)
-			(tstamps "6e1561b1-fc70-5207-a455-59e246650146")
+			(tstamps "a502df74-4da0-591c-b1cf-7b751f53636a")
 			(units
 				(unit
 					(name "A")
@@ -531,7 +531,7 @@
 				(names "/USB e alimentazione/")
 				(tstamps "/b41bf69b-2d9a-59eb-b9e8-768fd00dcd3d/")
 			)
-			(tstamps "acdcf8b7-3c87-5afc-8c22-ee2f6c297d18")
+			(tstamps "6bef12da-3909-5440-ace3-c3cc2fda6e9a")
 			(units
 				(unit
 					(name "A")
@@ -549,23 +549,23 @@
 		(comp
 			(ref "J1")
 			(value "TYPE-C-31-M-12")
-			(footprint "PoliClock:USB-C_SMD-TYPE-C-31-M-12_1")
+			(footprint "PoliClock:USB_C_Receptacle_HRO_TYPE-C-31-M-12")
 			(datasheet "https://www.lcsc.com/datasheet/C165948.pdf")
-			(description "Ricettacolo USB-C 16P, solo USB 2.0")
+			(description "Ricettacolo USB-C 16P HRO, solo USB 2.0 (footprint libreria KiCad dal disegno HRO)")
 			(fields
 				(field
 					(name "LCSC") "C165948")
 				(field
-					(name "Footprint") "PoliClock:USB-C_SMD-TYPE-C-31-M-12_1")
+					(name "Footprint") "PoliClock:USB_C_Receptacle_HRO_TYPE-C-31-M-12")
 				(field
 					(name "Datasheet") "https://www.lcsc.com/datasheet/C165948.pdf")
 				(field
-					(name "Description") "Ricettacolo USB-C 16P, solo USB 2.0")
+					(name "Description") "Ricettacolo USB-C 16P HRO, solo USB 2.0 (footprint libreria KiCad dal disegno HRO)")
 			)
 			(libsource
-				(lib "PoliClock")
-				(part "TYPE-C-31-M-12")
-				(description "")
+				(lib "Connector")
+				(part "USB_C_Receptacle_USB2.0_16P")
+				(description "USB 2.0-only 16P Type-C Receptacle connector")
 			)
 			(property
 				(name "LCSC")
@@ -581,7 +581,11 @@
 			)
 			(property
 				(name "ki_keywords")
-				(value "USB Connectors")
+				(value "usb universal serial bus type-C USB2.0")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "USB*C*Receptacle*")
 			)
 			(sheetpath
 				(names "/USB e alimentazione/")
@@ -593,16 +597,40 @@
 					(name "A")
 					(pins
 						(pin
-							(num "A1B12")
+							(num "SH")
 						)
 						(pin
-							(num "A4B9")
+							(num "A1")
 						)
 						(pin
-							(num "B8")
+							(num "A12")
+						)
+						(pin
+							(num "B1")
+						)
+						(pin
+							(num "B12")
+						)
+						(pin
+							(num "A4")
+						)
+						(pin
+							(num "A9")
+						)
+						(pin
+							(num "B4")
+						)
+						(pin
+							(num "B9")
 						)
 						(pin
 							(num "A5")
+						)
+						(pin
+							(num "B5")
+						)
+						(pin
+							(num "A7")
 						)
 						(pin
 							(num "B7")
@@ -611,34 +639,13 @@
 							(num "A6")
 						)
 						(pin
-							(num "A7")
-						)
-						(pin
 							(num "B6")
 						)
 						(pin
 							(num "A8")
 						)
 						(pin
-							(num "B5")
-						)
-						(pin
-							(num "B4A9")
-						)
-						(pin
-							(num "B1A12")
-						)
-						(pin
-							(num "4")
-						)
-						(pin
-							(num "3")
-						)
-						(pin
-							(num "2")
-						)
-						(pin
-							(num "1")
+							(num "B8")
 						)
 					)
 				)
@@ -689,7 +696,7 @@
 				(names "/USB e alimentazione/")
 				(tstamps "/b41bf69b-2d9a-59eb-b9e8-768fd00dcd3d/")
 			)
-			(tstamps "6b6a38e4-a997-5f57-b2c8-f34906f6ae35")
+			(tstamps "bb508ea0-1b77-5280-a81b-0da5d20973d8")
 			(units
 				(unit
 					(name "A")
@@ -749,7 +756,7 @@
 				(names "/USB e alimentazione/")
 				(tstamps "/b41bf69b-2d9a-59eb-b9e8-768fd00dcd3d/")
 			)
-			(tstamps "e3119308-b436-5762-b65e-287f6a12d2cb")
+			(tstamps "e8cc55dc-cd06-5c20-86cc-91d03067109d")
 			(units
 				(unit
 					(name "A")
@@ -809,7 +816,7 @@
 				(names "/USB e alimentazione/")
 				(tstamps "/b41bf69b-2d9a-59eb-b9e8-768fd00dcd3d/")
 			)
-			(tstamps "5fbaa3db-83c6-5490-ba63-e86028d35506")
+			(tstamps "568daa66-a397-52a7-ad3c-c599e8fc3456")
 			(units
 				(unit
 					(name "A")
@@ -869,7 +876,7 @@
 				(names "/USB e alimentazione/")
 				(tstamps "/b41bf69b-2d9a-59eb-b9e8-768fd00dcd3d/")
 			)
-			(tstamps "c356beb2-b7a9-5fda-acde-0ec7e05448d1")
+			(tstamps "b36f3ef1-e8e2-51df-9a81-a5e9d805f096")
 			(units
 				(unit
 					(name "A")
@@ -929,7 +936,7 @@
 				(names "/USB e alimentazione/")
 				(tstamps "/b41bf69b-2d9a-59eb-b9e8-768fd00dcd3d/")
 			)
-			(tstamps "f3b59d35-e071-5266-9fc7-eba91621d988")
+			(tstamps "c3acee62-1807-5bb4-b388-a7a3a9f61342")
 			(units
 				(unit
 					(name "A")
@@ -993,7 +1000,7 @@
 				(names "/USB e alimentazione/")
 				(tstamps "/b41bf69b-2d9a-59eb-b9e8-768fd00dcd3d/")
 			)
-			(tstamps "8f1bf068-e0a5-5521-b7f0-9e93c6626b6b")
+			(tstamps "1e24756f-8bb1-585c-981c-806b924bfe45")
 			(units
 				(unit
 					(name "A")
@@ -1054,7 +1061,7 @@
 				(names "/USB e alimentazione/")
 				(tstamps "/b41bf69b-2d9a-59eb-b9e8-768fd00dcd3d/")
 			)
-			(tstamps "8f554737-0150-56d5-a0c2-a15bfd5801ab")
+			(tstamps "3183c3ef-7195-5d7e-8bde-6a4eeb34237b")
 			(units
 				(unit
 					(name "A")
@@ -1115,7 +1122,7 @@
 				(names "/USB e alimentazione/")
 				(tstamps "/b41bf69b-2d9a-59eb-b9e8-768fd00dcd3d/")
 			)
-			(tstamps "a5c78663-f29b-58d5-8a7d-38400a708f18")
+			(tstamps "2d8d16ca-6a35-5d72-a5c1-adacb006470c")
 			(units
 				(unit
 					(name "A")
@@ -1176,7 +1183,7 @@
 				(names "/USB e alimentazione/")
 				(tstamps "/b41bf69b-2d9a-59eb-b9e8-768fd00dcd3d/")
 			)
-			(tstamps "5a106182-4809-51f0-89a5-b4188c0b2dfe")
+			(tstamps "f0c1474e-3efa-50ba-9b97-9a8c13e05b71")
 			(units
 				(unit
 					(name "A")
@@ -1233,7 +1240,7 @@
 				(names "/USB e alimentazione/")
 				(tstamps "/b41bf69b-2d9a-59eb-b9e8-768fd00dcd3d/")
 			)
-			(tstamps "348f5719-fe1d-54b5-b466-ee197f493cd1")
+			(tstamps "a4cb71c0-037b-5a9d-8eb7-f5c64db56efe")
 			(units
 				(unit
 					(name "A")
@@ -1262,28 +1269,28 @@
 		)
 		(comp
 			(ref "U2")
-			(value "AMS1117-3.3")
-			(footprint "Package_TO_SOT_SMD:SOT-223-3_TabPin2")
-			(datasheet "http://www.advanced-monolithic.com/pdf/ds1117.pdf")
-			(description "1A Low Dropout regulator, positive, 3.3V fixed output, SOT-223")
+			(value "TLV75533PDBVR")
+			(footprint "Package_TO_SOT_SMD:SOT-23-5")
+			(datasheet "https://www.ti.com/lit/ds/symlink/tlv755p.pdf")
+			(description "LDO 500 mA, stabile con MLCC >= 1 uF (TI SBVS320D)")
 			(fields
 				(field
-					(name "LCSC") "C6186")
+					(name "LCSC") "C404027")
 				(field
-					(name "Footprint") "Package_TO_SOT_SMD:SOT-223-3_TabPin2")
+					(name "Footprint") "Package_TO_SOT_SMD:SOT-23-5")
 				(field
-					(name "Datasheet") "http://www.advanced-monolithic.com/pdf/ds1117.pdf")
+					(name "Datasheet") "https://www.ti.com/lit/ds/symlink/tlv755p.pdf")
 				(field
-					(name "Description") "1A Low Dropout regulator, positive, 3.3V fixed output, SOT-223")
+					(name "Description") "LDO 500 mA, stabile con MLCC >= 1 uF (TI SBVS320D)")
 			)
 			(libsource
 				(lib "Regulator_Linear")
-				(part "AMS1117-3.3")
-				(description "1A Low Dropout regulator, positive, 3.3V fixed output, SOT-223")
+				(part "TLV75533PDBV")
+				(description "500mA Low Dropout Voltage Regulator, Fixed Output 3.3V, SOT-23-5")
 			)
 			(property
 				(name "LCSC")
-				(value "C6186")
+				(value "C404027")
 			)
 			(property
 				(name "Sheetname")
@@ -1295,29 +1302,35 @@
 			)
 			(property
 				(name "ki_keywords")
-				(value "linear regulator ldo fixed positive")
+				(value "LDO Regulator Fixed Positive")
 			)
 			(property
 				(name "ki_fp_filters")
-				(value "SOT?223*TabPin2*")
+				(value "SOT?23*")
 			)
 			(sheetpath
 				(names "/USB e alimentazione/")
 				(tstamps "/b41bf69b-2d9a-59eb-b9e8-768fd00dcd3d/")
 			)
-			(tstamps "368e7a16-d8ab-58a8-82ba-24ab2a66b7a5")
+			(tstamps "820d14f4-4c19-5a62-855b-9b4d01712602")
 			(units
 				(unit
 					(name "A")
 					(pins
 						(pin
-							(num "3")
-						)
-						(pin
 							(num "1")
 						)
 						(pin
+							(num "3")
+						)
+						(pin
 							(num "2")
+						)
+						(pin
+							(num "4")
+						)
+						(pin
+							(num "5")
 						)
 					)
 				)
@@ -1608,119 +1621,7 @@
 				(names "/MCU/")
 				(tstamps "/e7cf3c2a-3bdb-5445-898a-db7fa374740a/")
 			)
-			(tstamps "e3e921a7-806f-5aa3-93c0-76138e2eadd1")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "SW1")
-			(value "RESET")
-			(footprint "PoliClock:SW-SMD_L3.9-W3.0-P4.45")
-			(datasheet "https://www.lcsc.com/datasheet/C720477.pdf")
-			(description "Tasto 4x3 mm (DEC-029)")
-			(fields
-				(field
-					(name "LCSC") "C720477")
-				(field
-					(name "Footprint") "PoliClock:SW-SMD_L3.9-W3.0-P4.45")
-				(field
-					(name "Datasheet") "https://www.lcsc.com/datasheet/C720477.pdf")
-				(field
-					(name "Description") "Tasto 4x3 mm (DEC-029)")
-			)
-			(libsource
-				(lib "PoliClock")
-				(part "TS-1088-AR02016")
-				(description "")
-			)
-			(property
-				(name "LCSC")
-				(value "C720477")
-			)
-			(property
-				(name "Sheetname")
-				(value "MCU")
-			)
-			(property
-				(name "Sheetfile")
-				(value "mcu.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "Tactile Switches")
-			)
-			(sheetpath
-				(names "/MCU/")
-				(tstamps "/e7cf3c2a-3bdb-5445-898a-db7fa374740a/")
-			)
-			(tstamps "a84e2773-450c-595d-9083-f7f88e344cd3")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "SW2")
-			(value "BOOT")
-			(footprint "PoliClock:SW-SMD_L3.9-W3.0-P4.45")
-			(datasheet "https://www.lcsc.com/datasheet/C720477.pdf")
-			(description "Tasto 4x3 mm (DEC-029)")
-			(fields
-				(field
-					(name "LCSC") "C720477")
-				(field
-					(name "Footprint") "PoliClock:SW-SMD_L3.9-W3.0-P4.45")
-				(field
-					(name "Datasheet") "https://www.lcsc.com/datasheet/C720477.pdf")
-				(field
-					(name "Description") "Tasto 4x3 mm (DEC-029)")
-			)
-			(libsource
-				(lib "PoliClock")
-				(part "TS-1088-AR02016")
-				(description "")
-			)
-			(property
-				(name "LCSC")
-				(value "C720477")
-			)
-			(property
-				(name "Sheetname")
-				(value "MCU")
-			)
-			(property
-				(name "Sheetfile")
-				(value "mcu.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "Tactile Switches")
-			)
-			(sheetpath
-				(names "/MCU/")
-				(tstamps "/e7cf3c2a-3bdb-5445-898a-db7fa374740a/")
-			)
-			(tstamps "2e032702-7e74-5cb3-a30a-4a2bf9166f69")
+			(tstamps "dd93e958-71a0-5b93-8bbb-231152624a0b")
 			(units
 				(unit
 					(name "A")
@@ -1784,7 +1685,7 @@
 				(names "/MCU/")
 				(tstamps "/e7cf3c2a-3bdb-5445-898a-db7fa374740a/")
 			)
-			(tstamps "722e8105-75c0-5e0b-a123-01b555cdf12e")
+			(tstamps "4043d53f-08bf-5a80-a8fd-6000a078cb38")
 			(units
 				(unit
 					(name "A")
@@ -1845,7 +1746,190 @@
 				(names "/MCU/")
 				(tstamps "/e7cf3c2a-3bdb-5445-898a-db7fa374740a/")
 			)
-			(tstamps "81107240-a0eb-54bd-bbd2-e4f224cd5cb0")
+			(tstamps "d699a8b2-5706-5ce4-9711-4560c7e38373")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TP9")
+			(value "IO0 (libero)")
+			(footprint "TestPoint:TestPoint_Pad_D1.5mm")
+			(description "test point")
+			(fields
+				(field
+					(name "LCSC")
+				)
+				(field
+					(name "Footprint") "TestPoint:TestPoint_Pad_D1.5mm")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "test point")
+			)
+			(libsource
+				(lib "Connector")
+				(part "TestPoint")
+				(description "test point")
+			)
+			(property
+				(name "LCSC")
+				(value "")
+			)
+			(property
+				(name "Sheetname")
+				(value "MCU")
+			)
+			(property
+				(name "Sheetfile")
+				(value "mcu.kicad_sch")
+			)
+			(property
+				(name "exclude_from_bom")
+			)
+			(property
+				(name "ki_keywords")
+				(value "test point tp")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "Pin* Test*")
+			)
+			(sheetpath
+				(names "/MCU/")
+				(tstamps "/e7cf3c2a-3bdb-5445-898a-db7fa374740a/")
+			)
+			(tstamps "ae833301-b6bb-5b58-891e-372c1fe2d519")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TP10")
+			(value "IO1 (libero)")
+			(footprint "TestPoint:TestPoint_Pad_D1.5mm")
+			(description "test point")
+			(fields
+				(field
+					(name "LCSC")
+				)
+				(field
+					(name "Footprint") "TestPoint:TestPoint_Pad_D1.5mm")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "test point")
+			)
+			(libsource
+				(lib "Connector")
+				(part "TestPoint")
+				(description "test point")
+			)
+			(property
+				(name "LCSC")
+				(value "")
+			)
+			(property
+				(name "Sheetname")
+				(value "MCU")
+			)
+			(property
+				(name "Sheetfile")
+				(value "mcu.kicad_sch")
+			)
+			(property
+				(name "exclude_from_bom")
+			)
+			(property
+				(name "ki_keywords")
+				(value "test point tp")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "Pin* Test*")
+			)
+			(sheetpath
+				(names "/MCU/")
+				(tstamps "/e7cf3c2a-3bdb-5445-898a-db7fa374740a/")
+			)
+			(tstamps "c8267b82-2a4d-5e03-8054-df3a29eea0ef")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "TP11")
+			(value "IO9 (BOOT)")
+			(footprint "TestPoint:TestPoint_Pad_D1.5mm")
+			(description "test point")
+			(fields
+				(field
+					(name "LCSC")
+				)
+				(field
+					(name "Footprint") "TestPoint:TestPoint_Pad_D1.5mm")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "test point")
+			)
+			(libsource
+				(lib "Connector")
+				(part "TestPoint")
+				(description "test point")
+			)
+			(property
+				(name "LCSC")
+				(value "")
+			)
+			(property
+				(name "Sheetname")
+				(value "MCU")
+			)
+			(property
+				(name "Sheetfile")
+				(value "mcu.kicad_sch")
+			)
+			(property
+				(name "exclude_from_bom")
+			)
+			(property
+				(name "ki_keywords")
+				(value "test point tp")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "Pin* Test*")
+			)
+			(sheetpath
+				(names "/MCU/")
+				(tstamps "/e7cf3c2a-3bdb-5445-898a-db7fa374740a/")
+			)
+			(tstamps "fd8363f9-b519-5206-878e-934e35a90486")
 			(units
 				(unit
 					(name "A")
@@ -1859,28 +1943,28 @@
 		)
 		(comp
 			(ref "U3")
-			(value "ESP32-C3-MINI-1-N4")
+			(value "ESP32-C3-MINI-1-H4X")
 			(footprint "PoliClock:WIFIM-SMD_ESP32-C3-MINI-1")
 			(datasheet "https://www.espressif.com/sites/default/files/documentation/esp32-c3-mini-1_datasheet_en.pdf")
-			(description "Modulo Wi-Fi/BLE (radio non usata in V1, DEC-012)")
+			(description "Variante Recommended (DEC-035); radio non usata in V1 (DEC-012)")
 			(fields
 				(field
-					(name "LCSC") "C2838502")
+					(name "LCSC") "C41349510")
 				(field
 					(name "Footprint") "PoliClock:WIFIM-SMD_ESP32-C3-MINI-1")
 				(field
 					(name "Datasheet") "https://www.espressif.com/sites/default/files/documentation/esp32-c3-mini-1_datasheet_en.pdf")
 				(field
-					(name "Description") "Modulo Wi-Fi/BLE (radio non usata in V1, DEC-012)")
+					(name "Description") "Variante Recommended (DEC-035); radio non usata in V1 (DEC-012)")
 			)
 			(libsource
 				(lib "PoliClock")
-				(part "ESP32-C3-MINI-1-N4")
+				(part "ESP32-C3-MINI-1")
 				(description "")
 			)
 			(property
 				(name "LCSC")
-				(value "C2838502")
+				(value "C41349510")
 			)
 			(property
 				(name "Sheetname")
@@ -2067,33 +2151,33 @@
 			)
 		)
 		(comp
-			(ref "J2")
-			(value "AFC01-S16FCA-00")
-			(footprint "PoliClock:FPC-SMD_P0.50-16P_FGS-XJ-H2.0")
-			(datasheet "https://www.lcsc.com/datasheet/C262665.pdf")
-			(description "FFC/FPC ZIF 16P 0,5 mm, H 2,0 mm")
+			(ref "C9")
+			(value "10uF")
+			(footprint "Capacitor_SMD:C_0603_1608Metric")
+			(description "Unpolarized capacitor")
 			(fields
 				(field
-					(name "LCSC") "C262665")
+					(name "LCSC") "C19702")
 				(field
-					(name "Footprint") "PoliClock:FPC-SMD_P0.50-16P_FGS-XJ-H2.0")
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
 				(field
-					(name "Datasheet") "https://www.lcsc.com/datasheet/C262665.pdf")
+					(name "Datasheet")
+				)
 				(field
-					(name "Description") "FFC/FPC ZIF 16P 0,5 mm, H 2,0 mm")
+					(name "Description") "Unpolarized capacitor")
 			)
 			(libsource
-				(lib "PoliClock")
-				(part "AFC01-S16FCA-00")
-				(description "")
+				(lib "Device")
+				(part "C")
+				(description "Unpolarized capacitor")
 			)
 			(property
 				(name "LCSC")
-				(value "C262665")
+				(value "C19702")
 			)
 			(property
 				(name "Sheetname")
-				(value "Display (cavo FFC)")
+				(value "Display (modulo 7 pin)")
 			)
 			(property
 				(name "Sheetfile")
@@ -2101,10 +2185,126 @@
 			)
 			(property
 				(name "ki_keywords")
-				(value "FFC/FPC Connectors")
+				(value "cap capacitor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
 			)
 			(sheetpath
-				(names "/Display (cavo FFC)/")
+				(names "/Display (modulo 7 pin)/")
+				(tstamps "/20ad8c36-b999-56cb-b9d3-b8060cbfc155/")
+			)
+			(tstamps "f5b28812-ed91-5912-8d16-56c6c21fda7e")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "C10")
+			(value "100nF")
+			(footprint "Capacitor_SMD:C_0603_1608Metric")
+			(description "Unpolarized capacitor")
+			(fields
+				(field
+					(name "LCSC") "C14663")
+				(field
+					(name "Footprint") "Capacitor_SMD:C_0603_1608Metric")
+				(field
+					(name "Datasheet")
+				)
+				(field
+					(name "Description") "Unpolarized capacitor")
+			)
+			(libsource
+				(lib "Device")
+				(part "C")
+				(description "Unpolarized capacitor")
+			)
+			(property
+				(name "LCSC")
+				(value "C14663")
+			)
+			(property
+				(name "Sheetname")
+				(value "Display (modulo 7 pin)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "display.kicad_sch")
+			)
+			(property
+				(name "ki_keywords")
+				(value "cap capacitor")
+			)
+			(property
+				(name "ki_fp_filters")
+				(value "C_*")
+			)
+			(sheetpath
+				(names "/Display (modulo 7 pin)/")
+				(tstamps "/20ad8c36-b999-56cb-b9d3-b8060cbfc155/")
+			)
+			(tstamps "c3f263ee-244a-5a9e-9090-4fce5194c980")
+			(units
+				(unit
+					(name "A")
+					(pins
+						(pin
+							(num "1")
+						)
+						(pin
+							(num "2")
+						)
+					)
+				)
+			)
+		)
+		(comp
+			(ref "J2")
+			(value "HX PZ2.54-1x7P WT")
+			(footprint "PoliClock:HDR-SMD_7P-P2.54-H-M-W13.3-N")
+			(datasheet "https://www.lcsc.com/datasheet/C46061680.pdf")
+			(description "Header maschio 1x7 2,54 mm SMD a 90 gradi: cavo Dupont 7 fili verso il modulo")
+			(fields
+				(field
+					(name "LCSC") "C46061680")
+				(field
+					(name "Footprint") "PoliClock:HDR-SMD_7P-P2.54-H-M-W13.3-N")
+				(field
+					(name "Datasheet") "https://www.lcsc.com/datasheet/C46061680.pdf")
+				(field
+					(name "Description") "Header maschio 1x7 2,54 mm SMD a 90 gradi: cavo Dupont 7 fili verso il modulo")
+			)
+			(libsource
+				(lib "PoliClock")
+				(part "HXPZ2.54-1X7PWT")
+				(description "")
+			)
+			(property
+				(name "LCSC")
+				(value "C46061680")
+			)
+			(property
+				(name "Sheetname")
+				(value "Display (modulo 7 pin)")
+			)
+			(property
+				(name "Sheetfile")
+				(value "display.kicad_sch")
+			)
+			(sheetpath
+				(names "/Display (modulo 7 pin)/")
 				(tstamps "/20ad8c36-b999-56cb-b9d3-b8060cbfc155/")
 			)
 			(tstamps "00c9ff80-aaa9-5a05-a1e8-d26e19621902")
@@ -2133,71 +2333,38 @@
 						(pin
 							(num "7")
 						)
-						(pin
-							(num "8")
-						)
-						(pin
-							(num "9")
-						)
-						(pin
-							(num "10")
-						)
-						(pin
-							(num "11")
-						)
-						(pin
-							(num "12")
-						)
-						(pin
-							(num "13")
-						)
-						(pin
-							(num "14")
-						)
-						(pin
-							(num "15")
-						)
-						(pin
-							(num "16")
-						)
-						(pin
-							(num "18")
-						)
-						(pin
-							(num "17")
-						)
 					)
 				)
 			)
 		)
 		(comp
 			(ref "Q1")
-			(value "AO3400A")
+			(value "AO3401A")
 			(footprint "Package_TO_SOT_SMD:SOT-23")
-			(datasheet "https://www.aosmd.com/res/datasheets/AO3400A.pdf")
-			(description "30V Vds, 5.7A Id, N-Channel MOSFET, SOT-23")
+			(datasheet "https://www.aosmd.com/res/datasheets/AO3401A.pdf")
+			(description "-4.0A Id, -30V Vds, P-Channel MOSFET, SOT-23")
 			(fields
 				(field
-					(name "LCSC") "C20917")
+					(name "LCSC") "C15127")
 				(field
 					(name "Footprint") "Package_TO_SOT_SMD:SOT-23")
 				(field
-					(name "Datasheet") "https://www.aosmd.com/res/datasheets/AO3400A.pdf")
+					(name "Datasheet") "https://www.aosmd.com/res/datasheets/AO3401A.pdf")
 				(field
-					(name "Description") "30V Vds, 5.7A Id, N-Channel MOSFET, SOT-23")
+					(name "Description") "-4.0A Id, -30V Vds, P-Channel MOSFET, SOT-23")
 			)
 			(libsource
 				(lib "Transistor_FET")
-				(part "AO3400A")
-				(description "30V Vds, 5.7A Id, N-Channel MOSFET, SOT-23")
+				(part "AO3401A")
+				(description "-4.0A Id, -30V Vds, P-Channel MOSFET, SOT-23")
 			)
 			(property
 				(name "LCSC")
-				(value "C20917")
+				(value "C15127")
 			)
 			(property
 				(name "Sheetname")
-				(value "Display (cavo FFC)")
+				(value "Display (modulo 7 pin)")
 			)
 			(property
 				(name "Sheetfile")
@@ -2205,17 +2372,17 @@
 			)
 			(property
 				(name "ki_keywords")
-				(value "N-Channel MOSFET")
+				(value "P-Channel MOSFET")
 			)
 			(property
 				(name "ki_fp_filters")
 				(value "SOT?23*")
 			)
 			(sheetpath
-				(names "/Display (cavo FFC)/")
+				(names "/Display (modulo 7 pin)/")
 				(tstamps "/20ad8c36-b999-56cb-b9d3-b8060cbfc155/")
 			)
-			(tstamps "6227184a-2a58-5c96-b49f-127a1c749194")
+			(tstamps "91162d3f-b77f-5a63-8e9e-9f7c6de687bd")
 			(units
 				(unit
 					(name "A")
@@ -2260,7 +2427,7 @@
 			)
 			(property
 				(name "Sheetname")
-				(value "Display (cavo FFC)")
+				(value "Display (modulo 7 pin)")
 			)
 			(property
 				(name "Sheetfile")
@@ -2275,10 +2442,10 @@
 				(value "R_*")
 			)
 			(sheetpath
-				(names "/Display (cavo FFC)/")
+				(names "/Display (modulo 7 pin)/")
 				(tstamps "/20ad8c36-b999-56cb-b9d3-b8060cbfc155/")
 			)
-			(tstamps "afcd746e-dae8-57b5-9d13-3309d897fb8b")
+			(tstamps "8c2c20bb-0945-57d4-a690-e19df9ed6b23")
 			(units
 				(unit
 					(name "A")
@@ -2320,7 +2487,7 @@
 			)
 			(property
 				(name "Sheetname")
-				(value "Display (cavo FFC)")
+				(value "Display (modulo 7 pin)")
 			)
 			(property
 				(name "Sheetfile")
@@ -2335,322 +2502,10 @@
 				(value "R_*")
 			)
 			(sheetpath
-				(names "/Display (cavo FFC)/")
+				(names "/Display (modulo 7 pin)/")
 				(tstamps "/20ad8c36-b999-56cb-b9d3-b8060cbfc155/")
 			)
-			(tstamps "0bada21e-af26-53e7-95fd-ec24d9c941ea")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "R10")
-			(value "0Ω")
-			(footprint "Resistor_SMD:R_0603_1608Metric")
-			(description "0 ohm: isola l'alimentazione del display")
-			(fields
-				(field
-					(name "LCSC") "C21189")
-				(field
-					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "0 ohm: isola l'alimentazione del display")
-			)
-			(libsource
-				(lib "Device")
-				(part "R")
-				(description "Resistor")
-			)
-			(property
-				(name "LCSC")
-				(value "C21189")
-			)
-			(property
-				(name "Sheetname")
-				(value "Display (cavo FFC)")
-			)
-			(property
-				(name "Sheetfile")
-				(value "display.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "R res resistor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "R_*")
-			)
-			(sheetpath
-				(names "/Display (cavo FFC)/")
-				(tstamps "/20ad8c36-b999-56cb-b9d3-b8060cbfc155/")
-			)
-			(tstamps "710e9168-2b84-5701-8df8-523645d0ad9e")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "R11")
-			(value "0Ω")
-			(footprint "Resistor_SMD:R_0603_1608Metric")
-			(description "DNP: touch SDA")
-			(fields
-				(field
-					(name "LCSC") "C21189")
-				(field
-					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "DNP: touch SDA")
-			)
-			(libsource
-				(lib "Device")
-				(part "R")
-				(description "Resistor")
-			)
-			(property
-				(name "LCSC")
-				(value "C21189")
-			)
-			(property
-				(name "Sheetname")
-				(value "Display (cavo FFC)")
-			)
-			(property
-				(name "Sheetfile")
-				(value "display.kicad_sch")
-			)
-			(property
-				(name "dnp")
-			)
-			(property
-				(name "ki_keywords")
-				(value "R res resistor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "R_*")
-			)
-			(sheetpath
-				(names "/Display (cavo FFC)/")
-				(tstamps "/20ad8c36-b999-56cb-b9d3-b8060cbfc155/")
-			)
-			(tstamps "5563d99f-fc2c-56b9-a622-d885214e7578")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "R12")
-			(value "0Ω")
-			(footprint "Resistor_SMD:R_0603_1608Metric")
-			(description "DNP: touch SCL")
-			(fields
-				(field
-					(name "LCSC") "C21189")
-				(field
-					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "DNP: touch SCL")
-			)
-			(libsource
-				(lib "Device")
-				(part "R")
-				(description "Resistor")
-			)
-			(property
-				(name "LCSC")
-				(value "C21189")
-			)
-			(property
-				(name "Sheetname")
-				(value "Display (cavo FFC)")
-			)
-			(property
-				(name "Sheetfile")
-				(value "display.kicad_sch")
-			)
-			(property
-				(name "dnp")
-			)
-			(property
-				(name "ki_keywords")
-				(value "R res resistor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "R_*")
-			)
-			(sheetpath
-				(names "/Display (cavo FFC)/")
-				(tstamps "/20ad8c36-b999-56cb-b9d3-b8060cbfc155/")
-			)
-			(tstamps "b5d72d87-01ea-5fa2-841f-1b2157020905")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "R13")
-			(value "10k")
-			(footprint "Resistor_SMD:R_0603_1608Metric")
-			(description "DNP: pull-up INT touch")
-			(fields
-				(field
-					(name "LCSC") "C25804")
-				(field
-					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "DNP: pull-up INT touch")
-			)
-			(libsource
-				(lib "Device")
-				(part "R")
-				(description "Resistor")
-			)
-			(property
-				(name "LCSC")
-				(value "C25804")
-			)
-			(property
-				(name "Sheetname")
-				(value "Display (cavo FFC)")
-			)
-			(property
-				(name "Sheetfile")
-				(value "display.kicad_sch")
-			)
-			(property
-				(name "dnp")
-			)
-			(property
-				(name "ki_keywords")
-				(value "R res resistor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "R_*")
-			)
-			(sheetpath
-				(names "/Display (cavo FFC)/")
-				(tstamps "/20ad8c36-b999-56cb-b9d3-b8060cbfc155/")
-			)
-			(tstamps "6c06a9f0-0cce-5e88-9a7c-f0b56f5803e8")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "R14")
-			(value "10k")
-			(footprint "Resistor_SMD:R_0603_1608Metric")
-			(description "DNP: pull-up RST touch")
-			(fields
-				(field
-					(name "LCSC") "C25804")
-				(field
-					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "DNP: pull-up RST touch")
-			)
-			(libsource
-				(lib "Device")
-				(part "R")
-				(description "Resistor")
-			)
-			(property
-				(name "LCSC")
-				(value "C25804")
-			)
-			(property
-				(name "Sheetname")
-				(value "Display (cavo FFC)")
-			)
-			(property
-				(name "Sheetfile")
-				(value "display.kicad_sch")
-			)
-			(property
-				(name "dnp")
-			)
-			(property
-				(name "ki_keywords")
-				(value "R res resistor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "R_*")
-			)
-			(sheetpath
-				(names "/Display (cavo FFC)/")
-				(tstamps "/20ad8c36-b999-56cb-b9d3-b8060cbfc155/")
-			)
-			(tstamps "e0d27e88-2402-59e8-a7b7-5025d72b86c2")
+			(tstamps "20871432-16ff-52f4-8d6f-93ad24d37855")
 			(units
 				(unit
 					(name "A")
@@ -2669,7 +2524,7 @@
 			(ref "R15")
 			(value "10k")
 			(footprint "Resistor_SMD:R_0603_1608Metric")
-			(description "Pull-up reset pannello")
+			(description "Pull-up reset verso l'alimentazione del modulo")
 			(fields
 				(field
 					(name "LCSC") "C25804")
@@ -2679,7 +2534,7 @@
 					(name "Datasheet")
 				)
 				(field
-					(name "Description") "Pull-up reset pannello")
+					(name "Description") "Pull-up reset verso l'alimentazione del modulo")
 			)
 			(libsource
 				(lib "Device")
@@ -2692,7 +2547,7 @@
 			)
 			(property
 				(name "Sheetname")
-				(value "Display (cavo FFC)")
+				(value "Display (modulo 7 pin)")
 			)
 			(property
 				(name "Sheetfile")
@@ -2707,10 +2562,10 @@
 				(value "R_*")
 			)
 			(sheetpath
-				(names "/Display (cavo FFC)/")
+				(names "/Display (modulo 7 pin)/")
 				(tstamps "/20ad8c36-b999-56cb-b9d3-b8060cbfc155/")
 			)
-			(tstamps "2577136d-7eb9-5913-a15a-e038bc294e08")
+			(tstamps "2110732d-b950-5ef8-b001-e1e052634600")
 			(units
 				(unit
 					(name "A")
@@ -2727,12 +2582,12 @@
 		)
 		(comp
 			(ref "R16")
-			(value "100Ω")
+			(value "1k")
 			(footprint "Resistor_SMD:R_0603_1608Metric")
 			(description "Resistenza di gate")
 			(fields
 				(field
-					(name "LCSC") "C22775")
+					(name "LCSC") "C21190")
 				(field
 					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
 				(field
@@ -2748,11 +2603,11 @@
 			)
 			(property
 				(name "LCSC")
-				(value "C22775")
+				(value "C21190")
 			)
 			(property
 				(name "Sheetname")
-				(value "Display (cavo FFC)")
+				(value "Display (modulo 7 pin)")
 			)
 			(property
 				(name "Sheetfile")
@@ -2767,10 +2622,10 @@
 				(value "R_*")
 			)
 			(sheetpath
-				(names "/Display (cavo FFC)/")
+				(names "/Display (modulo 7 pin)/")
 				(tstamps "/20ad8c36-b999-56cb-b9d3-b8060cbfc155/")
 			)
-			(tstamps "e496f67a-2066-5747-8b44-bc469d044ec4")
+			(tstamps "817c666c-75ce-5428-b75b-f16c7086c868")
 			(units
 				(unit
 					(name "A")
@@ -2789,7 +2644,7 @@
 			(ref "R17")
 			(value "100k")
 			(footprint "Resistor_SMD:R_0603_1608Metric")
-			(description "Gate a massa: retroilluminazione spenta al reset")
+			(description "Gate verso source: modulo spento di default")
 			(fields
 				(field
 					(name "LCSC") "C25803")
@@ -2799,7 +2654,7 @@
 					(name "Datasheet")
 				)
 				(field
-					(name "Description") "Gate a massa: retroilluminazione spenta al reset")
+					(name "Description") "Gate verso source: modulo spento di default")
 			)
 			(libsource
 				(lib "Device")
@@ -2812,7 +2667,7 @@
 			)
 			(property
 				(name "Sheetname")
-				(value "Display (cavo FFC)")
+				(value "Display (modulo 7 pin)")
 			)
 			(property
 				(name "Sheetfile")
@@ -2827,70 +2682,10 @@
 				(value "R_*")
 			)
 			(sheetpath
-				(names "/Display (cavo FFC)/")
+				(names "/Display (modulo 7 pin)/")
 				(tstamps "/20ad8c36-b999-56cb-b9d3-b8060cbfc155/")
 			)
-			(tstamps "6c9f2aa5-e453-5cab-bf78-41c8622e8f67")
-			(units
-				(unit
-					(name "A")
-					(pins
-						(pin
-							(num "1")
-						)
-						(pin
-							(num "2")
-						)
-					)
-				)
-			)
-		)
-		(comp
-			(ref "R18")
-			(value "10Ω")
-			(footprint "Resistor_SMD:R_0603_1608Metric")
-			(description "Limitazione corrente LED (TBD da datasheet pannello)")
-			(fields
-				(field
-					(name "LCSC") "C22859")
-				(field
-					(name "Footprint") "Resistor_SMD:R_0603_1608Metric")
-				(field
-					(name "Datasheet")
-				)
-				(field
-					(name "Description") "Limitazione corrente LED (TBD da datasheet pannello)")
-			)
-			(libsource
-				(lib "Device")
-				(part "R")
-				(description "Resistor")
-			)
-			(property
-				(name "LCSC")
-				(value "C22859")
-			)
-			(property
-				(name "Sheetname")
-				(value "Display (cavo FFC)")
-			)
-			(property
-				(name "Sheetfile")
-				(value "display.kicad_sch")
-			)
-			(property
-				(name "ki_keywords")
-				(value "R res resistor")
-			)
-			(property
-				(name "ki_fp_filters")
-				(value "R_*")
-			)
-			(sheetpath
-				(names "/Display (cavo FFC)/")
-				(tstamps "/20ad8c36-b999-56cb-b9d3-b8060cbfc155/")
-			)
-			(tstamps "b2090222-1b5d-5de7-ac90-4d1d767f1ad4")
+			(tstamps "5669f45f-af06-5ede-9f7b-247d976f36c7")
 			(units
 				(unit
 					(name "A")
@@ -3560,6 +3355,115 @@
 			)
 		)
 		(libpart
+			(lib "Connector")
+			(part "USB_C_Receptacle_USB2.0_16P")
+			(description "USB 2.0-only 16P Type-C Receptacle connector")
+			(docs "https://www.usb.org/sites/default/files/documents/usb_type-c.zip")
+			(footprints
+				(fp "USB*C*Receptacle*")
+			)
+			(fields
+				(field
+					(name "Reference") "J")
+				(field
+					(name "Value") "USB_C_Receptacle_USB2.0_16P")
+				(field
+					(name "Footprint")
+				)
+				(field
+					(name "Datasheet") "https://www.usb.org/sites/default/files/documents/usb_type-c.zip")
+				(field
+					(name "Description") "USB 2.0-only 16P Type-C Receptacle connector")
+			)
+			(pins
+				(pin
+					(num "A1")
+					(name "GND")
+					(type "passive")
+				)
+				(pin
+					(num "A4")
+					(name "VBUS")
+					(type "passive")
+				)
+				(pin
+					(num "A5")
+					(name "CC1")
+					(type "bidirectional")
+				)
+				(pin
+					(num "A6")
+					(name "D+")
+					(type "bidirectional")
+				)
+				(pin
+					(num "A7")
+					(name "D-")
+					(type "bidirectional")
+				)
+				(pin
+					(num "A8")
+					(name "SBU1")
+					(type "bidirectional")
+				)
+				(pin
+					(num "A9")
+					(name "VBUS")
+					(type "passive")
+				)
+				(pin
+					(num "A12")
+					(name "GND")
+					(type "passive")
+				)
+				(pin
+					(num "B1")
+					(name "GND")
+					(type "passive")
+				)
+				(pin
+					(num "B4")
+					(name "VBUS")
+					(type "passive")
+				)
+				(pin
+					(num "B5")
+					(name "CC2")
+					(type "bidirectional")
+				)
+				(pin
+					(num "B6")
+					(name "D+")
+					(type "bidirectional")
+				)
+				(pin
+					(num "B7")
+					(name "D-")
+					(type "bidirectional")
+				)
+				(pin
+					(num "B8")
+					(name "SBU2")
+					(type "bidirectional")
+				)
+				(pin
+					(num "B9")
+					(name "VBUS")
+					(type "passive")
+				)
+				(pin
+					(num "B12")
+					(name "GND")
+					(type "passive")
+				)
+				(pin
+					(num "SH")
+					(name "SHIELD")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
 			(lib "Device")
 			(part "C")
 			(description "Unpolarized capacitor")
@@ -3664,129 +3568,13 @@
 		)
 		(libpart
 			(lib "PoliClock")
-			(part "AFC01-S16FCA-00")
-			(docs "https://lcsc.com/product-detail/Others_JUSHUO-AFC01-S16FCA-00_C262665.html")
-			(fields
-				(field
-					(name "Reference") "J")
-				(field
-					(name "Value") "AFC01-S16FCA-00")
-				(field
-					(name "Footprint") "PoliClock:FPC-SMD_P0.50-16P_FGS-XJ-H2.0")
-				(field
-					(name "Datasheet") "https://lcsc.com/product-detail/Others_JUSHUO-AFC01-S16FCA-00_C262665.html")
-				(field
-					(name "Description")
-				)
-				(field
-					(name "Manufacturer") "JS(钜硕电子)")
-				(field
-					(name "MPN") "AFC01-S16FCA-00")
-				(field
-					(name "LCSC") "C262665")
-			)
-			(pins
-				(pin
-					(num "1")
-					(name "1")
-					(type "passive")
-				)
-				(pin
-					(num "2")
-					(name "2")
-					(type "passive")
-				)
-				(pin
-					(num "3")
-					(name "3")
-					(type "passive")
-				)
-				(pin
-					(num "4")
-					(name "4")
-					(type "passive")
-				)
-				(pin
-					(num "5")
-					(name "5")
-					(type "passive")
-				)
-				(pin
-					(num "6")
-					(name "6")
-					(type "passive")
-				)
-				(pin
-					(num "7")
-					(name "7")
-					(type "passive")
-				)
-				(pin
-					(num "8")
-					(name "8")
-					(type "passive")
-				)
-				(pin
-					(num "9")
-					(name "9")
-					(type "passive")
-				)
-				(pin
-					(num "10")
-					(name "10")
-					(type "passive")
-				)
-				(pin
-					(num "11")
-					(name "11")
-					(type "passive")
-				)
-				(pin
-					(num "12")
-					(name "12")
-					(type "passive")
-				)
-				(pin
-					(num "13")
-					(name "13")
-					(type "passive")
-				)
-				(pin
-					(num "14")
-					(name "14")
-					(type "passive")
-				)
-				(pin
-					(num "15")
-					(name "15")
-					(type "passive")
-				)
-				(pin
-					(num "16")
-					(name "16")
-					(type "passive")
-				)
-				(pin
-					(num "17")
-					(name "17")
-					(type "passive")
-				)
-				(pin
-					(num "18")
-					(name "18")
-					(type "passive")
-				)
-			)
-		)
-		(libpart
-			(lib "PoliClock")
-			(part "ESP32-C3-MINI-1-N4")
+			(part "ESP32-C3-MINI-1")
 			(docs "https://www.espressif.com/sites/default/files/documentation/esp32-c3-mini-1_datasheet_en.pdf")
 			(fields
 				(field
 					(name "Reference") "U")
 				(field
-					(name "Value") "ESP32-C3-MINI-1-N4")
+					(name "Value") "ESP32-C3-MINI-1-H4X")
 				(field
 					(name "Footprint") "PoliClock:WIFIM-SMD_ESP32-C3-MINI-1")
 				(field
@@ -3797,9 +3585,9 @@
 				(field
 					(name "Manufacturer") "ESPRESSIF(乐鑫)")
 				(field
-					(name "MPN") "ESP32-C3-MINI-1-N4")
+					(name "MPN") "ESP32-C3-MINI-1-H4X")
 				(field
-					(name "LCSC") "C2838502")
+					(name "LCSC") "C41349510")
 			)
 			(pins
 				(pin
@@ -4071,6 +3859,67 @@
 		)
 		(libpart
 			(lib "PoliClock")
+			(part "HXPZ2.54-1X7PWT")
+			(docs "https://www.lcsc.com/datasheet/C46061680.pdf")
+			(fields
+				(field
+					(name "Reference") "J")
+				(field
+					(name "Value") "HX PZ2.54-1X7P WT")
+				(field
+					(name "Footprint") "PoliClock:HDR-SMD_7P-P2.54-H-M-W13.3-N")
+				(field
+					(name "Datasheet") "https://www.lcsc.com/datasheet/C46061680.pdf")
+				(field
+					(name "Description")
+				)
+				(field
+					(name "Manufacturer") "hanxia(韩下)")
+				(field
+					(name "MPN") "HX PZ2.54-1x7P WT")
+				(field
+					(name "LCSC") "C46061680")
+			)
+			(pins
+				(pin
+					(num "1")
+					(name "1")
+					(type "passive")
+				)
+				(pin
+					(num "2")
+					(name "2")
+					(type "passive")
+				)
+				(pin
+					(num "3")
+					(name "3")
+					(type "passive")
+				)
+				(pin
+					(num "4")
+					(name "4")
+					(type "passive")
+				)
+				(pin
+					(num "5")
+					(name "5")
+					(type "passive")
+				)
+				(pin
+					(num "6")
+					(name "6")
+					(type "passive")
+				)
+				(pin
+					(num "7")
+					(name "7")
+					(type "passive")
+				)
+			)
+		)
+		(libpart
+			(lib "PoliClock")
 			(part "SM02B-SRSS-TB")
 			(docs "https://lcsc.com/product-detail/Others_JST-Sales-America__JST-Sales-America-SM02B-SRSS-TB-LF-SN_C160402.html")
 			(fields
@@ -4172,148 +4021,6 @@
 			)
 		)
 		(libpart
-			(lib "PoliClock")
-			(part "TS-1088-AR02016")
-			(docs "https://lcsc.com/product-detail/Tactile-Switches_XUNPU-TS-1088-AR02016_C720477.html")
-			(fields
-				(field
-					(name "Reference") "SW")
-				(field
-					(name "Value") "TS-1088-AR02016")
-				(field
-					(name "Footprint") "PoliClock:SW-SMD_L3.9-W3.0-P4.45")
-				(field
-					(name "Datasheet") "https://lcsc.com/product-detail/Tactile-Switches_XUNPU-TS-1088-AR02016_C720477.html")
-				(field
-					(name "Description")
-				)
-				(field
-					(name "Manufacturer") "XUNPU(讯普)")
-				(field
-					(name "MPN") "TS-1088-AR02016")
-				(field
-					(name "LCSC") "C720477")
-			)
-			(pins
-				(pin
-					(num "1")
-					(name "1")
-					(type "passive")
-				)
-				(pin
-					(num "2")
-					(name "2")
-					(type "passive")
-				)
-			)
-		)
-		(libpart
-			(lib "PoliClock")
-			(part "TYPE-C-31-M-12")
-			(docs "https://lcsc.com/product-detail/USB-Type-C_Korean-Hroparts-Elec-TYPE-C-31-M-12_C165948.html")
-			(fields
-				(field
-					(name "Reference") "J")
-				(field
-					(name "Value") "TYPE-C-31-M-12")
-				(field
-					(name "Footprint") "PoliClock:USB-C_SMD-TYPE-C-31-M-12_1")
-				(field
-					(name "Datasheet") "https://lcsc.com/product-detail/USB-Type-C_Korean-Hroparts-Elec-TYPE-C-31-M-12_C165948.html")
-				(field
-					(name "Description")
-				)
-				(field
-					(name "Manufacturer") "韩国韩荣")
-				(field
-					(name "MPN") "TYPE-C-31-M-12")
-				(field
-					(name "LCSC") "C165948")
-			)
-			(pins
-				(pin
-					(num "1")
-					(name "EH")
-					(type "passive")
-				)
-				(pin
-					(num "2")
-					(name "EH")
-					(type "passive")
-				)
-				(pin
-					(num "3")
-					(name "EH")
-					(type "passive")
-				)
-				(pin
-					(num "4")
-					(name "EH")
-					(type "passive")
-				)
-				(pin
-					(num "A1B12")
-					(name "GND")
-					(type "passive")
-				)
-				(pin
-					(num "A4B9")
-					(name "VBUS")
-					(type "passive")
-				)
-				(pin
-					(num "A5")
-					(name "CC1")
-					(type "passive")
-				)
-				(pin
-					(num "A6")
-					(name "DP1")
-					(type "passive")
-				)
-				(pin
-					(num "A7")
-					(name "DN1")
-					(type "passive")
-				)
-				(pin
-					(num "A8")
-					(name "SBU1")
-					(type "passive")
-				)
-				(pin
-					(num "B1A12")
-					(name "GND")
-					(type "passive")
-				)
-				(pin
-					(num "B4A9")
-					(name "VBUS")
-					(type "passive")
-				)
-				(pin
-					(num "B5")
-					(name "CC2")
-					(type "passive")
-				)
-				(pin
-					(num "B6")
-					(name "DP2")
-					(type "passive")
-				)
-				(pin
-					(num "B7")
-					(name "DN2")
-					(type "passive")
-				)
-				(pin
-					(num "B8")
-					(name "SBU2")
-					(type "passive")
-				)
-			)
-		)
-		(libpart
 			(lib "Power_Protection")
 			(part "USBLC6-2SC6")
 			(description "Very low capacitance ESD protection diode, 2 data-line, SOT-23-6")
@@ -4368,47 +4075,57 @@
 		)
 		(libpart
 			(lib "Regulator_Linear")
-			(part "AMS1117-3.3")
-			(description "1A Low Dropout regulator, positive, 3.3V fixed output, SOT-223")
-			(docs "http://www.advanced-monolithic.com/pdf/ds1117.pdf")
+			(part "TLV75533PDBV")
+			(description "500mA Low Dropout Voltage Regulator, Fixed Output 3.3V, SOT-23-5")
+			(docs "http://www.ti.com/lit/ds/symlink/tlv755p.pdf")
 			(footprints
-				(fp "SOT?223*TabPin2*")
+				(fp "SOT?23*")
 			)
 			(fields
 				(field
 					(name "Reference") "U")
 				(field
-					(name "Value") "AMS1117-3.3")
+					(name "Value") "TLV75533PDBV")
 				(field
-					(name "Footprint") "Package_TO_SOT_SMD:SOT-223-3_TabPin2")
+					(name "Footprint") "Package_TO_SOT_SMD:SOT-23-5")
 				(field
-					(name "Datasheet") "http://www.advanced-monolithic.com/pdf/ds1117.pdf")
+					(name "Datasheet") "http://www.ti.com/lit/ds/symlink/tlv755p.pdf")
 				(field
-					(name "Description") "1A Low Dropout regulator, positive, 3.3V fixed output, SOT-223")
+					(name "Description") "500mA Low Dropout Voltage Regulator, Fixed Output 3.3V, SOT-23-5")
 			)
 			(pins
 				(pin
 					(num "1")
-					(name "GND")
+					(name "IN")
 					(type "power_in")
 				)
 				(pin
 					(num "2")
-					(name "VO")
-					(type "power_out")
+					(name "GND")
+					(type "power_in")
 				)
 				(pin
 					(num "3")
-					(name "VI")
-					(type "power_in")
+					(name "EN")
+					(type "input")
+				)
+				(pin
+					(num "4")
+					(name "NC")
+					(type "no_connect")
+				)
+				(pin
+					(num "5")
+					(name "OUT")
+					(type "power_out")
 				)
 			)
 		)
 		(libpart
 			(lib "Transistor_FET")
-			(part "AO3400A")
-			(description "30V Vds, 5.7A Id, N-Channel MOSFET, SOT-23")
-			(docs "http://www.aosmd.com/pdfs/datasheet/AO3400A.pdf")
+			(part "AO3401A")
+			(description "-4.0A Id, -30V Vds, P-Channel MOSFET, SOT-23")
+			(docs "http://www.aosmd.com/pdfs/datasheet/AO3401A.pdf")
 			(footprints
 				(fp "SOT?23*")
 			)
@@ -4416,13 +4133,13 @@
 				(field
 					(name "Reference") "Q")
 				(field
-					(name "Value") "AO3400A")
+					(name "Value") "AO3401A")
 				(field
 					(name "Footprint") "Package_TO_SOT_SMD:SOT-23")
 				(field
-					(name "Datasheet") "http://www.aosmd.com/pdfs/datasheet/AO3400A.pdf")
+					(name "Datasheet") "http://www.aosmd.com/pdfs/datasheet/AO3401A.pdf")
 				(field
-					(name "Description") "30V Vds, 5.7A Id, N-Channel MOSFET, SOT-23")
+					(name "Description") "-4.0A Id, -30V Vds, P-Channel MOSFET, SOT-23")
 			)
 			(pins
 				(pin
@@ -4495,22 +4212,13 @@
 				(pintype "passive")
 			)
 			(node
-				(ref "R10")
-				(pin "1")
+				(ref "Q1")
+				(pin "2")
+				(pinfunction "S_2")
 				(pintype "passive")
 			)
 			(node
-				(ref "R13")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "R14")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "R15")
+				(ref "R17")
 				(pin "1")
 				(pintype "passive")
 			)
@@ -4552,8 +4260,8 @@
 			)
 			(node
 				(ref "U2")
-				(pin "2")
-				(pinfunction "VO_2")
+				(pin "5")
+				(pinfunction "OUT_5")
 				(pintype "power_out")
 			)
 			(node
@@ -4597,30 +4305,24 @@
 		)
 		(net
 			(code "3")
-			(name "/Display (cavo FFC)/3V3_DISP")
+			(name "/Display (modulo 7 pin)/3V3_DISP")
 			(class "Default")
 			(node
-				(ref "J2")
-				(pin "2")
-				(pinfunction "2_2")
+				(ref "C10")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "C9")
+				(pin "1")
 				(pintype "passive")
 			)
 			(node
 				(ref "J2")
-				(pin "3")
-				(pinfunction "3_3")
+				(pin "1")
+				(pinfunction "1_1")
 				(pintype "passive")
 			)
-			(node
-				(ref "R10")
-				(pin "2")
-				(pintype "passive")
-			)
-		)
-		(net
-			(code "4")
-			(name "/Display (cavo FFC)/BL_D")
-			(class "Default")
 			(node
 				(ref "Q1")
 				(pin "3")
@@ -4628,14 +4330,14 @@
 				(pintype "passive")
 			)
 			(node
-				(ref "R18")
-				(pin "2")
+				(ref "R15")
+				(pin "1")
 				(pintype "passive")
 			)
 		)
 		(net
-			(code "5")
-			(name "/Display (cavo FFC)/BL_G")
+			(code "4")
+			(name "/Display (modulo 7 pin)/DISP_G")
 			(class "Default")
 			(node
 				(ref "Q1")
@@ -4650,34 +4352,18 @@
 			)
 			(node
 				(ref "R17")
-				(pin "1")
+				(pin "2")
 				(pintype "passive")
 			)
 		)
 		(net
-			(code "6")
-			(name "/Display (cavo FFC)/LCD_LEDK")
+			(code "5")
+			(name "/Display (modulo 7 pin)/LCD_MOSI_C")
 			(class "Default")
 			(node
 				(ref "J2")
-				(pin "16")
-				(pinfunction "16_16")
-				(pintype "passive")
-			)
-			(node
-				(ref "R18")
-				(pin "1")
-				(pintype "passive")
-			)
-		)
-		(net
-			(code "7")
-			(name "/Display (cavo FFC)/LCD_MOSI_C")
-			(class "Default")
-			(node
-				(ref "J2")
-				(pin "7")
-				(pinfunction "7_7")
+				(pin "4")
+				(pinfunction "4_4")
 				(pintype "passive")
 			)
 			(node
@@ -4687,13 +4373,13 @@
 			)
 		)
 		(net
-			(code "8")
-			(name "/Display (cavo FFC)/LCD_SCLK_C")
+			(code "6")
+			(name "/Display (modulo 7 pin)/LCD_SCLK_C")
 			(class "Default")
 			(node
 				(ref "J2")
-				(pin "5")
-				(pinfunction "5_5")
+				(pin "3")
+				(pinfunction "3_3")
 				(pintype "passive")
 			)
 			(node
@@ -4703,39 +4389,7 @@
 			)
 		)
 		(net
-			(code "9")
-			(name "/Display (cavo FFC)/TP_SCL")
-			(class "Default")
-			(node
-				(ref "J2")
-				(pin "13")
-				(pinfunction "13_13")
-				(pintype "passive")
-			)
-			(node
-				(ref "R12")
-				(pin "2")
-				(pintype "passive")
-			)
-		)
-		(net
-			(code "10")
-			(name "/Display (cavo FFC)/TP_SDA")
-			(class "Default")
-			(node
-				(ref "J2")
-				(pin "12")
-				(pinfunction "12_12")
-				(pintype "passive")
-			)
-			(node
-				(ref "R11")
-				(pin "2")
-				(pintype "passive")
-			)
-		)
-		(net
-			(code "11")
+			(code "7")
 			(name "/MCU/EN")
 			(class "Default")
 			(node
@@ -4746,12 +4400,6 @@
 			(node
 				(ref "R6")
 				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "SW1")
-				(pin "1")
-				(pinfunction "1_1")
 				(pintype "passive")
 			)
 			(node
@@ -4768,7 +4416,41 @@
 			)
 		)
 		(net
-			(code "12")
+			(code "8")
+			(name "/MCU/IO0")
+			(class "Default")
+			(node
+				(ref "TP9")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U3")
+				(pin "12")
+				(pinfunction "IO0_12")
+				(pintype "bidirectional")
+			)
+		)
+		(net
+			(code "9")
+			(name "/MCU/IO1")
+			(class "Default")
+			(node
+				(ref "TP10")
+				(pin "1")
+				(pinfunction "1_1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U3")
+				(pin "13")
+				(pinfunction "IO1_13")
+				(pintype "bidirectional")
+			)
+		)
+		(net
+			(code "10")
 			(name "/MCU/IO9_BOOT")
 			(class "Default")
 			(node
@@ -4777,7 +4459,7 @@
 				(pintype "passive")
 			)
 			(node
-				(ref "SW2")
+				(ref "TP11")
 				(pin "1")
 				(pinfunction "1_1")
 				(pintype "passive")
@@ -4790,7 +4472,7 @@
 			)
 		)
 		(net
-			(code "13")
+			(code "11")
 			(name "/MCU/UART_TX")
 			(class "Default")
 			(node
@@ -4807,7 +4489,7 @@
 			)
 		)
 		(net
-			(code "14")
+			(code "12")
 			(name "/Periferiche I2C e pulsante/3V3_EXT")
 			(class "Default")
 			(node
@@ -4829,7 +4511,7 @@
 			)
 		)
 		(net
-			(code "15")
+			(code "13")
 			(name "/USB e alimentazione/5V_LDO")
 			(class "Default")
 			(node
@@ -4844,20 +4526,26 @@
 			)
 			(node
 				(ref "U2")
-				(pin "3")
-				(pinfunction "VI_3")
+				(pin "1")
+				(pinfunction "IN_1")
 				(pintype "power_in")
+			)
+			(node
+				(ref "U2")
+				(pin "3")
+				(pinfunction "EN_3")
+				(pintype "input")
 			)
 		)
 		(net
-			(code "16")
+			(code "14")
 			(name "/USB e alimentazione/CC1")
 			(class "Default")
 			(node
 				(ref "J1")
 				(pin "A5")
 				(pinfunction "CC1_A5")
-				(pintype "passive")
+				(pintype "bidirectional")
 			)
 			(node
 				(ref "R1")
@@ -4866,14 +4554,14 @@
 			)
 		)
 		(net
-			(code "17")
+			(code "15")
 			(name "/USB e alimentazione/CC2")
 			(class "Default")
 			(node
 				(ref "J1")
 				(pin "B5")
 				(pinfunction "CC2_B5")
-				(pintype "passive")
+				(pintype "bidirectional")
 			)
 			(node
 				(ref "R2")
@@ -4882,20 +4570,20 @@
 			)
 		)
 		(net
-			(code "18")
+			(code "16")
 			(name "/USB e alimentazione/USB_DN_C")
 			(class "Default")
 			(node
 				(ref "J1")
 				(pin "A7")
-				(pinfunction "DN1_A7")
-				(pintype "passive")
+				(pinfunction "D-_A7")
+				(pintype "bidirectional")
 			)
 			(node
 				(ref "J1")
 				(pin "B7")
-				(pinfunction "DN2_B7")
-				(pintype "passive")
+				(pinfunction "D-_B7")
+				(pintype "bidirectional")
 			)
 			(node
 				(ref "R4")
@@ -4916,20 +4604,20 @@
 			)
 		)
 		(net
-			(code "19")
+			(code "17")
 			(name "/USB e alimentazione/USB_DP_C")
 			(class "Default")
 			(node
 				(ref "J1")
 				(pin "A6")
-				(pinfunction "DP1_A6")
-				(pintype "passive")
+				(pinfunction "D+_A6")
+				(pintype "bidirectional")
 			)
 			(node
 				(ref "J1")
 				(pin "B6")
-				(pinfunction "DP2_B6")
-				(pintype "passive")
+				(pinfunction "D+_B6")
+				(pintype "bidirectional")
 			)
 			(node
 				(ref "R3")
@@ -4950,7 +4638,7 @@
 			)
 		)
 		(net
-			(code "20")
+			(code "18")
 			(name "BTN_USER")
 			(class "Default")
 			(node
@@ -4977,11 +4665,32 @@
 			)
 		)
 		(net
-			(code "21")
+			(code "19")
+			(name "DISP_EN_N")
+			(class "Default")
+			(node
+				(ref "R16")
+				(pin "1")
+				(pintype "passive")
+			)
+			(node
+				(ref "U3")
+				(pin "30")
+				(pinfunction "RXD0_30")
+				(pintype "bidirectional")
+			)
+		)
+		(net
+			(code "20")
 			(name "GND")
 			(class "Default")
 			(node
 				(ref "C1")
+				(pin "2")
+				(pintype "passive")
+			)
+			(node
+				(ref "C10")
 				(pin "2")
 				(pintype "passive")
 			)
@@ -5021,75 +4730,44 @@
 				(pintype "passive")
 			)
 			(node
-				(ref "J1")
-				(pin "1")
-				(pinfunction "EH_1")
-				(pintype "passive")
-			)
-			(node
-				(ref "J1")
+				(ref "C9")
 				(pin "2")
-				(pinfunction "EH_2")
 				(pintype "passive")
 			)
 			(node
 				(ref "J1")
-				(pin "3")
-				(pinfunction "EH_3")
+				(pin "A1")
+				(pinfunction "GND_A1")
 				(pintype "passive")
 			)
 			(node
 				(ref "J1")
-				(pin "4")
-				(pinfunction "EH_4")
+				(pin "A12")
+				(pinfunction "GND_A12")
 				(pintype "passive")
 			)
 			(node
 				(ref "J1")
-				(pin "A1B12")
-				(pinfunction "GND_A1B12")
+				(pin "B1")
+				(pinfunction "GND_B1")
 				(pintype "passive")
 			)
 			(node
 				(ref "J1")
-				(pin "B1A12")
-				(pinfunction "GND_B1A12")
+				(pin "B12")
+				(pinfunction "GND_B12")
+				(pintype "passive")
+			)
+			(node
+				(ref "J1")
+				(pin "SH")
+				(pinfunction "SHIELD_SH")
 				(pintype "passive")
 			)
 			(node
 				(ref "J2")
-				(pin "1")
-				(pinfunction "1_1")
-				(pintype "passive")
-			)
-			(node
-				(ref "J2")
-				(pin "11")
-				(pinfunction "11_11")
-				(pintype "passive")
-			)
-			(node
-				(ref "J2")
-				(pin "17")
-				(pinfunction "17_17")
-				(pintype "passive")
-			)
-			(node
-				(ref "J2")
-				(pin "18")
-				(pinfunction "18_18")
-				(pintype "passive")
-			)
-			(node
-				(ref "J2")
-				(pin "4")
-				(pinfunction "4_4")
-				(pintype "passive")
-			)
-			(node
-				(ref "J2")
-				(pin "6")
-				(pinfunction "6_6")
+				(pin "2")
+				(pinfunction "2_2")
 				(pintype "passive")
 			)
 			(node
@@ -5111,36 +4789,13 @@
 				(pintype "passive")
 			)
 			(node
-				(ref "Q1")
-				(pin "2")
-				(pinfunction "S_2")
-				(pintype "passive")
-			)
-			(node
 				(ref "R1")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "R17")
 				(pin "2")
 				(pintype "passive")
 			)
 			(node
 				(ref "R2")
 				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "SW1")
-				(pin "2")
-				(pinfunction "2_2")
-				(pintype "passive")
-			)
-			(node
-				(ref "SW2")
-				(pin "2")
-				(pinfunction "2_2")
 				(pintype "passive")
 			)
 			(node
@@ -5157,8 +4812,8 @@
 			)
 			(node
 				(ref "U2")
-				(pin "1")
-				(pinfunction "GND_1")
+				(pin "2")
+				(pinfunction "GND_2")
 				(pintype "power_in")
 			)
 			(node
@@ -5295,7 +4950,7 @@
 			)
 		)
 		(net
-			(code "22")
+			(code "21")
 			(name "I2C_SCL")
 			(class "Default")
 			(node
@@ -5308,11 +4963,6 @@
 				(ref "J4")
 				(pin "4")
 				(pinfunction "4_4")
-				(pintype "passive")
-			)
-			(node
-				(ref "R12")
-				(pin "1")
 				(pintype "passive")
 			)
 			(node
@@ -5334,7 +4984,7 @@
 			)
 		)
 		(net
-			(code "23")
+			(code "22")
 			(name "I2C_SDA")
 			(class "Default")
 			(node
@@ -5347,11 +4997,6 @@
 				(ref "J4")
 				(pin "3")
 				(pinfunction "3_3")
-				(pintype "passive")
-			)
-			(node
-				(ref "R11")
-				(pin "1")
 				(pintype "passive")
 			)
 			(node
@@ -5373,29 +5018,13 @@
 			)
 		)
 		(net
-			(code "24")
-			(name "LCD_BL")
-			(class "Default")
-			(node
-				(ref "R16")
-				(pin "1")
-				(pintype "passive")
-			)
-			(node
-				(ref "U3")
-				(pin "30")
-				(pinfunction "RXD0_30")
-				(pintype "bidirectional")
-			)
-		)
-		(net
-			(code "25")
+			(code "23")
 			(name "LCD_CS")
 			(class "Default")
 			(node
 				(ref "J2")
-				(pin "8")
-				(pinfunction "8_8")
+				(pin "6")
+				(pinfunction "6_6")
 				(pintype "passive")
 			)
 			(node
@@ -5406,13 +5035,13 @@
 			)
 		)
 		(net
-			(code "26")
+			(code "24")
 			(name "LCD_DC")
 			(class "Default")
 			(node
 				(ref "J2")
-				(pin "9")
-				(pinfunction "9_9")
+				(pin "5")
+				(pinfunction "5_5")
 				(pintype "passive")
 			)
 			(node
@@ -5423,7 +5052,7 @@
 			)
 		)
 		(net
-			(code "27")
+			(code "25")
 			(name "LCD_MOSI")
 			(class "Default")
 			(node
@@ -5439,13 +5068,13 @@
 			)
 		)
 		(net
-			(code "28")
+			(code "26")
 			(name "LCD_RST")
 			(class "Default")
 			(node
 				(ref "J2")
-				(pin "10")
-				(pinfunction "10_10")
+				(pin "7")
+				(pinfunction "7_7")
 				(pintype "passive")
 			)
 			(node
@@ -5461,7 +5090,7 @@
 			)
 		)
 		(net
-			(code "29")
+			(code "27")
 			(name "LCD_SCLK")
 			(class "Default")
 			(node
@@ -5477,51 +5106,7 @@
 			)
 		)
 		(net
-			(code "30")
-			(name "TP_INT")
-			(class "Default")
-			(node
-				(ref "J2")
-				(pin "14")
-				(pinfunction "14_14")
-				(pintype "passive")
-			)
-			(node
-				(ref "R13")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "U3")
-				(pin "12")
-				(pinfunction "IO0_12")
-				(pintype "bidirectional")
-			)
-		)
-		(net
-			(code "31")
-			(name "TP_RST")
-			(class "Default")
-			(node
-				(ref "J2")
-				(pin "15")
-				(pinfunction "15_15")
-				(pintype "passive")
-			)
-			(node
-				(ref "R14")
-				(pin "2")
-				(pintype "passive")
-			)
-			(node
-				(ref "U3")
-				(pin "13")
-				(pinfunction "IO1_13")
-				(pintype "bidirectional")
-			)
-		)
-		(net
-			(code "32")
+			(code "28")
 			(name "USB_DN")
 			(class "Default")
 			(node
@@ -5537,7 +5122,7 @@
 			)
 		)
 		(net
-			(code "33")
+			(code "29")
 			(name "USB_DP")
 			(class "Default")
 			(node
@@ -5553,7 +5138,7 @@
 			)
 		)
 		(net
-			(code "34")
+			(code "30")
 			(name "VBUS")
 			(class "Default")
 			(node
@@ -5563,14 +5148,26 @@
 			)
 			(node
 				(ref "J1")
-				(pin "A4B9")
-				(pinfunction "VBUS_A4B9")
+				(pin "A4")
+				(pinfunction "VBUS_A4")
 				(pintype "passive")
 			)
 			(node
 				(ref "J1")
-				(pin "B4A9")
-				(pinfunction "VBUS_B4A9")
+				(pin "A9")
+				(pinfunction "VBUS_A9")
+				(pintype "passive")
+			)
+			(node
+				(ref "J1")
+				(pin "B4")
+				(pinfunction "VBUS_B4")
+				(pintype "passive")
+			)
+			(node
+				(ref "J1")
+				(pin "B9")
+				(pinfunction "VBUS_B9")
 				(pintype "passive")
 			)
 			(node
@@ -5581,29 +5178,29 @@
 			)
 		)
 		(net
-			(code "35")
+			(code "31")
 			(name "unconnected-(J1-SBU1-PadA8)")
 			(class "Default")
 			(node
 				(ref "J1")
 				(pin "A8")
 				(pinfunction "SBU1_A8")
-				(pintype "passive+no_connect")
+				(pintype "bidirectional+no_connect")
 			)
 		)
 		(net
-			(code "36")
+			(code "32")
 			(name "unconnected-(J1-SBU2-PadB8)")
 			(class "Default")
 			(node
 				(ref "J1")
 				(pin "B8")
 				(pinfunction "SBU2_B8")
-				(pintype "passive+no_connect")
+				(pintype "bidirectional+no_connect")
 			)
 		)
 		(net
-			(code "37")
+			(code "33")
 			(name "unconnected-(J3-Pad5)")
 			(class "Default")
 			(node
@@ -5614,7 +5211,7 @@
 			)
 		)
 		(net
-			(code "38")
+			(code "34")
 			(name "unconnected-(J3-Pad6)")
 			(class "Default")
 			(node
@@ -5625,7 +5222,7 @@
 			)
 		)
 		(net
-			(code "39")
+			(code "35")
 			(name "unconnected-(J4-Pad5)")
 			(class "Default")
 			(node
@@ -5636,7 +5233,7 @@
 			)
 		)
 		(net
-			(code "40")
+			(code "36")
 			(name "unconnected-(J4-Pad6)")
 			(class "Default")
 			(node
@@ -5647,7 +5244,7 @@
 			)
 		)
 		(net
-			(code "41")
+			(code "37")
 			(name "unconnected-(J5-Pad3)")
 			(class "Default")
 			(node
@@ -5658,7 +5255,7 @@
 			)
 		)
 		(net
-			(code "42")
+			(code "38")
 			(name "unconnected-(J5-Pad4)")
 			(class "Default")
 			(node
@@ -5669,7 +5266,18 @@
 			)
 		)
 		(net
-			(code "43")
+			(code "39")
+			(name "unconnected-(U2-NC-Pad4)")
+			(class "Default")
+			(node
+				(ref "U2")
+				(pin "4")
+				(pinfunction "NC_4")
+				(pintype "no_connect")
+			)
+		)
+		(net
+			(code "40")
 			(name "unconnected-(U3-NC-Pad4)")
 			(class "Default")
 			(node
@@ -5680,7 +5288,7 @@
 			)
 		)
 		(net
-			(code "44")
+			(code "41")
 			(name "unconnected-(U3-NC-Pad7)")
 			(class "Default")
 			(node
@@ -5691,7 +5299,7 @@
 			)
 		)
 		(net
-			(code "45")
+			(code "42")
 			(name "unconnected-(U3-NC-Pad9)")
 			(class "Default")
 			(node
@@ -5702,7 +5310,7 @@
 			)
 		)
 		(net
-			(code "46")
+			(code "43")
 			(name "unconnected-(U3-NC-Pad10)")
 			(class "Default")
 			(node
@@ -5713,7 +5321,7 @@
 			)
 		)
 		(net
-			(code "47")
+			(code "44")
 			(name "unconnected-(U3-NC-Pad15)")
 			(class "Default")
 			(node
@@ -5724,7 +5332,7 @@
 			)
 		)
 		(net
-			(code "48")
+			(code "45")
 			(name "unconnected-(U3-NC-Pad17)")
 			(class "Default")
 			(node
@@ -5735,7 +5343,7 @@
 			)
 		)
 		(net
-			(code "49")
+			(code "46")
 			(name "unconnected-(U3-NC-Pad24)")
 			(class "Default")
 			(node
@@ -5746,7 +5354,7 @@
 			)
 		)
 		(net
-			(code "50")
+			(code "47")
 			(name "unconnected-(U3-NC-Pad25)")
 			(class "Default")
 			(node
@@ -5757,7 +5365,7 @@
 			)
 		)
 		(net
-			(code "51")
+			(code "48")
 			(name "unconnected-(U3-NC-Pad28)")
 			(class "Default")
 			(node
@@ -5768,7 +5376,7 @@
 			)
 		)
 		(net
-			(code "52")
+			(code "49")
 			(name "unconnected-(U3-NC-Pad29)")
 			(class "Default")
 			(node
@@ -5779,7 +5387,7 @@
 			)
 		)
 		(net
-			(code "53")
+			(code "50")
 			(name "unconnected-(U3-NC-Pad32)")
 			(class "Default")
 			(node
@@ -5790,7 +5398,7 @@
 			)
 		)
 		(net
-			(code "54")
+			(code "51")
 			(name "unconnected-(U3-NC-Pad33)")
 			(class "Default")
 			(node
@@ -5801,7 +5409,7 @@
 			)
 		)
 		(net
-			(code "55")
+			(code "52")
 			(name "unconnected-(U3-NC-Pad34)")
 			(class "Default")
 			(node
@@ -5812,7 +5420,7 @@
 			)
 		)
 		(net
-			(code "56")
+			(code "53")
 			(name "unconnected-(U3-NC-Pad35)")
 			(class "Default")
 			(node

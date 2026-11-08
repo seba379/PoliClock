@@ -12,14 +12,14 @@ root = parse(open(LIB, encoding="utf-8").read())[0]
 
 REF = {"TYPE-C-31-M-12": "J", "AFC01-S16FCA-00": "J", "AFC01-S18FCA-00": "J",
        "SM04B-SRSS-TB": "J", "SM02B-SRSS-TB": "J",
-       "ESP32-C3-MINI-1-N4": "U", "TS-1088-AR02016": "SW"}
+       "ESP32-C3-MINI-1": "U", "HXPZ2.54-1X7PWT": "J"}
 DS = {
-    "ESP32-C3-MINI-1-N4": "https://www.espressif.com/sites/default/files/documentation/esp32-c3-mini-1_datasheet_en.pdf",
+    "ESP32-C3-MINI-1": "https://www.espressif.com/sites/default/files/documentation/esp32-c3-mini-1_datasheet_en.pdf",
 }
 
 
 def ptype(sym, num, name):
-    if sym == "ESP32-C3-MINI-1-N4":
+    if sym == "ESP32-C3-MINI-1":
         if name == "GND" or name == "3V3":
             return "power_in"
         if name == "NC":

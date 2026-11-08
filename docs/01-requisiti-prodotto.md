@@ -1,6 +1,6 @@
 # 01 — Requisiti di prodotto (PRD)
 
-**Versione:** 0.6 · **Stato:** baseline per prototipo, da approvare · **Data:** 2026-11-07
+**Versione:** 0.7 · **Stato:** baseline per prototipo, da approvare · **Data:** 2026-11-07
 
 ## 1. Convenzioni
 
@@ -19,7 +19,7 @@
 | `PR-FUN-004` | MUST | CONF | Visualizzare l'umidità relativa misurata localmente, in %RH. |
 | `PR-FUN-005` | — | ESCLUSO | ~~Funzionamento senza cavo USB~~: la V1 è alimentata solo da USB (`DEC-023`). |
 | `PR-FUN-006` | MUST | CONF | Alimentare il dispositivo in continuo tramite la porta USB-C posteriore (`DEC-023`). |
-| `PR-FUN-007` | MUST | CONF | In condizione normale mantenere l'orologio attenuato ma leggibile; dopo la pressione del pulsante aumentare la luminosità e poi ripristinarla. |
+| `PR-FUN-007` | MUST | CONF | In condizione normale mantenere l'orologio attenuato ma leggibile; dopo la pressione del pulsante aumentare la luminosità e poi ripristinarla. Con il modulo a 7 pin (`DEC-034`) la retroilluminazione è fissa: l'attenuazione si ottiene con i colori della grafica. |
 | `PR-FUN-008` | MUST | CONF | Consentire l'impostazione iniziale/correzione di ora e data senza connessione di rete: **configuratore da PC via USB** come metodo principale, menu con il pulsante come riserva (`DEC-020`). |
 | `PR-FUN-009` | MUST | CAND | Conservare l'ora tramite RTC con alimentazione tampone anche quando il cavo USB è scollegato, per una durata dimensionata (`OPEN-014`). |
 | `PR-FUN-010` | — | ESCLUSO | ~~Sincronizzazione NTP via Wi-Fi~~: esclusa dalla V1 (`DEC-012`). |
@@ -38,7 +38,7 @@
 | `PR-UI-005` | — | ESCLUSO | ~~Mitigazione burn-in AMOLED~~: non necessaria con display IPS (`DEC-016`). |
 | `PR-UI-006` | MUST | CAND | La visualizzazione deve rimanere coerente durante perdita temporanea del sensore e dopo riavvii per scollegamento del cavo. |
 | `PR-UI-007` | MUST | CONF | Un **pulsante** fisico attiva la modalità luminosa e, di notte, mostra brevemente l'ora (`DEC-017`); posizione da definire (`OPEN-017`). |
-| `PR-UI-008` | MUST | CONF | Il PCB è **predisposto per il touch** del display (connettore/footprint, GPIO INT e RST, componenti non montati) e il firmware gestisce l'input come eventi astratti, così il touch si attiva senza rifare il PCB (`DEC-019`). |
+| `PR-UI-008` | — | ESCLUSO | ~~PCB predisposto per il touch~~: il display è un modulo a 7 pin senza touch (`DEC-034`); il firmware gestisce comunque l'input come eventi astratti. |
 
 ## 4. Alimentazione e sicurezza elettrica
 
@@ -74,7 +74,8 @@
 | `PR-REL-003` | MUST | CAND | Firmware aggiornabile dalla USB-C posteriore senza aprire l'involucro. |
 | `PR-REL-004` | MUST | CAND | La misura ambientale non deve essere confusa con la temperatura interna di ESP32 o regolatore. |
 | `PR-REL-005` | SHOULD | CAND | I log seriali non devono mostrare segreti o dati personali. |
-| `PR-REL-006` | MUST | CONF | Elettronica su **PCB custom** (KiCad, JLCPCB) con il minimo indispensabile (`DEC-015`): scheda principale separata dal display, schedina portadisplay collegata via cavo (`DEC-021`); SHT40 su modulo breakout commerciale (`DEC-028`); punti di test per il bring-up. |
+| `PR-REL-006` | MUST | CONF | Elettronica su **PCB custom** (KiCad, JLCPCB) con il minimo indispensabile (`DEC-015`): scheda principale separata dal display, collegata con un cavetto al modulo display a 7 pin (`DEC-021`, `DEC-034`); SHT40 su modulo breakout commerciale (`DEC-028`); punti di test per il bring-up. |
+| `PR-REL-008` | MUST | CONF | Ogni PCB rispetta le regole di **fabbricazione e assemblaggio JLCPCB** vigenti (`SC-008`, `DEC-040`): regole DRC di KiCad impostate dai minimi JLC, componenti della libreria LCSC/JLC, montaggio su un lato, distanze dal bordo, BOM e CPL nel formato JLC. |
 | `PR-REL-007` | MUST | CONF | Dalla USB-C posteriore un **configuratore da PC** legge stato e versione e imposta ora/data (dall'orologio del PC), fascia notte e luminosità tramite un protocollo documentato e versionato (`DEC-020`). |
 
 ## 7. Criteri di rilascio

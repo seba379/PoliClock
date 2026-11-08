@@ -1,35 +1,32 @@
 # Hardware PoliClock (KiCad 10)
 
-**Stato:** schema rev 0.1 (M2, solo schematico). **Non validato**: prima dell'ordine servono prototipo M1, layout, DRC, checklist e revisione visiva del proprietario in KiCad (`VT-PCB-001`). Il layout PCB non è ancora iniziato.
+**Stato (rev 0.2, 2026-11-08):** schema e PCB della scheda principale **in bozza**, rifatti dopo la revisione tecnica indipendente (esito sulla rev 0.1: *NOT APPROVED FOR FABRICATION*; stato dei rilievi in [docs/10](../docs/10-decisioni-aperte.md) §6).
+
+- **Report salvati**: ERC e DRC rieseguiti con `kicad-cli` sulla rev 0.2 (`policlock-main/erc.rpt`, `drc.rpt`). Sono verifiche automatiche del progetto.
+- **Test eseguiti sull'hardware**: nessuno. Tutti i test del [piano di verifica](../docs/07-piano-verifica.md) sono NOT_RUN.
+- **Non ordinare**: prima servono studio volumetrico 1:1 (`OPEN-028`), verifica del modulo display ricevuto (`OPEN-016`), revisione visiva del proprietario in KiCad (`OPEN-027`) e prototipo M1.
 
 ## Struttura
 
 | Cartella | Contenuto |
 |---|---|
-| `policlock-main/` | Scheda principale: schema gerarchico (USB e alimentazione, MCU, display/cavo FFC, periferiche I²C e pulsante), PDF, BOM, report ERC |
-| `policlock-display/` | Schedina portadisplay nella testa: connettore cavo FFC 16P, connettore pannello FPC 18P, condensatori |
-| `lib/` | Libreria di progetto `PoliClock` (simboli e footprint delle parti LCSC specifiche) |
-| `scripts/` | Generatore dello schema rev 0.1 ed esportazioni |
+| `policlock-main/` | Scheda principale: schema gerarchico (USB e alimentazione, MCU, display a 7 pin, periferiche I²C e pulsante), PCB 50 × 40 mm, PDF, BOM e CPL per JLCPCB, render, STEP della sagoma, report ERC/DRC |
+| `lib/` | Libreria di progetto `PoliClock` (simboli e footprint delle parti specifiche) |
+| `scripts/` | Generatori di schema e PCB, sbroglio con Freerouting, esportazioni |
 
-Sono **due progetti KiCad separati** (un PCB ciascuno); la pannellizzazione in un unico ordine JLC si decide col layout. Simboli e footprint di resistenze, condensatori, AMS1117, USBLC6, AO3400A provengono dalle librerie standard di KiCad 10; le altre parti dalla libreria `PoliClock`.
+È l'**unico PCB custom**: display, sensore SHT40 e RTC sono moduli commerciali collegati con cavetti (`DEC-024`, `DEC-028`, `DEC-034`).
 
-Ogni simbolo montato ha il campo **`LCSC`** (codice JLCPCB/LCSC). I componenti DNP (predisposizione touch) sono marcati *Do not populate*.
+Ogni componente montato ha il campo **`LCSC`** (codice JLCPCB/LCSC). Simboli e footprint di passivi, SOT, USBLC6, TLV75533 e AO3401A vengono dalle librerie standard di KiCad 10; la USB-C usa il footprint KiCad ricavato dal disegno HRO (copiato nella libreria di progetto con la serigrafia frontale tolta); le altre parti vengono dalla libreria `PoliClock`.
 
-## File esportati
+## PCB della scheda principale
 
-- `*/<progetto>.pdf` — schema in PDF.
-- `*/<progetto>-bom-jlcpcb.csv` — BOM nel formato di assemblaggio JLCPCB (`Comment, Designator, Footprint, LCSC Part #`), **senza** DNP e punti di test.
-- `*/<progetto>-bom-completa.csv` — BOM con DNP e note.
-- `*/erc.rpt` — report ERC di `kicad-cli` (0 violazioni alla rev 0.1, tutte le severità).
-
-Sensore SHT40 e RTC non hanno un PCB proprio: sono moduli commerciali collegati ai connettori J3 e J4 della scheda principale (`DEC-028`, `DEC-024`).
-
-## PCB della scheda principale (bozza sbrogliata)
-
-- `policlock-main/policlock-main.kicad_pcb`: **40 × 30 mm, 2 strati, componenti solo sopra**, antenna del modulo oltre il bordo destro (`DEC-029`…`DEC-033`). Posizionato e **sbrogliato con Freerouting**: DRC 0 errori e 0 connessioni aperte, da rivedere a vista (`OPEN-027`).
-- `policlock-main-top.png` / `-bottom.png`: render 3D; `policlock-main-layout.pdf`: assemblaggio (F.Fab), rame e legenda del retro; `drc.rpt`: DRC (nessun errore, solo avvisi di serigrafia).
-- `policlock-main-scheda.step`: sagoma della scheda con fori, per il CAD. Lo STEP completo con i componenti (`policlock-main.step`) usa i modelli 3D EasyEDA e resta **solo locale** (ignorato da git): si rigenera con `esporta.py` dopo aver scaricato i modelli (vedi sotto).
-- Generato da `scripts/genera_pcb_main.py` (Python di KiCad: `"C:/Program Files/KiCad/10.0/bin/python.exe"`), posizioni fisse in `scripts/posizioni_main.py`, dimensioni con la variabile `PCB_WH` (default `40,30`) e spaziatura extra con `PCB_GAP` (default `0.6`). Sbroglio con `scripts/sbroglia_main.py` (Freerouting 2.5.0 jar + Java 25 portatile in `%LOCALAPPDATA%\Programs\freerouting-2.5.0`, non nel repository). Dopo la prima modifica manuale il `.kicad_pcb` diventa la fonte: non rieseguire gli script.
+- `policlock-main/policlock-main.kicad_pcb`: **50 × 40 mm, 2 strati, 1,6 mm, componenti solo sopra** (`DEC-030`, `DEC-036`). L'antenna del modulo ESP32 sta dentro l'ingombro, sopra un **intaglio** nell'angolo in alto a destra, con una zona senza rame davanti. Piani GND su entrambi gli strati. Nessun tasto: reset e boot dai punti di test TP6 (EN) e TP11 (IO9) sul retro (`DEC-039`). Tre fiducial da 1 mm sul lato componenti. Dettagli in [docs/02](../docs/02-architettura-hardware.md) §3.2.
+- **Regole JLCPCB** (vincolo `SC-008`, `DEC-040`; pagine ufficiali consultate il 2026-11-08, da ricontrollare all'ordine):
+  - fabbricazione 2 strati: distanza 0,15 mm (0,10 mm fra le piazzole USB-C a passo 0,5 mm), pista ≥ 0,15 mm (alimentazioni 0,4 mm), vie 0,6/0,3 mm, foro-foro ≥ 0,25 mm (JLC 0,2), foro-rame ≥ 0,3 mm (JLC 0,28), rame-bordo 0,3 mm (JLC 0,2) più una fascia di 0,45 mm senza piste lungo il contorno;
+  - assemblaggio: corpo dei componenti ≥ 2,5 mm dai lati sinistro e destro (`genera_pcb_main.py` avvisa se non è così), connettori a filo solo sui lati superiore e inferiore, fiducial con zona senza rame.
+- Controlli DRC **riabilitati**: courtyard mancante o sovrapposto, fori nei courtyard, footprint diversi dalla libreria, serigrafia sovrapposta o fuori bordo.
+- File esportati: `policlock-main-top.png` / `-bottom.png` (render), `policlock-main-layout.pdf` (assemblaggio F.Fab, rame, legenda del retro), `policlock-main-scheda.step` (sagoma con fori, per il CAD), `policlock-main-bom-jlcpcb.csv` e `policlock-main-cpl-jlcpcb.csv` (assemblaggio JLC, origine nell'angolo in basso a sinistra). Lo STEP completo con i componenti (`policlock-main.step`) usa i modelli 3D EasyEDA e resta **solo locale** (ignorato da git).
+- I file Gerber e di foratura **non** sono generati: si producono solo dopo l'approvazione esplicita del proprietario.
 
 ## Rigenerare / verificare
 
@@ -37,24 +34,22 @@ Sensore SHT40 e RTC non hanno un PCB proprio: sono moduli commerciali collegati 
 python hardware/scripts/esporta.py
 ```
 
-Esegue ERC (`--severity-all`, esce con errore se ci sono violazioni), PDF e BOM dei progetti con `kicad-cli` (percorso modificabile con la variabile `KICAD_CLI`).
+Esegue ERC (`--severity-all`), DRC, PDF, BOM, CPL, render e STEP con `kicad-cli` (percorso modificabile con la variabile `KICAD_CLI`).
 
-Lo schema rev 0.1 è stato **generato** da `scripts/genera_schemi.py` (posizionamento, collegamenti con etichette e simboli di alimentazione). Dopo la prima modifica manuale in KiCad **i file `.kicad_sch` diventano la fonte**: non rieseguire il generatore, che li sovrascriverebbe.
+Generatori (per i PCB serve il Python di KiCad, `"C:/Program Files/KiCad/10.0/bin/python.exe"`):
+
+1. `scripts/genera_schemi.py` — schema (Python normale).
+2. `scripts/genera_pcb_main.py` — posizionamento, contorno, fori, piani GND, zona antenna, legenda; posizioni in `scripts/posizioni_main.py` (dimensioni con la variabile `PCB_WH`, default `50,40`).
+3. `scripts/sbroglia_main.py` — sbroglio con **Freerouting 2.5.0** (regole JLC passate nel file DSN) (jar ufficiale, SHA-256 verificato) e Java 25 portatile (Eclipse Temurin) in `%LOCALAPPDATA%\Programs\freerouting-2.5.0`, non nel repository. Va lanciato **subito dopo il punto 2**, su una scheda appena generata (su una scheda già sbrogliata fallisce). La build nativa `freerouting-cli` 2.5.0 per Windows si blocca nel router; KiCad non ha un autorouter.
+
+Dopo la prima modifica manuale in KiCad **i file `.kicad_sch` e `.kicad_pcb` diventano la fonte**: non rieseguire i generatori, che li sovrascriverebbero.
 
 ## Libreria `PoliClock`
 
-Importata da LCSC con [easyeda2kicad](https://github.com/uPesy/easyeda2kicad.py):
+Parti importate da LCSC con [easyeda2kicad](https://github.com/uPesy/easyeda2kicad.py) (codici C2838502 per il footprint del modulo ESP32-C3-MINI-1, C160404, C160402, C720477, C46061680), corrette con `scripts/correggi_libreria.py` (tipi elettrici dei pin, campo `LCSC`, riferimenti) e aggiornate al formato KiCad 10 con `kicad-cli fp upgrade` / `kicad-cli sym upgrade`. `scripts/prepara_footprint.py` toglie la serigrafia che finirebbe fuori dal bordo (USB-C, antenna del modulo, piedini dell'header).
 
-```bash
-easyeda2kicad --full --lcsc_id=C2838502 --output hardware/lib/PoliClock
-```
+Confronto con i disegni ufficiali (revisione P1-08): JST-SH identici alla libreria KiCad; USB-C EasyEDA scartato a favore del footprint KiCad dal disegno HRO; header 7 pin SMD senza disegno ufficiale trovato (da verificare sul campione).
 
-(codici: C2838502, C165948, C262665, C262666, C160404, C160402, C720477), poi corretta con `scripts/correggi_libreria.py` e aggiornata al formato KiCad 10 con `kicad-cli fp upgrade` / `kicad-cli sym upgrade`. Correzioni applicate:
-
-- tipi elettrici dei pin (alimentazione, NC, bidirezionali) per un ERC significativo;
-- campo `LCSC Part` rinominato `LCSC`, riferimenti `J`/`U`/`SW`;
-- USB-C: pioli di centraggio come fori non metallizzati e distanza locale 0,1 mm tra le piazzole a passo 0,5 mm.
-
-I **modelli 3D** EasyEDA non sono nel repository (licenza non verificata, ~21 MB): si rigenerano con lo stesso comando e finiscono in `lib/PoliClock.3dshapes/` (ignorata da git). I footprint vanno confrontati con i disegni dei produttori durante il layout.
+I **modelli 3D** EasyEDA non sono nel repository (licenza non verificata): si rigenerano con `easyeda2kicad --3d` e finiscono in `lib/PoliClock.3dshapes/` (ignorata da git).
 
 Selezione e motivazioni dei componenti: [docs/12-selezione-componenti.md](../docs/12-selezione-componenti.md).

@@ -1,6 +1,6 @@
 # 11 — Fonti, datasheet e riferimenti
 
-**Versione:** 0.6 · **Aggiornato:** 2026-11-07
+**Versione:** 0.7 · **Aggiornato:** 2026-11-07
 
 ## Scheda Waveshare (scartata, `DEC-015`)
 
@@ -31,18 +31,29 @@ Fonti consultate durante la revisione v0.2, mantenute come riferimento storico e
 14. [Espressif — ESP32-C3-MINI-1 & MINI-1U datasheet v2.2](https://www.espressif.com/sites/default/files/documentation/esp32-c3-mini-1_datasheet_en.pdf) — tabella pin 3-1, strapping GPIO2/8/9 (tab. 4-1, 4-3), alimentazione 3,0–3,6 V con sorgente ≥ 0,5 A, RC su EN 10 kΩ/1 µF.
 15. [Espressif — ESP32-C3 Series datasheet](https://www.espressif.com/sites/default/files/documentation/esp32-c3_datasheet_en.pdf) — funzioni IO_MUX (FSPI) e GPIO.
 16. [STMicroelectronics — USBLC6-2 datasheet](https://www.st.com/resource/en/datasheet/usblc6-2.pdf) — pinout SOT23-6 (I/O1 pin 1/6, I/O2 pin 3/4, GND 2, VBUS 5) e layout consigliato.
-17. [Advanced Monolithic Systems — AMS1117 datasheet](http://www.advanced-monolithic.com/pdf/ds1117.pdf) — pinout SOT-223 (1 GND, 2 VOUT, 3 VIN), dropout, caratterizzazione con 22 µF al tantalio.
+17. [Advanced Monolithic Systems — AMS1117 datasheet](http://www.advanced-monolithic.com/pdf/ds1117.pdf) — caratterizzazione con 22 µF al tantalio: motivo della sostituzione con il TLV75533 (`DEC-037`, revisione P0-04).
 18. [AOS — AO3400A datasheet](https://www.aosmd.com/res/datasheets/AO3400A.pdf) — VGS(th) 0,65–1,45 V.
 19. [XKB — TS-1187A tact switch](https://www.lcsc.com/datasheet/C318884.pdf) — contatti A–B e C–D collegati (non più usato dopo `DEC-029` e `DEC-032`).
 20. Pagine datasheet LCSC: [Korean Hroparts — TYPE-C-31-M-12](https://www.lcsc.com/datasheet/C165948.pdf), [JUSHUO — AFC01-S16FCA-00](https://www.lcsc.com/datasheet/C262665.pdf) / [AFC01-S18FCA-00](https://www.lcsc.com/datasheet/C262666.pdf), [JST — serie SH (SM04B/SM02B-SRSS-TB)](https://www.lcsc.com/datasheet/C160404.pdf), [BHFUSE — BSMD0805-050-12V](https://www.lcsc.com/datasheet/C2977522.pdf) — disegni meccanici da confrontare con i footprint nel layout.
 21. [Adafruit — DS3231 Precision RTC Breakout (guida PDF)](https://cdn-learn.adafruit.com/downloads/pdf/adafruit-ds3231-precision-rtc-breakout.pdf) — versione STEMMA QT (prodotto 5188): Vin 2,3–5,5 V, pull-up 10 kΩ su SDA/SCL, pila CR1220, LED ON disattivabile con ponticello, indirizzo 0x68.
 22. [SparkFun — Qwiic Connect System](https://www.sparkfun.com/qwiic) — connettore JST-SH 4 poli: 1 GND, 2 3,3 V, 3 SDA, 4 SCL (compatibile STEMMA QT).
-23. [Waveshare — 1.28inch Touch LCD, schema](https://files.waveshare.com/upload/c/c8/1.28inch_Touch_LCD_Schematic.pdf) e [1.28inch LCD Module, schema](https://files.waveshare.com/upload/b/b4/1.28inch_LCD_Module_SchDoc.pdf) — **solo riferimento** per il pinout FPC dei pannelli GC9A01 1,28" con touch (18 poli) e senza (12 poli) e per il pilotaggio della retroilluminazione; non copiati nel repository.
+23. (Storico, pannello touch non più usato dopo `DEC-034`) [Waveshare — 1.28inch Touch LCD, schema](https://files.waveshare.com/upload/c/c8/1.28inch_Touch_LCD_Schematic.pdf) e [1.28inch LCD Module, schema](https://files.waveshare.com/upload/b/b4/1.28inch_LCD_Module_SchDoc.pdf) — **solo riferimento** per il pinout FPC dei pannelli GC9A01 1,28" con touch (18 poli) e senza (12 poli) e per il pilotaggio della retroilluminazione; non copiati nel repository.
 24. [JLCPCB — catalogo parti](https://jlcpcb.com/parts) e [LCSC](https://www.lcsc.com/) — stato Basic/Extended, stock e prezzi letti il 2026-11-07 (variabili).
 25. [easyeda2kicad](https://github.com/uPesy/easyeda2kicad.py) — importazione di simboli e footprint LCSC nella libreria di progetto.
 26. [XUNPU — TS-1088-AR02016 tact switch 4×3 mm](https://www.lcsc.com/datasheet/C720477.pdf) — 2 pin, contatto tra 1 e 2, piazzole 5,5 × 2,0 mm (`DEC-029`).
 27. [Espressif — ESP32-C3 Hardware Design Guidelines](https://docs.espressif.com/projects/esp-hardware-design-guidelines/en/latest/esp32c3/pcb-layout-design.html) — sezione layout: "antenna outside the base board", feed point vicino al bordo; posizionamento del modulo con l'antenna oltre il bordo della scheda (`DEC-031`).
-28. [Freerouting 2.5.0](https://github.com/freerouting/freerouting/releases/tag/v2.5.0) (jar, SHA-256 verificato) con [Eclipse Temurin 25 JRE](https://adoptium.net/) — autorouter usato per la bozza di sbroglio (`DEC-033`).
+28. [Freerouting 2.5.0](https://github.com/freerouting/freerouting/releases/tag/v2.5.0) (jar, SHA-256 verificato) con [Eclipse Temurin 25 JRE](https://adoptium.net/) — autorouter usato per le bozze di sbroglio (`DEC-033`, `DEC-036`).
+29. [TI — TLV755P datasheet (SBVS320D)](https://www.ti.com/lit/ds/symlink/tlv755p.pdf) — 500 mA; DBV (SOT-23-5): 1 IN, 2 GND, 3 EN, 4 NC, 5 OUT; stabile con ceramici ≥ 1 µF (capacità effettiva > 0,47 µF); RθJA 231 °C/W JEDEC, 100,8 °C/W su scheda di valutazione (`DEC-037`).
+30. [AOS — AO3401A datasheet](https://www.aosmd.com/res/datasheets/AO3401A.pdf) — P-MOS −30 V, VGS(th) −0,5…−1,3 V, RDS(on) < 85 mΩ a −2,5 V (interruttore del display).
+31. [Espressif — ESP32-C3 Hardware Design Guidelines, schematic checklist](https://docs.espressif.com/projects/esp-hardware-design-guidelines/en/latest/esp32c3/schematic-checklist.html) — disaccoppiamento 10 µF + 0,1 µF, sorgente ≥ 500 mA, RC su CHIP_EN 10 kΩ/1 µF.
+32. [AliExpress — modulo display GC9A01 1,28" 7 pin, SZHJW Technology Store, articolo 1005009766462228](https://it.aliexpress.com/item/1005009766462228.html) — consultato il 2026-11-07: 4,24 €, piedini RST, CS, DC, SDA, SCL, GND, VCC (dalla foto); nessun datasheet: pinout da verificare sul modulo ricevuto (`DEC-034`).
+33. [DisplayModule — DM-TFTR128-467 datasheet](https://cdn.shopify.com/s/files/1/0264/7629/files/DM-TFTR128-467datasheet.pdf) — pannello nudo GC9A01 + CST816D valutato e non scelto: pinout FPC 18 poli diverso dal riferimento Waveshare, retroilluminazione 3,2 V / 40 mA.
+34. Revisione tecnica indipendente del 2026-11-07 (`PoliClock_revisione_tecnica_indipendente_2026-11-07.md`, file del proprietario non nel repository) — esito e stato dei rilievi in [10](10-decisioni-aperte.md) §6.
+35. [JLCPCB — capacità di fabbricazione PCB](https://jlcpcb.com/capabilities/pcb-capabilities) — consultata il 2026-11-08 (1–2 strati): pista/distanza 0,10/0,10 mm a 1 oz, foro via ≥ 0,15 mm (consigliato ≥ 0,2), foro-foro delle vie ≥ 0,2 mm, anello PTH ≥ 0,18 mm, foro PTH-pista ≥ 0,28 mm (consigliato 0,35), rame-bordo fresato ≥ 0,2 mm (`DEC-040`).
+36. [JLCPCB — capacità di assemblaggio](https://jlcpcb.com/capabilities/pcb-assembly-capabilities) — consultata il 2026-11-08: Economic su un solo lato, 2–50 pezzi, scheda ≥ 10 × 10 mm, spessore 0,8–1,6 mm, bordi tecnici e fiducial non necessari; package minimo 0402.
+37. [JLCPCB — termini e condizioni dell'assemblaggio](https://jlcpcb.com/help/article/Terms-and-Conditions-of-JLCPCB-Assembly-Service) — consultata il 2026-11-08: corpo dei componenti ≥ 2,5 mm dal bordo; bordi tecnici, fori e fiducial aggiunti da JLC se mancano; componente non montato se il footprint non corrisponde.
+38. [JLCPCB — bordi tecnici e fori di posizionamento](https://jlcpcb.com/help/article/specifications-for-adding-process-edges-and-positioning-holes) — bordi da 5 mm, fori da 2 mm, fiducial da 1 mm.
+39. [JLCPCB — prezzi dell'assemblaggio](https://jlcpcb.com/help/article/pcb-assembly-price) — Economic: setup 8,18 $, stencil 1,53 $, 3,07 $ per parte Extended (2026-11-07).
 
 Da aggiungere al momento della scelta: datasheet del pannello GC9A01 acquistato.
 

@@ -8,7 +8,7 @@ import sys
 
 HW = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 KICAD_CLI = os.environ.get("KICAD_CLI", r"C:\Program Files\KiCad\10.0\bin\kicad-cli.exe")
-PROJECTS = ["policlock-main", "policlock-display"]
+PROJECTS = ["policlock-main"]
 
 
 def run(args):
@@ -53,6 +53,20 @@ if os.path.exists(pcb):
         run(["pcb", "render", "--side", side, "-w", "1600", "-h", "1200", "--background", "opaque",
              "-o", os.path.join(d, f"policlock-main-{side}.png"), pcb])
     run(["pcb", "export", "step", "--board-only", "-f", "-o", os.path.join(d, "policlock-main-scheda.step"), pcb])
+    # file di posizionamento (CPL) nel formato JLCPCB: Designator, Mid X, Mid Y, Layer, Rotation
+    tmp = os.path.join(d, "pos_tmp.csv")
+    run(["pcb", "export", "pos", "--format", "csv", "--units", "mm", "--side", "front", "--exclude-dnp",
+         "--use-drill-file-origin", "-o", tmp, pcb])
+    import csv
+    rows = list(csv.DictReader(open(tmp, encoding="utf-8")))
+    os.remove(tmp)
+    with open(os.path.join(d, "policlock-main-cpl-jlcpcb.csv"), "w", encoding="utf-8", newline="") as f:
+        w = csv.writer(f)
+        w.writerow(["Designator", "Mid X", "Mid Y", "Layer", "Rotation"])
+        for r_ in rows:
+            w.writerow([r_["Ref"], r_["PosX"] + "mm", r_["PosY"] + "mm", "Top" if r_["Side"] == "top" else "Bottom",
+                        r_["Rot"]])
+    print("CPL:", len(rows), "componenti")
     # STEP completo con i modelli EasyEDA locali (non versionato, vedi README)
     run(["pcb", "export", "step", "--subst-models", "--no-dnp", "-f", "-o", os.path.join(d, "policlock-main.step"), pcb])
 

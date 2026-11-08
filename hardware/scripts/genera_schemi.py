@@ -1,4 +1,4 @@
-"""Generate the PoliClock KiCad 10 schematics (main board, display carrier)."""
+"""Generate the PoliClock KiCad 10 schematic (main board)."""
 import json
 import os
 import sys
@@ -20,7 +20,8 @@ TP_FP = "TestPoint:TestPoint_Pad_D1.5mm"
 
 DS_ESP = "https://www.espressif.com/sites/default/files/documentation/esp32-c3-mini-1_datasheet_en.pdf"
 DS_USBLC6 = "https://www.st.com/resource/en/datasheet/usblc6-2.pdf"
-DS_AMS = "http://www.advanced-monolithic.com/pdf/ds1117.pdf"
+DS_LDO = "https://www.ti.com/lit/ds/symlink/tlv755p.pdf"
+DS_AO3401 = "https://www.aosmd.com/res/datasheets/AO3401A.pdf"
 DS_AO3400 = "https://www.aosmd.com/res/datasheets/AO3400A.pdf"
 DS_PTC = "https://www.lcsc.com/datasheet/C2977522.pdf"
 
@@ -80,42 +81,42 @@ P = "policlock-main"
 D = f"{HW}/{P}"
 ROOT = U(P + "/root")
 root = Sheet(P, "root", f"{P}.kicad_sch", ROOT, "/" + ROOT, title="PoliClock - scheda principale",
-             comment="Schema gerarchico. Rev 0.1 NON validata: revisione visiva del proprietario richiesta.\n"
-                     "ESP32-C3-MINI-1-N4, USB-C, AMS1117-3.3, FFC 16 poli verso portadisplay.\n"
+             comment="Schema gerarchico. Rev 0.2 NON validata: revisione visiva del proprietario richiesta.\n"
+                     "ESP32-C3-MINI-1-H4X, USB-C, LDO TLV75533, display GC9A01 su modulo 7 pin (DEC-034).\n"
                      "RTC esterno: modulo Adafruit DS3231 STEMMA QT su J4 (DEC-024).")
 
 subs = [("USB e alimentazione", "usb_alimentazione.kicad_sch"), ("MCU", "mcu.kicad_sch"),
-        ("Display (cavo FFC)", "display.kicad_sch"), ("Periferiche I2C e pulsante", "periferiche.kicad_sch")]
+        ("Display (modulo 7 pin)", "display.kicad_sch"), ("Periferiche I2C e pulsante", "periferiche.kicad_sch")]
 sheets = {}
 for i, (nm, fn) in enumerate(subs):
     sid = root.subsheet(nm, fn, 30 + i * 90, 40, 70, 30, i + 2)
     sheets[fn] = Sheet(P, nm, fn, ROOT, f"/{ROOT}/{sid}", title=f"PoliClock main - {nm}")
 
 root.text("""Blocchi (vedi docs/02-architettura-hardware.md e docs/12-selezione-componenti.md):
- - USB e alimentazione: USB-C 2.0 (CC 5,1 k), PTC 500 mA, ESD USBLC6-2SC6, LDO AMS1117-3.3, punti di test.
- - MCU: ESP32-C3-MINI-1-N4, RC su EN, tasti RESET/BOOT, disaccoppiamento.
- - Display: connettore FFC 16 poli 0,5 mm verso la schedina portadisplay, driver retroilluminazione PWM,
-   predisposizione touch con resistenze 0 ohm NON montate (DEC-019).
+ - USB e alimentazione: USB-C 2.0 (CC 5,1 k), PTC 500 mA, ESD USBLC6-2SC6, LDO TLV75533 (stabile con MLCC), punti di test.
+ - MCU: ESP32-C3-MINI-1-H4X, RC su EN, tasti RESET/BOOT, disaccoppiamento.
+ - Display: header 7 pin 2,54 mm verso il modulo GC9A01 (VCC, GND, SCL, SDA, DC, CS, RST),
+   alimentazione del modulo commutata da Q1 per spegnerlo di notte (DEC-034). Niente touch.
  - Periferiche: pull-up I2C, connettori JST-SH 4 poli tipo Qwiic per SHT40 (J3) e modulo RTC DS3231 (J4),
    pulsante utente remoto su connettore (J5).
 
 Assegnazione GPIO (ESP32-C3-MINI-1):
- IO0 TP_INT | IO1 TP_RST | IO2 I2C_SDA | IO3 BTN_USER | IO4 LCD_DC | IO5 LCD_RST | IO6 LCD_SCLK
- IO7 LCD_MOSI | IO8 I2C_SCL | IO9 BOOT | IO10 LCD_CS | IO18 USB_D- | IO19 USB_D+ | IO20 (RXD0) LCD_BL
+ IO0, IO1 liberi su punti di test | IO2 I2C_SDA | IO3 BTN_USER | IO4 LCD_DC | IO5 LCD_RST | IO6 LCD_SCLK
+ IO7 LCD_MOSI | IO8 I2C_SCL | IO9 BOOT | IO10 LCD_CS | IO18 USB_D- | IO19 USB_D+ | IO20 (RXD0) DISP_EN_N
  IO21 (TXD0) UART_TX su punto di test.  Strapping: IO2 e IO8 con pull-up 4,7 k (I2C), IO9 pull-up 10 k.
 
-Indirizzi I2C: SHT40 0x44, DS3231 0x68 (EEPROM assente sul modulo Adafruit), touch CST816S 0x15 (da verificare).
-Componenti DNP (non montati): R11 R12 R13 R14 (touch).""", 30, 90)
+Indirizzi I2C: SHT40 0x44, DS3231 0x68 (EEPROM assente sul modulo Adafruit).""", 30, 90)
 
 # ----------------------------------------------------------------- USB e alimentazione
 s = sheets["usb_alimentazione.kicad_sch"]
 s.box(15, 25, 175, 175, "Ingresso USB-C, CC, ESD")
-j1 = s.add(L, "PoliClock:TYPE-C-31-M-12", "J1", "TYPE-C-31-M-12", 70, 95, lcsc="C165948",
+j1 = s.add(L, "Connector:USB_C_Receptacle_USB2.0_16P", "J1", "TYPE-C-31-M-12", 70, 95, lcsc="C165948",
+           fp="PoliClock:USB_C_Receptacle_HRO_TYPE-C-31-M-12",
            ds="https://www.lcsc.com/datasheet/C165948.pdf",
-           desc="Ricettacolo USB-C 16P, solo USB 2.0")
-for p in ("A1B12", "B1A12", "1", "2", "3", "4"):
+           desc="Ricettacolo USB-C 16P HRO, solo USB 2.0 (footprint libreria KiCad dal disegno HRO)")
+for p in ("A1", "A12", "B1", "B12", "SH"):
     s.conn(L, j1, p, "GND")
-for p in ("A4B9", "B4A9"):
+for p in ("A4", "A9", "B4", "B9"):
     s.conn(L, j1, p, "VBUS")
 s.conn(L, j1, "A5", "CC1")
 s.conn(L, j1, "B5", "CC2")
@@ -147,14 +148,17 @@ s.conn(L, f1, "2", "+5V")
 C(s, "C1", "10uF", 235, 85, "+5V", "GND")
 R(s, "R5", "0", 260, 70, "+5V", "5V_LDO", rot=90, note="0 ohm: isola il regolatore per il bring-up")
 C(s, "C2", "10uF", 285, 85, "5V_LDO", "GND")
-u2 = s.add(L, "Regulator_Linear:AMS1117-3.3", "U2", "AMS1117-3.3", 315, 70, lcsc="C6186", ds=DS_AMS)
+u2 = s.add(L, "Regulator_Linear:TLV75533PDBV", "U2", "TLV75533PDBVR", 315, 70, lcsc="C404027", ds=DS_LDO,
+           desc="LDO 500 mA, stabile con MLCC >= 1 uF (TI SBVS320D)")
+s.conn(L, u2, "1", "5V_LDO")
 s.conn(L, u2, "3", "5V_LDO")
-s.conn(L, u2, "2", "+3V3")
-s.conn(L, u2, "1", "GND")
-C(s, "C3", "22uF", 345, 85, "+3V3", "GND")
+s.conn(L, u2, "5", "+3V3")
+s.conn(L, u2, "2", "GND")
+s.nc(u2, "4")
+C(s, "C3", "10uF", 345, 85, "+3V3", "GND")
 C(s, "C4", "100nF", 360, 85, "+3V3", "GND")
-s.text("AMS1117: Cout 22 uF (datasheet: 22 uF tantalio per la stabilita').\n"
-       "Verificare stabilita' con MLCC al bring-up; Pd ~ (5-3,3) V x I.", 290, 100)
+s.text("TLV75533: C2 (ingresso) e C3/C4 (uscita) adiacenti ai pin, ritorno GND corto.\n"
+       "Stabile con ceramici >= 1 uF effettivi; Pd ~ (5-3,3) V x I, RthJA 231 C/W (JEDEC).", 290, 100)
 s.text("PWR_FLAG", 200, 125, 1.27, True)
 s.flag(L, "VBUS", 200, 135)
 s.flag(L, "GND", 215, 135)
@@ -168,13 +172,13 @@ TP(s, "TP4", 335, 140, "GND")
 
 # ----------------------------------------------------------------- MCU
 s = sheets["mcu.kicad_sch"]
-s.box(60, 20, 260, 190, "Modulo ESP32-C3-MINI-1-N4 (4 MB flash, antenna PCB: zona di esclusione)")
-u3 = s.add(L, "PoliClock:ESP32-C3-MINI-1-N4", "U3", "ESP32-C3-MINI-1-N4", 160, 105, lcsc="C2838502",
-           ds=DS_ESP, desc="Modulo Wi-Fi/BLE (radio non usata in V1, DEC-012)")
-pmap = {"3": "+3V3", "5": "I2C_SDA", "6": "BTN_USER", "8": "EN", "12": "TP_INT", "13": "TP_RST",
+s.box(60, 20, 260, 190, "Modulo ESP32-C3-MINI-1-H4X (chip v1.1, 4 MB flash, antenna PCB oltre il bordo)")
+u3 = s.add(L, "PoliClock:ESP32-C3-MINI-1", "U3", "ESP32-C3-MINI-1-H4X", 160, 105, lcsc="C41349510",
+           ds=DS_ESP, desc="Variante Recommended (DEC-035); radio non usata in V1 (DEC-012)")
+pmap = {"3": "+3V3", "5": "I2C_SDA", "6": "BTN_USER", "8": "EN", "12": "IO0", "13": "IO1",
         "16": "LCD_CS", "18": "LCD_DC", "19": "LCD_RST", "20": "LCD_SCLK", "21": "LCD_MOSI",
-        "22": "I2C_SCL", "23": "IO9_BOOT", "26": "USB_DN", "27": "USB_DP", "30": "LCD_BL", "31": "UART_TX"}
-local = {"EN", "IO9_BOOT", "UART_TX"}
+        "22": "I2C_SCL", "23": "IO9_BOOT", "26": "USB_DN", "27": "USB_DP", "30": "DISP_EN_N", "31": "UART_TX"}
+local = {"EN", "IO9_BOOT", "UART_TX", "IO0", "IO1"}
 for num, (px, py, prot, name, typ) in u3.pins.items():
     if name == "NC":
         s.nc(u3, num)
@@ -211,61 +215,53 @@ C(s, "C5", "10uF", 80, 40, "+3V3", "GND")
 C(s, "C6", "100nF", 92, 40, "+3V3", "GND")
 s.text("Disaccoppiamento vicino al pin 3V3 del modulo", 75, 52)
 
-s.box(270, 20, 400, 100, "EN (reset) e BOOT")
+s.box(270, 20, 400, 100, "EN (reset) e IO9 (boot): senza tasti (DEC-039)")
 R(s, "R6", "10k", 285, 45, "+3V3", "EN", note="RC su EN (Espressif: R 10 k, C 1 uF)")
 C(s, "C7", "1uF", 300, 60, "EN", "GND")
-sw1 = s.add(L, "PoliClock:TS-1088-AR02016", "SW1", "RESET", 340, 45, lcsc="C720477",
-            ds="https://www.lcsc.com/datasheet/C720477.pdf", desc="Tasto 4x3 mm (DEC-029)")
-s.conn(L, sw1, "1", "EN")
-s.conn(L, sw1, "2", "GND")
 R(s, "R7", "10k", 285, 80, "+3V3", "IO9_BOOT", note="Pull-up strapping IO9 (SPI boot)")
-sw2 = s.add(L, "PoliClock:TS-1088-AR02016", "SW2", "BOOT", 340, 80, lcsc="C720477",
-            ds="https://www.lcsc.com/datasheet/C720477.pdf", desc="Tasto 4x3 mm (DEC-029)")
-s.conn(L, sw2, "1", "IO9_BOOT")
-s.conn(L, sw2, "2", "GND")
-s.text("Download: tenere BOOT e premere/rilasciare RESET (IO9=0, IO8=1).", 275, 92)
+s.text("Nessun tasto: flash e reset via USB nativa.\\nRecupero: collegare TP11 (IO9) a GND e dare\\n"
+       "alimentazione o portare TP6 (EN) a GND e rilasciarlo -> download (IO9=0, IO8=1).", 310, 40)
 
 s.box(270, 110, 400, 150, "Debug")
 TP(s, "TP5", 290, 125, "UART_TX", name="UART_TX (IO21)")
 TP(s, "TP6", 320, 125, "EN", name="EN")
+TP(s, "TP11", 290, 142, "IO9_BOOT", name="IO9 (BOOT)")
+TP(s, "TP9", 350, 125, "IO0", name="IO0 (libero)")
+TP(s, "TP10", 380, 125, "IO1", name="IO1 (libero)")
 s.text("Log e flash principali via USB nativa;\nTXD0 su punto di test per debug di riserva.", 275, 138)
 
 # ----------------------------------------------------------------- Display
 s = sheets["display.kicad_sch"]
-s.box(15, 20, 400, 200, "Collegamento alla schedina portadisplay (FFC 16 poli, passo 0,5 mm, contatti in basso)")
-j2 = s.add(L, "PoliClock:AFC01-S16FCA-00", "J2", "AFC01-S16FCA-00", 300, 95, lcsc="C262665",
-           ds="https://www.lcsc.com/datasheet/C262665.pdf", desc="FFC/FPC ZIF 16P 0,5 mm, H 2,0 mm")
-FFC = {"1": "GND", "2": "3V3_DISP", "3": "3V3_DISP", "4": "GND", "5": "LCD_SCLK_C", "6": "GND",
-       "7": "LCD_MOSI_C", "8": "LCD_CS", "9": "LCD_DC", "10": "LCD_RST", "11": "GND", "12": "TP_SDA",
-       "13": "TP_SCL", "14": "TP_INT", "15": "TP_RST", "16": "LCD_LEDK", "17": "GND", "18": "GND"}
-GLOB = {"LCD_CS", "LCD_DC", "LCD_RST", "TP_INT", "TP_RST", "LCD_SCLK", "LCD_MOSI", "LCD_BL", "I2C_SDA", "I2C_SCL"}
-for p, n in FFC.items():
+s.box(15, 20, 400, 200, "Modulo display GC9A01 1,28\" a 7 pin (DEC-034): header 2,54 mm, alimentazione commutata")
+j2 = s.add(L, "PoliClock:HXPZ2.54-1X7PWT", "J2", "HX PZ2.54-1x7P WT", 300, 95, lcsc="C46061680",
+           ds="https://www.lcsc.com/datasheet/C46061680.pdf",
+           desc="Header maschio 1x7 2,54 mm SMD a 90 gradi: cavo Dupont 7 fili verso il modulo")
+HDR = {"1": "3V3_DISP", "2": "GND", "3": "LCD_SCLK_C", "4": "LCD_MOSI_C", "5": "LCD_DC", "6": "LCD_CS",
+       "7": "LCD_RST"}
+GLOB = {"LCD_CS", "LCD_DC", "LCD_RST", "LCD_SCLK", "LCD_MOSI", "DISP_EN_N"}
+for p, n in HDR.items():
     s.conn(L, j2, p, n, "global" if n in GLOB else None)
-s.text("Pinout cavo (identico sulla portadisplay):\n 1 GND  2 3V3  3 3V3  4 GND  5 SCLK  6 GND  7 MOSI  8 CS\n"
-       " 9 DC  10 RST  11 GND  12 TP_SDA  13 TP_SCL  14 TP_INT  15 TP_RST  16 LEDK\n"
-       "Orientamento cavo (tipo A/B) da fissare nel layout: pin n -> pin n.", 320, 130)
+s.text("J2 -> modulo (serigrafia del modulo): 1 VCC, 2 GND, 3 SCL, 4 SDA, 5 DC, 6 CS, 7 RST.\n"
+       "Ordine da verificare sul modulo ricevuto prima del collegamento.\n"
+       "Il modulo non ha pin BLK: la retroilluminazione segue l'alimentazione VCC.", 250, 135)
 R(s, "R8", "22", 60, 50, "LCD_SCLK", "LCD_SCLK_C", rot=90, kind1="global", note="Smorzamento SCLK (valore da M1)")
 R(s, "R9", "22", 60, 65, "LCD_MOSI", "LCD_MOSI_C", rot=90, kind1="global", note="Smorzamento MOSI (valore da M1)")
-R(s, "R10", "0", 60, 85, "+3V3", "3V3_DISP", rot=90, note="0 ohm: isola l'alimentazione del display")
-s.text("Touch predisposto (DEC-019): R11-R14 NON montati.\nMontare R11/R12 per collegare il touch al bus I2C.", 115, 100)
-R(s, "R11", "0", 130, 120, "I2C_SDA", "TP_SDA", rot=90, dnp=True, kind1="global", note="DNP: touch SDA")
-R(s, "R12", "0", 130, 135, "I2C_SCL", "TP_SCL", rot=90, dnp=True, kind1="global", note="DNP: touch SCL")
-R(s, "R13", "10k", 175, 125, "+3V3", "TP_INT", dnp=True, kind2="global", note="DNP: pull-up INT touch")
-R(s, "R14", "10k", 190, 125, "+3V3", "TP_RST", dnp=True, kind2="global", note="DNP: pull-up RST touch")
-R(s, "R15", "10k", 210, 50, "+3V3", "LCD_RST", kind2="global", note="Pull-up reset pannello")
-s.text("Retroilluminazione: LEDA a 3V3 sulla portadisplay, LEDK commutato a massa.\n"
-       "R18 limita la corrente: valore TBD dal datasheet del pannello acquistato.", 30, 150)
-q1 = s.add(L, "Transistor_FET:AO3400A", "Q1", "AO3400A", 100, 175, lcsc="C20917", ds=DS_AO3400)
-R(s, "R16", "100", 75, 175, "LCD_BL", "BL_G", rot=90, kind1="global", note="Resistenza di gate")
-s.conn(L, q1, "1", "BL_G")
-s.conn(L, q1, "2", "GND")
-s.conn(L, q1, "3", "BL_D")
-R(s, "R17", "100k", 88, 188, "BL_G", "GND", note="Gate a massa: retroilluminazione spenta al reset")
-R(s, "R18", "10", 130, 170, "LCD_LEDK", "BL_D", note="Limitazione corrente LED (TBD da datasheet pannello)")
+R(s, "R15", "10k", 210, 50, "3V3_DISP", "LCD_RST", kind2="global", note="Pull-up reset verso l'alimentazione del modulo")
+s.text("Interruttore di alimentazione del modulo (notte = spento, DEC-009):\n"
+       "IO20 basso -> Q1 acceso. R17 tiene Q1 spento durante reset e boot.\n"
+       "Con il modulo spento il firmware porta SCLK/MOSI/DC/CS/RST a livello basso.", 30, 140)
+q1 = s.add(L, "Transistor_FET:AO3401A", "Q1", "AO3401A", 110, 175, lcsc="C15127", ds=DS_AO3401)
+R(s, "R16", "1k", 85, 175, "DISP_EN_N", "DISP_G", rot=90, kind1="global", note="Resistenza di gate")
+s.conn(L, q1, "1", "DISP_G")
+s.conn(L, q1, "2", "+3V3")
+s.conn(L, q1, "3", "3V3_DISP")
+R(s, "R17", "100k", 95, 160, "+3V3", "DISP_G", note="Gate verso source: modulo spento di default")
+C(s, "C9", "10uF", 150, 175, "3V3_DISP", "GND")
+C(s, "C10", "100nF", 165, 175, "3V3_DISP", "GND")
 
 # ----------------------------------------------------------------- Periferiche
 s = sheets["periferiche.kicad_sch"]
-s.box(15, 20, 200, 110, "Bus I2C (SHT40 0x44, RTC DS3231 0x68, touch 0x15)")
+s.box(15, 20, 200, 110, "Bus I2C (SHT40 0x44, RTC DS3231 0x68)")
 R(s, "R19", "4.7k", 35, 50, "+3V3", "I2C_SDA", kind2="global", note="Pull-up I2C SDA (anche strapping IO2)")
 R(s, "R20", "4.7k", 50, 50, "+3V3", "I2C_SCL", kind2="global", note="Pull-up I2C SCL (anche strapping IO8)")
 R(s, "R21", "0", 35, 85, "+3V3", "3V3_EXT", rot=90, note="0 ohm: isola l'alimentazione dei moduli esterni")
@@ -304,44 +300,5 @@ root.write(f"{D}/{P}.kicad_sch", True)
 for fn, sh in sheets.items():
     sh.write(f"{D}/{fn}", False)
 project_files(D, P, [[ROOT, "Root"]] + [[U(P + "/" + fn), nm] for nm, fn in subs])
-
-# =====================================================================================
-# DISPLAY CARRIER
-# =====================================================================================
-P = "policlock-display"
-D = f"{HW}/{P}"
-ROOT = U(P + "/root")
-s = Sheet(P, "root", f"{P}.kicad_sch", ROOT, "/" + ROOT, paper="A4", title="PoliClock - schedina portadisplay",
-          comment="Solo connettori e condensatori. Pinout pannello da rif. Waveshare 1.28inch Touch LCD\n"
-                  "(GC9A01 + CST816S, FPC 18 poli): CONFERMARE sul pannello acquistato (OPEN-016).")
-j1 = s.add(L, "PoliClock:AFC01-S16FCA-00", "J1", "AFC01-S16FCA-00", 60, 95, lcsc="C262665", desc="Cavo FFC verso scheda principale",
-           ds="https://www.lcsc.com/datasheet/C262665.pdf")
-CAB = {"1": "GND", "2": "+3V3", "3": "+3V3", "4": "GND", "5": "LCD_SCLK", "6": "GND", "7": "LCD_MOSI",
-       "8": "LCD_CS", "9": "LCD_DC", "10": "LCD_RST", "11": "GND", "12": "TP_SDA", "13": "TP_SCL",
-       "14": "TP_INT", "15": "TP_RST", "16": "LCD_LEDK", "17": "GND", "18": "GND"}
-for p, n in CAB.items():
-    s.conn(L, j1, p, n)
-j2 = s.add(L, "PoliClock:AFC01-S18FCA-00", "J2", "AFC01-S18FCA-00", 200, 95, lcsc="C262666",
-           ds="https://www.lcsc.com/datasheet/C262666.pdf",
-           desc="FPC 18P 0,5 mm: passo e lato contatti da confermare sul pannello acquistato")
-PAN = {"1": "GND", "2": "TP_INT", "3": "TP_SCL", "4": "TP_SDA", "5": "TP_RST", "6": "+3V3", "7": "GND",
-       "8": "+3V3", "9": "LCD_DC", "10": "LCD_MOSI", "12": "LCD_SCLK", "13": "LCD_CS", "14": "LCD_RST",
-       "15": "GND", "16": "LCD_LEDK", "17": "LCD_LEDA", "18": "GND", "19": "GND", "20": "GND"}
-for p, n in PAN.items():
-    s.conn(L, j2, p, n)
-s.nc(j2, "11")
-s.text("Pannello (rif. Waveshare): 1 GND, 2 TP_INT, 3 TP_SCL, 4 TP_SDA, 5 TP_RST, 6 TP_VDD,\n"
-       "7 GND, 8 LCD_VDD, 9 D/C, 10 SDA(MOSI), 11 SDO (n.c.), 12 SCL(SCLK), 13 CS, 14 RST,\n"
-       "15 GND, 16 LEDK, 17 LEDA, 18 GND.", 150, 140)
-R(s, "R1", "0", 130, 40, "+3V3", "LCD_LEDA", rot=90, note="0 ohm: anodo retroilluminazione (resistenza se richiesta dal pannello)")
-C(s, "C1", "10uF", 150, 55, "+3V3", "GND")
-C(s, "C2", "100nF", 162, 55, "+3V3", "GND")
-C(s, "C3", "100nF", 174, 55, "+3V3", "GND")
-s.text("C1 bulk, C2 LCD_VDD, C3 TP_VDD: vicino al connettore del pannello.", 140, 70)
-s.flag(L, "+3V3", 30, 160)
-s.flag(L, "GND", 45, 160)
-os.makedirs(D, exist_ok=True)
-s.write(f"{D}/{P}.kicad_sch", True)
-project_files(D, P, [[ROOT, "Root"]])
 
 print("generated")
