@@ -657,7 +657,7 @@
 				)
 			)
 		)
-		(property "Value" "10uF"
+		(property "Value" "1uF"
 			(at 0 1.43 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -703,7 +703,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C19702"
+		(property "LCSC" "C15849"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -5675,7 +5675,7 @@
 				)
 			)
 		)
-		(property "Value" "10uF"
+		(property "Value" "4.7uF"
 			(at 0 1.43 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -5721,7 +5721,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C19702"
+		(property "LCSC" "C19666"
 			(at 0 0 90)
 			(layer "F.SilkS")
 			(hide yes)

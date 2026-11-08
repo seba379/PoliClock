@@ -34,7 +34,7 @@ Attività:
 
 **Output:** progetto KiCad 10 versionato in `hardware/`: schema e layout della scheda principale (unico PCB custom dopo `DEC-034`), BOM e file di posizionamento per JLC, STEP per il CAD, checklist di revisione compilata. Schema e layout preparati da Claude, rivisti a vista dal proprietario in KiCad.
 
-**Stato (2026-11-07):** schema e PCB rev 0.2 della scheda principale (50 × 40 mm, 2 strati, un lato) dopo la revisione tecnica indipendente, posizionati e sbrogliati in bozza con report ERC/DRC salvati ([hardware](../hardware/README.md), [02](02-architettura-hardware.md) §3.2, [12](12-selezione-componenti.md)). Restano: studio volumetrico 1:1 (`OPEN-028`), verifica del modulo display ricevuto (`OPEN-016`), revisione dello sbroglio (`OPEN-027`), prototipo M1 e revisione visiva del proprietario. Nessun test hardware eseguito.
+**Stato (2026-11-07):** schema e PCB rev 0.2 della scheda principale (50 × 40 mm, 2 strati, un lato) dopo la revisione tecnica indipendente, posizionati e sbrogliati in bozza con report ERC/DRC salvati ([hardware](../hardware/README.md), [02](02-architettura-hardware.md) §3.2, [12](12-selezione-componenti.md)). Il 2026-11-08 è stata fatta una revisione con Codex; Claude l'ha verificata ([docs/10](10-decisioni-aperte.md) §7–8): corretti la distanza dal bordo e i courtyard; chiusi poi lo spunto all'ingresso USB (`DEC-042`), il controllo DRC in `esporta.py`, l'allineamento delle specifiche firmware/UI a `DEC-034`, i cartigli e i residui storici. Restano inoltre: studio volumetrico 1:1 (`OPEN-028`), verifica del modulo display ricevuto (`OPEN-016`), revisione dello sbroglio (`OPEN-027`), prototipo M1 e revisione visiva del proprietario. Nessun test hardware eseguito.
 
 **Exit gate:** `VT-PCB-001` superato (ERC/DRC puliti, revisione schema, disponibilità LCSC, quote compatibili con il CAD); preventivo JLC accettato.
 
@@ -72,14 +72,15 @@ Attività:
 
 | Priorità | Attività | Dipendenza |
 |---|---|---|
-| P0 | Trovare pannello GC9A01 con datasheet e pinout FPC | Fornitore |
-| P0 | Scegliere RTC e tampone; stimarne la durata | Datasheet |
+| P0 | Ricevere il modulo GC9A01 a 7 pin e verificarne pinout e corrente (`OPEN-016`, `DEC-034`) | Fornitore |
+| P1 | Verificare la durata del tampone RTC (DS3231 con CR1220, `DEC-024`, `OPEN-014`) | Prototipo M1 |
 | P0 | Bozza Blender a volumi e posizione della scheda principale | Misure display, scheda |
 | P0 | Implementare ora e impostazione offline | RTC funzionante |
 | P0 | Posizionare SHT40 lontano dal calore | Misure termiche |
 | P1 | Posizione del pulsante nella statuetta | Concept CAD |
-| P1 | Stabilire parametri luminosità e timeout | Test leggibilità |
+| P1 | Stabilire palette DIM/BRIGHT e timeout (solo grafica, `DEC-034`) | Test leggibilità |
 | P1 | Uscita del cavo USB e stabilità con zavorra | Quote CAD |
+| P1 | Misurare spunto USB all'inserzione e transitori del modulo display (`OPEN-029`, `VT-PWR-001/003`) | PCB assemblato |
 | P2 | Animazioni/transizioni UI | Dopo firmware stabile |
 | P2 | Alternative estetiche (capelli, posa, colori) | Dopo CAD funzionale |
 
@@ -89,10 +90,10 @@ Attività:
 |---|---|---|
 | Errore nel PCB che richiede una seconda revisione | Alto | Prototipo M1, checklist di revisione, punti di test, 0 Ω per isolare blocchi |
 | Costo del PCB custom superiore alle attese | Medio | Preventivo completo prima dell'ordine; parti "basic"; piano B scheda pronta |
-| Pannello display senza documentazione affidabile | Alto | Acquistare solo pannelli con datasheet e pinout FPC |
+| Modulo display senza documentazione affidabile | Medio | Pinout dalla serigrafia del modulo ricevuto, verifica su banco prima di collegarlo a J2 (`OPEN-016`) |
 | Scheda principale non entra nel busto | Medio | Bozza CAD in M1; opzione B con scheda nella testa e prolunga |
-| Display instabile sul cavo nel collo | Medio | Frequenza SPI ridotta, masse alternate, prova `VT-PCB-003` |
-| SHT40 riscaldato dal calore interno permanente | Medio/alto | Vano ventilato, retroilluminazione bassa, test comparativi a regime |
+| Display instabile sul cavo nel collo | Medio | Frequenza SPI ridotta, R8/R9 22 Ω in serie, cavetto corto, prova `VT-PCB-003` (`OPEN-021`) |
+| SHT40 riscaldato dal calore interno permanente | Medio/alto | Vano ventilato e lontano da LDO e display, test comparativi a regime (la retroilluminazione è fissa, `DEC-034`) |
 | Statuetta instabile con il cavo sempre inserito | Medio | Uscita guidata nella base, zavorra, cavo flessibile |
 | USB-C posteriore fragile | Medio | Scheda avvitata alla scocca, prova con diversi cavi |
 | Ora persa con cavo scollegato a lungo | Basso | Tampone RTC dimensionato; configuratore per reimpostarla |

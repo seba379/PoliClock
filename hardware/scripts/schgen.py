@@ -223,8 +223,8 @@ class Sheet:
 
     # ---------------------------------------------------------- output
     def write(self, path, is_root):
-        tb = [S("title_block"), [S("title"), self.title or self.name], [S("date"), "2026-11-07"],
-              [S("rev"), "0.1"], [S("company"), "PoliClock"]]
+        tb = [S("title_block"), [S("title"), self.title or self.name], [S("date"), "2026-11-08"],
+              [S("rev"), "0.2"], [S("company"), "PoliClock"]]
         if self.comment:
             for i, line in enumerate(self.comment.split("\n")[:4], 1):
                 tb.append([S("comment"), i, line])

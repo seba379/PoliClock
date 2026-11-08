@@ -62,8 +62,8 @@ Antirimbalzo e riconoscimento di pressione breve/lunga vanno provati sul prototi
 
 | Parametro | Valore iniziale di sperimentazione | Note |
 |---|---|---|
-| Luminosità DIM | 10–15% del PWM di retroilluminazione | Percentuale *non* equivale a cd/m² o potenza |
-| Luminosità BRIGHT | 60–70% del PWM di retroilluminazione | Calibrare in ambiente reale |
+| Luminosità DIM | Palette attenuata: fondo nero, cifre a bassa luminanza (es. blu/grigio scuro) | Solo grafica: la retroilluminazione del modulo è fissa (`DEC-034`); calibrare i colori in ambiente reale |
+| Luminosità BRIGHT | Palette piena: cifre chiare ad alto contrasto | Stessa retroilluminazione: cambia solo la grafica |
 | Timeout BRIGHT | 20 s | Ritriggerabile dal pulsante |
 | Fascia notte | 23:00–07:00 | Display spento; configurabile (`DEC-013`) |
 | Timeout NIGHT_PEEK | 10 s | Quadrante attenuato dopo pressione notturna |

@@ -1,5 +1,7 @@
 # Passaggio operativo a Codex - PoliClock
 
+> **DOCUMENTO STORICO, SUPERATO. Non usarlo come istruzione operativa.** È il pacchetto della baseline v0.1 del 2026-11-07, conservato per tracciabilità. Le istruzioni e i vincoli in vigore sono in [AGENTS.md](AGENTS.md), [README](README.md) e nel [registro decisioni](docs/10-decisioni-aperte.md). In particolare la batteria è esclusa dalla V1 (`DEC-023`), il PCB è custom (`DEC-015`) e il display è il modulo GC9A01 a 7 pin senza touch (`DEC-034`). Riferimenti a batteria ricaricabile, schede Waveshare o pannelli FPC qui sotto non sono più validi.
+
 **Data del pacchetto:** 2026-11-07\
 **Fase:** inizializzazione repository e baseline documentale v0.1 (M0)\
 **Repository di destinazione:** https://github.com/seba379/PoliClock\

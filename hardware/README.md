@@ -2,7 +2,14 @@
 
 **Stato (rev 0.2, 2026-11-08):** schema e PCB della scheda principale **in bozza**, rifatti dopo la revisione tecnica indipendente (esito sulla rev 0.1: *NOT APPROVED FOR FABRICATION*; stato dei rilievi in [docs/10](../docs/10-decisioni-aperte.md) §6).
 
-**Correzioni del 2026-11-08, ramo `codex/pcb-edge-courtyard-fixes`:** C7 spostato a 2,60 mm dal bordo; courtyard/F.Fab di J2–J5 completati; FID1 spostato di 1,5 mm con la sua zona di rispetto. Commit autorizzato dal proprietario; ERC/DRC e confronto riportati nella [nota delle modifiche](../docs/revisioni/2026-11-08/correzioni/README.md). I render 3D `-top.png` e `-bottom.png` precedono queste correzioni: usare il PCB, il PDF di layout aggiornato o la [vista 2D annotata](../docs/revisioni/2026-11-08/correzioni/pcb-courtyard.svg).
+**Correzioni del 2026-11-08, ramo `codex/pcb-edge-courtyard-fixes`:** C7 spostato a 2,60 mm dal bordo; courtyard/F.Fab di J2–J5 completati; FID1 spostato di 1,5 mm con la sua zona di rispetto. Commit autorizzato dal proprietario; ERC/DRC e confronto riportati nella [nota delle modifiche](../docs/revisioni/2026-11-08/correzioni/README.md). Vista 2D dei courtyard: [pcb-courtyard.svg](../docs/revisioni/2026-11-08/correzioni/pcb-courtyard.svg).
+
+**Chiusura dei rilievi residui (2026-11-08, [verifica](../docs/revisioni/2026-11-08/verifica-claude.md)):**
+
+- C1 portato a **1 µF** (C15849) e C2 a **4,7 µF** (C19666, Basic): restano 5,7 µF nominali su VBUS (`DEC-042`).
+- Cartigli portati a rev 0.2 e annotazioni dello schema corrette.
+- `esporta.py` ora si ferma se ERC, DRC o il controllo meccanico falliscono.
+- PDF, BOM, layout e render 3D sono rigenerati.
 
 - **Report salvati**: ERC e DRC rieseguiti con `kicad-cli` sulla rev 0.2 (`policlock-main/erc.rpt`, `drc.rpt`). Sono verifiche automatiche del progetto.
 - **Test eseguiti sull'hardware**: nessuno. Tutti i test del [piano di verifica](../docs/07-piano-verifica.md) sono NOT_RUN.
@@ -36,7 +43,7 @@ Ogni componente montato ha il campo **`LCSC`** (codice JLCPCB/LCSC). Simboli e f
 python hardware/scripts/esporta.py
 ```
 
-Esegue ERC (`--severity-all`), DRC (con `--schematic-parity`), PDF, BOM, CPL, render e STEP con `kicad-cli` (percorso modificabile con la variabile `KICAD_CLI`).
+Esegue ERC (`--severity-all`), DRC (`--schematic-parity --refill-zones --all-track-errors`) e il controllo meccanico `verifica_meccanica_pcb.py`, poi PDF, BOM, CPL, render e STEP con `kicad-cli` (percorso modificabile con le variabili `KICAD_CLI` e `KICAD_PYTHON`). **Se ERC, DRC o controllo meccanico falliscono, lo script si ferma con codice d'uscita diverso da zero e non esporta i file del PCB** (rilievo REV-004). I render 3D richiedono i modelli locali in `lib/PoliClock.3dshapes/`.
 
 Generatori (per i PCB serve il Python di KiCad, `"C:/Program Files/KiCad/10.0/bin/python.exe"`):
 

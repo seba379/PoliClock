@@ -38,14 +38,31 @@ for p in PROJECTS:
          "--labels", "Riferimenti,Valore,Footprint,LCSC,Qta,DNP,Note",
          "--group-by", "Value,Footprint,LCSC,${DNP}", sch])
 
+if not ok:
+    print("ERC con violazioni: esportazioni del PCB interrotte, vedi erc.rpt")
+    sys.exit(1)
 
 # ---------------------------------------------------------------- PCB della scheda principale
 pcb = os.path.join(HW, "policlock-main", "policlock-main.kicad_pcb")
 if os.path.exists(pcb):
     d = os.path.dirname(pcb)
-    r = subprocess.run([KICAD_CLI, "pcb", "drc", "--severity-all", "--schematic-parity", "-o", os.path.join(d, "drc.rpt"), pcb],
+    # Gate DRC (REV-004): zone ricalcolate in memoria, codice d'uscita sulle violazioni; niente esportazioni se fallisce
+    r = subprocess.run([KICAD_CLI, "pcb", "drc", "--severity-all", "--all-track-errors", "--schematic-parity",
+                        "--refill-zones", "--exit-code-violations", "-o", os.path.join(d, "drc.rpt"), pcb],
                        capture_output=True, text=True, encoding="utf-8", errors="replace")
     print("policlock-main DRC:", " / ".join(r.stdout.strip().splitlines()[:3]))
+    if r.returncode != 0:
+        print(r.stdout, r.stderr)
+        print("DRC fallito o con violazioni (codice", r.returncode, "): esportazioni del PCB interrotte, vedi drc.rpt")
+        sys.exit(r.returncode)
+    # controllo meccanico (REV-001/003): margini dal bordo e courtyard, con il Python di KiCad
+    kpy = os.environ.get("KICAD_PYTHON", os.path.join(os.path.dirname(KICAD_CLI), "python.exe"))
+    r = subprocess.run([kpy, os.path.join(HW, "scripts", "verifica_meccanica_pcb.py"), pcb],
+                       capture_output=True, text=True, encoding="utf-8", errors="replace")
+    print("policlock-main verifica meccanica:", "PASS" if r.returncode == 0 else "FAIL")
+    if r.returncode != 0:
+        print(r.stdout[-3000:], r.stderr[-3000:])
+        sys.exit(r.returncode)
     run(["pcb", "export", "pdf", "--mode-multipage", "--scale", "5", "--layers", "F.Fab,F.Cu,B.Cu,B.SilkS",
          "--common-layers", "Edge.Cuts", "--sketch-pads-on-fab-layers", "--crossout-DNP-footprints-on-fab-layers",
          "-o", os.path.join(d, "policlock-main-layout.pdf"), pcb])

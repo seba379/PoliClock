@@ -1,6 +1,6 @@
 # 04 — Specifiche firmware
 
-**Versione:** 0.6 · **Stato:** architettura proposta, codice non ancora implementato · **Data:** 2026-11-07
+**Versione:** 0.7 · **Stato:** architettura proposta, codice non ancora implementato · **Data:** 2026-11-08
 
 ## 1. Tecnologia
 
@@ -20,8 +20,8 @@ firmware/                      # struttura futura, non ancora generata
 │   ├── board_support/         # pin e periferiche: prototipo da banco e PCB custom
 │   ├── time_service/          # RTC esterno, UTC, timezone, impostazione offline
 │   ├── climate_service/       # SHT40, validità dati e filtri
-│   ├── power_service/         # presenza USB, brown-out, retroilluminazione, policy
-│   ├── display_service/       # GC9A01, retroilluminazione PWM, refresh
+│   ├── power_service/         # presenza USB, brown-out, alimentazione del modulo display (Q1), policy
+│   ├── display_service/       # GC9A01, palette DIM/BRIGHT, accensione/spegnimento del modulo, refresh
 │   ├── ui/                    # layout, widget, schermate
 │   ├── input_service/         # pulsante -> eventi astratti (touch escluso, DEC-034)
 │   ├── settings_service/      # NVS con schema/versione
@@ -63,12 +63,21 @@ stateDiagram-v2
     NIGHT --> NIGHT_PEEK: pressione breve
     NIGHT_PEEK --> NIGHT: timeout
     NIGHT --> DIM: fine fascia notte
+    NIGHT_PEEK --> DIM: fine fascia notte
 ```
 
-- `DIM`: pagina principale in nero/blu scuro, retroilluminazione bassa (PWM); **display acceso**.
-- `BRIGHT`: stessa pagina con retroilluminazione alta per tempo configurabile (default sperimentale circa 20 s).
-- `NIGHT`: retroilluminazione spenta e pannello in sleep nella fascia notte (`PR-FUN-013`, default 23:00–07:00, `DEC-013`); ESP32 sospeso con risveglio da timer e pulsante.
-- `NIGHT_PEEK`: quadrante attenuato mostrato dopo una pressione notturna per il timeout, poi ritorno a `NIGHT` (`CAND-009`).
+La retroilluminazione del modulo display a 7 pin **non è regolabile**: è sempre accesa quando il modulo è alimentato (`DEC-034`). La luminosità percepita si ottiene **solo con i colori della grafica**; il display si spegne togliendo alimentazione al modulo con il P-MOS Q1 (segnale `DISP_EN_N` su IO20: basso = acceso; R17 lo tiene spento al boot). Non esiste un PWM della retroilluminazione.
+
+- `DIM`: pagina principale con **palette attenuata** (fondo nero, cifre in toni scuri/bassa luminanza); **modulo alimentato**.
+- `BRIGHT`: stessa pagina con **palette piena** (colori chiari ad alto contrasto) per un tempo configurabile (default sperimentale circa 20 s).
+- `NIGHT`: **modulo display spento** con Q1 nella fascia notte (`PR-FUN-013`, default 23:00–07:00, `DEC-013`, `DEC-009`). Il solo comando di sleep del controller non basta, perché la retroilluminazione resterebbe accesa. L'ESP32 resta attivo (light-sleep solo se utile, `OPEN-009`).
+- `NIGHT_PEEK`: modulo riacceso, reinizializzato e quadrante con palette DIM mostrato dopo una pressione notturna per il timeout, poi ritorno a `NIGHT` (`CAND-009`). Se la fascia notte termina durante `NIGHT_PEEK`, si passa direttamente a `DIM` senza spegnere il modulo.
+
+**Sequenze del modulo display (contratto per `display_service` / `power_service`):**
+
+1. *Spegnimento* (`→ NIGHT`): fermare le scritture SPI; portare a livello **basso** LCD_SCLK, LCD_MOSI, LCD_DC, LCD_CS e LCD_RST; poi `DISP_EN_N` alto (Q1 aperto). Ordine pensato per non alimentare il modulo attraverso i pin di segnale (alimentazione parassita).
+2. *Accensione* (`→ NIGHT_PEEK` o `→ DIM`): `DISP_EN_N` basso; attesa della stabilizzazione di 3V3_DISP (valore da misurare in M1, `VT-PCB-002`); impulso di reset su LCD_RST; inizializzazione completa del GC9A01; disegno del quadrante; solo allora la pagina è visibile.
+3. Durante reset, boot e download dalla ROM il firmware non controlla i pin: R17 tiene il modulo spento, ma i livelli dei segnali in quella fase (per esempio il pull-up di reset dei pin JTAG) vanno misurati per escludere un'alimentazione parassita (rilievo della revisione del 2026-11-08, `VT-PWR-003`).
 - Nessuno stato di spegnimento controllato: la V1 non ha batteria (`DEC-023`). Allo scollegamento del cavo il sistema si spegne; l'RTC resta alimentato dal tampone.
 
 La **pressione lunga** apre il menu di impostazione (ora, data, fascia notte), vedi [UI](05-interfaccia-utente.md) e `OPEN-015`.
@@ -80,7 +89,7 @@ Con alimentazione continua il light-sleep **non è necessario**: il firmware pu�
 1. Inizializzazione minima logging, watchdog e NVS.
 2. Board-support, bus I²C, brown-out detector.
 3. RTC, validazione data/ora e preferenze utente.
-4. Display, retroilluminazione e pulsante; presentazione schermata di boot breve.
+4. Accensione del modulo display (sequenza §4), inizializzazione del GC9A01 e del pulsante; presentazione schermata di boot breve. Se l'avvio cade nella fascia notte, il modulo resta spento.
 5. Sensore SHT40 e primo campionamento valido.
 6. Avvio servizi UI/tempo/alimentazione; ingresso in `DIM` o `NIGHT` secondo l'ora.
 

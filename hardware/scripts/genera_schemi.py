@@ -14,7 +14,7 @@ C0603 = "Capacitor_SMD:C_0603_1608Metric"
 C0805 = "Capacitor_SMD:C_0805_2012Metric"
 RES = {"0": "C21189", "10": "C22859", "22": "C23345", "100": "C22775", "1k": "C21190",
        "4.7k": "C23162", "5.1k": "C23186", "10k": "C25804", "100k": "C25803"}
-CAP = {"100nF": ("C14663", C0603), "1uF": ("C15849", C0603), "10uF": ("C19702", C0603),
+CAP = {"100nF": ("C14663", C0603), "1uF": ("C15849", C0603), "4.7uF": ("C19666", C0603), "10uF": ("C19702", C0603),
        "22uF": ("C45783", C0805)}
 TP_FP = "TestPoint:TestPoint_Pad_D1.5mm"
 
@@ -94,7 +94,7 @@ for i, (nm, fn) in enumerate(subs):
 
 root.text("""Blocchi (vedi docs/02-architettura-hardware.md e docs/12-selezione-componenti.md):
  - USB e alimentazione: USB-C 2.0 (CC 5,1 k), PTC 500 mA, ESD USBLC6-2SC6, LDO TLV75533 (stabile con MLCC), punti di test.
- - MCU: ESP32-C3-MINI-1-H4X, RC su EN, tasti RESET/BOOT, disaccoppiamento.
+ - MCU: ESP32-C3-MINI-1-H4X, RC su EN, disaccoppiamento; nessun tasto (DEC-039): EN e IO9 sui punti di test TP6/TP11.
  - Display: header 7 pin 2,54 mm verso il modulo GC9A01 (VCC, GND, SCL, SDA, DC, CS, RST),
    alimentazione del modulo commutata da Q1 per spegnerlo di notte (DEC-034). Niente touch.
  - Periferiche: pull-up I2C, connettori JST-SH 4 poli tipo Qwiic per SHT40 (J3) e modulo RTC DS3231 (J4),
@@ -146,9 +146,9 @@ f1 = s.add(L, "Device:Polyfuse", "F1", "BSMD0805-050-12V", 210, 70, rot=90, fp="
            ref_off=(-2.54, -5.08), val_off=(-5.08, 5.08))
 s.conn(L, f1, "1", "VBUS")
 s.conn(L, f1, "2", "+5V")
-C(s, "C1", "10uF", 235, 85, "+5V", "GND")
+C(s, "C1", "1uF", 235, 85, "+5V", "GND")       # C1 + C2 < 10 uF su VBUS: spunto USB (OPEN-029)
 R(s, "R5", "0", 260, 70, "+5V", "5V_LDO", rot=90, note="0 ohm: isola il regolatore per il bring-up")
-C(s, "C2", "10uF", 285, 85, "5V_LDO", "GND")
+C(s, "C2", "4.7uF", 285, 85, "5V_LDO", "GND")
 u2 = s.add(L, "Regulator_Linear:TLV75533PDBV", "U2", "TLV75533PDBVR", 315, 70, lcsc="C404027", ds=DS_LDO,
            desc="LDO 500 mA, stabile con MLCC >= 1 uF (TI SBVS320D)")
 s.conn(L, u2, "1", "5V_LDO")
@@ -159,6 +159,7 @@ s.nc(u2, "4")
 C(s, "C3", "10uF", 345, 85, "+3V3", "GND")
 C(s, "C4", "100nF", 360, 85, "+3V3", "GND")
 s.text("TLV75533: C2 (ingresso) e C3/C4 (uscita) adiacenti ai pin, ritorno GND corto.\n"
+       "C1 1 uF + C2 4,7 uF: capacita' su VBUS < 10 uF per limitare lo spunto USB (OPEN-029).\n"
        "Stabile con ceramici >= 1 uF effettivi; Pd ~ (5-3,3) V x I, RthJA 231 C/W (JEDEC).", 290, 100)
 s.text("PWR_FLAG", 200, 125, 1.27, True)
 s.flag(L, "VBUS", 200, 135)
@@ -220,16 +221,16 @@ s.box(270, 20, 400, 100, "EN (reset) e IO9 (boot): senza tasti (DEC-039)")
 R(s, "R6", "10k", 285, 45, "+3V3", "EN", note="RC su EN (Espressif: R 10 k, C 1 uF)")
 C(s, "C7", "1uF", 300, 60, "EN", "GND")
 R(s, "R7", "10k", 285, 80, "+3V3", "IO9_BOOT", note="Pull-up strapping IO9 (SPI boot)")
-s.text("Nessun tasto: flash e reset via USB nativa.\\nRecupero: collegare TP11 (IO9) a GND e dare\\n"
-       "alimentazione o portare TP6 (EN) a GND e rilasciarlo -> download (IO9=0, IO8=1).", 310, 40)
+s.text("Nessun tasto (DEC-039): flash e reset via USB nativa.\nRecupero: collegare TP11 (IO9) a GND e dare\n"
+       "alimentazione o portare TP6 (EN) a GND e rilasciarlo\n-> download (IO9=0, IO8=1).", 310, 40)
 
 s.box(270, 110, 400, 150, "Debug")
 TP(s, "TP5", 290, 125, "UART_TX", name="UART_TX (IO21)")
 TP(s, "TP6", 320, 125, "EN", name="EN")
-TP(s, "TP11", 290, 142, "IO9_BOOT", name="IO9 (BOOT)")
+TP(s, "TP11", 305, 125, "IO9_BOOT", name="IO9 (BOOT)")
 TP(s, "TP9", 350, 125, "IO0", name="IO0 (libero)")
 TP(s, "TP10", 380, 125, "IO1", name="IO1 (libero)")
-s.text("Log e flash principali via USB nativa;\nTXD0 su punto di test per debug di riserva.", 275, 138)
+s.text("Log e flash principali via USB nativa;\nTXD0 su punto di test per debug di riserva.", 275, 143)
 
 # ----------------------------------------------------------------- Display
 s = sheets["display.kicad_sch"]
@@ -268,7 +269,7 @@ R(s, "R20", "4.7k", 50, 50, "+3V3", "I2C_SCL", kind2="global", note="Pull-up I2C
 R(s, "R21", "0", 35, 85, "+3V3", "3V3_EXT", rot=90, note="0 ohm: isola l'alimentazione dei moduli esterni")
 TP(s, "TP7", 100, 50, "I2C_SDA", "global")
 TP(s, "TP8", 120, 50, "I2C_SCL", "global")
-s.text("Il modulo Adafruit DS3231 ha gia' pull-up 10 k verso Vin:\nin parallelo a R19/R20 -> ~3,2 k, accettabile.", 80, 75)
+s.text("Il modulo Adafruit DS3231 ha gia' pull-up 10 k verso Vin:\nin parallelo a R19/R20 -> ~3,2 k (~2,4 k se anche il breakout SHT40\nha pull-up 10 k, da verificare), accettabile.", 80, 75)
 
 s.box(210, 20, 400, 110, "Connettori Qwiic / STEMMA QT (JST-SH 4 poli: 1 GND, 2 3V3, 3 SDA, 4 SCL)")
 for ref, x, nm in (("J3", 250, "modulo SHT40"), ("J4", 330, "modulo RTC DS3231")):

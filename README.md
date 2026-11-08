@@ -2,7 +2,7 @@
 
 **Orologio da scrivania alimentato via USB, integrato nel volto di una poliziotta chibi stampata in 3D.**
 
-> Stato: **specifiche preliminari (v0.6), schema KiCad rev 0.1 non validato** · Aggiornamento: 2026-11-07\
+> Stato: **specifiche preliminari (v0.6), schema e PCB KiCad rev 0.2 in bozza, non validati né ordinati** · Aggiornamento: 2026-11-08\
 > Lingua progetto: italiano · Documentazione in Markdown · Hardware non ancora acquistato né validato.
 
 ## Il prodotto
@@ -70,7 +70,7 @@ PoliClock/
 ├── docs/                  # specifiche e verifiche
 ├── assets/                # concept, render, modelli di riferimento futuri
 ├── firmware/              # progetto ESP-IDF da avviare in M1/M4
-├── hardware/              # progetti KiCad (schema rev 0.1), BOM JLCPCB (M2)
+├── hardware/              # progetto KiCad scheda principale rev 0.2 (bozza), BOM/CPL JLCPCB (M2)
 ├── tools/                 # configuratore da PC via USB (M4)
 └── mechanical/            # Blender (chibi), build123d (parti tecniche), STL/3MF
 ```

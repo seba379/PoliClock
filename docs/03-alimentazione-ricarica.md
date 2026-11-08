@@ -21,12 +21,12 @@ flowchart LR
     IN --> PROT["Fusibile/PTC + ESD + CC 5,1 kΩ"]
     PROT -->|"5 V"| REG["LDO TLV75533"]
     REG -->|"3,3 V, Q1 P-MOS"| BL["Modulo display<br/>(retroilluminazione inclusa)"]
-    REG --> LOADS["MCU, display, SHT40, touch"]
+    REG --> LOADS["MCU, modulo display (via Q1), SHT40, RTC"]
     REG -->|"3,3 V, JST-SH"| RTC["Modulo RTC DS3231"]
     CAP["Pila CR1220<br/>(solo tampone RTC)"] --> RTC
 ```
 
-- **Regolatore 3,3 V** da 5 V: LDO **TI TLV75533PDBVR** (C404027, `DEC-037`), 500 mA, **stabile con condensatori ceramici ≥ 1 µF** (datasheet SBVS320D). C2 10 µF in ingresso, C3 10 µF + C4 100 nF in uscita, a 2,4–2,8 mm dai pin. Dissipazione indicativa: (5 − 3,3) V × corrente; con ~80 mA stimati circa 0,14 W, cioè +14…32 °C sul chip con RθJA tra 100,8 °C/W (rame della scheda di valutazione TI) e 231 °C/W (JEDEC): da misurare a scocca chiusa (`VT-PWR-002`). La sorgente da 500 mA soddisfa la richiesta Espressif per il modulo.
+- **Regolatore 3,3 V** da 5 V: LDO **TI TLV75533PDBVR** (C404027, `DEC-037`), 500 mA, **stabile con condensatori ceramici ≥ 1 µF** (datasheet SBVS320D). C2 **4,7 µF** in ingresso, C3 10 µF + C4 100 nF in uscita, a 2,4–2,8 mm dai pin. **Capacità su VBUS:** C1 **1 µF** (dopo il PTC) + C2 4,7 µF = 5,7 µF nominali, al massimo 6,3 µF con la tolleranza del ±10 %, e meno sotto la tensione continua. Resta così sotto i **10 µF** ammessi all'inserzione in una porta USB senza limitatore di spunto (rilievo REV-002, `OPEN-029`). I condensatori a valle dell'LDO si caricano attraverso la sua limitazione di corrente. La misura dello spunto all'inserzione resta in `VT-PWR-001`. Dissipazione indicativa: (5 − 3,3) V × corrente; con ~80 mA stimati circa 0,14 W, cioè +14…32 °C sul chip con RθJA tra 100,8 °C/W (rame della scheda di valutazione TI) e 231 °C/W (JEDEC): da misurare a scocca chiusa (`VT-PWR-002`). La sorgente da 500 mA soddisfa la richiesta Espressif per il modulo.
 - **Protezione ingresso**: PTC 0805 hold 0,5 A (BSMD0805-050-12V), ESD USBLC6-2SC6 su D+/D- e VBUS, Rd 5,1 kΩ su CC1/CC2, resistenza 0 Ω per isolare il regolatore durante il bring-up.
 - **Display e retroilluminazione**: il modulo GC9A01 a 7 pin (`DEC-034`) non ha un pin per la retroilluminazione, che resta accesa finché il modulo è alimentato. Il P-MOS **Q1 (AO3401A)**, comandato da IO20, alimenta il modulo dal 3,3 V e lo spegne del tutto di notte (`DEC-009`); R17 lo tiene spento durante reset e boot. Corrente della retroilluminazione da misurare sul modulo ricevuto (`OPEN-016`).
 - **Tampone dell'RTC**: pila CR1220 sul modulo DS3231 (`DEC-024`), che commuta da solo sulla pila quando manca il 3,3 V; durata attesa di anni secondo Adafruit, da verificare (`OPEN-014`). Il modulo è alimentato dal 3,3 V tramite il connettore J4 (resistenza 0 Ω R21). La pila serve solo a conservare l'ora: non alimenta l'orologio (`DEC-023`).

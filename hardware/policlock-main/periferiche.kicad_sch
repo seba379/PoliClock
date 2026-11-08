@@ -6,8 +6,8 @@
 	(paper "A3")
 	(title_block
 		(title "PoliClock main - Periferiche I2C e pulsante")
-		(date "2026-11-07")
-		(rev "0.1")
+		(date "2026-11-08")
+		(rev "0.2")
 		(company "PoliClock")
 	)
 	(lib_symbols
@@ -1691,7 +1691,7 @@
 		(dnp no)
 		(uuid "4068819f-9159-5b19-af8e-5980a8d2196b")
 		(property "Reference" "TP7"
-			(at 100.33 43.18 0)
+			(at 100.33 41.91 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1796,7 +1796,7 @@
 		(dnp no)
 		(uuid "4522e72c-9dfa-5a06-b364-327ed92fb457")
 		(property "Reference" "TP8"
-			(at 119.38 43.18 0)
+			(at 119.38 41.91 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1891,7 +1891,7 @@
 			)
 		)
 	)
-	(text "Il modulo Adafruit DS3231 ha gia' pull-up 10 k verso Vin:\nin parallelo a R19/R20 -> ~3,2 k, accettabile."
+	(text "Il modulo Adafruit DS3231 ha gia' pull-up 10 k verso Vin:\nin parallelo a R19/R20 -> ~3,2 k (~2,4 k se anche il breakout SHT40\nha pull-up 10 k, da verificare), accettabile."
 		(exclude_from_sim no)
 		(at 80.01 74.93 0)
 		(effects

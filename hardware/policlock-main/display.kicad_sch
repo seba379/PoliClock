@@ -6,8 +6,8 @@
 	(paper "A3")
 	(title_block
 		(title "PoliClock main - Display (modulo 7 pin)")
-		(date "2026-11-07")
-		(rev "0.1")
+		(date "2026-11-08")
+		(rev "0.2")
 		(company "PoliClock")
 	)
 	(lib_symbols

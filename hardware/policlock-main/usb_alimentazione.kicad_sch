@@ -6,8 +6,8 @@
 	(paper "A3")
 	(title_block
 		(title "PoliClock main - USB e alimentazione")
-		(date "2026-11-07")
-		(rev "0.1")
+		(date "2026-11-08")
+		(rev "0.2")
 		(company "PoliClock")
 	)
 	(lib_symbols
@@ -4864,7 +4864,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10uF"
+		(property "Value" "1uF"
 			(at 237.49 86.36 0)
 			(effects
 				(font
@@ -4900,7 +4900,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C19702"
+		(property "LCSC" "C15849"
 			(at 234.95 85.09 0)
 			(effects
 				(font
@@ -5269,7 +5269,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10uF"
+		(property "Value" "4.7uF"
 			(at 287.02 86.36 0)
 			(effects
 				(font
@@ -5305,7 +5305,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C19702"
+		(property "LCSC" "C19666"
 			(at 284.48 85.09 0)
 			(effects
 				(font
@@ -6169,7 +6169,7 @@
 			)
 		)
 	)
-	(text "TLV75533: C2 (ingresso) e C3/C4 (uscita) adiacenti ai pin, ritorno GND corto.\nStabile con ceramici >= 1 uF effettivi; Pd ~ (5-3,3) V x I, RthJA 231 C/W (JEDEC)."
+	(text "TLV75533: C2 (ingresso) e C3/C4 (uscita) adiacenti ai pin, ritorno GND corto.\nC1 1 uF + C2 4,7 uF: capacita' su VBUS < 10 uF per limitare lo spunto USB (OPEN-029).\nStabile con ceramici >= 1 uF effettivi; Pd ~ (5-3,3) V x I, RthJA 231 C/W (JEDEC)."
 		(exclude_from_sim no)
 		(at 289.56 100.33 0)
 		(effects
@@ -6723,7 +6723,7 @@
 		(dnp no)
 		(uuid "1e24756f-8bb1-585c-981c-806b924bfe45")
 		(property "Reference" "TP1"
-			(at 289.56 133.35 0)
+			(at 289.56 132.08 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6872,7 +6872,7 @@
 		(dnp no)
 		(uuid "3183c3ef-7195-5d7e-8bde-6a4eeb34237b")
 		(property "Reference" "TP2"
-			(at 304.8 133.35 0)
+			(at 304.8 132.08 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7021,7 +7021,7 @@
 		(dnp no)
 		(uuid "2d8d16ca-6a35-5d72-a5c1-adacb006470c")
 		(property "Reference" "TP3"
-			(at 320.04 133.35 0)
+			(at 320.04 132.08 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7170,7 +7170,7 @@
 		(dnp no)
 		(uuid "f0c1474e-3efa-50ba-9b97-9a8c13e05b71")
 		(property "Reference" "TP4"
-			(at 335.28 133.35 0)
+			(at 335.28 132.08 0)
 			(effects
 				(font
 					(size 1.27 1.27)

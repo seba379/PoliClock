@@ -30,9 +30,9 @@
 | `VT-FW-005` | PR-REL-003, PR-REL-005 | Firmware | Flash e log dalla USB-C posteriore, log privi di segreti |
 | `VT-FW-006` | PR-FUN-008, PR-UI-007 | Sistema | Impostazione di ora, data e fascia notte con il solo pulsante (riserva) |
 | `VT-FW-007` | PR-FUN-008, PR-REL-007 | Sistema | Configuratore da PC dalla USB-C posteriore: connessione, `HELLO`, sincronizzazione dell'ora dal PC (scarto < 2 s), fascia notte e luminosità salvate e mantenute dopo riavvio; comandi invalidi rifiutati |
-| `VT-PWR-001` | PR-PWR-004 | Elettrico | Fusibile/PTC, ESD e resistenze CC verificati a schema e su banco; nessun danno con cortocircuito simulato a valle del fusibile |
+| `VT-PWR-001` | PR-PWR-004 | Elettrico | Fusibile/PTC, ESD e resistenze CC verificati a schema e su banco; nessun danno con cortocircuito simulato a valle del fusibile; **spunto all'inserzione**: corrente e VBUS misurati inserendo il cavo in una porta USB di PC e in un hub, con la configurazione completa e cavi rappresentativi, senza cali che resettino la porta o altri dispositivi (capacità su VBUS 5,7 µF nominali, `OPEN-029`) |
 | `VT-PWR-002` | PR-PWR-005 | Elettrico/termico | Funzionamento continuo ≥ 24 h a scocca chiusa: temperature di regolatore, MCU, retroilluminazione e materiale entro i limiti dei datasheet |
-| `VT-PWR-003` | PR-PWR-009 | Elettrico | Corrente USB media e di picco misurata in DIM, BRIGHT, NIGHT |
+| `VT-PWR-003` | PR-PWR-009 | Elettrico | Corrente USB media e di picco misurata in DIM, BRIGHT, NIGHT; VBUS e 3V3 osservati durante le accensioni e gli spegnimenti del modulo display con Q1 (nessun brown-out o riavvio, USB stabile); 3V3_DISP e segnali del display a modulo spento, anche durante reset e download dalla ROM (nessuna alimentazione parassita); con R21 aperto ricordare che SDA/SCL restano collegati |
 | `VT-PWR-004` | PR-FUN-009 | Elettrico | Durata del tampone RTC a cavo scollegato misurata o stimata da corrente misurata; ora corretta al ricollegamento |
 | `VT-MEC-001` | PR-MEC-001, PR-UI-001 | Meccanico | Display realmente circolare incassato al posto del volto, senza interferenze |
 | `VT-MEC-002` | PR-MEC-002, PR-MEC-006 | Meccanico | Apertura sportello/estrazione componenti senza danno |

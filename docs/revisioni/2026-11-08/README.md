@@ -2,7 +2,7 @@
 
 Data: 2026-11-08. Baseline locale esaminata: `4fb9200b8ce6cd744c4de031d9d9a3ed25d1fb57`, checkout in detached HEAD, inizialmente senza modifiche. Remote configurato: `https://github.com/seba379/PoliClock.git`; default remoto registrato: `origin/main`. Non è stato eseguito un fetch né verificato che questa sia l'ultima versione remota.
 
-**Aggiornamento successivo:** su richiesta del proprietario sono stati corretti soltanto REV-001 (distanza dal bordo) e REV-003 (courtyard). Vedi [modifiche, verifiche e PCB da revisionare a vista](correzioni/README.md). Il presente rapporto e le sue evidenze conservano la baseline precedente alle correzioni.
+**Aggiornamento successivo:** su richiesta del proprietario sono stati corretti soltanto REV-001 (distanza dal bordo) e REV-003 (courtyard). Vedi [modifiche, verifiche e PCB da revisionare a vista](correzioni/README.md). Il presente rapporto e le sue evidenze conservano la baseline precedente alle correzioni. Verifica indipendente e chiusura degli altri rilievi: [verifica di Claude](verifica-claude.md).
 
 ## Esito
 
