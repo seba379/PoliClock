@@ -239,3 +239,4 @@ La revisione finale pre-Gerber (`docs/revisioni/2026-11-08/revisione-finale/READ
 
 - Il proprietario ha rivisto in KiCad il commit `09200dc` (modulo ESP32-C3-WROOM-02-N4, scheda 50,5 × 41,5 mm senza intaglio con antenna sulla scheda, J2–J5 a foro passante, correzioni FIN della revisione finale) e **approva le modifiche**: `OPEN-030` / FIN-002 chiusi.
 - Su richiesta del proprietario segue una **nuova revisione completa pre-Gerber** del revisore indipendente su questo layout: vincoli circuitali ed elettrici, PCB, regole JLCPCB, coerenza con decisioni e documentazione. I Gerber restano da generare solo dopo il suo esito e un'approvazione esplicita del proprietario.
+- [Seconda revisione finale pre-Gerber](revisioni/2026-11-08/revisione-finale-2/README.md) su `a2a62a3`: esito **PRONTO CON RISERVE**, nessun P1; P2 R2-001 (tabella rotazioni U2/Q1 in [12](12-selezione-componenti.md) §7) e R2-002 (checklist di `esporta_gerber_jlc.py`), da correggere prima dell'ordine.
