@@ -1,0 +1,4991 @@
+{
+  "kicad": "10.0.6",
+  "files": {
+    "hardware/lib/PoliClock.kicad_sym": "940f6abd1ca019e6cc78acbae08027772e6bb747c9fe4c9954810b4dc28d9038",
+    "hardware/lib/PoliClock.pretty/CONN-SMD_2P-P1.00_SM02B-SRSS-TB-LF-SN.kicad_mod": "ebbed83816e39e5d25820dc90bfe187b0e02ee02a10043e0f941978ee6ee023d",
+    "hardware/lib/PoliClock.pretty/CONN-SMD_4P-P1.00_SM04B-SRSS-TB-LF-SN.kicad_mod": "9d1ff3148987c99daba0c6428e96267f491ffda4b3f769b9910ea70ca7ad7d92",
+    "hardware/lib/PoliClock.pretty/HDR-SMD_7P-P2.54-H-M-W13.3-N.kicad_mod": "9f50288734a5bdba736129e530c1a93fb3f7159523819f9401730e8d17977123",
+    "hardware/lib/PoliClock.pretty/USB_C_Receptacle_HRO_TYPE-C-31-M-12.kicad_mod": "8844e2c70c25b8ff51c573c9eff12f967cfa45e8dadba06dee742e7e20205881",
+    "hardware/lib/PoliClock.pretty/WIFIM-SMD_ESP32-C3-MINI-1.kicad_mod": "801bf92540d8dadd462b4a83ca00b3134b44af56342ebc49c914d8c3e233547a",
+    "hardware/policlock-main/display.kicad_sch": "cd515de85bc432e1b7ca22ef042886857b7f17dcba2b57eb267f6ed2e47dec81",
+    "hardware/policlock-main/mcu.kicad_sch": "b711bdb7af55887f2f30885e68d08c098c167fbcc4fba5bc02307aafcea43420",
+    "hardware/policlock-main/periferiche.kicad_sch": "5f6ea0780b44e5dd57cae088efd75242abc47afb2bbc782cde79255e3f80ac15",
+    "hardware/policlock-main/policlock-main-bom-completa.csv": "9125728cf327e1056b10e7d16330864f30985c0dd9c1968e35ccd04f6f00dd1a",
+    "hardware/policlock-main/policlock-main-bom-jlcpcb.csv": "96511dc33c054ecc1b8367db9aa6aacf550c77d27211bb3126a4dba6cb82caee",
+    "hardware/policlock-main/policlock-main-cpl-jlcpcb.csv": "31812bc2002a32948bb45774e10197e0c832698ebd17b4501a42dcbca87edc65",
+    "hardware/policlock-main/policlock-main.kicad_pcb": "455134baf01f058be294e97f6c69867613b62cf8c319e68756aa970a16eb01d8",
+    "hardware/policlock-main/policlock-main.kicad_pro": "82941ea279d176e55a90082c05e9641895430afb80c56f2849b0c7206dbb9a93",
+    "hardware/policlock-main/policlock-main.kicad_sch": "5ee311f9a7a6a9fd0771068903728e30355b9e878c8ef41db71e432604be8996",
+    "hardware/policlock-main/usb_alimentazione.kicad_sch": "f686361fbc2a3654d8b49be0ded896d15076c36db3d48e9890f0fcc9264cc684"
+  },
+  "thickness_mm": 1.6,
+  "outline": [
+    [
+      [
+        100.0,
+        100.0
+      ],
+      [
+        142.16,
+        100.0
+      ]
+    ],
+    [
+      [
+        100.0,
+        140.0
+      ],
+      [
+        100.0,
+        100.0
+      ]
+    ],
+    [
+      [
+        142.16,
+        100.0
+      ],
+      [
+        142.16,
+        120.18
+      ]
+    ],
+    [
+      [
+        142.16,
+        120.18
+      ],
+      [
+        150.0,
+        120.18
+      ]
+    ],
+    [
+      [
+        150.0,
+        120.18
+      ],
+      [
+        150.0,
+        140.0
+      ]
+    ],
+    [
+      [
+        150.0,
+        140.0
+      ],
+      [
+        100.0,
+        140.0
+      ]
+    ]
+  ],
+  "tracks": {
+    "count": 530,
+    "vias": 55,
+    "widths_mm": {
+      "0.4": 229,
+      "0.3": 54,
+      "0.24": 3,
+      "0.2": 214,
+      "0.15": 30
+    },
+    "total_length_mm": 935.362
+  },
+  "via_geometries": {
+    "(0.7, 0.35)": 17,
+    "(0.6, 0.3)": 37,
+    "(0.6, 0.35)": 1
+  },
+  "net_tracks": {
+    "/Display (modulo 7 pin)/3V3_DISP": {
+      "length_mm": 36.922,
+      "vias": 2,
+      "widths_mm": [
+        0.4
+      ]
+    },
+    "GND": {
+      "length_mm": 204.039,
+      "vias": 6,
+      "widths_mm": [
+        0.24,
+        0.3,
+        0.4
+      ]
+    },
+    "+3V3": {
+      "length_mm": 142.267,
+      "vias": 3,
+      "widths_mm": [
+        0.3,
+        0.4
+      ]
+    },
+    "VBUS": {
+      "length_mm": 32.937,
+      "vias": 3,
+      "widths_mm": [
+        0.3,
+        0.4
+      ]
+    },
+    "+5V": {
+      "length_mm": 33.945,
+      "vias": 2,
+      "widths_mm": [
+        0.3,
+        0.4
+      ]
+    },
+    "/USB e alimentazione/USB_DP_C": {
+      "length_mm": 13.907,
+      "vias": 2,
+      "widths_mm": [
+        0.2
+      ]
+    },
+    "USB_DP": {
+      "length_mm": 3.418,
+      "vias": 0,
+      "widths_mm": [
+        0.2
+      ]
+    },
+    "/USB e alimentazione/CC1": {
+      "length_mm": 8.52,
+      "vias": 2,
+      "widths_mm": [
+        0.15,
+        0.2
+      ]
+    },
+    "/USB e alimentazione/USB_DN_C": {
+      "length_mm": 14.707,
+      "vias": 2,
+      "widths_mm": [
+        0.2
+      ]
+    },
+    "/USB e alimentazione/CC2": {
+      "length_mm": 6.652,
+      "vias": 2,
+      "widths_mm": [
+        0.2
+      ]
+    },
+    "/Periferiche I2C e pulsante/3V3_EXT": {
+      "length_mm": 20.796,
+      "vias": 3,
+      "widths_mm": [
+        0.3,
+        0.4
+      ]
+    },
+    "/Display (modulo 7 pin)/LCD_SCLK_C": {
+      "length_mm": 13.322,
+      "vias": 2,
+      "widths_mm": [
+        0.2
+      ]
+    },
+    "/Display (modulo 7 pin)/LCD_MOSI_C": {
+      "length_mm": 13.781,
+      "vias": 2,
+      "widths_mm": [
+        0.2
+      ]
+    },
+    "LCD_DC": {
+      "length_mm": 21.722,
+      "vias": 2,
+      "widths_mm": [
+        0.15,
+        0.2
+      ]
+    },
+    "LCD_CS": {
+      "length_mm": 27.859,
+      "vias": 2,
+      "widths_mm": [
+        0.15,
+        0.2
+      ]
+    },
+    "LCD_RST": {
+      "length_mm": 30.677,
+      "vias": 2,
+      "widths_mm": [
+        0.15,
+        0.2
+      ]
+    },
+    "DISP_EN_N": {
+      "length_mm": 31.997,
+      "vias": 2,
+      "widths_mm": [
+        0.2
+      ]
+    },
+    "/Display (modulo 7 pin)/DISP_G": {
+      "length_mm": 15.055,
+      "vias": 2,
+      "widths_mm": [
+        0.2
+      ]
+    },
+    "I2C_SDA": {
+      "length_mm": 67.652,
+      "vias": 3,
+      "widths_mm": [
+        0.15,
+        0.2
+      ]
+    },
+    "I2C_SCL": {
+      "length_mm": 55.69,
+      "vias": 2,
+      "widths_mm": [
+        0.2
+      ]
+    },
+    "USB_DN": {
+      "length_mm": 3.418,
+      "vias": 0,
+      "widths_mm": [
+        0.2
+      ]
+    },
+    "BTN_USER": {
+      "length_mm": 44.751,
+      "vias": 2,
+      "widths_mm": [
+        0.2
+      ]
+    },
+    "LCD_MOSI": {
+      "length_mm": 4.856,
+      "vias": 0,
+      "widths_mm": [
+        0.2
+      ]
+    },
+    "LCD_SCLK": {
+      "length_mm": 2.47,
+      "vias": 0,
+      "widths_mm": [
+        0.15,
+        0.2
+      ]
+    },
+    "/MCU/EN": {
+      "length_mm": 15.058,
+      "vias": 3,
+      "widths_mm": [
+        0.2
+      ]
+    },
+    "/USB e alimentazione/5V_LDO": {
+      "length_mm": 8.905,
+      "vias": 0,
+      "widths_mm": [
+        0.3,
+        0.4
+      ]
+    },
+    "/MCU/IO0": {
+      "length_mm": 25.367,
+      "vias": 1,
+      "widths_mm": [
+        0.15,
+        0.2
+      ]
+    },
+    "/MCU/IO1": {
+      "length_mm": 23.336,
+      "vias": 1,
+      "widths_mm": [
+        0.15,
+        0.2
+      ]
+    },
+    "/MCU/IO9_BOOT": {
+      "length_mm": 5.737,
+      "vias": 1,
+      "widths_mm": [
+        0.15,
+        0.2
+      ]
+    },
+    "/MCU/UART_TX": {
+      "length_mm": 5.597,
+      "vias": 1,
+      "widths_mm": [
+        0.2
+      ]
+    }
+  },
+  "footprints": {
+    "C1": {
+      "value": "10uF",
+      "id": "Capacitor_SMD:C_0603_1608Metric",
+      "xy": [
+        129.65,
+        127.15
+      ],
+      "rotation": 0.0,
+      "side": "F.Cu",
+      "bom_excluded": false,
+      "cpl_excluded": false,
+      "courtyard": [
+        128.125,
+        126.375,
+        131.175,
+        127.925
+      ],
+      "pads": [
+        {
+          "n": "1",
+          "net": "+5V",
+          "xy": [
+            128.875,
+            127.15
+          ],
+          "size": [
+            0.9,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "2",
+          "net": "GND",
+          "xy": [
+            130.425,
+            127.15
+          ],
+          "size": [
+            0.9,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        }
+      ]
+    },
+    "C10": {
+      "value": "100nF",
+      "id": "Capacitor_SMD:C_0603_1608Metric",
+      "xy": [
+        124.85,
+        109.85
+      ],
+      "rotation": 0.0,
+      "side": "F.Cu",
+      "bom_excluded": false,
+      "cpl_excluded": false,
+      "courtyard": [
+        123.325,
+        109.075,
+        126.375,
+        110.625
+      ],
+      "pads": [
+        {
+          "n": "1",
+          "net": "/Display (modulo 7 pin)/3V3_DISP",
+          "xy": [
+            124.075,
+            109.85
+          ],
+          "size": [
+            0.9,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "2",
+          "net": "GND",
+          "xy": [
+            125.625,
+            109.85
+          ],
+          "size": [
+            0.9,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        }
+      ]
+    },
+    "C2": {
+      "value": "10uF",
+      "id": "Capacitor_SMD:C_0603_1608Metric",
+      "xy": [
+        113.6,
+        132.55
+      ],
+      "rotation": 90.0,
+      "side": "F.Cu",
+      "bom_excluded": false,
+      "cpl_excluded": false,
+      "courtyard": [
+        112.825,
+        131.025,
+        114.375,
+        134.075
+      ],
+      "pads": [
+        {
+          "n": "1",
+          "net": "/USB e alimentazione/5V_LDO",
+          "xy": [
+            113.6,
+            133.325
+          ],
+          "size": [
+            0.9,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "2",
+          "net": "GND",
+          "xy": [
+            113.6,
+            131.775
+          ],
+          "size": [
+            0.9,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        }
+      ]
+    },
+    "C3": {
+      "value": "10uF",
+      "id": "Capacitor_SMD:C_0603_1608Metric",
+      "xy": [
+        118.15,
+        130.3
+      ],
+      "rotation": 0.0,
+      "side": "F.Cu",
+      "bom_excluded": false,
+      "cpl_excluded": false,
+      "courtyard": [
+        116.625,
+        129.525,
+        119.675,
+        131.075
+      ],
+      "pads": [
+        {
+          "n": "1",
+          "net": "+3V3",
+          "xy": [
+            117.375,
+            130.3
+          ],
+          "size": [
+            0.9,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "2",
+          "net": "GND",
+          "xy": [
+            118.925,
+            130.3
+          ],
+          "size": [
+            0.9,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        }
+      ]
+    },
+    "C4": {
+      "value": "100nF",
+      "id": "Capacitor_SMD:C_0603_1608Metric",
+      "xy": [
+        121.15,
+        132.55
+      ],
+      "rotation": 0.0,
+      "side": "F.Cu",
+      "bom_excluded": false,
+      "cpl_excluded": false,
+      "courtyard": [
+        119.625,
+        131.775,
+        122.675,
+        133.325
+      ],
+      "pads": [
+        {
+          "n": "1",
+          "net": "+3V3",
+          "xy": [
+            120.375,
+            132.55
+          ],
+          "size": [
+            0.9,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "2",
+          "net": "GND",
+          "xy": [
+            121.925,
+            132.55
+          ],
+          "size": [
+            0.9,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        }
+      ]
+    },
+    "C5": {
+      "value": "10uF",
+      "id": "Capacitor_SMD:C_0603_1608Metric",
+      "xy": [
+        135.85,
+        103.75
+      ],
+      "rotation": 90.0,
+      "side": "F.Cu",
+      "bom_excluded": false,
+      "cpl_excluded": false,
+      "courtyard": [
+        135.075,
+        102.225,
+        136.625,
+        105.275
+      ],
+      "pads": [
+        {
+          "n": "1",
+          "net": "+3V3",
+          "xy": [
+            135.85,
+            104.525
+          ],
+          "size": [
+            0.9,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "2",
+          "net": "GND",
+          "xy": [
+            135.85,
+            102.975
+          ],
+          "size": [
+            0.9,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        }
+      ]
+    },
+    "C6": {
+      "value": "100nF",
+      "id": "Capacitor_SMD:C_0603_1608Metric",
+      "xy": [
+        138.85,
+        104.5
+      ],
+      "rotation": 0.0,
+      "side": "F.Cu",
+      "bom_excluded": false,
+      "cpl_excluded": false,
+      "courtyard": [
+        137.325,
+        103.725,
+        140.375,
+        105.275
+      ],
+      "pads": [
+        {
+          "n": "1",
+          "net": "+3V3",
+          "xy": [
+            138.075,
+            104.5
+          ],
+          "size": [
+            0.9,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "2",
+          "net": "GND",
+          "xy": [
+            139.625,
+            104.5
+          ],
+          "size": [
+            0.9,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        }
+      ]
+    },
+    "C7": {
+      "value": "1uF",
+      "id": "Capacitor_SMD:C_0603_1608Metric",
+      "xy": [
+        132.85,
+        102.25
+      ],
+      "rotation": 0.0,
+      "side": "F.Cu",
+      "bom_excluded": false,
+      "cpl_excluded": false,
+      "courtyard": [
+        131.325,
+        101.475,
+        134.375,
+        103.025
+      ],
+      "pads": [
+        {
+          "n": "1",
+          "net": "/MCU/EN",
+          "xy": [
+            132.075,
+            102.25
+          ],
+          "size": [
+            0.9,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "2",
+          "net": "GND",
+          "xy": [
+            133.625,
+            102.25
+          ],
+          "size": [
+            0.9,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        }
+      ]
+    },
+    "C8": {
+      "value": "100nF",
+      "id": "Capacitor_SMD:C_0603_1608Metric",
+      "xy": [
+        111.45,
+        124.0
+      ],
+      "rotation": 0.0,
+      "side": "F.Cu",
+      "bom_excluded": false,
+      "cpl_excluded": false,
+      "courtyard": [
+        109.925,
+        123.225,
+        112.975,
+        124.775
+      ],
+      "pads": [
+        {
+          "n": "1",
+          "net": "BTN_USER",
+          "xy": [
+            110.675,
+            124.0
+          ],
+          "size": [
+            0.9,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "2",
+          "net": "GND",
+          "xy": [
+            112.225,
+            124.0
+          ],
+          "size": [
+            0.9,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        }
+      ]
+    },
+    "C9": {
+      "value": "10uF",
+      "id": "Capacitor_SMD:C_0603_1608Metric",
+      "xy": [
+        127.85,
+        107.35
+      ],
+      "rotation": 90.0,
+      "side": "F.Cu",
+      "bom_excluded": false,
+      "cpl_excluded": false,
+      "courtyard": [
+        127.075,
+        105.825,
+        128.625,
+        108.875
+      ],
+      "pads": [
+        {
+          "n": "1",
+          "net": "/Display (modulo 7 pin)/3V3_DISP",
+          "xy": [
+            127.85,
+            108.125
+          ],
+          "size": [
+            0.9,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "2",
+          "net": "GND",
+          "xy": [
+            127.85,
+            106.575
+          ],
+          "size": [
+            0.9,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        }
+      ]
+    },
+    "F1": {
+      "value": "BSMD0805-050-12V",
+      "id": "Fuse:Fuse_0805_2012Metric",
+      "xy": [
+        129.45,
+        129.65
+      ],
+      "rotation": 0.0,
+      "side": "F.Cu",
+      "bom_excluded": false,
+      "cpl_excluded": false,
+      "courtyard": [
+        127.725,
+        128.655,
+        131.175,
+        130.645
+      ],
+      "pads": [
+        {
+          "n": "1",
+          "net": "VBUS",
+          "xy": [
+            128.5125,
+            129.65
+          ],
+          "size": [
+            0.975,
+            1.4
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "2",
+          "net": "+5V",
+          "xy": [
+            130.3875,
+            129.65
+          ],
+          "size": [
+            0.975,
+            1.4
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        }
+      ]
+    },
+    "FID1": {
+      "value": "Fiducial",
+      "id": "Fiducial:Fiducial_1mm_Mask2mm",
+      "xy": [
+        103.5,
+        131.0
+      ],
+      "rotation": 0.0,
+      "side": "F.Cu",
+      "bom_excluded": true,
+      "cpl_excluded": true,
+      "courtyard": [
+        102.202494,
+        129.70375,
+        104.794998,
+        132.296249
+      ],
+      "pads": [
+        {
+          "n": "",
+          "net": "",
+          "xy": [
+            103.5,
+            131.0
+          ],
+          "size": [
+            1.0,
+            1.0
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": false
+        }
+      ]
+    },
+    "FID2": {
+      "value": "Fiducial",
+      "id": "Fiducial:Fiducial_1mm_Mask2mm",
+      "xy": [
+        116.0,
+        112.0
+      ],
+      "rotation": 0.0,
+      "side": "F.Cu",
+      "bom_excluded": true,
+      "cpl_excluded": true,
+      "courtyard": [
+        114.702494,
+        110.70375,
+        117.294998,
+        113.296249
+      ],
+      "pads": [
+        {
+          "n": "",
+          "net": "",
+          "xy": [
+            116.0,
+            112.0
+          ],
+          "size": [
+            1.0,
+            1.0
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": false
+        }
+      ]
+    },
+    "FID3": {
+      "value": "Fiducial",
+      "id": "Fiducial:Fiducial_1mm_Mask2mm",
+      "xy": [
+        146.0,
+        131.0
+      ],
+      "rotation": 0.0,
+      "side": "F.Cu",
+      "bom_excluded": true,
+      "cpl_excluded": true,
+      "courtyard": [
+        144.702494,
+        129.70375,
+        147.294998,
+        132.296249
+      ],
+      "pads": [
+        {
+          "n": "",
+          "net": "",
+          "xy": [
+            146.0,
+            131.0
+          ],
+          "size": [
+            1.0,
+            1.0
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": false
+        }
+      ]
+    },
+    "H1": {
+      "value": "M2",
+      "id": "MountingHole:MountingHole_2.2mm_M2_Pad",
+      "xy": [
+        124.16,
+        136.5
+      ],
+      "rotation": 0.0,
+      "side": "F.Cu",
+      "bom_excluded": true,
+      "cpl_excluded": true,
+      "courtyard": [
+        121.662488,
+        134.003745,
+        126.654999,
+        138.996254
+      ],
+      "pads": [
+        {
+          "n": "1",
+          "net": "GND",
+          "xy": [
+            124.16,
+            136.5
+          ],
+          "size": [
+            4.4,
+            4.4
+          ],
+          "drill": [
+            2.2,
+            2.2
+          ],
+          "attr": 0,
+          "paste": false
+        }
+      ]
+    },
+    "H2": {
+      "value": "M2",
+      "id": "MountingHole:MountingHole_2.2mm_M2_Pad",
+      "xy": [
+        143.66,
+        136.5
+      ],
+      "rotation": 0.0,
+      "side": "F.Cu",
+      "bom_excluded": true,
+      "cpl_excluded": true,
+      "courtyard": [
+        141.162488,
+        134.003745,
+        146.154999,
+        138.996254
+      ],
+      "pads": [
+        {
+          "n": "1",
+          "net": "GND",
+          "xy": [
+            143.66,
+            136.5
+          ],
+          "size": [
+            4.4,
+            4.4
+          ],
+          "drill": [
+            2.2,
+            2.2
+          ],
+          "attr": 0,
+          "paste": false
+        }
+      ]
+    },
+    "J1": {
+      "value": "TYPE-C-31-M-12",
+      "id": "PoliClock:USB_C_Receptacle_HRO_TYPE-C-31-M-12",
+      "xy": [
+        133.66,
+        136.7
+      ],
+      "rotation": 0.0,
+      "side": "F.Cu",
+      "bom_excluded": false,
+      "cpl_excluded": false,
+      "courtyard": [
+        128.295,
+        131.385,
+        139.025,
+        140.895
+      ],
+      "pads": [
+        {
+          "n": "",
+          "net": "",
+          "xy": [
+            130.77,
+            134.1
+          ],
+          "size": [
+            0.65,
+            0.65
+          ],
+          "drill": [
+            0.65,
+            0.65
+          ],
+          "attr": 3,
+          "paste": false
+        },
+        {
+          "n": "",
+          "net": "",
+          "xy": [
+            136.55,
+            134.1
+          ],
+          "size": [
+            0.65,
+            0.65
+          ],
+          "drill": [
+            0.65,
+            0.65
+          ],
+          "attr": 3,
+          "paste": false
+        },
+        {
+          "n": "A1",
+          "net": "GND",
+          "xy": [
+            130.41,
+            132.655
+          ],
+          "size": [
+            0.6,
+            1.45
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "A4",
+          "net": "VBUS",
+          "xy": [
+            131.21,
+            132.655
+          ],
+          "size": [
+            0.6,
+            1.45
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "A5",
+          "net": "/USB e alimentazione/CC1",
+          "xy": [
+            132.41,
+            132.655
+          ],
+          "size": [
+            0.3,
+            1.45
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "A6",
+          "net": "/USB e alimentazione/USB_DP_C",
+          "xy": [
+            133.41,
+            132.655
+          ],
+          "size": [
+            0.3,
+            1.45
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "A7",
+          "net": "/USB e alimentazione/USB_DN_C",
+          "xy": [
+            133.91,
+            132.655
+          ],
+          "size": [
+            0.3,
+            1.45
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "A8",
+          "net": "unconnected-(J1-SBU1-PadA8)",
+          "xy": [
+            134.91,
+            132.655
+          ],
+          "size": [
+            0.3,
+            1.45
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "A9",
+          "net": "VBUS",
+          "xy": [
+            136.11,
+            132.655
+          ],
+          "size": [
+            0.6,
+            1.45
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "A12",
+          "net": "GND",
+          "xy": [
+            136.91,
+            132.655
+          ],
+          "size": [
+            0.6,
+            1.45
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "B1",
+          "net": "GND",
+          "xy": [
+            136.91,
+            132.655
+          ],
+          "size": [
+            0.6,
+            1.45
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "B4",
+          "net": "VBUS",
+          "xy": [
+            136.11,
+            132.655
+          ],
+          "size": [
+            0.6,
+            1.45
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "B5",
+          "net": "/USB e alimentazione/CC2",
+          "xy": [
+            135.41,
+            132.655
+          ],
+          "size": [
+            0.3,
+            1.45
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "B6",
+          "net": "/USB e alimentazione/USB_DP_C",
+          "xy": [
+            134.41,
+            132.655
+          ],
+          "size": [
+            0.3,
+            1.45
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "B7",
+          "net": "/USB e alimentazione/USB_DN_C",
+          "xy": [
+            132.91,
+            132.655
+          ],
+          "size": [
+            0.3,
+            1.45
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "B8",
+          "net": "unconnected-(J1-SBU2-PadB8)",
+          "xy": [
+            131.91,
+            132.655
+          ],
+          "size": [
+            0.3,
+            1.45
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "B9",
+          "net": "VBUS",
+          "xy": [
+            131.21,
+            132.655
+          ],
+          "size": [
+            0.6,
+            1.45
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "B12",
+          "net": "GND",
+          "xy": [
+            130.41,
+            132.655
+          ],
+          "size": [
+            0.6,
+            1.45
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "SH",
+          "net": "GND",
+          "xy": [
+            129.34,
+            133.57
+          ],
+          "size": [
+            1.0,
+            2.1
+          ],
+          "drill": [
+            0.6,
+            1.7
+          ],
+          "attr": 0,
+          "paste": false
+        },
+        {
+          "n": "SH",
+          "net": "GND",
+          "xy": [
+            129.34,
+            137.75
+          ],
+          "size": [
+            1.0,
+            1.6
+          ],
+          "drill": [
+            0.6,
+            1.2
+          ],
+          "attr": 0,
+          "paste": false
+        },
+        {
+          "n": "SH",
+          "net": "GND",
+          "xy": [
+            137.98,
+            133.57
+          ],
+          "size": [
+            1.0,
+            2.1
+          ],
+          "drill": [
+            0.6,
+            1.7
+          ],
+          "attr": 0,
+          "paste": false
+        },
+        {
+          "n": "SH",
+          "net": "GND",
+          "xy": [
+            137.98,
+            137.75
+          ],
+          "size": [
+            1.0,
+            1.6
+          ],
+          "drill": [
+            0.6,
+            1.2
+          ],
+          "attr": 0,
+          "paste": false
+        }
+      ]
+    },
+    "J2": {
+      "value": "HX PZ2.54-1x7P WT",
+      "id": "PoliClock:HDR-SMD_7P-P2.54-H-M-W13.3-N",
+      "xy": [
+        117.5,
+        106.6
+      ],
+      "rotation": 180.0,
+      "side": "F.Cu",
+      "bom_excluded": false,
+      "cpl_excluded": false,
+      "courtyard": [
+        108.565,
+        100.455,
+        126.435,
+        103.045
+      ],
+      "pads": [
+        {
+          "n": "1",
+          "net": "/Display (modulo 7 pin)/3V3_DISP",
+          "xy": [
+            125.12,
+            106.6
+          ],
+          "size": [
+            1.02,
+            3.16
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "2",
+          "net": "GND",
+          "xy": [
+            122.58,
+            106.6
+          ],
+          "size": [
+            1.02,
+            3.16
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "3",
+          "net": "/Display (modulo 7 pin)/LCD_SCLK_C",
+          "xy": [
+            120.04,
+            106.6
+          ],
+          "size": [
+            1.02,
+            3.16
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "4",
+          "net": "/Display (modulo 7 pin)/LCD_MOSI_C",
+          "xy": [
+            117.5,
+            106.6
+          ],
+          "size": [
+            1.02,
+            3.16
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "5",
+          "net": "LCD_DC",
+          "xy": [
+            114.96,
+            106.6
+          ],
+          "size": [
+            1.02,
+            3.16
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "6",
+          "net": "LCD_CS",
+          "xy": [
+            112.42,
+            106.6
+          ],
+          "size": [
+            1.02,
+            3.16
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "7",
+          "net": "LCD_RST",
+          "xy": [
+            109.88,
+            106.6
+          ],
+          "size": [
+            1.02,
+            3.16
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        }
+      ]
+    },
+    "J3": {
+      "value": "SM04B-SRSS-TB",
+      "id": "PoliClock:CONN-SMD_4P-P1.00_SM04B-SRSS-TB-LF-SN",
+      "xy": [
+        106.25,
+        112.0
+      ],
+      "rotation": -90.0,
+      "side": "F.Cu",
+      "bom_excluded": false,
+      "cpl_excluded": false,
+      "courtyard": [
+        103.735,
+        108.955,
+        108.075,
+        115.045
+      ],
+      "pads": [
+        {
+          "n": "1",
+          "net": "GND",
+          "xy": [
+            108.19,
+            110.5
+          ],
+          "size": [
+            0.6,
+            1.55
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "2",
+          "net": "/Periferiche I2C e pulsante/3V3_EXT",
+          "xy": [
+            108.19,
+            111.5
+          ],
+          "size": [
+            0.6,
+            1.55
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "3",
+          "net": "I2C_SDA",
+          "xy": [
+            108.19,
+            112.5
+          ],
+          "size": [
+            0.6,
+            1.55
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "4",
+          "net": "I2C_SCL",
+          "xy": [
+            108.19,
+            113.5
+          ],
+          "size": [
+            0.6,
+            1.55
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "5",
+          "net": "unconnected-(J3-Pad5)",
+          "xy": [
+            104.31,
+            114.8
+          ],
+          "size": [
+            1.2,
+            1.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "6",
+          "net": "unconnected-(J3-Pad6)",
+          "xy": [
+            104.31,
+            109.2
+          ],
+          "size": [
+            1.2,
+            1.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        }
+      ]
+    },
+    "J4": {
+      "value": "SM04B-SRSS-TB",
+      "id": "PoliClock:CONN-SMD_4P-P1.00_SM04B-SRSS-TB-LF-SN",
+      "xy": [
+        106.25,
+        120.0
+      ],
+      "rotation": -90.0,
+      "side": "F.Cu",
+      "bom_excluded": false,
+      "cpl_excluded": false,
+      "courtyard": [
+        103.735,
+        116.955,
+        108.075,
+        123.045
+      ],
+      "pads": [
+        {
+          "n": "1",
+          "net": "GND",
+          "xy": [
+            108.19,
+            118.5
+          ],
+          "size": [
+            0.6,
+            1.55
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "2",
+          "net": "/Periferiche I2C e pulsante/3V3_EXT",
+          "xy": [
+            108.19,
+            119.5
+          ],
+          "size": [
+            0.6,
+            1.55
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "3",
+          "net": "I2C_SDA",
+          "xy": [
+            108.19,
+            120.5
+          ],
+          "size": [
+            0.6,
+            1.55
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "4",
+          "net": "I2C_SCL",
+          "xy": [
+            108.19,
+            121.5
+          ],
+          "size": [
+            0.6,
+            1.55
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "5",
+          "net": "unconnected-(J4-Pad5)",
+          "xy": [
+            104.31,
+            122.8
+          ],
+          "size": [
+            1.2,
+            1.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "6",
+          "net": "unconnected-(J4-Pad6)",
+          "xy": [
+            104.31,
+            117.2
+          ],
+          "size": [
+            1.2,
+            1.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        }
+      ]
+    },
+    "J5": {
+      "value": "SM02B-SRSS-TB",
+      "id": "PoliClock:CONN-SMD_2P-P1.00_SM02B-SRSS-TB-LF-SN",
+      "xy": [
+        106.25,
+        127.5
+      ],
+      "rotation": -90.0,
+      "side": "F.Cu",
+      "bom_excluded": false,
+      "cpl_excluded": false,
+      "courtyard": [
+        103.595,
+        125.455,
+        107.935,
+        129.545
+      ],
+      "pads": [
+        {
+          "n": "1",
+          "net": "BTN_USER",
+          "xy": [
+            108.19,
+            127.0
+          ],
+          "size": [
+            0.6,
+            1.55
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "2",
+          "net": "GND",
+          "xy": [
+            108.19,
+            128.0
+          ],
+          "size": [
+            0.6,
+            1.55
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "3",
+          "net": "unconnected-(J5-Pad3)",
+          "xy": [
+            104.31,
+            129.3
+          ],
+          "size": [
+            1.2,
+            1.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "4",
+          "net": "unconnected-(J5-Pad4)",
+          "xy": [
+            104.31,
+            125.7
+          ],
+          "size": [
+            1.2,
+            1.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        }
+      ]
+    },
+    "Q1": {
+      "value": "AO3401A",
+      "id": "Package_TO_SOT_SMD:SOT-23",
+      "xy": [
+        128.85,
+        103.35
+      ],
+      "rotation": 90.0,
+      "side": "F.Cu",
+      "bom_excluded": false,
+      "cpl_excluded": false,
+      "courtyard": [
+        127.105,
+        101.375,
+        130.595,
+        105.325
+      ],
+      "pads": [
+        {
+          "n": "1",
+          "net": "/Display (modulo 7 pin)/DISP_G",
+          "xy": [
+            127.9,
+            104.2875
+          ],
+          "size": [
+            1.475,
+            0.6
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "2",
+          "net": "+3V3",
+          "xy": [
+            129.8,
+            104.2875
+          ],
+          "size": [
+            1.475,
+            0.6
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "3",
+          "net": "/Display (modulo 7 pin)/3V3_DISP",
+          "xy": [
+            128.85,
+            102.4125
+          ],
+          "size": [
+            1.475,
+            0.6
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        }
+      ]
+    },
+    "R1": {
+      "value": "5.1k",
+      "id": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        136.9,
+        129.15
+      ],
+      "rotation": 90.0,
+      "side": "F.Cu",
+      "bom_excluded": false,
+      "cpl_excluded": false,
+      "courtyard": [
+        136.125,
+        127.625,
+        137.675,
+        130.675
+      ],
+      "pads": [
+        {
+          "n": "1",
+          "net": "/USB e alimentazione/CC1",
+          "xy": [
+            136.9,
+            129.975
+          ],
+          "size": [
+            0.8,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "2",
+          "net": "GND",
+          "xy": [
+            136.9,
+            128.325
+          ],
+          "size": [
+            0.8,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        }
+      ]
+    },
+    "R15": {
+      "value": "10k",
+      "id": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        107.15,
+        106.1
+      ],
+      "rotation": 90.0,
+      "side": "F.Cu",
+      "bom_excluded": false,
+      "cpl_excluded": false,
+      "courtyard": [
+        106.375,
+        104.575,
+        107.925,
+        107.625
+      ],
+      "pads": [
+        {
+          "n": "1",
+          "net": "/Display (modulo 7 pin)/3V3_DISP",
+          "xy": [
+            107.15,
+            106.925
+          ],
+          "size": [
+            0.8,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "2",
+          "net": "LCD_RST",
+          "xy": [
+            107.15,
+            105.275
+          ],
+          "size": [
+            0.8,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        }
+      ]
+    },
+    "R16": {
+      "value": "1k",
+      "id": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        121.9,
+        110.55
+      ],
+      "rotation": 90.0,
+      "side": "F.Cu",
+      "bom_excluded": false,
+      "cpl_excluded": false,
+      "courtyard": [
+        121.125,
+        109.025,
+        122.675,
+        112.075
+      ],
+      "pads": [
+        {
+          "n": "1",
+          "net": "DISP_EN_N",
+          "xy": [
+            121.9,
+            111.375
+          ],
+          "size": [
+            0.8,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "2",
+          "net": "/Display (modulo 7 pin)/DISP_G",
+          "xy": [
+            121.9,
+            109.725
+          ],
+          "size": [
+            0.8,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        }
+      ]
+    },
+    "R17": {
+      "value": "100k",
+      "id": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        126.4,
+        112.05
+      ],
+      "rotation": 0.0,
+      "side": "F.Cu",
+      "bom_excluded": false,
+      "cpl_excluded": false,
+      "courtyard": [
+        124.875,
+        111.275,
+        127.925,
+        112.825
+      ],
+      "pads": [
+        {
+          "n": "1",
+          "net": "+3V3",
+          "xy": [
+            125.575,
+            112.05
+          ],
+          "size": [
+            0.8,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "2",
+          "net": "/Display (modulo 7 pin)/DISP_G",
+          "xy": [
+            127.225,
+            112.05
+          ],
+          "size": [
+            0.8,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        }
+      ]
+    },
+    "R19": {
+      "value": "4.7k",
+      "id": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        110.7,
+        112.5
+      ],
+      "rotation": 90.0,
+      "side": "F.Cu",
+      "bom_excluded": false,
+      "cpl_excluded": false,
+      "courtyard": [
+        109.925,
+        110.975,
+        111.475,
+        114.025
+      ],
+      "pads": [
+        {
+          "n": "1",
+          "net": "+3V3",
+          "xy": [
+            110.7,
+            113.325
+          ],
+          "size": [
+            0.8,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "2",
+          "net": "I2C_SDA",
+          "xy": [
+            110.7,
+            111.675
+          ],
+          "size": [
+            0.8,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        }
+      ]
+    },
+    "R2": {
+      "value": "5.1k",
+      "id": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        139.15,
+        129.15
+      ],
+      "rotation": 90.0,
+      "side": "F.Cu",
+      "bom_excluded": false,
+      "cpl_excluded": false,
+      "courtyard": [
+        138.375,
+        127.625,
+        139.925,
+        130.675
+      ],
+      "pads": [
+        {
+          "n": "1",
+          "net": "/USB e alimentazione/CC2",
+          "xy": [
+            139.15,
+            129.975
+          ],
+          "size": [
+            0.8,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "2",
+          "net": "GND",
+          "xy": [
+            139.15,
+            128.325
+          ],
+          "size": [
+            0.8,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        }
+      ]
+    },
+    "R20": {
+      "value": "4.7k",
+      "id": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        110.7,
+        116.25
+      ],
+      "rotation": 90.0,
+      "side": "F.Cu",
+      "bom_excluded": false,
+      "cpl_excluded": false,
+      "courtyard": [
+        109.925,
+        114.725,
+        111.475,
+        117.775
+      ],
+      "pads": [
+        {
+          "n": "1",
+          "net": "+3V3",
+          "xy": [
+            110.7,
+            117.075
+          ],
+          "size": [
+            0.8,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "2",
+          "net": "I2C_SCL",
+          "xy": [
+            110.7,
+            115.425
+          ],
+          "size": [
+            0.8,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        }
+      ]
+    },
+    "R21": {
+      "value": "0Ω",
+      "id": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        104.2,
+        107.0
+      ],
+      "rotation": 0.0,
+      "side": "F.Cu",
+      "bom_excluded": false,
+      "cpl_excluded": false,
+      "courtyard": [
+        102.675,
+        106.225,
+        105.725,
+        107.775
+      ],
+      "pads": [
+        {
+          "n": "1",
+          "net": "+3V3",
+          "xy": [
+            103.375,
+            107.0
+          ],
+          "size": [
+            0.8,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "2",
+          "net": "/Periferiche I2C e pulsante/3V3_EXT",
+          "xy": [
+            105.025,
+            107.0
+          ],
+          "size": [
+            0.8,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        }
+      ]
+    },
+    "R22": {
+      "value": "10k",
+      "id": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        110.7,
+        127.0
+      ],
+      "rotation": 90.0,
+      "side": "F.Cu",
+      "bom_excluded": false,
+      "cpl_excluded": false,
+      "courtyard": [
+        109.925,
+        125.475,
+        111.475,
+        128.525
+      ],
+      "pads": [
+        {
+          "n": "1",
+          "net": "+3V3",
+          "xy": [
+            110.7,
+            127.825
+          ],
+          "size": [
+            0.8,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "2",
+          "net": "BTN_USER",
+          "xy": [
+            110.7,
+            126.175
+          ],
+          "size": [
+            0.8,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        }
+      ]
+    },
+    "R3": {
+      "value": "0Ω",
+      "id": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        134.61,
+        122.555
+      ],
+      "rotation": 90.0,
+      "side": "F.Cu",
+      "bom_excluded": false,
+      "cpl_excluded": false,
+      "courtyard": [
+        133.835,
+        121.03,
+        135.385,
+        124.08
+      ],
+      "pads": [
+        {
+          "n": "1",
+          "net": "/USB e alimentazione/USB_DP_C",
+          "xy": [
+            134.61,
+            123.38
+          ],
+          "size": [
+            0.8,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "2",
+          "net": "USB_DP",
+          "xy": [
+            134.61,
+            121.73
+          ],
+          "size": [
+            0.8,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        }
+      ]
+    },
+    "R4": {
+      "value": "0Ω",
+      "id": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        132.71,
+        122.555
+      ],
+      "rotation": 90.0,
+      "side": "F.Cu",
+      "bom_excluded": false,
+      "cpl_excluded": false,
+      "courtyard": [
+        131.935,
+        121.03,
+        133.485,
+        124.08
+      ],
+      "pads": [
+        {
+          "n": "1",
+          "net": "/USB e alimentazione/USB_DN_C",
+          "xy": [
+            132.71,
+            123.38
+          ],
+          "size": [
+            0.8,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "2",
+          "net": "USB_DN",
+          "xy": [
+            132.71,
+            121.73
+          ],
+          "size": [
+            0.8,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        }
+      ]
+    },
+    "R5": {
+      "value": "0Ω",
+      "id": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        114.35,
+        129.55
+      ],
+      "rotation": 0.0,
+      "side": "F.Cu",
+      "bom_excluded": false,
+      "cpl_excluded": false,
+      "courtyard": [
+        112.825,
+        128.775,
+        115.875,
+        130.325
+      ],
+      "pads": [
+        {
+          "n": "1",
+          "net": "+5V",
+          "xy": [
+            113.525,
+            129.55
+          ],
+          "size": [
+            0.8,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "2",
+          "net": "/USB e alimentazione/5V_LDO",
+          "xy": [
+            115.175,
+            129.55
+          ],
+          "size": [
+            0.8,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        }
+      ]
+    },
+    "R6": {
+      "value": "10k",
+      "id": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        132.85,
+        104.5
+      ],
+      "rotation": 0.0,
+      "side": "F.Cu",
+      "bom_excluded": false,
+      "cpl_excluded": false,
+      "courtyard": [
+        131.325,
+        103.725,
+        134.375,
+        105.275
+      ],
+      "pads": [
+        {
+          "n": "1",
+          "net": "+3V3",
+          "xy": [
+            132.025,
+            104.5
+          ],
+          "size": [
+            0.8,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "2",
+          "net": "/MCU/EN",
+          "xy": [
+            133.675,
+            104.5
+          ],
+          "size": [
+            0.8,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        }
+      ]
+    },
+    "R7": {
+      "value": "10k",
+      "id": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        129.3,
+        116.65
+      ],
+      "rotation": 90.0,
+      "side": "F.Cu",
+      "bom_excluded": false,
+      "cpl_excluded": false,
+      "courtyard": [
+        128.525,
+        115.125,
+        130.075,
+        118.175
+      ],
+      "pads": [
+        {
+          "n": "1",
+          "net": "+3V3",
+          "xy": [
+            129.3,
+            117.475
+          ],
+          "size": [
+            0.8,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "2",
+          "net": "/MCU/IO9_BOOT",
+          "xy": [
+            129.3,
+            115.825
+          ],
+          "size": [
+            0.8,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        }
+      ]
+    },
+    "R8": {
+      "value": "22Ω",
+      "id": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        129.3,
+        113.0
+      ],
+      "rotation": 90.0,
+      "side": "F.Cu",
+      "bom_excluded": false,
+      "cpl_excluded": false,
+      "courtyard": [
+        128.525,
+        111.475,
+        130.075,
+        114.525
+      ],
+      "pads": [
+        {
+          "n": "1",
+          "net": "LCD_SCLK",
+          "xy": [
+            129.3,
+            113.825
+          ],
+          "size": [
+            0.8,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "2",
+          "net": "/Display (modulo 7 pin)/LCD_SCLK_C",
+          "xy": [
+            129.3,
+            112.175
+          ],
+          "size": [
+            0.8,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        }
+      ]
+    },
+    "R9": {
+      "value": "22Ω",
+      "id": "Resistor_SMD:R_0603_1608Metric",
+      "xy": [
+        127.05,
+        115.05
+      ],
+      "rotation": 90.0,
+      "side": "F.Cu",
+      "bom_excluded": false,
+      "cpl_excluded": false,
+      "courtyard": [
+        126.275,
+        113.525,
+        127.825,
+        116.575
+      ],
+      "pads": [
+        {
+          "n": "1",
+          "net": "LCD_MOSI",
+          "xy": [
+            127.05,
+            115.875
+          ],
+          "size": [
+            0.8,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "2",
+          "net": "/Display (modulo 7 pin)/LCD_MOSI_C",
+          "xy": [
+            127.05,
+            114.225
+          ],
+          "size": [
+            0.8,
+            0.95
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        }
+      ]
+    },
+    "TP1": {
+      "value": "VBUS",
+      "id": "TestPoint:TestPoint_Pad_D1.5mm",
+      "xy": [
+        113.0,
+        124.0
+      ],
+      "rotation": 0.0,
+      "side": "B.Cu",
+      "bom_excluded": true,
+      "cpl_excluded": true,
+      "courtyard": null,
+      "pads": [
+        {
+          "n": "1",
+          "net": "VBUS",
+          "xy": [
+            113.0,
+            124.0
+          ],
+          "size": [
+            1.5,
+            1.5
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": false
+        }
+      ]
+    },
+    "TP10": {
+      "value": "IO1 (libero)",
+      "id": "TestPoint:TestPoint_Pad_D1.5mm",
+      "xy": [
+        131.0,
+        129.5
+      ],
+      "rotation": 0.0,
+      "side": "B.Cu",
+      "bom_excluded": true,
+      "cpl_excluded": true,
+      "courtyard": null,
+      "pads": [
+        {
+          "n": "1",
+          "net": "/MCU/IO1",
+          "xy": [
+            131.0,
+            129.5
+          ],
+          "size": [
+            1.5,
+            1.5
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": false
+        }
+      ]
+    },
+    "TP11": {
+      "value": "IO9 (BOOT)",
+      "id": "TestPoint:TestPoint_Pad_D1.5mm",
+      "xy": [
+        128.46,
+        116.64
+      ],
+      "rotation": 0.0,
+      "side": "B.Cu",
+      "bom_excluded": true,
+      "cpl_excluded": true,
+      "courtyard": null,
+      "pads": [
+        {
+          "n": "1",
+          "net": "/MCU/IO9_BOOT",
+          "xy": [
+            128.46,
+            116.64
+          ],
+          "size": [
+            1.5,
+            1.5
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": false
+        }
+      ]
+    },
+    "TP2": {
+      "value": "+5V",
+      "id": "TestPoint:TestPoint_Pad_D1.5mm",
+      "xy": [
+        119.0,
+        124.0
+      ],
+      "rotation": 0.0,
+      "side": "B.Cu",
+      "bom_excluded": true,
+      "cpl_excluded": true,
+      "courtyard": null,
+      "pads": [
+        {
+          "n": "1",
+          "net": "+5V",
+          "xy": [
+            119.0,
+            124.0
+          ],
+          "size": [
+            1.5,
+            1.5
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": false
+        }
+      ]
+    },
+    "TP3": {
+      "value": "+3V3",
+      "id": "TestPoint:TestPoint_Pad_D1.5mm",
+      "xy": [
+        125.0,
+        124.0
+      ],
+      "rotation": 0.0,
+      "side": "B.Cu",
+      "bom_excluded": true,
+      "cpl_excluded": true,
+      "courtyard": null,
+      "pads": [
+        {
+          "n": "1",
+          "net": "+3V3",
+          "xy": [
+            125.0,
+            124.0
+          ],
+          "size": [
+            1.5,
+            1.5
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": false
+        }
+      ]
+    },
+    "TP4": {
+      "value": "GND",
+      "id": "TestPoint:TestPoint_Pad_D1.5mm",
+      "xy": [
+        131.0,
+        124.0
+      ],
+      "rotation": 0.0,
+      "side": "B.Cu",
+      "bom_excluded": true,
+      "cpl_excluded": true,
+      "courtyard": null,
+      "pads": [
+        {
+          "n": "1",
+          "net": "GND",
+          "xy": [
+            131.0,
+            124.0
+          ],
+          "size": [
+            1.5,
+            1.5
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": false
+        }
+      ]
+    },
+    "TP5": {
+      "value": "UART_TX (IO21)",
+      "id": "TestPoint:TestPoint_Pad_D1.5mm",
+      "xy": [
+        137.0,
+        124.0
+      ],
+      "rotation": 0.0,
+      "side": "B.Cu",
+      "bom_excluded": true,
+      "cpl_excluded": true,
+      "courtyard": null,
+      "pads": [
+        {
+          "n": "1",
+          "net": "/MCU/UART_TX",
+          "xy": [
+            137.0,
+            124.0
+          ],
+          "size": [
+            1.5,
+            1.5
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": false
+        }
+      ]
+    },
+    "TP6": {
+      "value": "EN",
+      "id": "TestPoint:TestPoint_Pad_D1.5mm",
+      "xy": [
+        131.96,
+        106.44
+      ],
+      "rotation": 0.0,
+      "side": "B.Cu",
+      "bom_excluded": true,
+      "cpl_excluded": true,
+      "courtyard": null,
+      "pads": [
+        {
+          "n": "1",
+          "net": "/MCU/EN",
+          "xy": [
+            131.96,
+            106.44
+          ],
+          "size": [
+            1.5,
+            1.5
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": false
+        }
+      ]
+    },
+    "TP7": {
+      "value": "I2C_SDA",
+      "id": "TestPoint:TestPoint_Pad_D1.5mm",
+      "xy": [
+        113.0,
+        129.5
+      ],
+      "rotation": 0.0,
+      "side": "B.Cu",
+      "bom_excluded": true,
+      "cpl_excluded": true,
+      "courtyard": null,
+      "pads": [
+        {
+          "n": "1",
+          "net": "I2C_SDA",
+          "xy": [
+            113.0,
+            129.5
+          ],
+          "size": [
+            1.5,
+            1.5
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": false
+        }
+      ]
+    },
+    "TP8": {
+      "value": "I2C_SCL",
+      "id": "TestPoint:TestPoint_Pad_D1.5mm",
+      "xy": [
+        119.0,
+        129.5
+      ],
+      "rotation": 0.0,
+      "side": "B.Cu",
+      "bom_excluded": true,
+      "cpl_excluded": true,
+      "courtyard": null,
+      "pads": [
+        {
+          "n": "1",
+          "net": "I2C_SCL",
+          "xy": [
+            119.0,
+            129.5
+          ],
+          "size": [
+            1.5,
+            1.5
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": false
+        }
+      ]
+    },
+    "TP9": {
+      "value": "IO0 (libero)",
+      "id": "TestPoint:TestPoint_Pad_D1.5mm",
+      "xy": [
+        125.0,
+        129.5
+      ],
+      "rotation": 0.0,
+      "side": "B.Cu",
+      "bom_excluded": true,
+      "cpl_excluded": true,
+      "courtyard": null,
+      "pads": [
+        {
+          "n": "1",
+          "net": "/MCU/IO0",
+          "xy": [
+            125.0,
+            129.5
+          ],
+          "size": [
+            1.5,
+            1.5
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": false
+        }
+      ]
+    },
+    "U1": {
+      "value": "USBLC6-2SC6",
+      "id": "Package_TO_SOT_SMD:SOT-23-6",
+      "xy": [
+        133.66,
+        126.375
+      ],
+      "rotation": 90.0,
+      "side": "F.Cu",
+      "bom_excluded": false,
+      "cpl_excluded": false,
+      "courtyard": [
+        131.915,
+        124.28,
+        135.405,
+        128.47
+      ],
+      "pads": [
+        {
+          "n": "1",
+          "net": "/USB e alimentazione/USB_DN_C",
+          "xy": [
+            132.71,
+            127.5125
+          ],
+          "size": [
+            1.325,
+            0.6
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "2",
+          "net": "GND",
+          "xy": [
+            133.66,
+            127.5125
+          ],
+          "size": [
+            1.325,
+            0.6
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "3",
+          "net": "/USB e alimentazione/USB_DP_C",
+          "xy": [
+            134.61,
+            127.5125
+          ],
+          "size": [
+            1.325,
+            0.6
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "4",
+          "net": "/USB e alimentazione/USB_DP_C",
+          "xy": [
+            134.61,
+            125.2375
+          ],
+          "size": [
+            1.325,
+            0.6
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "5",
+          "net": "+5V",
+          "xy": [
+            133.66,
+            125.2375
+          ],
+          "size": [
+            1.325,
+            0.6
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "6",
+          "net": "/USB e alimentazione/USB_DN_C",
+          "xy": [
+            132.71,
+            125.2375
+          ],
+          "size": [
+            1.325,
+            0.6
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        }
+      ]
+    },
+    "U2": {
+      "value": "TLV75533PDBVR",
+      "id": "Package_TO_SOT_SMD:SOT-23-5",
+      "xy": [
+        117.0,
+        133.5
+      ],
+      "rotation": 0.0,
+      "side": "F.Cu",
+      "bom_excluded": false,
+      "cpl_excluded": false,
+      "courtyard": [
+        114.905,
+        131.755,
+        119.095,
+        135.245
+      ],
+      "pads": [
+        {
+          "n": "1",
+          "net": "/USB e alimentazione/5V_LDO",
+          "xy": [
+            115.8625,
+            132.55
+          ],
+          "size": [
+            1.325,
+            0.6
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "2",
+          "net": "GND",
+          "xy": [
+            115.8625,
+            133.5
+          ],
+          "size": [
+            1.325,
+            0.6
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "3",
+          "net": "/USB e alimentazione/5V_LDO",
+          "xy": [
+            115.8625,
+            134.45
+          ],
+          "size": [
+            1.325,
+            0.6
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "4",
+          "net": "unconnected-(U2-NC-Pad4)",
+          "xy": [
+            118.1375,
+            134.45
+          ],
+          "size": [
+            1.325,
+            0.6
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "5",
+          "net": "+3V3",
+          "xy": [
+            118.1375,
+            132.55
+          ],
+          "size": [
+            1.325,
+            0.6
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        }
+      ]
+    },
+    "U3": {
+      "value": "ESP32-C3-MINI-1-H4X",
+      "id": "PoliClock:WIFIM-SMD_ESP32-C3-MINI-1",
+      "xy": [
+        136.46,
+        112.64
+      ],
+      "rotation": -90.0,
+      "side": "F.Cu",
+      "bom_excluded": false,
+      "cpl_excluded": false,
+      "courtyard": [
+        130.815,
+        105.995,
+        147.505,
+        119.285
+      ],
+      "pads": [
+        {
+          "n": "1",
+          "net": "GND",
+          "xy": [
+            140.46,
+            106.74
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "2",
+          "net": "GND",
+          "xy": [
+            139.66,
+            106.74
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "3",
+          "net": "+3V3",
+          "xy": [
+            138.86,
+            106.74
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "4",
+          "net": "unconnected-(U3-NC-Pad4)",
+          "xy": [
+            138.06,
+            106.74
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "5",
+          "net": "I2C_SDA",
+          "xy": [
+            137.26,
+            106.74
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "6",
+          "net": "BTN_USER",
+          "xy": [
+            136.46,
+            106.74
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "7",
+          "net": "unconnected-(U3-NC-Pad7)",
+          "xy": [
+            135.66,
+            106.74
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "8",
+          "net": "/MCU/EN",
+          "xy": [
+            134.86,
+            106.74
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "9",
+          "net": "unconnected-(U3-NC-Pad9)",
+          "xy": [
+            134.06,
+            106.74
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "10",
+          "net": "unconnected-(U3-NC-Pad10)",
+          "xy": [
+            133.26,
+            106.74
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "11",
+          "net": "GND",
+          "xy": [
+            132.46,
+            106.74
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "12",
+          "net": "/MCU/IO0",
+          "xy": [
+            131.56,
+            107.84
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "13",
+          "net": "/MCU/IO1",
+          "xy": [
+            131.56,
+            108.64
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "14",
+          "net": "GND",
+          "xy": [
+            131.56,
+            109.44
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "15",
+          "net": "unconnected-(U3-NC-Pad15)",
+          "xy": [
+            131.56,
+            110.24
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "16",
+          "net": "LCD_CS",
+          "xy": [
+            131.56,
+            111.04
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "17",
+          "net": "unconnected-(U3-NC-Pad17)",
+          "xy": [
+            131.56,
+            111.84
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "18",
+          "net": "LCD_DC",
+          "xy": [
+            131.56,
+            112.64
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "19",
+          "net": "LCD_RST",
+          "xy": [
+            131.56,
+            113.44
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "20",
+          "net": "LCD_SCLK",
+          "xy": [
+            131.56,
+            114.24
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "21",
+          "net": "LCD_MOSI",
+          "xy": [
+            131.56,
+            115.04
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "22",
+          "net": "I2C_SCL",
+          "xy": [
+            131.56,
+            115.84
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "23",
+          "net": "/MCU/IO9_BOOT",
+          "xy": [
+            131.56,
+            116.64
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "24",
+          "net": "unconnected-(U3-NC-Pad24)",
+          "xy": [
+            131.56,
+            117.44
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "25",
+          "net": "unconnected-(U3-NC-Pad25)",
+          "xy": [
+            132.46,
+            118.54
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "26",
+          "net": "USB_DN",
+          "xy": [
+            133.26,
+            118.54
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "27",
+          "net": "USB_DP",
+          "xy": [
+            134.06,
+            118.54
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "28",
+          "net": "unconnected-(U3-NC-Pad28)",
+          "xy": [
+            134.86,
+            118.54
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "29",
+          "net": "unconnected-(U3-NC-Pad29)",
+          "xy": [
+            135.66,
+            118.54
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "30",
+          "net": "DISP_EN_N",
+          "xy": [
+            136.46,
+            118.54
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "31",
+          "net": "/MCU/UART_TX",
+          "xy": [
+            137.26,
+            118.54
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "32",
+          "net": "unconnected-(U3-NC-Pad32)",
+          "xy": [
+            138.06,
+            118.54
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "33",
+          "net": "unconnected-(U3-NC-Pad33)",
+          "xy": [
+            138.86,
+            118.54
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "34",
+          "net": "unconnected-(U3-NC-Pad34)",
+          "xy": [
+            139.66,
+            118.54
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "35",
+          "net": "unconnected-(U3-NC-Pad35)",
+          "xy": [
+            140.46,
+            118.54
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "36",
+          "net": "GND",
+          "xy": [
+            141.36,
+            117.44
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "37",
+          "net": "GND",
+          "xy": [
+            141.36,
+            116.64
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "38",
+          "net": "GND",
+          "xy": [
+            141.36,
+            115.84
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "39",
+          "net": "GND",
+          "xy": [
+            141.36,
+            115.04
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "40",
+          "net": "GND",
+          "xy": [
+            141.36,
+            114.24
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "41",
+          "net": "GND",
+          "xy": [
+            141.36,
+            113.44
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "42",
+          "net": "GND",
+          "xy": [
+            141.36,
+            112.64
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "43",
+          "net": "GND",
+          "xy": [
+            141.36,
+            111.84
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "44",
+          "net": "GND",
+          "xy": [
+            141.36,
+            111.04
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "45",
+          "net": "GND",
+          "xy": [
+            141.36,
+            110.24
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "46",
+          "net": "GND",
+          "xy": [
+            141.36,
+            109.44
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "47",
+          "net": "GND",
+          "xy": [
+            141.36,
+            108.64
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "48",
+          "net": "GND",
+          "xy": [
+            141.36,
+            107.84
+          ],
+          "size": [
+            0.4,
+            0.8
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "49",
+          "net": "GND",
+          "xy": [
+            138.44,
+            110.66
+          ],
+          "size": [
+            0.005,
+            0.005
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "49",
+          "net": "GND",
+          "xy": [
+            136.46,
+            110.66
+          ],
+          "size": [
+            1.45,
+            1.45
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "49",
+          "net": "GND",
+          "xy": [
+            134.48,
+            110.66
+          ],
+          "size": [
+            1.45,
+            1.45
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "49",
+          "net": "GND",
+          "xy": [
+            138.43,
+            112.64
+          ],
+          "size": [
+            1.45,
+            1.45
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "49",
+          "net": "GND",
+          "xy": [
+            136.46,
+            112.64
+          ],
+          "size": [
+            1.45,
+            1.45
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "49",
+          "net": "GND",
+          "xy": [
+            134.48,
+            112.64
+          ],
+          "size": [
+            1.45,
+            1.45
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "49",
+          "net": "GND",
+          "xy": [
+            138.43,
+            114.61
+          ],
+          "size": [
+            1.45,
+            1.45
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "49",
+          "net": "GND",
+          "xy": [
+            136.46,
+            114.61
+          ],
+          "size": [
+            1.45,
+            1.45
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "49",
+          "net": "GND",
+          "xy": [
+            134.48,
+            114.61
+          ],
+          "size": [
+            1.45,
+            1.45
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "50",
+          "net": "GND",
+          "xy": [
+            141.41,
+            118.59
+          ],
+          "size": [
+            0.7,
+            0.7
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "51",
+          "net": "GND",
+          "xy": [
+            131.51,
+            118.59
+          ],
+          "size": [
+            0.7,
+            0.7
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "52",
+          "net": "GND",
+          "xy": [
+            131.51,
+            106.69
+          ],
+          "size": [
+            0.7,
+            0.7
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        },
+        {
+          "n": "53",
+          "net": "GND",
+          "xy": [
+            141.41,
+            106.69
+          ],
+          "size": [
+            0.7,
+            0.7
+          ],
+          "drill": [
+            0.0,
+            0.0
+          ],
+          "attr": 1,
+          "paste": true
+        }
+      ]
+    }
+  },
+  "saved_netlist_matches": true,
+  "fresh_netlist_pad_mismatches": [],
+  "critical_distances_mm": {
+    "U3.3-C6.1": 2.3736,
+    "U3.3-C5.1": 3.7372,
+    "U2.1-C2.1": 2.3916,
+    "U2.5-C3.1": 2.3757,
+    "U2.5-C4.1": 2.2375,
+    "U1.5-C1.1": 5.153,
+    "U3.20-R8.1": 2.2978,
+    "U3.21-R9.1": 4.5866
+  },
+  "pth_annuli": [
+    {
+      "ref": "J1",
+      "pad": "SH",
+      "size": [
+        1.0,
+        2.1
+      ],
+      "drill": [
+        0.6,
+        1.7
+      ],
+      "annulus_mm": 0.2
+    },
+    {
+      "ref": "J1",
+      "pad": "SH",
+      "size": [
+        1.0,
+        1.6
+      ],
+      "drill": [
+        0.6,
+        1.2
+      ],
+      "annulus_mm": 0.2
+    },
+    {
+      "ref": "J1",
+      "pad": "SH",
+      "size": [
+        1.0,
+        2.1
+      ],
+      "drill": [
+        0.6,
+        1.7
+      ],
+      "annulus_mm": 0.2
+    },
+    {
+      "ref": "J1",
+      "pad": "SH",
+      "size": [
+        1.0,
+        1.6
+      ],
+      "drill": [
+        0.6,
+        1.2
+      ],
+      "annulus_mm": 0.2
+    },
+    {
+      "ref": "H2",
+      "pad": "1",
+      "size": [
+        4.4,
+        4.4
+      ],
+      "drill": [
+        2.2,
+        2.2
+      ],
+      "annulus_mm": 1.1
+    },
+    {
+      "ref": "H1",
+      "pad": "1",
+      "size": [
+        4.4,
+        4.4
+      ],
+      "drill": [
+        2.2,
+        2.2
+      ],
+      "annulus_mm": 1.1
+    }
+  ],
+  "zones": [
+    {
+      "name": "bordo",
+      "rule": true,
+      "net": "",
+      "layers": "0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0001",
+      "filled": false
+    },
+    {
+      "name": "fiducial3",
+      "rule": true,
+      "net": "",
+      "layers": "0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0001",
+      "filled": false
+    },
+    {
+      "name": "",
+      "rule": false,
+      "net": "GND",
+      "layers": "0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0001",
+      "filled": true
+    },
+    {
+      "name": "bordo",
+      "rule": true,
+      "net": "",
+      "layers": "0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0001",
+      "filled": false
+    },
+    {
+      "name": "fiducial1",
+      "rule": true,
+      "net": "",
+      "layers": "0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0001",
+      "filled": false
+    },
+    {
+      "name": "bordo",
+      "rule": true,
+      "net": "",
+      "layers": "0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0001",
+      "filled": false
+    },
+    {
+      "name": "bordo",
+      "rule": true,
+      "net": "",
+      "layers": "0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0001",
+      "filled": false
+    },
+    {
+      "name": "bordo",
+      "rule": true,
+      "net": "",
+      "layers": "0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0001",
+      "filled": false
+    },
+    {
+      "name": "bordo",
+      "rule": true,
+      "net": "",
+      "layers": "0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0001",
+      "filled": false
+    },
+    {
+      "name": "fiducial2",
+      "rule": true,
+      "net": "",
+      "layers": "0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0001",
+      "filled": false
+    },
+    {
+      "name": "antenna",
+      "rule": true,
+      "net": "",
+      "layers": "0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0101",
+      "filled": false
+    },
+    {
+      "name": "bordo",
+      "rule": true,
+      "net": "",
+      "layers": "0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0100",
+      "filled": false
+    },
+    {
+      "name": "bordo",
+      "rule": true,
+      "net": "",
+      "layers": "0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0100",
+      "filled": false
+    },
+    {
+      "name": "",
+      "rule": false,
+      "net": "GND",
+      "layers": "0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0100",
+      "filled": true
+    },
+    {
+      "name": "usb_coppia_retro",
+      "rule": true,
+      "net": "",
+      "layers": "0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0100",
+      "filled": false
+    },
+    {
+      "name": "bordo",
+      "rule": true,
+      "net": "",
+      "layers": "0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0100",
+      "filled": false
+    },
+    {
+      "name": "bordo",
+      "rule": true,
+      "net": "",
+      "layers": "0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0100",
+      "filled": false
+    },
+    {
+      "name": "bordo",
+      "rule": true,
+      "net": "",
+      "layers": "0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0100",
+      "filled": false
+    },
+    {
+      "name": "bordo",
+      "rule": true,
+      "net": "",
+      "layers": "0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0000|0000_0100",
+      "filled": false
+    }
+  ],
+  "usb_paths": {
+    "J1.B7-U3.26": {
+      "length_mm": 14.6328,
+      "vias": 0
+    },
+    "J1.B6-U3.27": {
+      "length_mm": 14.6328,
+      "vias": 0
+    },
+    "J1.A7-U3.26": {
+      "length_mm": 19.3085,
+      "vias": 2
+    },
+    "J1.A6-U3.27": {
+      "length_mm": 19.3085,
+      "vias": 2
+    }
+  },
+  "bom_cpl": {
+    "origin": [
+      100.0,
+      140.0
+    ],
+    "cpl_count": 36,
+    "bom_quantity": 36,
+    "bom_cpl_ref_difference": [],
+    "coordinate_mismatches": []
+  }
+}

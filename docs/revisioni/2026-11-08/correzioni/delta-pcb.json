@@ -1,0 +1,365 @@
+{
+  "footprints_moved": {
+    "FID1": {
+      "before": [
+        103.5,
+        131.0
+      ],
+      "after": [
+        103.5,
+        132.5
+      ]
+    },
+    "C7": {
+      "before": [
+        132.85,
+        102.25
+      ],
+      "after": [
+        132.85,
+        103.0
+      ]
+    }
+  },
+  "tracks_removed": [
+    {
+      "uuid": "db3924f6-a104-40ab-94ee-23c836678dcf",
+      "net": "/MCU/EN",
+      "layer": "B.Cu",
+      "start": [
+        135.7343,
+        105.2544
+      ],
+      "end": [
+        134.037,
+        103.5571
+      ],
+      "width": 0.2,
+      "kind": "PCB_TRACK"
+    },
+    {
+      "uuid": "cfd8d926-49c5-4bc9-94e0-601eca91381c",
+      "net": "/MCU/EN",
+      "layer": "F.Cu",
+      "start": [
+        133.675,
+        103.85
+      ],
+      "end": [
+        132.075,
+        102.25
+      ],
+      "width": 0.2,
+      "kind": "PCB_TRACK"
+    },
+    {
+      "uuid": "95a95db1-0dfe-4228-8f4d-a3fd9231f632",
+      "net": "GND",
+      "layer": "F.Cu",
+      "start": [
+        135.125,
+        102.25
+      ],
+      "end": [
+        135.85,
+        102.975
+      ],
+      "width": 0.4,
+      "kind": "PCB_TRACK"
+    },
+    {
+      "uuid": "ae201614-34b1-40b8-be82-eb2b2fb988e2",
+      "net": "GND",
+      "layer": "F.Cu",
+      "start": [
+        133.625,
+        102.25
+      ],
+      "end": [
+        135.125,
+        102.25
+      ],
+      "width": 0.4,
+      "kind": "PCB_TRACK"
+    },
+    {
+      "uuid": "ca95814b-eac0-4cd5-81d8-2d8503e70afd",
+      "net": "/MCU/EN",
+      "layer": "F.Cu",
+      "start": [
+        133.7441,
+        103.85
+      ],
+      "end": [
+        134.037,
+        103.5571
+      ],
+      "width": 0.2,
+      "kind": "PCB_TRACK"
+    }
+  ],
+  "tracks_added": [
+    {
+      "uuid": "1e6c955f-5734-4585-a881-c768adf8c030",
+      "net": "/MCU/EN",
+      "layer": "F.Cu",
+      "start": [
+        132.074999,
+        103.0
+      ],
+      "end": [
+        132.074999,
+        103.5
+      ],
+      "width": 0.2,
+      "kind": "PCB_TRACK"
+    },
+    {
+      "uuid": "5bf09042-a175-4d38-b81b-a8e5721e5d5d",
+      "net": "/MCU/EN",
+      "layer": "F.Cu",
+      "start": [
+        134.55,
+        103.4441
+      ],
+      "end": [
+        134.55,
+        103.25
+      ],
+      "width": 0.2,
+      "kind": "PCB_TRACK"
+    },
+    {
+      "uuid": "69987059-5c82-4d1e-8ae1-ee5a1fc3225b",
+      "net": "/MCU/EN",
+      "layer": "F.Cu",
+      "start": [
+        132.074999,
+        103.5
+      ],
+      "end": [
+        132.324999,
+        103.75
+      ],
+      "width": 0.2,
+      "kind": "PCB_TRACK"
+    },
+    {
+      "uuid": "1c399ccc-54dc-4c65-a096-34b28e8c568b",
+      "net": "/MCU/EN",
+      "layer": "F.Cu",
+      "start": [
+        133.7441,
+        103.85
+      ],
+      "end": [
+        134.1441,
+        103.85
+      ],
+      "width": 0.2,
+      "kind": "PCB_TRACK"
+    },
+    {
+      "uuid": "dae51499-4ab2-4575-b13f-5b5dca9a1cc3",
+      "net": "/MCU/EN",
+      "layer": "F.Cu",
+      "start": [
+        134.1441,
+        103.85
+      ],
+      "end": [
+        134.55,
+        103.4441
+      ],
+      "width": 0.2,
+      "kind": "PCB_TRACK"
+    },
+    {
+      "uuid": "e564f778-05da-4dea-8dce-43193e43918a",
+      "net": "GND",
+      "layer": "F.Cu",
+      "start": [
+        133.625,
+        103.0
+      ],
+      "end": [
+        133.625,
+        102.4
+      ],
+      "width": 0.4,
+      "kind": "PCB_TRACK"
+    },
+    {
+      "uuid": "7b42151f-4db5-4937-a893-8dd99bb7f0a5",
+      "net": "/MCU/EN",
+      "layer": "B.Cu",
+      "start": [
+        135.7343,
+        104.4343
+      ],
+      "end": [
+        135.7343,
+        105.2544
+      ],
+      "width": 0.2,
+      "kind": "PCB_TRACK"
+    },
+    {
+      "uuid": "5daf3375-f2de-4d3a-b64b-67b8cb53f4cd",
+      "net": "/MCU/EN",
+      "layer": "B.Cu",
+      "start": [
+        134.55,
+        103.25
+      ],
+      "end": [
+        135.7343,
+        104.4343
+      ],
+      "width": 0.2,
+      "kind": "PCB_TRACK"
+    },
+    {
+      "uuid": "ccb2013f-f7fd-43ff-a303-228cf6abb1e1",
+      "net": "/MCU/EN",
+      "layer": "F.Cu",
+      "start": [
+        133.574999,
+        103.75
+      ],
+      "end": [
+        133.675,
+        103.85
+      ],
+      "width": 0.2,
+      "kind": "PCB_TRACK"
+    },
+    {
+      "uuid": "954e4512-167e-4db1-863c-1e67d191bc24",
+      "net": "/MCU/EN",
+      "layer": "F.Cu",
+      "start": [
+        132.324999,
+        103.75
+      ],
+      "end": [
+        133.574999,
+        103.75
+      ],
+      "width": 0.2,
+      "kind": "PCB_TRACK"
+    },
+    {
+      "uuid": "8d9c38a7-92ad-439e-8f75-0437e4e712fc",
+      "net": "GND",
+      "layer": "F.Cu",
+      "start": [
+        133.625,
+        102.4
+      ],
+      "end": [
+        135.275,
+        102.4
+      ],
+      "width": 0.4,
+      "kind": "PCB_TRACK"
+    },
+    {
+      "uuid": "9bf1e150-134b-4b16-9deb-5ca830145cb1",
+      "net": "GND",
+      "layer": "F.Cu",
+      "start": [
+        135.275,
+        102.4
+      ],
+      "end": [
+        135.85,
+        102.975
+      ],
+      "width": 0.4,
+      "kind": "PCB_TRACK"
+    }
+  ],
+  "tracks_modified": [
+    {
+      "before": {
+        "uuid": "3acea02c-a784-4f22-ae5e-80f0cbf57b57",
+        "net": "/MCU/EN",
+        "layer": "F.Cu",
+        "start": [
+          134.037,
+          103.5571
+        ],
+        "end": [
+          134.037,
+          103.5571
+        ],
+        "width": 0.6,
+        "kind": "PCB_VIA"
+      },
+      "after": {
+        "uuid": "3acea02c-a784-4f22-ae5e-80f0cbf57b57",
+        "net": "/MCU/EN",
+        "layer": "F.Cu",
+        "start": [
+          134.55,
+          103.25
+        ],
+        "end": [
+          134.55,
+          103.25
+        ],
+        "width": 0.6,
+        "kind": "PCB_VIA"
+      }
+    }
+  ],
+  "usb_tracks_unchanged": true,
+  "outline_unchanged": true,
+  "schematic_project_symbols_boms_unchanged": {
+    "hardware/lib/PoliClock.kicad_sym": "940f6abd1ca019e6cc78acbae08027772e6bb747c9fe4c9954810b4dc28d9038",
+    "hardware/policlock-main/display.kicad_sch": "cd515de85bc432e1b7ca22ef042886857b7f17dcba2b57eb267f6ed2e47dec81",
+    "hardware/policlock-main/mcu.kicad_sch": "b711bdb7af55887f2f30885e68d08c098c167fbcc4fba5bc02307aafcea43420",
+    "hardware/policlock-main/periferiche.kicad_sch": "5f6ea0780b44e5dd57cae088efd75242abc47afb2bbc782cde79255e3f80ac15",
+    "hardware/policlock-main/policlock-main-bom-completa.csv": "9125728cf327e1056b10e7d16330864f30985c0dd9c1968e35ccd04f6f00dd1a",
+    "hardware/policlock-main/policlock-main-bom-jlcpcb.csv": "96511dc33c054ecc1b8367db9aa6aacf550c77d27211bb3126a4dba6cb82caee",
+    "hardware/policlock-main/policlock-main.kicad_pro": "82941ea279d176e55a90082c05e9641895430afb80c56f2849b0c7206dbb9a93",
+    "hardware/policlock-main/policlock-main.kicad_sch": "5ee311f9a7a6a9fd0771068903728e30355b9e878c8ef41db71e432604be8996",
+    "hardware/policlock-main/usb_alimentazione.kicad_sch": "f686361fbc2a3654d8b49be0ded896d15076c36db3d48e9890f0fcc9264cc684"
+  },
+  "track_count_before": 585,
+  "track_count_after": 592,
+  "via_count_before": 55,
+  "via_count_after": 55,
+  "file_sha256_after": {
+    "hardware/lib/PoliClock.kicad_sym": "940f6abd1ca019e6cc78acbae08027772e6bb747c9fe4c9954810b4dc28d9038",
+    "hardware/lib/PoliClock.pretty/CONN-SMD_2P-P1.00_SM02B-SRSS-TB-LF-SN.kicad_mod": "354dd030e9d59eabbea4ce925eb71610f291558c2b1b0f7f62c38bf4100aec46",
+    "hardware/lib/PoliClock.pretty/CONN-SMD_4P-P1.00_SM04B-SRSS-TB-LF-SN.kicad_mod": "bf4c034ebc1c39afbc8b445901c20182b93c6014ecdf1a589cf075e4bd6647a5",
+    "hardware/lib/PoliClock.pretty/HDR-SMD_7P-P2.54-H-M-W13.3-N.kicad_mod": "ff99734e555f90bed7dcba73bd675411b9ae2374fd89cb8b4748ce828221a8a2",
+    "hardware/lib/PoliClock.pretty/USB_C_Receptacle_HRO_TYPE-C-31-M-12.kicad_mod": "8844e2c70c25b8ff51c573c9eff12f967cfa45e8dadba06dee742e7e20205881",
+    "hardware/lib/PoliClock.pretty/WIFIM-SMD_ESP32-C3-MINI-1.kicad_mod": "801bf92540d8dadd462b4a83ca00b3134b44af56342ebc49c914d8c3e233547a",
+    "hardware/policlock-main/display.kicad_sch": "cd515de85bc432e1b7ca22ef042886857b7f17dcba2b57eb267f6ed2e47dec81",
+    "hardware/policlock-main/mcu.kicad_sch": "b711bdb7af55887f2f30885e68d08c098c167fbcc4fba5bc02307aafcea43420",
+    "hardware/policlock-main/periferiche.kicad_sch": "5f6ea0780b44e5dd57cae088efd75242abc47afb2bbc782cde79255e3f80ac15",
+    "hardware/policlock-main/policlock-main-bom-completa.csv": "9125728cf327e1056b10e7d16330864f30985c0dd9c1968e35ccd04f6f00dd1a",
+    "hardware/policlock-main/policlock-main-bom-jlcpcb.csv": "96511dc33c054ecc1b8367db9aa6aacf550c77d27211bb3126a4dba6cb82caee",
+    "hardware/policlock-main/policlock-main-cpl-jlcpcb.csv": "4162996d124317a2040cc439b923a8c83eb8bad54f643eb9ef7875b7c665a318",
+    "hardware/policlock-main/policlock-main.kicad_pcb": "e8c3448cecca0ca0311e3b93c34c5bb5d119c03aa16b608774488659e7b9a8f3",
+    "hardware/policlock-main/policlock-main.kicad_pro": "82941ea279d176e55a90082c05e9641895430afb80c56f2849b0c7206dbb9a93",
+    "hardware/policlock-main/policlock-main.kicad_sch": "5ee311f9a7a6a9fd0771068903728e30355b9e878c8ef41db71e432604be8996",
+    "hardware/policlock-main/usb_alimentazione.kicad_sch": "f686361fbc2a3654d8b49be0ded896d15076c36db3d48e9890f0fcc9264cc684",
+    "hardware/scripts/correggi_libreria.py": "69f047f029564fffef1dab7475ac52c4e161ba26dcda1fe947d3a4e949790af8",
+    "hardware/scripts/esporta.py": "83672e442846f13be94f90d67dedfa78b8d5298eb2418d313b30d69ba03d63df",
+    "hardware/scripts/genera_pcb_main.py": "fdfb3bba508411deadb5cd8ca1b280a0cc71b73a9dce1efa2c6d21417a9b6c3d",
+    "hardware/scripts/genera_schemi.py": "0c4f1feaf46a1208693db7482ba5373892c2e88643c58a5ef49d62bcff2fa410",
+    "hardware/scripts/kilib.py": "4e5f76f076ecf3ad1c80ed1cd645139f80fbaf8a0ce5d2a9d790da40d8312891",
+    "hardware/scripts/posizioni_main.py": "79b585ceb135384266d3f8dd509c106ea92a76b421a3c7b04d5f84f66d94d59b",
+    "hardware/scripts/prepara_footprint.py": "d2b8b243e795edc54a0f9e44a3b13493c761d25f3909a29da3a225d7ce6eefb7",
+    "hardware/scripts/sbroglia_main.py": "ff1f1587957097bc4acfca23c6928ef275b0605372a7c68eddaff696b97d0f90",
+    "hardware/scripts/schgen.py": "945e88f45cc57e6914bf13eb171cab6edc6efb94ce352e90a553eafd1f564986",
+    "hardware/scripts/sexp.py": "9304aacdd9828e46aa0456cbe0f450d1839667d79aa58d4b7f7390274eecb9b0",
+    "hardware/scripts/usb_coppia.py": "f8754dc90c767028cdd6d1811314d223df2b1c496cbc6ca7c922d1fc3261bae0",
+    "hardware/scripts/verifica_meccanica_pcb.py": "64e22d9b60a3fc85796840c03bea61f240773f3f39c809a32f82679f4856ef4e"
+  },
+  "cpl_count": 36
+}

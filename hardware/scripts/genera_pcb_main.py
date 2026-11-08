@@ -32,7 +32,7 @@ LOCAL = os.path.join(HW, "lib", "PoliClock.pretty")
 MM = pcbnew.FromMM
 OX, OY = 100.0, 100.0          # origine della scheda nel foglio
 GAP = float(os.environ.get("PCB_GAP", "0.5"))   # spazio extra fra i courtyard per lo sbroglio (mm)
-EDGE = 0.4                      # distanza minima courtyard-bordo per i componenti piazzati automaticamente
+EDGE = 0.4                      # solo ritaglio della serigrafia; i componenti usano SIDE_MARGIN su tutti i bordi
 
 
 def V(x, y):
@@ -72,7 +72,7 @@ def overlap(a, b, gap=0.0):
 
 
 def inside_board(r, m=EDGE, side=None):
-    """r in coordinate scheda (senza offset); side = margine sui lati sinistro/destro (regola JLC 2,5 mm)."""
+    """r in coordinate scheda; m e side sono i margini su tutti i bordi e sui lati."""
     sm = m if side is None else side
     if r[0] < sm or r[1] > W - sm or r[2] < m or r[3] > H - m:
         return False
@@ -229,7 +229,7 @@ def build():
                 for rot in (0, 90, 180, 270):
                     b = rot_bbox(LBOX[ref], rot)
                     r = (cx + b[0], cx + b[1], cy + b[2], cy + b[3])
-                    if not inside_board(r, side=SIDE_MARGIN):
+                    if not inside_board(r, m=SIDE_MARGIN, side=SIDE_MARGIN):
                         continue
                     if any(overlap(r, o, GAP) for _, o in occ[side]):
                         continue
@@ -320,16 +320,12 @@ def build():
         kf.Outline().Append(poly([(fx - 1.5, fy - 1.5), (fx + 1.5, fy - 1.5), (fx + 1.5, fy + 1.5), (fx - 1.5, fy + 1.5)]))
         board.Add(kf)
 
-    # verifica regola JLC: corpo dei componenti montati a >= 2,5 mm dai lati sinistro e destro
-    for f in board.GetFootprints():
-        if f.IsExcludedFromPosFiles() or f.IsDNP():
-            continue
-        f.BuildCourtyardCaches()
-        cy = f.GetCourtyard(pcbnew.F_CrtYd)
-        bb = cy.BBox() if cy.OutlineCount() else f.GetBoundingBox(False)
-        x0, x1 = pcbnew.ToMM(bb.GetLeft()) - OX, pcbnew.ToMM(bb.GetRight()) - OX
-        if x0 < SIDE_MARGIN - 0.01 or x1 > W - SIDE_MARGIN + 0.01:
-            print(f"ATTENZIONE: {f.GetReference()} a meno di {SIDE_MARGIN} mm da un lato di trasporto ({x0:.2f}..{x1:.2f})")
+    # Correzione REV-001/003: corpo-bordo su tutto il contorno e pad nei courtyard.
+    # Le eccezioni J1/J2/U3 restano esplicite e soggette ad accettazione DFM.
+    from verifica_meccanica_pcb import controlla
+    meccanica = controlla(board)
+    if meccanica['errori']:
+        raise RuntimeError('Verifica meccanica fallita: ' + '; '.join(meccanica['errori']))
 
     # zona antenna: niente rame, piste, vie o componenti
     ka = pcbnew.ZONE(board)

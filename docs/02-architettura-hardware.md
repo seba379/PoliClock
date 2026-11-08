@@ -100,7 +100,7 @@ File: `hardware/policlock-main/policlock-main.kicad_pcb` (render, PDF, BOM, CPL 
 | Strati / spessore | 2 strati, 1,6 mm (`DEC-030`) | Circuito semplice, nessuna radio attiva; piani GND su entrambi i lati |
 | Montaggio | Solo lato superiore, servizio JLC "Economic" | Sul retro solo pad di test nudi e legenda |
 | Regole di fabbricazione (JLC, `DEC-040`) | Distanza 0,15 mm (0,10 mm fra le piazzole USB-C a passo 0,5 mm), piste 0,2 mm (alimentazioni 0,4 mm), vie 0,6/0,3 mm (0,7/0,35 mm sulle alimentazioni), foro-foro ≥ 0,25 mm, foro-rame ≥ 0,3 mm, rame-bordo ≥ 0,3 mm più una fascia di 0,45 mm vietata a piste e vie lungo il contorno | Minimi JLC 2 strati con margine (pagina capacità JLCPCB, consultata il 2026-11-08) |
-| Regole di assemblaggio (JLC, `DEC-040`) | Corpo dei componenti **≥ 2,5 mm dai lati sinistro e destro**; connettori a filo solo sui lati superiore (header) e inferiore (USB-C); 3 fiducial da 1 mm con zona di rispetto | Termini di assemblaggio JLCPCB; i lati sinistro e destro sono quelli di trasporto e degli eventuali bordi tecnici |
+| Regole di assemblaggio (JLC, `DEC-040`) | Corpo dei componenti **≥ 2,5 mm da tutto il contorno**, compreso l'intaglio; J1/J2 a bordo e U3 sopra l'intaglio restano eccezioni DFM esplicite; 3 fiducial da 1 mm con zona di rispetto | Correzione applicativa del 2026-11-08 ai termini JLC, senza modificare le decisioni: controllo aggiuntivo con `verifica_meccanica_pcb.py` |
 | Spaziatura | 0,5 mm in più fra i courtyard dei componenti piazzati automaticamente | Spazio per piste e vie |
 
 Disposizione (vista dall'alto, origine nell'angolo in alto a sinistra):
@@ -113,6 +113,8 @@ Disposizione (vista dall'alto, origine nell'angolo in alto a sinistra):
 - **Retro**: 11 punti di test con etichetta "riferimento + rete"; TP6 (EN) e TP11 (IO9) sotto i rispettivi pin del modulo, gli altri in due file.
 
 **Verifiche (report salvati, nessun test hardware):** DRC con `kicad-cli` e tutte le severità, con i controlli su courtyard, fori, serigrafia e footprint riabilitati: **0 violazioni, 0 connessioni aperte**. Disaccoppiamento: C6 0,1 µF a 2,4 mm dal pin 3V3 del modulo. EN: 15 mm con 3 vie (era 60 mm prima di spostare TP6). Confronto schema ↔ PCB (`--schematic-parity`): **0 problemi** (campi e percorsi dei simboli copiati sul PCB; fori e fiducial marcati "solo scheda"). USB: vedi §3.3. Nessuna pista sotto 0,15 mm (lo script riallarga a 0,15 mm le strozzature che Freerouting crea vicino alle piazzole fini, se la distanza lo consente, e toglie vie e pezzi di pista senza uscita); 55 vie, circa 935 mm di piste. Restano da rivedere a vista: percorsi, continuità dei piani GND sotto il modulo, eventuali vie di cucitura GND aggiuntive.
+
+**Correzione locale successiva (2026-11-08):** C7 a (32,85; 3,00) mm, corpo a **2,60 mm dal bordo**, raccordi EN/GND e una via EN ritoccati; courtyard e contorni F.Fab di J2–J5 completati nelle librerie e nel PCB; FID1 a (3,50; 32,50) mm con zona di rispetto traslata. Dopo questa correzione: EN circa **15,89 mm**, 3 vie; totale **537 segmenti, 55 vie, circa 936,731 mm**. DRC con zone ricalcolate e parità: zero problemi; controllo geometrico aggiuntivo superato. USB, sagoma, schema e BOM invariati. Dettagli e stato della revisione a vista nella [nota delle modifiche](revisioni/2026-11-08/correzioni/README.md). I numeri del paragrafo precedente descrivono la bozza prima di questa correzione.
 
 ### 3.3 Coppia USB D+/D- (`DEC-041`)
 

@@ -107,4 +107,4 @@ Il candidato iniziale **RV-3028-C7** risulta a **stock 0** su LCSC/JLC (C3019759
 - **Modulo display senza datasheet**: pinout dalla foto dell'inserzione, corrente della retroilluminazione ignota: verifica su banco prima del montaggio finale.
 - **Termica dell'LDO**: SOT-23-5 a 231 °C/W (JEDEC); con ~80 mA stimati la dissipazione è ~0,14 W (+14…32 °C). Da misurare a scocca chiusa (`VT-PWR-002`).
 - **ESP32-C3 H4X**: stock limitato (~2 800 pezzi) e richiede ESP-IDF recente; ricontrollare la disponibilità all'ordine.
-- **Header SMD a 90°**: footprint EasyEDA non confrontato con un disegno ufficiale del produttore (non trovato); verificare passo 2,54 mm e lunghezza dei piedini sul primo campione.
+- **Header SMD a 90°**: nel 2026-11-08 è stato recuperato il disegno Hanxia rev B e sono stati completati courtyard/F.Fab senza cambiare le piazzole. Queste restano 1,02 × 3,16 mm contro 1,02 × 3,20 mm del disegno: confronto DFM e prova del campione ancora necessari. Vedi [nota delle correzioni](revisioni/2026-11-08/correzioni/README.md).

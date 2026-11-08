@@ -4,9 +4,8 @@ Scheda 50 x 40 mm (DEC-036) con intaglio nell'angolo in alto a destra: l'antenna
 dentro l'ingombro ma sopra l'intaglio, quindi senza PCB ne' rame sotto (linee guida Espressif:
 antenna fuori dalla scheda base, punto di alimentazione vicino al bordo).
 
-Regole di assemblaggio JLCPCB (SC-008, DEC-040): corpo dei componenti ad almeno 2,5 mm dal bordo sui lati
-sinistro e destro (lati di trasporto, dove JLC aggiunge eventualmente i bordi tecnici); sui lati superiore e
-inferiore solo i connettori che devono stare sul bordo (header display, USB-C).
+Regole di assemblaggio JLCPCB (SC-008, DEC-040): corpo dei componenti ad almeno 2,5 mm da tutto il contorno.
+Le eccezioni dei connettori a bordo (header display, USB-C) e del modulo sopra l'intaglio richiedono DFM.
 
 Vista dall'alto:
   - in alto a destra: modulo ESP32-C3 ruotato di 270 gradi, antenna verso destra sopra l'intaglio;
@@ -19,7 +18,7 @@ I componenti in ANCHOR sono piazzati automaticamente il piu' vicino possibile al
 import os
 
 W, H = (float(v) for v in os.environ.get("PCB_WH", "50,40").split(","))
-SIDE_MARGIN = 2.5                    # JLC: corpo dei componenti >= 2,5 mm dai lati di trasporto (sinistro/destro)
+SIDE_MARGIN = 2.5                    # JLC: corpo dei componenti >= 2,5 mm da tutto il contorno, salvo eccezioni DFM
 
 ANT_LEN = 11.04                      # dal centro del modulo alla punta dell'antenna (footprint ruotato)
 XM = W - SIDE_MARGIN - ANT_LEN       # centro del modulo (rotazione 270): punta dell'antenna a 2,5 mm dal bordo
@@ -62,7 +61,7 @@ PLACE["TP6"] = (XM - 4.5, YM - 6.2, 0, "B")      # EN (pin 8)
 PLACE["TP11"] = (XM - 8.0, YM + 4.0, 0, "B")     # IO9 (pin 23)
 
 HOLES = [(J1X - 9.5, H - 3.5), (J1X + 10.0, H - 3.5)]  # M2 ai lati della USB-C
-FIDUCIALS = [(SIDE_MARGIN + 1.0, H - 9.0), (16.0, 12.0), (W - SIDE_MARGIN - 1.5, H - 9.0)]  # 1 mm, lato superiore
+FIDUCIALS = [(SIDE_MARGIN + 1.0, H - 7.5), (16.0, 12.0), (W - SIDE_MARGIN - 1.5, H - 9.0)]  # FID1 +1,5 mm: libera il courtyard completo di J5
 
 # piazzamento automatico vicino a un pin preciso: ref -> (ref, pin)
 ANCHOR = {

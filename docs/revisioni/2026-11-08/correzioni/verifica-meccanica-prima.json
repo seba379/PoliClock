@@ -1,0 +1,101 @@
+{
+  "kicad": "10.0.6",
+  "margine_minimo_mm": 2.5,
+  "eccezioni_dfm_aperte": {
+    "J1": "USB-C affacciata al bordo inferiore: accettazione DFM aperta",
+    "J2": "Header display affacciato al bordo superiore: accettazione DFM aperta",
+    "U3": "Modulo ESP32 sopra intaglio antenna: accettazione DFM aperta"
+  },
+  "margini_corpi_mm": {
+    "C9": 6.55,
+    "C5": 2.95,
+    "F1": 9.75,
+    "C1": 12.45,
+    "R3": 7.3092,
+    "R21": 3.4,
+    "R16": 9.75,
+    "R19": 10.2875,
+    "R4": 9.1737,
+    "R9": 14.25,
+    "C8": 10.65,
+    "R8": 12.2,
+    "R6": 4.0875,
+    "C6": 2.51,
+    "R20": 10.2875,
+    "R22": 10.2875,
+    "C2": 6.65,
+    "R5": 10.0375,
+    "C7": 1.85,
+    "R15": 5.3,
+    "U1": 8.8774,
+    "R17": 11.6375,
+    "C10": 9.45,
+    "R2": 8.573,
+    "Q1": 2.7,
+    "C3": 9.3,
+    "R7": 12.4475,
+    "C4": 7.05,
+    "U2": 5.05,
+    "R1": 9.4999
+  },
+  "copertura_courtyard": {
+    "J2": {
+      "ok": false,
+      "elementi_fuori": [
+        "F.Fab assente",
+        "pad 1",
+        "pad 2",
+        "pad 3",
+        "pad 4",
+        "pad 5",
+        "pad 6",
+        "pad 7"
+      ]
+    },
+    "J3": {
+      "ok": false,
+      "elementi_fuori": [
+        "F.Fab assente",
+        "pad 1",
+        "pad 2",
+        "pad 3",
+        "pad 4",
+        "pad 5",
+        "pad 6"
+      ]
+    },
+    "J5": {
+      "ok": false,
+      "elementi_fuori": [
+        "F.Fab assente",
+        "pad 1",
+        "pad 2",
+        "pad 3",
+        "pad 4"
+      ]
+    },
+    "J4": {
+      "ok": false,
+      "elementi_fuori": [
+        "F.Fab assente",
+        "pad 1",
+        "pad 2",
+        "pad 3",
+        "pad 4",
+        "pad 5",
+        "pad 6"
+      ]
+    }
+  },
+  "errori": [
+    "J2: elementi fuori dal courtyard: ['F.Fab assente', 'pad 1', 'pad 2', 'pad 3', 'pad 4', 'pad 5', 'pad 6', 'pad 7']",
+    "J3: contorno del corpo F.Fab assente",
+    "J3: elementi fuori dal courtyard: ['F.Fab assente', 'pad 1', 'pad 2', 'pad 3', 'pad 4', 'pad 5', 'pad 6']",
+    "J5: contorno del corpo F.Fab assente",
+    "J5: elementi fuori dal courtyard: ['F.Fab assente', 'pad 1', 'pad 2', 'pad 3', 'pad 4']",
+    "J4: contorno del corpo F.Fab assente",
+    "J4: elementi fuori dal courtyard: ['F.Fab assente', 'pad 1', 'pad 2', 'pad 3', 'pad 4', 'pad 5', 'pad 6']",
+    "C7: corpo-bordo 1.8500 mm < 2.5"
+  ],
+  "esito": "FAIL"
+}

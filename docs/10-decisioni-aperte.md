@@ -146,3 +146,14 @@ Esito sulla rev 0.1: **NOT APPROVED FOR FABRICATION** (file del proprietario, no
 | P1-10 leggibilità 1,28" | Confermato dal proprietario; test 1:1 in `VT-UI-001` | `DEC-038` |
 | Regole JLCPCB (vincolo `SC-008` aggiunto dopo la revisione) | Impostate nel DRC e nel posizionamento | `DEC-040`, `PR-REL-008` |
 | P2 README, stato documenti, costi | Aggiornati; "report salvati" distinti da "test eseguiti" | [hardware](../hardware/README.md), [08](08-bom-preliminare.md) §8 |
+
+## 7. Correzioni richieste dopo la revisione del 2026-11-08
+
+Il proprietario ha richiesto esclusivamente la correzione della distanza dal bordo (REV-001) e dei courtyard incompleti (REV-003), con documentazione e **senza commit prima della verifica visiva**. Le decisioni `CONF` restano invariate; non si introduce una nuova decisione di prodotto.
+
+- C7 spostato di 0,75 mm verso l'interno, corpo-bordo da 1,85 a **2,60 mm**; ritoccati i raccordi locali EN/GND e una via EN.
+- Courtyard e contorni F.Fab dell'header e dei due JST-SH completati in libreria e nelle istanze J2–J5; pad e pinout conservati.
+- FID1 e la sua zona di rispetto spostati di 1,5 mm per liberare il courtyard completo di J5.
+- Controllo geometrico aggiuntivo su tutto il contorno e sulle piazzole nei courtyard; ERC/DRC e parità schema/PCB senza violazioni. J1/J2/U3 rimangono eccezioni da sottoporre al DFM JLC.
+
+Stato: **correzioni preparate e commit successivamente autorizzato dal proprietario** sul nuovo ramo `codex/pcb-edge-courtyard-fixes`. Gli altri rilievi restano rinviati; i gate di approvazione alla produzione rimangono aperti. [Nota completa, evidenze e file da aprire](revisioni/2026-11-08/correzioni/README.md). Nessun ordine eseguito.
