@@ -23,6 +23,7 @@ PoliClock V1 e' un orologio da scrivania alimentato in continuo da USB (nessuna 
 - Strumenti: KiCad 10 (`kicad-cli` per ERC/DRC ed esportazioni), ESP-IDF con VS Code, Blender per la chibi, build123d per le parti tecniche.
 - Firmware futuro in ESP-IDF, architettura modulare, codice testabile, nessuna modifica al firmware senza richiesta esplicita.
 - Schema e PCB possono essere preparati dall'agente, ma l'ordine a JLC richiede ERC/DRC puliti e la revisione visiva del proprietario in KiCad.
+- **Produzione PCB: vincolo del proprietario (`SC-008`).** Stampa e montaggio dei PCB si fanno presso JLCPCB: rispettare le regole di fabbricazione e assemblaggio JLCPCB vigenti (larghezze/spaziature, vie, anelli, distanze dal bordo, serigrafia, fiducial e bordi tecnici se richiesti, footprint e rotazioni compatibili con l'assemblaggio, componenti disponibili nella libreria LCSC/JLC, preferendo "Basic"). Le regole vanno impostate nel DRC di KiCad e verificate sulle pagine ufficiali JLCPCB al momento dell'ordine, non ricordate a memoria.
 - Per le sole modifiche documentali verificare collegamenti Markdown, coerenza dei riferimenti e `git diff --check`.
 - Non pubblicare credenziali, file privati o asset di terzi privi di licenza verificata.
 

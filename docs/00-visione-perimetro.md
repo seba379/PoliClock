@@ -56,6 +56,7 @@ Queste funzioni **non sono requisiti mascherati**: possono essere considerate in
 | `SC-005` | Scheda elettronica, connettori e sensore devono essere accessibili senza danneggiare la statuetta | CAND |
 | `SC-006` | Altezza complessiva indicativa 130–160 mm; da rivedere in CAD | CAND |
 | `SC-007` | Utilizzo per interni e non per ambienti bagnati o esposti al sole diretto | CAND |
+| `SC-008` | Fabbricazione **e** assemblaggio di tutti i PCB presso **JLCPCB**: il progetto deve rispettare le regole di produzione e di assemblaggio JLCPCB vigenti (capacità PCB, DFM, componenti della libreria LCSC/JLC, orientamento e lato di montaggio, file BOM/CPL nel formato JLC) | CONF |
 
 ## 7. Definizione di 'prototipo V1 riuscito'
 
