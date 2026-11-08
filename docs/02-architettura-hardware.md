@@ -55,7 +55,7 @@ Componenti e codici LCSC in [12 — Selezione componenti](12-selezione-component
 | Collegamento display | Testa ↔ scheda principale | 7 conduttori, lunghezza dal CAD | Header maschio 1×7 2,54 mm SMD a 90° (J2) + cavetto Dupont femmina-femmina dritto; R8/R9 22 Ω in serie su SCLK/MOSI; SPI 10–20 MHz da provare (`OPEN-021`) |
 | Display: notte e luminosità | DIM/BRIGHT/NIGHT | Display spento di notte (`DEC-009`) | P-MOS **AO3401A** (Q1) sull'alimentazione del modulo, comandato da IO20; DIM/BRIGHT solo con i colori della grafica (retroilluminazione fissa, `DEC-034`) |
 | Interazione | Accendere/impostare | **Pulsante** fisico (`DEC-017`) | Pulsante remoto su JST-SH 2 poli (`DEC-032`); pull-up 10 kΩ e 100 nF; IO3 con risveglio |
-| USB | **Alimentazione**, flash, configuratore (`DEC-020`, `DEC-023`) | USB-C 2.0, CC 5,1 kΩ, ESD, PTC | TYPE-C-31-M-12 (footprint KiCad dal disegno HRO), USBLC6-2SC6 vicino al connettore, PTC 0,5 A |
+| USB | **Alimentazione**, flash, configuratore (`DEC-020`, `DEC-023`) | USB-C 2.0, CC 5,1 kΩ, ESD, PTC | TYPE-C-31-M-12 (footprint KiCad dal disegno HRO), USBLC6-2SC6 a passaggio diretto vicino al connettore, coppia D+/D- simmetrica tracciata a mano (`DEC-041`), PTC 0,5 A |
 | Regolatore 3,3 V | Alimentare MCU, display e moduli | ≥ 0,5 A (richiesta Espressif), stabile con condensatori ceramici | **TLV75533** 500 mA (`DEC-037`), condensatori a 2,2–2,4 mm dai pin |
 | Reset e boot | Flash e recupero | EN con RC, strapping IO9 | Nessun tasto (`DEC-039`): RC 10 kΩ/1 µF su EN, pull-up 10 kΩ su IO9, punti di test TP6 (EN) e TP11 (IO9) vicino ai pin |
 | RTC | Ora anche a cavo scollegato | Tampone e precisione senza NTP | Modulo esterno DS3231 su J4 (`DEC-024`) |
@@ -107,14 +107,32 @@ Disposizione (vista dall'alto, origine nell'angolo in alto a sinistra):
 
 - **In alto a destra**: modulo ESP32-C3-MINI-1-H4X ruotato di 270°, centro a (36,5; 12,6) mm, con 6 mm liberi sopra per EN, 3V3 e le uscite dei segnali. L'antenna sta **sopra l'intaglio** (nessun PCB né rame sotto, linee guida Espressif) e una zona senza rame di 3 mm prosegue sotto l'intaglio.
 - **Bordo superiore**: header J2 del display (centro x = 17,5 mm), pin 1 = VCC a destra, piedini verso l'esterno; Q1 con R16/R17/C9/C10 accanto al pin 1.
-- **Bordo inferiore** (verso il sedere, opzione A): USB-C J1 (centro x = 32,0 mm), affiancata da **due fori M2** (Ø 2,2 mm, pad a GND) a (22,5; 36,5) e (42,0; 36,5) mm, che scaricano sulla scocca lo sforzo d'inserimento del cavo. ESD U1 tra connettore e modulo, R3/R4 allineate ai pin USB del modulo.
+- **Bordo inferiore** (verso il sedere, opzione A): USB-C J1 (centro x = 33,7 mm, sullo stesso asse dei pin USB 26/27 del modulo), affiancata da **due fori M2** (Ø 2,2 mm, pad a GND) a (24,2; 36,5) e (43,7; 36,5) mm, che scaricano sulla scocca lo sforzo d'inserimento del cavo. Sullo stesso asse, fra connettore e modulo: ESD U1 e le resistenze R4 (D-) e R3 (D+) affiancate (§3.3).
 - **In basso a sinistra**: PTC, LDO U2 con C2 (ingresso) e C3/C4 (uscita) a 2,2–2,4 mm dai pin.
 - **Lato sinistro**: JST-SH J3 (SHT40), J4 (RTC), J5 (pulsante), rientrati in modo che il corpo stia a 2,5 mm dal bordo.
 - **Retro**: 11 punti di test con etichetta "riferimento + rete"; TP6 (EN) e TP11 (IO9) sotto i rispettivi pin del modulo, gli altri in due file.
 
-**Verifiche (report salvati, nessun test hardware):** DRC con `kicad-cli` e tutte le severità, con i controlli su courtyard, fori, serigrafia e footprint riabilitati: **0 violazioni, 0 connessioni aperte**. Disaccoppiamento: C6 0,1 µF a 2,4 mm dal pin 3V3 del modulo. EN: 10 mm con 1 via (era 60 mm prima di spostare TP6). USB: D+ circa 17,7 mm senza vie, D- circa 18,0 mm con 2 vie (inevitabili per unire i contatti A7/B7 del connettore), USBLC6 a 2,6–3,8 mm dai contatti: adeguato alla USB full-speed. Nessuna pista sotto 0,15 mm (lo script riallarga a 0,15 mm le strozzature che Freerouting crea vicino alle piazzole fini, se la distanza lo consente); 51 vie, circa 950 mm di piste. Restano da rivedere a vista: percorsi, continuità dei piani GND sotto modulo e USB, eventuali vie di cucitura GND aggiuntive.
+**Verifiche (report salvati, nessun test hardware):** DRC con `kicad-cli` e tutte le severità, con i controlli su courtyard, fori, serigrafia e footprint riabilitati: **0 violazioni, 0 connessioni aperte**. Disaccoppiamento: C6 0,1 µF a 2,4 mm dal pin 3V3 del modulo. EN: 15 mm con 3 vie (era 60 mm prima di spostare TP6). Confronto schema ↔ PCB (`--schematic-parity`): **0 problemi** (campi e percorsi dei simboli copiati sul PCB; fori e fiducial marcati "solo scheda"). USB: vedi §3.3. Nessuna pista sotto 0,15 mm (lo script riallarga a 0,15 mm le strozzature che Freerouting crea vicino alle piazzole fini, se la distanza lo consente, e toglie vie e pezzi di pista senza uscita); 55 vie, circa 935 mm di piste. Restano da rivedere a vista: percorsi, continuità dei piani GND sotto il modulo, eventuali vie di cucitura GND aggiuntive.
 
-**Come si rigenera:** `hardware/scripts/genera_pcb_main.py` (posizionamento; posizioni in `posizioni_main.py`), poi `hardware/scripts/sbroglia_main.py` (Freerouting 2.5.0, vedi [hardware](../hardware/README.md)). KiCad non ha un autorouter.
+### 3.3 Coppia USB D+/D- (`DEC-041`)
+
+Richiesta del proprietario: nessuna asimmetria fra D+ e D-. La coppia è **tracciata a mano** da `hardware/scripts/usb_coppia.py` con piste bloccate, che Freerouting non modifica; il resto della scheda è sbrogliato dopo.
+
+- **Allineamento**: contatti D del connettore J1, USBLC6 (U1), R4/R3 e pin 26 (D-) / 27 (D+) del modulo sullo stesso asse verticale. Il percorso principale parte dai contatti B7 (D-) e B6 (D+), che sono già nell'ordine dei pin del modulo (D- a sinistra): è **speculare rispetto all'asse e senza vie**.
+- **Incrocio inevitabile**: sul connettore i contatti sono nell'ordine D-, D+, D-, D+ (B7, A6, A7, B6), quindi su 2 strati due collegamenti devono incrociarsi. L'incrocio è sui rami corti dei contatti interni A6/A7 (l'altra faccia della spina): ciascuno passa sul retro e torna sopra, **2 vie per rete**, stesso numero su D+ e D-.
+- **Lunghezze** dei percorsi completi contatto → pin del modulo (calcolate dallo script, vie contate 1,6 mm ciascuna):
+
+  | Faccia della spina | D- | D+ | Differenza |
+  |---|---:|---:|---:|
+  | B (contatti B7/B6, senza vie) | 14,63 mm | 14,63 mm | 0,00 mm |
+  | A (contatti A7/A6, 2 vie ciascuno) | 19,31 mm | 19,31 mm | 0,00 mm |
+
+  Criterio scelto: differenza < 0,5 mm (circa 3 ps), ampiamente sotto quanto conta per la USB full-speed a 12 Mbit/s (fronti di alcuni ns). Le vie di D- stanno 0,8 mm più in alto di quelle di D+, perché due vie affiancate non stanno fra le linee, e il ramo verticale di A7 è più lungo di 0,8 mm: così i percorsi completi restano uguali. La differenza di 0,8 mm resta solo nel ramo aperto (il contatto non usato dalla spina, lungo 3–8 mm) ed è la stessa che mostra lo strumento di KiCad sulla lunghezza totale delle reti (USB_DN_C 14,7 mm, USB_DP_C 13,9 mm; USB_DN e USB_DP 3,4 mm ciascuna).
+- **Geometria**: piste da 0,2 mm, parallele: interasse 1,5 mm sui contatti, 2,4 mm all'incrocio, 1,9 mm attraverso U1 e R3/R4 (passo imposto dai pin), poi convergono sui pin del modulo (passo 0,8 mm). L'impedenza differenziale non è controllata (2 strati da 1,6 mm): accettabile per tratte di 15–20 mm a 12 Mbit/s.
+- **USBLC6 a passaggio diretto**: D- entra nel pin 1 ed esce dal pin 6, D+ entra nel 3 ed esce dal 4 (canali scambiati nello schema rispetto alla rev precedente, sono equivalenti). GND (pin 2) verso il connettore con una via al piano; +5V (pin 5) esce verso il modulo e passa **sotto il corpo di R4 (0 Ω)**, fra le sue piazzole, senza vie e senza attraversare la coppia sul retro.
+- **Piano GND**: sul retro una zona vietata a piste e vie copre la coppia da U1 ai pin del modulo, quindi il piano GND sotto è continuo. Le uniche interruzioni sono i due tratti dell'incrocio (2 × 1,6 mm) vicino al connettore.
+
+**Come si rigenera:** `hardware/scripts/genera_pcb_main.py` (posizionamento e coppia USB; posizioni in `posizioni_main.py`), poi `hardware/scripts/sbroglia_main.py` (Freerouting 2.5.0, vedi [hardware](../hardware/README.md)). KiCad non ha un autorouter.
 
 ## 4. Collegamento display su cavetto
 

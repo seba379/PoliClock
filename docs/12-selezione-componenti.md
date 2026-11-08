@@ -26,7 +26,7 @@ Questo documento motiva i componenti dello schema KiCad in [`hardware/`](../hard
 | J1 | USB-C 2.0 | **TYPE-C-31-M-12** (16P) | Korean Hroparts | C165948 | Extended | 308 225 | 0,19 $ | Footprint della libreria KiCad (`USB_C_Receptacle_HRO_TYPE-C-31-M-12`, dal disegno HRO), serigrafia frontale tolta perché il guscio sporge 0,4 mm dal bordo |
 | R1, R2 | CC sink | 5,1 kΩ 0603 1 % | Uni-Royal | C23186 | **Basic** | 20 M | — | Rd 5,1 kΩ su CC1 e CC2: 5 V senza USB-PD |
 | F1 | Protezione VBUS | **BSMD0805-050-12V** PTC 0805 | BHFUSE | C2977522 | Extended | 58 790 | 0,05 $ | Hold 0,5 A / trip 1 A, 12 V |
-| U1 | ESD D+/D-/VBUS | **USBLC6-2SC6** | STMicroelectronics | C7519 | Extended | 25 615 | 0,16 $ | Pinout SOT23-6: 1/6 I/O1, 3/4 I/O2, 2 GND, 5 VBUS. Piazzato a 2,6–3,8 mm dai contatti del connettore |
+| U1 | ESD D+/D-/VBUS | **USBLC6-2SC6** | STMicroelectronics | C7519 | Extended | 25 615 | 0,16 $ | Pinout SOT23-6: 1/6 I/O1, 3/4 I/O2, 2 GND, 5 VBUS. Passaggio diretto: I/O1 su D-, I/O2 su D+ (`DEC-041`); sull'asse della coppia, a circa 4 mm dai contatti del connettore |
 | R3, R4 | Serie D+/D- | 0 Ω 0603 | Uni-Royal | C21189 | **Basic** | 19 M | — | Isolamento; sostituibili con 22 Ω se il bring-up lo richiede |
 | U2 | LDO 5 V → 3,3 V | **TLV75533PDBVR** SOT-23-5 | Texas Instruments | C404027 | Extended | 94 177 | 0,12 $ | `DEC-037`. Datasheet SBVS320D: 500 mA, pin 1 IN, 2 GND, 3 EN, 4 NC, 5 OUT; **stabile con MLCC ≥ 1 µF** (capacità effettiva > 0,47 µF); RθJA 231 °C/W JEDEC, 100,8 °C/W sulla scheda di valutazione TI. EN collegato a IN |
 | C2 / C3, C4 | Ingresso / uscita LDO | 10 µF 0603 X5R / 10 µF + 100 nF 0603 | Samsung / Yageo | C19702 / C14663 | **Basic** | — | — | A 2,4–2,8 mm dai pin di U2, ritorno a GND sul piano |

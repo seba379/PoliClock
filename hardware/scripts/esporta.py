@@ -43,9 +43,9 @@ for p in PROJECTS:
 pcb = os.path.join(HW, "policlock-main", "policlock-main.kicad_pcb")
 if os.path.exists(pcb):
     d = os.path.dirname(pcb)
-    r = subprocess.run([KICAD_CLI, "pcb", "drc", "--severity-all", "-o", os.path.join(d, "drc.rpt"), pcb],
+    r = subprocess.run([KICAD_CLI, "pcb", "drc", "--severity-all", "--schematic-parity", "-o", os.path.join(d, "drc.rpt"), pcb],
                        capture_output=True, text=True, encoding="utf-8", errors="replace")
-    print("policlock-main DRC:", " / ".join(r.stdout.strip().splitlines()[:2]))
+    print("policlock-main DRC:", " / ".join(r.stdout.strip().splitlines()[:3]))
     run(["pcb", "export", "pdf", "--mode-multipage", "--scale", "5", "--layers", "F.Fab,F.Cu,B.Cu,B.SilkS",
          "--common-layers", "Edge.Cuts", "--sketch-pads-on-fab-layers", "--crossout-DNP-footprints-on-fab-layers",
          "-o", os.path.join(d, "policlock-main-layout.pdf"), pcb])

@@ -19,7 +19,8 @@ HW = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
 from sexp import parse, find, find1  # noqa: E402
 from posizioni_main import (PLACE, W, H, HOLES, AUTO_ORDER, BOTTOM, ANCHOR, OUTLINE, NOTCH,  # noqa: E402
-                            ANT_KEEPOUT, SIDE_MARGIN, FIDUCIALS)
+                            ANT_KEEPOUT, SIDE_MARGIN, FIDUCIALS, USB_FREE)
+import usb_coppia  # noqa: E402
 
 PRJ = os.path.join(HW, "policlock-main")
 NET = os.path.join(PRJ, "policlock-main.net")
@@ -87,7 +88,9 @@ def load_netlist():
         comps[ref] = {"fp": find1(c, "footprint")[1], "value": find1(c, "value")[1],
                       "fields": {find1(f, "name")[1]: (f[-1] if isinstance(f[-1], str) else "")
                                  for f in find(find1(c, "fields") or [], "field")},
-                      "dnp": any(p[1] == "dnp" for p in find(c, "property"))}
+                      "dnp": any(p[1] == "dnp" for p in find(c, "property")),
+                      "props": {find1(p, "name")[1]: (find1(p, "value") or [None, ""])[1] for p in find(c, "property")},
+                      "path": find1(find1(c, "sheetpath"), "tstamps")[1] + find1(c, "tstamps")[1]}
     pads = {}
     for n in find(find1(root, "nets"), "net"):
         name = find1(n, "name")[1]
@@ -148,8 +151,14 @@ def build():
         fp = load_fp(c["fp"])
         fp.SetReference(ref)
         fp.SetValue(c["value"])
-        if c["fields"].get("LCSC"):
-            fp.SetField("LCSC", c["fields"]["LCSC"])
+        # campi come in "Aggiorna PCB dallo schema": tutti i campi del simbolo (tranne Footprint), foglio, percorso
+        for name, val in c["fields"].items():
+            if name != "Footprint":
+                fp.SetField(name, val)
+        for name in ("Sheetname", "Sheetfile"):
+            if name in c["props"]:
+                fp.SetField(name, c["props"][name])
+        fp.SetPath(pcbnew.KIID_PATH(c["path"]))
         LBOX[ref] = local_bbox(fp)
         # serigrafia: riferimenti sul disegno di assemblaggio (F.Fab), valori e campi nascosti
         fp.Value().SetVisible(False)
@@ -193,6 +202,8 @@ def build():
         occ["F"].append(("FID", r))
     kx0, ky0, kx1, ky1 = ANT_KEEPOUT
     occ["F"].append(("ANT", (kx0, kx1, ky0, ky1)))
+    for r in USB_FREE:
+        occ["F"].append(("USB", r))
     occ["B"].append(("ANT", (kx0, kx1, ky0, ky1)))
     placed = set(PLACE)
     failed = []
@@ -277,6 +288,7 @@ def build():
         fp.Reference().SetLayer(pcbnew.F_Fab)
         fp.Value().SetVisible(False)
         fp.SetPosition(V(hx, hy))
+        fp.SetBoardOnly(True)              # parte solo meccanica: non e' nello schema
         fp.SetExcludedFromBOM(True)
         fp.SetExcludedFromPosFiles(True)
         board.Add(fp)
@@ -291,6 +303,7 @@ def build():
         fp.Reference().SetLayer(pcbnew.F_Fab)
         fp.Value().SetVisible(False)
         fp.SetPosition(V(fx, fy))
+        fp.SetBoardOnly(True)              # riferimento ottico per l'assemblaggio: non e' nello schema
         fp.SetExcludedFromBOM(True)
         fp.SetExcludedFromPosFiles(True)
         board.Add(fp)
@@ -330,6 +343,23 @@ def build():
     ka.SetDoNotAllowFootprints(True)
     ka.Outline().Append(poly([(kx0, ky0), (kx1, ky0), (kx1, ky1), (kx0, ky1)]))
     board.Add(ka)
+
+    # coppia USB D+/D- tracciata a mano e bloccata (DEC-041); sotto, sul retro, niente piste ne' vie
+    zona, lung = usb_coppia.traccia(board, fps, OX, OY)
+    for k, v in lung.items():
+        print(f"USB {k}: {v:.2f} mm")
+    ku = pcbnew.ZONE(board)
+    ku.SetIsRuleArea(True)
+    ku.SetZoneName("usb_coppia_retro")
+    ku.SetLayer(pcbnew.B_Cu)
+    ku.SetDoNotAllowTracks(True)
+    ku.SetDoNotAllowVias(True)
+    ku.SetDoNotAllowZoneFills(False)
+    ku.SetDoNotAllowPads(False)
+    ku.SetDoNotAllowFootprints(False)
+    x0, x1, y0, y1 = zona
+    ku.Outline().Append(poly([(x0, y0), (x1, y0), (x1, y1), (x0, y1)]))
+    board.Add(ku)
 
     # piani di massa su entrambi gli strati
     for layer in (pcbnew.F_Cu, pcbnew.B_Cu):

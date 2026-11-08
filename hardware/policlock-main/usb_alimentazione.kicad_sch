@@ -4094,7 +4094,7 @@
 		)
 		(uuid "8c96d823-d50f-578c-ab55-752ee46736b3")
 	)
-	(label "USB_DP_C"
+	(label "USB_DN_C"
 		(at 106.68 119.38 180)
 		(effects
 			(font
@@ -4115,7 +4115,7 @@
 		)
 		(uuid "22dcd475-9b39-5133-a6bf-f2ef2fadc8ad")
 	)
-	(label "USB_DP_C"
+	(label "USB_DN_C"
 		(at 132.08 119.38 0)
 		(effects
 			(font
@@ -4136,7 +4136,7 @@
 		)
 		(uuid "83ee4620-2e5d-59a1-ba42-998c78e39bc7")
 	)
-	(label "USB_DN_C"
+	(label "USB_DP_C"
 		(at 106.68 121.92 180)
 		(effects
 			(font
@@ -4157,7 +4157,7 @@
 		)
 		(uuid "138829a6-80f2-589d-9009-e3515be9805e")
 	)
-	(label "USB_DN_C"
+	(label "USB_DP_C"
 		(at 132.08 121.92 0)
 		(effects
 			(font
@@ -4581,7 +4581,7 @@
 			)
 		)
 	)
-	(text "D+/D- verso IO19/IO18 (USB Serial/JTAG nativa).\nLinee differenziali 90 ohm, corte, USBLC6 vicino al connettore."
+	(text "D+/D- verso IO19/IO18 (USB Serial/JTAG nativa).\nCoppia simmetrica, stessa lunghezza e stesse vie (DEC-041), USBLC6 vicino al connettore."
 		(exclude_from_sim no)
 		(at 110.49 149.86 0)
 		(effects

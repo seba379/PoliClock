@@ -2,7 +2,7 @@
 	(version "E")
 	(design
 		(source "C:\\Users\\Utente\\Desktop\\Progetti\\PoliClock\\PoliClock\\.claude\\worktrees\\hardware-schematic-4ff868\\hardware\\policlock-main\\policlock-main.kicad_sch")
-		(date "2026-11-08T06:43:35")
+		(date "2026-11-08T12:56:50")
 		(tool "Eeschema 10.0.6")
 		(sheet
 			(number "1")
@@ -4592,14 +4592,14 @@
 			)
 			(node
 				(ref "U1")
-				(pin "3")
-				(pinfunction "I/O2_3")
+				(pin "1")
+				(pinfunction "I/O1_1")
 				(pintype "passive")
 			)
 			(node
 				(ref "U1")
-				(pin "4")
-				(pinfunction "I/O2_4")
+				(pin "6")
+				(pinfunction "I/O1_6")
 				(pintype "passive")
 			)
 		)
@@ -4626,14 +4626,14 @@
 			)
 			(node
 				(ref "U1")
-				(pin "1")
-				(pinfunction "I/O1_1")
+				(pin "3")
+				(pinfunction "I/O2_3")
 				(pintype "passive")
 			)
 			(node
 				(ref "U1")
-				(pin "6")
-				(pinfunction "I/O1_6")
+				(pin "4")
+				(pinfunction "I/O2_4")
 				(pintype "passive")
 			)
 		)

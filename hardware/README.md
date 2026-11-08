@@ -34,12 +34,12 @@ Ogni componente montato ha il campo **`LCSC`** (codice JLCPCB/LCSC). Simboli e f
 python hardware/scripts/esporta.py
 ```
 
-Esegue ERC (`--severity-all`), DRC, PDF, BOM, CPL, render e STEP con `kicad-cli` (percorso modificabile con la variabile `KICAD_CLI`).
+Esegue ERC (`--severity-all`), DRC (con `--schematic-parity`), PDF, BOM, CPL, render e STEP con `kicad-cli` (percorso modificabile con la variabile `KICAD_CLI`).
 
 Generatori (per i PCB serve il Python di KiCad, `"C:/Program Files/KiCad/10.0/bin/python.exe"`):
 
 1. `scripts/genera_schemi.py` — schema (Python normale).
-2. `scripts/genera_pcb_main.py` — posizionamento, contorno, fori, piani GND, zona antenna, legenda; posizioni in `scripts/posizioni_main.py` (dimensioni con la variabile `PCB_WH`, default `50,40`).
+2. `scripts/genera_pcb_main.py` — posizionamento, contorno, fori, piani GND, zona antenna, legenda, campi e percorsi dei simboli dallo schema (confronto schema ↔ PCB pulito); **coppia USB D+/D- tracciata a mano** da `scripts/usb_coppia.py` con piste bloccate (`DEC-041`); posizioni in `scripts/posizioni_main.py` (dimensioni con la variabile `PCB_WH`, default `50,40`).
 3. `scripts/sbroglia_main.py` — sbroglio con **Freerouting 2.5.0** (regole JLC passate nel file DSN) (jar ufficiale, SHA-256 verificato) e Java 25 portatile (Eclipse Temurin) in `%LOCALAPPDATA%\Programs\freerouting-2.5.0`, non nel repository. Va lanciato **subito dopo il punto 2**, su una scheda appena generata (su una scheda già sbrogliata fallisce). La build nativa `freerouting-cli` 2.5.0 per Windows si blocca nel router; KiCad non ha un autorouter.
 
 Dopo la prima modifica manuale in KiCad **i file `.kicad_sch` e `.kicad_pcb` diventano la fonte**: non rieseguire i generatori, che li sovrascriverebbero.

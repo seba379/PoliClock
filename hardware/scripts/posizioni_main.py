@@ -33,16 +33,19 @@ NOTCH = (NOTCH_X, 0, W, NOTCH_Y)
 # zona senza rame vicino all'antenna (oltre all'intaglio)
 ANT_KEEPOUT = (NOTCH_X - 0.5, NOTCH_Y, W, NOTCH_Y + 3.0)
 
-J1X = XM - 4.5
+# USB: connettore, USBLC6, R3/R4 e pin USB del modulo (26/27, centro a XM - 2,8 mm) sullo stesso asse (DEC-041)
+J1X = XM - 2.8
+YP = H - 3.3 - 4.045                 # centro delle piazzole del connettore
+YR = YP - 10.1                       # centro di R3/R4 (courtyard libero da U1)
 JX = 3.75 + SIDE_MARGIN              # JST: fronte del corpo a 2,5 mm dal bordo sinistro
 PLACE = {
     # ref: (x, y, rotazione, lato)
     "U3": (XM, YM, 270, "F"),
     "J2": (17.5, 6.6, 180, "F"),            # header display: corpo verso il bordo superiore, piedini fuori scheda
     "J1": (J1X, H - 3.3, 0, "F"),           # USB-C: guscio sporge 0,4 mm dal bordo (disegno HRO)
-    "U1": (J1X + 1.7, H - 11.0, 270, "F"),  # ESD tra connettore e modulo, D- a sinistra e D+ a destra
-    "R4": (J1X + 0.8, H - 16.5, 90, "F"),   # 0 ohm D-
-    "R3": (J1X + 2.6, H - 16.5, 90, "F"),   # 0 ohm D+
+    "U1": (J1X, YP - 6.28, 90, "F"),        # ESD a passaggio diretto: D- pin 1/6 a sinistra, D+ pin 3/4 a destra
+    "R4": (J1X - 0.95, YR, 90, "F"),  # 0 ohm D-
+    "R3": (J1X + 0.95, YR, 90, "F"),  # 0 ohm D+
     "J3": (JX, 12.0, 270, "F"),             # JST-SH 4P SHT40, apertura a sinistra
     "J4": (JX, 20.0, 270, "F"),             # JST-SH 4P RTC
     "J5": (JX, 27.5, 270, "F"),             # JST-SH 2P pulsante
@@ -78,3 +81,7 @@ ANCHOR = {
 AUTO_ORDER = ["C6", "C5", "R6", "C7", "C2", "C3", "C4", "R5", "F1", "C1", "R1", "R2", "R7",
               "R8", "R9", "Q1", "C9", "C10", "R16", "R17", "R15", "R19", "R20", "R21", "R22", "C8"]
 BOTTOM = set()
+
+# zone libere per i componenti piazzati automaticamente: coppia USB tracciata a mano (usb_coppia.py) e
+# pista +5V che esce sotto R4
+USB_FREE = [(J1X - 1.9, J1X + 1.9, 18.0, YP + 0.8), (J1X - 3.2, J1X, YR - 0.5, YR + 0.5)]

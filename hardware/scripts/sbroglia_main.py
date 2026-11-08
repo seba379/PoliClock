@@ -45,7 +45,8 @@ ds = board.GetDesignSettings()
 ds.m_TrackMinWidth = MM(0.15)
 ds.m_ViasMinAnnularWidth = MM(0.1)
 for t in list(board.GetTracks()):
-    board.Remove(t)
+    if not t.IsLocked():          # la coppia USB tracciata a mano (bloccata) resta e Freerouting la rispetta
+        board.Remove(t)
 
 # fascia lungo il bordo vietata a piste e vie (Freerouting non conosce la distanza rame-bordo)
 for z in list(board.Zones()):
@@ -114,6 +115,47 @@ for t in strette:
     else:
         allargate += 1
 print("piste strette:", len(strette), "allargate a 0,15 mm:", allargate)
+
+
+# Freerouting lascia a volte vie collegate su un solo strato e pezzi di pista senza uscita: si tolgono, ripetendo
+# finche' non cambia piu' nulla (la rete GND resta intatta; la coppia USB bloccata resta)
+def tocca(item, pos, layer):
+    if item.GetClass() == "PCB_VIA":
+        return item.IsOnLayer(layer) and (item.GetPosition() - pos).EuclideanNorm() <= item.GetWidth(layer) // 2
+    if item.GetClass() == "PCB_TRACK":
+        return item.GetLayer() == layer and (item.GetStart() == pos or item.GetEnd() == pos
+                                             or item.HitTest(pos, 0))
+    return item.IsOnLayer(layer) and item.HitTest(pos, 0)          # piazzola
+
+
+tolti = 0
+while True:
+    per_rete = {}
+    for o in list(board.GetTracks()) + list(board.GetPads()):
+        per_rete.setdefault(o.GetNetCode(), []).append(o)
+    da_togliere = []
+    for t in board.GetTracks():
+        if t.IsLocked() or t.GetNetname() == "GND":
+            continue
+        tid = t.m_Uuid.AsString()          # i wrapper SWIG cambiano: confronto per UUID
+        altri_rete = [o for o in per_rete[t.GetNetCode()] if o.m_Uuid.AsString() != tid]
+        if t.GetClass() == "PCB_VIA":
+            strati = {lay for lay in (pcbnew.F_Cu, pcbnew.B_Cu)
+                      if any(tocca(o, t.GetPosition(), lay) for o in altri_rete)}
+            if len(strati) < 2:
+                da_togliere.append(t)
+        elif t.GetLength() < MM(0.001):
+            da_togliere.append(t)                                      # pista di lunghezza nulla
+        else:
+            lay = t.GetLayer()
+            if not all(any(tocca(o, p, lay) for o in altri_rete) for p in (t.GetStart(), t.GetEnd())):
+                da_togliere.append(t)
+    if not da_togliere:
+        break
+    for t in da_togliere:
+        board.Remove(t)
+    tolti += len(da_togliere)
+print("vie e piste senza uscita tolte:", tolti)
 for z in pours:
     board.Add(z)
 filler = pcbnew.ZONE_FILLER(board)
