@@ -54,6 +54,11 @@ Fonti consultate durante la revisione v0.2, mantenute come riferimento storico e
 37. [JLCPCB — termini e condizioni dell'assemblaggio](https://jlcpcb.com/help/article/Terms-and-Conditions-of-JLCPCB-Assembly-Service) — consultata il 2026-11-08: corpo dei componenti ≥ 2,5 mm dal bordo; bordi tecnici, fori e fiducial aggiunti da JLC se mancano; componente non montato se il footprint non corrisponde.
 38. [JLCPCB — bordi tecnici e fori di posizionamento](https://jlcpcb.com/help/article/specifications-for-adding-process-edges-and-positioning-holes) — bordi da 5 mm, fori da 2 mm, fiducial da 1 mm.
 39. [JLCPCB — prezzi dell'assemblaggio](https://jlcpcb.com/help/article/pcb-assembly-price) — Economic: setup 8,18 $, stencil 1,53 $, 3,07 $ per parte Extended (2026-11-07).
+40. [Espressif — ESP32-C3-WROOM-02 & WROOM-02U datasheet v1.7](https://documentation.espressif.com/esp32-c3-wroom-02_datasheet_en.pdf) — tab. 1-1 (N4 = chip v0.4, 18 × 20 × 3,2 mm), tab. 3-1 (19 pin, EPAD = 19 GND, IO18/IO19 = pin 13/14), tab. 4-1 (strapping GPIO2/8/9), fig. 9-1 (RC su EN 10 kΩ/1 µF, 10 µF + 0,1 µF su 3V3), fig. 11-1 (land pattern, antenna 6 mm) (`DEC-044`).
+41. [Espressif — selettore prodotti](https://products.espressif.com/en/product-selector) — consultato il 2026-11-08: ESP32-C3-WROOM-02-N4/H4/N8 "Mass Production", chip v0.x.
+42. [JLCPCB — ESP32-C3-WROOM-02-N4, C2934560](https://jlcpcb.com/partdetail/C2934560) e [0603B103K500NT 10 nF, C57112](https://jlcpcb.com/partdetail/C57112) — consultate il 2026-11-08: PCBA "Economic and Standard"; C57112 Basic.
+43. [JLCPCB — Gerber e forature in KiCad 8](https://jlcpcb.com/help/article/how-to-generate-gerber-and-drill-files-in-kicad-8) — aggiornata il 2026-09-09, letta il 2026-11-08: strati, estensioni Protel, maschera sottratta dalla serigrafia; forature in mm, zeri decimali, origine assoluta, fori ovali "alternate" (FIN-006).
+44. ESP-IDF v6.0 e v6.1 installati in `C:\esp`: `components/esp_hw_support/port/esp32c3/Kconfig.hw_support`, revisione minima predefinita v0.3, v0.4 e v1.1 supportate (`DEC-044`).
 
 Da aggiungere al momento della scelta: datasheet del pannello GC9A01 acquistato.
 

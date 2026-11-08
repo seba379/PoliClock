@@ -8,3 +8,10 @@
 	(condition "A.memberOfFootprint('J2') && B.Layer == 'Edge.Cuts'")
 	(constraint silk_clearance (min 0mm))
 	(severity ignore))
+
+# FIN-007: anello delle piazzole metallizzate >= 0,18 mm (minimo assoluto JLC; 0,25 mm raccomandato).
+# Valori sulla scheda: asole di J1 0,20; JST PH 0,225; vie termiche della EPAD di U3 0,20; header J2 0,35; fori M2 1,1.
+# Le vie (0,6/0,3 mm, anello 0,15 mm) seguono la regola delle vie JLC (diametro >= foro + 0,1 mm) e restano escluse.
+(rule "Anello piazzole PTH >= 0,18 mm (JLC)"
+	(condition "A.Type == 'Pad' && A.Pad_Type == 'Through-hole'")
+	(constraint annular_width (min 0.18mm)))

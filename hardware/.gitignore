@@ -16,3 +16,6 @@ policlock-main/policlock-main.step
 fr.log
 en/
 *.log
+# Gerber e forature (solo dopo approvazione del proprietario, FIN-006): non versionati
+policlock-main/gerber-jlc/
+policlock-main/policlock-main-gerber-jlc.zip

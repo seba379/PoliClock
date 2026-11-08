@@ -2,8 +2,8 @@
 
 Usare il Python di KiCad 10. Il corpo e' ricavato dalle geometrie F.Fab, senza
 testi e senza lo spessore del tratto grafico. Supporta il contorno ortogonale
-attuale. J1 a bordo e U3 sopra l'intaglio richiedono ancora accettazione DFM;
-sono eccezioni esplicite, non parti dichiarate conformi al margine di 2,5 mm.
+attuale. Dal DEC-045 l'unica eccezione e' J1 (USB-C a filo del bordo inferiore), da far accettare
+alla DFM di JLC; U3 (antenna sulla scheda, senza intaglio) deve rispettare i 2,5 mm come le altre parti.
 
 La regola JLC dei 2,5 mm corpo-bordo vale solo per le parti montate da JLC. Le parti
 saldate a mano dal proprietario (DEC-043: J2-J5, attributo "escluso dai file di
@@ -21,8 +21,7 @@ import pcbnew
 PCB = Path(__file__).resolve().parents[1] / 'policlock-main/policlock-main.kicad_pcb'
 MARGINE = 2.5
 ECCEZIONI_DFM = {
-    'J1': 'USB-C affacciata al bordo inferiore: accettazione DFM aperta',
-    'U3': 'Modulo ESP32 sopra intaglio antenna: accettazione DFM aperta',
+    'J1': 'USB-C affacciata al bordo inferiore: accettazione DFM aperta (unica eccezione, DEC-045)',
 }
 CONNETTORI = ('J2', 'J3', 'J4', 'J5')
 

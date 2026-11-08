@@ -1,13 +1,13 @@
 # 12 — Selezione componenti per lo schema (M2)
 
-**Versione:** 0.8 · **Stato:** schema rev 0.2 dopo la revisione tecnica indipendente, **non validato** (manca il prototipo M1) · **Data:** 2026-11-08
+**Versione:** 0.9 · **Stato:** schema rev 0.2 dopo la revisione tecnica indipendente, **non validato** (manca il prototipo M1) · **Data:** 2026-11-08
 
-Questo documento motiva i componenti dello schema KiCad in [`hardware/`](../hardware/README.md). Tutte le scelte restano `CAND` finché non superano il prototipo su banco (M1) e la revisione visiva del proprietario; le decisioni del proprietario sono in [10](10-decisioni-aperte.md) (`DEC-024`…`DEC-043`). Tutti i componenti montati da JLC sono nella libreria LCSC/JLC e il progetto segue le regole JLCPCB (`SC-008`, `DEC-040`); i connettori J2–J5 a foro passante li salda a mano il proprietario (`DEC-043`).
+Questo documento motiva i componenti dello schema KiCad in [`hardware/`](../hardware/README.md). Tutte le scelte restano `CAND` finché non superano il prototipo su banco (M1) e la revisione visiva del proprietario; le decisioni del proprietario sono in [10](10-decisioni-aperte.md) (`DEC-024`…`DEC-044`). Tutti i componenti montati da JLC sono nella libreria LCSC/JLC e il progetto segue le regole JLCPCB (`SC-008`, `DEC-040`); i connettori J2–J5 a foro passante li salda a mano il proprietario (`DEC-043`).
 
 **Novità della rev 0.2** (revisione tecnica indipendente del 2026-11-07, esito "NOT APPROVED FOR FABRICATION" sulla rev 0.1):
 
 - LDO **TLV75533** stabile con condensatori ceramici al posto dell'AMS1117 (P0-04, `DEC-037`);
-- modulo **ESP32-C3-MINI-1-H4X** ("Recommended") al posto dell'N4 (NRND) (P1-05, `DEC-035`);
+- modulo **ESP32-C3-MINI-1-H4X** ("Recommended") al posto dell'N4 (NRND) (P1-05, `DEC-035`), poi sostituito dall'**ESP32-C3-WROOM-02-N4** per l'assemblaggio Economic (`DEC-044`);
 - display su **modulo GC9A01 a 7 pin** pronto per breadboard: niente pannello nudo, schedina portadisplay, cavo FFC e touch (P0-02/P0-03 superati, `DEC-034`);
 - USB-C con il **footprint della libreria KiCad** ricavato dal disegno HRO (P1-08).
 
@@ -22,7 +22,7 @@ Questo documento motiva i componenti dello schema KiCad in [`hardware/`](../hard
 
 | Rif. | Funzione | Componente | Produttore | LCSC | Libreria JLC | Stock* | Prezzo* | Note di verifica |
 |---|---|---|---|---|---|---:|---:|---|
-| U3 | MCU | **ESP32-C3-MINI-1-H4X** | Espressif | C41349510 | Extended | 2 822 | 3,10 $ | `DEC-035`. Datasheet v2.2 tab. 1-1: H4X "Recommended", chip v1.1, 4 MB, −40…105 °C, 13,2 × 16,6 × 2,4 mm come l'N4 (stesso footprint e pinout). L'N4X (C50390200) ha stock 0. Richiede ESP-IDF con supporto della revisione v1.1 |
+| U3 | MCU | **ESP32-C3-WROOM-02-N4** | Espressif | C2934560 | Extended | 13 113 | ~3,31 $ | `DEC-044` (supera `DEC-035`). Pagina JLC (2026-11-08): **PCBA "Economic and Standard"**, nessuna radiografia richiesta (l'H4X C41349510 è "Standard Only" con radiografia, FIN-001). Selettore prodotti Espressif (2026-11-08): **Mass Production**, chip v0.x; nessuna variante "X" con chip v1.1 per il WROOM-02. Datasheet v1.7: chip v0.4, 4 MB, −40…85 °C, 18 × 20 × 3,2 mm, 19 pin (EPAD = 19, GND), antenna 6 mm a un'estremità. ESP-IDF v6.0/v6.1 (C:\esp) supporta v0.4 (`ESP32C3_REV_MIN` predefinito v0.3). Impronta `PoliClock:ESP32-C3-WROOM-02` (§1) |
 | J1 | USB-C 2.0 | **TYPE-C-31-M-12** (16P) | Korean Hroparts | C165948 | Extended | 308 225 | 0,19 $ | Footprint della libreria KiCad (`USB_C_Receptacle_HRO_TYPE-C-31-M-12`, dal disegno HRO), serigrafia frontale tolta perché il guscio sporge 0,4 mm dal bordo |
 | R1, R2 | CC sink | 5,1 kΩ 0603 1 % | Uni-Royal | C23186 | **Basic** | 20 M | — | Rd 5,1 kΩ su CC1 e CC2: 5 V senza USB-PD |
 | F1 | Protezione VBUS | **BSMD0805-050-12V** PTC 0805 | BHFUSE | C2977522 | Extended | 58 790 | 0,05 $ | Hold 0,5 A / trip 1 A, 12 V |
@@ -36,7 +36,8 @@ Questo documento motiva i componenti dello schema KiCad in [`hardware/`](../hard
 | C7 | RC su EN | 1 µF 0603 | Samsung | C15849 | **Basic** | 13 M | — | Espressif: R 10 kΩ + C 1 µF, pista EN corta. Nessun tasto RESET/BOOT (`DEC-039`): punti di test TP6 (EN) e TP11 (IO9) |
 | J2 | Modulo display | **Header maschio 1×7 2,54 mm a foro passante**, a 90° (negli stessi fori va bene anche diritto); impronta `PinHeader_1x07_P2.54mm_Horizontal` | generico | — | **a mano** (`DEC-043`) | scorta del proprietario | — | `DEC-034`: un cavetto Dupont femmina-femmina a 7 fili collega il modulo display. Prima (fino a `DEC-043`): HX PZ2.54-1x7P WT SMD, C46061680, Extended. Pin 1 = VCC (3V3_DISP) |
 | Q1 | Interruttore alimentazione display | **AO3401A** P-MOS SOT-23 | AOS | C15127 | **Basic** | 1,7 M | — | Spegne del tutto il modulo display di notte (`DEC-009`); VGS(th) −0,5…−1,3 V, pilotabile a 3,3 V |
-| R16 / R17 | Gate di Q1 | 1 kΩ / 100 kΩ 0603 | Uni-Royal | C21190 / C25803 | **Basic** | — | — | R17 tiene Q1 spento durante reset e boot |
+| R16 / R17 | Gate di Q1 | **10 kΩ** / 100 kΩ 0603 | Uni-Royal | **C25804** / C25803 | **Basic** | — | — | FIN-003: R16 da 1 k a 10 k. R17 tiene Q1 spento durante reset e boot; con IO20 basso il gate va a 3,3 × 10/110 ≈ 0,3 V, quindi V_GS ≈ −3,0 V (AO3401A: R_DS(on) specificata già a −2,5 V) |
+| C11 | Rampa di accensione del display | **10 nF** 0603 X7R 50 V (0603B103K500NT) | FH | **C57112** | **Basic** (pagina JLC 2026-11-08, Economic e Standard) | — | — | FIN-003: fra gate (DISP_G) e drain (3V3_DISP) di Q1, montato. Con R16 10 kΩ la tensione su 3V3_DISP sale in circa 0,2–0,3 ms invece di pochi µs: lo spunto verso C9 e il modulo display non fa crollare il 3V3 del modulo (stima, da misurare in `VT-PWR-003`) |
 | C9 | Bulk 3V3_DISP | 10 µF 0603 | Samsung | C19702 | **Basic** | — | — | Vicino a J2 |
 | R8, R9 | Smorzamento SCLK/MOSI | 22 Ω 0603 | Uni-Royal | C23345 | **Basic** | 6 M | — | Valore da confermare con la prova sul cavo reale (`OPEN-021`) |
 | R15 | Pull-up RST display | 10 kΩ 0603 | Uni-Royal | C25804 | **Basic** | — | — | Verso 3V3_DISP: niente corrente nel modulo spento |
@@ -49,27 +50,27 @@ Questo documento motiva i componenti dello schema KiCad in [`hardware/`](../hard
 
 \* Stock e prezzo unitario (fascia più bassa) dal catalogo JLCPCB il 2026-11-07; "M" = milioni.
 
-**Parti Extended:** 5 codici distinti (C41349510, C165948, C2977522, C7519, C404027). Rispetto alla rev 0.1 sparisce il connettore FFC ed entra l'LDO; con `DEC-043` escono anche header e JST-SH (C46061680, C160404, C160402), sostituiti da connettori a foro passante saldati a mano. Costi in [08](08-bom-preliminare.md) §8.
+**Parti Extended:** 5 codici distinti (C2934560, C165948, C2977522, C7519, C404027). Rispetto alla rev 0.1 sparisce il connettore FFC ed entra l'LDO; con `DEC-043` escono anche header e JST-SH (C46061680, C160404, C160402), sostituiti da connettori a foro passante saldati a mano. Costi in [08](08-bom-preliminare.md) §8.
 
-### 2.1 Assegnazione GPIO (ESP32-C3-MINI-1-H4X)
+### 2.1 Assegnazione GPIO (ESP32-C3-WROOM-02-N4, `DEC-044`)
 
 Il modulo espone 15 GPIO (IO0–IO10, IO18–IO21). Senza touch restano **liberi IO0 e IO1**, portati su punti di test.
 
 | GPIO | Pin modulo | Segnale | Note |
 |---|---:|---|---|
-| IO0 / IO1 | 12 / 13 | liberi | Punti di test TP9/TP10; risveglio da deep-sleep possibile (GPIO0–5) |
-| IO2 | 5 | I2C_SDA | Strapping: Espressif raccomanda pull-up → R19 4,7 kΩ |
-| IO3 | 6 | BTN_USER | Pulsante (attivo basso), risveglio da deep-sleep possibile |
-| IO4 | 18 | LCD_DC | |
-| IO5 | 19 | LCD_RST | Pull-up 10 kΩ (R15) verso 3V3_DISP |
-| IO6 | 20 | LCD_SCLK | Pin IO_MUX di FSPICLK, 22 Ω in serie |
-| IO7 | 21 | LCD_MOSI | Pin IO_MUX di FSPID, 22 Ω in serie |
-| IO8 | 22 | I2C_SCL | Strapping: deve valere 1 per il download → R20 4,7 kΩ |
-| IO9 | 23 | BOOT | Strapping (1 = avvio da flash), pull-up 10 kΩ; punto di test TP11 per forzare il download (`DEC-039`) |
-| IO10 | 16 | LCD_CS | Pin IO_MUX di FSPICS0 |
-| IO18 / IO19 | 26 / 27 | USB D- / D+ | USB Serial/JTAG nativa: flash, log, configuratore (`DEC-020`) |
-| IO20 (RXD0) | 30 | DISP_EN_N | Basso = modulo display alimentato; all'avvio la ROM non lo pilota e R17 tiene il display spento |
-| IO21 (TXD0) | 31 | UART_TX | Solo punto di test (log ROM di riserva) |
+| IO0 / IO1 | 18 / 17 | liberi | Punti di test TP9/TP10; risveglio da deep-sleep possibile (GPIO0–5) |
+| IO2 | 16 | I2C_SDA | Strapping: Espressif raccomanda pull-up → R19 4,7 kΩ |
+| IO3 | 15 | BTN_USER | Pulsante (attivo basso), risveglio da deep-sleep possibile |
+| IO4 | 3 | LCD_DC | |
+| IO5 | 4 | LCD_RST | Pull-up 10 kΩ (R15) verso 3V3_DISP |
+| IO6 | 5 | LCD_SCLK | Pin IO_MUX di FSPICLK, 22 Ω in serie |
+| IO7 | 6 | LCD_MOSI | Pin IO_MUX di FSPID, 22 Ω in serie |
+| IO8 | 7 | I2C_SCL | Strapping: deve valere 1 per il download → R20 4,7 kΩ |
+| IO9 | 8 | BOOT | Strapping (1 = avvio da flash), pull-up 10 kΩ; punto di test TP11 per forzare il download (`DEC-039`) |
+| IO10 | 10 | LCD_CS | Pin IO_MUX di FSPICS0 |
+| IO18 / IO19 | 13 / 14 | USB D- / D+ | USB Serial/JTAG nativa: flash, log, configuratore (`DEC-020`) |
+| IO20 (RXD) | 11 | DISP_EN_N | Basso = modulo display alimentato; all'avvio la ROM non lo pilota e R17 tiene il display spento |
+| IO21 (TXD) | 12 | UART_TX | Solo punto di test (log ROM di riserva) |
 
 ## 3. Modulo display (fuori dal montaggio JLC)
 
@@ -108,5 +109,20 @@ Il candidato iniziale **RV-3028-C7** risulta a **stock 0** su LCSC/JLC (C3019759
 
 - **Modulo display senza datasheet**: pinout dalla foto dell'inserzione, corrente della retroilluminazione ignota: verifica su banco prima del montaggio finale.
 - **Termica dell'LDO**: SOT-23-5 a 231 °C/W (JEDEC); con ~80 mA stimati la dissipazione è ~0,14 W (+14…32 °C). Da misurare a scocca chiusa (`VT-PWR-002`).
-- **ESP32-C3 H4X**: stock limitato (~2 800 pezzi) e richiede ESP-IDF recente; ricontrollare la disponibilità all'ordine.
+- **ESP32-C3-WROOM-02-N4** (`DEC-044`): chip v0.4 (circa 10 KB di RAM utente in meno del v1.1, irrilevante qui); fissare nel firmware `CONFIG_ESP32C3_REV_MIN` ≤ v0.4. Il pin 3V3 è sul lato del bordo superiore, vicino all'antenna: C5/C6 stanno a circa 16 mm, con pista diretta; il modulo ha 10 µF + 1 µF + 0,1 µF interni. Scorte da ricontrollare all'ordine.
+- **Linee esterne senza ESD (FIN-010, rischio accettato)**: BTN_USER (J5, pulsante remoto) e I²C/3V3_EXT (J3/J4) escono dalla scheda protette solo da R22 10 kΩ / C8 100 nF e dai pull-up. Il proprietario non ha scelto la resistenza da 1 kΩ in serie proposta dalla revisione finale: rischio basso per un oggetto da scrivania al chiuso, accettato in modo esplicito.
+- **Impronta JST PH (FIN-011)**: non ancora confrontata con il disegno JST (PDF cifrato). Il proprietario ha già i B4B-PH-K-S: prima dei Gerber conviene stampare il layout 1:1 (`policlock-main-layout.pdf`, scala 1:1) e provare l'innesto di un connettore e dell'header, oppure provarli sulla prima scheda nuda.
 - **Connettori a foro passante (`DEC-043`)**: J2–J5 si saldano a mano dopo l'assemblaggio JLC; i piedini sporgono sotto la scheda (luce da prevedere, `OPEN-028`). Il rischio dell'header SMD Hanxia (piazzole 1,02 × 3,16 mm contro 3,20 mm del disegno) è superato.
+
+## 7. Verifica di rotazioni e origini nell'anteprima JLC (FIN-004)
+
+La CPL (`policlock-main-cpl-jlcpcb.csv`) riporta posizioni e rotazioni native di KiCad, senza correzioni a priori. All'ordine si controlla **ogni parte orientata** nell'anteprima 2D/3D di JLC; si corregge solo dove serve, caricando una CPL corretta, e si annota qui la correzione per poterla ripetere.
+
+| Rif. | Package | Rotazione CPL | Origine dell'impronta | Cosa controllare nell'anteprima JLC | Correzione applicata |
+|---|---|---:|---|---|---|
+| U1 | SOT-23-6 (USBLC6-2SC6) | 90° | centro del package | pin 1 (punto) verso il connettore J1 come nel PCB | da compilare all'ordine |
+| U2 | SOT-23-5 (TLV75533) | 0° | centro del package | pin 1 = IN in basso a sinistra come nel PCB | da compilare all'ordine |
+| Q1 | SOT-23 (AO3401A) | 90° | centro del package | gate (pin 1) verso R16/R17 | da compilare all'ordine |
+| U3 | ESP32-C3-WROOM-02-N4 | −90° (270°) | **centro delle file di piazzole**, non del corpo: il corpo con l'antenna è spostato di 3,07 mm verso l'antenna (+x) | antenna sulla scheda verso il bordo destro (`DEC-045`), pin 1 in alto vicino all'antenna; corpo tutto dentro il contorno | da compilare all'ordine |
+| J1 | USB-C TYPE-C-31-M-12 | 0° | centro del corpo F.Fab | apertura verso il bordo inferiore, guscio 0,4 mm oltre il bordo; pioli nei fori NPTH | da compilare all'ordine |
+| C, R, F1 | 0603 / 0805 | 0° / 90° | centro | nessuna polarità; solo posizione | — |

@@ -33,7 +33,7 @@ CONSERVA = "--conserva" in sys.argv
 BLOCCA_DA_X = next((float(a.split("=")[1]) for a in sys.argv if a.startswith("--blocca-da-x=")), None)
 MM = pcbnew.FromMM
 
-POWER_NETS = ["VBUS", "+5V", "+3V3", "GND", "*5V_LDO", "*3V3_DISP", "*3V3_EXT", "*LCD_LEDK", "*BL_D"]
+POWER_NETS = ["VBUS", "+5V", "+3V3", "GND", "*5V_LDO", "*3V3_DISP", "*3V3_EXT"]
 
 board = pcbnew.LoadBoard(PCB)
 # gli oggetti tolti dalla scheda restano referenziati fino alla fine: se Python li distrugge subito,
