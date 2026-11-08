@@ -123,6 +123,15 @@ La CPL (`policlock-main-cpl-jlcpcb.csv`) riporta posizioni e rotazioni native di
 | U1 | SOT-23-6 (USBLC6-2SC6) | 90° | centro del package | vista dall'alto: pin 1 (USB_DN_C) **in basso a sinistra**, lato verso J1; pin 4–6 in alto (pin 5 = +5V al centro) | da compilare all'ordine |
 | U2 | SOT-23-5 (TLV75533) | 0° | centro del package | vista dall'alto: pin 1 = IN **in alto a sinistra** (pin 1-2-3 sulla colonna sinistra, dall'alto in basso); pin 5 = OUT in alto a destra, pin 4 = NC in basso a destra | da compilare all'ordine |
 | Q1 | SOT-23 (AO3401A) | 90° | centro del package | vista dall'alto: due pin in basso, pin 1 = G **a sinistra** e pin 2 = S (+3V3) **a destra**; pin 3 = D (3V3_DISP) da solo **in alto** | da compilare all'ordine |
-| U3 | ESP32-C3-WROOM-02-N4 | −90° (270°) | **centro delle file di piazzole**, non del corpo: il corpo con l'antenna è spostato di 3,07 mm verso l'antenna (+x) | antenna sulla scheda verso il bordo destro (`DEC-045`), pin 1 in alto vicino all'antenna; corpo tutto dentro il contorno; EPAD con 4 vie aperte: controllare la pasta nell'anteprima DFM (R2-006) | da compilare all'ordine |
-| J1 | USB-C TYPE-C-31-M-12 | 0° | centro del corpo F.Fab | apertura verso il bordo inferiore, guscio 0,4 mm oltre il bordo; pioli nei fori NPTH | da compilare all'ordine |
+| U3 | ESP32-C3-WROOM-02-N4 | −90° (270°) | **centro delle file di piazzole**, non del corpo: il corpo con l'antenna è spostato di 3,1 mm verso l'antenna (+x). Pronta la **CPL alternativa** `policlock-main-cpl-jlcpcb-u3-centro-corpo.csv` con U3 al centro del corpo (X 37,51 invece di 34,41 mm): caricare quella con cui, nell'anteprima, piazzole e modulo coincidono | antenna sulla scheda verso il bordo destro (`DEC-045`), pin 1 in alto vicino all'antenna; corpo tutto dentro il contorno; EPAD senza vie (`DEC-046`): controllare le 9 aperture di pasta nell'anteprima DFM | da compilare all'ordine |
+| J1 | USB-C TYPE-C-31-M-12 | 0° | centro del corpo F.Fab | apertura verso il bordo inferiore, guscio 0,4 mm oltre il bordo; pioli nei fori NPTH; ponti di maschera fra i contatti (min 0,10 mm in verde); eccezione al bordo da far accettare nella DFM. Le 4 linguette del guscio le salda a mano il proprietario (`DEC-047`) | da compilare all'ordine |
 | C, R, F1 | 0603 / 0805 | 0° / 90° | centro | nessuna polarità; solo posizione | — |
+
+**Altri controlli nell'anteprima e nella DFM JLC** (revisione esterna del 2026-11-08, [docs/10](10-decisioni-aperte.md) §15):
+
+- i tre fiducial, con apertura della maschera e distanza dal bordo;
+- la zona antenna senza rame;
+- le asole metallizzate di J1, che non devono diventare fori tondi;
+- J2–J5 assenti dal montaggio.
+
+Esito e correzioni da annotare in questa tabella.

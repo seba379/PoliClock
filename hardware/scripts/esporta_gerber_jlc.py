@@ -20,7 +20,7 @@ Controlli da fare a mano DOPO (in un visualizzatore Gerber, es. GerbView di KiCa
 1. asole di J1: 4 asole metallizzate 0,6 x 1,7 / 0,6 x 1,2 mm (non fori tondi) e 2 pioli NPTH 0,65 mm;
 2. contorno 50,5 x 41,5 mm rettangolare, senza intaglio (DEC-045); nessun rame, pista, via o riempimento nella zona
    antenna di U3 su F.Cu e B.Cu (da x = 141,51 mm del foglio KiCad al bordo destro, y 98,5-124,5);
-3. 3 fiducial con apertura della maschera; nessuna serigrafia fuori dal bordo (J2); 4 vie termiche nella EPAD di U3;
+3. 3 fiducial con apertura della maschera; nessuna serigrafia fuori dal bordo (J2); EPAD di U3 senza vie (DEC-046);
    17 testi del retro leggibili (1,0 mm);
 4. rotazioni e origini nella CPL (docs/12, tabella FIN-004).
 """
@@ -76,4 +76,4 @@ with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as z:
 print("Gerber e forature in", OUT)
 print("Archivio per JLCPCB:", zip_path)
 print("Ora controllare in un visualizzatore Gerber: asole di J1, contorno rettangolare, zona antenna senza rame, "
-      "fiducial, vie della EPAD, serigrafia (vedi docstring).")
+      "fiducial, EPAD di U3 senza vie, serigrafia (vedi docstring).")

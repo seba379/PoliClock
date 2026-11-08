@@ -43,7 +43,7 @@ Moduli commerciali economici per validare architettura, consumi e firmware **pri
 | `BOM-012` | 1 | **Cavo USB-C** di lunghezza e colore adatti alla scrivania (es. 1–2 m, colore coordinato) | TBD | Estetica, flessibilità, stabilità della statuetta |
 | `BOM-013` | 1 | **Adafruit DS3231 Precision RTC – STEMMA QT** (prodotto 5188) + pila **CR1220**; LED "ON" disattivato tagliando il ponticello. Verifica all'arrivo come per `BOM-002` (LED, corrente) | CONF (`DEC-024`) | Alloggiamento accessibile per la pila (`OPEN-026`), deriva misurata |
 
-| `BOM-014` | 1 set | **Connettori saldati a mano** (`DEC-043`): 3 × **JST PH B4B-PH-K-S** (J3 SHT40, J4 RTC, J5 pulsante) e 1 × header maschio **1×7 2,54 mm** a 90° (J2; negli stessi fori va bene anche diritto). Nella BOM completa con `Montaggio` = "a mano, parte del proprietario", fuori da BOM JLC e CPL | CONF (scorta del proprietario) | Saldatura dopo l'assemblaggio JLC; lunghezza dei piedini sotto la scheda (`OPEN-028`) |
+| `BOM-014` | 1 set | **Connettori saldati a mano** (`DEC-043`): 3 × **JST PH B4B-PH-K-S** (J3 SHT40, J4 RTC, J5 pulsante) e 1 × header maschio **1×7 2,54 mm** a 90° (J2; negli stessi fori va bene anche diritto). Nella BOM completa con `Montaggio` = "a mano, parte del proprietario", fuori da BOM JLC e CPL. Dopo l'assemblaggio si saldano a mano anche le 4 linguette del guscio della USB-C J1 (`DEC-047`) | CONF (scorta del proprietario) | Saldatura dopo l'assemblaggio JLC; lunghezza dei piedini sotto la scheda (`OPEN-028`) |
 
 (`BOM-003`, batteria LiPo, rimossa con `DEC-023`.)
 

@@ -111,6 +111,14 @@ if os.path.exists(pcb):
             w.writerow([r_["Ref"], r_["PosX"] + "mm", r_["PosY"] + "mm", "Top" if r_["Side"] == "top" else "Bottom",
                         r_["Rot"]])
     print("CPL:", len(rows), "componenti")
+    # CPL alternativa con U3 al centro del corpo, da scegliere nell'anteprima JLC (P1-01, docs/12 sezione 7)
+    kpy = os.environ.get("KICAD_PYTHON", os.path.join(os.path.dirname(KICAD_CLI), "python.exe"))
+    r = subprocess.run([kpy, os.path.join(HW, "scripts", "cpl_centro_corpo.py")], capture_output=True, text=True,
+                       encoding="utf-8", errors="replace")
+    print((r.stdout.strip().splitlines() or ["CPL alternativa: errore"])[-1])
+    if r.returncode != 0:
+        print(r.stderr[-2000:])
+        sys.exit(r.returncode)
     # STEP completo con i modelli EasyEDA locali (non versionato, vedi README)
     run(["pcb", "export", "step", "--subst-models", "--no-dnp", "-f", "-o", os.path.join(d, "policlock-main.step"), pcb])
 
