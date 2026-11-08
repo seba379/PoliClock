@@ -123,6 +123,6 @@ La CPL (`policlock-main-cpl-jlcpcb.csv`) riporta posizioni e rotazioni native di
 | U1 | SOT-23-6 (USBLC6-2SC6) | 90° | centro del package | pin 1 (punto) verso il connettore J1 come nel PCB | da compilare all'ordine |
 | U2 | SOT-23-5 (TLV75533) | 0° | centro del package | pin 1 = IN in basso a sinistra come nel PCB | da compilare all'ordine |
 | Q1 | SOT-23 (AO3401A) | 90° | centro del package | gate (pin 1) verso R16/R17 | da compilare all'ordine |
-| U3 | ESP32-C3-WROOM-02-N4 | −90° (270°) | **centro delle file di piazzole**, non del corpo: il corpo con l'antenna è spostato di 3,07 mm verso l'antenna (+x) | antenna sopra l'intaglio in alto a destra, pin 1 in alto vicino all'antenna; nessuna parte del corpo fuori dal contorno salvo l'antenna | da compilare all'ordine |
+| U3 | ESP32-C3-WROOM-02-N4 | −90° (270°) | **centro delle file di piazzole**, non del corpo: il corpo con l'antenna è spostato di 3,07 mm verso l'antenna (+x) | antenna sulla scheda verso il bordo destro (`DEC-045`), pin 1 in alto vicino all'antenna; corpo tutto dentro il contorno | da compilare all'ordine |
 | J1 | USB-C TYPE-C-31-M-12 | 0° | centro del corpo F.Fab | apertura verso il bordo inferiore, guscio 0,4 mm oltre il bordo; pioli nei fori NPTH | da compilare all'ordine |
 | C, R, F1 | 0603 / 0805 | 0° / 90° | centro | nessuna polarità; solo posizione | — |

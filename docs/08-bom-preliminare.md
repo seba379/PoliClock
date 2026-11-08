@@ -30,7 +30,7 @@ Moduli commerciali economici per validare architettura, consumi e firmware **pri
 
 | ID | Q.tà | Candidato / specifica | Stato | Gate di approvazione |
 |---|---:|---|---|---|
-| `BOM-001` | 2 assemblate (5 PCB) | **PCB custom** KiCad rev 0.2, assemblato JLCPCB: **solo la scheda principale** (50 × 40 mm, 2 strati, componenti su un lato; `DEC-030`, `DEC-036`). I connettori J2–J5 a foro passante non sono montati da JLC: li salda a mano il proprietario (`BOM-014`, `DEC-043`). Componenti e codici LCSC in [12](12-selezione-componenti.md); BOM e CPL di assemblaggio in `hardware/policlock-main/` | CAND | Prototipo M1, studio volumetrico (`OPEN-028`), revisione sbroglio (`OPEN-027`), stock LCSC, preventivo (§8) |
+| `BOM-001` | 2 assemblate (5 PCB) | **PCB custom** KiCad rev 0.2, assemblato JLCPCB: **solo la scheda principale** (50,5 × 41,5 mm, 2 strati, componenti su un lato; `DEC-030`, `DEC-045`). I connettori J2–J5 a foro passante non sono montati da JLC: li salda a mano il proprietario (`BOM-014`, `DEC-043`). Componenti e codici LCSC in [12](12-selezione-componenti.md); BOM e CPL di assemblaggio in `hardware/policlock-main/` | CAND | Prototipo M1, studio volumetrico (`OPEN-028`), revisione sbroglio (`OPEN-027`), stock LCSC, preventivo (§8) |
 | `BOM-002` | 1 | **Modulo breakout SHT40** commerciale con header 2,54 mm (es. "SHT40 modulo I²C 3V 5V, nero, con pin"), alimentato a 3,3 V (`DEC-028`). **Verifica all'arrivo (revisione P1-09):** presenza di LED di accensione (da rimuovere o disattivare) e di un regolatore; corrente a riposo misurata; ordine dei pin sulla serigrafia | CAND | Pinout, indirizzo 0x44, LED/regolatore, meccanica, errore termico |
 | `BOM-004` | 0–1 | **Prolunga USB-C maschio-femmina da pannello**, dati USB 2.0: **solo per l'opzione B** (scheda nella testa, `DEC-021`) | CAND | Ingombro, fissaggio, flash via prolunga |
 | `BOM-005` | 1 | **Modulo display GC9A01 1,28" a 7 pin** (IPS a colori 240×240, senza touch, retroilluminazione fissa), es. [AliExpress SZHJW 1005009766462228](https://it.aliexpress.com/item/1005009766462228.html), ~4,24 € (2026-11-07) (`DEC-016`, `DEC-034`) | CONF | Pinout sulla serigrafia, corrente, quote (`OPEN-016`) |
@@ -88,7 +88,7 @@ Ipotesi: **un solo PCB custom** (dopo `DEC-034`), 5 PCB prodotti e **2 assemblat
 
 | Voce | Base di calcolo | Stima |
 |---|---|---:|
-| PCB 2 strati 50 × 40 mm, 5 pezzi | Tariffa promozionale tipica per schede piccole, da verificare | ~2–5 $ |
+| PCB 2 strati 50,5 × 41,5 mm, 5 pezzi | Tariffa promozionale tipica per schede piccole, da verificare | ~2–5 $ |
 | Setup assemblaggio Economic | Tariffa JLC. Possibile perché il modulo ESP32-C3-WROOM-02-N4 (C2934560) è "Economic and Standard" senza radiografia (`DEC-044`); con l'H4X ("Standard Only") sarebbe servito lo Standard da 25,56 $ (pagina prezzi JLC aggiornata il 2026-10-22), circa 17 $ in più, più i bordi tecnici | 8,18 $ |
 | Stencil | Tariffa JLC | 1,53 $ |
 | Parti Extended | 5 codici distinti × 3,07 $ (C2934560, C165948, C2977522, C7519, C404027; il modulo WROOM-02 sostituisce C41349510); con `DEC-043` spariscono le Extended di J2 (C46061680), J3/J4 (C160404) e J5 (C160402), −9,21 $ | 15,35 $ |

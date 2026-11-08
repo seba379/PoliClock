@@ -11,6 +11,8 @@
 - `esporta.py` ora si ferma se ERC, DRC o il controllo meccanico falliscono.
 - PDF, BOM, layout e render 3D sono rigenerati.
 
+**Contorno rettangolare 50,5 × 41,5 mm (`DEC-045`, 2026-11-08):** niente intaglio, antenna di U3 sulla scheda con zona vietata, corpo di tutte le parti montate da JLC a ≥ 2,5 mm da ogni bordo tranne J1 (unica eccezione DFM). Modifica con `scripts/dec045_pcb.py`. ERC 0, DRC 0/0/0, controllo meccanico PASS (margine minimo 2,99 mm). Dettagli in [docs/10](../docs/10-decisioni-aperte.md) §12.
+
 **Modulo ESP32-C3-WROOM-02-N4 (`DEC-044`, 2026-11-08):** sostituisce il MINI-1-H4X (a JLC solo "Standard"). Impronta di progetto `PoliClock:ESP32-C3-WROOM-02` (derivata da quella di KiCad, 4 vie termiche 0,3/0,7 mm, niente serigrafia sopra l'antenna), intaglio allargato a 8,5 × 20,2 mm, coppia USB ridisegnata sui pin 13/14, sbroglio rifatto, cucitura GND, R16 10 k + C11 10 nF (FIN-003), serigrafia a 1,0 mm (FIN-005), regola PTH in `.kicad_dru` (FIN-007), script Gerber bloccato (FIN-006). ERC 0, DRC 0/0/0 con parità, controllo meccanico PASS. Dettagli in [docs/10](../docs/10-decisioni-aperte.md) §11.
 
 **Connettori a foro passante (`DEC-043`, 2026-11-08):** J2 (header 1×7 2,54 mm) e J3/J4/J5 (JST PH B4B-PH-K-S) sono a foro passante e **saldati a mano dal proprietario**; JLC monta tutto il resto, J1 compreso. Le impronte vengono dalla libreria standard di KiCad 10. J2–J5 hanno il campo `Montaggio` = "a mano, parte del proprietario" e l'attributo "escluso dai file di posizionamento": non compaiono in BOM JLC e CPL, ma sono nella BOM completa. Modifica con `scripts/dec043_connettori_tht.py`, poi sbroglio delle sole connessioni mancanti con `scripts/sbroglia_main.py --conserva`. ERC 0, DRC 0/0/0 con parità, controllo meccanico PASS. Dettagli in [docs/10](../docs/10-decisioni-aperte.md) §10.
@@ -23,7 +25,7 @@
 
 | Cartella | Contenuto |
 |---|---|
-| `policlock-main/` | Scheda principale: schema gerarchico (USB e alimentazione, MCU, display a 7 pin, periferiche I²C e pulsante), PCB 50 × 40 mm, PDF, BOM e CPL per JLCPCB, render, STEP della sagoma, report ERC/DRC |
+| `policlock-main/` | Scheda principale: schema gerarchico (USB e alimentazione, MCU, display a 7 pin, periferiche I²C e pulsante), PCB 50,5 × 41,5 mm, PDF, BOM e CPL per JLCPCB, render, STEP della sagoma, report ERC/DRC |
 | `lib/` | Libreria di progetto `PoliClock` (simboli e footprint delle parti specifiche) |
 | `scripts/` | Generatori di schema e PCB, sbroglio con Freerouting, esportazioni |
 
@@ -33,10 +35,10 @@ Ogni componente montato da JLC ha il campo **`LCSC`** (codice JLCPCB/LCSC); J2�
 
 ## PCB della scheda principale
 
-- `policlock-main/policlock-main.kicad_pcb`: **50 × 40 mm, 2 strati, 1,6 mm, componenti solo sopra** (`DEC-030`, `DEC-036`). L'antenna del modulo ESP32 sta dentro l'ingombro, sopra un **intaglio** nell'angolo in alto a destra, con una zona senza rame davanti. Piani GND su entrambi gli strati. Nessun tasto: reset e boot dai punti di test TP6 (EN) e TP11 (IO9) sul retro (`DEC-039`). Tre fiducial da 1 mm sul lato componenti. Dettagli in [docs/02](../docs/02-architettura-hardware.md) §3.2.
+- `policlock-main/policlock-main.kicad_pcb`: **50,5 × 41,5 mm, 2 strati, 1,6 mm, componenti solo sopra** (`DEC-030`, `DEC-045`). L'antenna del modulo ESP32 sta sulla scheda, verso il bordo destro, sopra una zona vietata senza rame su entrambi gli strati (niente intaglio). Piani GND su entrambi gli strati. Nessun tasto: reset e boot dai punti di test TP6 (EN) e TP11 (IO9) sul retro (`DEC-039`). Tre fiducial da 1 mm sul lato componenti. Dettagli in [docs/02](../docs/02-architettura-hardware.md) §3.2.
 - **Regole JLCPCB** (vincolo `SC-008`, `DEC-040`; pagine ufficiali consultate il 2026-11-08, da ricontrollare all'ordine):
   - fabbricazione 2 strati: distanza 0,15 mm, pista ≥ 0,15 mm (alimentazioni 0,3–0,4 mm), anello delle piazzole PTH ≥ 0,18 mm (regola `.kicad_dru`), testi della serigrafia ≥ 1,0 mm, vie 0,6/0,3 mm, foro-foro ≥ 0,25 mm (JLC 0,2), foro-rame ≥ 0,3 mm (JLC 0,28), rame-bordo 0,3 mm (JLC 0,2) più una fascia di 0,45 mm senza piste lungo il contorno;
-  - assemblaggio: corpo dei componenti montati da JLC ≥ 2,5 mm da tutto il contorno, intaglio incluso; controllo aggiuntivo `scripts/verifica_meccanica_pcb.py`, richiamato anche dal generatore. J1 a bordo e U3 sopra l'intaglio restano eccezioni esplicite da approvare al DFM JLC. Le parti saldate a mano (J2–J5, `DEC-043`) non hanno il margine, ma il loro courtyard è controllato; le regole di fabbricazione valgono anche per le loro piazzole. Fiducial con zona senza rame.
+  - assemblaggio: corpo dei componenti montati da JLC ≥ 2,5 mm da ogni bordo; controllo aggiuntivo `scripts/verifica_meccanica_pcb.py`, richiamato anche dal generatore. **Unica eccezione J1** (USB-C a filo del bordo inferiore), da approvare al DFM JLC (`DEC-045`). Le parti saldate a mano (J2–J5, `DEC-043`) non hanno il margine, ma il loro courtyard è controllato; le regole di fabbricazione valgono anche per le loro piazzole. Fiducial con zona senza rame.
   - `policlock-main/policlock-main.kicad_dru`: anello PTH ≥ 0,18 mm (FIN-007) e una deroga che ignora il controllo serigrafia-bordo **solo per J2** (la serigrafia della libreria segue i piedini oltre il bordo e non viene stampata).
 - Controlli DRC **riabilitati**: courtyard mancante o sovrapposto, fori nei courtyard, footprint diversi dalla libreria, serigrafia sovrapposta o fuori bordo.
 - File esportati: `policlock-main-top.png` / `-bottom.png` (render), `policlock-main-layout.pdf` (assemblaggio F.Fab, rame, legenda del retro), `policlock-main-scheda.step` (sagoma con fori, per il CAD), `policlock-main-bom-jlcpcb.csv` e `policlock-main-cpl-jlcpcb.csv` (assemblaggio JLC, origine nell'angolo in basso a sinistra, senza le parti saldate a mano), `policlock-main-bom-completa.csv` (tutte le parti, con la colonna `Montaggio`: "JLC (PCBA)" oppure "a mano, parte del proprietario"). Lo STEP completo con i componenti (`policlock-main.step`) usa i modelli 3D EasyEDA e resta **solo locale** (ignorato da git).
@@ -62,7 +64,8 @@ Modifiche successive sui file KiCad:
 
 - `scripts/dec043_connettori_tht.py` — una tantum (`DEC-043`): impronte a foro passante J2–J5, spostamenti e rimozione delle piste toccate.
 - `scripts/dec044_schema.py` e `scripts/dec044_pcb.py` — una tantum (`DEC-044`): simbolo e impronta del WROOM-02, C11/R16, intaglio, posizionamento, coppia USB; i ritocchi fatti a mano dopo lo sbroglio sono descritti nel docstring.
-- `scripts/cucitura_gnd.py` — vie di cucitura GND lungo il contorno e vicino all'intaglio (FIN-008), rifatte da capo a ogni esecuzione.
+- `scripts/dec045_pcb.py` — una tantum (`DEC-045`): contorno rettangolare 50,5 × 41,5 mm, piani GND, J2 sul nuovo bordo superiore e rimozione delle piste delle sue reti (poi `sbroglia_main.py --conserva` e `cucitura_gnd.py`).
+- `scripts/cucitura_gnd.py` — vie di cucitura GND lungo il contorno, fuori dalla zona vietata dell'antenna (FIN-008), rifatte da capo a ogni esecuzione.
 - `scripts/esporta_gerber_jlc.py --conferma-proprietario` — Gerber e forature per JLC (FIN-006): **solo dopo l'approvazione esplicita del proprietario**; senza il flag non scrive nulla. Uscita in `policlock-main/gerber-jlc/` (ignorata da git).
 - `scripts/sbroglia_main.py --conserva` — sbroglia solo le connessioni mancanti, lasciando ferme le piste esistenti (bloccate durante lo sbroglio, poi sbloccate tranne la coppia USB). Con `--blocca-da-x=127` restano ferme solo le piste della zona J1/U1/U3.
 
