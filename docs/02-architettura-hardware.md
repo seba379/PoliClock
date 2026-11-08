@@ -1,6 +1,6 @@
 # 02 — Architettura hardware
 
-**Versione:** 0.7 · **Stato:** schema e PCB rev 0.2 della scheda principale in bozza (dopo la revisione tecnica indipendente), non validati · **Data:** 2026-11-08
+**Versione:** 0.8 · **Stato:** schema e PCB rev 0.2 della scheda principale in bozza (dopo la revisione tecnica indipendente), non validati · **Data:** 2026-11-08
 
 ## 1. Strategia
 
@@ -34,12 +34,12 @@ flowchart LR
         ESD -->|"D+/D-"| MCU
         REG --> SW
     end
-    RTC["Modulo RTC DS3231<br/>+ pila CR1220"] <-->|"I2C, JST-SH 4 poli"| MCU
+    RTC["Modulo RTC DS3231<br/>+ pila CR1220"] <-->|"I2C, JST PH 4 poli"| MCU
     USB["Cavo USB-C sempre collegato<br/>(sul sedere)"] -.->|"connettore diretto (A) o prolunga (B)"| CONN
     MCU -->|"SPI, cavetto 7 fili nel collo"| DISP
     SW -->|"3,3 V commutati"| DISP
-    SHT["Modulo SHT40<br/>vano ventilato"] <-->|"I2C, JST-SH 4 poli"| MCU
-    BTN["Pulsante remoto"] -->|"JST-SH 2 poli"| MCU
+    SHT["Modulo SHT40<br/>vano ventilato"] <-->|"I2C, JST PH 4 poli"| MCU
+    BTN["Pulsante remoto"] -->|"JST PH, pin 1-2"| MCU
 ```
 
 Il diagramma descrive funzioni logiche: non sostituisce lo schema elettrico KiCad.
@@ -52,15 +52,15 @@ Componenti e codici LCSC in [12 — Selezione componenti](12-selezione-component
 |---|---|---|---|
 | MCU | Logica, UI | ESP-IDF, USB nativa per flash/log/configuratore, SPI + I²C | **ESP32-C3-MINI-1-H4X** (`DEC-035`), variante "Recommended", chip v1.1 |
 | Display | Volto | Rotondo, IPS, **1,28"**, 240×240, GC9A01, SPI 4 fili (`DEC-016`) | **Modulo a 7 pin** (VCC, GND, SCL, SDA, DC, CS, RST), senza touch e senza pin per la retroilluminazione (`DEC-034`) |
-| Collegamento display | Testa ↔ scheda principale | 7 conduttori, lunghezza dal CAD | Header maschio 1×7 2,54 mm SMD a 90° (J2) + cavetto Dupont femmina-femmina dritto; R8/R9 22 Ω in serie su SCLK/MOSI; SPI 10–20 MHz da provare (`OPEN-021`) |
+| Collegamento display | Testa ↔ scheda principale | 7 conduttori, lunghezza dal CAD | Header maschio 1×7 2,54 mm a foro passante a 90° (J2, saldato a mano, `DEC-043`) + cavetto Dupont femmina-femmina dritto; R8/R9 22 Ω in serie su SCLK/MOSI; SPI 10–20 MHz da provare (`OPEN-021`) |
 | Display: notte e luminosità | DIM/BRIGHT/NIGHT | Display spento di notte (`DEC-009`) | P-MOS **AO3401A** (Q1) sull'alimentazione del modulo, comandato da IO20; DIM/BRIGHT solo con i colori della grafica (retroilluminazione fissa, `DEC-034`) |
-| Interazione | Accendere/impostare | **Pulsante** fisico (`DEC-017`) | Pulsante remoto su JST-SH 2 poli (`DEC-032`); pull-up 10 kΩ e 100 nF; IO3 con risveglio |
+| Interazione | Accendere/impostare | **Pulsante** fisico (`DEC-017`) | Pulsante remoto su J5, JST PH 4 poli usato sui pin 1–2 (`DEC-032`, `DEC-043`); pull-up 10 kΩ e 100 nF; IO3 con risveglio |
 | USB | **Alimentazione**, flash, configuratore (`DEC-020`, `DEC-023`) | USB-C 2.0, CC 5,1 kΩ, ESD, PTC | TYPE-C-31-M-12 (footprint KiCad dal disegno HRO), USBLC6-2SC6 a passaggio diretto vicino al connettore, coppia D+/D- simmetrica tracciata a mano (`DEC-041`), PTC 0,5 A |
 | Regolatore 3,3 V | Alimentare MCU, display e moduli | ≥ 0,5 A (richiesta Espressif), stabile con condensatori ceramici | **TLV75533** 500 mA (`DEC-037`), condensatori a 2,2–2,4 mm dai pin |
 | Reset e boot | Flash e recupero | EN con RC, strapping IO9 | Nessun tasto (`DEC-039`): RC 10 kΩ/1 µF su EN, pull-up 10 kΩ su IO9, punti di test TP6 (EN) e TP11 (IO9) vicino ai pin |
 | RTC | Ora anche a cavo scollegato | Tampone e precisione senza NTP | Modulo esterno DS3231 su J4 (`DEC-024`) |
 | Sensore T/RH | Misure ambiente | SHT40 lontano dal calore | Modulo breakout su J3 (`DEC-028`) |
-| Connettori | SHT40, RTC, pulsante | Polarizzati, con ritenuta | JST-SH 1,0 mm, 4 poli con pinout Qwiic/STEMMA QT, 2 poli per il pulsante |
+| Connettori | SHT40, RTC, pulsante | Polarizzati, con ritenuta | **JST PH 2,0 mm B4B-PH-K-S** verticali a foro passante, saldati a mano (`DEC-043`): 1 GND, 2 3V3, 3 SDA, 4 SCL; J5 usa i pin 1–2 (3–4 non collegati) |
 | Debug | Bring-up | Punti di test, isolamento dei blocchi | 11 punti di test sul retro con etichetta; resistenze 0 Ω per isolare il regolatore e i moduli esterni |
 
 **Budget dei pin (ESP32-C3):** SPI display 4 + RST 1, alimentazione display 1, I²C 2, pulsante 1, USB 2, BOOT 1: 12 GPIO; IO0 e IO1 liberi su punti di test, IO21 (TXD0) su punto di test. Verificato sul datasheet ESP32-C3-MINI-1 v2.2, strapping inclusi.
@@ -96,25 +96,27 @@ File: `hardware/policlock-main/policlock-main.kicad_pcb` (render, PDF, BOM, CPL 
 | Parametro | Valore | Motivazione |
 |---|---|---|
 | Dimensioni scheda | **50 × 40 mm**, con **intaglio** di circa 7,8 × 20,2 mm nell'angolo in alto a destra | `DEC-036` ("per il primo prototipo è meglio stare larghi e confermare 50x40"). Lo sbroglio completo con le regole JLC è riuscito a 50 × 40, senza bisogno di ingrandire |
-| Ingombro totale | **50 × 40 mm**; oltre il contorno sporgono solo i **piedini dell'header display (~5,6 mm sopra il bordo superiore)** e il guscio USB-C (0,4 mm sotto) | L'antenna sta dentro l'ingombro, sopra l'intaglio, con la punta a 2,5 mm dal bordo destro |
+| Ingombro totale | **50 × 40 mm**; oltre il contorno sporgono solo i **piedini dell'header display (~5,7 mm sopra il bordo superiore)** e il guscio USB-C (0,4 mm sotto) | L'antenna sta dentro l'ingombro, sopra l'intaglio, con la punta a 2,5 mm dal bordo destro |
 | Strati / spessore | 2 strati, 1,6 mm (`DEC-030`) | Circuito semplice, nessuna radio attiva; piani GND su entrambi i lati |
-| Montaggio | Solo lato superiore, servizio JLC "Economic" | Sul retro solo pad di test nudi e legenda |
+| Montaggio | Solo lato superiore, servizio JLC "Economic"; **J2–J5 a foro passante saldati a mano dal proprietario** (`DEC-043`), fuori da BOM JLC e CPL | Sul retro solo pad di test nudi, legenda e i piedini a foro passante di J2–J5 |
 | Regole di fabbricazione (JLC, `DEC-040`) | Distanza 0,15 mm (0,10 mm fra le piazzole USB-C a passo 0,5 mm), piste 0,2 mm (alimentazioni 0,4 mm), vie 0,6/0,3 mm (0,7/0,35 mm sulle alimentazioni), foro-foro ≥ 0,25 mm, foro-rame ≥ 0,3 mm, rame-bordo ≥ 0,3 mm più una fascia di 0,45 mm vietata a piste e vie lungo il contorno | Minimi JLC 2 strati con margine (pagina capacità JLCPCB, consultata il 2026-11-08) |
-| Regole di assemblaggio (JLC, `DEC-040`) | Corpo dei componenti **≥ 2,5 mm da tutto il contorno**, compreso l'intaglio; J1/J2 a bordo e U3 sopra l'intaglio restano eccezioni DFM esplicite; 3 fiducial da 1 mm con zona di rispetto | Correzione applicativa del 2026-11-08 ai termini JLC, senza modificare le decisioni: controllo aggiuntivo con `verifica_meccanica_pcb.py` |
+| Regole di assemblaggio (JLC, `DEC-040`) | Corpo dei componenti montati da JLC **≥ 2,5 mm da tutto il contorno**, compreso l'intaglio; J1 a bordo e U3 sopra l'intaglio restano eccezioni DFM esplicite; J2–J5, saldati a mano, non hanno il margine (courtyard controllato comunque, `DEC-043`); 3 fiducial da 1 mm con zona di rispetto | Correzione applicativa del 2026-11-08 ai termini JLC, senza modificare le decisioni: controllo aggiuntivo con `verifica_meccanica_pcb.py` |
 | Spaziatura | 0,5 mm in più fra i courtyard dei componenti piazzati automaticamente | Spazio per piste e vie |
 
 Disposizione (vista dall'alto, origine nell'angolo in alto a sinistra):
 
 - **In alto a destra**: modulo ESP32-C3-MINI-1-H4X ruotato di 270°, centro a (36,5; 12,6) mm, con 6 mm liberi sopra per EN, 3V3 e le uscite dei segnali. L'antenna sta **sopra l'intaglio** (nessun PCB né rame sotto, linee guida Espressif) e una zona senza rame di 3 mm prosegue sotto l'intaglio.
-- **Bordo superiore**: header J2 del display (centro x = 17,5 mm), pin 1 = VCC a destra, piedini verso l'esterno; Q1 con R16/R17/C9/C10 accanto al pin 1.
+- **Bordo superiore**: header J2 del display a foro passante (`DEC-043`), pin a passo 2,54 mm da x = 9,88 mm (pin 1 = VCC, piazzola quadrata, **ora a sinistra**) a x = 25,12 mm (pin 7 = RST), fila dei fori a y = 4,40 mm. Il corpo plastico dell'header a 90° appoggia sulla scheda (y 0,36–2,90 mm) e i piedini sporgono oltre il bordo superiore; gli stessi fori accettano un **header diritto**. Q1 con R16/R17/C9/C10 a destra dell'header; la pista 3V3_DISP raggiunge il pin 1 lungo il bordo, R15 (pull-up RST) sta sotto il pin 7.
 - **Bordo inferiore** (verso il sedere, opzione A): USB-C J1 (centro x = 33,7 mm, sullo stesso asse dei pin USB 26/27 del modulo), affiancata da **due fori M2** (Ø 2,2 mm, pad a GND) a (24,2; 36,5) e (43,7; 36,5) mm, che scaricano sulla scocca lo sforzo d'inserimento del cavo. Sullo stesso asse, fra connettore e modulo: ESD U1 e le resistenze R4 (D-) e R3 (D+) affiancate (§3.3).
 - **In basso a sinistra**: PTC, LDO U2 con C2 (ingresso) e C3/C4 (uscita) a 2,2–2,4 mm dai pin.
-- **Lato sinistro**: JST-SH J3 (SHT40), J4 (RTC), J5 (pulsante), rientrati in modo che il corpo stia a 2,5 mm dal bordo.
-- **Retro**: 11 punti di test con etichetta "riferimento + rete"; TP6 (EN) e TP11 (IO9) sotto i rispettivi pin del modulo, gli altri in due file.
+- **Lato sinistro**: JST PH J3 (SHT40), J4 (RTC), J5 (pulsante) verticali a foro passante (`DEC-043`), pin in fila orizzontale, pin 1 (quadrato) a x = 3,0 mm e y = 9,0 / 15,0 / 21,0 mm; corpo a circa 0,6 mm dal bordo sinistro (montaggio a mano, fuori dalla regola JLC dei 2,5 mm). R21 (0 Ω verso 3V3_EXT), R19/R20 (pull-up I²C) e C8 (antirimbalzo) in colonna a x = 13 mm.
+- **Retro**: 11 punti di test con etichetta "riferimento + rete"; TP6 (EN) e TP11 (IO9) sotto i rispettivi pin del modulo, gli altri in due file. Sporgono i piedini a foro passante di J2–J5, lontani dai punti di test; etichette SHT40, RTC e BTN accanto alle file di J3–J5.
 
 **Verifiche (report salvati, nessun test hardware):** DRC con `kicad-cli` e tutte le severità, con i controlli su courtyard, fori, serigrafia e footprint riabilitati: **0 violazioni, 0 connessioni aperte**. Disaccoppiamento: C6 0,1 µF a 2,4 mm dal pin 3V3 del modulo. EN: 15 mm con 3 vie (era 60 mm prima di spostare TP6). Confronto schema ↔ PCB (`--schematic-parity`): **0 problemi** (campi e percorsi dei simboli copiati sul PCB; fori e fiducial marcati "solo scheda"). USB: vedi §3.3. Nessuna pista sotto 0,15 mm (lo script riallarga a 0,15 mm le strozzature che Freerouting crea vicino alle piazzole fini, se la distanza lo consente, e toglie vie e pezzi di pista senza uscita); 55 vie, circa 935 mm di piste. Restano da rivedere a vista: percorsi, continuità dei piani GND sotto il modulo, eventuali vie di cucitura GND aggiuntive.
 
 **Correzione locale successiva (2026-11-08):** C7 a (32,85; 3,00) mm, corpo a **2,60 mm dal bordo**, raccordi EN/GND e una via EN ritoccati; courtyard e contorni F.Fab di J2–J5 completati nelle librerie e nel PCB; FID1 a (3,50; 32,50) mm con zona di rispetto traslata. Dopo questa correzione: EN circa **15,89 mm**, 3 vie; totale **537 segmenti, 55 vie, circa 936,731 mm**. DRC con zone ricalcolate e parità: zero problemi; controllo geometrico aggiuntivo superato. USB, sagoma, schema e BOM invariati. Dettagli e stato della revisione a vista nella [nota delle modifiche](revisioni/2026-11-08/correzioni/README.md). I numeri del paragrafo precedente descrivono la bozza prima di questa correzione.
+
+**Connettori a foro passante (`DEC-043`, 2026-11-08):** J2 diventa un header 1×7 2,54 mm a foro passante (`Connector_PinHeader_2.54mm:PinHeader_1x07_P2.54mm_Horizontal`), J3/J4/J5 diventano JST PH **B4B-PH-K-S** (`Connector_JST:JST_PH_B4B-PH-K_1x04_P2.00mm_Vertical`), tutti dalla libreria standard di KiCad 10 e saldati a mano dal proprietario. Le impronte hanno gli attributi "a foro passante" ed "escluso dai file di posizionamento" e il campo `Montaggio` = "a mano, parte del proprietario"; nessun codice LCSC. Modifica con `hardware/scripts/dec043_connettori_tht.py` (spostati J2–J5, R15, R19, R20, R21, C8), poi sbroglio delle sole connessioni mancanti con `sbroglia_main.py --conserva`: coppia USB bloccata (`DEC-041`), CC, VBUS/+5V ed EN invariati; nella zona J1/U1/U3 cambiano solo le uscite dai pin del modulo delle reti toccate (LCD_*, I²C, BTN_USER, 3V3_DISP vicino a Q1). BTN_USER ora corre lungo i bordi superiore e sinistro (circa 72 mm, 1 via; era 45 mm). Totale **44 vie, circa 972 mm di piste**. DRC con zone ricalcolate, tutte le severità e parità: **0 violazioni, 0 connessioni aperte, 0 problemi di parità**; ERC 0; controllo meccanico PASS. La serigrafia della libreria che segue i piedini di J2 oltre il bordo non viene stampata: per la sola J2 il controllo serigrafia-bordo è ignorato con una regola in `policlock-main.kicad_dru`.
 
 ### 3.3 Coppia USB D+/D- (`DEC-041`)
 
@@ -149,7 +151,7 @@ Richiesta del proprietario: nessuna asimmetria fra D+ e D-. La coppia è **tracc
 **Sensirion SHT40** su **modulo breakout commerciale** (`DEC-028`), alimentato a **3,3 V** dal connettore J3. Specifica tipica: ±1,8 %RH ([pagina prodotto](https://sensirion.com/products/catalog/SHT40)).
 
 - Verificare sul modulo ricevuto LED, regolatore e corrente (revisione P1-09, `BOM-002`); i pull-up del modulo restano in parallelo a quelli da 4,7 kΩ della scheda.
-- Collegamento: cavo JST-SH 4 poli → jumper femmina 2,54 mm; ordine dei pin dalla **serigrafia del modulo acquistato** (`OPEN-002`).
+- Collegamento: cavo JST PH 4 poli (J3, `DEC-043`) → jumper femmina 2,54 mm; ordine dei pin dalla **serigrafia del modulo acquistato** (`OPEN-002`).
 - Posizionamento **separato fisicamente** dalle sorgenti di calore (scheda principale, regolatore, modulo display), con feritoie verso l'aria ambiente.
 - Indirizzo `0x44`: nessun conflitto con il DS3231 (`0x68`).
 - Campionamento iniziale consigliato **30–60 s** (parametro firmware).

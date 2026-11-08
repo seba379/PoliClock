@@ -2,8 +2,14 @@
 
 Usare il Python di KiCad 10. Il corpo e' ricavato dalle geometrie F.Fab, senza
 testi e senza lo spessore del tratto grafico. Supporta il contorno ortogonale
-attuale. J1/J2 a bordo e U3 sopra l'intaglio richiedono ancora accettazione DFM;
+attuale. J1 a bordo e U3 sopra l'intaglio richiedono ancora accettazione DFM;
 sono eccezioni esplicite, non parti dichiarate conformi al margine di 2,5 mm.
+
+La regola JLC dei 2,5 mm corpo-bordo vale solo per le parti montate da JLC. Le parti
+saldate a mano dal proprietario (DEC-043: J2-J5, attributo "escluso dai file di
+posizionamento", quindi assenti dalla CPL) non hanno margine dal bordo, ma il loro
+courtyard si controlla comunque. Le regole di fabbricazione (distanze, anelli, rame-bordo)
+valgono per tutte le piazzole e sono verificate dal DRC.
 """
 import argparse
 import json
@@ -16,7 +22,6 @@ PCB = Path(__file__).resolve().parents[1] / 'policlock-main/policlock-main.kicad
 MARGINE = 2.5
 ECCEZIONI_DFM = {
     'J1': 'USB-C affacciata al bordo inferiore: accettazione DFM aperta',
-    'J2': 'Header display affacciato al bordo superiore: accettazione DFM aperta',
     'U3': 'Modulo ESP32 sopra intaglio antenna: accettazione DFM aperta',
 }
 CONNETTORI = ('J2', 'J3', 'J4', 'J5')
@@ -77,12 +82,19 @@ def controlla(board):
 
     result = {'kicad': pcbnew.GetBuildVersion(), 'margine_minimo_mm': MARGINE,
               'eccezioni_dfm_aperte': ECCEZIONI_DFM, 'margini_corpi_mm': {},
-              'copertura_courtyard': {}, 'errori': []}
+              'montaggio_a_mano': [], 'copertura_courtyard': {}, 'errori': []}
     for fp in board.GetFootprints():
         ref = fp.GetReference()
-        if fp.IsDNP() or fp.IsExcludedFromPosFiles():
+        if fp.IsDNP():
             continue
-        if ref not in ECCEZIONI_DFM:
+        # parti saldate a mano: campo Montaggio (DEC-043); devono essere fuori dalla CPL di JLC
+        a_mano = fp.HasField('Montaggio') and 'mano' in fp.GetFieldText('Montaggio')
+        if a_mano:
+            result['montaggio_a_mano'].append(ref)
+            if not fp.IsExcludedFromPosFiles():
+                result['errori'].append(f'{ref}: montata a mano ma non esclusa dai file di posizionamento')
+        # margine di 2,5 mm solo per le parti nella CPL (montate da JLC); punti di test, fori e fiducial esclusi
+        if ref not in ECCEZIONI_DFM and not fp.IsExcludedFromPosFiles():
             box = corpo_bbox(fp)
             if box is None:
                 result['errori'].append(f'{ref}: contorno del corpo F.Fab assente')

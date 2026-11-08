@@ -429,7 +429,10 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "PoliClock:SM02B-SRSS-TB"
+		(symbol "PoliClock:B4B-PH-K-S"
+			(pin_names
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -445,7 +448,7 @@
 					)
 				)
 			)
-			(property "Value" "SM02B-SRSS-TB"
+			(property "Value" "B4B-PH-K-S"
 				(at 0 -1.27 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -455,7 +458,7 @@
 					)
 				)
 			)
-			(property "Footprint" "PoliClock:CONN-SMD_2P-P1.00_SM02B-SRSS-TB-LF-SN"
+			(property "Footprint" "Connector_JST:JST_PH_B4B-PH-K_1x04_P2.00mm_Vertical"
 				(at 0 -3.81 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -466,7 +469,7 @@
 					)
 				)
 			)
-			(property "Datasheet" "https://lcsc.com/product-detail/Others_JST-Sales-America__JST-Sales-America-SM02B-SRSS-TB-LF-SN_C160402.html"
+			(property "Datasheet" "https://www.jst-mfg.com/product/pdf/eng/ePH.pdf"
 				(at 0 -6.35 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -477,7 +480,7 @@
 					)
 				)
 			)
-			(property "Description" ""
+			(property "Description" "JST PH 2,0 mm 4 poli, verticale (ingresso dall'alto), a foro passante"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -499,7 +502,7 @@
 					)
 				)
 			)
-			(property "MPN" "SM02B-SRSS-TB(LF)(SN)"
+			(property "MPN" "B4B-PH-K-S(LF)(SN)"
 				(at 0 -11.43 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -510,18 +513,7 @@
 					)
 				)
 			)
-			(property "LCSC" "C160402"
-				(at 0 -13.97 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "Wire To Board / Wire To Wire Connector"
+			(property "ki_keywords" "JST PH 2.0mm THT connector"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -532,200 +524,10 @@
 					)
 				)
 			)
-			(symbol "SM02B-SRSS-TB_0_1"
+			(symbol "B4B-PH-K-S_0_1"
 				(rectangle
-					(start -8.89 1.27)
-					(end 8.89 -3.81)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(pin passive line
-					(at -1.27 3.81 270)
-					(length 2.54)
-					(name "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 1.27 3.81 270)
-					(length 2.54)
-					(name "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 6.35 3.81 270)
-					(length 2.54)
-					(name "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -6.35 3.81 270)
-					(length 2.54)
-					(name "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "PoliClock:SM04B-SRSS-TB"
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "J"
-				(at 0 8.89 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "SM04B-SRSS-TB"
-				(at 0 -1.27 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" "PoliClock:CONN-SMD_4P-P1.00_SM04B-SRSS-TB-LF-SN"
-				(at 0 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" "https://lcsc.com/product-detail/Others_JST-Sales-America__JST-Sales-America-SM04B-SRSS-TB-LF-SN_C160404.html"
-				(at 0 -6.35 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Manufacturer" "JST"
-				(at 0 -8.89 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "MPN" "SM04B-SRSS-TB(LF)(SN)"
-				(at 0 -11.43 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "LCSC" "C160404"
-				(at 0 -13.97 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "Wire To Board / Wire To Wire Connector"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "SM04B-SRSS-TB_0_1"
-				(rectangle
-					(start -11.43 1.27)
-					(end 11.43 -3.81)
+					(start -6.35 1.27)
+					(end 6.35 -3.81)
 					(stroke
 						(width 0)
 						(type default)
@@ -799,42 +601,6 @@
 						)
 					)
 					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 8.89 3.81 270)
-					(length 2.54)
-					(name "5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -8.89 3.81 270)
-					(length 2.54)
-					(name "6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "6"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1147,7 +913,7 @@
 		)
 		(uuid "02eeb823-a69b-5a83-9822-bc4becfe8d4f")
 	)
-	(text "Connettori Qwiic / STEMMA QT (JST-SH 4 poli: 1 GND, 2 3V3, 3 SDA, 4 SCL)"
+	(text "Connettori JST PH 2,0 mm 4 poli B4B-PH-K-S, a mano (DEC-043): 1 GND, 2 3V3, 3 SDA, 4 SCL"
 		(exclude_from_sim no)
 		(at 210.82 21.59 0)
 		(effects
@@ -1159,7 +925,7 @@
 		)
 		(uuid "3cbfe296-b3c5-58be-9ef5-806e835aa403")
 	)
-	(text "J3: modulo breakout SHT40 commerciale (header 2,54 mm), cavo JST-SH 4 poli -> jumper\nfemmina; ordine dei pin dalla serigrafia del modulo (DEC-028).\nJ4: modulo Adafruit DS3231 Precision RTC STEMMA QT (5188) con pila CR1220 (DEC-024)."
+	(text "J3: modulo breakout SHT40 commerciale (header 2,54 mm), cavo JST PH 4 poli -> jumper\nfemmina; ordine dei pin dalla serigrafia del modulo (DEC-028).\nJ4: modulo Adafruit DS3231 Precision RTC STEMMA QT (5188) con pila CR1220 (DEC-024):\ncavo JST PH 4 poli -> JST-SH (STEMMA QT) o fili sulle piazzole del modulo."
 		(exclude_from_sim no)
 		(at 219.71 90.17 0)
 		(effects
@@ -1170,7 +936,7 @@
 		)
 		(uuid "89c2b136-9d6b-565e-a071-de5bad02c74c")
 	)
-	(text "IO3: risveglio da deep-sleep possibile (GPIO0-5).\nSolo pulsante remoto su J5 (DEC-032): nessun tasto USER su scheda."
+	(text "IO3: risveglio da deep-sleep possibile (GPIO0-5).\nSolo pulsante remoto su J5 (DEC-032): nessun tasto USER su scheda.\nJ5 JST PH 4 poli (DEC-043): pin 1 BTN_USER, pin 2 GND, pin 3-4 non collegati."
 		(exclude_from_sim no)
 		(at 25.4 185.42 0)
 		(effects
@@ -1206,24 +972,8 @@
 		(uuid "f5dedc3d-0de9-56c2-a8dd-b94ebfa1eb0e")
 	)
 	(no_connect
-		(at 53.34 161.29)
-		(uuid "13aa55d2-6012-5c56-bd8a-9b0a639dd9fd")
-	)
-	(no_connect
-		(at 241.3 66.04)
-		(uuid "56604117-5c7f-5892-8bd8-8d2b18edf1d4")
-	)
-	(no_connect
-		(at 259.08 66.04)
-		(uuid "b54a006e-2da3-5ade-8d1f-a332a85aebd5")
-	)
-	(no_connect
-		(at 321.31 66.04)
-		(uuid "c8193d33-2bae-503a-8630-8e6173baadb4")
-	)
-	(no_connect
-		(at 339.09 66.04)
-		(uuid "d15d63ca-7f38-5582-864e-0d58ae8df202")
+		(at 63.5 161.29)
+		(uuid "b56c35b9-c87d-46d4-8e4f-df3eb590c247")
 	)
 	(no_connect
 		(at 66.04 161.29)
@@ -2245,8 +1995,8 @@
 		)
 	)
 	(symbol
-		(lib_id "PoliClock:SM02B-SRSS-TB")
-		(at 59.69 165.1 0)
+		(lib_id "PoliClock:B4B-PH-K-S")
+		(at 62.23 165.1 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2256,7 +2006,7 @@
 		(dnp no)
 		(uuid "7b8332eb-e26b-5ed2-baff-84ee74deacdf")
 		(property "Reference" "J5"
-			(at 65.786 170.434 0)
+			(at 68.326 170.434 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2265,8 +2015,8 @@
 				)
 			)
 		)
-		(property "Value" "SM02B-SRSS-TB"
-			(at 59.69 166.37 0)
+		(property "Value" "B4B-PH-K-S"
+			(at 62.23 166.37 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2275,8 +2025,8 @@
 				)
 			)
 		)
-		(property "Footprint" "PoliClock:CONN-SMD_2P-P1.00_SM02B-SRSS-TB-LF-SN"
-			(at 59.69 168.91 0)
+		(property "Footprint" "Connector_JST:JST_PH_B4B-PH-K_1x04_P2.00mm_Vertical"
+			(at 62.23 168.91 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2286,8 +2036,8 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C160402.pdf"
-			(at 59.69 171.45 0)
+		(property "Datasheet" "https://www.jst-mfg.com/product/pdf/eng/ePH.pdf"
+			(at 62.23 171.45 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2297,8 +2047,8 @@
 				)
 			)
 		)
-		(property "Description" "Pulsante utente remoto"
-			(at 59.69 165.1 0)
+		(property "Description" "JST PH 4 poli: pulsante utente remoto (pin 1-2), pin 3-4 non collegati"
+			(at 62.23 165.1 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2308,8 +2058,8 @@
 				)
 			)
 		)
-		(property "LCSC" "C160402"
-			(at 59.69 179.07 0)
+		(property "Montaggio" "a mano, parte del proprietario"
+			(at 62.23 165.1 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2602,7 +2352,7 @@
 		)
 	)
 	(symbol
-		(lib_id "PoliClock:SM04B-SRSS-TB")
+		(lib_id "PoliClock:B4B-PH-K-S")
 		(at 250.19 69.85 0)
 		(unit 1)
 		(body_style 1)
@@ -2622,7 +2372,7 @@
 				)
 			)
 		)
-		(property "Value" "SM04B-SRSS-TB"
+		(property "Value" "B4B-PH-K-S"
 			(at 250.19 71.12 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2632,7 +2382,7 @@
 				)
 			)
 		)
-		(property "Footprint" "PoliClock:CONN-SMD_4P-P1.00_SM04B-SRSS-TB-LF-SN"
+		(property "Footprint" "Connector_JST:JST_PH_B4B-PH-K_1x04_P2.00mm_Vertical"
 			(at 250.19 73.66 0)
 			(hide yes)
 			(show_name no)
@@ -2643,7 +2393,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C160404.pdf"
+		(property "Datasheet" "https://www.jst-mfg.com/product/pdf/eng/ePH.pdf"
 			(at 250.19 76.2 0)
 			(hide yes)
 			(show_name no)
@@ -2654,7 +2404,7 @@
 				)
 			)
 		)
-		(property "Description" "Qwiic/STEMMA QT: modulo SHT40"
+		(property "Description" "JST PH 4 poli: modulo SHT40"
 			(at 250.19 69.85 0)
 			(hide yes)
 			(show_name no)
@@ -2665,8 +2415,8 @@
 				)
 			)
 		)
-		(property "LCSC" "C160404"
-			(at 250.19 83.82 0)
+		(property "Montaggio" "a mano, parte del proprietario"
+			(at 250.19 69.85 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2687,12 +2437,6 @@
 		)
 		(pin "4"
 			(uuid "cf8db569-dc67-5fe5-8ac2-61865be4c798")
-		)
-		(pin "5"
-			(uuid "88c4387f-07ea-556c-a331-f310afe87693")
-		)
-		(pin "6"
-			(uuid "2ff6ebe6-77cc-5246-a6c8-12d2ec5c6bfb")
 		)
 		(instances
 			(project "policlock-main"
@@ -3027,7 +2771,7 @@
 		)
 	)
 	(symbol
-		(lib_id "PoliClock:SM04B-SRSS-TB")
+		(lib_id "PoliClock:B4B-PH-K-S")
 		(at 330.2 69.85 0)
 		(unit 1)
 		(body_style 1)
@@ -3047,7 +2791,7 @@
 				)
 			)
 		)
-		(property "Value" "SM04B-SRSS-TB"
+		(property "Value" "B4B-PH-K-S"
 			(at 330.2 71.12 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3057,7 +2801,7 @@
 				)
 			)
 		)
-		(property "Footprint" "PoliClock:CONN-SMD_4P-P1.00_SM04B-SRSS-TB-LF-SN"
+		(property "Footprint" "Connector_JST:JST_PH_B4B-PH-K_1x04_P2.00mm_Vertical"
 			(at 330.2 73.66 0)
 			(hide yes)
 			(show_name no)
@@ -3068,7 +2812,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C160404.pdf"
+		(property "Datasheet" "https://www.jst-mfg.com/product/pdf/eng/ePH.pdf"
 			(at 330.2 76.2 0)
 			(hide yes)
 			(show_name no)
@@ -3079,7 +2823,7 @@
 				)
 			)
 		)
-		(property "Description" "Qwiic/STEMMA QT: modulo RTC DS3231"
+		(property "Description" "JST PH 4 poli: modulo RTC DS3231"
 			(at 330.2 69.85 0)
 			(hide yes)
 			(show_name no)
@@ -3090,8 +2834,8 @@
 				)
 			)
 		)
-		(property "LCSC" "C160404"
-			(at 330.2 83.82 0)
+		(property "Montaggio" "a mano, parte del proprietario"
+			(at 330.2 69.85 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3112,12 +2856,6 @@
 		)
 		(pin "4"
 			(uuid "b45f6731-3f5d-546f-94c8-1c3aefe297d7")
-		)
-		(pin "5"
-			(uuid "007c3732-c8e2-5808-b7ab-ce8222289056")
-		)
-		(pin "6"
-			(uuid "4d7a737a-4d4f-5646-9cb6-3d0cb6b467b0")
 		)
 		(instances
 			(project "policlock-main"

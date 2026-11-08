@@ -306,7 +306,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "PoliClock:HXPZ2.54-1X7PWT"
+		(symbol "PoliClock:PinHeader_1x07_P2.54_THT"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -322,7 +322,7 @@
 					)
 				)
 			)
-			(property "Value" "HX PZ2.54-1X7P WT"
+			(property "Value" "Header 1x7 2,54 mm THT"
 				(at 0 -12.7 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -332,7 +332,7 @@
 					)
 				)
 			)
-			(property "Footprint" "PoliClock:HDR-SMD_7P-P2.54-H-M-W13.3-N"
+			(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x07_P2.54mm_Horizontal"
 				(at 0 -15.24 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -343,7 +343,7 @@
 					)
 				)
 			)
-			(property "Datasheet" "https://www.lcsc.com/datasheet/C46061680.pdf"
+			(property "Datasheet" ""
 				(at 0 -17.78 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -354,7 +354,7 @@
 					)
 				)
 			)
-			(property "Description" ""
+			(property "Description" "Header maschio 1x7 passo 2,54 mm a foro passante (a 90 gradi o diritto)"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -365,7 +365,7 @@
 					)
 				)
 			)
-			(property "Manufacturer" "hanxia(韩下)"
+			(property "Manufacturer" "generico"
 				(at 0 -20.32 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -376,7 +376,7 @@
 					)
 				)
 			)
-			(property "MPN" "HX PZ2.54-1x7P WT"
+			(property "MPN" ""
 				(at 0 -22.86 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -387,18 +387,7 @@
 					)
 				)
 			)
-			(property "LCSC" "C46061680"
-				(at 0 -25.4 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "HXPZ2.54-1X7PWT_0_1"
+			(symbol "PinHeader_1x07_P2.54_THT_0_1"
 				(rectangle
 					(start -1.27 10.16)
 					(end 3.81 -10.16)
@@ -1131,7 +1120,7 @@
 		)
 		(uuid "5f5ca714-95a4-5aec-a62a-a0046d68d19c")
 	)
-	(text "Modulo display GC9A01 1,28\" a 7 pin (DEC-034): header 2,54 mm, alimentazione commutata"
+	(text "Modulo display GC9A01 1,28\" a 7 pin (DEC-034): header 2,54 mm THT a mano (DEC-043), alimentazione commutata"
 		(exclude_from_sim no)
 		(at 16.51 21.59 0)
 		(effects
@@ -1687,7 +1676,7 @@
 		)
 	)
 	(symbol
-		(lib_id "PoliClock:HXPZ2.54-1X7PWT")
+		(lib_id "PoliClock:PinHeader_1x07_P2.54_THT")
 		(at 299.72 95.25 0)
 		(unit 1)
 		(body_style 1)
@@ -1707,7 +1696,7 @@
 				)
 			)
 		)
-		(property "Value" "HX PZ2.54-1x7P WT"
+		(property "Value" "Header 1x7 2,54 mm THT"
 			(at 299.72 107.95 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1717,7 +1706,7 @@
 				)
 			)
 		)
-		(property "Footprint" "PoliClock:HDR-SMD_7P-P2.54-H-M-W13.3-N"
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x07_P2.54mm_Horizontal"
 			(at 299.72 110.49 0)
 			(hide yes)
 			(show_name no)
@@ -1728,7 +1717,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C46061680.pdf"
+		(property "Datasheet" ""
 			(at 299.72 113.03 0)
 			(hide yes)
 			(show_name no)
@@ -1739,7 +1728,7 @@
 				)
 			)
 		)
-		(property "Description" "Header maschio 1x7 2,54 mm SMD a 90 gradi: cavo Dupont 7 fili verso il modulo"
+		(property "Description" "Header maschio 1x7 2,54 mm a foro passante, a 90 gradi (va bene anche diritto): cavo Dupont 7 fili verso il modulo"
 			(at 299.72 95.25 0)
 			(hide yes)
 			(show_name no)
@@ -1750,8 +1739,8 @@
 				)
 			)
 		)
-		(property "LCSC" "C46061680"
-			(at 299.72 120.65 0)
+		(property "Montaggio" "a mano, parte del proprietario"
+			(at 299.72 95.25 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)

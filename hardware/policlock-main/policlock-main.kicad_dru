@@ -1,0 +1,10 @@
+(version 1)
+
+# DEC-043: J2 e' un header 1x7 a 90 gradi della libreria standard di KiCad; i suoi pin sporgono oltre il
+# bordo superiore (come voluto), e con loro la serigrafia della libreria. La serigrafia fuori dalla scheda
+# non viene stampata: per la sola J2 si ignora il controllo serigrafia-bordo. Tutti gli altri controlli restano.
+(rule "J2 pin oltre il bordo superiore: serigrafia non stampata"
+	(layer "F.Silkscreen")
+	(condition "A.memberOfFootprint('J2') && B.Layer == 'Edge.Cuts'")
+	(constraint silk_clearance (min 0mm))
+	(severity ignore))

@@ -1,8 +1,8 @@
 # 12 — Selezione componenti per lo schema (M2)
 
-**Versione:** 0.7 · **Stato:** schema rev 0.2 dopo la revisione tecnica indipendente, **non validato** (manca il prototipo M1) · **Data:** 2026-11-07
+**Versione:** 0.8 · **Stato:** schema rev 0.2 dopo la revisione tecnica indipendente, **non validato** (manca il prototipo M1) · **Data:** 2026-11-08
 
-Questo documento motiva i componenti dello schema KiCad in [`hardware/`](../hardware/README.md). Tutte le scelte restano `CAND` finché non superano il prototipo su banco (M1) e la revisione visiva del proprietario; le decisioni del proprietario sono in [10](10-decisioni-aperte.md) (`DEC-024`…`DEC-040`). Tutti i componenti montati sono nella libreria LCSC/JLC e il progetto segue le regole JLCPCB (`SC-008`, `DEC-040`).
+Questo documento motiva i componenti dello schema KiCad in [`hardware/`](../hardware/README.md). Tutte le scelte restano `CAND` finché non superano il prototipo su banco (M1) e la revisione visiva del proprietario; le decisioni del proprietario sono in [10](10-decisioni-aperte.md) (`DEC-024`…`DEC-043`). Tutti i componenti montati da JLC sono nella libreria LCSC/JLC e il progetto segue le regole JLCPCB (`SC-008`, `DEC-040`); i connettori J2–J5 a foro passante li salda a mano il proprietario (`DEC-043`).
 
 **Novità della rev 0.2** (revisione tecnica indipendente del 2026-11-07, esito "NOT APPROVED FOR FABRICATION" sulla rev 0.1):
 
@@ -13,9 +13,9 @@ Questo documento motiva i componenti dello schema KiCad in [`hardware/`](../hard
 
 ## 1. Criterio di scelta
 
-- **Vincolo del proprietario:** componenti **facilmente reperibili e montabili direttamente da JLCPCB** (libreria LCSC), **connettori inclusi**. Preferenza: parti **Basic** (nessun costo di setup), poi **Preferred**, poi **Extended** solo se necessario.
+- **Vincolo del proprietario:** componenti **facilmente reperibili e montabili direttamente da JLCPCB** (libreria LCSC), **connettori inclusi** (eccezione `DEC-043`: J2–J5 a foro passante, dalla scorta del proprietario e saldati a mano). Preferenza: parti **Basic** (nessun costo di setup), poi **Preferred**, poi **Extended** solo se necessario.
 - Pinout e funzioni verificati sui **datasheet ufficiali** (vedi [fonti](11-fonti.md), sezione "Componenti dello schema").
-- Footprint: libreria ufficiale KiCad dove esiste (passivi, SOT, USB-C HRO, header di test); altrimenti importati da LCSC/EasyEDA con `easyeda2kicad` e **confrontati**: JST-SH identici alla libreria KiCad (scarti ≤ 0,004 mm); USB-C EasyEDA **scartato** perché diverso dal disegno HRO.
+- Footprint: libreria ufficiale KiCad dove esiste (passivi, SOT, USB-C HRO, header di test); altrimenti importati da LCSC/EasyEDA con `easyeda2kicad` e **confrontati**: JST-SH identici alla libreria KiCad (scarti ≤ 0,004 mm); USB-C EasyEDA **scartato** perché diverso dal disegno HRO. Con `DEC-043` J2–J5 usano direttamente le impronte standard di KiCad 10 (`Connector_PinHeader_2.54mm`, `Connector_JST`).
 - Stock e prezzi letti dal catalogo JLCPCB/LCSC il **2026-11-07**: cambiano ogni giorno, vanno **ricontrollati prima dell'ordine**.
 
 ## 2. Scheda principale (`hardware/policlock-main`)
@@ -34,14 +34,14 @@ Questo documento motiva i componenti dello schema KiCad in [`hardware/`](../hard
 | C5 | 3V3 modulo | 10 µF 0603 X5R 10 V | Samsung | C19702 | **Basic** | 10 M | — | C5 + C6 (100 nF) sul pin 3V3 del modulo come nello schema di riferimento Espressif |
 | C6, C8, C10 | Disaccoppiamento / antirimbalzo | 100 nF 0603 X7R | Yageo | C14663 | **Basic** | 34 M | — | C6 a 2,4 mm dal pin 3 (3V3) del modulo |
 | C7 | RC su EN | 1 µF 0603 | Samsung | C15849 | **Basic** | 13 M | — | Espressif: R 10 kΩ + C 1 µF, pista EN corta. Nessun tasto RESET/BOOT (`DEC-039`): punti di test TP6 (EN) e TP11 (IO9) |
-| J2 | Modulo display | **HX PZ2.54-1x7P WT** header maschio 1×7 2,54 mm SMD a 90° | hanxia | C46061680 | Extended | 9 029 | 0,14 $ | `DEC-034`: un cavetto Dupont femmina-femmina a 7 fili collega il modulo display. Pin 1 = VCC (3V3_DISP) |
+| J2 | Modulo display | **Header maschio 1×7 2,54 mm a foro passante**, a 90° (negli stessi fori va bene anche diritto); impronta `PinHeader_1x07_P2.54mm_Horizontal` | generico | — | **a mano** (`DEC-043`) | scorta del proprietario | — | `DEC-034`: un cavetto Dupont femmina-femmina a 7 fili collega il modulo display. Prima (fino a `DEC-043`): HX PZ2.54-1x7P WT SMD, C46061680, Extended. Pin 1 = VCC (3V3_DISP) |
 | Q1 | Interruttore alimentazione display | **AO3401A** P-MOS SOT-23 | AOS | C15127 | **Basic** | 1,7 M | — | Spegne del tutto il modulo display di notte (`DEC-009`); VGS(th) −0,5…−1,3 V, pilotabile a 3,3 V |
 | R16 / R17 | Gate di Q1 | 1 kΩ / 100 kΩ 0603 | Uni-Royal | C21190 / C25803 | **Basic** | — | — | R17 tiene Q1 spento durante reset e boot |
 | C9 | Bulk 3V3_DISP | 10 µF 0603 | Samsung | C19702 | **Basic** | — | — | Vicino a J2 |
 | R8, R9 | Smorzamento SCLK/MOSI | 22 Ω 0603 | Uni-Royal | C23345 | **Basic** | 6 M | — | Valore da confermare con la prova sul cavo reale (`OPEN-021`) |
 | R15 | Pull-up RST display | 10 kΩ 0603 | Uni-Royal | C25804 | **Basic** | — | — | Verso 3V3_DISP: niente corrente nel modulo spento |
-| J3, J4 | Modulo SHT40, modulo RTC | **SM04B-SRSS-TB** JST-SH 4P 1,0 mm | JST | C160404 | Extended | 45 700 | 0,21 $ | Pinout Qwiic/STEMMA QT: 1 GND, 2 3V3, 3 SDA, 4 SCL; footprint identico alla libreria KiCad |
-| J5 | Pulsante remoto | **SM02B-SRSS-TB** JST-SH 2P | JST | C160402 | Extended | 67 085 | 0,13 $ | `DEC-027`, `DEC-032` |
+| J3, J4 | Modulo SHT40, modulo RTC | **B4B-PH-K-S** JST PH 4P 2,0 mm, verticale (ingresso dall'alto), a foro passante; impronta `JST_PH_B4B-PH-K_1x04_P2.00mm_Vertical` | JST | — | **a mano** (`DEC-043`) | scorta del proprietario | — | Stesso pinout di prima: 1 GND, 2 3V3, 3 SDA, 4 SCL. Prima: SM04B-SRSS-TB JST-SH, C160404, Extended |
+| J5 | Pulsante remoto | **B4B-PH-K-S** JST PH 4P (stesso connettore di J3/J4) | JST | — | **a mano** (`DEC-043`) | scorta del proprietario | — | Pin 1 BTN_USER, pin 2 GND, pin 3–4 non collegati (NC espliciti nello schema). `DEC-027`, `DEC-032`. Prima: SM02B-SRSS-TB, C160402, Extended |
 | R6, R7, R22 | Pull-up EN, IO9, pulsante | 10 kΩ 0603 | Uni-Royal | C25804 | **Basic** | 43 M | — | |
 | R19, R20 | Pull-up I²C | 4,7 kΩ 0603 | Uni-Royal | C23162 | **Basic** | 16 M | — | Tengono alti anche gli strapping IO2 e IO8 (prova di boot in `VT-PCB-004`) |
 | R5, R21 | Isolamento blocchi | 0 Ω 0603 | Uni-Royal | C21189 | **Basic** | 19 M | — | 5 V → LDO, 3,3 V → moduli esterni |
@@ -49,7 +49,7 @@ Questo documento motiva i componenti dello schema KiCad in [`hardware/`](../hard
 
 \* Stock e prezzo unitario (fascia più bassa) dal catalogo JLCPCB il 2026-11-07; "M" = milioni.
 
-**Parti Extended:** 8 codici distinti (C41349510, C165948, C2977522, C7519, C404027, C46061680, C160404, C160402): rispetto alla rev 0.1 sparisce il connettore FFC ed entrano LDO e header. Costi in [08](08-bom-preliminare.md) §8.
+**Parti Extended:** 5 codici distinti (C41349510, C165948, C2977522, C7519, C404027). Rispetto alla rev 0.1 sparisce il connettore FFC ed entra l'LDO; con `DEC-043` escono anche header e JST-SH (C46061680, C160404, C160402), sostituiti da connettori a foro passante saldati a mano. Costi in [08](08-bom-preliminare.md) §8.
 
 ### 2.1 Assegnazione GPIO (ESP32-C3-MINI-1-H4X)
 
@@ -85,7 +85,7 @@ Il modulo espone 15 GPIO (IO0–IO10, IO18–IO21). Senza touch restano **liberi
 `DEC-028`: modulo breakout commerciale (es. "SHT40 modulo sensore di umidità e temperatura I²C, 3V 5V, nero, con pin") collegato a J3.
 
 - **Alimentazione a 3,3 V** dal pin 2 di J3 (`3V3_EXT`). L'SHT40 accetta 1,08–3,6 V (datasheet V7.3).
-- **Cavo**: JST-SH 4 poli lato scheda (1 GND, 2 3V3, 3 SDA, 4 SCL) → jumper femmina 2,54 mm sui pin del modulo. L'**ordine dei pin del modulo va letto sulla sua serigrafia** (`OPEN-002`).
+- **Cavo**: JST PH 4 poli lato scheda (J3, `DEC-043`: 1 GND, 2 3V3, 3 SDA, 4 SCL) → jumper femmina 2,54 mm sui pin del modulo. L'**ordine dei pin del modulo va letto sulla sua serigrafia** (`OPEN-002`).
 - **LED e regolatore del breakout (P1-09)**: controllare sul modulo ricevuto se c'è un LED di accensione (da rimuovere o disattivare) e un regolatore; annotare la corrente a riposo misurata. Vedi `BOM-002`.
 - **Pull-up**: quelli del modulo restano in parallelo a R19/R20 (4,7 kΩ); con 10 kΩ sia sul modulo SHT40 sia sul DS3231 si arriva a circa 2,4 kΩ, entro i limiti I²C a 3,3 V.
 
@@ -97,7 +97,8 @@ Il modulo espone 15 GPIO (IO0–IO10, IO18–IO21). Senza touch restano **liberi
 | Cavo display | Cavetto Dupont femmina-femmina 7 fili | CAND | Lunghezza dal CAD; prova SPI sul cavo reale (`OPEN-021`) |
 | RTC con tampone | **Adafruit DS3231 Precision RTC – STEMMA QT** (5188) + pila **CR1220** | CONF (`DEC-024`) | I²C 0x68; pull-up 10 kΩ verso Vin; LED "ON" disattivabile tagliando il ponticello |
 | Sensore T/RH | Modulo breakout SHT40 | CAND (`DEC-028`) | §4 |
-| Cavetti | JST-SH 4 poli Qwiic (RTC), JST-SH 4 poli → jumper femmina (SHT40), JST-SH 2 poli (pulsante) | CAND | Lunghezze dal CAD |
+| Connettori J2–J5 | Header 1×7 2,54 mm a foro passante, 3 × JST PH B4B-PH-K-S | CONF (`DEC-043`) | Saldati a mano dal proprietario dopo l'assemblaggio JLC; nella BOM completa con `Montaggio` = "a mano, parte del proprietario" |
+| Cavetti | JST PH 4 poli → JST-SH 4 poli o fili (RTC), JST PH 4 poli → jumper femmina (SHT40), JST PH con i pin 1–2 (pulsante) | CAND | Lunghezze dal CAD; spina PHR-4 con contatti a crimpare o cavetti PH pronti (`BOM-007`) |
 
 ### 5.1 Perché l'RTC non è sulla scheda
 
@@ -108,4 +109,4 @@ Il candidato iniziale **RV-3028-C7** risulta a **stock 0** su LCSC/JLC (C3019759
 - **Modulo display senza datasheet**: pinout dalla foto dell'inserzione, corrente della retroilluminazione ignota: verifica su banco prima del montaggio finale.
 - **Termica dell'LDO**: SOT-23-5 a 231 °C/W (JEDEC); con ~80 mA stimati la dissipazione è ~0,14 W (+14…32 °C). Da misurare a scocca chiusa (`VT-PWR-002`).
 - **ESP32-C3 H4X**: stock limitato (~2 800 pezzi) e richiede ESP-IDF recente; ricontrollare la disponibilità all'ordine.
-- **Header SMD a 90°**: nel 2026-11-08 è stato recuperato il disegno Hanxia rev B e sono stati completati courtyard/F.Fab senza cambiare le piazzole. Queste restano 1,02 × 3,16 mm contro 1,02 × 3,20 mm del disegno: confronto DFM e prova del campione ancora necessari. Vedi [nota delle correzioni](revisioni/2026-11-08/correzioni/README.md).
+- **Connettori a foro passante (`DEC-043`)**: J2–J5 si saldano a mano dopo l'assemblaggio JLC; i piedini sporgono sotto la scheda (luce da prevedere, `OPEN-028`). Il rischio dell'header SMD Hanxia (piazzole 1,02 × 3,16 mm contro 3,20 mm del disegno) è superato.

@@ -2,6 +2,7 @@
 
 Uso:  python hardware/scripts/esporta.py   (richiede kicad-cli di KiCad 10)
 """
+import csv
 import os
 import subprocess
 import sys
@@ -29,14 +30,35 @@ for p in PROJECTS:
     print(p, "ERC:", (r.stdout.strip().splitlines() or ["?"])[0])
     ok &= r.returncode == 0
     run(["sch", "export", "pdf", "-o", os.path.join(d, p + ".pdf"), sch])
-    run(["sch", "export", "bom", "-o", os.path.join(d, p + "-bom-jlcpcb.csv"),
-         "--fields", "Value,Reference,Footprint,LCSC,${QUANTITY}",
-         "--labels", "Comment,Designator,Footprint,LCSC Part #,Qty",
-         "--group-by", "Value,Footprint,LCSC", "--ref-range-delimiter", "", "--exclude-dnp", sch])
-    run(["sch", "export", "bom", "-o", os.path.join(d, p + "-bom-completa.csv"),
-         "--fields", "Reference,Value,Footprint,LCSC,${QUANTITY},${DNP},Description",
-         "--labels", "Riferimenti,Valore,Footprint,LCSC,Qta,DNP,Note",
-         "--group-by", "Value,Footprint,LCSC,${DNP}", sch])
+    # BOM JLC: senza le parti saldate a mano dal proprietario (campo Montaggio, DEC-043)
+    bom_jlc = os.path.join(d, p + "-bom-jlcpcb.csv")
+    run(["sch", "export", "bom", "-o", bom_jlc,
+         "--fields", "Value,Reference,Footprint,LCSC,${QUANTITY},Montaggio",
+         "--labels", "Comment,Designator,Footprint,LCSC Part #,Qty,Montaggio",
+         "--group-by", "Value,Footprint,LCSC,Montaggio", "--ref-range-delimiter", "", "--exclude-dnp", sch])
+    rows = list(csv.reader(open(bom_jlc, encoding="utf-8")))
+    a_mano = [r_ for r_ in rows[1:] if r_[5]]
+    jlc = [r_[:5] for r_ in rows[1:] if not r_[5]]
+    senza_lcsc = [r_[1] for r_ in jlc if not r_[3]]
+    if senza_lcsc:
+        print("BOM JLC: parti senza codice LCSC e senza campo Montaggio:", senza_lcsc)
+        sys.exit(1)
+    with open(bom_jlc, "w", encoding="utf-8", newline="") as f:
+        csv.writer(f, quoting=csv.QUOTE_ALL).writerows([rows[0][:5]] + jlc)
+    print("BOM JLC:", len(jlc), "righe; escluse (a mano):", ",".join(r_[1] for r_ in a_mano) or "nessuna")
+    designatori_jlc = {x for r_ in jlc for x in r_[1].split(",")}
+    designatori_a_mano = {x for r_ in a_mano for x in r_[1].split(",")}
+    # BOM completa: tutte le parti, con chi le monta (JLC oppure a mano)
+    bom_all = os.path.join(d, p + "-bom-completa.csv")
+    run(["sch", "export", "bom", "-o", bom_all,
+         "--fields", "Reference,Value,Footprint,LCSC,${QUANTITY},${DNP},Montaggio,Description",
+         "--labels", "Riferimenti,Valore,Footprint,LCSC,Qta,DNP,Montaggio,Note",
+         "--group-by", "Value,Footprint,LCSC,${DNP},Montaggio", sch])
+    rows = list(csv.reader(open(bom_all, encoding="utf-8")))
+    for r_ in rows[1:]:
+        r_[6] = r_[6] or "JLC (PCBA)"
+    with open(bom_all, "w", encoding="utf-8", newline="") as f:
+        csv.writer(f, quoting=csv.QUOTE_ALL).writerows(rows)
 
 if not ok:
     print("ERC con violazioni: esportazioni del PCB interrotte, vedi erc.rpt")
@@ -74,9 +96,14 @@ if os.path.exists(pcb):
     tmp = os.path.join(d, "pos_tmp.csv")
     run(["pcb", "export", "pos", "--format", "csv", "--units", "mm", "--side", "front", "--exclude-dnp",
          "--use-drill-file-origin", "-o", tmp, pcb])
-    import csv
     rows = list(csv.DictReader(open(tmp, encoding="utf-8")))
     os.remove(tmp)
+    # coerenza BOM JLC <-> CPL: le parti a mano (attributo "escluso dai file di posizionamento") non vanno a JLC
+    cpl_refs = {r_["Ref"] for r_ in rows}
+    if cpl_refs != designatori_jlc or cpl_refs & designatori_a_mano:
+        print("CPL e BOM JLC non coerenti: solo CPL", sorted(cpl_refs - designatori_jlc),
+              "solo BOM", sorted(designatori_jlc - cpl_refs), "a mano nella CPL", sorted(cpl_refs & designatori_a_mano))
+        sys.exit(1)
     with open(os.path.join(d, "policlock-main-cpl-jlcpcb.csv"), "w", encoding="utf-8", newline="") as f:
         w = csv.writer(f)
         w.writerow(["Designator", "Mid X", "Mid Y", "Layer", "Rotation"])
