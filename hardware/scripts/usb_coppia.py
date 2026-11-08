@@ -66,8 +66,11 @@ def traccia(board, fps, OX, OY):
     b7x, P, _ = _pad(fps, "J1", "B7")
     b6x, _, _ = _pad(fps, "J1", "B6")
     a = (b7x + b6x) / 2
-    m26x, Q, _ = _pad(fps, "U3", "26")
-    m27x, _, _ = _pad(fps, "U3", "27")
+    # pin USB del modulo: 26/27 sull'ESP32-C3-MINI-1, 13/14 sull'ESP32-C3-WROOM-02 (DEC-044)
+    numeri = {p.GetNumber() for p in fps["U3"].Pads()}
+    pin_dn, pin_dp = ("26", "27") if "26" in numeri else ("13", "14")
+    m26x, Q, _ = _pad(fps, "U3", pin_dn)
+    m27x, _, _ = _pad(fps, "U3", pin_dp)
     assert abs((m26x + m27x) / 2 - a) < 0.03, "connettore e pin USB del modulo non allineati"
     u1 = {n: _pad(fps, "U1", n)[:2] for n in "123456"}
     r4 = {n: _pad(fps, "R4", n)[:2] for n in "12"}

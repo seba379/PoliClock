@@ -1,6 +1,6 @@
 # 08 — BOM preliminare e procurement
 
-**Versione:** 0.8 · **Stato:** candidati, schema e PCB rev 0.2 con codici LCSC, nessun acquisto confermato · **Data:** 2026-11-08
+**Versione:** 0.9 · **Stato:** candidati, schema e PCB rev 0.2 con codici LCSC, nessun acquisto confermato · **Data:** 2026-11-08
 
 ## 1. Regole
 
@@ -89,11 +89,11 @@ Ipotesi: **un solo PCB custom** (dopo `DEC-034`), 5 PCB prodotti e **2 assemblat
 | Voce | Base di calcolo | Stima |
 |---|---|---:|
 | PCB 2 strati 50 × 40 mm, 5 pezzi | Tariffa promozionale tipica per schede piccole, da verificare | ~2–5 $ |
-| Setup assemblaggio Economic | Tariffa JLC | 8,18 $ |
+| Setup assemblaggio Economic | Tariffa JLC. Possibile perché il modulo ESP32-C3-WROOM-02-N4 (C2934560) è "Economic and Standard" senza radiografia (`DEC-044`); con l'H4X ("Standard Only") sarebbe servito lo Standard da 25,56 $ (pagina prezzi JLC aggiornata il 2026-10-22), circa 17 $ in più, più i bordi tecnici | 8,18 $ |
 | Stencil | Tariffa JLC | 1,53 $ |
-| Parti Extended | 5 codici distinti × 3,07 $ (C41349510, C165948, C2977522, C7519, C404027); con `DEC-043` spariscono le Extended di J2 (C46061680), J3/J4 (C160404) e J5 (C160402), −9,21 $ | 15,35 $ |
+| Parti Extended | 5 codici distinti × 3,07 $ (C2934560, C165948, C2977522, C7519, C404027; il modulo WROOM-02 sostituisce C41349510); con `DEC-043` spariscono le Extended di J2 (C46061680), J3/J4 (C160404) e J5 (C160402), −9,21 $ | 15,35 $ |
 | Saldature | ~117 giunti per scheda (senza tasti, `DEC-039`, e senza i 23 giunti di J2–J5, `DEC-043`) × 2 × (0,016 + 0,0016) $ | ~4 $ |
-| Componenti per 2 schede | Somma dalla BOM JLC (`costi` del 2026-11-07); il modulo ESP32 pesa 6,21 $; senza i tasti RESET/BOOT e senza J2–J5 (−1,38 $) | ~7,9 $ |
+| Componenti per 2 schede | Somma dalla BOM JLC (`costi` del 2026-11-07); il modulo ESP32 pesa circa 6,6 $ (WROOM-02 ~3,31 $ l'uno contro 3,10 $ dell'H4X); senza i tasti RESET/BOOT e senza J2–J5 (−1,38 $); C11 10 nF (C57112, Basic) e R16 da 10 kΩ (FIN-003) costano centesimi | ~8,3 $ |
 | **Subtotale JLC** | | **~39–42 $** |
 | Spedizione verso l'Italia e IVA | Dipendono dal corriere scelto al checkout | da aggiungere |
 

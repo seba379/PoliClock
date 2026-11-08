@@ -1156,6 +1156,46 @@
 	)
 	(wire
 		(pts
+			(xy 128.27 171.45) (xy 128.27 168.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5fa3c9e6-7552-43f9-8e13-c2cdf803ea8b")
+	)
+	(wire
+		(pts
+			(xy 128.27 179.07) (xy 128.27 181.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c991ae92-5df9-4441-827d-3e94258b068e")
+	)
+	(label "3V3_DISP"
+		(at 128.27 168.91 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "d08eb899-6606-4faa-addd-4bafbdf3330c")
+	)
+	(label "DISP_G"
+		(at 128.27 181.61 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "a64c364e-01cb-473e-b8b4-f6886d23d833")
+	)
+	(wire
+		(pts
 			(xy 165.1 171.45) (xy 165.1 168.91)
 		)
 		(stroke
@@ -1671,6 +1711,98 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 128.27 175.26 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "f38b10c8-43df-4ee3-9ccf-39a63add15c8")
+		(property "Reference" "C11"
+			(at 130.81 173.99 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10nF"
+			(at 130.81 176.53 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 129.54 179.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 128.27 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Gate-drain di Q1: rampa di accensione del display (FIN-003)"
+			(at 128.27 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C57112"
+			(at 128.27 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "2d56252d-81eb-4d89-be8c-0122004fbdae")
+		)
+		(pin "2"
+			(uuid "75359813-c82e-473e-bd22-3bb03556312a")
+		)
+		(instances
+			(project "policlock-main"
+				(path "/8f25dc1f-4709-513e-82c3-d067157683da/20ad8c36-b999-56cb-b9d3-b8060cbfc155"
+					(reference "C11")
+					(unit 1)
 				)
 			)
 		)
@@ -2232,7 +2364,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "10k"
 			(at 80.01 187.96 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2265,7 +2397,7 @@
 				)
 			)
 		)
-		(property "Description" "Resistenza di gate"
+		(property "Description" "Resistenza di gate 10 k: con C11 rampa di accensione lenta (FIN-003)"
 			(at 82.55 184.15 90)
 			(hide yes)
 			(show_name no)
@@ -2276,7 +2408,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C21190"
+		(property "LCSC" "C25804"
 			(at 82.55 184.15 90)
 			(hide yes)
 			(show_name no)

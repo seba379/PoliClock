@@ -28,7 +28,7 @@ La modalità scelta è **ibrida**: quadrante normalmente attenuato ma leggibile;
 
 ## Architettura candidata, NON ancora congelata
 
-- **Scheda principale** rettangolare (busto/base preferito, posizione da confermare con il CAD): modulo **ESP32-C3-MINI-1**, protezioni USB, regolatore 3,3 V, USB-C, connettori.
+- **Scheda principale** rettangolare (busto/base preferito, posizione da confermare con il CAD): modulo **ESP32-C3-WROOM-02-N4** (`DEC-044`), protezioni USB, regolatore 3,3 V, USB-C, connettori.
 - **RTC esterno** su modulo Adafruit DS3231 STEMMA QT con pila CR1220, collegato via cavo: l'ora resta salva a cavo scollegato.
 - **Modulo display** GC9A01 nella testa, collegato alla scheda principale con un cavetto a 7 fili attraverso il collo.
 - Sensore T/RH: **Sensirion SHT40** su modulo breakout commerciale, in vano ventilato, collegato con 4 fili.
