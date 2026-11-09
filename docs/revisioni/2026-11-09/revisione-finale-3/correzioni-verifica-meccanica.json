@@ -1,0 +1,68 @@
+{
+  "kicad": "10.0.6",
+  "margine_minimo_mm": 2.5,
+  "eccezioni_dfm_aperte": {
+    "J1": "USB-C affacciata al bordo inferiore: accettazione DFM aperta (unica eccezione, DEC-045)"
+  },
+  "margini_corpi_mm": {
+    "C9": 17.7,
+    "C5": 12.0,
+    "F1": 9.75,
+    "C1": 12.45,
+    "R3": 15.4775,
+    "R21": 9.1,
+    "U3": 2.99,
+    "R16": 12.0,
+    "R23": 6.5375,
+    "R19": 12.5,
+    "R4": 16.645,
+    "R9": 18.8,
+    "C8": 12.6,
+    "R8": 15.4,
+    "R6": 8.6,
+    "C6": 8.6,
+    "R20": 12.5875,
+    "R22": 10.2875,
+    "C2": 6.65,
+    "R5": 10.0375,
+    "C7": 12.0,
+    "R15": 8.6,
+    "U1": 12.825,
+    "R17": 18.8,
+    "C10": 18.8,
+    "R2": 10.05,
+    "Q1": 16.45,
+    "C3": 9.3,
+    "R7": 15.4,
+    "C4": 7.05,
+    "U2": 5.05,
+    "R1": 10.05,
+    "C11": 15.4
+  },
+  "montaggio_a_mano": [
+    "J4",
+    "J5",
+    "J2",
+    "J3"
+  ],
+  "copertura_courtyard": {
+    "J4": {
+      "ok": true,
+      "elementi_fuori": []
+    },
+    "J5": {
+      "ok": true,
+      "elementi_fuori": []
+    },
+    "J2": {
+      "ok": true,
+      "elementi_fuori": []
+    },
+    "J3": {
+      "ok": true,
+      "elementi_fuori": []
+    }
+  },
+  "errori": [],
+  "esito": "PASS"
+}

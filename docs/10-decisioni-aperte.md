@@ -389,3 +389,4 @@ Nessun Gerber.
 ## 18. Terza revisione finale pre-Gerber (2026-11-09)
 
 - [Terza revisione finale pre-Gerber](revisioni/2026-11-09/revisione-finale-3/README.md) su `edcef25`: esito **PRONTO CON RISERVE**, nessun P1; P2 R3-001 (DISP_BUSY chiude in un'isola il piano GND del retro sotto U3 e, con la EPAD senza vie di `DEC-046`, il modulo arriva al piano principale del retro solo attraverso il rame superiore), da correggere o accettare prima dei Gerber; P3 R3-002…R3-005.
+- [Verifica delle correzioni](revisioni/2026-11-09/revisione-finale-3/verifica-correzioni.md) su `e365648` (merge `30114c1`): esito **PRONTO PER GERBER**; R3-001, R3-003, R3-004 e R3-005 chiusi (8 vie GND, isola del retro sotto U3 con 6 vie, isola di U3.9 con 2), R3-002 aperto e accettato per la V1; ERC 0, DRC 0/0/0, controllo meccanico PASS. I Gerber si generano dopo l'autorizzazione esplicita del proprietario.
