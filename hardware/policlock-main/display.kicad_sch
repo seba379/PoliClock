@@ -306,7 +306,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "PoliClock:PinHeader_1x07_P2.54_THT"
+		(symbol "PoliClock:PinHeader_1x08_P2.54_THT"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -322,28 +322,17 @@
 					)
 				)
 			)
-			(property "Value" "Header 1x7 2,54 mm THT"
-				(at 0 -12.7 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x07_P2.54mm_Horizontal"
+			(property "Value" "Header 1x8 2,54 mm THT"
 				(at 0 -15.24 0)
 				(show_name no)
 				(do_not_autoplace no)
-				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
 				)
 			)
-			(property "Datasheet" ""
+			(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x08_P2.54mm_Horizontal"
 				(at 0 -17.78 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -354,7 +343,18 @@
 					)
 				)
 			)
-			(property "Description" "Header maschio 1x7 passo 2,54 mm a foro passante (a 90 gradi o diritto)"
+			(property "Datasheet" ""
+				(at 0 -20.32 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Header maschio 1x8 passo 2,54 mm a foro passante (a 90 gradi o diritto)"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -366,17 +366,6 @@
 				)
 			)
 			(property "Manufacturer" "generico"
-				(at 0 -20.32 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "MPN" ""
 				(at 0 -22.86 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -387,10 +376,21 @@
 					)
 				)
 			)
-			(symbol "PinHeader_1x07_P2.54_THT_0_1"
+			(property "MPN" ""
+				(at 0 -25.4 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "PinHeader_1x08_P2.54_THT_0_1"
 				(rectangle
 					(start -1.27 10.16)
-					(end 3.81 -10.16)
+					(end 3.81 -12.7)
 					(stroke
 						(width 0)
 						(type default)
@@ -529,6 +529,24 @@
 						)
 					)
 					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -3.81 -10.16 0)
+					(length 2.54)
+					(name "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1143,7 +1161,7 @@
 		)
 		(uuid "7432227c-7b6f-5bdf-83fe-96f4e44a776f")
 	)
-	(text "J2 -> modulo (serigrafia del modulo): 1 VCC, 2 GND, 3 SCL, 4 SDA, 5 DC, 6 CS, 7 RST.\nOrdine da verificare sul modulo ricevuto prima del collegamento.\nIl modulo non ha pin BLK: la retroilluminazione segue l'alimentazione VCC."
+	(text "J2 -> modulo (serigrafia del modulo): 1 VCC, 2 GND, 3 SCL, 4 SDA, 5 DC, 6 CS, 7 RST,\n8 BUSY (solo e-paper, DEC-049; con il GC9A01 a 7 pin resta libero).\nOrdine da verificare sul modulo ricevuto prima del collegamento.\nIl modulo non ha pin BLK: la retroilluminazione segue l'alimentazione VCC.\nBUSY: uscita del display, ingresso IO1 con pull-down interno (firmware); R23 1 k limita\nla corrente verso un modulo spento da Q1 o in caso di conflitto."
 		(exclude_from_sim no)
 		(at 250.19 134.62 0)
 		(effects
@@ -1808,7 +1826,7 @@
 		)
 	)
 	(symbol
-		(lib_id "PoliClock:PinHeader_1x07_P2.54_THT")
+		(lib_id "PoliClock:PinHeader_1x08_P2.54_THT")
 		(at 299.72 95.25 0)
 		(unit 1)
 		(body_style 1)
@@ -1828,19 +1846,8 @@
 				)
 			)
 		)
-		(property "Value" "Header 1x7 2,54 mm THT"
-			(at 299.72 107.95 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x07_P2.54mm_Horizontal"
+		(property "Value" "Header 1x8 2,54 mm THT"
 			(at 299.72 110.49 0)
-			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -1849,7 +1856,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x08_P2.54mm_Horizontal"
 			(at 299.72 113.03 0)
 			(hide yes)
 			(show_name no)
@@ -1860,7 +1867,18 @@
 				)
 			)
 		)
-		(property "Description" "Header maschio 1x7 2,54 mm a foro passante, a 90 gradi (va bene anche diritto): cavo Dupont 7 fili verso il modulo"
+		(property "Datasheet" ""
+			(at 299.72 115.57 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Header maschio 1x8 2,54 mm a foro passante, a 90 gradi (va bene anche diritto): cavo Dupont 7 fili sui pin 1-7 verso il modulo GC9A01; pin 8 BUSY per un eventuale e-paper (DEC-049)"
 			(at 299.72 95.25 0)
 			(hide yes)
 			(show_name no)
@@ -1902,6 +1920,9 @@
 		)
 		(pin "7"
 			(uuid "2cf6b077-7907-52d2-b75e-0e7447b76ec7")
+		)
+		(pin "8"
+			(uuid "49ab20f8-00a9-42d5-8fa6-c54c3d1e5600")
 		)
 		(instances
 			(project "policlock-main"
@@ -3029,6 +3050,171 @@
 			(project "policlock-main"
 				(path "/8f25dc1f-4709-513e-82c3-d067157683da/20ad8c36-b999-56cb-b9d3-b8060cbfc155"
 					(reference "#PWR050")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 295.91 105.41) (xy 288.29 105.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b97f739d-25d0-4405-b35e-b28f98376438")
+	)
+	(label "DISP_BUSY_C"
+		(at 288.29 105.41 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "a074864b-fd80-4481-9536-63275904a4b2")
+	)
+	(wire
+		(pts
+			(xy 53.34 80.01) (xy 55.88 80.01)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9c7044e1-e6c3-45ad-9441-f411740b57fb")
+	)
+	(global_label "DISP_BUSY"
+		(shape input)
+		(at 53.34 80.01 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "1b459d9a-862c-47b3-ad83-5dd8317d88e4")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 53.34 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 63.5 80.01) (xy 66.04 80.01)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3cbfb505-faab-41d5-a6a6-9dfd77e604a2")
+	)
+	(label "DISP_BUSY_C"
+		(at 66.04 80.01 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "dabb1b4a-6d7a-4294-9dbc-6c308fbb9928")
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 59.69 80.01 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "a6460648-ab63-4ffc-a549-48afd6b3a670")
+		(property "Reference" "R23"
+			(at 60.706 77.47 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1k"
+			(at 61.722 82.55 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 59.69 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 59.69 80.01 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Serie su BUSY (e-paper, DEC-049): limita la corrente con il modulo spento o un conflitto"
+			(at 59.69 80.01 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C21190"
+			(at 59.69 80.01 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "2f4bf041-c53c-4bf5-991d-4e5c31afaebb")
+		)
+		(pin "2"
+			(uuid "034d5a7d-4031-4d31-ae6f-3cc5b073d164")
+		)
+		(instances
+			(project "policlock-main"
+				(path "/8f25dc1f-4709-513e-82c3-d067157683da/20ad8c36-b999-56cb-b9d3-b8060cbfc155"
+					(reference "R23")
 					(unit 1)
 				)
 			)

@@ -59,6 +59,8 @@ Fonti consultate durante la revisione v0.2, mantenute come riferimento storico e
 42. [JLCPCB — ESP32-C3-WROOM-02-N4, C2934560](https://jlcpcb.com/partdetail/C2934560) e [0603B103K500NT 10 nF, C57112](https://jlcpcb.com/partdetail/C57112) — consultate il 2026-11-08: PCBA "Economic and Standard"; C57112 Basic.
 43. [JLCPCB — Gerber e forature in KiCad 8](https://jlcpcb.com/help/article/how-to-generate-gerber-and-drill-files-in-kicad-8) — aggiornata il 2026-09-09, letta il 2026-11-08: strati, estensioni Protel, maschera sottratta dalla serigrafia; forature in mm, zeri decimali, origine assoluta, fori ovali "alternate" (FIN-006).
 44. ESP-IDF v6.0 e v6.1 installati in `C:\esp`: `components/esp_hw_support/port/esp32c3/Kconfig.hw_support`, revisione minima predefinita v0.3, v0.4 e v1.1 supportate (`DEC-044`).
+45. [Espressif — ESP32-C3 Series datasheet v2.4](https://documentation.espressif.com/esp32-c3_datasheet_en.pdf) (2026-05-06), letto il 2026-11-09 per `DEC-049`: tab. 2-1 (GPIO0/GPIO1 senza IE, WPU o WPD al reset), tab. 2-2 (glitch all'accensione), tab. 2-4 e 2-6 (IO_MUX e funzioni analogiche XTAL_32K e ADC1), §2.3.3–2.3.4 e tab. 2-7 (restrizioni, GPIO0/GPIO1 "Priority 2"), §3 (strapping GPIO2/8/9), tab. 5-4 (VIH/VIL, pull 45 kΩ). Con il datasheet WROOM-02 v1.7 (fonte 40), fig. 8-1 e 9-1: nel modulo solo il quarzo da 40 MHz, quello da 32,768 kHz è un'opzione esterna non montata.
+46. [JLCPCB — 0603WAF1001T5E 1 kΩ, C21190](https://jlcpcb.com/partdetail/C21190) — consultata il 2026-11-09: Basic, PCBA "Economic and Standard" (R23, `DEC-049`).
 
 Da aggiungere al momento della scelta: datasheet del pannello GC9A01 acquistato.
 

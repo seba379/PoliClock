@@ -1,6 +1,6 @@
 # 04 — Specifiche firmware
 
-**Versione:** 0.7 · **Stato:** architettura proposta, codice non ancora implementato · **Data:** 2026-11-08
+**Versione:** 0.7 · **Stato:** architettura proposta, codice non ancora implementato · **Data:** 2026-11-09
 
 ## 1. Tecnologia
 
@@ -78,6 +78,7 @@ La retroilluminazione del modulo display a 7 pin **non è regolabile**: è sempr
 1. *Spegnimento* (`→ NIGHT`): fermare le scritture SPI; portare a livello **basso** LCD_SCLK, LCD_MOSI, LCD_DC, LCD_CS e LCD_RST; poi `DISP_EN_N` alto (Q1 aperto). Ordine pensato per non alimentare il modulo attraverso i pin di segnale (alimentazione parassita).
 2. *Accensione* (`→ NIGHT_PEEK` o `→ DIM`): `DISP_EN_N` basso; attesa della stabilizzazione di 3V3_DISP, **almeno 2 ms** (la rampa di Q1 con R16 10 kΩ / C11 10 nF dura circa 0,25 ms più il ritardo iniziale; valore definitivo da misurare in M1, `VT-PCB-002`); impulso di reset su LCD_RST; inizializzazione completa del GC9A01; disegno del quadrante; solo allora la pagina è visibile.
 3. Durante reset, boot e download dalla ROM il firmware non controlla i pin: R17 tiene il modulo spento, ma i livelli dei segnali in quella fase (per esempio il pull-up di reset dei pin JTAG) vanno misurati per escludere un'alimentazione parassita (rilievo della revisione del 2026-11-08, `VT-PWR-003`).
+4. *Pin BUSY* (`DEC-049`): IO1 (`DISP_BUSY`, J2 pin 8 attraverso R23 1 kΩ) si configura come **ingresso con pull-down interno** (`gpio_config`: `GPIO_MODE_INPUT`, `pull_down_en`, nessun pull-up), mai come uscita. Con il GC9A01 il pin non è collegato e **si ignora**: legge sempre 0. Con un eventuale e-paper il driver attende la fine di BUSY con un **timeout**; la polarità dipende dal controller (in molti alto = occupato). A modulo spento non si legge. Prima della configurazione, in reset e boot, il pin flotta con l'ingresso disabilitato (datasheet ESP32-C3 v2.4, tab. 2-1): nessun effetto sul display.
 - Nessuno stato di spegnimento controllato: la V1 non ha batteria (`DEC-023`). Allo scollegamento del cavo il sistema si spegne; l'RTC resta alimentato dal tampone.
 
 La **pressione lunga** apre il menu di impostazione (ora, data, fascia notte), vedi [UI](05-interfaccia-utente.md) e `OPEN-015`.

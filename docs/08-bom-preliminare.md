@@ -1,6 +1,6 @@
 # 08 — BOM preliminare e procurement
 
-**Versione:** 0.9 · **Stato:** candidati, schema e PCB rev 0.2 con codici LCSC, nessun acquisto confermato · **Data:** 2026-11-08
+**Versione:** 0.9 · **Stato:** candidati, schema e PCB rev 0.2 con codici LCSC, nessun acquisto confermato · **Data:** 2026-11-09
 
 ## 1. Regole
 
@@ -39,11 +39,11 @@ Moduli commerciali economici per validare architettura, consumi e firmware **pri
 | `BOM-008` | 1 set | Gusci/statuetta 3D (PLA prototipo, PETG da valutare) | CAND | CAD e quote reali; prove di stampa |
 | `BOM-009` | 1 set | Viti, inserti, gommini antiscivolo, **zavorra** per la base | TBD | Stabilità con cavo collegato |
 | `BOM-010` | 1 | **Alimentatore USB 5 V** di qualità (obbligatorio: l'orologio funziona solo collegato) | TBD | Corrente adeguata all'assorbimento misurato |
-| `BOM-011` | 1 | **Cavetto display** Dupont femmina-femmina 7 fili dritto (pin 1 = VCC su J2), lunghezza dal CAD; va bene anche con J2 a foro passante (`DEC-043`), sia a 90° sia diritto | CAND | Prova `VT-PCB-003`, raggio di curvatura nel collo |
+| `BOM-011` | 1 | **Cavetto display** Dupont femmina-femmina 7 fili dritto sui pin 1–7 di J2 (pin 1 = VCC), lunghezza dal CAD. J2 è un header 1×8 dal `DEC-049`: il pin 8 (BUSY) serve solo a un eventuale e-paper, che userebbe 8 fili; va bene anche con J2 a foro passante (`DEC-043`), sia a 90° sia diritto | CAND | Prova `VT-PCB-003`, raggio di curvatura nel collo |
 | `BOM-012` | 1 | **Cavo USB-C** di lunghezza e colore adatti alla scrivania (es. 1–2 m, colore coordinato) | TBD | Estetica, flessibilità, stabilità della statuetta |
 | `BOM-013` | 1 | **Adafruit DS3231 Precision RTC – STEMMA QT** (prodotto 5188) + pila **CR1220**; LED "ON" disattivato tagliando il ponticello. Verifica all'arrivo come per `BOM-002` (LED, corrente) | CONF (`DEC-024`) | Alloggiamento accessibile per la pila (`OPEN-026`), deriva misurata |
 
-| `BOM-014` | 1 set | **Connettori saldati a mano** (`DEC-043`): 3 × **JST PH B4B-PH-K-S** (J3 SHT40, J4 RTC, J5 pulsante) e 1 × header maschio **1×7 2,54 mm** a 90° (J2; negli stessi fori va bene anche diritto). Nella BOM completa con `Montaggio` = "a mano, parte del proprietario", fuori da BOM JLC e CPL. Dopo l'assemblaggio si saldano a mano anche le 4 linguette del guscio della USB-C J1 (`DEC-047`) | CONF (scorta del proprietario) | Saldatura dopo l'assemblaggio JLC; lunghezza dei piedini sotto la scheda (`OPEN-028`) |
+| `BOM-014` | 1 set | **Connettori saldati a mano** (`DEC-043`): 3 × **JST PH B4B-PH-K-S** (J3 SHT40, J4 RTC, J5 pulsante) e 1 × header maschio **1×8 2,54 mm** a 90° (J2, `DEC-049`: pin 8 = BUSY; negli stessi fori va bene anche diritto; da una striscia divisibile se in scorta c'è solo il 1×7). Nella BOM completa con `Montaggio` = "a mano, parte del proprietario", fuori da BOM JLC e CPL. Dopo l'assemblaggio si saldano a mano anche le 4 linguette del guscio della USB-C J1 (`DEC-047`) | CONF (scorta del proprietario) | Saldatura dopo l'assemblaggio JLC; lunghezza dei piedini sotto la scheda (`OPEN-028`) |
 
 (`BOM-003`, batteria LiPo, rimossa con `DEC-023`.)
 
@@ -92,8 +92,8 @@ Ipotesi: **un solo PCB custom** (dopo `DEC-034`), 5 PCB prodotti e **2 assemblat
 | Setup assemblaggio Economic | Tariffa JLC. Possibile perché il modulo ESP32-C3-WROOM-02-N4 (C2934560) è "Economic and Standard" senza radiografia (`DEC-044`); con l'H4X ("Standard Only") sarebbe servito lo Standard da 25,56 $ (pagina prezzi JLC aggiornata il 2026-10-22), circa 17 $ in più, più i bordi tecnici | 8,18 $ |
 | Stencil | Tariffa JLC | 1,53 $ |
 | Parti Extended | 5 codici distinti × 3,07 $ (C2934560, C165948, C2977522, C7519, C404027; il modulo WROOM-02 sostituisce C41349510); con `DEC-043` spariscono le Extended di J2 (C46061680), J3/J4 (C160404) e J5 (C160402), −9,21 $ | 15,35 $ |
-| Saldature | ~117 giunti per scheda (senza tasti, `DEC-039`, e senza i 23 giunti di J2–J5, `DEC-043`) × 2 × (0,016 + 0,0016) $ | ~4 $ |
-| Componenti per 2 schede | Somma dalla BOM JLC (`costi` del 2026-11-07); il modulo ESP32 pesa circa 6,6 $ (WROOM-02 ~3,31 $ l'uno contro 3,10 $ dell'H4X); senza i tasti RESET/BOOT e senza J2–J5 (−1,38 $); C11 10 nF (C57112, Basic) e R16 da 10 kΩ (FIN-003) costano centesimi | ~8,3 $ |
+| Saldature | ~119 giunti per scheda (2 di R23, `DEC-049`; senza tasti, `DEC-039`, e senza i 24 giunti di J2–J5, `DEC-043`) × 2 × (0,016 + 0,0016) $ | ~4 $ |
+| Componenti per 2 schede | Somma dalla BOM JLC (`costi` del 2026-11-07); il modulo ESP32 pesa circa 6,6 $ (WROOM-02 ~3,31 $ l'uno contro 3,10 $ dell'H4X); senza i tasti RESET/BOOT e senza J2–J5 (−1,38 $); C11 10 nF (C57112, Basic), R16 da 10 kΩ (FIN-003) e R23 1 kΩ (C21190, Basic, `DEC-049`) costano centesimi | ~8,3 $ |
 | **Subtotale JLC** | | **~39–42 $** |
 | Spedizione verso l'Italia e IVA | Dipendono dal corriere scelto al checkout | da aggiungere |
 

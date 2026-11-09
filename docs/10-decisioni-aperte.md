@@ -1,6 +1,6 @@
 # 10 — Decision log e questioni aperte
 
-**Versione:** 0.9 · **Data:** 2026-11-08
+**Versione:** 0.10 · **Data:** 2026-11-09
 
 ## 1. Decisioni confermate (CONF)
 
@@ -54,6 +54,7 @@ Le decisioni superate restano nel registro per tracciabilità, con lo stato indi
 | `DEC-045` | 2026-11-08 | **Regola JLC dei 2,5 mm corpo-bordo per tutte le parti montate da JLC, unica eccezione J1** (USB-C a filo del bordo inferiore, da far accettare alla DFM di JLC, senza bordo tecnico). Scheda **50,5 × 41,5 mm rettangolare, senza intaglio**: cresce di 0,5 mm a destra e 1,5 mm in alto, angolo in basso a sinistra fisso (J1, H1/H2, coppia USB e origine della CPL invariati). **Antenna di U3 sulla scheda**, verso il bordo destro, con zona vietata su entrambi gli strati (niente rame, piste, vie, riempimenti, piazzole né componenti) sotto l'antenna e 5 mm oltre i suoi lati, come la zona dell'impronta di U3 ricavata dal datasheet. Supera `DEC-036` e la parte "intaglio" di `DEC-031` | Parole del proprietario: "dobbiamo rispettare non arbitrariamente le regole di stampa di JLC PCB [...] per questo prototipo allunga la scheda da quel lato, in modo da farci stare i componenti che mancano, rispettando le regole di JLC". Radio non usata in V1 (`DEC-012`): l'antenna sulla scheda è un compromesso accettato. Margine minimo 2,99 mm (U3); dettagli in [02](02-architettura-hardware.md) §3.2 |
 | `DEC-046` | 2026-11-08 | **EPAD di U3 senza vie**: tolte le 4 vie termiche 0,3/0,7 mm dalla piazzola di massa (pad 19) del WROOM-02, in libreria e sul PCB; la EPAD resta collegata a GND sul rame superiore e mantiene le 9 aperture di pasta | Approvata dal proprietario sulla revisione esterna `PoliClock_report_validazione_rev02_2026-11-08.md` del proprietario (P2-01) e R2-006: le vie aperte nella piazzola possono assorbire stagno al reflow; il datasheet Espressif dice che la saldatura della EPAD non è obbligatoria e con la radio spenta (`DEC-012`) la dissipazione è minima. Script `hardware/scripts/dec046_epad.py` |
 | `DEC-047` | 2026-11-08 | **Linguette del guscio di J1 saldate a mano**: le 4 linguette metallizzate a foro passante della USB-C (C165948, "SMT Assembly" su JLC, senza pasta nei fori) le salda il proprietario dal retro dopo l'assemblaggio, insieme a J2–J5. Nessuna pasta aggiunta nei fori | Approvata dal proprietario sulla revisione esterna `PoliClock_report_validazione_rev02_2026-11-08.md` del proprietario (P1-02): il reflow salda i contatti SMD ma non garantisce le linguette, necessarie per la tenuta meccanica di una presa usata spesso. In alternativa la conferma scritta di JLC nella DFM |
+| `DEC-049` | 2026-11-09 | **Pin BUSY su J2 per un eventuale display e-paper**: J2 diventa un header **1×8** 2,54 mm a foro passante, sempre saldato a mano (`DEC-043`); pin 1–7 invariati (1 VCC … 7 RST), **pin 8 = BUSY** → R23 1 kΩ in serie (C21190, Basic) → **IO1** (pin 17 del WROOM-02), che resta sul punto di test TP10. Nessun pull esterno: il firmware abilita il pull-down interno di IO1; con il GC9A01 a 7 pin il pin 8 resta libero e IO1 legge 0. IO0 resta libero su TP9 | Parole del proprietario: "fai aggiungere il pin BUSY, verificando che IO0 e IO1 effettivamente possano essere configurati come BUSY per SPI". Verifica sui datasheet Espressif in §16: GPIO0 e GPIO1 sono GPIO ordinari (non sono strapping, non hanno glitch all'accensione e il modulo non ha un quarzo da 32 kHz su quei pin); BUSY è un ingresso GPIO e non usa funzioni della periferica SPI. Sul PCB J2 si sposta di 2,54 mm a sinistra, perché il pin 8 a destra cadrebbe sotto U3; il cavetto a 7 fili si infila ancora sui pin 1–7 |
 | `DEC-027` | 2026-11-07 | Pulsante utente: **connettore JST-SH 2 poli** (*JST PH 4 poli sui pin 1–2 dalla `DEC-043`*) per un pulsante remoto **e** tasto tattile sulla scheda in parallelo (tasto su scheda tolto con `DEC-032`) | La posizione nella statuetta (`OPEN-017`) si decide col CAD senza rifare il PCB; il tasto su scheda serve al bring-up |
 
 Le date sopra sono la data della formalizzazione nel documento delle scelte emerse nella conversazione, non un registro notarile degli eventi.
@@ -110,7 +111,7 @@ Le date sopra sono la data della formalizzazione nel documento delle scelte emer
 | `OPEN-016` | P1 | Il modulo display ricevuto ha il pinout atteso (RST, CS, DC, SDA, SCL, GND, VCC) e quanta corrente assorbe la retroilluminazione? | Modulo scelto (`DEC-034`); verifica della serigrafia e misura su banco prima del collegamento a J2 |
 | `OPEN-017` | P1 | Dove posizionare il pulsante nella statuetta? | Proposte estetiche/ergonomiche e CAD |
 | `OPEN-018` | — | ~~Montare il touch nella V1?~~ | Chiusa da `DEC-034` (niente touch) |
-| `OPEN-019` | — | ~~GPIO e connettore per il touch~~ | Chiusa da `DEC-034`; IO0 e IO1 liberi su punti di test |
+| `OPEN-019` | — | ~~GPIO e connettore per il touch~~ | Chiusa da `DEC-034`; IO0 libero su TP9; IO1 legge il BUSY di un eventuale e-paper dal `DEC-049` (TP10) |
 | `OPEN-020` | P0 | Dove va la scheda principale (busto/base o testa)? | Bozza a volumi in Blender con scheda, display e passaggio cavi; decide anche se serve la prolunga USB |
 | `OPEN-021` | P1 | Il SPI del display è stabile sul cavetto Dupont a 7 fili della lunghezza reale? | Prova M1 con cavetto reale e frequenza scelta (10–20 MHz); R8/R9 22 Ω |
 | `OPEN-022` | P1 | Come esce il cavo USB dal sedere senza far ribaltare la statuetta? | Bozza CAD con incavo/guida nella base e zavorra; prova `VT-MEC-003` |
@@ -275,3 +276,59 @@ Il proprietario ha fatto rivedere il progetto da un revisore esterno (`PoliClock
 | P2-08 ingombri dei connettori saldati a mano | Prova 1:1 consigliata prima dei Gerber (FIN-011) e studio volumetrico `OPEN-028` |
 | P2-09 radio ed EMC | Nessun effetto in V1 (`DEC-012`); nota per la V2 nella [roadmap](09-roadmap.md) |
 | P3-01 stato approvativo unico | Lo stato aggiornato è questa sezione. Restano: prova 1:1 dei connettori, approvazione dei Gerber, DFM JLC senza ordine, poi i gate dell'ordine (`OPEN-028`, `OPEN-016`, `OPEN-021`) |
+
+## 16. Pin BUSY su J2 per un eventuale display e-paper (`DEC-049`, 2026-11-09)
+
+Richiesta del proprietario: aggiungere il pin BUSY, dopo aver verificato che IO0 o IO1 possano servire allo scopo. I moduli e-paper hanno VCC, GND, CLK, DIN, CS, DC, RST e BUSY. BUSY è un'uscita del display e un ingresso per l'MCU.
+
+**Verifica di GPIO0 e GPIO1** (datasheet Espressif letti il 2026-11-09: [ESP32-C3 Series v2.4](https://documentation.espressif.com/esp32-c3_datasheet_en.pdf) del 2026-05-06 e [ESP32-C3-WROOM-02 v1.7](https://documentation.espressif.com/esp32-c3-wroom-02_datasheet_en.pdf) del 2026-03-05):
+
+| Controllo | Esito | Fonte |
+|---|---|---|
+| Funzioni del pin | GPIO0 e GPIO1 hanno come funzione IO_MUX F0 il GPIO (I/O/T). Le funzioni analogiche XTAL_32K_P/N e ADC1_CH0/CH1 si attivano solo se configurate | C3 v2.4, tab. 2-4 e 2-6 |
+| Pin di strapping | **No**: gli strapping sono GPIO2, GPIO8 e GPIO9 | C3 v2.4 §3; WROOM-02 v1.7 §4.1, tab. 4-1 |
+| Restrizioni d'uso | "Priority 2": si possono usare senza restrizioni, con qualunque periferica, attraverso la matrice GPIO. Non sono fra i pin JTAG, USB, UART0 o flash | C3 v2.4 §2.3.3, §2.3.4, tab. 2-7 |
+| Stato al reset e dopo il reset | Nessuna impostazione predefinita: niente IE, niente WPU/WPD. Finché il firmware non lo configura, il pin flotta con l'ingresso disabilitato, quindi non consuma e non va in conflitto con un'uscita esterna | C3 v2.4, tab. 2-1 |
+| Glitch all'accensione | **Nessuno**: la tabella elenca solo MTCK, MTDO, GPIO10, U0RXD e GPIO18 | C3 v2.4, tab. 2-2 |
+| Quarzo da 32 kHz | Il modulo ha solo il quarzo da 40 MHz; GPIO0 e GPIO1 vanno diretti ai pin 18 e 17. Il quarzo da 32,768 kHz compare solo nello schema periferico, come opzione esterna non montata ("NC"), e su questa scheda non c'è | WROOM-02 v1.7, tab. 3-1, fig. 8-1 e 9-1 |
+| Funzione SPI | **Non serve**: BUSY non è un segnale della periferica SPI. È un ingresso GPIO che il firmware legge per livello o per interruzione | — |
+| Livelli | VIH ≥ 0,75 × VDD, VIL ≤ 0,25 × VDD; pull-up e pull-down interni da circa 45 kΩ | C3 v2.4, tab. 5-4 |
+
+**Scelta: IO1** (pin 17), come proposto. Per questo uso i due pin sono equivalenti; così IO0 resta libero su TP9 e TP10 resta su IO1 per misurare BUSY.
+
+**Circuito.** J2 pin 8 (`DISP_BUSY_C`) → R23 1 kΩ → `DISP_BUSY` → IO1.
+- **R23 1 kΩ** (C21190 Uni-Royal 0603WAF1001T5E, Basic, "Economic and Standard", [pagina JLC](https://jlcpcb.com/partdetail/C21190) letta il 2026-11-09; il codice non era ancora nella BOM). Limita la corrente in due casi: IO1 configurato per errore come uscita mentre il display pilota BUSY, oppure modulo spento da Q1 con IO1 alto. Al massimo circa 2,7 mA, invece di decine di mA attraverso i diodi di protezione del display.
+- **Livello definito: pull-down interno di IO1**, che il firmware abilita. Con R23 in serie il livello alto letto vale circa 3,3 × 45/46 ≈ 3,2 V, ben sopra VIH (2,5 V).
+- **Perché pull-down e non pull-up**: con il modulo spento o assente non passa corrente verso il display, e con il GC9A01 (pin 8 libero) IO1 legge 0.
+- **Perché nessun pull esterno**: è un componente in meno, e prima della configurazione l'ingresso è disabilitato, quindi non importa che il pin flotti.
+- **Polarità di BUSY**: dipende dal controller e-paper (in molti controller alto = occupato, in altri basso). La gestisce il firmware, sempre con un timeout ([04](04-specifiche-firmware.md) §4).
+
+**PCB.**
+- **J2**: impronta `PinHeader_1x08_P2.54mm_Horizontal`, stessa fila e stessa rotazione. Con il pin 1 fermo, il pin 8 cadrebbe a x = 27,66 mm (coordinate di [02](02-architettura-hardware.md) §3.2), cioè sotto il corpo di U3, che inizia a 27,51 mm. Perciò l'header si sposta di un passo (2,54 mm) a sinistra:
+  - pin 1 passa da x = 9,88 a **7,34 mm**;
+  - pin 8 prende il posto del vecchio pin 7 (25,12 mm);
+  - il cavetto Dupont a 7 fili si infila sui pin 1–7 come prima (pin 1 = VCC, piazzola quadrata).
+- **R23** è sotto J2 pin 8, a (25,3; 5,45) mm.
+- **Piste tolte e risbrogliate**: 92 tra piste e vie (quelle delle reti di J2 e quelle in conflitto con le nuove piazzole), poi `sbroglia_main.py --conserva`.
+- **DISP_BUSY**: 67 mm con 2 vie.
+  - Passa sul retro sotto la fila superiore di piazzole di U3 e scende lungo il lato destro del modulo, a 0,22 mm dalla zona antenna ma fuori dalla zona.
+  - È la stessa situazione di LCD_CS in R2-004: nessun effetto in V1, con la radio spenta.
+  - Una prova con una zona vietata temporanea lungo l'antenna dava 76 mm e violazioni: scartata.
+- **Via GND** a (30,6; 8,0) mm sotto U3: ricollega al piano un'isola GND del retro che la nuova pista aveva chiuso.
+- **LCD_SCLK_C**: pista fra le piazzole di C5 riportata a 0,15 mm.
+- **Cucitura GND** rifatta (14 vie).
+- **Cosa non cambia**: nessun componente montato da JLC si è spostato, e nella CPL c'è solo la nuova riga di R23. Coppia USB (41 piste bloccate, identiche), J1, U1, R3, R4, U3, zona antenna e contorno sono invariati.
+- **Totale**: 62 vie, circa 1166 mm di piste.
+- **Script**: `hardware/scripts/dec049_schema.py` e `dec049_pcb.py` (ritocchi descritti nel docstring).
+
+**Controlli.**
+- ERC: 0.
+- DRC con zone ricalcolate, tutte le severità e parità: **0/0/0**.
+- Controllo meccanico: PASS, con J1 unica eccezione; margine minimo 2,99 mm (U3), R23 a 6,5 mm.
+- `esporta.py`: completo (BOM JLC 18 righe, CPL 34 componenti, CPL alternativa con U3 al centro del corpo).
+- Nessun Gerber.
+
+**Per il CAD (`OPEN-028`).**
+- J2 è più lungo di un pin: 8 × 2,54 = 20,3 mm invece di 17,8.
+- La fila parte 2,54 mm più a sinistra: pin da x = 7,3 a 25,1 mm dal bordo sinistro.
+- Un e-paper avrebbe bisogno di un cavetto a 8 fili ([06](06-progettazione-meccanica.md)).

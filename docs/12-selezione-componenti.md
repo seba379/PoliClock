@@ -1,6 +1,6 @@
 # 12 — Selezione componenti per lo schema (M2)
 
-**Versione:** 0.9 · **Stato:** schema rev 0.2 dopo la revisione tecnica indipendente, **non validato** (manca il prototipo M1) · **Data:** 2026-11-08
+**Versione:** 0.9 · **Stato:** schema rev 0.2 dopo la revisione tecnica indipendente, **non validato** (manca il prototipo M1) · **Data:** 2026-11-09
 
 Questo documento motiva i componenti dello schema KiCad in [`hardware/`](../hardware/README.md). Tutte le scelte restano `CAND` finché non superano il prototipo su banco (M1) e la revisione visiva del proprietario; le decisioni del proprietario sono in [10](10-decisioni-aperte.md) (`DEC-024`…`DEC-044`). Tutti i componenti montati da JLC sono nella libreria LCSC/JLC e il progetto segue le regole JLCPCB (`SC-008`, `DEC-040`); i connettori J2–J5 a foro passante li salda a mano il proprietario (`DEC-043`).
 
@@ -34,13 +34,14 @@ Questo documento motiva i componenti dello schema KiCad in [`hardware/`](../hard
 | C5 | 3V3 modulo | 10 µF 0603 X5R 10 V | Samsung | C19702 | **Basic** | 10 M | — | C5 + C6 (100 nF) sul pin 3V3 del modulo come nello schema di riferimento Espressif |
 | C6, C8, C10 | Disaccoppiamento / antirimbalzo | 100 nF 0603 X7R | Yageo | C14663 | **Basic** | 34 M | — | C6 a 2,4 mm dal pin 3 (3V3) del modulo |
 | C7 | RC su EN | 1 µF 0603 | Samsung | C15849 | **Basic** | 13 M | — | Espressif: R 10 kΩ + C 1 µF, pista EN corta. Nessun tasto RESET/BOOT (`DEC-039`): punti di test TP6 (EN) e TP11 (IO9) |
-| J2 | Modulo display | **Header maschio 1×7 2,54 mm a foro passante**, a 90° (negli stessi fori va bene anche diritto); impronta `PinHeader_1x07_P2.54mm_Horizontal` | generico | — | **a mano** (`DEC-043`) | scorta del proprietario | — | `DEC-034`: un cavetto Dupont femmina-femmina a 7 fili collega il modulo display. Prima (fino a `DEC-043`): HX PZ2.54-1x7P WT SMD, C46061680, Extended. Pin 1 = VCC (3V3_DISP) |
+| J2 | Modulo display | **Header maschio 1×8 2,54 mm a foro passante** (`DEC-049`), a 90° (negli stessi fori va bene anche diritto); impronta `PinHeader_1x08_P2.54mm_Horizontal` | generico | — | **a mano** (`DEC-043`) | scorta del proprietario | — | `DEC-034`: un cavetto Dupont femmina-femmina a 7 fili collega il modulo display sui pin 1–7; pin 8 = BUSY per un eventuale e-paper (`DEC-049`). Prima (fino a `DEC-043`): HX PZ2.54-1x7P WT SMD, C46061680, Extended. Pin 1 = VCC (3V3_DISP) |
 | Q1 | Interruttore alimentazione display | **AO3401A** P-MOS SOT-23 | AOS | C15127 | **Basic** | 1,7 M | — | Spegne del tutto il modulo display di notte (`DEC-009`); VGS(th) −0,5…−1,3 V, pilotabile a 3,3 V |
 | R16 / R17 | Gate di Q1 | **10 kΩ** / 100 kΩ 0603 | Uni-Royal | **C25804** / C25803 | **Basic** | — | — | FIN-003: R16 da 1 k a 10 k. R17 tiene Q1 spento durante reset e boot; con IO20 basso il gate va a 3,3 × 10/110 ≈ 0,3 V, quindi V_GS ≈ −3,0 V (AO3401A: R_DS(on) specificata già a −2,5 V) |
 | C11 | Rampa di accensione del display | **10 nF** 0603 X7R 50 V (0603B103K500NT) | FH | **C57112** | **Basic** (pagina JLC 2026-11-08, Economic e Standard) | — | — | FIN-003: fra gate (DISP_G) e drain (3V3_DISP) di Q1, montato. Con R16 10 kΩ la tensione su 3V3_DISP sale in circa 0,2–0,3 ms invece di pochi µs: lo spunto verso C9 e il modulo display non fa crollare il 3V3 del modulo (stima, da misurare in `VT-PWR-003`) |
 | C9 | Bulk 3V3_DISP | 10 µF 0603 | Samsung | C19702 | **Basic** | — | — | Vicino a J2 |
 | R8, R9 | Smorzamento SCLK/MOSI | 22 Ω 0603 | Uni-Royal | C23345 | **Basic** | 6 M | — | Valore da confermare con la prova sul cavo reale (`OPEN-021`) |
 | R15 | Pull-up RST display | 10 kΩ 0603 | Uni-Royal | C25804 | **Basic** | — | — | Verso 3V3_DISP: niente corrente nel modulo spento |
+| R23 | Serie su BUSY (`DEC-049`) | 1 kΩ 0603 1 % (0603WAF1001T5E) | Uni-Royal | C21190 | **Basic** (pagina JLC 2026-11-09, Economic e Standard) | — | — | Fra J2 pin 8 e IO1: limita la corrente verso un modulo spento o in caso di conflitto; livello definito dal pull-down interno di IO1 |
 | J3, J4 | Modulo SHT40, modulo RTC | **B4B-PH-K-S** JST PH 4P 2,0 mm, verticale (ingresso dall'alto), a foro passante; impronta `JST_PH_B4B-PH-K_1x04_P2.00mm_Vertical` | JST | — | **a mano** (`DEC-043`) | scorta del proprietario | — | Stesso pinout di prima: 1 GND, 2 3V3, 3 SDA, 4 SCL. Prima: SM04B-SRSS-TB JST-SH, C160404, Extended |
 | J5 | Pulsante remoto | **B4B-PH-K-S** JST PH 4P (stesso connettore di J3/J4) | JST | — | **a mano** (`DEC-043`) | scorta del proprietario | — | Pin 1 BTN_USER, pin 2 GND, pin 3–4 non collegati (NC espliciti nello schema). `DEC-027`, `DEC-032`. Prima: SM02B-SRSS-TB, C160402, Extended |
 | R6, R7, R22 | Pull-up EN, IO9, pulsante | 10 kΩ 0603 | Uni-Royal | C25804 | **Basic** | 43 M | — | |
@@ -54,11 +55,12 @@ Questo documento motiva i componenti dello schema KiCad in [`hardware/`](../hard
 
 ### 2.1 Assegnazione GPIO (ESP32-C3-WROOM-02-N4, `DEC-044`)
 
-Il modulo espone 15 GPIO (IO0–IO10, IO18–IO21). Senza touch restano **liberi IO0 e IO1**, portati su punti di test.
+Il modulo espone 15 GPIO (IO0–IO10, IO18–IO21). Senza touch restavano liberi IO0 e IO1. Dal `DEC-049` IO1 legge il BUSY di un eventuale e-paper e **IO0 resta libero** su TP9; la verifica dei due pin sui datasheet Espressif è in [10](10-decisioni-aperte.md) §16.
 
 | GPIO | Pin modulo | Segnale | Note |
 |---|---:|---|---|
-| IO0 / IO1 | 18 / 17 | liberi | Punti di test TP9/TP10; risveglio da deep-sleep possibile (GPIO0–5) |
+| IO0 | 18 | libero | Punto di test TP9; risveglio da deep-sleep possibile (GPIO0–5) |
+| IO1 | 17 | DISP_BUSY | J2 pin 8 attraverso R23 1 kΩ; ingresso con pull-down interno (firmware); punto di test TP10. Non è strapping e non ha glitch all'accensione (`DEC-049`) |
 | IO2 | 16 | I2C_SDA | Strapping: Espressif raccomanda pull-up → R19 4,7 kΩ |
 | IO3 | 15 | BTN_USER | Pulsante (attivo basso), risveglio da deep-sleep possibile |
 | IO4 | 3 | LCD_DC | |
@@ -76,7 +78,7 @@ Il modulo espone 15 GPIO (IO0–IO10, IO18–IO21). Senza touch restano **liberi
 
 `DEC-034`: modulo **GC9A01 1,28" 240×240 IPS a colori** su schedina con 7 piedini a passo 2,54 mm, provabile su breadboard. Esempio scelto dal proprietario: [AliExpress, SZHJW Technology Store, articolo 1005009766462228](https://it.aliexpress.com/item/1005009766462228.html), circa 4,24 € (prezzo letto il 2026-11-07).
 
-- **Piedini** (dalla foto dell'inserzione, dall'alto): RST, CS, DC, SDA, SCL, GND, VCC. Sulla scheda principale J2 ha l'ordine inverso (1 VCC, 2 GND, 3 SCL, 4 SDA, 5 DC, 6 CS, 7 RST), così un cavetto dritto a 7 fili collega pin 1 → VCC. **Da verificare sulla serigrafia del modulo ricevuto** prima del primo collegamento.
+- **Piedini** (dalla foto dell'inserzione, dall'alto): RST, CS, DC, SDA, SCL, GND, VCC. Sulla scheda principale J2 ha l'ordine inverso (1 VCC, 2 GND, 3 SCL, 4 SDA, 5 DC, 6 CS, 7 RST), così un cavetto dritto a 7 fili collega pin 1 → VCC. Il pin 8 di J2 (BUSY, `DEC-049`) serve solo a un eventuale e-paper: con il GC9A01 resta libero. **Da verificare sulla serigrafia del modulo ricevuto** prima del primo collegamento.
 - **Niente touch e niente pin BLK**: la retroilluminazione è sempre accesa quando il modulo è alimentato. Di notte Q1 toglie l'alimentazione al modulo (display spento, `DEC-009`); di giorno l'attenuazione si fa solo con colori più scuri (modifica di `DEC-007`).
 - Il modulo ha regolatore o resistenze a bordo non documentati: alimentato a 3,3 V da J2. Corrente e tensione della retroilluminazione si misurano su banco (M1).
 - Con il modulo spento il firmware porta a livello basso SCLK, MOSI, DC, CS e RST, per non alimentarlo attraverso gli ingressi.
@@ -98,7 +100,7 @@ Il modulo espone 15 GPIO (IO0–IO10, IO18–IO21). Senza touch restano **liberi
 | Cavo display | Cavetto Dupont femmina-femmina 7 fili | CAND | Lunghezza dal CAD; prova SPI sul cavo reale (`OPEN-021`) |
 | RTC con tampone | **Adafruit DS3231 Precision RTC – STEMMA QT** (5188) + pila **CR1220** | CONF (`DEC-024`) | I²C 0x68; pull-up 10 kΩ verso Vin; LED "ON" disattivabile tagliando il ponticello |
 | Sensore T/RH | Modulo breakout SHT40 | CAND (`DEC-028`) | §4 |
-| Connettori J2–J5 | Header 1×7 2,54 mm a foro passante, 3 × JST PH B4B-PH-K-S | CONF (`DEC-043`) | Saldati a mano dal proprietario dopo l'assemblaggio JLC; nella BOM completa con `Montaggio` = "a mano, parte del proprietario" |
+| Connettori J2–J5 | Header 1×8 2,54 mm a foro passante (`DEC-049`), 3 × JST PH B4B-PH-K-S | CONF (`DEC-043`) | Saldati a mano dal proprietario dopo l'assemblaggio JLC; nella BOM completa con `Montaggio` = "a mano, parte del proprietario" |
 | Cavetti | JST PH 4 poli → JST-SH 4 poli o fili (RTC), JST PH 4 poli → jumper femmina (SHT40), JST PH con i pin 1–2 (pulsante) | CAND | Lunghezze dal CAD; spina PHR-4 con contatti a crimpare o cavetti PH pronti (`BOM-007`) |
 
 ### 5.1 Perché l'RTC non è sulla scheda
@@ -125,7 +127,7 @@ La CPL (`policlock-main-cpl-jlcpcb.csv`) riporta posizioni e rotazioni native di
 | Q1 | SOT-23 (AO3401A) | 90° | centro del package | vista dall'alto: due pin in basso, pin 1 = G **a sinistra** e pin 2 = S (+3V3) **a destra**; pin 3 = D (3V3_DISP) da solo **in alto** | da compilare all'ordine |
 | U3 | ESP32-C3-WROOM-02-N4 | −90° (270°) | **centro delle file di piazzole**, non del corpo: il corpo con l'antenna è spostato di 3,1 mm verso l'antenna (+x). Pronta la **CPL alternativa** `policlock-main-cpl-jlcpcb-u3-centro-corpo.csv` con U3 al centro del corpo (X 37,51 invece di 34,41 mm): caricare quella con cui, nell'anteprima, piazzole e modulo coincidono | antenna sulla scheda verso il bordo destro (`DEC-045`), pin 1 in alto vicino all'antenna; corpo tutto dentro il contorno; EPAD senza vie (`DEC-046`): controllare le 9 aperture di pasta nell'anteprima DFM | da compilare all'ordine |
 | J1 | USB-C TYPE-C-31-M-12 | 0° | centro del corpo F.Fab | apertura verso il bordo inferiore, guscio 0,4 mm oltre il bordo; pioli nei fori NPTH; ponti di maschera fra i contatti (min 0,10 mm in verde); eccezione al bordo da far accettare nella DFM. Le 4 linguette del guscio le salda a mano il proprietario (`DEC-047`) | da compilare all'ordine |
-| C, R, F1 | 0603 / 0805 | 0° / 90° | centro | nessuna polarità; solo posizione | — |
+| C, R, F1 | 0603 / 0805 | 0° / 90° / 180° (R23) | centro | nessuna polarità; solo posizione | — |
 
 **Altri controlli nell'anteprima e nella DFM JLC** (revisione esterna del 2026-11-08, [docs/10](10-decisioni-aperte.md) §15):
 

@@ -1610,15 +1610,28 @@
 		)
 		(uuid "f8ea8da6-ca56-50af-a8fb-697d477d1dc4")
 	)
-	(label "IO1"
+	(global_label "DISP_BUSY"
+		(shape input)
 		(at 379.73 127 270)
+		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right bottom)
+			(justify right)
 		)
-		(uuid "1950c38a-d753-5bcb-9fb0-ad5f6f41459d")
+		(uuid "d9a69b84-e90a-4472-9277-fa9b348b33ee")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 379.73 127 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 	)
 	(label "EN"
 		(at 140.97 92.71 180)
@@ -1710,15 +1723,28 @@
 		)
 		(uuid "ba97599f-d3e9-514b-8690-7121a26f4495")
 	)
-	(label "IO1"
+	(global_label "DISP_BUSY"
+		(shape input)
 		(at 140.97 105.41 180)
+		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right bottom)
+			(justify right)
 		)
-		(uuid "cf7c1d29-78fd-53ae-8bd6-e05385ab2b16")
+		(uuid "a6a81599-9eaa-426b-a035-c8c0c8d0d945")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 140.97 105.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 	)
 	(label "IO9_BOOT"
 		(at 304.8 127 270)
@@ -3018,7 +3044,7 @@
 				)
 			)
 		)
-		(property "Value" "IO1 (libero)"
+		(property "Value" "IO1 (DISP_BUSY)"
 			(at 379.73 119.38 0)
 			(show_name no)
 			(do_not_autoplace no)
