@@ -52,8 +52,9 @@ Le decisioni superate restano nel registro per tracciabilità, con lo stato indi
 | `DEC-043` | 2026-11-08 | **Connettori J2–J5 a foro passante, saldati a mano dal proprietario**: J3 (SHT40), J4 (RTC) e J5 (pulsante) diventano **JST PH B4B-PH-K-S** (2,0 mm, verticali, impronta KiCad `JST_PH_B4B-PH-K_1x04_P2.00mm_Vertical`; pinout 1 GND, 2 3V3_EXT, 3 SDA, 4 SCL; su J5 pin 1 BTN_USER, pin 2 GND, pin 3–4 non collegati); J2 diventa un **header 1×7 2,54 mm a foro passante** (`PinHeader_1x07_P2.54mm_Horizontal`, a 90° con i piedini oltre il bordo superiore; negli stessi fori va bene un header diritto), stesso pinout (1 VCC … 7 RST). JLC monta tutto il resto, J1 compreso. J2–J5 hanno il campo `Montaggio` = "a mano, parte del proprietario", nessun codice LCSC e l'attributo "escluso dai file di posizionamento": fuori da BOM JLC e CPL, presenti nella BOM completa | Scelta del proprietario: parti già in scorta, meno parti Extended a JLC (spariscono C46061680, C160404 e C160402: da 8 a 5 codici Extended, circa −9 $ di setup). Il margine JLC di 2,5 mm vale solo per le parti montate da JLC; le regole di fabbricazione (`DEC-040`) valgono anche per le piazzole a foro passante. Modifica e verifiche in §10; aggiorna la parte "connettore lato scheda" di `DEC-024`, `DEC-027`, `DEC-028` e `DEC-034` |
 | `DEC-044` | 2026-11-08 | **Modulo ESP32-C3-WROOM-02-N4 (C2934560) al posto dell'ESP32-C3-MINI-1-H4X**; supera `DEC-035` e aggiorna `DEC-031`, `DEC-036` (intaglio 8,5 × 20,2 mm, scheda sempre 50 × 40) e `DEC-041` (coppia ridisegnata sui pin 13/14 con gli stessi criteri). Applicate con la stessa modifica le correzioni approvate della revisione finale: FIN-003, FIN-005, FIN-006, FIN-007, FIN-008, FIN-009 (§11) | Scelta del proprietario sul rilievo FIN-001: l'H4X a JLC è "Standard Only" con radiografia, mentre `DEC-040` prevede l'Economic. Il WROOM-02-N4 è "Economic and Standard" senza radiografia (pagina JLC 2026-11-08, 13 113 a magazzino, ~3,31 $): si resta sull'Economic, circa −17 $ di setup (Standard 25,56 $ contro Economic 8,18 $, pagina JLC "pcb-assembly-price" aggiornata il 2026-10-22) e niente bordi tecnici. Fase 0 (2026-11-08): stato "Mass Production" nel selettore Espressif, chip v0.4 supportato da ESP-IDF v6.0/v6.1, pinout e land pattern dal datasheet v1.7; nessuna variante con chip v1.1. Dettagli in [02](02-architettura-hardware.md) §3.2 e [12](12-selezione-componenti.md) |
 | `DEC-045` | 2026-11-08 | **Regola JLC dei 2,5 mm corpo-bordo per tutte le parti montate da JLC, unica eccezione J1** (USB-C a filo del bordo inferiore, da far accettare alla DFM di JLC, senza bordo tecnico). Scheda **50,5 × 41,5 mm rettangolare, senza intaglio**: cresce di 0,5 mm a destra e 1,5 mm in alto, angolo in basso a sinistra fisso (J1, H1/H2, coppia USB e origine della CPL invariati). **Antenna di U3 sulla scheda**, verso il bordo destro, con zona vietata su entrambi gli strati (niente rame, piste, vie, riempimenti, piazzole né componenti) sotto l'antenna e 5 mm oltre i suoi lati, come la zona dell'impronta di U3 ricavata dal datasheet. Supera `DEC-036` e la parte "intaglio" di `DEC-031` | Parole del proprietario: "dobbiamo rispettare non arbitrariamente le regole di stampa di JLC PCB [...] per questo prototipo allunga la scheda da quel lato, in modo da farci stare i componenti che mancano, rispettando le regole di JLC". Radio non usata in V1 (`DEC-012`): l'antenna sulla scheda è un compromesso accettato. Margine minimo 2,99 mm (U3); dettagli in [02](02-architettura-hardware.md) §3.2 |
-| `DEC-046` | 2026-11-08 | **EPAD di U3 senza vie**: tolte le 4 vie termiche 0,3/0,7 mm dalla piazzola di massa (pad 19) del WROOM-02, in libreria e sul PCB; la EPAD resta collegata a GND sul rame superiore e mantiene le 9 aperture di pasta | Approvata dal proprietario sulla revisione esterna `PoliClock_report_validazione_rev02_2026-11-08.md` del proprietario (P2-01) e R2-006: le vie aperte nella piazzola possono assorbire stagno al reflow; il datasheet Espressif dice che la saldatura della EPAD non è obbligatoria e con la radio spenta (`DEC-012`) la dissipazione è minima. Script `hardware/scripts/dec046_epad.py` |
+| `DEC-046` | 2026-11-08 | **EPAD di U3 senza vie**: tolte le 4 vie termiche 0,3/0,7 mm dalla piazzola di massa (pad 19) del WROOM-02, in libreria e sul PCB; la EPAD resta collegata a GND sul rame superiore e mantiene le 9 aperture di pasta | Approvata dal proprietario sulla revisione esterna `PoliClock_report_validazione_rev02_2026-11-08.md` del proprietario (P2-01) e R2-006: le vie aperte nella piazzola possono assorbire stagno al reflow; il datasheet Espressif dice che la saldatura della EPAD non è obbligatoria e con la radio spenta (`DEC-012`) la dissipazione è minima. È uno **scostamento voluto** dal land pattern Espressif: la fig. 11-1 del datasheet WROOM-02 v1.7 disegna "Via for thermal pad". Vie GND accanto alla piazzola, non dentro, dopo la terza revisione (§17). Script `hardware/scripts/dec046_epad.py` |
 | `DEC-047` | 2026-11-08 | **Linguette del guscio di J1 saldate a mano**: le 4 linguette metallizzate a foro passante della USB-C (C165948, "SMT Assembly" su JLC, senza pasta nei fori) le salda il proprietario dal retro dopo l'assemblaggio, insieme a J2–J5. Nessuna pasta aggiunta nei fori | Approvata dal proprietario sulla revisione esterna `PoliClock_report_validazione_rev02_2026-11-08.md` del proprietario (P1-02): il reflow salda i contatti SMD ma non garantisce le linguette, necessarie per la tenuta meccanica di una presa usata spesso. In alternativa la conferma scritta di JLC nella DFM |
+| `DEC-048` | — | Numero non usato (nessuna decisione registrata con questo codice) | — |
 | `DEC-049` | 2026-11-09 | **Pin BUSY su J2 per un eventuale display e-paper**: J2 diventa un header **1×8** 2,54 mm a foro passante, sempre saldato a mano (`DEC-043`); pin 1–7 invariati (1 VCC … 7 RST), **pin 8 = BUSY** → R23 1 kΩ in serie (C21190, Basic) → **IO1** (pin 17 del WROOM-02), che resta sul punto di test TP10. Nessun pull esterno: il firmware abilita il pull-down interno di IO1; con il GC9A01 a 7 pin il pin 8 resta libero e IO1 legge 0. IO0 resta libero su TP9 | Parole del proprietario: "fai aggiungere il pin BUSY, verificando che IO0 e IO1 effettivamente possano essere configurati come BUSY per SPI". Verifica sui datasheet Espressif in §16: GPIO0 e GPIO1 sono GPIO ordinari (non sono strapping, non hanno glitch all'accensione e il modulo non ha un quarzo da 32 kHz su quei pin); BUSY è un ingresso GPIO e non usa funzioni della periferica SPI. Sul PCB J2 si sposta di 2,54 mm a sinistra, perché il pin 8 a destra cadrebbe sotto U3; il cavetto a 7 fili si infila ancora sui pin 1–7 |
 | `DEC-027` | 2026-11-07 | Pulsante utente: **connettore JST-SH 2 poli** (*JST PH 4 poli sui pin 1–2 dalla `DEC-043`*) per un pulsante remoto **e** tasto tattile sulla scheda in parallelo (tasto su scheda tolto con `DEC-032`) | La posizione nella statuetta (`OPEN-017`) si decide col CAD senza rifare il PCB; il tasto su scheda serve al bring-up |
 
@@ -84,7 +85,7 @@ Le date sopra sono la data della formalizzazione nel documento delle scelte emer
 | `CAND-019` | Posizione scheda principale: **A** busto/base con USB-C sulla scheda (preferita) o **B** testa con prolunga | Proposto | Bozza Blender (`OPEN-020`) |
 | `CAND-020` | Cavo display FFC | **Superata** da `DEC-034` (modulo a 7 pin con cavetto Dupont) | — |
 | `CAND-021` | CAD a codice con **build123d** (alternativa CadQuery) | Proposto | Prima parte tecnica modellata ed esportata in STEP/STL |
-| `CAND-022` | Componenti dello schema rev 0.2 e codici LCSC come in [12](12-selezione-componenti.md) (ESP32-C3-WROOM-02-N4, TYPE-C-31-M-12, USBLC6-2SC6, PTC BSMD0805-050-12V, TLV75533, AO3401A; JST PH e header 1×7 a foro passante saldati a mano, `DEC-043`) | Proposto | Prototipo M1, revisione schema, stock al momento dell'ordine |
+| `CAND-022` | Componenti dello schema rev 0.2 e codici LCSC come in [12](12-selezione-componenti.md) (ESP32-C3-WROOM-02-N4, TYPE-C-31-M-12, USBLC6-2SC6, PTC BSMD0805-050-12V, TLV75533, AO3401A; JST PH e header 1×8 a foro passante saldati a mano, `DEC-043`, `DEC-049`) | Proposto | Prototipo M1, revisione schema, stock al momento dell'ordine |
 | `CAND-023` | Assegnazione GPIO dell'ESP32-C3 (modulo WROOM-02, vedi [02](02-architettura-hardware.md) §3.1): ESP32-C3 sufficiente, S3 non necessario | Proposto | Prova sulla dev board M1 (strapping IO2/IO8/IO9, `DISP_EN_N` su IO20 per Q1; niente PWM, `DEC-034`) |
 | `CAND-025` | Scheda principale rev 0.2 **50,5 × 41,5 mm** (`DEC-045`) posizionata e sbrogliata in bozza (vedi [02](02-architettura-hardware.md) §3.2) | Proposto | Studio volumetrico 1:1 (`OPEN-028`); sbroglio approvato a vista dal proprietario (`OPEN-027` chiusa) |
 | `CAND-024` | Un solo PCB custom (scheda principale); display, SHT40 e RTC su moduli commerciali | Proposto | Preventivo JLC |
@@ -333,6 +334,58 @@ Richiesta del proprietario: aggiungere il pin BUSY, dopo aver verificato che IO0
 - La fila parte 2,54 mm più a sinistra: pin da x = 7,3 a 25,1 mm dal bordo sinistro.
 - Un e-paper avrebbe bisogno di un cavetto a 8 fili ([06](06-progettazione-meccanica.md)).
 
-## 17. Terza revisione finale pre-Gerber (2026-11-09)
+## 17. Correzioni dopo la terza revisione (2026-11-09)
+
+La terza revisione pre-Gerber su `edcef25` ha dato esito **PRONTO CON RISERVE**, con un P2 e quattro P3. Il rapporto è nel ramo del revisore `claude/revisione-finale-ea91f4`, commit `f9853b6`, file `docs/revisioni/2026-11-09/revisione-finale-3/README.md`; questo ramo non lo contiene. Il proprietario ha chiesto la correzione ("Sì, correggi").
+
+| Rilievo | Esito |
+|---|---|
+| R3-001 (P2) isola GND del retro sotto U3 | **Corretto con vie GND**, cioè la correzione 2 del rapporto, prevista se a sinistra di U3 non c'è spazio. Sbrogliare di nuovo DISP_BUSY a sinistra del modulo non è possibile senza spostare altre reti (dettagli sotto la tabella). Aggiunte 5 vie GND 0,6/0,3 mm coperte dalla maschera: 4 accanto alla EPAD (a ≥ 0,5 mm dal bordo della piazzola, fuori dalla piazzola come chiede `DEC-046`) fra il rame superiore principale e il retro sotto U3, e 1 verso il pin 9 nell'isola del rame superiore di U3.9/C6.2 |
+| R3-002 (P3) DISP_BUSY vicino alla zona antenna | **Non risolto**: il percorso resta, perché lo sbroglio a sinistra non è possibile. DISP_BUSY è aggiunta alla nota V2 della [roadmap](09-roadmap.md) accanto a LCD_CS. Nessun effetto in V1 (`DEC-012`) |
+| R3-003 (P3) isola del retro di 249 mm² con una via | **Corretto**: 3 vie GND (vicino a R16/Q1, a C9 e sotto TP3), fuori dai courtyard; con la via verso il pin 9 di U3 l'isola ha ora 5 vie |
+| R3-004 (P3) clock RTC lento | **Corretto** in [04](04-specifiche-firmware.md) §4: sorgente `CONFIG_RTC_CLK_SRC_INT_RC`, mai `CONFIG_RTC_CLK_SRC_EXT_CRYS` né `CONFIG_RTC_CLK_SRC_EXT_OSC`; nomi verificati in `components/esp_hw_support/port/esp32c3/Kconfig.rtc` di ESP-IDF v6.0 e v6.1, dove l'RC interno è il valore predefinito. Niente ADC su IO1 |
+| R3-005 (P3) residui | **Corretti**: EPAD senza vie in [02](02-architettura-hardware.md) §3.2; `CAND-022` con l'header 1×8; [12](12-selezione-componenti.md) con le decisioni fino a `DEC-049` e la scorta di C2934560 letta dal revisore il 2026-11-09 (11 626); commenti di `policlock-main.kicad_dru`; nota su `DEC-048` non usato; `DEC-046` dichiara lo scostamento dalla fig. 11-1 del datasheet. La serigrafia "DISP 1=VCC" resta com'è (modifica facoltativa) |
+
+**Perché DISP_BUSY non passa a sinistra di U3.** R23 sta in alto a sinistra del modulo, il pin 17 e TP10 in basso a destra. Fra i due punti il retro è attraversato senza interruzioni da:
+- la diagonale +3V3 da 0,4 mm, da (125; 124) a (140,41; 108,59), che prosegue a sinistra verso TP3 e x = 122,4;
+- il fascio parallelo IO0 / I2C_SDA / BTN_USER;
+- DISP_EN_N (verticale a x = 125,66 e orizzontale a y = 118,82) e LCD_MOSI (via (126,70; 118,22) e verticale a x = 129,53).
+
+Sul rame superiore, fra la colonna C5/C6/R8/R9 e il modulo, ci sono le piste GND e +3V3 da 0,4 mm. Il tratto esistente di DISP_BUSY (via di IO1) è il più esterno del fascio, quindi va raggiunto attraversando tutte le altre reti. Due prove con Freerouting (`--conserva` e zone vietate temporanee sopra e a destra del modulo) non hanno trovato un percorso a sinistra, oppure ne hanno trovato uno di 83 mm che passa vicino a J1: scartate. Il percorso a sinistra richiederebbe di sbrogliare di nuovo anche DISP_EN_N, LCD_MOSI e il +3V3 del retro, cioè una modifica più ampia di quella richiesta.
+
+**Vie aggiunte** (coordinate del foglio KiCad; tra parentesi quelle di [02](02-architettura-hardware.md) §3.2):
+
+| Via | Collega | Rilievo |
+|---|---|---|
+| (131,4; 111,6) = (31,4; 11,6), a sinistra della EPAD | rame superiore principale ↔ retro sotto U3 | R3-001 |
+| (134,2; 108,4) = (34,2; 8,4), sopra la EPAD | rame superiore principale ↔ retro sotto U3 | R3-001 |
+| (136,7; 110,8) = (36,7; 10,8), a destra della EPAD | rame superiore principale ↔ retro sotto U3 | R3-001 |
+| (133,2; 114,1) = (33,2; 14,1), sotto la EPAD | rame superiore principale ↔ retro sotto U3 | R3-001 |
+| (127,2; 102,6) = (27,2; 2,6), vicino al pin 9 | isola superiore U3.9/C6.2 ↔ isola del retro di 249 mm² | R3-001 |
+| (119,3; 112,3) = (19,3; 12,3) | rame superiore principale ↔ isola del retro di 249 mm² | R3-003 |
+| (121,0; 121,5) = (21,0; 21,5) | rame superiore principale ↔ isola del retro di 249 mm² | R3-003 |
+| (123,5; 128,5) = (23,5; 28,5) | rame superiore principale ↔ isola del retro di 249 mm² | R3-003 |
+
+**Isole del piano GND** (riempimento in memoria con il Python di KiCad, come nel rapporto; le vie della cucitura sono contate nel piano principale):
+
+| Isola | `edcef25` | Dopo la correzione |
+|---|---|---|
+| Retro sotto U3 (x 129,6–140,3, y 101,4–117,9; 95,4 mm²) | 2 vie: (139,5; 103,5) e (130,6; 108,0) | **6 vie**: le 2 di prima e 4 nuove accanto alla EPAD |
+| Rame superiore U3.9/C6.2 (x 125–140,8, y 100–108,3; 31,7 mm²) | 1 via: (139,5; 103,5) | **2 vie**: (139,5; 103,5) verso il retro sotto U3 e (127,2; 102,6) verso l'isola di 249 mm² |
+| Retro zona J2/passivi (x 109–128,8, y 101,8–130,6; 249 mm²) | 1 via: (112,4; 104,3) | **5 vie**: (112,4; 104,3), 3 nuove dal rame superiore principale e (127,2; 102,6) |
+| Piano principale del retro | 900 mm², 20 collegamenti | invariato |
+| Piano principale del rame superiore | 1202 mm², 37 collegamenti | 1202 mm², 44 collegamenti |
+
+Le piste non sono cambiate: DISP_BUSY resta di 67,5 mm con 2 vie. Coppia USB (41 piste bloccate), `usb_coppia_retro`, J1, U1, R3, R4, U3, zona antenna, contorno, BOM e CPL sono invariati. Totale **70 vie** (62 + 8), circa 1166 mm di piste.
+
+**Controlli:**
+- ERC 0;
+- DRC con zone ricalcolate, tutte le severità e parità: **0/0/0**;
+- controllo meccanico PASS (J1 unica eccezione, margine minimo 2,99 mm);
+- `esporta.py` completo (BOM JLC 18 righe, CPL 34 componenti, CPL alternativa).
+
+Nessun Gerber.
+
+## 18. Terza revisione finale pre-Gerber (2026-11-09)
 
 - [Terza revisione finale pre-Gerber](revisioni/2026-11-09/revisione-finale-3/README.md) su `edcef25`: esito **PRONTO CON RISERVE**, nessun P1; P2 R3-001 (DISP_BUSY chiude in un'isola il piano GND del retro sotto U3 e, con la EPAD senza vie di `DEC-046`, il modulo arriva al piano principale del retro solo attraverso il rame superiore), da correggere o accettare prima dei Gerber; P3 R3-002…R3-005.

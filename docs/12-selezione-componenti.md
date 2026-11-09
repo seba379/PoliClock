@@ -2,7 +2,7 @@
 
 **Versione:** 0.9 · **Stato:** schema rev 0.2 dopo la revisione tecnica indipendente, **non validato** (manca il prototipo M1) · **Data:** 2026-11-09
 
-Questo documento motiva i componenti dello schema KiCad in [`hardware/`](../hardware/README.md). Tutte le scelte restano `CAND` finché non superano il prototipo su banco (M1) e la revisione visiva del proprietario; le decisioni del proprietario sono in [10](10-decisioni-aperte.md) (`DEC-024`…`DEC-044`). Tutti i componenti montati da JLC sono nella libreria LCSC/JLC e il progetto segue le regole JLCPCB (`SC-008`, `DEC-040`); i connettori J2–J5 a foro passante li salda a mano il proprietario (`DEC-043`).
+Questo documento motiva i componenti dello schema KiCad in [`hardware/`](../hardware/README.md). Tutte le scelte restano `CAND` finché non superano il prototipo su banco (M1) e la revisione visiva del proprietario; le decisioni del proprietario sono in [10](10-decisioni-aperte.md) (`DEC-024`…`DEC-049`). Tutti i componenti montati da JLC sono nella libreria LCSC/JLC e il progetto segue le regole JLCPCB (`SC-008`, `DEC-040`); i connettori J2–J5 a foro passante li salda a mano il proprietario (`DEC-043`).
 
 **Novità della rev 0.2** (revisione tecnica indipendente del 2026-11-07, esito "NOT APPROVED FOR FABRICATION" sulla rev 0.1):
 
@@ -22,7 +22,7 @@ Questo documento motiva i componenti dello schema KiCad in [`hardware/`](../hard
 
 | Rif. | Funzione | Componente | Produttore | LCSC | Libreria JLC | Stock* | Prezzo* | Note di verifica |
 |---|---|---|---|---|---|---:|---:|---|
-| U3 | MCU | **ESP32-C3-WROOM-02-N4** | Espressif | C2934560 | Extended | 13 113 | ~3,31 $ | `DEC-044` (supera `DEC-035`). Pagina JLC (2026-11-08): **PCBA "Economic and Standard"**, nessuna radiografia richiesta (l'H4X C41349510 è "Standard Only" con radiografia, FIN-001). Selettore prodotti Espressif (2026-11-08): **Mass Production**, chip v0.x; nessuna variante "X" con chip v1.1 per il WROOM-02. Datasheet v1.7: chip v0.4, 4 MB, −40…85 °C, 18 × 20 × 3,2 mm, 19 pin (EPAD = 19, GND), antenna 6 mm a un'estremità. ESP-IDF v6.0/v6.1 (C:\esp) supporta v0.4 (`ESP32C3_REV_MIN` predefinito v0.3). Impronta `PoliClock:ESP32-C3-WROOM-02` (§1) |
+| U3 | MCU | **ESP32-C3-WROOM-02-N4** | Espressif | C2934560 | Extended | 11 626 (2026-11-09) | ~3,31 $ | `DEC-044` (supera `DEC-035`). Pagina JLC (2026-11-08): **PCBA "Economic and Standard"**, nessuna radiografia richiesta (l'H4X C41349510 è "Standard Only" con radiografia, FIN-001). Selettore prodotti Espressif (2026-11-08): **Mass Production**, chip v0.x; nessuna variante "X" con chip v1.1 per il WROOM-02. Datasheet v1.7: chip v0.4, 4 MB, −40…85 °C, 18 × 20 × 3,2 mm, 19 pin (EPAD = 19, GND), antenna 6 mm a un'estremità. ESP-IDF v6.0/v6.1 (C:\esp) supporta v0.4 (`ESP32C3_REV_MIN` predefinito v0.3). Impronta `PoliClock:ESP32-C3-WROOM-02` (§1) |
 | J1 | USB-C 2.0 | **TYPE-C-31-M-12** (16P) | Korean Hroparts | C165948 | Extended | 308 225 | 0,19 $ | Footprint della libreria KiCad (`USB_C_Receptacle_HRO_TYPE-C-31-M-12`, dal disegno HRO), serigrafia frontale tolta perché il guscio sporge 0,4 mm dal bordo |
 | R1, R2 | CC sink | 5,1 kΩ 0603 1 % | Uni-Royal | C23186 | **Basic** | 20 M | — | Rd 5,1 kΩ su CC1 e CC2: 5 V senza USB-PD |
 | F1 | Protezione VBUS | **BSMD0805-050-12V** PTC 0805 | BHFUSE | C2977522 | Extended | 58 790 | 0,05 $ | Hold 0,5 A / trip 1 A, 12 V |

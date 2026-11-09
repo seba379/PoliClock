@@ -19,6 +19,7 @@
 - Modifica con `scripts/dec049_schema.py` e `scripts/dec049_pcb.py`, poi `sbroglia_main.py --conserva` e `cucitura_gnd.py`.
 - ERC 0, DRC 0/0/0 con parità, controllo meccanico PASS.
 - Verifica di IO0/IO1 sui datasheet Espressif in [docs/10](../docs/10-decisioni-aperte.md) §16.
+- Dopo la terza revisione (R3-001, R3-003): 8 vie GND in più (4 accanto alla EPAD di U3, 1 vicino al pin 9, 3 nell'isola del retro della zona J2/passivi), aggiunte a mano; DRC 0/0/0. Dettagli in [docs/10](../docs/10-decisioni-aperte.md) §17.
 
 **Contorno rettangolare 50,5 × 41,5 mm (`DEC-045`, 2026-11-08):** niente intaglio, antenna di U3 sulla scheda con zona vietata, corpo di tutte le parti montate da JLC a ≥ 2,5 mm da ogni bordo tranne J1 (unica eccezione DFM). Modifica con `scripts/dec045_pcb.py`. ERC 0, DRC 0/0/0, controllo meccanico PASS (margine minimo 2,99 mm). Dettagli in [docs/10](../docs/10-decisioni-aperte.md) §12.
 
