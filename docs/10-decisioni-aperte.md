@@ -332,3 +332,7 @@ Richiesta del proprietario: aggiungere il pin BUSY, dopo aver verificato che IO0
 - J2 è più lungo di un pin: 8 × 2,54 = 20,3 mm invece di 17,8.
 - La fila parte 2,54 mm più a sinistra: pin da x = 7,3 a 25,1 mm dal bordo sinistro.
 - Un e-paper avrebbe bisogno di un cavetto a 8 fili ([06](06-progettazione-meccanica.md)).
+
+## 17. Terza revisione finale pre-Gerber (2026-11-09)
+
+- [Terza revisione finale pre-Gerber](revisioni/2026-11-09/revisione-finale-3/README.md) su `edcef25`: esito **PRONTO CON RISERVE**, nessun P1; P2 R3-001 (DISP_BUSY chiude in un'isola il piano GND del retro sotto U3 e, con la EPAD senza vie di `DEC-046`, il modulo arriva al piano principale del retro solo attraverso il rame superiore), da correggere o accettare prima dei Gerber; P3 R3-002…R3-005.
