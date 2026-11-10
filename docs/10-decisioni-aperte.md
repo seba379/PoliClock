@@ -1,6 +1,6 @@
 # 10 — Decision log e questioni aperte
 
-**Versione:** 1.0 · **Data:** 2026-11-09
+**Versione:** 1.1 · **Data:** 2026-11-10
 
 ## 1. Decisioni confermate (CONF)
 
@@ -58,6 +58,7 @@ Le decisioni superate restano nel registro per tracciabilità, con lo stato indi
 | `DEC-049` | 2026-11-09 | **Pin BUSY su J2 per un eventuale display e-paper**: J2 diventa un header **1×8** 2,54 mm a foro passante, sempre saldato a mano (`DEC-043`); pin 1–7 invariati (1 VCC … 7 RST), **pin 8 = BUSY** → R23 1 kΩ in serie (C21190, Basic) → **IO1** (pin 17 del WROOM-02), che resta sul punto di test TP10. Nessun pull esterno: il firmware abilita il pull-down interno di IO1; con il GC9A01 a 7 pin il pin 8 resta libero e IO1 legge 0. IO0 resta libero su TP9 | Parole del proprietario: "fai aggiungere il pin BUSY, verificando che IO0 e IO1 effettivamente possano essere configurati come BUSY per SPI". Verifica sui datasheet Espressif in §16: GPIO0 e GPIO1 sono GPIO ordinari (non sono strapping, non hanno glitch all'accensione e il modulo non ha un quarzo da 32 kHz su quei pin); BUSY è un ingresso GPIO e non usa funzioni della periferica SPI. Sul PCB J2 si sposta di 2,54 mm a sinistra, perché il pin 8 a destra cadrebbe sotto U3; il cavetto a 7 fili si infila ancora sui pin 1–7 |
 | `DEC-051` | 2026-11-09 | **Chibi in piedi sulla base**: la battuta della presa "sul sedere" non si tiene | Scelta estetica del proprietario fra chibi seduta sul bordo della base (con la presa subito sotto il sedere) e chibi in piedi. Aggiorna l'intento estetico di [06](06-progettazione-meccanica.md) §1 |
 | `DEC-052` | 2026-11-09 | **Stampa 3D tramite un servizio di stampa online**, non con una stampante del proprietario. Servizio, tecnologia e materiali sono da scegliere (`OPEN-032`) | Risposta del proprietario: "mi affiderò ad un servizio di stampa online". Tolleranze, spessori minimi e divisione dei pezzi seguono le regole del servizio scelto, da leggere sulle sue pagine al momento dell'ordine |
+| `DEC-053` | 2026-11-10 | **Stile "a cubetti" e insegne stilizzate**: la chibi segue il riferimento del proprietario (`assets/concept/riferimento-stile-chibi-voxel.webp`, testa a cubo con il display come volto). Insegne **stilizzate**: sul cappello un fregio dorato generico a pixel, **non** l'aquila ufficiale; sul petto la scritta "POLIZIA" e una toppa tricolore in piccolo rilievo. Nessuna copia di insegne ufficiali | Scelta del proprietario sul riferimento di stile: evocare la divisa restando nel limite di [00](00-visione-perimetro.md) §5 (niente repliche identiche di distintivi o marchi ufficiali). Immagine del proprietario, salvabile nel repository; resta un riferimento illustrativo |
 | `DEC-027` | 2026-11-07 | Pulsante utente: **connettore JST-SH 2 poli** (*JST PH 4 poli sui pin 1–2 dalla `DEC-043`*) per un pulsante remoto **e** tasto tattile sulla scheda in parallelo (tasto su scheda tolto con `DEC-032`) | La posizione nella statuetta (`OPEN-017`) si decide col CAD senza rifare il PCB; il tasto su scheda serve al bring-up |
 
 Le date sopra sono la data della formalizzazione nel documento delle scelte emerse nella conversazione, non un registro notarile degli eventi.
@@ -73,7 +74,7 @@ Le date sopra sono la data della formalizzazione nel documento delle scelte emer
 | `CAND-005` | ESP-IDF con moduli BSP/servizi/UI separati | Proposto | Bring-up ed ergonomia del codice |
 | `CAND-006` | 20 s di luminosità BRIGHT dopo pressione del pulsante | Proposto | Test usabilità |
 | `CAND-007` | Target 48 h autonomia | **Ritirato** (`DEC-023`) | — |
-| `CAND-008` | Altezza 130–160 mm; dal blockout del 2026-11-09 **circa 150 mm** (base 24, testa 70 con il modulo display, cappello). Il proprietario ha chiesto di ricavarla dal volume | Proposto | Approvazione dei render, modulo display reale (`OPEN-016`) |
+| `CAND-008` | Altezza 130–160 mm; dal blockout del 2026-11-09 **circa 150 mm**, dal concept a cubetti del 2026-11-10 **167 mm** (base 24, testa a cubo 70 con il modulo display, cappello 19). Il proprietario ha chiesto di ricavarla dal volume | Proposto | Approvazione dei render, modulo display reale (`OPEN-016`) |
 | `CAND-009` | Modalità notte: una pressione del pulsante mostra il quadrante attenuato per un timeout breve (proposto 10 s), poi torna spento | Proposto | Test usabilità e `VT-UI-003` |
 | `CAND-010` | Profilo d'uso di riferimento | Confermato → `DEC-014`, poi superato | — |
 | `CAND-011` | SHT40 sui pin I²C della Waveshare | **Superata** (`DEC-015`) | — |
@@ -398,3 +399,11 @@ Nessun Gerber.
 - **Studio volumetrico** con build123d (`mechanical/cad/studio_base.py`): base 78,5 × 76,3 × 24,1 mm, scheda rev 0.2 invariata, nessuna interferenza, metallo ad almeno 15 mm dall'antenna (minimo 15,1 mm, vite M2 di H2). Rapporto in `mechanical/cad/studio_base_rapporto.txt`, dettagli in [06](06-progettazione-meccanica.md) §12.
 - **Blockout** in Blender (`mechanical/blender/blockout_chibi.py`), render in `assets/renders/`. Il modulo display segnaposto richiede una testa di circa 68 × 56 × 70 mm.
 - **Domande al proprietario**: header J2 diritto o a 90° (`OPEN-031`), posizione del pulsante (`OPEN-017`), sportello sul fondo (`OPEN-008`), alloggio del DS3231 (`OPEN-026`), servizio di stampa (`OPEN-032`), chiusura di `OPEN-028` per la parte scheda, commenti sui render.
+
+## 19. Primo concept 3D a cubetti (2026-11-10)
+
+- Richiesta del proprietario: "voglio arrivare ad un primo concept 3d della statuetta", nello stile del suo riferimento a cubetti. Insegne stilizzate e immagine salvata nel repository: `DEC-053`.
+- Concept parametrico in build123d (`mechanical/cad/concept_voxel.py`), render in Blender (`mechanical/blender/render_concept.py`): altezza 167 mm, base 78,5 × 76,3 × 24,1 mm, testa 70 × 64 × 70 mm, 27 parti divise per colore, nessuna sovrapposizione, canale del cavetto libero ([06](06-progettazione-meccanica.md) §13).
+- Studio della base rieseguito con J2 1×8 (`DEC-049`): ancora PASS, metallo ad almeno 15,1 mm dall'antenna.
+- Numerazione: `DEC-049` è del ramo hardware (J2 1×8), `DEC-050` è riservato alla generazione dei Gerber; le decisioni di questo ramo sono `DEC-048`, `DEC-051`, `DEC-052` e `DEC-053`.
+- Domande al proprietario: proporzioni (167 mm), colori, tecnologia e servizio di stampa (`OPEN-032`), divisione dei pezzi, oltre a quelle del §18.

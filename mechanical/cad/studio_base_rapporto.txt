@@ -4,10 +4,10 @@ origine sull'asse del connettore display J2 (asse del corpo), tavolo a Z = 0.
 
 == Quote della base ==
 Esterno: 78.5 (largh.) x 76.3 (prof.) x 24.1 (alt.)
-  X da -36.5 a 42.0; Y da -36.5 a 39.8
+  X da -39.0 a 39.5; Y da -36.5 a 39.8
 Interno: 74.5 x 72.3, altezza utile 19.1
-Scheda: X da -33.0 a 17.5, Y da -4.4 a 37.1, lato inferiore a Z 6.0, componenti a Z 7.6
-Asse USB-C: X -16.16, Z 9.09 dal tavolo; apertura 13.4 x 7.6 mm
+Scheda: X da -35.5 a 15.0, Y da -4.4 a 37.1, lato inferiore a Z 6.0, componenti a Z 7.6
+Asse USB-C: X -18.70, Z 9.09 dal tavolo; apertura 13.4 x 7.6 mm
 Minimo teorico della sola scheda (senza moduli, zavorra, piedi, cavi PH dritti): 57.5 x 47.7 x 17.2
 
 == Volumi ==
@@ -22,12 +22,12 @@ Guscio: 30.3 cm3; fondo: 15.1 cm3 (PLA ~1,24 g/cm3 pieno: 56 g)
   zavorra                  17.1 mm ok
   vite M2 H1               22.4 mm ok
   vite M2 H2               15.1 mm ok
-  vite M3 corpo 1          16.8 mm ok
-  vite M3 corpo 2          33.8 mm ok
-  vite M2,5 fondo 1        22.3 mm ok
-  vite M2,5 fondo 2        54.4 mm ok
+  vite M3 corpo 1          18.6 mm ok
+  vite M3 corpo 2          36.2 mm ok
+  vite M2,5 fondo 1        22.4 mm ok
+  vite M2,5 fondo 2        56.7 mm ok
   DS3231 pila CR1220       46.5 mm (parte elettronica, informativo)
-  spina Dupont display     15.1 mm (parte elettronica, informativo)
+  spina Dupont display     17.7 mm (parte elettronica, informativo)
   spina USB-C (guscio)     15.0 mm (parte elettronica, informativo)
   Esito: PASS
 
@@ -37,10 +37,10 @@ Passaggio nel piano superiore e nelle gambe: 21.0 x 6.0 mm, centrato su X 0, Y 0
 Con header a 90°: piedini fino a Y -10.0, spina fino a Y -24.0, piega dei fili ~5 mm: servirebbero circa 25 mm di base in più davanti alla scheda
 
 == Posizioni ==
-  DS3231 (5188): X 21.0..38.8, Y 11.4..36.8, Z 16.5..21.1
-  DS3231 pila CR1220: X 22.4..37.4, Y 16.6..31.6, Z 13.3..16.5
-  SHT40 modulo: X 36.8..38.4, Y -10.0..4.0, Z 5.0..16.0
-  Camera SHT40 (interno): X 20.0..40.0, Y -16.0..8.0
-  Zavorra: X -34.0..39.5, Y -34.0..-18.5, Z 2.5..20.1
-  Foro M2 H1: X -6.66, Y 33.60
-  Foro M2 H2: X -26.16, Y 33.60
+  DS3231 (5188): X 18.5..36.3, Y 11.4..36.8, Z 16.5..21.1
+  DS3231 pila CR1220: X 19.9..34.9, Y 16.6..31.6, Z 13.3..16.5
+  SHT40 modulo: X 34.3..35.9, Y -10.0..4.0, Z 5.0..16.0
+  Camera SHT40 (interno): X 17.5..37.5, Y -16.0..8.0
+  Zavorra: X -36.5..37.0, Y -34.0..-18.5, Z 2.5..20.1
+  Foro M2 H1: X -9.20, Y 33.60
+  Foro M2 H2: X -28.70, Y 33.60

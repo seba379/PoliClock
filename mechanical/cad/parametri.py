@@ -29,10 +29,15 @@ SCHEDA_L = 50.5          # u, DOC/STEP
 SCHEDA_P = 41.5          # v, DOC/STEP
 SCHEDA_SPESSORE = 1.6    # nominale DOC (lo STEP riporta 1,51)
 
-# Centro dei pin di J2 in coordinate scheda: pin da u 9,88 a 25,12; fila a
-# y = 102,9 nel foglio KiCad (PCB: at 109.88 102.9), bordo inferiore a y = 140.
-J2_U = (9.88 + 25.12) / 2      # 17.50
-J2_V = 140.0 - 102.9           # 37.10
+# J2 è un header 1x8 dal DEC-049 (hardware): pin 1 a u 7,34, pin 8 (BUSY) a
+# u 25,12; fila a y = 102,9 nel foglio KiCad (PCB: at 107.34 102.9), bordo
+# inferiore a y = 140. Il cavetto Dupont del GC9A01 usa i pin 1-7: l'asse del
+# corpo è il centro di questi 7 pin.
+J2_PIN1_U = 7.34
+J2_N_PIN = 8
+J2_PIN_CAVO = 7
+J2_U = J2_PIN1_U + (J2_PIN_CAVO - 1) * 2.54 / 2   # 14.96
+J2_V = 140.0 - 102.9                              # 37.10
 
 # Fori M2 (PCB: 124.16/143.66, 136.5) -> u = x - 100, v = 140 - y
 FORI_M2_UV = [(24.16, 3.5), (43.66, 3.5)]

@@ -1,6 +1,6 @@
 # 06 — Specifiche meccaniche e stampa 3D
 
-**Versione:** 1.0 · **Stato:** studio volumetrico della base e blockout a volumi (2026-11-09), scultura non iniziata · **Data:** 2026-11-09
+**Versione:** 1.1 · **Stato:** primo concept 3D a cubetti (2026-11-10), parametrico in build123d; da rivedere con il proprietario · **Data:** 2026-11-10
 
 ## 1. Intento estetico (CONF)
 
@@ -9,7 +9,8 @@
 - Il **display circolare sostituisce il volto**: non esiste un viso umano stampato al centro.
 - **In piedi su una base d'appoggio** (`DEC-051`); un braccio sul fianco o saluto è un'alternativa stilistica, non una specifica bloccata.
 - Aspetto curato sia frontalmente (regalo) sia posteriormente: presa USB-C nella parte posteriore bassa, **sul retro della base** che contiene la scheda (`DEC-048`), sportello di servizio sul fondo. La battuta "sul sedere" di `DEC-018` non si tiene (`DEC-051`).
-- Stile da definire con i riferimenti che il proprietario invierà; nessuna insegna o marchio ufficiale.
+- **Stile "a cubetti" (voxel)** dal riferimento del proprietario ([`assets/concept/riferimento-stile-chibi-voxel.webp`](../assets/concept/riferimento-stile-chibi-voxel.webp), solo illustrativo): testa a cubo con il display come volto, cappello blu notte, capelli castani con coda laterale, camicia blu notte a maniche corte con spalline e tasche, cintura con fondina, pantaloni azzurri con banda rossa, stivali neri (§13).
+- **Insegne stilizzate** (`DEC-053`, scelta del proprietario): sul cappello un fregio dorato generico a pixel (non l'aquila ufficiale), sul petto la scritta "POLIZIA" e una toppa tricolore in piccolo rilievo. Evocano la divisa senza copiare insegne ufficiali ([00](00-visione-perimetro.md) §5).
 - Un **pulsante** fisico integrato in modo discreto nella statuetta (`DEC-017`, posizione in `OPEN-017`).
 
 I render del concept sono **riferimenti estetici**, non modelli 3D quotati, né garanzia di stampabilità.
@@ -140,13 +141,13 @@ Primo studio dopo `DEC-048` (scheda nella base). Nessuna parte è ancora definit
 
 | Voce | Valore proposto | Note |
 |---|---|---|
-| Ingombro esterno | **78,5 × 76,3 × 24,1 mm** (larghezza × profondità × altezza) | Forma a "D": retro piatto per la USB-C (raggi 5 mm), fronte arrotondato (raggi 18 mm). Pareti 2 mm, piano superiore 2,5 mm, fondo 2,5 mm |
+| Ingombro esterno | **78,5 × 76,3 × 24,1 mm** (larghezza × profondità × altezza), X −39,0…39,5 | Forma a "D": retro piatto per la USB-C (raggi 5 mm), fronte arrotondato (raggi 18 mm); nel concept a cubetti raggi di 5 e 4 mm (§13). Pareti 2 mm, piano superiore 2,5 mm, fondo 2,5 mm |
 | Minimo della sola scheda | 57,5 × 47,7 × 17,2 mm | Senza moduli, zavorra, piedi e pieghe dei cavi JST. La base cresce a destra per DS3231 e SHT40, davanti per piedi e zavorra, in altezza per le spine JST PH con il cavo dall'alto (14 mm sopra la scheda, da verificare con la prova 1:1 FIN-011) |
-| Scheda | X −33,0…17,5; Y −4,4…37,1; lato inferiore a Z 6,0 | 3,5 mm di luce sotto la scheda per i piedini di J2–J5 (1,81 mm) e le teste delle viti |
-| Fissaggio della scheda | Due colonnine Ø 5,5 mm che scendono dal piano superiore ai fori M2 (X −6,66 e −26,16, Y 33,6); viti M2 dal basso | Lo sforzo del cavo USB va sulla scocca. Due colonnine Ø 4 mm sul fondo sostengono gli angoli anteriori della scheda quando si innesta il cavetto display |
-| USB-C | Asse a X −16,16, **Z 9,1 mm** dal tavolo; apertura 13,4 × 7,6 mm (raggi 1,5) nella parete posteriore | Il sovrastampo della spina (segnaposto 12,4 × 6,5 mm) entra nell'apertura fino alla presa |
-| DS3231 (Adafruit 5188) | Culla con due guide sotto il piano, angolo posteriore destro (X 21…38,8, Y 11,4…36,8) | **Pila CR1220 rivolta verso il fondo**: si cambia togliendo il fondo, senza staccare cavi (`OPEN-026`). Quote 25,4 × 17,8 × 7,8 mm dalla pagina Adafruit (2026-11-09) |
-| SHT40 | Camera separata sul lato destro (interno X 20…40, Y −16…8), modulo in piedi contro la parete con 6 feritoie da 1,6 mm; 4 feritoie nel fondo | Lontano dal display (testa) e a circa 25 mm dall'LDO (`OPEN-011`). Con il cavetto Dupont il modulo occupa quasi tutta la camera: valutare fili saldati direttamente sul modulo, scelta del proprietario |
+| Scheda | X −35,5…15,0; Y −4,4…37,1; lato inferiore a Z 6,0 (asse del corpo sul centro dei pin 1–7 di J2, header 1×8 dal `DEC-049`) | 3,5 mm di luce sotto la scheda per i piedini di J2–J5 (1,81 mm) e le teste delle viti |
+| Fissaggio della scheda | Due colonnine Ø 5,5 mm che scendono dal piano superiore ai fori M2 (X −9,20 e −28,70, Y 33,6); viti M2 dal basso | Lo sforzo del cavo USB va sulla scocca. Due colonnine Ø 4 mm sul fondo sostengono gli angoli anteriori della scheda quando si innesta il cavetto display |
+| USB-C | Asse a X −18,70, **Z 9,1 mm** dal tavolo; apertura 13,4 × 7,6 mm (raggi 1,5) nella parete posteriore | Il sovrastampo della spina (segnaposto 12,4 × 6,5 mm) entra nell'apertura fino alla presa |
+| DS3231 (Adafruit 5188) | Culla con due guide sotto il piano, angolo posteriore destro (X 18,5…36,3, Y 11,4…36,8) | **Pila CR1220 rivolta verso il fondo**: si cambia togliendo il fondo, senza staccare cavi (`OPEN-026`). Quote 25,4 × 17,8 × 7,8 mm dalla pagina Adafruit (2026-11-09) |
+| SHT40 | Camera separata sul lato destro (interno X 17,5…37,5, Y −16…8), modulo in piedi contro la parete con 6 feritoie da 1,6 mm; 4 feritoie nel fondo | Lontano dal display (testa) e a circa 25 mm dall'LDO (`OPEN-011`). Con il cavetto Dupont il modulo occupa quasi tutta la camera: valutare fili saldati direttamente sul modulo, scelta del proprietario |
 | Zavorra | Vasca nella striscia anteriore del fondo (Y −34…−18,5), circa **16 cm³**: circa 75 g di pallini d'acciaio o circa 128 g di piastrine | Oltre 15 mm dall'antenna (17,1 mm). Vasca chiusa (coperchio o resina) |
 | Sportello di servizio | Il fondo stesso: 2 viti M2,5 davanti, 2 linguette dietro | Accesso al retro della scheda (TP6/TP11 per il recupero, `DEC-039`), alle viti, alla pila e alla zavorra (`OPEN-008`) |
 | Fissaggio del corpo | 2 viti M3 dal basso negli stivali (X ±10, Y −12) | Accessibili togliendo il fondo |
@@ -155,12 +156,12 @@ Primo studio dopo `DEC-048` (scheda nella base). Nessuna parte è ancora definit
 **Controlli automatici** (`studio_base.py`, rapporto in `mechanical/cad/studio_base_rapporto.txt`):
 
 - Interferenze fra le parti stampate e gli ingombri (scheda dallo STEP di KiCad, componenti alti misurati sullo STEP completo, spine, moduli, zavorra): **PASS**, nessun volume in comune.
-- Metallo ad almeno **15 mm dall'antenna** del WROOM-02 (DEC-012, R2-004): **PASS**. Minimo 15,1 mm (vite M2 del foro H2); zavorra 17,1 mm; viti del corpo 16,8 e 33,8 mm; viti del fondo 22,3 e 54,4 mm. Per avere margine si possono usare viti in nylon sul foro H2.
+- Metallo ad almeno **15 mm dall'antenna** del WROOM-02 (DEC-012, R2-004): **PASS**. Minimo 15,1 mm (vite M2 del foro H2); zavorra 17,1 mm; viti del corpo 18,6 e 36,2 mm; viti del fondo 22,4 e 56,7 mm (valori con J2 1×8, rieseguiti il 2026-11-10). Per avere margine si possono usare viti in nylon sul foro H2.
 - Il modello 3D della USB-C (HRO TYPE-C-31-M-12) non è nella libreria di KiCad 10: nello studio è un blocco con le quote del disegno HRO (8,94 × 7,35 × 3,16 mm).
 
 ### 12.2 Header J2 e cavetto display
 
-- **Header diritto (consigliato, `CAND-027`)**: la spina Dupont sale in verticale da Z 10,1 a Z 24,1 e arriva al piano superiore della base. I fili entrano direttamente nel canale del corpo, che misura **21 × 6 mm** e va dal piano della base al collo passando per le gambe unite e il busto. La sezione del canale lascia passare una spina Dupont a 7 vie: il cavetto si infila anche senza dividere il corpo in due gusci.
+- **Header diritto (consigliato, `CAND-027`)**: con J2 1×8 (`DEC-049`) il corpo dell'header va da X −11,4 a 8,9 (resta sotto il piano della base); la spina Dupont a 7 vie sui pin 1–7 sale in verticale da Z 10,1 a Z 24,1 e arriva al piano superiore della base. I fili entrano direttamente nel canale del corpo, che misura **21 × 6 mm** e va dal piano della base al collo passando per le gambe unite e il busto. La sezione del canale lascia passare una spina Dupont a 7 vie: il cavetto si infila anche senza dividere il corpo in due gusci.
 - **Header a 90° (quello del progetto KiCad)**: piedini fino a 5,64 mm oltre il bordo, spina orizzontale fino a Y −24 e piega dei fili. Servirebbero **circa 25 mm di base in più** davanti alla scheda, oppure gambe più avanti rispetto alla base.
 - La scelta spetta al proprietario, che salda l'header (`OPEN-031`).
 - **Lunghezza**: dalla spina sulla scheda a quella sul modulo display (pin vicino al bordo inferiore dell'aletta, Z circa 79, spina orizzontale verso il retro) il percorso è di circa 65 mm. Un **cavetto Dupont da 10 cm** lascia circa 35 mm di gioco per montare la testa a parte (`OPEN-021`: la prova SPI va fatta con questo cavetto).
@@ -191,3 +192,46 @@ Volumi semplici per proporzioni e ingombri (`mechanical/blender/blockout_chibi.p
 ### 12.5 Domande aperte per il proprietario
 
 Header J2 diritto o a 90° (`OPEN-031`); posizione del pulsante, A o B (`OPEN-017`); fondo come sportello (`OPEN-008`); DS3231 nella culla con la pila verso il fondo (`OPEN-026`); cavo dell'SHT40 saldato o con spina Dupont; servizio e tecnologia di stampa (`OPEN-032`); commenti estetici sui render e riferimenti di stile; chiusura di `OPEN-028` per la parte scheda (il PCB non richiede modifiche).
+
+## 13. Primo concept 3D a cubetti (2026-11-10)
+
+Concept dello stile scelto dal proprietario, **parametrico in build123d** (`mechanical/cad/concept_voxel.py`), con Blender solo per colori, luci e render (`mechanical/blender/render_concept.py`). Non è ancora il modello da stampare: proporzioni, colori e divisione dei pezzi aspettano il parere del proprietario.
+
+**Render** (`assets/renders/`): `concept-fronte.png`, `concept-tre-quarti.png`, `concept-lato.png`, `concept-retro.png` (USB-C), `concept-esploso.png`, `concept-sezione.png` (scheda, cavetto e display). **File**: una STL per parte in `mechanical/prints/concept/` e l'assieme `mechanical/prints/concept-statuetta.step`; rapporto in `mechanical/cad/concept_rapporto.txt`.
+
+### 13.1 Quote
+
+| Voce | Valore |
+|---|---|
+| Altezza totale | **167 mm** (sopra i 130–160 indicativi di `SC-006`: decide il proprietario) |
+| Ingombro in pianta | 84,5 × 77,8 mm (la coda dei capelli sporge di 10 mm sul lato destro della chibi) |
+| Base | 78,5 × 76,3 × 24,1 mm, dallo studio del §12 con spigoli "a blocco" (raggi 5/4 mm) |
+| Testa | Cubo 70 × 64 × 70 mm, Z 78,1…148,1; cappello fino a Z 167,1. Testa e cappello sono il 53 % dell'altezza (2,4 teste) |
+| Display | Centro del vetro a Z 108,1, finestra Ø 38 mm nella piastra del volto; modulo segnaposto da Z 81,3 a 126,8 |
+| Corpo | Stivali Z 24,1…33,1; pantaloni …49,1; cintura …53,1; busto …76,1; collo nascosto …78,1 |
+| Cavetto display | Canale 21 × 6 mm libero dalla base al pavimento della testa; percorso fra le spine circa 67 mm, Dupont da 10 cm |
+
+**Controlli automatici:** nessuna sovrapposizione fra le 27 parti; modulo display e spina dentro la testa senza interferenze; canale libero. Le verifiche della base (interferenze, antenna) sono quelle del §12.
+
+### 13.2 Parti per colore (proposta)
+
+| Gruppo | Parti | Note di stampa |
+|---|---|---|
+| Base | `base_guscio` (grigio), `base_fondo` (grigio scuro) | Guscio capovolto; il fondo è lo sportello |
+| Gambe | `stivale_dx`, `stivale_sx` (nero), `pantaloni` (azzurro), `banda_dx/sx` (rosso, 0,8 mm) | Gli stivali hanno mezzo canale ciascuno e l'inserto M3 della vite dalla base |
+| Vita | `cintura` con fondina e tasca (nero), `fibbia` (grigio) | Anello attraversato dalle spine |
+| Busto | `busto` con maniche, colletto e taschini (blu notte), `braccio_dx/sx` (pelle), `spallina_dx/sx` (rosso), `grado_dx/sx` (oro, 0,6 mm), `collo` (pelle) | Busto in piedi, pieno salvo il canale |
+| Insegne (`DEC-053`) | `targhetta` + `scritta_polizia` (lettere 0,5 mm), `toppa_verde/bianco/rosso`, `fregio` a pixel 1,6 mm | Dettagli piccoli: stampa multicolore o pittura |
+| Testa | `testa_retro` con la coda e `testa_fronte` (castano), `volto` con la finestra (pelle) | Retro con la nuca sul piatto, supporti sotto la coda; fronte e retro uniti con 2 viti M2,5 dal pavimento della testa |
+| Cappello | `cappello` cavo, pareti 2,5 mm (blu notte) | Capovolto: la fascia sporge di 4–7 mm |
+
+**Giunzioni del concept:** spine di allineamento Ø 3 mm (fori Ø 3,2, profondi 4 mm) a X ±14 fra stivali, pantaloni, cintura, busto, collo, testa e cappello; braccia su spine Ø 3 sotto le maniche; viti M3 dalla base negli stivali. Gioco fra le parti incastrate 0,2 mm: valore di partenza.
+
+### 13.3 Scelte aperte per il proprietario
+
+- **Proporzioni**: altezza 167 mm (testa fissata dal modulo display); accorciare il cappello o il busto per stare nei 160 mm?
+- **Colori**: tonalità di blu della camicia e dei pantaloni, castano dei capelli, grigio della base.
+- **Tecnologia e servizio** (`OPEN-032`): FDM multicolore (tutte le parti nei loro colori, dettagli fino a circa 0,4 mm), SLS/MJF in nylon (monocolore o tinto, poi pittura; pareti ≥ 0,8–1 mm), resina (dettagli fini, da dipingere). Tolleranze tipiche da verificare sulle pagine del servizio: circa 0,2–0,3 mm in FDM, 0,3–0,4 mm in SLS/MJF, 0,1–0,2 mm in resina.
+- **Dettagli sottili**: bande, gradi e lettere sotto 1 mm vanno ingrossati per SLS/MJF o dipinti.
+- **Parti piene**: busto, pantaloni e testa si possono svuotare per ridurre costo e peso con i servizi che fanno pagare il volume.
+- Restano le domande del §12.5 (header J2, pulsante, sportello, DS3231, cavo SHT40).

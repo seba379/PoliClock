@@ -129,7 +129,10 @@ def ingombri():
         ing["spina " + nome] = scatola(x0, x1, y0, y1, Z_SCHEDA + 7.6, Z_SCHEDA_SU + P.PH_CAVO_SOPRA_SCHEDA - 0.5)
     # Header J2 diritto + spina Dupont 7 vie verticale (variante consigliata)
     zc = Z_SCHEDA_SU + P.HEADER_DIRITTO_CORPO_H
-    ing["J2 header diritto"] = scatola(-P.DUPONT_7_L / 2, P.DUPONT_7_L / 2, -1.27, 1.27, Z_SCHEDA_SU, zc)
+    # header 1x8: dal pin 1 al pin 8, mezzo passo oltre i pin estremi
+    ha, _ = da_scheda(P.J2_PIN1_U - 1.27, 0)
+    hb, _ = da_scheda(P.J2_PIN1_U + (P.J2_N_PIN - 1) * 2.54 + 1.27, 0)
+    ing["J2 header diritto"] = scatola(ha, hb, -1.27, 1.27, Z_SCHEDA_SU, zc)
     ing["spina Dupont display"] = scatola(-P.DUPONT_7_L / 2, P.DUPONT_7_L / 2, -1.27, 1.27, zc, zc + P.DUPONT_H)
     # DS3231 nella culla sotto il piano, pila verso il fondo (accessibile)
     l, w, h = P.DS3231
