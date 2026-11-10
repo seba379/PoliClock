@@ -109,6 +109,8 @@ DISPLAY_PCB = (38.0, 45.5)
 DISPLAY_SPESSORE = 3.2 + 1.6     # vetro e cornice + PCB, SEGNAPOSTO
 DISPLAY_ATTIVO_D = 32.4
 DISPLAY_TONDO_D = 37.5
+DISPLAY_ALETTA_L = 26.0          # larghezza dell'aletta dei pin sotto il tondo, SEGNAPOSTO
+                                 # (7 pin = 17,8 mm più i margini del PCB)
 
 # Spina USB-C del cavo (generica): guscio 8,4 x 2,6; sovrastampaggio
 # fino a circa 12,4 x 6,5 (SEGNAPOSTO, dipende dal cavo)

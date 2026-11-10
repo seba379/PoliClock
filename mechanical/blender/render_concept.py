@@ -9,6 +9,7 @@ Uso (dalla radice del repository):
       --python mechanical/blender/render_concept.py
 Uscite:
   assets/renders/concept-{fronte,tre-quarti,lato,retro,esploso,sezione}.png
+  assets/renders/concept-{fronte,tre-quarti}-emoji.png  (faccia emoji, idea del proprietario)
   mechanical/blender/policlock_concept.blend
 """
 
@@ -133,7 +134,7 @@ def costruisci():
             oggetti["modulo_display"] = o
 
     # Vetro e quadrante illustrativo davanti al modulo
-    yv = Q["faccia_y"] + 3.0 - 0.05
+    yv = Q["faccia_y"] + Q["spessore_volto"] - 0.05
     zd = Q["display_z"]
     bpy.ops.mesh.primitive_cylinder_add(radius=37.5 / 2, depth=0.4, location=(0, yv, zd),
                                         rotation=(math.radians(90), 0, 0), vertices=96)
@@ -148,6 +149,7 @@ def costruisci():
                  testo("lun 10 nov", (0, yt, zd + 11.0), 3.5, m_dati, c_disp),
                  testo("21,5°C  48%", (0, yt, zd - 8.5), 3.5, m_dati, c_disp)]
     oggetti["vetro"] = vetro
+    emoji = faccia_emoji(yv, zd)
 
     # Cavetto display (solo per la sezione)
     cu = bpy.data.curves.new("cavetto", "CURVE")
@@ -169,7 +171,44 @@ def costruisci():
     cavo.name = "cavo USB"
     cavo.data.materials.append(m_usb)
     sposta_in(cavo, c_parti)
-    return oggetti, quadrante
+    return oggetti, quadrante, emoji
+
+
+def faccia_emoji(yv, zd):
+    """Faccia emoji a pixel sul display (solo illustrativa: la disegnerebbe il firmware)."""
+    c = collezione("Faccia emoji")
+    px = 2.3
+    m_pelle = materiale("emoji pelle", lineare((0.98, 0.80, 0.64)), 0.6, emissione=1.2)
+    m_occhi = materiale("emoji occhi", lineare((0.06, 0.05, 0.08)), 0.5)
+    m_luce = materiale("emoji riflesso", lineare((1.0, 1.0, 1.0)), 0.5, emissione=3.0)
+    m_guance = materiale("emoji guance", lineare((0.98, 0.55, 0.55)), 0.5, emissione=1.2)
+    m_bocca = materiale("emoji bocca", lineare((0.55, 0.12, 0.15)), 0.5, emissione=0.8)
+    bpy.ops.mesh.primitive_cylinder_add(radius=37.5 / 2 - 0.2, depth=0.2, location=(0, yv - 0.25, zd),
+                                        rotation=(math.radians(90), 0, 0), vertices=96)
+    fondo = bpy.context.active_object
+    fondo.name = "emoji fondo"
+    fondo.data.materials.append(m_pelle)
+    sposta_in(fondo, c)
+    pixel = []
+    for sx in (-1, 1):   # occhi 2 x 3 con riflesso
+        for i in range(2):
+            for j in range(3):
+                pixel.append((sx * (2.5 + i), 1.0 + j, m_occhi))
+        pixel.append((sx * 2.5 if sx < 0 else sx * 3.5, 3.0, m_luce))
+        pixel.append((sx * 5.0, -0.5, m_guance))
+        pixel.append((sx * 6.0, -0.5, m_guance))
+    for x in (-1.5, -0.5, 0.5, 1.5):   # bocca sorridente
+        pixel.append((x, -3.0, m_bocca))
+    for x in (-2.5, 2.5):
+        pixel.append((x, -2.0, m_bocca))
+    for (gx, gy, mat) in pixel:
+        bpy.ops.mesh.primitive_cube_add(size=1.0, location=(gx * px, yv - 0.45, zd + gy * px))
+        q = bpy.context.active_object
+        q.scale = (px, 0.2, px)
+        q.data.materials.append(mat)
+        sposta_in(q, c)
+    c.hide_render = True
+    return c
 
 
 def scena():
@@ -245,7 +284,7 @@ def render(nome, cam, res=(1000, 1250)):
 
 def main():
     pulisci()
-    oggetti, quadrante = costruisci()
+    oggetti, quadrante, emoji = costruisci()
     scena()
     os.makedirs(RENDERS, exist_ok=True)
     h = Q["z_cima"]
@@ -255,6 +294,16 @@ def main():
     render("concept-tre-quarti.png", camera("cam tre quarti", (-300, -380, 200), z=Z_MEDIO - 4, lente=70))
     render("concept-lato.png", camera("cam lato", (-700, 0, Z_MEDIO), orto=h * 1.12))
     render("concept-retro.png", camera("cam retro", (60, 700, Z_MEDIO), orto=h * 1.12))
+
+    # Seconda versione del volto: faccia emoji al posto del quadrante
+    emoji.hide_render = False
+    for o in quadrante:
+        o.hide_render = True
+    render("concept-fronte-emoji.png", bpy.data.objects["cam fronte"])
+    render("concept-tre-quarti-emoji.png", bpy.data.objects["cam tre quarti"])
+    emoji.hide_render = True
+    for o in quadrante:
+        o.hide_render = False
 
     # Esploso: parti spostate lungo gli offset di build123d, tutto alzato di
     # SOLLEVA perché il fondo della base (spostato in basso) resti sopra il tavolo;
@@ -266,7 +315,7 @@ def main():
         dx, dy, dz = DATI["parti"].get(o.name, {"esploso": (0, 0, 0)})["esploso"]
         o.location = (o.location[0] + dx, o.location[1] + dy, o.location[2] + dz + SOLLEVA)
     extra = [oggetti["vetro"], oggetti["modulo_display"], *quadrante]
-    spost = (58.0, -10.0, 62.0 + SOLLEVA)
+    spost = (46.0, -12.0, 62.0 + SOLLEVA)
     for o in extra:
         orig[o.name] = tuple(o.location)
         o.location = (o.location[0] + spost[0], o.location[1] + spost[1], o.location[2] + spost[2])

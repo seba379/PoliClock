@@ -1,6 +1,6 @@
 # Meccanica di PoliClock
 
-Stato (2026-11-10): **primo concept 3D a cubetti**, parametrico in build123d, da rivedere con il proprietario; prima ancora studio volumetrico della base e blockout neutro. Quote, verifiche e domande aperte in [docs/06](../docs/06-progettazione-meccanica.md) §12–13; decisioni `DEC-048` (scheda nella base, USB-C sul retro), `DEC-051` (chibi in piedi), `DEC-052` (stampa con un servizio online) e `DEC-053` (stile a cubetti, insegne stilizzate) in [docs/10](../docs/10-decisioni-aperte.md).
+Stato (2026-11-10): **concept 3D a cubetti v2** (`DEC-054`: testa piccola, display come volto), parametrico in build123d, da rivedere con il proprietario; prima ancora studio volumetrico della base e blockout neutro. Quote, verifiche e domande aperte in [docs/06](../docs/06-progettazione-meccanica.md) §12–13; decisioni `DEC-048` (scheda nella base, USB-C sul retro), `DEC-051` (chibi in piedi), `DEC-052` (stampa con un servizio online) `DEC-053` (stile a cubetti, insegne stilizzate) e `DEC-054` (concept v2) in [docs/10](../docs/10-decisioni-aperte.md).
 
 ## Contenuto
 
@@ -11,7 +11,7 @@ Stato (2026-11-10): **primo concept 3D a cubetti**, parametrico in build123d, da
 | `cad/studio_base_rapporto.txt` | Rapporto generato: quote della base, volumi, interferenze, distanze dall'antenna |
 | `prints/base-guscio.stl`, `prints/base-fondo.stl` | Base dello studio per una **prova dimensionale 1:1** con la scheda reale (non pezzi finali) |
 | `prints/studio-volumi-base.step` | Assieme con base e ingombri, da aprire in un CAD o in OCP CAD Viewer |
-| `cad/concept_voxel.py` | **Concept a cubetti** parametrico: 27 parti per colore (base dallo studio), controlli di sovrapposizione, modulo display e canale del cavetto |
+| `cad/concept_voxel.py` | **Concept a cubetti v2** parametrico: 26 parti per colore (base dallo studio), controlli di sovrapposizione, modulo display (aletta nel busto) e canale del cavetto |
 | `cad/concept_rapporto.txt` | Rapporto generato del concept: quote, parti, volumi, controlli |
 | `prints/concept/*.stl`, `prints/concept-statuetta.step` | Parti del concept (una STL per parte) e assieme; **non** pronte per la stampa |
 | `blender/render_concept.py`, `blender/policlock_concept.blend` | Colori, luci e render del concept in `assets/renders/concept-*.png` |

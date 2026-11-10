@@ -54,7 +54,7 @@ Queste funzioni **non sono requisiti mascherati**: possono essere considerate in
 | `SC-003` | Alimentazione continua da USB-C posteriore bassa, sul retro della base d'appoggio che contiene la scheda principale (`DEC-048`), nessuna batteria in V1 (`DEC-023`) | CONF |
 | `SC-004` | Display attenuato in standby e temporaneamente più luminoso dopo interazione; spento di notte | CONF |
 | `SC-005` | Scheda elettronica, connettori e sensore devono essere accessibili senza danneggiare la statuetta | CAND |
-| `SC-006` | Altezza complessiva indicativa 130–160 mm; dal blockout circa 150 mm, dal concept a cubetti 167 mm (`CAND-008`), da confermare | CAND |
+| `SC-006` | Altezza complessiva indicativa 130–160 mm; dal concept a cubetti v2 **153 mm** (`CAND-008`, `DEC-054`), da confermare | CAND |
 | `SC-007` | Utilizzo per interni e non per ambienti bagnati o esposti al sole diretto | CAND |
 | `SC-008` | Fabbricazione **e** assemblaggio di tutti i PCB presso **JLCPCB**: il progetto deve rispettare le regole di produzione e di assemblaggio JLCPCB vigenti (capacità PCB, DFM, componenti della libreria LCSC/JLC, orientamento e lato di montaggio, file BOM/CPL nel formato JLC) | CONF |
 

@@ -1,6 +1,6 @@
 # 10 — Decision log e questioni aperte
 
-**Versione:** 1.1 · **Data:** 2026-11-10
+**Versione:** 1.2 · **Data:** 2026-11-10
 
 ## 1. Decisioni confermate (CONF)
 
@@ -59,6 +59,7 @@ Le decisioni superate restano nel registro per tracciabilità, con lo stato indi
 | `DEC-051` | 2026-11-09 | **Chibi in piedi sulla base**: la battuta della presa "sul sedere" non si tiene | Scelta estetica del proprietario fra chibi seduta sul bordo della base (con la presa subito sotto il sedere) e chibi in piedi. Aggiorna l'intento estetico di [06](06-progettazione-meccanica.md) §1 |
 | `DEC-052` | 2026-11-09 | **Stampa 3D tramite un servizio di stampa online**, non con una stampante del proprietario. Servizio, tecnologia e materiali sono da scegliere (`OPEN-032`) | Risposta del proprietario: "mi affiderò ad un servizio di stampa online". Tolleranze, spessori minimi e divisione dei pezzi seguono le regole del servizio scelto, da leggere sulle sue pagine al momento dell'ordine |
 | `DEC-053` | 2026-11-10 | **Stile "a cubetti" e insegne stilizzate**: la chibi segue il riferimento del proprietario (`assets/concept/riferimento-stile-chibi-voxel.webp`, testa a cubo con il display come volto). Insegne **stilizzate**: sul cappello un fregio dorato generico a pixel, **non** l'aquila ufficiale; sul petto la scritta "POLIZIA" e una toppa tricolore in piccolo rilievo. Nessuna copia di insegne ufficiali | Scelta del proprietario sul riferimento di stile: evocare la divisa restando nel limite di [00](00-visione-perimetro.md) §5 (niente repliche identiche di distintivi o marchi ufficiali). Immagine del proprietario, salvabile nel repository; resta un riferimento illustrativo |
+| `DEC-054` | 2026-11-10 | **Concept v2: busto e gambe più lunghi, testa piccola con il display come intero volto.** Parole del proprietario: "Allungare un po' il busto e le gambe. Inoltre, se facessimo una testa un po più piccola, cosi nel caso posso mettere una emoji come faccia sul display?". Testa 48 × 40 × 48 mm (era 70 × 64 × 70); l'aletta dei pin del modulo display e la spina Dupont scendono dal pavimento della testa in una cavità in cima al busto; altezza 153 mm (era 167) | Proporzioni più vicine al riferimento (2,4 teste) e volto tutto display, utile anche per una futura faccia emoji ([05](05-interfaccia-utente.md) §10). La testa si sfila verso l'alto per la manutenzione. Dettagli in [06](06-progettazione-meccanica.md) §13; quote del modulo ancora segnaposto (`OPEN-016`) |
 | `DEC-027` | 2026-11-07 | Pulsante utente: **connettore JST-SH 2 poli** (*JST PH 4 poli sui pin 1–2 dalla `DEC-043`*) per un pulsante remoto **e** tasto tattile sulla scheda in parallelo (tasto su scheda tolto con `DEC-032`) | La posizione nella statuetta (`OPEN-017`) si decide col CAD senza rifare il PCB; il tasto su scheda serve al bring-up |
 
 Le date sopra sono la data della formalizzazione nel documento delle scelte emerse nella conversazione, non un registro notarile degli eventi.
@@ -74,7 +75,7 @@ Le date sopra sono la data della formalizzazione nel documento delle scelte emer
 | `CAND-005` | ESP-IDF con moduli BSP/servizi/UI separati | Proposto | Bring-up ed ergonomia del codice |
 | `CAND-006` | 20 s di luminosità BRIGHT dopo pressione del pulsante | Proposto | Test usabilità |
 | `CAND-007` | Target 48 h autonomia | **Ritirato** (`DEC-023`) | — |
-| `CAND-008` | Altezza 130–160 mm; dal blockout del 2026-11-09 **circa 150 mm**, dal concept a cubetti del 2026-11-10 **167 mm** (base 24, testa a cubo 70 con il modulo display, cappello 19). Il proprietario ha chiesto di ricavarla dal volume | Proposto | Approvazione dei render, modulo display reale (`OPEN-016`) |
+| `CAND-008` | Altezza 130–160 mm; dal blockout del 2026-11-09 **circa 150 mm**, dal concept a cubetti v1 167 mm, dal **concept v2 153 mm** (base 24, testa a cubo 48 con il display come volto, cappello 15; `DEC-054`). Il proprietario ha chiesto di ricavarla dal volume | Proposto | Approvazione dei render, modulo display reale (`OPEN-016`) |
 | `CAND-009` | Modalità notte: una pressione del pulsante mostra il quadrante attenuato per un timeout breve (proposto 10 s), poi torna spento | Proposto | Test usabilità e `VT-UI-003` |
 | `CAND-010` | Profilo d'uso di riferimento | Confermato → `DEC-014`, poi superato | — |
 | `CAND-011` | SHT40 sui pin I²C della Waveshare | **Superata** (`DEC-015`) | — |
@@ -114,13 +115,13 @@ Le date sopra sono la data della formalizzazione nel documento delle scelte emer
 | `OPEN-013` | — | ~~Temperatura della cella in carica~~ | Chiusa da `DEC-023` |
 | `OPEN-014` | P2 | Per quanto tempo l'ora sopravvive a cavo scollegato? | Tampone scelto: pila CR1220 del modulo DS3231 (`DEC-024`), durata attesa di anni secondo Adafruit; verificare con `VT-FW-001` passo 5 |
 | `OPEN-015` | P2 | Il menu con **un solo pulsante** è sufficientemente usabile come riserva? | Prototipo dell'interazione; il metodo principale è il configuratore (`DEC-020`) |
-| `OPEN-016` | P1 | Il modulo display ricevuto ha il pinout atteso (RST, CS, DC, SDA, SCL, GND, VCC) e quanta corrente assorbe la retroilluminazione? Quali sono le quote reali del modulo (PCB, aletta dei pin, spessore)? | Modulo scelto (`DEC-034`); verifica della serigrafia e misura su banco prima del collegamento a J2. Il blockout usa un segnaposto di 38 × 45,5 × 4,8 mm con l'aletta in basso: la testa va confermata sul modulo misurato ([06](06-progettazione-meccanica.md) §12) |
+| `OPEN-016` | P1 | Il modulo display ricevuto ha il pinout atteso (RST, CS, DC, SDA, SCL, GND, VCC) e quanta corrente assorbe la retroilluminazione? Quali sono le quote reali del modulo (PCB, aletta dei pin, spessore)? | Modulo scelto (`DEC-034`); verifica della serigrafia e misura su banco prima del collegamento a J2. Il blockout usa un segnaposto di 38 × 45,5 × 4,8 mm con l'aletta in basso; nel concept v2 l'aletta (segnaposto largo 26 mm) e la spina scendono nel busto (`DEC-054`): testa, aletta e posizione dei pin vanno confermate sul modulo misurato ([06](06-progettazione-meccanica.md) §12) |
 | `OPEN-017` | P1 | Dove posizionare il pulsante nella statuetta? | Proposte (2026-11-09, [06](06-progettazione-meccanica.md) §12): **A** sulla sommità del cappello (si preme verso il basso, nessun rischio di ribaltamento); **B** sul fronte della base (cavo corto). Sconsigliato sul petto: la spinta a circa 65 mm d'altezza può ribaltare la statuetta. Scelta del proprietario |
 | `OPEN-018` | — | ~~Montare il touch nella V1?~~ | Chiusa da `DEC-034` (niente touch) |
 | `OPEN-019` | — | ~~GPIO e connettore per il touch~~ | Chiusa da `DEC-034`; IO0 libero su TP9; IO1 legge il BUSY di un eventuale e-paper dal `DEC-049` (TP10) |
 | `OPEN-020` | — | ~~Dove va la scheda principale (busto/base o testa)?~~ | **Chiusa da `DEC-048`** (2026-11-09): nella base, USB-C sul retro della base, nessuna prolunga |
 | `OPEN-021` | P1 | Il SPI del display è stabile sul cavetto Dupont a 7 fili della lunghezza reale? | Prova M1 con cavetto reale e frequenza scelta (10–20 MHz); R8/R9 22 Ω. Lunghezza dal blockout: percorso fra le due spine di circa 65 mm, quindi **cavetto Dupont da 10 cm** ([06](06-progettazione-meccanica.md) §12) |
-| `OPEN-022` | P1 | Come esce il cavo USB dal retro della base (`DEC-048`) senza far ribaltare la statuetta? | Proposta dello studio ([06](06-progettazione-meccanica.md) §12): asse della USB-C a 9,1 mm dal piano, apertura 13,4 × 7,6 mm in cui entra il sovrastampo della spina, scheda appesa a due colonnine con viti M2 (lo sforzo va sulla scocca), zavorra anteriore da 75 a 128 g. Dal calcolo servono circa 8 N di trazione all'indietro per ribaltarla; resta da provare con `VT-MEC-003` |
+| `OPEN-022` | P1 | Come esce il cavo USB dal retro della base (`DEC-048`) senza far ribaltare la statuetta? | Proposta dello studio ([06](06-progettazione-meccanica.md) §12): asse della USB-C a 9,1 mm dal piano, apertura 13,4 × 7,6 mm in cui entra il sovrastampo della spina, scheda appesa a due colonnine con viti M2 (lo sforzo va sulla scocca), zavorra anteriore da 69 a 118 g. Dal calcolo servono circa 8 N di trazione all'indietro per ribaltarla; resta da provare con `VT-MEC-003` |
 | `OPEN-023` | — | ~~Orientamento del cavo FFC~~ | Chiusa da `DEC-034` (niente FFC); J2 ha pin 1 = VCC serigrafato sul retro |
 | `OPEN-024` | — | ~~Corrente della retroilluminazione LEDA/LEDK~~ | Chiusa da `DEC-034`: la retroilluminazione è gestita dal modulo; misura della corrente in `OPEN-016` |
 | `OPEN-025` | — | ~~Stabilità AMS1117 con MLCC~~ | Chiusa da `DEC-037` (TLV75533) |
@@ -407,3 +408,11 @@ Nessun Gerber.
 - Studio della base rieseguito con J2 1×8 (`DEC-049`): ancora PASS, metallo ad almeno 15,1 mm dall'antenna.
 - Numerazione: `DEC-049` è del ramo hardware (J2 1×8), `DEC-050` è riservato alla generazione dei Gerber; le decisioni di questo ramo sono `DEC-048`, `DEC-051`, `DEC-052` e `DEC-053`.
 - Domande al proprietario: proporzioni (167 mm), colori, tecnologia e servizio di stampa (`OPEN-032`), divisione dei pezzi, oltre a quelle del §18.
+
+## 20. Concept v2: testa piccola e faccia emoji (2026-11-10)
+
+- Parere del proprietario sul concept v1 (`1afd055`) registrato in `DEC-054`: busto 28 mm e gambe 24 mm (erano 23 e 16), braccia con manica, risvolto e avambraccio, testa 48 × 40 × 48 mm con il display come intero volto; altezza **153 mm**, base invariata 78,5 × 76,3 × 24,1 mm ([06](06-progettazione-meccanica.md) §13).
+- L'aletta dei pin del modulo display e la spina Dupont scendono nel busto; cavetto da 10 cm ancora sufficiente (percorso circa 68 mm).
+- Idea del proprietario di una **faccia emoji** sul display, per il firmware futuro: domande in [05](05-interfaccia-utente.md) §10, nessuna modifica al firmware né alle decisioni sulla schermata principale.
+- Correzione nello studio della base: la vasca della zavorra toccava per 0,2 mm la parete della camera SHT40 (controllo guscio/fondo aggiunto); ora 15 cm³, 69–118 g, 18,1 mm dall'antenna.
+- Domande al proprietario: proporzioni e colori della v2, faccia emoji (§10 di 05), servizio di stampa (`OPEN-032`), oltre a quelle del §18.

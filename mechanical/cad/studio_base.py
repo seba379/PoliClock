@@ -225,7 +225,8 @@ def guscio(ds):
 def zona_zavorra():
     """Striscia anteriore, oltre 15 mm dall'antenna e fuori dalla camera SHT40."""
     inn = forma_d(INT_X0, INT_X1, INT_Y0, INT_Y1, P.RAGGIO_FRONTE - P.PARETE, P.RAGGIO_RETRO - P.PARETE_RETRO)
-    ys = CAMERA_SHT40[2] - 1.5 - 1.0
+    # parete della camera (1,5) + parete della vasca (1,2) + gioco (0,8)
+    ys = CAMERA_SHT40[2] - 1.5 - 1.2 - 0.8
     z = extrude(inn, Z_CIELO_INT) & scatola(INT_X0 + 0.5, INT_X1 - 0.5, INT_Y0 + 0.5, ys,
                                              P.FONDO, Z_CIELO_INT - 1.5)
     for (x, y) in P.VITI_FONDO_XY:
@@ -331,6 +332,9 @@ def main():
             peggiore = max(peggiore, v)
             if v > 0.01:
                 w(f"  ATTENZIONE {sn} / {n}: {v:.2f}")
+    vgf = interseca(g, f)
+    w(f"  guscio / fondo: {vgf:.2f}")
+    peggiore = max(peggiore, vgf)
     vsp = interseca(g, ing["spina USB-C (sovrastampo)"])
     w(f"  guscio / sovrastampo spina USB-C: {vsp:.2f} (deve essere 0: entra nell'apertura)")
     peggiore = max(peggiore, vsp)

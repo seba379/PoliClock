@@ -1,47 +1,46 @@
-CONCEPT VOXEL DELLA STATUETTA - PoliClock (stile del riferimento del proprietario)
+CONCEPT VOXEL v2 DELLA STATUETTA - PoliClock (DEC-053, DEC-054)
 Generato da mechanical/cad/concept_voxel.py; quote in mm, Z dal tavolo.
 
 == Quote principali ==
-Ingombro totale: 84.5 (largh.) x 77.8 (prof.) x 167.1 (alt.)
+Ingombro totale: 78.5 (largh.) x 76.3 (prof.) x 153.1 (alt.)
 Base: 78.5 x 76.3 x 24.1
-Testa: 70 x 64 x 70, da Z 78.1 a 148.1; cappello fino a Z 167.1
-Display: centro del vetro a Z 108.1, finestra Ø 38; modulo da Z 81.3 a 126.8
-Stivali Z 24.1-33.1, pantaloni -49.1, cintura -53.1, busto -76.1, collo -78.1
-Proporzione testa (con cappello) / altezza: 0.53; altezza in teste: 2.39
+Testa: 48 x 40 x 48, da Z 90.1 a 138.1; cappello fino a Z 153.1
+Display: centro del vetro a Z 111.1, finestra Ø 38; piastra del volto 40 mm (cornice di pelle di 1 mm ai lati)
+Aletta del modulo fino a Z 84.3 (5.8 mm dentro il busto); spina Dupont a Z 86.8, da Y -9.2 a 7.3
+Stivali Z 24.1-34.1, pantaloni -58.1, cintura -62.1, busto -90.1
+Testa con cappello / altezza: 0.41; altezza in teste (con cappello): 2.43
 
 == Parti (concept) ==
-parte                  colore     volume cm3  ingombro (mm)
-base_guscio            base            31.12   78.5 x  76.3 x  24.1  - Capovolta (piano superiore sul piatto); USB-C e feritoie verticali
-base_fondo             fondo           15.49   73.9 x  72.7 x  20.1  - Piatta; è lo sportello di servizio (OPEN-008)
-stivale_dx             nero             3.90   19.5 x  26.0 x   9.0  - Suola sul piatto
-stivale_sx             nero             3.90   19.5 x  26.0 x   9.0  - Suola sul piatto
-pantaloni              pantaloni       11.43   39.0 x  22.0 x  16.0  - In piedi; banda rossa incastrata o dipinta
-banda_dx               rosso            0.03    0.7 x   2.8 x  15.6  - Listello 0,8 mm: meglio dipinto se il servizio non regge lo spessore
-banda_sx               rosso            0.03    0.7 x   2.8 x  15.6  - Listello 0,8 mm: meglio dipinto se il servizio non regge lo spessore
-cintura                nero             5.10   53.5 x  28.1 x  17.0  - Anello con fondina e tasca; le spine Ø 3 attraversano
-fibbia                 grigio           0.03    8.0 x   1.5 x   2.8  - Piastrina incastrata nella cintura
-busto                  camicia         23.49   60.0 x  25.4 x  23.0  - In piedi; maniche e risvolti sporgono di 1 mm al massimo
-braccio_dx             pelle            1.41    8.0 x  12.0 x  15.0  - Spina Ø 3 nella manica
-braccio_sx             pelle            1.41    8.0 x  12.0 x  15.0  - Spina Ø 3 nella manica
-spallina_dx            rosso            0.18   12.8 x  10.0 x   1.4  - Piastrina 1,4 mm
-grado_dx               oro              0.02    4.5 x   6.0 x   0.6  - Dettaglio 0,6 mm: dipinto se troppo sottile per il servizio
-spallina_sx            rosso            0.18   12.8 x  10.0 x   1.4  - Piastrina 1,4 mm
-grado_sx               oro              0.02    4.5 x   6.0 x   0.6  - Dettaglio 0,6 mm: dipinto se troppo sottile per il servizio
-targhetta              targhetta        0.06   11.6 x   1.0 x   5.3  - Piastrina
-scritta_polizia        bianco           0.01   11.2 x   0.5 x   2.1  - Lettere in rilievo 0,5 mm: stampa multicolore o pittura
-toppa_verde            verde            0.02    3.6 x   1.0 x   5.3  - Piastrina
-toppa_bianco           bianco           0.02    3.6 x   1.0 x   5.3  - Piastrina
-toppa_rosso            rosso            0.02    3.6 x   1.0 x   5.3  - Piastrina
-collo                  pelle            0.37   26.0 x  12.0 x   2.0  - Anello sottile; si può unire al busto
-testa_fronte           capelli         13.00   70.0 x  12.0 x  70.0  - Cornice anteriore dei capelli; si unisce a testa_retro con 2 viti M2,5 dal pavimento
-testa_retro            capelli         58.13   80.0 x  52.0 x  70.0  - Guscio posteriore con la coda: stampa con il retro sul piatto, supporti sotto la coda
-volto                  pelle            6.36   59.8 x   8.8 x  54.8  - Piastra 3 mm con la finestra Ø 38; il modulo display si appoggia dietro
-cappello               cappello        27.55   73.0 x  72.0 x  19.0  - Capovolto (cima sul piatto): la fascia sporge di 4–7 mm
-fregio                 oro              0.04   11.2 x   0.8 x  11.2  - Rilievo 0,8 mm a pixel 1,6 mm
+base_guscio        base         31.12 cm3   78.5 x  76.3 x  24.1  - Capovolta (piano superiore sul piatto)
+base_fondo         fondo        15.48 cm3   73.9 x  72.7 x  20.1  - Piatta; è lo sportello di servizio (OPEN-008)
+stivale_dx         nero          3.70 cm3   17.0 x  26.0 x  10.0  - Suola sul piatto
+stivale_sx         nero          3.70 cm3   17.0 x  26.0 x  10.0  - Suola sul piatto
+pantaloni          pantaloni    14.56 cm3   34.0 x  22.0 x  24.0  - In piedi; banda rossa incastrata o dipinta
+banda_dx           rosso         0.05 cm3    0.7 x   2.8 x  23.6  - Listello 0,8 mm: meglio dipinto se il servizio non regge lo spessore
+banda_sx           rosso         0.05 cm3    0.7 x   2.8 x  23.6  - Listello 0,8 mm: meglio dipinto se il servizio non regge lo spessore
+cintura            nero          4.46 cm3   49.0 x  28.1 x  17.0  - Anello con fondina e tasca; le spine Ø 3 attraversano
+fibbia             grigio        0.04 cm3    8.0 x   1.6 x   2.8  - Piastrina incastrata nella cintura
+busto              camicia      25.32 cm3   55.2 x  29.4 x  28.0  - In piedi; cavità in cima per l'aletta del display
+braccio_dx         pelle         1.23 cm3    7.0 x  10.0 x  18.0  - Avambraccio e mano; spina Ø 3 nella manica
+spallina_dx        rosso         0.12 cm3    8.5 x  10.0 x   1.4  - Piastrina 1,4 mm sulla manica
+grado_dx           oro           0.01 cm3    3.5 x   6.0 x   0.6  - Dettaglio 0,6 mm: dipinto se troppo sottile per il servizio
+braccio_sx         pelle         1.23 cm3    7.0 x  10.0 x  18.0  - Avambraccio e mano; spina Ø 3 nella manica
+spallina_sx        rosso         0.12 cm3    8.5 x  10.0 x   1.4  - Piastrina 1,4 mm sulla manica
+grado_sx           oro           0.01 cm3    3.5 x   6.0 x   0.6  - Dettaglio 0,6 mm: dipinto se troppo sottile per il servizio
+targhetta          targhetta     0.05 cm3   10.8 x   0.9 x   5.3  - Piastrina
+scritta_polizia    bianco        0.01 cm3   10.8 x   0.5 x   2.1  - Lettere in rilievo 0,5 mm: stampa multicolore o pittura
+toppa_verde        verde         0.02 cm3    3.6 x   0.9 x   5.3  - Piastrina
+toppa_bianco       bianco        0.02 cm3    3.6 x   0.9 x   5.3  - Piastrina
+toppa_rosso        rosso         0.02 cm3    3.6 x   0.9 x   5.3  - Piastrina
+testa_fronte       capelli       4.41 cm3   48.0 x   8.0 x  48.0  - Cornice dei capelli attorno al volto; si unisce a testa_retro (viti M2 dal pavimento)
+testa_retro        capelli      23.61 cm3   55.0 x  32.0 x  48.0  - Guscio posteriore con la coda: retro sul piatto, supporti sotto la coda
+volto              pelle         0.89 cm3   39.8 x   2.0 x  40.9  - Cornice 2 mm con la finestra Ø 38: il display è tutto il volto
+cappello           cappello     13.37 cm3   54.0 x  47.0 x  15.0  - Capovolto (cima sul piatto): la fascia sporge di 2–5 mm
+fregio             oro           0.03 cm3    9.8 x   0.8 x   9.8  - Rilievo 0,8 mm a pixel 1,4 mm
 
 == Controlli ==
-  Sovrapposizioni fra parti: PASS (massimo 0.00 mm3)
-  Modulo display e spina dentro la testa senza interferenze: PASS (0.00 mm3)
-  Canale 21 x 6 libero dalla base alla testa: PASS (0.00 mm3)
+  Sovrapposizioni fra parti: PASS
+  Modulo display (tondo + aletta) e spina senza interferenze: PASS (0.00 mm3)
+  Canale 21 x 6 libero dalla base alla cavità del busto: PASS (0.00 mm3)
   Interferenze nella base e distanze dall'antenna: vedi studio_base_rapporto.txt (stessa base, spigoli 5/4 mm)
-  Cavetto display: percorso fra le spine circa 67 mm (Dupont da 10 cm)
+  Cavetto display: percorso fra le spine circa 68 mm; Dupont da 10 cm (ok, almeno 15 mm di gioco per sfilare la testa)
