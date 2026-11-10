@@ -13,6 +13,7 @@
 "22Ω","R8,R9","Resistor_SMD:R_0603_1608Metric","C23345","2"
 "100k","R17","Resistor_SMD:R_0603_1608Metric","C25803","1"
 "4.7k","R19,R20","Resistor_SMD:R_0603_1608Metric","C23162","2"
+"1k","R23","Resistor_SMD:R_0603_1608Metric","C21190","1"
 "USBLC6-2SC6","U1","Package_TO_SOT_SMD:SOT-23-6","C7519","1"
 "TLV75533PDBVR","U2","Package_TO_SOT_SMD:SOT-23-5","C404027","1"
 "ESP32-C3-WROOM-02-N4","U3","PoliClock:ESP32-C3-WROOM-02","C2934560","1"

@@ -11,11 +11,21 @@
 - `esporta.py` ora si ferma se ERC, DRC o il controllo meccanico falliscono.
 - PDF, BOM, layout e render 3D sono rigenerati.
 
+**Pin BUSY su J2 (`DEC-049`, 2026-11-09):**
+
+- J2 diventa un header **1×8** (`PinHeader_1x08_P2.54mm_Horizontal`, simbolo `PoliClock:PinHeader_1x08_P2.54_THT`): pin 1–7 invariati, **pin 8 = BUSY** per un eventuale e-paper.
+- Il pin 8 va a IO1 attraverso R23 1 kΩ (C21190, Basic); TP10 resta su IO1. Il pull-down interno lo abilita il firmware.
+- J2 si sposta di 2,54 mm a sinistra: con il pin 1 fermo, il pin 8 cadrebbe sotto U3.
+- Modifica con `scripts/dec049_schema.py` e `scripts/dec049_pcb.py`, poi `sbroglia_main.py --conserva` e `cucitura_gnd.py`.
+- ERC 0, DRC 0/0/0 con parità, controllo meccanico PASS.
+- Verifica di IO0/IO1 sui datasheet Espressif in [docs/10](../docs/10-decisioni-aperte.md) §16.
+- Dopo la terza revisione (R3-001, R3-003): 8 vie GND in più (4 accanto alla EPAD di U3, 1 vicino al pin 9, 3 nell'isola del retro della zona J2/passivi), aggiunte a mano; DRC 0/0/0. Dettagli in [docs/10](../docs/10-decisioni-aperte.md) §17.
+
 **Contorno rettangolare 50,5 × 41,5 mm (`DEC-045`, 2026-11-08):** niente intaglio, antenna di U3 sulla scheda con zona vietata, corpo di tutte le parti montate da JLC a ≥ 2,5 mm da ogni bordo tranne J1 (unica eccezione DFM). Modifica con `scripts/dec045_pcb.py`. ERC 0, DRC 0/0/0, controllo meccanico PASS (margine minimo 2,99 mm). Dettagli in [docs/10](../docs/10-decisioni-aperte.md) §12.
 
 **Modulo ESP32-C3-WROOM-02-N4 (`DEC-044`, 2026-11-08):** sostituisce il MINI-1-H4X (a JLC solo "Standard"). Impronta di progetto `PoliClock:ESP32-C3-WROOM-02` (derivata da quella di KiCad, EPAD senza vie dopo `DEC-046`, niente serigrafia sopra l'antenna), intaglio allargato a 8,5 × 20,2 mm, coppia USB ridisegnata sui pin 13/14, sbroglio rifatto, cucitura GND, R16 10 k + C11 10 nF (FIN-003), serigrafia a 1,0 mm (FIN-005), regola PTH in `.kicad_dru` (FIN-007), script Gerber bloccato (FIN-006). ERC 0, DRC 0/0/0 con parità, controllo meccanico PASS. Dettagli in [docs/10](../docs/10-decisioni-aperte.md) §11.
 
-**Connettori a foro passante (`DEC-043`, 2026-11-08):** J2 (header 1×7 2,54 mm) e J3/J4/J5 (JST PH B4B-PH-K-S) sono a foro passante e **saldati a mano dal proprietario**, come le 4 linguette del guscio di J1 (`DEC-047`); JLC monta tutto il resto, J1 compreso. Le impronte vengono dalla libreria standard di KiCad 10. J2–J5 hanno il campo `Montaggio` = "a mano, parte del proprietario" e l'attributo "escluso dai file di posizionamento": non compaiono in BOM JLC e CPL, ma sono nella BOM completa. Modifica con `scripts/dec043_connettori_tht.py`, poi sbroglio delle sole connessioni mancanti con `scripts/sbroglia_main.py --conserva`. ERC 0, DRC 0/0/0 con parità, controllo meccanico PASS. Dettagli in [docs/10](../docs/10-decisioni-aperte.md) §10.
+**Connettori a foro passante (`DEC-043`, 2026-11-08):** J2 (header 1×7 2,54 mm, 1×8 dal `DEC-049`) e J3/J4/J5 (JST PH B4B-PH-K-S) sono a foro passante e **saldati a mano dal proprietario**, come le 4 linguette del guscio di J1 (`DEC-047`); JLC monta tutto il resto, J1 compreso. Le impronte vengono dalla libreria standard di KiCad 10. J2–J5 hanno il campo `Montaggio` = "a mano, parte del proprietario" e l'attributo "escluso dai file di posizionamento": non compaiono in BOM JLC e CPL, ma sono nella BOM completa. Modifica con `scripts/dec043_connettori_tht.py`, poi sbroglio delle sole connessioni mancanti con `scripts/sbroglia_main.py --conserva`. ERC 0, DRC 0/0/0 con parità, controllo meccanico PASS. Dettagli in [docs/10](../docs/10-decisioni-aperte.md) §10.
 
 - **Report salvati**: ERC e DRC rieseguiti con `kicad-cli` sulla rev 0.2 (`policlock-main/erc.rpt`, `drc.rpt`). Sono verifiche automatiche del progetto.
 - **Test eseguiti sull'hardware**: nessuno. Tutti i test del [piano di verifica](../docs/07-piano-verifica.md) sono NOT_RUN.
@@ -66,13 +76,14 @@ Modifiche successive sui file KiCad:
 - `scripts/dec044_schema.py` e `scripts/dec044_pcb.py` — una tantum (`DEC-044`): simbolo e impronta del WROOM-02, C11/R16, intaglio, posizionamento, coppia USB; i ritocchi fatti a mano dopo lo sbroglio sono descritti nel docstring.
 - `scripts/dec046_epad.py` — una tantum (`DEC-046`): toglie le 4 vie dalla EPAD di U3 in libreria e sul PCB. `scripts/cpl_centro_corpo.py` — CPL alternativa con U3 al centro del corpo, richiamata da `esporta.py`.
 - `scripts/dec045_pcb.py` — una tantum (`DEC-045`): contorno rettangolare 50,5 × 41,5 mm, piani GND, J2 sul nuovo bordo superiore e rimozione delle piste delle sue reti (poi `sbroglia_main.py --conserva` e `cucitura_gnd.py`).
+- `scripts/dec049_schema.py` e `scripts/dec049_pcb.py` — una tantum (`DEC-049`): J2 1×8 con il pin BUSY, R23, rete DISP_BUSY su IO1, rimozione delle piste toccate (poi `sbroglia_main.py --conserva` e `cucitura_gnd.py`); ritocchi nel docstring.
 - `scripts/cucitura_gnd.py` — vie di cucitura GND lungo il contorno, fuori dalla zona vietata dell'antenna (FIN-008), rifatte da capo a ogni esecuzione.
 - `scripts/esporta_gerber_jlc.py --conferma-proprietario` — Gerber e forature per JLC (FIN-006): **solo dopo l'approvazione esplicita del proprietario**; senza il flag non scrive nulla. Uscita in `policlock-main/gerber-jlc/` (ignorata da git).
 - `scripts/sbroglia_main.py --conserva` — sbroglia solo le connessioni mancanti, lasciando ferme le piste esistenti (bloccate durante lo sbroglio, poi sbloccate tranne la coppia USB). Con `--blocca-da-x=127` restano ferme solo le piste della zona J1/U1/U3.
 
 ## Libreria `PoliClock`
 
-Simboli `B4B-PH-K-S` e `PinHeader_1x07_P2.54_THT` (`DEC-043`): stessa geometria dei pin dei simboli JST-SH e Hanxia, con le impronte della libreria standard di KiCad. I simboli e le impronte JST-SH/Hanxia restano in libreria ma non sono più usati.
+Simboli `B4B-PH-K-S` e `PinHeader_1x07_P2.54_THT` (`DEC-043`; J2 usa dal `DEC-049` `PinHeader_1x08_P2.54_THT`, stessa geometria con un pin in più): stessa geometria dei pin dei simboli JST-SH e Hanxia, con le impronte della libreria standard di KiCad. I simboli e le impronte JST-SH/Hanxia restano in libreria ma non sono più usati.
 
 Parti importate da LCSC con [easyeda2kicad](https://github.com/uPesy/easyeda2kicad.py) (codici C2838502 per il footprint del modulo ESP32-C3-MINI-1, storico: sostituito dal WROOM-02 con `DEC-044`, C160404, C160402, C720477, C46061680), corrette con `scripts/correggi_libreria.py` (tipi elettrici dei pin, campo `LCSC`, riferimenti) e aggiornate al formato KiCad 10 con `kicad-cli fp upgrade` / `kicad-cli sym upgrade`. `scripts/prepara_footprint.py` toglie la serigrafia che finirebbe fuori dal bordo (USB-C, antenna del modulo, piedini dell'header).
 

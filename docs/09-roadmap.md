@@ -83,7 +83,7 @@ Attività:
 | P1 | Misurare spunto USB all'inserzione e transitori del modulo display (`OPEN-029`, `VT-PWR-001/003`) | PCB assemblato |
 | P2 | Animazioni/transizioni UI | Dopo firmware stabile |
 | P2 | Alternative estetiche (capelli, posa, colori) | Dopo CAD funzionale |
-| V2 | Se si attiva la radio: allontanare di almeno 1–2 mm le piste dal bordo della zona antenna di U3 (LCD_CS oggi a 0,3–0,4 mm), rivalutare +3V3/EN sotto il modulo, il piano GND e la cucitura vicino all'antenna (R2-004) | Decisione di riattivare Wi-Fi/BLE (oggi `DEC-012`) |
+| V2 | Se si attiva la radio: allontanare di almeno 1–2 mm le piste dal bordo della zona antenna di U3 (LCD_CS oggi a 0,3–0,4 mm e DISP_BUSY a 0,22 mm per circa 18 mm sul retro, R3-002), rivalutare +3V3/EN sotto il modulo, il piano GND e la cucitura vicino all'antenna (R2-004) | Decisione di riattivare Wi-Fi/BLE (oggi `DEC-012`) |
 
 ## Principali rischi e mitigazioni
 

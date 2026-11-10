@@ -1,6 +1,6 @@
 (version 1)
 
-# DEC-043: J2 e' un header 1x7 a 90 gradi della libreria standard di KiCad; i suoi pin sporgono oltre il
+# DEC-043/DEC-049: J2 e' un header 1x8 a 90 gradi della libreria standard di KiCad; i suoi pin sporgono oltre il
 # bordo superiore (come voluto), e con loro la serigrafia della libreria. La serigrafia fuori dalla scheda
 # non viene stampata: per la sola J2 si ignora il controllo serigrafia-bordo. Tutti gli altri controlli restano.
 (rule "J2 pin oltre il bordo superiore: serigrafia non stampata"
@@ -10,7 +10,7 @@
 	(severity ignore))
 
 # FIN-007: anello delle piazzole metallizzate >= 0,18 mm (minimo assoluto JLC; 0,25 mm raccomandato).
-# Valori sulla scheda: asole di J1 0,20; JST PH 0,225; vie termiche della EPAD di U3 0,20; header J2 0,35; fori M2 1,1.
+# Valori sulla scheda: asole di J1 0,20; JST PH 0,225; header J2 0,35; fori M2 1,1 (EPAD di U3 senza vie, DEC-046).
 # Le vie (0,6/0,3 mm, anello 0,15 mm) seguono la regola delle vie JLC (diametro >= foro + 0,1 mm) e restano escluse.
 (rule "Anello piazzole PTH >= 0,18 mm (JLC)"
 	(condition "A.Type == 'Pad' && A.Pad_Type == 'Through-hole'")
