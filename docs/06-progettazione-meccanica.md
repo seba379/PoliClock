@@ -1,14 +1,15 @@
 # 06 — Specifiche meccaniche e stampa 3D
 
-**Versione:** 0.9 · **Stato:** geometria concettuale, CAD non ancora disponibile · **Data:** 2026-11-08
+**Versione:** 1.0 · **Stato:** studio volumetrico della base e blockout a volumi (2026-11-09), scultura non iniziata · **Data:** 2026-11-09
 
 ## 1. Intento estetico (CONF)
 
 - Poliziotta in stile **chibi**, simpatica, moderna, proporzioni intenzionalmente caricaturali.
 - Testa sovradimensionata rispetto a busto/gambe, cappello blu con dettagli caratteristici, capelli modellati e uniforme blu.
 - Il **display circolare sostituisce il volto**: non esiste un viso umano stampato al centro.
-- Posa stabile da scrivania; un braccio sul fianco o saluto è un'alternativa stilistica, non una specifica bloccata.
-- Aspetto curato sia frontalmente (regalo) sia posteriormente: presa USB-C nella parte posteriore bassa, **sul sedere** (scelta ironica voluta, `DEC-018`), sportellino nascosto.
+- **In piedi su una base d'appoggio** (`DEC-051`); un braccio sul fianco o saluto è un'alternativa stilistica, non una specifica bloccata.
+- Aspetto curato sia frontalmente (regalo) sia posteriormente: presa USB-C nella parte posteriore bassa, **sul retro della base** che contiene la scheda (`DEC-048`), sportello di servizio sul fondo. La battuta "sul sedere" di `DEC-018` non si tiene (`DEC-051`).
+- Stile da definire con i riferimenti che il proprietario invierà; nessuna insegna o marchio ufficiale.
 - Un **pulsante** fisico integrato in modo discreto nella statuetta (`DEC-017`, posizione in `OPEN-017`).
 
 I render del concept sono **riferimenti estetici**, non modelli 3D quotati, né garanzia di stampabilità.
@@ -18,42 +19,33 @@ I render del concept sono **riferimenti estetici**, non modelli 3D quotati, né 
 ```text
                  CAPPELLO / TESTA
             +-----------------------+
-            | display IPS 1,28"     | <-- apertura frontale
+            | display IPS 1,28"     | <-- volto (DEC-003)
             | modulo display 7 pin  |
-            | (DEC-034)             |
             +-----------+-----------+
-                        |
-                 BUSTO CAVO
-              +---------+---------+
-              | cavetto 7 fili    | <-- attraversa il collo
-              | scheda principale | <-- opzione A (o nella testa, B)
-              | SHT40 ventilato   |
+                        |  cavetto Dupont 7 fili, 10 cm
+              BUSTO, GIACCA, GAMBE
+              +-------------------+
+              | canale 21 x 6 mm  | <-- dalla testa al piano della base
               +---------+---------+
                         |
-                  BASE / GAMBE
-              +-------------------+
-              | zavorra           | <-- baricentro basso, stabilità col cavo
-              | presa USB-C       | <-- sul sedere, cavo sempre collegato
-              +-------------------+
-
-   SHT40: piccolo vano ventilato verso aria ambiente, lontano da display,
-   regolatore e retroilluminazione.
+     BASE D'APPOGGIO (DEC-048), circa 78,5 x 76,3 x 24,1 mm
+  +--------------------------------------------------+
+  | scheda principale     | DS3231, pila verso fondo | <-- USB-C sul retro
+  | (antenna a sinistra)  | camera SHT40 ventilata   |
+  | zavorra nella striscia anteriore                 |
+  | fondo apribile = sportello di servizio           |
+  +--------------------------------------------------+
 ```
 
-Nella testa c'è solo il modulo display a 7 pin (`DEC-034`), con il cavetto che scende nel collo. La scheda principale è separata (`DEC-021`) e la sua posizione si decide con la bozza Blender (`OPEN-020`):
-
-- **Opzione A (preferita)**: scheda nel busto/base con la USB-C saldata sul bordo e affacciata al foro sul sedere; dalla testa scende solo il cavo display.
-- **Opzione B**: scheda nella testa dietro il modulo display; scendono prolunga USB-C e cavo SHT40.
-
-In una chibi la cavità più grande è la testa, mentre il busto è stretto: la bozza deve verificare che la scheda principale entri nel busto/base. Senza batteria (`DEC-023`) la base è libera: serve una **zavorra** (es. pesi metallici o pallini in un vano chiuso) per tenere la statuetta stabile con il cavo sempre collegato. Il collo deve lasciare passare il cavetto del display con il suo connettore Dupont a 7 vie (circa 18 × 2,5 mm) e un raggio di curvatura adeguato.
+Nella testa c'è solo il modulo display a 7 pin (`DEC-034`), con il cavetto che scende nel corpo. La scheda principale è separata (`DEC-021`) e sta **nella base d'appoggio** (`DEC-048`, chiude `OPEN-020`): la USB-C saldata sul bordo si affaccia all'apertura sul retro della base, senza prolunga. Nella base stanno anche il modulo RTC, il sensore SHT40 in una camera ventilata e la **zavorra** che tiene la statuetta stabile con il cavo sempre collegato (senza batteria, `DEC-023`). Il corpo deve lasciare passare il cavetto del display con il suo connettore Dupont a 7 vie (circa 18 × 2,5 mm). Quote e verifiche nel §12.
 
 ## 3. Dimensionamento e congelamento quote
 
-- **Altezza statuetta indicativa**: 130–160 mm (CAND, non misura definitiva).
+- **Altezza statuetta indicativa**: 130–160 mm; dal blockout **circa 150 mm** (`CAND-008`, il proprietario ha chiesto di ricavarla dal volume; da confermare sui render).
 - Display: modulo IPS rotondo **1,28"** (`DEC-016`, `DEC-034`), area attiva circa 32 mm di diametro; la schedina del modulo con i 7 piedini è più grande del vetro: misurare il modulo ricevuto (`OPEN-016`).
 - La scheda principale si disegna in KiCad **insieme** al CAD: sagome, fori di fissaggio, posizione di USB-C e connettori sono quote condivise (STEP esportato da KiCad).
 - Determinare ingombro reale di: modulo display con cavetto, scheda principale con componenti, cavo display e connettori, eventuale prolunga USB-C e staffa, viti, zavorra, modulo SHT40 (`DEC-028`), modulo RTC DS3231 (`DEC-024`), pulsante, spina del cavo USB-C.
-- **Scheda principale (rev 0.2, `DEC-045`)**: **50,5 × 41,5 × 1,6 mm**, rettangolare, **senza intaglio** (prima 50 × 40 con intaglio, `DEC-036`): il modulo **ESP32-C3-WROOM-02** (`DEC-044`, 18 × 20 × **3,2 mm**, più alto del MINI-1 da 2,4 mm) sta tutto sulla scheda, con l'antenna verso il bordo destro a 2,99 mm e una zona senza rame sotto e attorno (nessun materiale conduttivo né viti metalliche vicino all'antenna; con la radio attiva Espressif chiede 15 mm liberi attorno nella custodia, irrilevante in V1, `DEC-012`). Quote dall'**angolo in basso a sinistra**, che non è cambiato: USB-C a filo del bordo inferiore (centro a 33,7 mm dal bordo sinistro, guscio sporgente 0,4 mm), due fori **M2** a (24,2; 3,5) e (43,7; 3,5) mm dal bordo sinistro e da quello inferiore, per avvitare la scheda e scaricare lo sforzo del cavo. Header display a 90° a foro passante sul bordo superiore (pin da x = 9,9 a 25,1 mm, `DEC-043`): i **piedini sporgono di circa 5,7 mm oltre il bordo** e il connettore Dupont aggiunge altri ~14 mm, da prevedere nel CAD; con un header diritto negli stessi fori il cavo esce invece verso l'alto. **JST PH B4B-PH-K-S** (J3, J4, J5) sul lato sinistro, a circa 0,6 mm dal bordo: connettori **alti circa 6 mm, con ingresso del cavo dall'alto** (la spina PHR-4 aggiunge altezza, da prevedere nel CAD). Retro senza componenti, ma con i **piedini a foro passante di J2–J5 che sporgono sotto la scheda** (lunghezza dopo la saldatura da misurare, eventualmente da accorciare): serve luce sotto la scheda o un appoggio solo sui bordi e sui fori M2 (`OPEN-028`). Studio volumetrico 1:1 ancora da fare (`OPEN-028`). Quote: STEP della scheda `hardware/policlock-main/policlock-main-scheda.step` (dettagli in [02](02-architettura-hardware.md) §3.2).
+- **Scheda principale (rev 0.2, `DEC-045`)**: **50,5 × 41,5 × 1,6 mm**, rettangolare, **senza intaglio** (prima 50 × 40 con intaglio, `DEC-036`): il modulo **ESP32-C3-WROOM-02** (`DEC-044`, 18 × 20 × **3,2 mm**, più alto del MINI-1 da 2,4 mm) sta tutto sulla scheda, con l'antenna verso il bordo destro a 2,99 mm e una zona senza rame sotto e attorno (nessun materiale conduttivo né viti metalliche vicino all'antenna; con la radio attiva Espressif chiede 15 mm liberi attorno nella custodia, irrilevante in V1, `DEC-012`). Quote dall'**angolo in basso a sinistra**, che non è cambiato: USB-C a filo del bordo inferiore (centro a 33,7 mm dal bordo sinistro, guscio sporgente 0,4 mm), due fori **M2** a (24,2; 3,5) e (43,7; 3,5) mm dal bordo sinistro e da quello inferiore, per avvitare la scheda e scaricare lo sforzo del cavo. Header display a 90° a foro passante sul bordo superiore (pin da x = 9,9 a 25,1 mm, `DEC-043`): i **piedini sporgono di circa 5,7 mm oltre il bordo** e il connettore Dupont aggiunge altri ~14 mm, da prevedere nel CAD; con un header diritto negli stessi fori il cavo esce invece verso l'alto. **JST PH B4B-PH-K-S** (J3, J4, J5) sul lato sinistro, a circa 0,6 mm dal bordo: connettori **alti circa 6 mm, con ingresso del cavo dall'alto** (la spina PHR-4 aggiunge altezza, da prevedere nel CAD). Retro senza componenti, ma con i **piedini a foro passante di J2–J5 che sporgono sotto la scheda** (lunghezza dopo la saldatura da misurare, eventualmente da accorciare): serve luce sotto la scheda o un appoggio solo sui bordi e sui fori M2 (`OPEN-028`). Studio volumetrico 1:1 della base fatto il 2026-11-09 (§12): 3,5 mm di luce sotto la scheda, appoggio sui fori M2 e sugli angoli anteriori. Quote: STEP della scheda `hardware/policlock-main/policlock-main-scheda.step` (dettagli in [02](02-architettura-hardware.md) §3.2).
 - Definire tolleranze fit e gioco dei cablaggi su stampa test, non da aspettative teoriche della stampante.
 
 Fonti quote: datasheet meccanico del pannello acquistato, file KiCad del PCB (esportazione STEP) e misure con calibro.
@@ -63,11 +55,13 @@ Fonti quote: datasheet meccanico del pannello acquistato, file KiCad del PCB (es
 1. `head_front`: frontale/testa con anello display e cappello, eventuale volume capelli.
 2. `head_rear`: guscio posteriore testa con supporto del modulo display, passaggio cavo, accesso viti.
 3. `body_shell`: busto cavo, braccia/gambe e passaggi cablaggio.
-4. `base_insert`: vano zavorra, guida di uscita del cavo USB, appoggio antiscivolo.
-5. `usb_bracket` / `main_board_mount`: supporto avvitato della scheda principale con la USB-C allineata al foro sul sedere (opzione A) o staffa della prolunga (opzione B).
-6. `button_mount`: sede del pulsante, posizione da definire.
-7. `sensor_carrier`: supporto SHT40 con finestre di aerazione, lontano da sorgenti calde.
-8. `service_hatch`: sportellino removibile con viti nascoste o incastro affidabile.
+4. `base_guscio` (studio: `mechanical/cad/studio_base.py`): pareti e piano superiore della base, apertura USB-C sul retro, colonnine della scheda, culla del DS3231, camera SHT40 con feritoie, fori per le viti del corpo.
+5. `base_fondo`: fondo apribile che fa da sportello di servizio, con la vasca della zavorra, gli appoggi della scheda e i gommini antiscivolo.
+6. `button_mount`: sede del pulsante, posizione da scegliere (`OPEN-017`).
+7. `sensor_carrier`: supporto dell'SHT40 nella camera ventilata (dipende dal modulo reale).
+8. `body_shell`: oltre ai gusci, il canale del cavetto display dalle gambe al collo.
+
+La scomposizione dei gusci della chibi dipende dal servizio di stampa (`DEC-052`, `OPEN-032`).
 
 La scomposizione è una proposta; può cambiare a seconda di vincoli di stampa, colorazione e cablaggio.
 
@@ -80,13 +74,13 @@ La scomposizione è una proposta; può cambiare a seconda di vincoli di stampa, 
 - Punti di test e pad BOOT/RESET del PCB accessibili con sportellino aperto; il flashing normale avviene dalla USB-C posteriore.
 - Definire protezione dei flessibili e del bordo del display da sfregamento con la stampa.
 
-## 6. Porta USB-C posteriore (sul sedere)
+## 6. Porta USB-C posteriore (retro della base)
 
-- Montaggio **incassato** sul sedere della statuetta (`DEC-018`), invisibile frontalmente.
-- Opzione A: scheda principale avvitata alla scocca in modo che lo sforzo del cavo vada sulle viti e sulla scocca, non sulle saldature della USB-C. Opzione B: prolunga fissata con staffa avvitata.
-- Apertura sufficientemente grande per connettori commerciali, ma non visivamente invasiva.
-- Prova inserimento con differenti cavi, rispettando raggio di curvatura all'interno.
-- Con la presa così in basso il cavo esce quasi a livello del piano: verificare che la statuetta resti dritta e stabile con il cavo inserito (eventuale incavo nella base per il passaggio del cavo) e con trazione accidentale leggera.
+- Montaggio **incassato** sul retro della base d'appoggio (`DEC-048`), invisibile frontalmente.
+- Scheda principale avvitata a due colonnine della base, in modo che lo sforzo del cavo vada sulle viti e sulla scocca, non sulle saldature della USB-C (le linguette di J1 sono saldate a mano, `DEC-047`).
+- Apertura di 13,4 × 7,6 mm in cui entra il sovrastampo della spina: grande abbastanza per i cavi comuni, ma non invasiva (§12).
+- Prova di inserimento con cavi diversi (forma e lunghezza del sovrastampo).
+- La presa è a circa 9 mm dal piano e il cavo esce quasi a livello del tavolo: verificare che la statuetta resti dritta e stabile con il cavo inserito e con una trazione accidentale leggera (`OPEN-022`, `VT-MEC-003`).
 
 ## 7. Gestione termica e aerazione sensore
 
@@ -123,8 +117,77 @@ L'adozione di PETG o PLA non elimina la necessità di un test termico: le temper
 
 - **Blender**: forma della chibi (testa, capelli, cappello, corpo, posa), booleane finali con le parti tecniche, divisione in pezzi stampabili, render. Bozza a volumi semplici anche via script; scultura artistica a mano.
 - **CAD a codice** (build123d, `CAND-021`): parti tecniche interne parametriche (supporti, vani, staffe, sportello), legate allo STEP delle schede esportato da KiCad; esportazione STEP/STL.
-- **Slicer** della stampante del proprietario (modello da indicare): orientamento, supporti, tolleranze.
+- **Servizio di stampa online** (`DEC-052`, servizio da scegliere in `OPEN-032`): orientamento, supporti e tolleranze secondo le sue regole. Non c'è una stampante del proprietario.
 
-## 11. File CAD attesi in una milestone successiva
+## 11. File CAD
 
-`mechanical/cad/` (sorgenti parametrici editabili), `mechanical/prints/` (STL/3MF esportati), `mechanical/drawings/` (quote principali e sezioni), `assets/renders/` (render estetici), più distinta elementi stampati e note di montaggio. Nessuno di questi è ancora considerato generato o verificato.
+Presenti dal 2026-11-09 (istruzioni in [mechanical/README.md](../mechanical/README.md)):
+
+- `mechanical/cad/parametri.py`, `studio_base.py`: studio volumetrico parametrico della base (build123d), con il rapporto generato `studio_base_rapporto.txt`.
+- `mechanical/prints/base-guscio.stl`, `base-fondo.stl`: base dello studio, per una **prova dimensionale 1:1** con la scheda reale (non il pezzo finale); `studio-volumi-base.step`: assieme con gli ingombri.
+- `mechanical/blender/blockout_chibi.py`, `policlock_blockout.blend`: blockout della chibi a volumi semplici, punto di partenza della scultura a mano.
+- `assets/renders/blockout-*.png`: render del blockout.
+
+Da fare in una milestone successiva: `mechanical/drawings/` (quote principali e sezioni), distinta degli elementi stampati e note di montaggio.
+
+## 12. Studio volumetrico 1:1 e blockout (2026-11-09)
+
+Primo studio dopo `DEC-048` (scheda nella base). Nessuna parte è ancora definitiva: le quote sono **proposte** (`CAND-026`) da confermare con i render e con una stampa di prova sulla scheda reale. Display e SHT40 sono segnaposto (`OPEN-016`).
+
+**Riferimento.** X verso destra guardando la statuetta da davanti, Y verso il retro, Z verso l'alto, tavolo a Z = 0. Origine in pianta sull'asse del connettore display J2, che è anche l'asse del corpo. La scheda è ruotata di 180°: bordo della USB-C verso il retro, header J2 verso il fronte, antenna a sinistra (−X).
+
+### 12.1 Base d'appoggio
+
+| Voce | Valore proposto | Note |
+|---|---|---|
+| Ingombro esterno | **78,5 × 76,3 × 24,1 mm** (larghezza × profondità × altezza) | Forma a "D": retro piatto per la USB-C (raggi 5 mm), fronte arrotondato (raggi 18 mm). Pareti 2 mm, piano superiore 2,5 mm, fondo 2,5 mm |
+| Minimo della sola scheda | 57,5 × 47,7 × 17,2 mm | Senza moduli, zavorra, piedi e pieghe dei cavi JST. La base cresce a destra per DS3231 e SHT40, davanti per piedi e zavorra, in altezza per le spine JST PH con il cavo dall'alto (14 mm sopra la scheda, da verificare con la prova 1:1 FIN-011) |
+| Scheda | X −33,0…17,5; Y −4,4…37,1; lato inferiore a Z 6,0 | 3,5 mm di luce sotto la scheda per i piedini di J2–J5 (1,81 mm) e le teste delle viti |
+| Fissaggio della scheda | Due colonnine Ø 5,5 mm che scendono dal piano superiore ai fori M2 (X −6,66 e −26,16, Y 33,6); viti M2 dal basso | Lo sforzo del cavo USB va sulla scocca. Due colonnine Ø 4 mm sul fondo sostengono gli angoli anteriori della scheda quando si innesta il cavetto display |
+| USB-C | Asse a X −16,16, **Z 9,1 mm** dal tavolo; apertura 13,4 × 7,6 mm (raggi 1,5) nella parete posteriore | Il sovrastampo della spina (segnaposto 12,4 × 6,5 mm) entra nell'apertura fino alla presa |
+| DS3231 (Adafruit 5188) | Culla con due guide sotto il piano, angolo posteriore destro (X 21…38,8, Y 11,4…36,8) | **Pila CR1220 rivolta verso il fondo**: si cambia togliendo il fondo, senza staccare cavi (`OPEN-026`). Quote 25,4 × 17,8 × 7,8 mm dalla pagina Adafruit (2026-11-09) |
+| SHT40 | Camera separata sul lato destro (interno X 20…40, Y −16…8), modulo in piedi contro la parete con 6 feritoie da 1,6 mm; 4 feritoie nel fondo | Lontano dal display (testa) e a circa 25 mm dall'LDO (`OPEN-011`). Con il cavetto Dupont il modulo occupa quasi tutta la camera: valutare fili saldati direttamente sul modulo, scelta del proprietario |
+| Zavorra | Vasca nella striscia anteriore del fondo (Y −34…−18,5), circa **16 cm³**: circa 75 g di pallini d'acciaio o circa 128 g di piastrine | Oltre 15 mm dall'antenna (17,1 mm). Vasca chiusa (coperchio o resina) |
+| Sportello di servizio | Il fondo stesso: 2 viti M2,5 davanti, 2 linguette dietro | Accesso al retro della scheda (TP6/TP11 per il recupero, `DEC-039`), alle viti, alla pila e alla zavorra (`OPEN-008`) |
+| Fissaggio del corpo | 2 viti M3 dal basso negli stivali (X ±10, Y −12) | Accessibili togliendo il fondo |
+| Massa stimata | Base in PLA circa 56 g se piena (meno con il riempimento reale); statuetta completa circa 200–260 g con la zavorra | Da pesare sul prototipo |
+
+**Controlli automatici** (`studio_base.py`, rapporto in `mechanical/cad/studio_base_rapporto.txt`):
+
+- Interferenze fra le parti stampate e gli ingombri (scheda dallo STEP di KiCad, componenti alti misurati sullo STEP completo, spine, moduli, zavorra): **PASS**, nessun volume in comune.
+- Metallo ad almeno **15 mm dall'antenna** del WROOM-02 (DEC-012, R2-004): **PASS**. Minimo 15,1 mm (vite M2 del foro H2); zavorra 17,1 mm; viti del corpo 16,8 e 33,8 mm; viti del fondo 22,3 e 54,4 mm. Per avere margine si possono usare viti in nylon sul foro H2.
+- Il modello 3D della USB-C (HRO TYPE-C-31-M-12) non è nella libreria di KiCad 10: nello studio è un blocco con le quote del disegno HRO (8,94 × 7,35 × 3,16 mm).
+
+### 12.2 Header J2 e cavetto display
+
+- **Header diritto (consigliato, `CAND-027`)**: la spina Dupont sale in verticale da Z 10,1 a Z 24,1 e arriva al piano superiore della base. I fili entrano direttamente nel canale del corpo, che misura **21 × 6 mm** e va dal piano della base al collo passando per le gambe unite e il busto. La sezione del canale lascia passare una spina Dupont a 7 vie: il cavetto si infila anche senza dividere il corpo in due gusci.
+- **Header a 90° (quello del progetto KiCad)**: piedini fino a 5,64 mm oltre il bordo, spina orizzontale fino a Y −24 e piega dei fili. Servirebbero **circa 25 mm di base in più** davanti alla scheda, oppure gambe più avanti rispetto alla base.
+- La scelta spetta al proprietario, che salda l'header (`OPEN-031`).
+- **Lunghezza**: dalla spina sulla scheda a quella sul modulo display (pin vicino al bordo inferiore dell'aletta, Z circa 79, spina orizzontale verso il retro) il percorso è di circa 65 mm. Un **cavetto Dupont da 10 cm** lascia circa 35 mm di gioco per montare la testa a parte (`OPEN-021`: la prova SPI va fatta con questo cavetto).
+
+### 12.3 Blockout della chibi (Blender)
+
+Volumi semplici per proporzioni e ingombri (`mechanical/blender/blockout_chibi.py`). Base importata dallo studio build123d e chibi **in piedi** (`DEC-051`). Il blockout usa uniforme e cappello generici, senza fregi ufficiali.
+
+| Parte | Quote (Z dal tavolo) |
+|---|---|
+| Base | 0…24,1 |
+| Stivali / gambe unite | 24…34 / 33…50 |
+| Busto con giacca svasata, braccia | 46…80 |
+| Testa (forma squadrata e arrotondata) | 68 × 56 × 70 mm, Z 65…135 |
+| Display | Centro a Z 103; vetro Ø 37,5 mm (segnaposto), area attiva Ø 32,4 |
+| Cappello con visiera | Fino a circa Z 150 |
+
+- **Vincolo trovato sulla testa**: con il modulo segnaposto 38 × 45,5 mm e l'aletta dei pin in basso, una testa di 64 mm con spigoli molto arrotondati fa uscire l'aletta sotto il mento. Servono una testa alta circa 70 mm con il volto piatto di almeno 46 × 48 mm (raccordi ≤ 11 mm), oppure il modulo ruotato di 180° (aletta in alto, immagine ruotata dal firmware con il registro MADCTL del GC9A01). Si decide sul modulo misurato (`OPEN-016`).
+- Proporzioni: testa 70 mm su circa 150 mm totali (circa 47 %), coerente con lo stile chibi; la base è un piedistallo ben visibile (24 mm), da caratterizzare nello stile (fascia, targhetta generica).
+
+### 12.4 Pulsante (`OPEN-017`), stabilità (`OPEN-022`)
+
+- **A, sommità del cappello**: si preme verso il basso, lungo l'asse della statuetta, senza momento di ribaltamento. Il cavo J5 (2 fili) sale nello stesso canale fino alla testa, lungo circa 20 cm.
+- **B, fronte della base**: cavo corto; la spinta orizzontale a circa 12 mm dal tavolo spinge la base all'indietro, con 76 mm di profondità di appoggio.
+- **Sconsigliato sul petto**: con una massa di circa 220 g e il baricentro a circa 41 mm dal bordo anteriore della base, una spinta a 65 mm di altezza ribalta la statuetta già con circa 1,4 N. Un tasto tattile comune richiede 1,6–2,5 N.
+- **Cavo USB**: con l'asse a 9,1 mm dal tavolo e circa 35 mm fra baricentro e bordo posteriore, servono circa 8 N di trazione all'indietro per ribaltarla. Il rischio maggiore è lo scivolamento: gommini antiscivolo e zavorra. Da provare con `VT-MEC-003`.
+
+### 12.5 Domande aperte per il proprietario
+
+Header J2 diritto o a 90° (`OPEN-031`); posizione del pulsante, A o B (`OPEN-017`); fondo come sportello (`OPEN-008`); DS3231 nella culla con la pila verso il fondo (`OPEN-026`); cavo dell'SHT40 saldato o con spina Dupont; servizio e tecnologia di stampa (`OPEN-032`); commenti estetici sui render e riferimenti di stile; chiusura di `OPEN-028` per la parte scheda (il PCB non richiede modifiche).

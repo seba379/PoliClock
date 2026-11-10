@@ -8,7 +8,7 @@ La V1 usa un **PCB custom progettato in KiCad e prodotto/assemblato da JLCPCB** 
 
 Dalla rev 0.2 c'è **un solo PCB custom**, la scheda principale. Tutto il resto sono **moduli commerciali** collegati con cavetti:
 
-1. **Scheda principale** 50,5 × 41,5 mm (`DEC-045`, era 50 × 40 di `DEC-036`): MCU, protezioni USB, regolatore 3,3 V, USB-C, connettori. **Nessuna batteria** (`DEC-023`, riconfermata in `DEC-038`). Posizione nella statuetta da decidere con la bozza CAD (`OPEN-020`, studio volumetrico `OPEN-028`).
+1. **Scheda principale** 50,5 × 41,5 mm (`DEC-045`, era 50 × 40 di `DEC-036`): MCU, protezioni USB, regolatore 3,3 V, USB-C, connettori. **Nessuna batteria** (`DEC-023`, riconfermata in `DEC-038`). Posizione nella statuetta: **nella base d'appoggio**, con la USB-C sul retro della base (`DEC-048`); studio volumetrico in [06](06-progettazione-meccanica.md) §12 (`OPEN-028`).
 2. **Modulo display GC9A01 1,28" a 7 pin** (`DEC-034`): IPS a colori 240×240 su schedina con piedini 2,54 mm, provabile su breadboard; senza touch. Sostituisce pannello nudo, schedina portadisplay e cavo FFC della rev 0.1.
 3. **Modulo breakout SHT40** nel vano ventilato (`DEC-028`).
 4. **Modulo RTC Adafruit DS3231 STEMMA QT** con pila CR1220 (`DEC-024`).
@@ -24,7 +24,7 @@ flowchart LR
     subgraph HEAD["Testa"]
         DISP["Modulo display GC9A01 1,28''<br/>7 pin, senza touch"]
     end
-    subgraph MAIN["Scheda principale 50,5 × 41,5 mm (posizione: OPEN-020)"]
+    subgraph MAIN["Scheda principale 50,5 × 41,5 mm (nella base, DEC-048)"]
         CONN["USB-C"]
         ESD["ESD + PTC"]
         REG["LDO TLV75533"]
@@ -35,7 +35,7 @@ flowchart LR
         REG --> SW
     end
     RTC["Modulo RTC DS3231<br/>+ pila CR1220"] <-->|"I2C, JST PH 4 poli"| MCU
-    USB["Cavo USB-C sempre collegato<br/>(sul sedere)"] -.->|"connettore diretto (A) o prolunga (B)"| CONN
+    USB["Cavo USB-C sempre collegato<br/>(retro della base)"] -.->|"connettore diretto sulla scheda"| CONN
     MCU -->|"SPI, cavetto 7 fili nel collo"| DISP
     SW -->|"3,3 V commutati"| DISP
     SHT["Modulo SHT40<br/>vano ventilato"] <-->|"I2C, JST PH 4 poli"| MCU
@@ -109,7 +109,7 @@ Disposizione (vista dall'alto). Le coordinate di questa sezione hanno l'origine 
 
 - **In alto a destra**: modulo **ESP32-C3-WROOM-02-N4** (`DEC-044`) ruotato di 270°, origine dell'impronta a (34,41; 10,5) mm, corpo da x = 27,51 a 47,51 mm e da y = 1,5 a 19,5 mm (3,0 mm dal bordo superiore, 2,99 mm dal destro). **Antenna sulla scheda** verso il bordo destro (`DEC-045`, niente intaglio), con l'estremità vicina al bordo come chiede Espressif per un'antenna che non può sporgere. Zona vietata dell'impronta su F.Cu e B.Cu, senza rame, piste, vie, riempimenti, piazzole né componenti: da x = 41,51 mm (inizio dell'antenna) al bordo destro e da y = −1,5 a 24,5 mm, cioè sotto l'antenna e 5 mm oltre i suoi lati. Pin 1–9 sul lato superiore (pin 1 = 3V3 e pin 2 = EN vicino all'antenna), pin 10–18 su quello inferiore, D-/D+ (pin 13/14) sull'asse di J1. EPAD con 4 vie termiche 0,3/0,7 mm.
 - **Bordo superiore**: header J2 del display a foro passante (`DEC-043`), pin a passo 2,54 mm da x = 9,88 mm (pin 1 = VCC, piazzola quadrata, **ora a sinistra**) a x = 25,12 mm (pin 7 = RST), fila dei fori a y = 2,90 mm (salita di 1,5 mm con il nuovo bordo superiore, `DEC-045`). Il corpo plastico dell'header a 90° appoggia sulla scheda (y −1,14…1,40 mm, 0,36 mm dentro il bordo) e i piedini sporgono oltre il bordo superiore; gli stessi fori accettano un **header diritto**. Sotto l'header, a sinistra del modulo, tre colonne di passivi (x = 26 / 23,5 / 21 mm): C6/C5 (3V3 del modulo), R8/R9 (22 Ω SPI), R6/C7 (RC su EN), R7 (IO9), R17, R15, R16, C11, C10; Q1 a (17,9; 17,0) mm e C9 a (18,5; 21,5) mm.
-- **Bordo inferiore** (verso il sedere, opzione A): USB-C J1 (centro x = 33,7 mm, sullo stesso asse dei pin USB 13/14 del modulo), affiancata da **due fori M2** (Ø 2,2 mm, pad a GND) a (24,2; 36,5) e (43,7; 36,5) mm, che scaricano sulla scocca lo sforzo d'inserimento del cavo. Sullo stesso asse, fra connettore e modulo: ESD U1 e le resistenze R4 (D-) e R3 (D+) affiancate (§3.3).
+- **Bordo inferiore** (verso il retro della base, `DEC-048`): USB-C J1 (centro x = 33,7 mm, sullo stesso asse dei pin USB 13/14 del modulo), affiancata da **due fori M2** (Ø 2,2 mm, pad a GND) a (24,2; 36,5) e (43,7; 36,5) mm, che scaricano sulla scocca lo sforzo d'inserimento del cavo. Sullo stesso asse, fra connettore e modulo: ESD U1 e le resistenze R4 (D-) e R3 (D+) affiancate (§3.3).
 - **In basso a sinistra**: PTC, LDO U2 con C2 (ingresso) e C3/C4 (uscita) a 2,2–2,4 mm dai pin.
 - **Lato sinistro**: JST PH J3 (SHT40), J4 (RTC), J5 (pulsante) verticali a foro passante (`DEC-043`), pin in fila orizzontale, pin 1 (quadrato) a x = 3,0 mm e y = 9,0 / 15,0 / 21,0 mm; corpo a circa 0,6 mm dal bordo sinistro (montaggio a mano, fuori dalla regola JLC dei 2,5 mm). R21 (0 Ω verso 3V3_EXT), R19/R20 (pull-up I²C) e C8 (antirimbalzo) in colonna a x = 13 mm.
 - **Retro**: 11 punti di test con etichetta "riferimento + rete" alta 1,0 mm (FIN-005, etichette accorciate: TP5 TX, TP7 SDA, TP8 SCL, TP11 IO9, DISP 1=VCC); TP6 (EN) e TP11 (IO9) sotto il modulo, gli altri in due file; "USB" sotto J1. Sporgono i piedini a foro passante di J2–J5, lontani dai punti di test; etichette SHT40, RTC e BTN accanto alle file di J3–J5.
@@ -172,7 +172,7 @@ Non servono per V1: audio, microSD, IMU, GPS, touch (`DEC-034`), sensore CO₂, 
 
 | Interfaccia | Uso previsto | Verifica obbligatoria |
 |---|---|---|
-| USB-C | Alimentazione continua, flash, configuratore | Opzione A: connettore sul bordo inferiore allineato al foro sul sedere; studio volumetrico (`OPEN-028`) |
+| USB-C | Alimentazione continua, flash, configuratore | Connettore sul bordo inferiore allineato all'apertura sul retro della base (`DEC-048`); studio volumetrico in [06](06-progettazione-meccanica.md) §12 |
 | Display su cavetto | GC9A01 via SPI | Pinout del modulo ricevuto (`OPEN-016`, `VT-PCB-005`); prova su banco con cavetto di lunghezza reale (`VT-PCB-003`) |
 | I²C | RTC e SHT40 su moduli esterni | Indirizzi; pull-up; avvio con tutti i moduli collegati (`VT-PCB-004`) |
 | Pulsante | Illuminazione UI e menu | Antirimbalzo e pressione breve/lunga provati sulla dev board |
@@ -187,7 +187,7 @@ Non servono per V1: audio, microSD, IMU, GPS, touch (`DEC-034`), sensore CO₂, 
 - **Modulo display senza datasheet**: pinout e corrente da verificare sul modulo ricevuto.
 - **Componenti non disponibili a JLC**: verificare LCSC prima dell'ordine; alternative compatibili a pin (già successo con l'RV-3028-C7 e con l'ESP32-C3-MINI-1-N4X; il MINI-1-H4X è "Standard Only" a JLC, da cui `DEC-044`).
 - **Connettori sui bordi superiore e inferiore**: a meno di 2,5 mm dal bordo per necessità; da confermare con la revisione DFM di JLC (`DEC-040`).
-- **Spazio nel busto insufficiente** per la scheda 50,5 × 41,5: decidere la posizione con la bozza Blender (`OPEN-020`, `OPEN-028`).
+- ~~**Spazio nel busto insufficiente** per la scheda 50,5 × 41,5~~: risolto mettendo la scheda nella base (`DEC-048`, studio in [06](06-progettazione-meccanica.md) §12).
 - **Piano B**: schede commerciali con ESP32 e display rotondo 1,28" integrato.
 
 ## 9. Gate di conferma hardware

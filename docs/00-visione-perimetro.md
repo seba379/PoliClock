@@ -1,6 +1,6 @@
 # 00 — Visione, scopo e perimetro
 
-**Versione:** 0.5 · **Stato:** specifica preliminare · **Data:** 2026-11-07
+**Versione:** 0.6 · **Stato:** specifica preliminare · **Data:** 2026-11-09
 
 ## 1. Scopo
 
@@ -17,7 +17,7 @@ Realizzare un orologio da scrivania originale, affettivo e quotidianamente utile
 ## 3. Utilizzo di riferimento
 
 - Su scrivania, comodino o mensola, in ambiente interno, vicino a una presa o a un alimentatore USB.
-- **Cavo USB-C sempre collegato** sul retro basso (sul sedere): senza cavo l'orologio è spento.
+- **Cavo USB-C sempre collegato** sul retro della base d'appoggio (`DEC-048`): senza cavo l'orologio è spento.
 - Premendo il pulsante il quadrante si illumina, poi torna allo stato attenuato.
 - Di notte il display è spento (modalità notte); una pressione del pulsante permette di leggere l'ora.
 - Se si stacca il cavo (per spostarlo), al ricollegamento riparte con l'ora corretta grazie al tampone dell'RTC.
@@ -29,7 +29,7 @@ Realizzare un orologio da scrivania originale, affettivo e quotidianamente utile
 - Data italiana, giorno della settimana e giorno/mese.
 - Temperatura in °C rilevata localmente.
 - Umidità relativa in %RH rilevata localmente.
-- **Alimentazione continua da USB-C** nella parte posteriore bassa (sul sedere), **senza batteria** (`DEC-023`).
+- **Alimentazione continua da USB-C** sul retro della base d'appoggio (`DEC-048`), **senza batteria** (`DEC-023`).
 - Schermata a luminosità ibrida e modalità notte con display spento.
 - Impostazione dell'ora offline (configuratore da PC via USB, pulsante come riserva).
 - Elettronica su PCB custom (KiCad, JLCPCB): scheda principale separata e collegata via cavo al display IPS rotondo 1,28".
@@ -51,10 +51,10 @@ Queste funzioni **non sono requisiti mascherati**: possono essere considerate in
 |---|---|---|
 | `SC-001` | Il display dev'essere circolare e sostituire il volto della statuetta | CONF |
 | `SC-002` | Lo stile estetico dev'essere poliziotta chibi/stilizzata | CONF |
-| `SC-003` | Alimentazione continua da USB-C posteriore bassa (sul sedere), nessuna batteria in V1 (`DEC-023`) | CONF |
+| `SC-003` | Alimentazione continua da USB-C posteriore bassa, sul retro della base d'appoggio che contiene la scheda principale (`DEC-048`), nessuna batteria in V1 (`DEC-023`) | CONF |
 | `SC-004` | Display attenuato in standby e temporaneamente più luminoso dopo interazione; spento di notte | CONF |
 | `SC-005` | Scheda elettronica, connettori e sensore devono essere accessibili senza danneggiare la statuetta | CAND |
-| `SC-006` | Altezza complessiva indicativa 130–160 mm; da rivedere in CAD | CAND |
+| `SC-006` | Altezza complessiva indicativa 130–160 mm; dal blockout circa 150 mm (`CAND-008`), da confermare | CAND |
 | `SC-007` | Utilizzo per interni e non per ambienti bagnati o esposti al sole diretto | CAND |
 | `SC-008` | Fabbricazione **e** assemblaggio di tutti i PCB presso **JLCPCB**: il progetto deve rispettare le regole di produzione e di assemblaggio JLCPCB vigenti (capacità PCB, DFM, componenti della libreria LCSC/JLC, orientamento e lato di montaggio, file BOM/CPL nel formato JLC) | CONF |
 

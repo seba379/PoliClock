@@ -26,7 +26,7 @@ Attività:
 4. Firmware di bring-up: display (modulo a 7 pin, `DEC-034`), pulsante, RTC, SHT40.
 5. Primo protocollo del configuratore e prova di sincronizzazione dell'ora dal PC.
 6. Misurare la corrente USB in DIM/BRIGHT/NIGHT (compresa la corrente del modulo display) e la durata del tampone RTC a cavo scollegato.
-7. **Bozza a volumi in Blender** con le misure reali di display e ingombro stimato della scheda: decidere la posizione della scheda principale, il percorso del cavo display e l'uscita del cavo USB (`OPEN-020`).
+7. **Bozza a volumi in Blender** con le misure reali di display e ingombro stimato della scheda: decidere la posizione della scheda principale, il percorso del cavo display e l'uscita del cavo USB (`OPEN-020`). **Fatto in bozza il 2026-11-09**: scheda nella base (`DEC-048`), studio build123d e blockout Blender in [06](06-progettazione-meccanica.md) §12.
 
 **Exit gate:** architettura confermata con misure; componenti del PCB scelti con motivazione; posizione della scheda principale decisa.
 
@@ -58,7 +58,7 @@ Attività:
 
 ## M6 — CAD e stampa 3D funzionale
 
-**Output:** modello parametrico diviso in gusci, supporto del modulo display, supporto scheda principale con USB-C sul sedere (o staffa prolunga), uscita guidata del cavo, zavorra nella base, alloggiamento sensore, pulsante, sportello di servizio, prove di stampa.
+**Output:** modello parametrico diviso in gusci, supporto del modulo display, supporto della scheda principale nella base con la USB-C sul retro (`DEC-048`), uscita guidata del cavo, zavorra nella base, alloggiamento sensore, pulsante, sportello di servizio, prove di stampa.
 
 **Exit gate:** `VT-MEC-001`…`VT-MEC-004` superati su prototipo funzionale.
 

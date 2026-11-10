@@ -16,7 +16,7 @@ La modalità scelta è **ibrida**: quadrante normalmente attenuato ma leggibile;
 - Statuetta **poliziotta chibi**, volutamente sproporzionata, da stampare in 3D.
 - Display **rotondo**, montato a filo/in incasso al posto del viso; non esterno o incollato.
 - Schermata V1: **ora, data, temperatura e umidità**; niente funzioni domotiche o statistiche richieste.
-- **Nessuna batteria nella V1**: alimentazione continua da **cavo USB-C** sulla parte posteriore bassa (sul sedere). Eventuale batteria rimandata a versioni future.
+- **Nessuna batteria nella V1**: alimentazione continua da **cavo USB-C** sulla parte posteriore bassa, sul retro della base d'appoggio che contiene la scheda (`DEC-048`). Eventuale batteria rimandata a versioni future.
 - Schermo **attenuato in condizioni normali**, più luminoso dopo un'interazione.
 - **Di notte il display è spento** (default 23:00–07:00, configurabile).
 - Aspetto con **uniforme blu e cappello**.

@@ -1,0 +1,4 @@
+# File generati da build123d e Blender: niente diff testuali (lo STEP contiene spazi finali per formato)
+*.step binary
+*.stl binary
+*.blend binary

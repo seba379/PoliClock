@@ -7,7 +7,7 @@
 ## 1. Requisiti confermati
 
 - **CONF:** alimentazione **continua da USB 5 V**, nessuna batteria nella V1 (`DEC-023`). Senza cavo l'orologio è spento.
-- **CONF:** presa **USB-C** nella **parte posteriore bassa** della statuetta (sul sedere) (`DEC-011`, `DEC-018`): connettore saldato sulla scheda principale se questa sta nel busto/base, prolunga se sta nella testa (`DEC-021`, `OPEN-020`).
+- **CONF:** presa **USB-C** nella **parte posteriore bassa** della statuetta, sul retro della base d'appoggio (`DEC-011`, `DEC-018`, `DEC-048`): connettore saldato sulla scheda principale, che sta nella base; nessuna prolunga.
 - **CONF:** schermo attenuato normalmente, luminoso dopo il pulsante, spento di notte (`DEC-007`, `DEC-009`).
 - **CONF:** l'ora resta salva a cavo scollegato grazie all'**RTC con tampone**: modulo esterno Adafruit DS3231 STEMMA QT con pila CR1220 (`DEC-024`).
 
@@ -17,7 +17,7 @@ Le decisioni sull'autonomia (`DEC-008`, `DEC-014`) e i requisiti di batteria son
 
 ```mermaid
 flowchart LR
-    USB["Presa USB-C sul sedere"] -->|"diretto (A) o prolunga (B)"| IN["USB-C sulla scheda principale"]
+    USB["Presa USB-C sul retro della base"] -->|"diretto"| IN["USB-C sulla scheda principale"]
     IN --> PROT["Fusibile/PTC + ESD + CC 5,1 kΩ"]
     PROT -->|"5 V"| REG["LDO TLV75533"]
     REG -->|"3,3 V, Q1 P-MOS"| BL["Modulo display<br/>(retroilluminazione inclusa)"]
@@ -34,8 +34,8 @@ flowchart LR
 
 ## 3. USB-C
 
-- **Opzione A (preferita)**: scheda principale nel busto/base con il ricettacolo USB-C saldato sul bordo, affacciato al foro sul sedere. La scheda va avvitata alla scocca perché assorbe gli sforzi di inserimento.
-- **Opzione B**: scheda nella testa e **prolunga USB-C** maschio→femmina da pannello con linee dati USB 2.0.
+- **Opzione A, scelta con `DEC-048`**: scheda principale nella base con il ricettacolo USB-C saldato sul bordo, affacciato all'apertura sul retro della base. La scheda è avvitata a due colonnine della base perché assorbe gli sforzi di inserimento ([06](06-progettazione-meccanica.md) §12).
+- ~~**Opzione B**: scheda nella testa e prolunga USB-C~~ (scartata da `DEC-048`).
 
 Criteri di verifica:
 
@@ -80,4 +80,4 @@ Misurare corrente in ingresso USB (media e picchi) e temperature interne a scocc
 
 ## 7. Questioni aperte
 
-Durata reale del tampone RTC (`OPEN-014`); dissipazione del TLV75533 a scocca chiusa; corrente del modulo display (`OPEN-016`); consumi reali in DIM/BRIGHT/NIGHT; posizione della scheda e quindi della USB-C (`OPEN-020`, `OPEN-028`). Vedi [decision log](10-decisioni-aperte.md).
+Durata reale del tampone RTC (`OPEN-014`); dissipazione del TLV75533 a scocca chiusa; corrente del modulo display (`OPEN-016`); consumi reali in DIM/BRIGHT/NIGHT; stabilità con il cavo inserito sul retro della base (`OPEN-022`, `VT-MEC-003`). Vedi [decision log](10-decisioni-aperte.md).
