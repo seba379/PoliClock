@@ -18,7 +18,7 @@
 | `VT-FUN-001` | PR-FUN-001, PR-FUN-002 | Sistema | Ora 24h e data/giorno corretti dopo configurazione, trascorrere minuti e cambio giorno |
 | `VT-FUN-002` | PR-FUN-003, PR-FUN-004 | Sistema | Valori locali visualizzati, unità corrette e aggiornamento periodico |
 | `VT-FUN-003` | PR-PWR-008, PR-UI-006, PR-REL-001 | Sistema | Almeno 50 cicli di scollegamento/ricollegamento del cavo in momenti diversi (anche durante scritture di configurazione): riavvio pulito, configurazione integra, ora corretta |
-| `VT-FUN-004` | PR-FUN-006, PR-PWR-001, PR-PWR-002 | Sistema | Alimentazione dalla USB-C sul sedere con alimentatore 5 V comune e con porta USB di un PC; connettore accessibile |
+| `VT-FUN-004` | PR-FUN-006, PR-PWR-001, PR-PWR-002 | Sistema | Alimentazione dalla USB-C sul retro della base con alimentatore 5 V comune e con porta USB di un PC; connettore accessibile |
 | `VT-UI-001` | PR-FUN-007, PR-UI-003, PR-UI-007 | Sistema | DIM leggibile, pulsante→BRIGHT, timeout→DIM, prova a 50–80 cm; prima di scolpire la testa, mockup 1:1 del display 1,28" (revisione P1-10, `DEC-038`) |
 | `VT-UI-002` | PR-UI-004 | Ispezione | Contrasto e leggibilità del fondo scuro su IPS |
 | `VT-UI-003` | PR-FUN-013 | Sistema | Ingresso/uscita fascia notte (anche a cavallo della mezzanotte), display e retroilluminazione spenti, pulsante → NIGHT_PEEK → NIGHT |
@@ -36,7 +36,7 @@
 | `VT-PWR-004` | PR-FUN-009 | Elettrico | Durata del tampone RTC a cavo scollegato misurata o stimata da corrente misurata; ora corretta al ricollegamento |
 | `VT-MEC-001` | PR-MEC-001, PR-UI-001 | Meccanico | Display realmente circolare incassato al posto del volto, senza interferenze |
 | `VT-MEC-002` | PR-MEC-002, PR-MEC-006 | Meccanico | Apertura sportello/estrazione componenti senza danno |
-| `VT-MEC-003` | PR-MEC-003 | Meccanico | Stabilità su piano con cavo USB sempre inserito sul sedere, cavo tirato leggermente e pressione del pulsante |
+| `VT-MEC-003` | PR-MEC-003 | Meccanico | Stabilità su piano con cavo USB sempre inserito sul retro della base (`DEC-048`), cavo tirato leggermente e pressione del pulsante |
 | `VT-MEC-004` | PR-MEC-004 | Meccanico/termico | SHT40 ventilato, errore termico dovuto alla scocca misurato |
 | `VT-PCB-001` | PR-REL-006, PR-REL-008 | Progetto | ERC/DRC puliti con le regole JLCPCB impostate nel progetto (`DEC-040`), checklist di revisione schema/layout, revisione visiva del proprietario in KiCad, disponibilità LCSC, regole di assemblaggio JLC (lato unico, distanze dal bordo, BOM/CPL) e revisione DFM di JLC all'ordine, sagome e connettori compatibili con il CAD |
 | `VT-PCB-002` | PR-REL-006, PR-PWR-004 | Elettrico | Bring-up: linguette del guscio di J1 saldate a mano e presa ben ancorata (`DEC-047`); alimentazione con limitazione di corrente, assenza di cortocircuiti, 3,3 V corretta, enumerazione USB, flash, display, pulsante, scan I²C; **3V3 al pin 1 del modulo** con l'oscilloscopio durante boot e flash (ondulazione nei limiti 3,0–3,6 V); **EN** senza impulsi spuri durante le commutazioni di Q1 e l'inserzione della USB (R2-005: disaccoppiamento e RC di EN lontani dal modulo); tempo di stabilizzazione di 3V3_DISP dopo `DISP_EN_N` basso, per il firmware |

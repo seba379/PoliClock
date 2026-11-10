@@ -1,6 +1,6 @@
 # 13 — Preventivo JLCPCB della scheda principale (PCB + montaggio)
 
-Guida passo passo per il proprietario. Serve a **chiedere il preventivo e la revisione DFM senza ordinare**. File generati il 2026-11-10 dal commit di progetto `e365648` (registrazione in [10](10-decisioni-aperte.md) §19, `DEC-050`).
+Guida passo passo per il proprietario. Serve a **chiedere il preventivo e la revisione DFM senza ordinare**. File generati il 2026-11-10 dal commit di progetto `e365648` (registrazione in [10](10-decisioni-aperte.md) §20, `DEC-050`).
 
 > **Prima si fa solo il preventivo.** Non pagare e non confermare l'ordine. L'ordine richiede ancora i gate di [10](10-decisioni-aperte.md) §15 (`OPEN-028`, `OPEN-016`, `OPEN-021`) e una tua decisione esplicita.
 

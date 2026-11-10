@@ -1,6 +1,6 @@
 # 05 — Specifiche interfaccia utente (UI/UX)
 
-**Versione:** 0.6 · **Stato:** wireframe testuale, non design grafico finale · **Data:** 2026-11-07
+**Versione:** 0.7 · **Stato:** wireframe testuale, non design grafico finale · **Data:** 2026-11-10
 
 ## 1. Obiettivo
 
@@ -91,3 +91,16 @@ Antirimbalzo e riconoscimento di pressione breve/lunga vanno provati sul prototi
 - Palette e font con licenze documentate; asset originali.
 - Schermate DIM/BRIGHT/NIGHT_PEEK/TIME_NOT_SET/SENSOR_ERROR e flusso di impostazione ora/fascia notte.
 - Screenshot dal display fisico verificati, non soltanto render di marketing.
+
+## 10. Faccia emoji (idea del proprietario, per il firmware futuro)
+
+Richiesta del proprietario (2026-11-10), con il concept a testa piccola in cui il display è tutto il volto (`DEC-054`): "se facessimo una testa un po più piccola, cosi nel caso posso mettere una emoji come faccia sul display?". Il display potrebbe quindi mostrare anche una **faccia emoji** a pixel (occhi, guance, bocca su fondo color pelle), nello stile a cubetti della statuetta. Esempio illustrativo nei render `assets/renders/concept-fronte-emoji.png` e `concept-tre-quarti-emoji.png`.
+
+È un'**idea per il futuro**: non cambia il firmware, le decisioni sulla schermata principale (ora, data, temperatura, umidità sempre leggibili) né gli stati di §4. Prima di specificarla servono le scelte del proprietario:
+
+- **Quando** mostrarla: alternata al quadrante a intervalli, solo dopo la pressione del pulsante, in certe fasce orarie, oppure come modalità scelta dal configuratore.
+- **Priorità** rispetto all'ora: per quanto tempo l'ora può non essere visibile.
+- **Espressioni**: una sola faccia o più espressioni (ad esempio sorriso, occhiolino, sonno), e se devono dipendere da qualcosa (ora del giorno, temperatura o umidità fuori da una soglia).
+- **Notte**: resta spenta come il quadrante (`DEC-009`) o compare con il pulsante.
+- **Animazioni**: statiche o con piccoli movimenti (battito di ciglia), che pesano su consumi e calore.
+- **Grafica**: disegni originali a pixel, con licenza documentata (§9).

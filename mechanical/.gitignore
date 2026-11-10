@@ -1,0 +1,4 @@
+# Uscite rigenerabili dello studio volumetrico (ingombri per Blender)
+cad/out/
+__pycache__/
+*.blend1

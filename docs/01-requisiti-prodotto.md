@@ -1,6 +1,6 @@
 # 01 — Requisiti di prodotto (PRD)
 
-**Versione:** 0.7 · **Stato:** baseline per prototipo, da approvare · **Data:** 2026-11-07
+**Versione:** 0.8 · **Stato:** baseline per prototipo, da approvare · **Data:** 2026-11-09
 
 ## 1. Convenzioni
 
@@ -45,7 +45,7 @@
 | ID | Priorità | Stato | Requisito / criterio |
 |---|---|---|---|
 | `PR-PWR-001` | MUST | CONF | Alimentazione **solo da USB 5 V**, nessuna batteria nella V1 (`DEC-023`). |
-| `PR-PWR-002` | MUST | CONF | Presa USB-C nella parte posteriore bassa della statuetta (sul sedere), utilizzabile senza disassemblare (`DEC-011`, `DEC-018`); connettore sulla scheda principale o prolunga secondo `DEC-021`. |
+| `PR-PWR-002` | MUST | CONF | Presa USB-C nella parte posteriore bassa della statuetta, **sul retro della base d'appoggio** che contiene la scheda principale, utilizzabile senza disassemblare (`DEC-011`, `DEC-018`, `DEC-048`); connettore saldato sulla scheda principale, nessuna prolunga. |
 | `PR-PWR-003` | — | ESCLUSO | ~~Caricatore della cella~~: nessuna batteria in V1 (`DEC-023`). |
 | `PR-PWR-004` | MUST | CAND | Ingresso USB protetto: fusibile/PTC, protezione ESD, resistenze CC 5,1 kΩ; cablaggi isolati e protetti da schiacciamento/strappo. |
 | `PR-PWR-005` | MUST | CAND | Funzionamento **continuo 24/7** con temperature interne verificate a scocca chiusa (regolatore, MCU, retroilluminazione, materiale). |
