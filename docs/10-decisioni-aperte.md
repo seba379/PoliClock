@@ -56,6 +56,7 @@ Le decisioni superate restano nel registro per tracciabilità, con lo stato indi
 | `DEC-047` | 2026-11-08 | **Linguette del guscio di J1 saldate a mano**: le 4 linguette metallizzate a foro passante della USB-C (C165948, "SMT Assembly" su JLC, senza pasta nei fori) le salda il proprietario dal retro dopo l'assemblaggio, insieme a J2–J5. Nessuna pasta aggiunta nei fori | Approvata dal proprietario sulla revisione esterna `PoliClock_report_validazione_rev02_2026-11-08.md` del proprietario (P1-02): il reflow salda i contatti SMD ma non garantisce le linguette, necessarie per la tenuta meccanica di una presa usata spesso. In alternativa la conferma scritta di JLC nella DFM |
 | `DEC-048` | — | Numero non usato (nessuna decisione registrata con questo codice) | — |
 | `DEC-049` | 2026-11-09 | **Pin BUSY su J2 per un eventuale display e-paper**: J2 diventa un header **1×8** 2,54 mm a foro passante, sempre saldato a mano (`DEC-043`); pin 1–7 invariati (1 VCC … 7 RST), **pin 8 = BUSY** → R23 1 kΩ in serie (C21190, Basic) → **IO1** (pin 17 del WROOM-02), che resta sul punto di test TP10. Nessun pull esterno: il firmware abilita il pull-down interno di IO1; con il GC9A01 a 7 pin il pin 8 resta libero e IO1 legge 0. IO0 resta libero su TP9 | Parole del proprietario: "fai aggiungere il pin BUSY, verificando che IO0 e IO1 effettivamente possano essere configurati come BUSY per SPI". Verifica sui datasheet Espressif in §16: GPIO0 e GPIO1 sono GPIO ordinari (non sono strapping, non hanno glitch all'accensione e il modulo non ha un quarzo da 32 kHz su quei pin); BUSY è un ingresso GPIO e non usa funzioni della periferica SPI. Sul PCB J2 si sposta di 2,54 mm a sinistra, perché il pin 8 a destra cadrebbe sotto U3; il cavetto a 7 fili si infila ancora sui pin 1–7 |
+| `DEC-051` | 2026-11-10 | **Gerber, forature e pacchetto per il preventivo JLCPCB generati** dal commit di progetto `e365648` (controllato a `2406b86`) con `esporta_gerber_jlc.py --conferma-proprietario`; pacchetto in `hardware/policlock-main/jlc-quotazione/` (non versionato): Gerber zip, BOM JLC, CPL e CPL alternativa di U3. Si chiede **solo il preventivo con la DFM, senza ordinare**, seguendo [13](13-ordine-jlcpcb.md). Il numero `DEC-050` è stato saltato perché lo usa la sessione 3D nel suo worktree non ancora unito | Parole del proprietario (2026-11-10): "direi che siamo pronti a generare i gerber [...] e tutto quello che serve per la quotazione di jlc pcb per pcb e montaggio componenti". Verifiche in §19 |
 | `DEC-027` | 2026-11-07 | Pulsante utente: **connettore JST-SH 2 poli** (*JST PH 4 poli sui pin 1–2 dalla `DEC-043`*) per un pulsante remoto **e** tasto tattile sulla scheda in parallelo (tasto su scheda tolto con `DEC-032`) | La posizione nella statuetta (`OPEN-017`) si decide col CAD senza rifare il PCB; il tasto su scheda serve al bring-up |
 
 Le date sopra sono la data della formalizzazione nel documento delle scelte emerse nella conversazione, non un registro notarile degli eventi.
@@ -390,3 +391,63 @@ Nessun Gerber.
 
 - [Terza revisione finale pre-Gerber](revisioni/2026-11-09/revisione-finale-3/README.md) su `edcef25`: esito **PRONTO CON RISERVE**, nessun P1; P2 R3-001 (DISP_BUSY chiude in un'isola il piano GND del retro sotto U3 e, con la EPAD senza vie di `DEC-046`, il modulo arriva al piano principale del retro solo attraverso il rame superiore), da correggere o accettare prima dei Gerber; P3 R3-002…R3-005.
 - [Verifica delle correzioni](revisioni/2026-11-09/revisione-finale-3/verifica-correzioni.md) su `e365648` (merge `30114c1`): esito **PRONTO PER GERBER**; R3-001, R3-003, R3-004 e R3-005 chiusi (8 vie GND, isola del retro sotto U3 con 6 vie, isola di U3.9 con 2), R3-002 aperto e accettato per la V1; ERC 0, DRC 0/0/0, controllo meccanico PASS. I Gerber si generano dopo l'autorizzazione esplicita del proprietario.
+
+## 19. Generazione Gerber per la quotazione (2026-11-10, `DEC-051`)
+
+**Autorizzazione.** Parole del proprietario (2026-11-10): "direi che siamo pronti a generare i gerber [...] e tutto quello che serve per la quotazione di jlc pcb per pcb e montaggio componenti". Si genera dopo l'esito **PRONTO PER GERBER** della [verifica delle correzioni](revisioni/2026-11-09/revisione-finale-3/verifica-correzioni.md) (§18).
+
+**Commit usato.** `2406b86`, cioè il progetto `e365648` più i rapporti di revisione. Schema, PCB, `.kicad_pro`, `.kicad_dru` e librerie non sono stati modificati.
+
+**Guida JLC ricontrollata.** "How to generate Gerber and drill files in KiCad 8" ([pagina](https://jlcpcb.com/help/article/how-to-generate-gerber-and-drill-files-in-kicad-8), aggiornata il 2026-11-10, provata su KiCad 8.04) dà le stesse impostazioni dello script:
+- 9 strati, estensioni Protel, maschera sottratta dalla serigrafia, zone ricontrollate;
+- forature con origine assoluta, mm, zeri "decimal", fori ovali in modo "alternate".
+
+La guida non parla di PTH e NPTH in un file unico o separato: lo script li tiene separati, come prima. Script invariato.
+
+**Gate** (eseguito dallo script con `esporta.py`, durata 58 s):
+- ERC: 0 errori, 0 avvisi;
+- DRC con zone ricalcolate, tutte le severità e parità: 0 violazioni, 0 connessioni aperte, 0 problemi di impronta;
+- controllo meccanico: PASS.
+
+BOM e CPL rigenerate sono identiche, byte per byte, a quelle versionate. `erc.rpt`, `drc.rpt`, i due PDF e lo STEP della sagoma differivano solo per la data; il render `policlock-main-top.png` per il rumore del render. Tutti ripristinati.
+
+**Controlli dei file generati.** Il testo di Gerber ed Excellon è stato analizzato con uno script indipendente e confrontato con il PCB letto dal Python di KiCad. Script e log nella cartella delle note della sessione, fuori dal repository.
+
+| Controllo | Esito |
+|---|---|
+| Strati | 9 Gerber con `FileFunction` corretta: `.gtl`, `.gbl`, `.gts`, `.gbs`, `.gtp`, `.gbp`, `.gto`, `.gbo`, `.gm1` (Edge.Cuts). In più `PTH.drl`, `NPTH.drl` e il job file. Lo zip contiene questi 12 file, identici a quelli della cartella (le mappe PDF delle forature restano fuori) |
+| Contorno | 4 segmenti ortogonali, x 100–150,5 e y 98,5–140 del foglio: **50,5 × 41,5 mm** rettangolare |
+| Forature PTH | Excellon in mm con zeri decimali. **92/92** fori tondi coincidono con il PCB per posizione e diametro: 57 vie da 0,30 mm e 13 da 0,35 mm; J2 8 × 1,0 mm; J3–J5 12 × 0,75 mm; H1/H2 2 × 2,2 mm |
+| Asole di J1 | **4 asole G85** con utensile da 0,60 mm: 2 da 0,6 × 1,7 mm e 2 da 0,6 × 1,2 mm, come nel PCB. Nessun foro tondo al loro posto |
+| Forature NPTH | 2 fori da 0,65 mm per i pioli di J1, alle posizioni del PCB |
+| Zona antenna | Su F.Cu e B.Cu: 0 piste e 0 piazzole nella zona (x ≥ 141,51; y 98,5–124,5); area delle regioni di rame dentro la zona **0,000000 mm²**; nessun foro. Il riempimento GND tocca solo i confini x = 141,51 e y = 124,5. Le piste più a destra nella fascia arrivano a x = 141,29 |
+| Fiducial | FID1 (103,5; 132,5), FID2 (116; 112), FID3 (146; 131): rame 1,0 mm, apertura della maschera 2,0 mm, nessun altro rame entro 0,7 mm. Distanza dal bordo ≥ 3,5 mm |
+| EPAD di U3 | Nessun foro nella piazzola; la via più vicina è a 0,8 mm dal suo bordo. **9 aperture di pasta** da 0,7 × 0,7 mm. F.Paste ha 115 aperture, B.Paste nessuna |
+| Serigrafia | Retro: niente fuori dal contorno; 17 testi da 1,0 mm con tratto 0,15 mm. Fronte: fuori dal contorno solo 25 tratti della serigrafia di J2 oltre il bordo superiore (x 106,9–125,6, y 92,7–98,8). Sono attesi (deroga di `policlock-main.kicad_dru`) e JLC non li stampa |
+| Maschera | Nessuna delle 70 vie ha un'apertura: vie coperte ("tented") su entrambi i lati |
+| Zone | GND F.Cu: 3 regioni, 1237,13 mm². GND B.Cu: 4 regioni, 1245,02 mm². Le aree coincidono con il riempimento salvato e con un nuovo riempimento fatto con il Python di KiCad |
+
+**Pacchetto per il preventivo.** `hardware/policlock-main/jlc-quotazione/`, non versionato (riga aggiunta in `hardware/.gitignore`):
+
+| File | Byte | SHA-256 |
+|---|---:|---|
+| `policlock-main-gerber-jlc.zip` | 85 335 | `5f6216d11cc12e67eb175a987e5075481fc560d29b602cb1975685c2dd617b44` |
+| `policlock-main-bom-jlcpcb.csv` | 1 236 | `2b33a57c187c83b458fc77da9cb3cb3ad9fa3a360b90e7eaf28df56b425c149b` |
+| `policlock-main-cpl-jlcpcb.csv` | 1 467 | `ef0a5d636fcc3a09cb4578cea3ade1f11f3591a13d3761f8f2ee6b129e7ab7c1` |
+| `policlock-main-cpl-jlcpcb-u3-centro-corpo.csv` | 1 467 | `c5ec4bac1f143fc50141e8fae6da6e467aa2b154f415107f90355f5534535cbe` |
+
+**BOM e CPL.**
+- BOM: colonne Comment, Designator, Footprint, LCSC Part # e Qty, 18 righe e 34 parti.
+- CPL: colonne Designator, Mid X, Mid Y, Layer, Rotation, 34 righe, tutte "Top", in mm, con origine nell'angolo in basso a sinistra della scheda.
+- Stessi designatori in BOM e CPL; J2–J5 assenti da entrambe.
+- Le pagine JLC su [BOM](https://jlcpcb.com/help/article/bill-of-materials-for-pcb-assembly) e [CPL](https://jlcpcb.com/help/article/pick-place-file-for-pcb-assembly) (aggiornate il 2026-09-09) chiedono questi campi.
+
+**Scorte.** Lette il 2026-11-10 sulle pagine JLC dei 18 codici: tutti a magazzino e tutti "Economic and Standard", 13 Basic e 5 Extended. Il dato più basso è quello del modulo C2934560, con 13 010 pezzi. Tabella in [13](13-ordine-jlcpcb.md) §6.
+
+**Opzioni JLC controllate.**
+- Economic PCBA ([capacità](https://jlcpcb.com/capabilities/pcb-assembly-capabilities)): un solo lato, spessore 0,8–1,6 mm, 2–50 schede, niente bordi tecnici né fiducial obbligatori, ENIG solo su scheda verde da 1,6 mm.
+- Marchio sul PCB: dal maggio 2026 JLC non stampa più il numero d'ordine e chiede di non usare `JLCJLCJLCJLC` ([pagina](https://jlcpcb.com/help/article/How-to-mark-on-PCB) del 2026-05-22). La serigrafia del progetto non lo contiene.
+
+**Prossimo passo.** Il proprietario carica i file e chiede il preventivo **senza ordinare**, seguendo [13](13-ordine-jlcpcb.md). Prezzi, avvisi DFM (J1), CPL giusta per U3 e rotazioni vanno riportati qui, in [08](08-bom-preliminare.md) §8 e in [12](12-selezione-componenti.md) §7.
+
+Restano aperti i gate dell'ordine: `OPEN-028`, `OPEN-016`, `OPEN-021` e la prova 1:1 FIN-011.

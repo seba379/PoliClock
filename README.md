@@ -60,6 +60,7 @@ Le immagini sono **illustrative** (vedi [assets](assets/README.md)).
 | [Decisioni e questioni aperte](docs/10-decisioni-aperte.md) | Decision log e dubbi tecnici |
 | [Fonti](docs/11-fonti.md) | Documenti ufficiali e risorse tecniche |
 | [Selezione componenti](docs/12-selezione-componenti.md) | Componenti dello schema, codici LCSC, assegnazione GPIO |
+| [Preventivo JLCPCB](docs/13-ordine-jlcpcb.md) | File da caricare, opzioni PCB e montaggio, controlli DFM, parti da saldare a mano |
 | [Hardware KiCad](hardware/README.md) | Progetti KiCad, PDF, BOM JLCPCB, rigenerazione |
 
 ## Organizzazione di lavoro prevista

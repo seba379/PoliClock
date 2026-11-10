@@ -52,7 +52,7 @@ Ogni componente montato da JLC ha il campo **`LCSC`** (codice JLCPCB/LCSC); J2�
   - `policlock-main/policlock-main.kicad_dru`: anello PTH ≥ 0,18 mm (FIN-007) e una deroga che ignora il controllo serigrafia-bordo **solo per J2** (la serigrafia della libreria segue i piedini oltre il bordo e non viene stampata).
 - Controlli DRC **riabilitati**: courtyard mancante o sovrapposto, fori nei courtyard, footprint diversi dalla libreria, serigrafia sovrapposta o fuori bordo.
 - File esportati: `policlock-main-top.png` / `-bottom.png` (render), `policlock-main-layout.pdf` (assemblaggio F.Fab, rame, legenda del retro), `policlock-main-scheda.step` (sagoma con fori, per il CAD), `policlock-main-bom-jlcpcb.csv` e `policlock-main-cpl-jlcpcb.csv` (assemblaggio JLC, origine nell'angolo in basso a sinistra, senza le parti saldate a mano), `policlock-main-cpl-jlcpcb-u3-centro-corpo.csv` (stessa CPL con U3 al centro del corpo, da scegliere nell'anteprima JLC, `scripts/cpl_centro_corpo.py`), `policlock-main-bom-completa.csv` (tutte le parti, con la colonna `Montaggio`: "JLC (PCBA)" oppure "a mano, parte del proprietario"). Lo STEP completo con i componenti (`policlock-main.step`) usa i modelli 3D EasyEDA e resta **solo locale** (ignorato da git).
-- I file Gerber e di foratura **non** sono generati: si producono solo dopo l'approvazione esplicita del proprietario.
+- **Gerber e forature generati il 2026-11-10** con l'approvazione del proprietario (`DEC-051`, verifiche in [docs/10](../docs/10-decisioni-aperte.md) §19): uscita in `policlock-main/gerber-jlc/` e pacchetto per il preventivo in `policlock-main/jlc-quotazione/`, entrambi non versionati. Come chiedere il preventivo JLCPCB senza ordinare: [docs/13](../docs/13-ordine-jlcpcb.md).
 
 ## Rigenerare / verificare
 

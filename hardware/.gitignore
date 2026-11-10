@@ -19,3 +19,5 @@ en/
 # Gerber e forature (solo dopo approvazione del proprietario, FIN-006): non versionati
 policlock-main/gerber-jlc/
 policlock-main/policlock-main-gerber-jlc.zip
+# Pacchetto per il preventivo JLCPCB (Gerber zip, BOM, CPL): copie dei file generati, non versionato
+policlock-main/jlc-quotazione/
